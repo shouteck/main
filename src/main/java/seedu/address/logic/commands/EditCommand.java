@@ -1,10 +1,17 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+//import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+//import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+//import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INSTRUCTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
@@ -20,36 +27,50 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
+import seedu.address.model.person.Name;
+//import seedu.address.model.person.Address;
+//import seedu.address.model.person.Email;
+//import seedu.address.model.person.Phone;
+import seedu.address.model.person.Type;
+import seedu.address.model.person.Duration;
+import seedu.address.model.person.Difficulty;
+import seedu.address.model.person.Equipment;
+import seedu.address.model.person.Muscle;
+import seedu.address.model.person.Calories;
+import seedu.address.model.person.Instruction;
 import seedu.address.model.tag.Tag;
 
 /**
- * Edits the details of an existing person in the address book.
+ * Edits the details of an existing workout in the address book.
  */
 public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
-            + "by the index number used in the displayed person list. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the workout identified "
+            + "by the index number used in the displayed workout list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_PHONE + "PHONE] "
-            + "[" + PREFIX_EMAIL + "EMAIL] "
-            + "[" + PREFIX_ADDRESS + "ADDRESS] "
+//            + "[" + PREFIX_PHONE + "PHONE] "
+//            + "[" + PREFIX_EMAIL + "EMAIL] "
+//            + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + "[" + PREFIX_TYPE + "TYPE] "
+            + "[" + PREFIX_DURATION + "DURATION] "
+            + "[" + PREFIX_DIFFICULTY + "DIFFICULTY] "
+            + "[" + PREFIX_EQUIPMENT + "EQUIPMENT] "
+            + "[" + PREFIX_MUSCLE + "MUSCLE] "
+            + "[" + PREFIX_CALORIES + "CALORIES] "
+            + "[" + PREFIX_INSTRUCTION + "INSTRUCTION] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_PHONE + "91234567 "
-            + PREFIX_EMAIL + "johndoe@example.com";
+            + PREFIX_TYPE + "Anaerobic "
+            + PREFIX_DIFFICULTY + "Beginner";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
+    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Workout: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This workout already exists in the address book.";
 
     private final Index index;
     private final EditPersonDescriptor editPersonDescriptor;
@@ -96,12 +117,20 @@ public class EditCommand extends Command {
         assert personToEdit != null;
 
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
-        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
-        Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
-        Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
+//        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
+//        Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
+//        Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
+        Type updatedType = editPersonDescriptor.getType().orElse(personToEdit.getType());
+        Duration updatedDuration = editPersonDescriptor.getDuration().orElse(personToEdit.getDuration());
+        Difficulty updatedDifficulty = editPersonDescriptor.getDifficulty().orElse(personToEdit.getDifficulty());
+        Equipment updatedEquipment = editPersonDescriptor.getEquipment().orElse(personToEdit.getEquipment());
+        Muscle updatedMuscle = editPersonDescriptor.getMuscle().orElse(personToEdit.getMuscle());
+        Calories updatedCalories = editPersonDescriptor.getCalories().orElse(personToEdit.getCalories());
+        Instruction updatedInstruction = editPersonDescriptor.getInstruction().orElse(personToEdit.getInstruction());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Person(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,
+        updatedMuscle, updatedCalories, updatedInstruction, updatedTags);
     }
 
     @Override
@@ -128,9 +157,16 @@ public class EditCommand extends Command {
      */
     public static class EditPersonDescriptor {
         private Name name;
-        private Phone phone;
-        private Email email;
-        private Address address;
+//        private Phone phone;
+//        private Email email;
+//        private Address address;
+        private Type type;
+        private Duration duration;
+        private Difficulty difficulty;
+        private Equipment equipment;
+        private Muscle muscle;
+        private Calories calories;
+        private Instruction instruction;
         private Set<Tag> tags;
 
         public EditPersonDescriptor() {}
@@ -141,9 +177,16 @@ public class EditCommand extends Command {
          */
         public EditPersonDescriptor(EditPersonDescriptor toCopy) {
             setName(toCopy.name);
-            setPhone(toCopy.phone);
-            setEmail(toCopy.email);
-            setAddress(toCopy.address);
+//            setPhone(toCopy.phone);
+//            setEmail(toCopy.email);
+//            setAddress(toCopy.address);
+            setType(toCopy.type);
+            setDuration(toCopy.duration);
+            setDifficulty(toCopy.difficulty);
+            setEquipment(toCopy.equipment);
+            setMuscle(toCopy.muscle);
+            setCalories(toCopy.calories);
+            setInstruction(toCopy.instruction);
             setTags(toCopy.tags);
         }
 
@@ -151,7 +194,8 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, type, duration, difficulty, equipment, muscle, calories,
+            instruction, tags);
         }
 
         public void setName(Name name) {
@@ -162,29 +206,85 @@ public class EditCommand extends Command {
             return Optional.ofNullable(name);
         }
 
-        public void setPhone(Phone phone) {
-            this.phone = phone;
+        public void setType(Type type) {
+            this.type = type;
         }
 
-        public Optional<Phone> getPhone() {
-            return Optional.ofNullable(phone);
+        public Optional<Type> getType() {
+            return Optional.ofNullable(type);
         }
 
-        public void setEmail(Email email) {
-            this.email = email;
+        public void setDuration(Duration duration) {
+            this.duration = duration;
         }
 
-        public Optional<Email> getEmail() {
-            return Optional.ofNullable(email);
+        public Optional<Duration> getDuration() {
+            return Optional.ofNullable(duration);
         }
 
-        public void setAddress(Address address) {
-            this.address = address;
+        public void setDifficulty(Difficulty difficulty) {
+            this.difficulty = difficulty;
         }
 
-        public Optional<Address> getAddress() {
-            return Optional.ofNullable(address);
+        public Optional<Difficulty> getDifficulty() {
+            return Optional.ofNullable(difficulty);
         }
+
+        public void setEquipment(Equipment equipment) {
+            this.equipment = equipment;
+        }
+
+        public Optional<Equipment> getEquipment() {
+            return Optional.ofNullable(equipment);
+        }
+
+        public void setMuscle(Muscle muscle) {
+            this.muscle = muscle;
+        }
+
+        public Optional<Muscle> getMuscle() {
+            return Optional.ofNullable(muscle);
+        }
+
+        public void setCalories(Calories calories) {
+            this.calories = calories;
+        }
+
+        public Optional<Calories> getCalories() {
+            return Optional.ofNullable(calories);
+        }
+
+        public void setInstruction(Instruction instruction) {
+            this.instruction = instruction;
+        }
+
+        public Optional<Instruction> getInstruction() {
+            return Optional.ofNullable(instruction);
+        }
+
+//        public void setPhone(Phone phone) {
+//            this.phone = phone;
+//        }
+//
+//        public Optional<Phone> getPhone() {
+//            return Optional.ofNullable(phone);
+//        }
+//
+//        public void setEmail(Email email) {
+//            this.email = email;
+//        }
+//
+//        public Optional<Email> getEmail() {
+//            return Optional.ofNullable(email);
+//        }
+//
+//        public void setAddress(Address address) {
+//            this.address = address;
+//        }
+//
+//        public Optional<Address> getAddress() {
+//            return Optional.ofNullable(address);
+//        }
 
         /**
          * Sets {@code tags} to this object's {@code tags}.
@@ -219,9 +319,16 @@ public class EditCommand extends Command {
             EditPersonDescriptor e = (EditPersonDescriptor) other;
 
             return getName().equals(e.getName())
-                    && getPhone().equals(e.getPhone())
-                    && getEmail().equals(e.getEmail())
-                    && getAddress().equals(e.getAddress())
+//                    && getPhone().equals(e.getPhone())
+//                    && getEmail().equals(e.getEmail())
+//                    && getAddress().equals(e.getAddress())
+                    && getType().equals(e.getType())
+                    && getDuration().equals(e.getDuration())
+                    && getDifficulty().equals(e.getDifficulty())
+                    && getEquipment().equals(e.getEquipment())
+                    && getMuscle().equals(e.getMuscle())
+                    && getCalories().equals(e.getCalories())
+                    && getInstruction().equals(e.getInstruction())
                     && getTags().equals(e.getTags());
         }
     }
