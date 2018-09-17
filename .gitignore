@@ -7,6 +7,7 @@ lib/*
 *.log
 *.log.*
 *.csv
+*.iml
 config.json
 src/test/data/sandbox/
 preferences.json
