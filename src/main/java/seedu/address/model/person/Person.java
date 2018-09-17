@@ -17,22 +17,37 @@ public class Person {
 
     // Identity fields
     private final Name name;
-    private final Phone phone;
-    private final Email email;
+//    private final Phone phone;
+//    private final Email email;
+    private final Type type;
+    private final Duration duration;
+    private final Difficulty difficulty;
 
     // Data fields
-    private final Address address;
+//    private final Address address;
+    private final Equipment equipment;
+    private final Muscle muscle;
+    private final Calories calories;
+    private final Instruction instruction;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Person(Name name, Type type, Duration duration, Difficulty difficulty, Equipment equipment,
+    Muscle muscle, Calories calories, Instruction instruction, Set<Tag> tags) {
+        requireAllNonNull(name, type, duration, difficulty, equipment, muscle, calories, instruction, tags);
         this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
+//        this.phone = phone;
+//        this.email = email;
+//        this.address = address;
+        this.type = type;
+        this.duration = duration;
+        this.difficulty = difficulty;
+        this.equipment = equipment;
+        this.muscle = muscle;
+        this.calories = calories;
+        this.instruction = instruction;
         this.tags.addAll(tags);
     }
 
@@ -40,17 +55,37 @@ public class Person {
         return name;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public Type getType() { return type; }
+
+    public Duration getDuration() {
+        return duration;
     }
 
-    public Email getEmail() {
-        return email;
+    public Difficulty getDifficulty() {
+        return difficulty;
     }
 
-    public Address getAddress() {
-        return address;
+    public Equipment getEquipment() {
+        return equipment;
     }
+
+    public Muscle getMuscle() {
+        return muscle;
+    }
+
+    public Calories getCalories() {
+        return calories;
+    }
+
+    public Instruction getInstruction() {
+        return instruction;
+    }
+
+//    public Phone getPhone() { return phone; }
+//
+//    public Email getEmail() { return email; }
+//
+//    public Address getAddress() { return address; }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
@@ -71,7 +106,8 @@ public class Person {
 
         return otherPerson != null
                 && otherPerson.getName().equals(getName())
-                && (otherPerson.getPhone().equals(getPhone()) || otherPerson.getEmail().equals(getEmail()));
+                && (otherPerson.getType().equals(getType()) || otherPerson.getDuration().equals(getDuration())
+                || otherPerson.getDifficulty().equals(getDifficulty()));
     }
 
     /**
@@ -90,28 +126,49 @@ public class Person {
 
         Person otherPerson = (Person) other;
         return otherPerson.getName().equals(getName())
-                && otherPerson.getPhone().equals(getPhone())
-                && otherPerson.getEmail().equals(getEmail())
-                && otherPerson.getAddress().equals(getAddress())
+//                && otherPerson.getPhone().equals(getPhone())
+//                && otherPerson.getEmail().equals(getEmail())
+//                && otherPerson.getAddress().equals(getAddress())
+                && otherPerson.getType().equals(getType())
+                && otherPerson.getDuration().equals(getDuration())
+                && otherPerson.getDifficulty().equals(getDifficulty())
+                && otherPerson.getEquipment().equals(getEquipment())
+                && otherPerson.getMuscle().equals(getMuscle())
+                && otherPerson.getCalories().equals(getCalories())
+                && otherPerson.getInstruction().equals(getInstruction())
                 && otherPerson.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, type, duration, difficulty, equipment, muscle, calories, instruction, tags);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
-                .append(" Phone: ")
-                .append(getPhone())
-                .append(" Email: ")
-                .append(getEmail())
-                .append(" Address: ")
-                .append(getAddress())
+//                .append(" Phone: ")
+//                .append(getPhone())
+//                .append(" Email: ")
+//                .append(getEmail())
+//                .append(" Address: ")
+//                .append(getAddress())
+                .append(" Type: ")
+                .append(getType())
+                .append(" Duration: ")
+                .append(getDuration())
+                .append(" Difficulty: ")
+                .append(getDifficulty())
+                .append(" Equipment: ")
+                .append(getEquipment())
+                .append(" Muscle: ")
+                .append(getMuscle())
+                .append(" Calories: ")
+                .append(getCalories())
+                .append(" Instruction: ")
+                .append(getInstruction())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
