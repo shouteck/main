@@ -20,11 +20,11 @@ public class Person {
 //    private final Phone phone;
 //    private final Email email;
     private final Type type;
-    private final Duration duration;
     private final Difficulty difficulty;
 
     // Data fields
 //    private final Address address;
+    private final Duration duration;
     private final Equipment equipment;
     private final Muscle muscle;
     private final Calories calories;

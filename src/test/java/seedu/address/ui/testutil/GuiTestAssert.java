@@ -38,10 +38,12 @@ public class GuiTestAssert {
                 actualCard.getTags());
     }
 
+
     /**
      * Asserts that the list in {@code personListPanelHandle} displays the details of {@code persons} correctly and
      * in the correct order.
      */
+
     public static void assertListMatching(PersonListPanelHandle personListPanelHandle, Person... persons) {
         for (int i = 0; i < persons.length; i++) {
             personListPanelHandle.navigateToCard(i);
@@ -49,10 +51,12 @@ public class GuiTestAssert {
         }
     }
 
+
     /**
      * Asserts that the list in {@code personListPanelHandle} displays the details of {@code persons} correctly and
      * in the correct order.
      */
+
     public static void assertListMatching(PersonListPanelHandle personListPanelHandle, List<Person> persons) {
         assertListMatching(personListPanelHandle, persons.toArray(new Person[0]));
     }

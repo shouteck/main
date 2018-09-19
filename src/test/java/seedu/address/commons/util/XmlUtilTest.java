@@ -34,12 +34,21 @@ public class XmlUtilTest {
     private static final Path VALID_PERSON_FILE = TEST_DATA_FOLDER.resolve("validPerson.xml");
     private static final Path TEMP_FILE = TestUtil.getFilePathInSandboxFolder("tempAddressBook.xml");
 
-    private static final String INVALID_PHONE = "9482asf424";
+//    private static final String INVALID_PHONE = "9482asf424";
 
-    private static final String VALID_NAME = "Hans Muster";
+    private static final String VALID_NAME = "hans muster's workout";
+    private static final String VALID_TYPE = "strength";
+    private static final String VALID_DURATION = "20m";
+    private static final String VALID_DIFFICULTY = "beginner";
+    private static final String VALID_EQUIPMENT = "dumbbell";
+    private static final String VALID_MUSCLE = "bicep";
+    private static final String VALID_CALORIES = "150";
+    private static final String VALID_INSTRUCTION = "set1: bicep curl reps: 4-6";
+    /*
     private static final String VALID_PHONE = "9482424";
     private static final String VALID_EMAIL = "hans@example";
     private static final String VALID_ADDRESS = "4th street";
+    */
     private static final List<XmlAdaptedTag> VALID_TAGS = Collections.singletonList(new XmlAdaptedTag("friends"));
 
     @Rule
@@ -80,9 +89,11 @@ public class XmlUtilTest {
         XmlAdaptedPerson actualPerson = XmlUtil.getDataFromFile(
                 MISSING_PERSON_FIELD_FILE, XmlAdaptedPersonWithRootElement.class);
         XmlAdaptedPerson expectedPerson = new XmlAdaptedPerson(
-                null, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
+                null, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY, VALID_EQUIPMENT, VALID_MUSCLE,
+                VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
         assertEquals(expectedPerson, actualPerson);
     }
+
 
     @Test
     public void xmlAdaptedPersonFromFile_fileWithInvalidPersonField_validResult() throws Exception {
@@ -93,12 +104,14 @@ public class XmlUtilTest {
         assertEquals(expectedPerson, actualPerson);
     }
 
+
     @Test
     public void xmlAdaptedPersonFromFile_fileWithValidPerson_validResult() throws Exception {
         XmlAdaptedPerson actualPerson = XmlUtil.getDataFromFile(
                 VALID_PERSON_FILE, XmlAdaptedPersonWithRootElement.class);
         XmlAdaptedPerson expectedPerson = new XmlAdaptedPerson(
-                VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
+                VALID_NAME, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY, VALID_EQUIPMENT, VALID_MUSCLE,
+                VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
         assertEquals(expectedPerson, actualPerson);
     }
 
