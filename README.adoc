@@ -15,7 +15,10 @@ ifndef::env-github[]
 image::images/Ui.png[width="600"]
 endif::[]
 
-* Hoping to get started on that workout regime you always kept on the back burner? But wait, what's that other attractive workout you just read about? If you have too many workouts to choose from or wish to keep, then this *Workout Tracker* is for you!
+* Hoping to get started on that workout regime you always kept on the back burner? But wait, what's that other attractive workout you just read about? 
+
+* If you have too many workouts to choose from or wish to keep, then this *Workout Tracker* is for you!
+
 * It is a CLI (Command Line Interface) application, so you can save time using your keyboard instead of your mouse to nagivate.
 * Features of Workout Tracker:
 ** A convenient GUI to easily manage your workouts
