@@ -24,7 +24,7 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.workout.Person;
+import seedu.address.model.workout.Workout;
 import seedu.address.model.workout.Name;
 import seedu.address.model.workout.Type;
 import seedu.address.model.workout.Duration;
@@ -47,9 +47,6 @@ public class EditCommand extends Command {
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_NAME + "NAME] "
-//            + "[" + PREFIX_PHONE + "PHONE] "
-//            + "[" + PREFIX_EMAIL + "EMAIL] "
-//            + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_TYPE + "TYPE] "
             + "[" + PREFIX_DURATION + "DURATION] "
             + "[" + PREFIX_DIFFICULTY + "DIFFICULTY] "
@@ -62,68 +59,65 @@ public class EditCommand extends Command {
             + PREFIX_TYPE + "Anaerobic "
             + PREFIX_DIFFICULTY + "Beginner";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Workout: %1$s";
+    public static final String MESSAGE_EDIT_WORKOUT_SUCCESS = "Edited Workout: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This workout already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_WORKOUT = "This workout already exists in the address book.";
 
     private final Index index;
-    private final EditPersonDescriptor editPersonDescriptor;
+    private final EditWorkoutDescriptor editWorkoutDescriptor;
 
     /**
-     * @param index of the person in the filtered person list to edit
-     * @param editPersonDescriptor details to edit the person with
+     * @param index of the workout in the filtered workout list to edit
+     * @param editWorkoutDescriptor details to edit the workout with
      */
-    public EditCommand(Index index, EditPersonDescriptor editPersonDescriptor) {
+    public EditCommand(Index index, EditWorkoutDescriptor editWorkoutDescriptor) {
         requireNonNull(index);
-        requireNonNull(editPersonDescriptor);
+        requireNonNull(editWorkoutDescriptor);
 
         this.index = index;
-        this.editPersonDescriptor = new EditPersonDescriptor(editPersonDescriptor);
+        this.editWorkoutDescriptor = new EditWorkoutDescriptor(editWorkoutDescriptor);
     }
 
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
-        List<Person> lastShownList = model.getFilteredPersonList();
+        List<Workout> lastShownList = model.getFilteredWorkoutList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
         }
 
-        Person personToEdit = lastShownList.get(index.getZeroBased());
-        Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
+        Workout workoutToEdit = lastShownList.get(index.getZeroBased());
+        Workout editedWorkout = createEditedWorkout(workoutToEdit, editWorkoutDescriptor);
 
-        if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+        if (!workoutToEdit.isSameWorkout(editedWorkout) && model.hasWorkout(editedWorkout)) {
+            throw new CommandException(MESSAGE_DUPLICATE_WORKOUT);
         }
 
-        model.updatePerson(personToEdit, editedPerson);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_WORKOUTS);
+        model.updateWorkout(workoutToEdit, editedWorkout);
+        model.updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
         model.commitAddressBook();
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
+        return new CommandResult(String.format(MESSAGE_EDIT_WORKOUT_SUCCESS, editedWorkout));
     }
 
     /**
-     * Creates and returns a {@code Person} with the details of {@code personToEdit}
-     * edited with {@code editPersonDescriptor}.
+     * Creates and returns a {@code Workout} with the details of {@code workoutToEdit}
+     * edited with {@code editWorkoutDescriptor}.
      */
-    private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
-        assert personToEdit != null;
+    private static Workout createEditedWorkout(Workout workoutToEdit, EditWorkoutDescriptor editWorkoutDescriptor) {
+        assert workoutToEdit != null;
 
-        Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
-//        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
-//        Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
-//        Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
-        Type updatedType = editPersonDescriptor.getType().orElse(personToEdit.getType());
-        Duration updatedDuration = editPersonDescriptor.getDuration().orElse(personToEdit.getDuration());
-        Difficulty updatedDifficulty = editPersonDescriptor.getDifficulty().orElse(personToEdit.getDifficulty());
-        Equipment updatedEquipment = editPersonDescriptor.getEquipment().orElse(personToEdit.getEquipment());
-        Muscle updatedMuscle = editPersonDescriptor.getMuscle().orElse(personToEdit.getMuscle());
-        Calories updatedCalories = editPersonDescriptor.getCalories().orElse(personToEdit.getCalories());
-        Instruction updatedInstruction = editPersonDescriptor.getInstruction().orElse(personToEdit.getInstruction());
-        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        Name updatedName = editWorkoutDescriptor.getName().orElse(workoutToEdit.getName());
+        Type updatedType = editWorkoutDescriptor.getType().orElse(workoutToEdit.getType());
+        Duration updatedDuration = editWorkoutDescriptor.getDuration().orElse(workoutToEdit.getDuration());
+        Difficulty updatedDifficulty = editWorkoutDescriptor.getDifficulty().orElse(workoutToEdit.getDifficulty());
+        Equipment updatedEquipment = editWorkoutDescriptor.getEquipment().orElse(workoutToEdit.getEquipment());
+        Muscle updatedMuscle = editWorkoutDescriptor.getMuscle().orElse(workoutToEdit.getMuscle());
+        Calories updatedCalories = editWorkoutDescriptor.getCalories().orElse(workoutToEdit.getCalories());
+        Instruction updatedInstruction = editWorkoutDescriptor.getInstruction().orElse(workoutToEdit.getInstruction());
+        Set<Tag> updatedTags = editWorkoutDescriptor.getTags().orElse(workoutToEdit.getTags());
 
-        return new Person(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,
+        return new Workout(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,
         updatedMuscle, updatedCalories, updatedInstruction, updatedTags);
     }
 
@@ -142,18 +136,15 @@ public class EditCommand extends Command {
         // state check
         EditCommand e = (EditCommand) other;
         return index.equals(e.index)
-                && editPersonDescriptor.equals(e.editPersonDescriptor);
+                && editWorkoutDescriptor.equals(e.editWorkoutDescriptor);
     }
 
     /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
-     * corresponding field value of the person.
+     * Stores the details to edit the workout with. Each non-empty field value will replace the
+     * corresponding field value of the workout.
      */
-    public static class EditPersonDescriptor {
+    public static class EditWorkoutDescriptor {
         private Name name;
-//        private Phone phone;
-//        private Email email;
-//        private Address address;
         private Type type;
         private Duration duration;
         private Difficulty difficulty;
@@ -163,17 +154,14 @@ public class EditCommand extends Command {
         private Instruction instruction;
         private Set<Tag> tags;
 
-        public EditPersonDescriptor() {}
+        public EditWorkoutDescriptor() {}
 
         /**
          * Copy constructor.
          * A defensive copy of {@code tags} is used internally.
          */
-        public EditPersonDescriptor(EditPersonDescriptor toCopy) {
+        public EditWorkoutDescriptor(EditWorkoutDescriptor toCopy) {
             setName(toCopy.name);
-//            setPhone(toCopy.phone);
-//            setEmail(toCopy.email);
-//            setAddress(toCopy.address);
             setType(toCopy.type);
             setDuration(toCopy.duration);
             setDifficulty(toCopy.difficulty);
@@ -256,30 +244,6 @@ public class EditCommand extends Command {
             return Optional.ofNullable(instruction);
         }
 
-//        public void setPhone(Phone phone) {
-//            this.phone = phone;
-//        }
-//
-//        public Optional<Phone> getPhone() {
-//            return Optional.ofNullable(phone);
-//        }
-//
-//        public void setEmail(Email email) {
-//            this.email = email;
-//        }
-//
-//        public Optional<Email> getEmail() {
-//            return Optional.ofNullable(email);
-//        }
-//
-//        public void setAddress(Address address) {
-//            this.address = address;
-//        }
-//
-//        public Optional<Address> getAddress() {
-//            return Optional.ofNullable(address);
-//        }
-
         /**
          * Sets {@code tags} to this object's {@code tags}.
          * A defensive copy of {@code tags} is used internally.
@@ -305,17 +269,14 @@ public class EditCommand extends Command {
             }
 
             // instanceof handles nulls
-            if (!(other instanceof EditPersonDescriptor)) {
+            if (!(other instanceof EditWorkoutDescriptor)) {
                 return false;
             }
 
             // state check
-            EditPersonDescriptor e = (EditPersonDescriptor) other;
+            EditWorkoutDescriptor e = (EditWorkoutDescriptor) other;
 
             return getName().equals(e.getName())
-//                    && getPhone().equals(e.getPhone())
-//                    && getEmail().equals(e.getEmail())
-//                    && getAddress().equals(e.getAddress())
                     && getType().equals(e.getType())
                     && getDuration().equals(e.getDuration())
                     && getDifficulty().equals(e.getDifficulty())
