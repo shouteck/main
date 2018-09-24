@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Duration {
 
     public static final String MESSAGE_DURATION_CONSTRAINTS =
-            "Duration can only be in this format: 80m, 15m, 25m.";
+            "Duration can only be in this format: 80m, 15m, 25m, up to 999m";
 
     /*
      * The first character of the address must not be a whitespace,
