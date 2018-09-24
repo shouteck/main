@@ -38,11 +38,11 @@ public class BrowserPanelTest extends GuiUnitTest {
         URL expectedDefaultPageUrl = MainApp.class.getResource(FXML_FILE_FOLDER + DEFAULT_PAGE);
         assertEquals(expectedDefaultPageUrl, browserPanelHandle.getLoadedUrl());
 
-        // associated web page of a person
+        // associated web page of a workout
         postNow(selectionChangedEventStub);
-        URL expectedPersonUrl = new URL(BrowserPanel.SEARCH_PAGE_URL + ALICE_WORKOUT.getName().fullName.replaceAll(" ", "%20"));
+        URL expectedWorkoutUrl = new URL(BrowserPanel.SEARCH_PAGE_URL + ALICE_WORKOUT.getName().fullName.replaceAll(" ", "%20"));
 
         waitUntilBrowserLoaded(browserPanelHandle);
-        assertEquals(expectedPersonUrl, browserPanelHandle.getLoadedUrl());
+        assertEquals(expectedWorkoutUrl, browserPanelHandle.getLoadedUrl());
     }
 }
