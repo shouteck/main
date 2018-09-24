@@ -176,7 +176,7 @@ public abstract class WorkoutBookSystemTest {
      * and the workout list panel displays the workouts in the model correctly.
      */
     protected void assertApplicationDisplaysExpected(String expectedCommandInput, String expectedResultMessage,
-            Model expectedModel) {
+                                                     Model expectedModel) {
         assertEquals(expectedCommandInput, getCommandBox().getInput());
         assertEquals(expectedResultMessage, getResultDisplay().getText());
         assertEquals(new WorkoutBook(expectedModel.getWorkoutBook()), testApp.readStorageWorkoutBook());
