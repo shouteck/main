@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.model.workout.Workout;
+import seedu.address.model.workout.Name;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.WorkoutBuilder;
 

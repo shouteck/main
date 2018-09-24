@@ -29,7 +29,7 @@ import seedu.address.model.WorkoutBook;
 import seedu.address.model.workout.Workout;
 
 /**
- * A utility class containing a list of {@code Person} objects to be used in tests.
+ * A utility class containing a list of {@code Workouts} objects to be used in tests.
  */
 public class TypicalWorkouts {
 
@@ -98,7 +98,7 @@ public class TypicalWorkouts {
     private TypicalWorkouts() {} // prevents instantiation
 
     /**
-     * Returns an {@code WorkoutBook} with all the typical persons.
+     * Returns an {@code WorkoutBook} with all the typical workouts.
      */
     public static WorkoutBook getTypicalWorkoutBook() {
         WorkoutBook wb = new WorkoutBook();
