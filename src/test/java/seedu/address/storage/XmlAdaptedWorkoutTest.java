@@ -23,14 +23,14 @@ import seedu.address.testutil.Assert;
 
 public class XmlAdaptedWorkoutTest {
     private static final String INVALID_NAME = "R@chel";
-    private static final String INVALID_TYPE = "";
-    private static final String INVALID_DURATION = "";
-    private static final String INVALID_DIFFICULTY = "";
-    private static final String INVALID_EQUIPMENT = "";
-    private static final String INVALID_MUSCLE = "";
-    private static final String INVALID_CALORIES = "";
-    private static final String INVALID_INSTRUCTION = "";
-    private static final String INVALID_TAG = "";
+    private static final String INVALID_TYPE = "+651234";
+    private static final String INVALID_DURATION = "22h";
+    private static final String INVALID_DIFFICULTY = "bob";
+    private static final String INVALID_EQUIPMENT = "easy";
+    private static final String INVALID_MUSCLE = "bench";
+    private static final String INVALID_CALORIES = "132D";
+    private static final String INVALID_INSTRUCTION = "24123";
+    private static final String INVALID_TAG = "#friend";
 
     private static final String VALID_NAME = BENSON_WORKOUT.getName().toString();
     private static final String VALID_TYPE = BENSON_WORKOUT.getType().toString();
