@@ -96,7 +96,7 @@ public class EditCommand extends Command {
 
         model.updateWorkout(workoutToEdit, editedWorkout);
         model.updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
-        model.commitAddressBook();
+        model.commitWorkoutBook();
         return new CommandResult(String.format(MESSAGE_EDIT_WORKOUT_SUCCESS, editedWorkout));
     }
 

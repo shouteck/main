@@ -1,7 +1,7 @@
 package systemtests;
 
 import static org.junit.Assert.assertFalse;
-import static seedu.address.commons.core.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
+import static seedu.address.commons.core.Messages.MESSAGE_WORKOUTS_LISTED_OVERVIEW;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.TypicalWorkouts.BENSON_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.CARL_WORKOUT;
@@ -186,7 +186,7 @@ public class FindCommandSystemTest extends WorkoutBookSystemTest {
      */
     private void assertCommandSuccess(String command, Model expectedModel) {
         String expectedResultMessage = String.format(
-                MESSAGE_PERSONS_LISTED_OVERVIEW, expectedModel.getFilteredWorkoutList().size());
+                MESSAGE_WORKOUTS_LISTED_OVERVIEW, expectedModel.getFilteredWorkoutList().size());
 
         executeCommand(command);
         assertApplicationDisplaysExpected("", expectedResultMessage, expectedModel);
