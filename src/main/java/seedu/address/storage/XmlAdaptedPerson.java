@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.*;
+import seedu.address.model.workout.*;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -36,15 +36,6 @@ public class XmlAdaptedPerson {
     private String calories;
     @XmlElement(required = true)
     private String instruction;
-/*
-    @XmlElement(required = true)
-    private String phone;
-    @XmlElement(required = true)
-    private String email;
-    @XmlElement(required = true)
-    private String address;
-*/
-
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
 
@@ -68,11 +59,6 @@ public class XmlAdaptedPerson {
         this.muscle = muscle;
         this.calories = calories;
         this.instruction = instruction;
-        /*
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        */
         if (tagged != null) {
             this.tagged = new ArrayList<>(tagged);
         }
@@ -92,11 +78,6 @@ public class XmlAdaptedPerson {
         muscle = source.getMuscle().fullMuscle;
         calories = source.getCalories().fullCalories;
         instruction = source.getInstruction().fullInstruction;
-        /*
-        phone = source.getPhone().value;
-        email = source.getEmail().value;
-        address = source.getAddress().value;
-        */
         tagged = source.getTags().stream()
                 .map(XmlAdaptedTag::new)
                 .collect(Collectors.toList());
@@ -176,32 +157,6 @@ public class XmlAdaptedPerson {
             throw new IllegalValueException(Instruction.MESSAGE_INSTRUCTION_CONSTRAINTS);
         }
         final Instruction modelInstruction = new Instruction(instruction);
-
-        /*
-        if (phone == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
-        }
-        if (!Phone.isValidPhone(phone)) {
-            throw new IllegalValueException(Phone.MESSAGE_PHONE_CONSTRAINTS);
-        }
-        final Phone modelPhone = new Phone(phone);
-
-        if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
-        }
-        if (!Email.isValidEmail(email)) {
-            throw new IllegalValueException(Email.MESSAGE_EMAIL_CONSTRAINTS);
-        }
-        final Email modelEmail = new Email(email);
-
-        if (address == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
-        }
-        if (!Address.isValidAddress(address)) {
-            throw new IllegalValueException(Address.MESSAGE_ADDRESS_CONSTRAINTS);
-        }
-        final Address modelAddress = new Address(address);
-        */
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelName, modelType, modelDuration, modelDifficulty, modelEquipment,
                 modelMuscle, modelCalories, modelInstruction, modelTags);
@@ -219,11 +174,6 @@ public class XmlAdaptedPerson {
 
         XmlAdaptedPerson otherPerson = (XmlAdaptedPerson) other;
         return Objects.equals(name, otherPerson.name)
-                /*
-                && Objects.equals(phone, otherPerson.phone)
-                && Objects.equals(email, otherPerson.email)
-                && Objects.equals(address, otherPerson.address)
-                */
                 && Objects.equals(type, otherPerson.type)
                 && Objects.equals(duration, otherPerson.duration)
                 && Objects.equals(difficulty, otherPerson.difficulty)
