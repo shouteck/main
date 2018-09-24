@@ -8,26 +8,26 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.workout.exceptions.DuplicateWorkoutException;
+import seedu.address.model.workout.exceptions.WorkoutNotFoundException;
 
 /**
- * A list of persons that enforces uniqueness between its elements and does not allow nulls.
- * A person is considered unique by comparing using {@code Person#isSamePerson(Person)}. As such, adding and updating of
- * persons uses Person#isSamePerson(Person) for equality so as to ensure that the person being added or updated is
- * unique in terms of identity in the UniquePersonList. However, the removal of a person uses Person#equals(Object) so
- * as to ensure that the person with exactly the same fields will be removed.
+ * A list of workouts that enforces uniqueness between its elements and does not allow nulls.
+ * A workout is considered unique by comparing using {@code Workout#isSameWorkout(Workout)}. As such, adding and updating of
+ * workouts uses Workout#isSameWorkout(Workout) for equality so as to ensure that the workout being added or updated is
+ * unique in terms of identity in the UniqueWorkoutList. However, the removal of a workout uses Workout#equals(Object) so
+ * as to ensure that the workout with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
- * @see Person#isSameWorkout(Workout)
+ * @see Workout#isSameWorkout(Workout)
  */
 public class UniqueWorkoutList implements Iterable<Workout> {
 
     private final ObservableList<Workout> internalList = FXCollections.observableArrayList();
 
     /**
-     * Returns true if the list contains an equivalent person as the given argument.
+     * Returns true if the list contains an equivalent workout as the given argument.
      */
     public boolean contains(Workout toCheck) {
         requireNonNull(toCheck);
@@ -35,64 +35,64 @@ public class UniqueWorkoutList implements Iterable<Workout> {
     }
 
     /**
-     * Adds a person to the list.
-     * The person must not already exist in the list.
+     * Adds a workout to the list.
+     * The workout must not already exist in the list.
      */
     public void add(Workout toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateWorkoutException();
         }
         internalList.add(toAdd);
     }
 
     /**
-     * Replaces the person {@code target} in the list with {@code editedPerson}.
+     * Replaces the workout {@code target} in the list with {@code editedWorkout}.
      * {@code target} must exist in the list.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the list.
+     * The workout identity of {@code editedWorkout} must not be the same as another existing workout in the list.
      */
     public void setWorkout(Workout target, Workout editedWorkout) {
         requireAllNonNull(target, editedWorkout);
 
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new PersonNotFoundException();
+            throw new WorkoutNotFoundException();
         }
 
         if (!target.isSameWorkout(editedWorkout) && contains(editedWorkout)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateWorkoutException();
         }
 
         internalList.set(index, editedWorkout);
     }
 
     /**
-     * Removes the equivalent person from the list.
-     * The person must exist in the list.
+     * Removes the equivalent workout from the list.
+     * The workout must exist in the list.
      */
     public void remove(Workout toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
-            throw new PersonNotFoundException();
+            throw new WorkoutNotFoundException();
         }
     }
 
-    public void setPersons(UniqueWorkoutList replacement) {
+    public void setWorkouts(UniqueWorkoutList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
     }
 
     /**
-     * Replaces the contents of this list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+     * Replaces the contents of this list with {@code workouts}.
+     * {@code workouts} must not contain duplicate workouts.
      */
-    public void setPersons(List<Workout> persons) {
-        requireAllNonNull(persons);
-        if (!personsAreUnique(persons)) {
-            throw new DuplicatePersonException();
+    public void setWorkouts(List<Workout> workouts) {
+        requireAllNonNull(workouts);
+        if (!workoutsAreUnique(workouts)) {
+            throw new DuplicateWorkoutException();
         }
 
-        internalList.setAll(persons);
+        internalList.setAll(workouts);
     }
 
     /**
@@ -120,9 +120,9 @@ public class UniqueWorkoutList implements Iterable<Workout> {
     }
 
     /**
-     * Returns true if {@code persons} contains only unique persons.
+     * Returns true if {@code workouts} contains only unique workouts.
      */
-    private boolean personsAreUnique(List<Workout> workouts) {
+    private boolean workoutsAreUnique(List<Workout> workouts) {
         for (int i = 0; i < workouts.size() - 1; i++) {
             for (int j = i + 1; j < workouts.size(); j++) {
                 if (workouts.get(i).isSameWorkout(workouts.get(j))) {
