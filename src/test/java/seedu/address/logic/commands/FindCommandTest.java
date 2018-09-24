@@ -5,9 +5,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_WORKOUTS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalWorkouts.CARL;
-import static seedu.address.testutil.TypicalWorkouts.ELLE;
-import static seedu.address.testutil.TypicalWorkouts.FIONA;
+import static seedu.address.testutil.TypicalWorkouts.CARL_WORKOUT;
+import static seedu.address.testutil.TypicalWorkouts.ELLE_WORKOUT;
+import static seedu.address.testutil.TypicalWorkouts.FIONA_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
 import java.util.Arrays;
@@ -73,7 +73,7 @@ public class FindCommandTest {
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredWorkoutList(predicate);
         assertCommandSuccess(command, model, commandHistory, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredWorkoutList());
+        assertEquals(Arrays.asList(CARL_WORKOUT, ELLE_WORKOUT, FIONA_WORKOUT), model.getFilteredWorkoutList());
     }
 
     /**

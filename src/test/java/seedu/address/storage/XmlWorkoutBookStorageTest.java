@@ -2,10 +2,10 @@ package seedu.address.storage;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.HOON;
-import static seedu.address.testutil.TypicalPersons.IDA;
-import static seedu.address.testutil.TypicalPersons.getTypicalWorkoutBook;
+import static seedu.address.testutil.TypicalWorkouts.ALICE_WORKOUT;
+import static seedu.address.testutil.TypicalWorkouts.HOON_WORKOUT;
+import static seedu.address.testutil.TypicalWorkouts.IDA_WORKOUT;
+import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -62,15 +62,15 @@ public class XmlWorkoutBookStorageTest {
     }
 
     @Test
-    public void readWorkoutBook_invalidPersonWorkoutBook_throwDataConversionException() throws Exception {
+    public void readWorkoutBook_invalidWorkoutWorkoutBook_throwDataConversionException() throws Exception {
         thrown.expect(DataConversionException.class);
-        readWorkoutBook("invalidPersonWorkoutBook.xml");
+        readWorkoutBook("invalidWorkoutWorkoutBook.xml");
     }
 
     @Test
-    public void readWorkoutBook_invalidAndValidPersonWorkoutBook_throwDataConversionException() throws Exception {
+    public void readWorkoutBook_invalidAndValidWorkoutWorkoutBook_throwDataConversionException() throws Exception {
         thrown.expect(DataConversionException.class);
-        readWorkoutBook("invalidAndValidPersonWorkoutBook.xml");
+        readWorkoutBook("invalidAndValidWorkoutWorkoutBook.xml");
     }
 
     @Test
@@ -85,14 +85,14 @@ public class XmlWorkoutBookStorageTest {
         assertEquals(original, new WorkoutBook(readBack));
 
         //Modify data, overwrite exiting file, and read back
-        original.addPerson(HOON);
-        original.removePerson(ALICE);
+        original.addWorkout(HOON_WORKOUT);
+        original.removeWorkout(ALICE_WORKOUT);
         xmlWorkoutBookStorage.saveWorkoutBook(original, filePath);
         readBack = xmlWorkoutBookStorage.readWorkoutBook(filePath).get();
         assertEquals(original, new WorkoutBook(readBack));
 
         //Save and read without specifying file path
-        original.addPerson(IDA);
+        original.addWorkout(IDA_WORKOUT);
         xmlWorkoutBookStorage.saveWorkoutBook(original); //file path not specified
         readBack = xmlWorkoutBookStorage.readWorkoutBook().get(); //file path not specified
         assertEquals(original, new WorkoutBook(readBack));
