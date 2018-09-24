@@ -48,9 +48,6 @@ public class AddCommandParser implements Parser<AddCommand> {
         Muscle muscle = ParserUtil.parseMuscle(argMultimap.getValue(PREFIX_MUSCLE).get());
         Calories calories = ParserUtil.parseCalories(argMultimap.getValue(PREFIX_CALORIES).get());
         Instruction instruction = ParserUtil.parseInstruction(argMultimap.getValue(PREFIX_INSTRUCTION).get());
-//        Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
-//        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-//        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         Person person = new Person(name, type, duration, difficulty, equipment, muscle, calories, instruction, tagList);
