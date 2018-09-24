@@ -12,18 +12,18 @@ import seedu.address.model.Model;
 import seedu.address.model.workout.Workout;
 
 /**
- * Deletes a person identified using it's displayed index from the address book.
+ * Deletes a workout identified using it's displayed index from the workout book.
  */
 public class DeleteCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the person identified by the index number used in the displayed person list.\n"
+            + ": Deletes the workout identified by the index number used in the displayed workout list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
+    public static final String MESSAGE_DELETE_WORKOUT_SUCCESS = "Deleted Workout: %1$s";
 
     private final Index targetIndex;
 
@@ -40,10 +40,10 @@ public class DeleteCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
         }
 
-        Workout personToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deleteWorkout(personToDelete);
+        Workout workoutToDelete = lastShownList.get(targetIndex.getZeroBased());
+        model.deleteWorkout(workoutToDelete);
         model.commitWorkoutBook();
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, personToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_WORKOUT_SUCCESS, workoutToDelete));
     }
 
     @Override
