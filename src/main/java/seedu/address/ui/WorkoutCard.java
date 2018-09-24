@@ -5,14 +5,14 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.address.model.person.Person;
+import seedu.address.model.workout.Workout;
 
 /**
- * An UI component that displays information of a {@code Person}.
+ * An UI component that displays information of a {@code Workout}.
  */
-public class PersonCard extends UiPart<Region> {
+public class WorkoutCard extends UiPart<Region> {
 
-    private static final String FXML = "PersonListCard.fxml";
+    private static final String FXML = "WorkoutListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -22,7 +22,7 @@ public class PersonCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    public final Person person;
+    public final Workout workout;
 
     @FXML
     private HBox cardPane;
@@ -44,33 +44,22 @@ public class PersonCard extends UiPart<Region> {
     private Label calories;
     @FXML
     private Label instruction;
-/*
-    @FXML
-    private Label phone;
-    @FXML
-    private Label address;
-    @FXML
-    private Label email;
-*/
     @FXML
     private FlowPane tags;
 
-    public PersonCard(Person person, int displayedIndex) {
+    public WorkoutCard(Workout workout, int displayedIndex) {
         super(FXML);
-        this.person = person;
+        this.workout = workout;
         id.setText(displayedIndex + ". ");
-        name.setText(person.getName().fullName);
-        type.setText(person.getType().fullType);
-        duration.setText(person.getDuration().fullDuration);
-        difficulty.setText(person.getDifficulty().fullDifficulty);
-        equipment.setText(person.getEquipment().fullEquipment);
-        muscle.setText(person.getMuscle().fullMuscle);
-        calories.setText(person.getCalories().fullCalories);
-        instruction.setText(person.getInstruction().fullInstruction);
-//        phone.setText(person.getPhone().value);
-//        address.setText(person.getAddress().value);
-//        email.setText(person.getEmail().value);
-        person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        name.setText(workout.getName().fullName);
+        type.setText(workout.getType().fullType);
+        duration.setText(workout.getDuration().fullDuration);
+        difficulty.setText(workout.getDifficulty().fullDifficulty);
+        equipment.setText(workout.getEquipment().fullEquipment);
+        muscle.setText(workout.getMuscle().fullMuscle);
+        calories.setText(workout.getCalories().fullCalories);
+        instruction.setText(workout.getInstruction().fullInstruction);
+        workout.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
     @Override
@@ -81,13 +70,13 @@ public class PersonCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof PersonCard)) {
+        if (!(other instanceof WorkoutCard)) {
             return false;
         }
 
         // state check
-        PersonCard card = (PersonCard) other;
+        WorkoutCard card = (WorkoutCard) other;
         return id.getText().equals(card.id.getText())
-                && person.equals(card.person);
+                && workout.equals(card.workout);
     }
 }
