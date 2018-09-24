@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import seedu.address.model.workout.exceptions.DuplicateWorkoutException;
 import seedu.address.model.workout.exceptions.WorkoutNotFoundException;
+import seedu.address.testutil.WorkoutBuilder;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -13,8 +14,8 @@ import java.util.List;
 import static org.junit.Assert.*;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
-import static seedu.address.testutil.TypicalWorkouts.ALICE;
-import static seedu.address.testutil.TypicalWorkouts.BOB;
+import static seedu.address.testutil.TypicalWorkouts.ALICE_WORKOUT;
+import static seedu.address.testutil.TypicalWorkouts.BOB_WORKOUT;
 
 public class UniqueWorkoutListTest {
     @Rule
@@ -30,19 +31,19 @@ public class UniqueWorkoutListTest {
 
     @Test
     public void contains_workoutNotInList_returnsFalse() {
-        assertFalse(uniqueWorkoutList.contains(ALICE));
+        assertFalse(uniqueWorkoutList.contains(ALICE_WORKOUT));
     }
 
     @Test
     public void contains_workoutInList_returnsTrue() {
-        uniqueWorkoutList.add(ALICE);
-        assertTrue(uniqueWorkoutList.contains(ALICE));
+        uniqueWorkoutList.add(ALICE_WORKOUT);
+        assertTrue(uniqueWorkoutList.contains(ALICE_WORKOUT));
     }
 
     @Test
     public void contains_workoutWithSameIdentityFieldsInList_returnsTrue() {
-        uniqueWorkoutList.add(ALICE);
-        Workout editedAlice = new WorkoutBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        uniqueWorkoutList.add(ALICE_WORKOUT);
+        Workout editedAlice = new WorkoutBuilder(ALICE_WORKOUT).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(uniqueWorkoutList.contains(editedAlice));
     }
@@ -55,44 +56,44 @@ public class UniqueWorkoutListTest {
 
     @Test
     public void add_duplicateWorkout_throwsDuplicateWorkoutException() {
-        uniqueWorkoutList.add(ALICE);
+        uniqueWorkoutList.add(ALICE_WORKOUT);
         thrown.expect(DuplicateWorkoutException.class);
-        uniqueWorkoutList.add(ALICE);
+        uniqueWorkoutList.add(ALICE_WORKOUT);
     }
 
     @Test
     public void setWorkout_nullTargetWorkout_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
-        uniqueWorkoutList.setWorkout(null, ALICE);
+        uniqueWorkoutList.setWorkout(null, ALICE_WORKOUT);
     }
 
     @Test
     public void setWorkout_nullEditedWorkout_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
-        uniqueWorkoutList.setWorkout(ALICE, null);
+        uniqueWorkoutList.setWorkout(ALICE_WORKOUT, null);
     }
 
     @Test
     public void setWorkout_targetWorkoutNotInList_throwsWorkoutNotFoundException() {
         thrown.expect(WorkoutNotFoundException.class);
-        uniqueWorkoutList.setWorkout(ALICE, ALICE);
+        uniqueWorkoutList.setWorkout(ALICE_WORKOUT, ALICE_WORKOUT);
     }
 
     @Test
     public void setWorkout_editedWorkoutIsSameWorkout_success() {
-        uniqueWorkoutList.add(ALICE);
-        uniqueWorkoutList.setWorkout(ALICE, ALICE);
+        uniqueWorkoutList.add(ALICE_WORKOUT);
+        uniqueWorkoutList.setWorkout(ALICE_WORKOUT, ALICE_WORKOUT);
         UniqueWorkoutList expectedUniqueWorkoutList = new UniqueWorkoutList();
-        expectedUniqueWorkoutList.add(ALICE);
+        expectedUniqueWorkoutList.add(ALICE_WORKOUT);
         assertEquals(expectedUniqueWorkoutList, uniqueWorkoutList);
     }
 
     @Test
     public void setWorkout_editedWorkoutHasSameIdentity_success() {
-        uniqueWorkoutList.add(ALICE);
-        Workout editedAlice = new WorkoutBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        uniqueWorkoutList.add(ALICE_WORKOUT);
+        Workout editedAlice = new WorkoutBuilder(ALICE_WORKOUT).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
                 .build();
-        uniqueWorkoutList.setWorkout(ALICE, editedAlice);
+        uniqueWorkoutList.setWorkout(ALICE_WORKOUT, editedAlice);
         UniqueWorkoutList expectedUniqueWorkoutList = new UniqueWorkoutList();
         expectedUniqueWorkoutList.add(editedAlice);
         assertEquals(expectedUniqueWorkoutList, uniqueWorkoutList);
@@ -100,19 +101,19 @@ public class UniqueWorkoutListTest {
 
     @Test
     public void setWorkout_editedWorkoutHasDifferentIdentity_success() {
-        uniqueWorkoutList.add(ALICE);
-        uniqueWorkoutList.setWorkout(ALICE, BOB);
+        uniqueWorkoutList.add(ALICE_WORKOUT);
+        uniqueWorkoutList.setWorkout(ALICE_WORKOUT, BOB_WORKOUT);
         UniqueWorkoutList expectedUniqueWorkoutList = new UniqueWorkoutList();
-        expectedUniqueWorkoutList.add(BOB);
+        expectedUniqueWorkoutList.add(BOB_WORKOUT);
         assertEquals(expectedUniqueWorkoutList, uniqueWorkoutList);
     }
 
     @Test
     public void setWorkout_editedWorkoutHasNonUniqueIdentity_throwsDuplicateWorkoutException() {
-        uniqueWorkoutList.add(ALICE);
-        uniqueWorkoutList.add(BOB);
+        uniqueWorkoutList.add(ALICE_WORKOUT);
+        uniqueWorkoutList.add(BOB_WORKOUT);
         thrown.expect(DuplicateWorkoutException.class);
-        uniqueWorkoutList.setWorkout(ALICE, BOB);
+        uniqueWorkoutList.setWorkout(ALICE_WORKOUT, BOB_WORKOUT);
     }
 
     @Test
@@ -124,13 +125,13 @@ public class UniqueWorkoutListTest {
     @Test
     public void remove_workoutDoesNotExist_throwsWorkoutNotFoundException() {
         thrown.expect(WorkoutNotFoundException.class);
-        uniqueWorkoutList.remove(ALICE);
+        uniqueWorkoutList.remove(ALICE_WORKOUT);
     }
 
     @Test
     public void remove_existingWorkout_removesWorkout() {
-        uniqueWorkoutList.add(ALICE);
-        uniqueWorkoutList.remove(ALICE);
+        uniqueWorkoutList.add(ALICE_WORKOUT);
+        uniqueWorkoutList.remove(ALICE_WORKOUT);
         UniqueWorkoutList expectedUniqueWorkoutList = new UniqueWorkoutList();
         assertEquals(expectedUniqueWorkoutList, uniqueWorkoutList);
     }
@@ -143,9 +144,9 @@ public class UniqueWorkoutListTest {
 
     @Test
     public void setWrokouts_uniqueWorkoutList_replacesOwnListWithProvidedUniqueWorkoutList() {
-        uniqueWorkoutList.add(ALICE);
+        uniqueWorkoutList.add(ALICE_WORKOUT);
         UniqueWorkoutList expectedUniqueWorkoutList = new UniqueWorkoutList();
-        expectedUniqueWorkoutList.add(BOB);
+        expectedUniqueWorkoutList.add(BOB_WORKOUT);
         uniqueWorkoutList.setWorkouts(expectedUniqueWorkoutList);
         assertEquals(expectedUniqueWorkoutList, uniqueWorkoutList);
     }
@@ -158,17 +159,17 @@ public class UniqueWorkoutListTest {
 
     @Test
     public void setWorkouts_list_replacesOwnListWithProvidedList() {
-        uniqueWorkoutList.add(ALICE);
-        List<Workout> workoutList = Collections.singletonList(BOB);
+        uniqueWorkoutList.add(ALICE_WORKOUT);
+        List<Workout> workoutList = Collections.singletonList(BOB_WORKOUT);
         uniqueWorkoutList.setWorkouts(workoutList);
         UniqueWorkoutList expectedUniqueWorkoutList = new UniqueWorkoutList();
-        expectedUniqueWorkoutList.add(BOB);
+        expectedUniqueWorkoutList.add(BOB_WORKOUT);
         assertEquals(expectedUniqueWorkoutList, uniqueWorkoutList);
     }
 
     @Test
     public void setWorkouts_listWithDuplicateWorkouts_throwsDuplicateWorkoutException() {
-        List<Workout> listWithDuplicateWorkouts = Arrays.asList(ALICE, ALICE);
+        List<Workout> listWithDuplicateWorkouts = Arrays.asList(ALICE_WORKOUT, ALICE_WORKOUT);
         thrown.expect(DuplicateWorkoutException.class);
         uniqueWorkoutList.setWorkouts(listWithDuplicateWorkouts);
     }
