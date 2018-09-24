@@ -31,7 +31,7 @@ import seedu.address.model.workout.Workout;
 /**
  * A utility class containing a list of {@code Person} objects to be used in tests.
  */
-public class TypicalPersons {
+public class TypicalWorkouts {
 
     public static final Workout ALICE_WORKOUT = new WorkoutBuilder().withName("Alice Pauline's workout")
             .withType("strength").withDuration("45m")
@@ -95,10 +95,10 @@ public class TypicalPersons {
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
-    private TypicalPersons() {} // prevents instantiation
+    private TypicalWorkouts() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical persons.
+     * Returns an {@code WorkoutBook} with all the typical persons.
      */
     public static WorkoutBook getTypicalWorkoutBook() {
         WorkoutBook wb = new WorkoutBook();
