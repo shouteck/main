@@ -54,14 +54,14 @@ public class SelectCommandSystemTest extends WorkoutBookSystemTest {
 
         /* ------------------------ Perform select operations on the shown filtered list ---------------------------- */
 
-        /* Case: filtered workout list, select index within bounds of address book but out of bounds of workout list
+        /* Case: filtered workout list, select index within bounds of workout book but out of bounds of workout list
          * -> rejected
          */
         showWorkoutsWithName(KEYWORD_MATCHING_MEIER);
-        int invalidIndex = getModel().getAddressBook().getWorkoutList().size();
+        int invalidIndex = getModel().getWorkoutBook().getWorkoutList().size();
         assertCommandFailure(SelectCommand.COMMAND_WORD + " " + invalidIndex, MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
 
-        /* Case: filtered workout list, select index within bounds of address book and workout list -> selected */
+        /* Case: filtered workout list, select index within bounds of workout book and workout list -> selected */
         Index validIndex = Index.fromOneBased(1);
         assertTrue(validIndex.getZeroBased() < getModel().getFilteredWorkoutList().size());
         command = SelectCommand.COMMAND_WORD + " " + validIndex.getOneBased();
@@ -92,7 +92,7 @@ public class SelectCommandSystemTest extends WorkoutBookSystemTest {
         /* Case: mixed case command word -> rejected */
         assertCommandFailure("SeLeCt 1", MESSAGE_UNKNOWN_COMMAND);
 
-        /* Case: select from empty address book -> rejected */
+        /* Case: select from empty workout book -> rejected */
         deleteAllWorkouts();
         assertCommandFailure(SelectCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased(),
                 MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
@@ -108,9 +108,9 @@ public class SelectCommandSystemTest extends WorkoutBookSystemTest {
      * 5. Selected card is at {@code expectedSelectedCardIndex} and the browser url is updated accordingly.<br>
      * 6. Status bar remains unchanged.<br>
      * Verifications 1, 3 and 4 are performed by
-     * {@code AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
-     * @see AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
-     * @see AddressBookSystemTest#assertSelectedCardChanged(Index)
+     * {@code WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
+     * @see WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
+     * @see WorkoutBookSystemTest#assertSelectedCardChanged(Index)
      */
     private void assertCommandSuccess(String command, Index expectedSelectedCardIndex) {
         Model expectedModel = getModel();
@@ -139,8 +139,8 @@ public class SelectCommandSystemTest extends WorkoutBookSystemTest {
      * 4. {@code Storage} and {@code WorkoutListPanel} remain unchanged.<br>
      * 5. Browser url, selected card and status bar remain unchanged.<br>
      * Verifications 1, 3 and 4 are performed by
-     * {@code AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
-     * @see AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
+     * {@code WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
+     * @see WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
      */
     private void assertCommandFailure(String command, String expectedResultMessage) {
         Model expectedModel = getModel();
