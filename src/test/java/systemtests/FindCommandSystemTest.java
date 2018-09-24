@@ -111,22 +111,42 @@ public class FindCommandSystemTest extends WorkoutBookSystemTest {
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find phone number of workout in workout book -> 0 workouts found */
-        command = FindCommand.COMMAND_WORD + " " + DANIEL_WORKOUT.getPhone().value;
+        /* Case: find type of workout in workout book -> 0 workouts found */
+        command = FindCommand.COMMAND_WORD + " " + DANIEL_WORKOUT.getType().fullType;
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find address of workout in workout book -> 0 workouts found */
-        command = FindCommand.COMMAND_WORD + " " + DANIEL_WORKOUT.getAddress().value;
+        /* Case: find duration of workout in workout book -> 0 workouts found */
+        command = FindCommand.COMMAND_WORD + " " + DANIEL_WORKOUT.getDuration().fullDuration;
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find email of workout in workout book -> 0 persons found */
-        command = FindCommand.COMMAND_WORD + " " + DANIEL_WORKOUT.getEmail().value;
+        /* Case: find difficulty of workout in workout book -> 0 workouts found */
+        command = FindCommand.COMMAND_WORD + " " + DANIEL_WORKOUT.getDifficulty().fullDifficulty;
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find tags of person in address book -> 0 persons found */
+        /* Case: find equipment of workout in workout book -> 0 workouts found */
+        command = FindCommand.COMMAND_WORD + " " + DANIEL_WORKOUT.getEquipment().fullEquipment;
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
+        /* Case: find muscles of workout in workout book -> 0 workouts found */
+        command = FindCommand.COMMAND_WORD + " " + DANIEL_WORKOUT.getMuscle().fullMuscle;
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
+        /* Case: find calories of workout in workout book -> 0 workouts found */
+        command = FindCommand.COMMAND_WORD + " " + DANIEL_WORKOUT.getCalories().fullCalories;
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
+        /* Case: find instructions of workout in workout book -> 0 workouts found */
+        command = FindCommand.COMMAND_WORD + " " + DANIEL_WORKOUT.getInstruction().fullInstruction;
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
+
+        /* Case: find tags of person in workout book -> 0 workouts found */
         List<Tag> tags = new ArrayList<>(DANIEL_WORKOUT.getTags());
         command = FindCommand.COMMAND_WORD + " " + tags.get(0).tagName;
         assertCommandSuccess(command, expectedModel);
