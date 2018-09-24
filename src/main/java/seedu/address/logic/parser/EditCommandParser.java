@@ -47,38 +47,38 @@ public class EditCommandParser implements Parser<EditCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
         }
 
-        EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
+        EditWorkoutDescriptor editWorkoutDescriptor = new EditWorkoutDescriptor();
         if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
-            editPersonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
+            editWorkoutDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
         }
         if (argMultimap.getValue(PREFIX_TYPE).isPresent()) {
-            editPersonDescriptor.setType(ParserUtil.parseType(argMultimap.getValue(PREFIX_TYPE).get()));
+            editWorkoutDescriptor.setType(ParserUtil.parseType(argMultimap.getValue(PREFIX_TYPE).get()));
         }
         if (argMultimap.getValue(PREFIX_DURATION).isPresent()) {
-            editPersonDescriptor.setDuration(ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION).get()));
+            editWorkoutDescriptor.setDuration(ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION).get()));
         }
         if (argMultimap.getValue(PREFIX_DIFFICULTY).isPresent()) {
-            editPersonDescriptor.setDifficulty(ParserUtil.parseDifficulty(argMultimap.getValue(PREFIX_DIFFICULTY).get()));
+            editWorkoutDescriptor.setDifficulty(ParserUtil.parseDifficulty(argMultimap.getValue(PREFIX_DIFFICULTY).get()));
         }
         if (argMultimap.getValue(PREFIX_EQUIPMENT).isPresent()) {
-            editPersonDescriptor.setEquipment(ParserUtil.parseEquipment(argMultimap.getValue(PREFIX_EQUIPMENT).get()));
+            editWorkoutDescriptor.setEquipment(ParserUtil.parseEquipment(argMultimap.getValue(PREFIX_EQUIPMENT).get()));
         }
         if (argMultimap.getValue(PREFIX_MUSCLE).isPresent()) {
-            editPersonDescriptor.setMuscle(ParserUtil.parseMuscle(argMultimap.getValue(PREFIX_MUSCLE).get()));
+            editWorkoutDescriptor.setMuscle(ParserUtil.parseMuscle(argMultimap.getValue(PREFIX_MUSCLE).get()));
         }
         if (argMultimap.getValue(PREFIX_CALORIES).isPresent()) {
-            editPersonDescriptor.setCalories(ParserUtil.parseCalories(argMultimap.getValue(PREFIX_CALORIES).get()));
+            editWorkoutDescriptor.setCalories(ParserUtil.parseCalories(argMultimap.getValue(PREFIX_CALORIES).get()));
         }
         if (argMultimap.getValue(PREFIX_INSTRUCTION).isPresent()) {
-            editPersonDescriptor.setInstruction(ParserUtil.parseInstruction(argMultimap.getValue(PREFIX_INSTRUCTION).get()));
+            editWorkoutDescriptor.setInstruction(ParserUtil.parseInstruction(argMultimap.getValue(PREFIX_INSTRUCTION).get()));
         }
-        parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
+        parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editWorkoutDescriptor::setTags);
 
-        if (!editPersonDescriptor.isAnyFieldEdited()) {
+        if (!editWorkoutDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
         }
 
-        return new EditCommand(index, editPersonDescriptor);
+        return new EditCommand(index, editWorkoutDescriptor);
     }
 
     /**
