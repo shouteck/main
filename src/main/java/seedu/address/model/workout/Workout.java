@@ -1,4 +1,4 @@
-package seedu.address.model.person;
+package seedu.address.model.workout;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
@@ -10,20 +10,17 @@ import java.util.Set;
 import seedu.address.model.tag.Tag;
 
 /**
- * Represents a Person in the address book.
+ * Represents a Workout in the workout book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Workout {
 
     // Identity fields
     private final Name name;
-    //    private final Phone phone;
-//    private final Email email;
     private final Type type;
     private final Difficulty difficulty;
 
     // Data fields
-//    private final Address address;
     private final Duration duration;
     private final Equipment equipment;
     private final Muscle muscle;
@@ -34,13 +31,10 @@ public class Workout {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Type type, Duration duration, Difficulty difficulty, Equipment equipment,
+    public Workout(Name name, Type type, Duration duration, Difficulty difficulty, Equipment equipment,
                   Muscle muscle, Calories calories, Instruction instruction, Set<Tag> tags) {
         requireAllNonNull(name, type, duration, difficulty, equipment, muscle, calories, instruction, tags);
         this.name = name;
-//        this.phone = phone;
-//        this.email = email;
-//        this.address = address;
         this.type = type;
         this.duration = duration;
         this.difficulty = difficulty;
@@ -81,12 +75,6 @@ public class Workout {
         return instruction;
     }
 
-//    public Phone getPhone() { return phone; }
-//
-//    public Email getEmail() { return email; }
-//
-//    public Address getAddress() { return address; }
-
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -96,23 +84,23 @@ public class Workout {
     }
 
     /**
-     * Returns true if both persons of the same name have at least one other identity field that is the same.
-     * This defines a weaker notion of equality between two persons.
+     * Returns true if both workouts of the same name have at least one other identity field that is the same.
+     * This defines a weaker notion of equality between two workouts.
      */
-    public boolean isSamePerson(Person otherPerson) {
-        if (otherPerson == this) {
+    public boolean isSameWorkout(Workout otherWorkout) {
+        if (otherWorkout == this) {
             return true;
         }
 
-        return otherPerson != null
-                && otherPerson.getName().equals(getName())
-                && (otherPerson.getType().equals(getType()) || otherPerson.getDuration().equals(getDuration())
-                || otherPerson.getDifficulty().equals(getDifficulty()));
+        return otherWorkout != null
+                && otherWorkout.getName().equals(getName())
+                && (otherWorkout.getType().equals(getType()) || otherWorkout.getDuration().equals(getDuration())
+                || otherWorkout.getDifficulty().equals(getDifficulty()));
     }
 
     /**
-     * Returns true if both persons have the same identity and data fields.
-     * This defines a stronger notion of equality between two persons.
+     * Returns true if both workouts have the same identity and data fields.
+     * This defines a stronger notion of equality between two workouts.
      */
     @Override
     public boolean equals(Object other) {
@@ -120,23 +108,20 @@ public class Workout {
             return true;
         }
 
-        if (!(other instanceof Person)) {
+        if (!(other instanceof Workout)) {
             return false;
         }
 
-        Person otherPerson = (Person) other;
-        return otherPerson.getName().equals(getName())
-//                && otherPerson.getPhone().equals(getPhone())
-//                && otherPerson.getEmail().equals(getEmail())
-//                && otherPerson.getAddress().equals(getAddress())
-                && otherPerson.getType().equals(getType())
-                && otherPerson.getDuration().equals(getDuration())
-                && otherPerson.getDifficulty().equals(getDifficulty())
-                && otherPerson.getEquipment().equals(getEquipment())
-                && otherPerson.getMuscle().equals(getMuscle())
-                && otherPerson.getCalories().equals(getCalories())
-                && otherPerson.getInstruction().equals(getInstruction())
-                && otherPerson.getTags().equals(getTags());
+        Workout otherWorkout = (Workout) other;
+        return otherWorkout.getName().equals(getName())
+                && otherWorkout.getType().equals(getType())
+                && otherWorkout.getDuration().equals(getDuration())
+                && otherWorkout.getDifficulty().equals(getDifficulty())
+                && otherWorkout.getEquipment().equals(getEquipment())
+                && otherWorkout.getMuscle().equals(getMuscle())
+                && otherWorkout.getCalories().equals(getCalories())
+                && otherWorkout.getInstruction().equals(getInstruction())
+                && otherWorkout.getTags().equals(getTags());
     }
 
     @Override
@@ -149,12 +134,6 @@ public class Workout {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
-//                .append(" Phone: ")
-//                .append(getPhone())
-//                .append(" Email: ")
-//                .append(getEmail())
-//                .append(" Address: ")
-//                .append(getAddress())
                 .append(" Type: ")
                 .append(getType())
                 .append(" Duration: ")

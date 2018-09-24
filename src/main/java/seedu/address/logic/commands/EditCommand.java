@@ -2,9 +2,6 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-//import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-//import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-//import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
@@ -13,7 +10,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INSTRUCTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_WORKOUTS;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -27,18 +24,15 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Name;
-//import seedu.address.model.person.Address;
-//import seedu.address.model.person.Email;
-//import seedu.address.model.person.Phone;
-import seedu.address.model.person.Type;
-import seedu.address.model.person.Duration;
-import seedu.address.model.person.Difficulty;
-import seedu.address.model.person.Equipment;
-import seedu.address.model.person.Muscle;
-import seedu.address.model.person.Calories;
-import seedu.address.model.person.Instruction;
+import seedu.address.model.workout.Person;
+import seedu.address.model.workout.Name;
+import seedu.address.model.workout.Type;
+import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Equipment;
+import seedu.address.model.workout.Muscle;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Instruction;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -104,7 +98,7 @@ public class EditCommand extends Command {
         }
 
         model.updatePerson(personToEdit, editedPerson);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_WORKOUTS);
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
     }

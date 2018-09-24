@@ -5,15 +5,15 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Type;
-import seedu.address.model.person.Duration;
-import seedu.address.model.person.Difficulty;
-import seedu.address.model.person.Equipment;
-import seedu.address.model.person.Muscle;
-import seedu.address.model.person.Calories;
-import seedu.address.model.person.Instruction;
-import seedu.address.model.person.Person;
+import seedu.address.model.workout.Name;
+import seedu.address.model.workout.Type;
+import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Equipment;
+import seedu.address.model.workout.Muscle;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Instruction;
+import seedu.address.model.workout.Person;
 import seedu.address.model.tag.Tag;
 
 /**
