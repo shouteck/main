@@ -2,57 +2,84 @@ package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY_WORKOOUT;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB_WORKOUT;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_BOB_WORKOUT
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_BOB_WORKOUT
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_BOB_WORKOUT
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_BOB_WORKOUT
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_BOB_WORKOUT
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
 
 import org.junit.Test;
 
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.address.testutil.EditPersonDescriptorBuilder;
+//import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+//import seedu.address.testutil.EditPersonDescriptorBuilder;
+import seedu.address.logic.commands.EditCommand.EditWorkoutDescriptor;
+import seedu.address.testutil.EditWorkoutDescriptorBuilder;
 
-public class EditPersonDescriptorTest {
+public class EditWorkoutDescriptorTest {
 
     @Test
     public void equals() {
         // same values -> returns true
-        EditPersonDescriptor descriptorWithSameValues = new EditPersonDescriptor(DESC_AMY);
-        assertTrue(DESC_AMY.equals(descriptorWithSameValues));
+        EditWorkoutDescriptor descriptorWithSameValues = new EditWorkoutDescriptor(DESC_AMY_WORKOUT);
+        assertTrue(DESC_AMY_WORKOUT.equals(descriptorWithSameValues));
 
         // same object -> returns true
-        assertTrue(DESC_AMY.equals(DESC_AMY));
+        assertTrue(DESC_AMY_WORKOUT.equals(DESC_AMY_WORKOUT));
 
         // null -> returns false
-        assertFalse(DESC_AMY.equals(null));
+        assertFalse(DESC_AMY_WORKOUT.equals(null));
 
         // different types -> returns false
-        assertFalse(DESC_AMY.equals(5));
+        assertFalse(DESC_AMY_WORKOUT.equals(5));
 
         // different values -> returns false
-        assertFalse(DESC_AMY.equals(DESC_BOB));
+        assertFalse(DESC_AMY_WORKOUT.equals(DESC_BOB_WORKOUT));
 
         // different name -> returns false
-        EditPersonDescriptor editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withName(VALID_NAME_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        EditWorkoutDescriptor editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withName(VALID_NAME_BOB_WORKOUT).build();
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
 
-        // different phone -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withPhone(VALID_PHONE_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        // different type -> returns false
+        editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT).build();
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
 
-        // different email -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withEmail(VALID_EMAIL_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        // different duration -> returns false
+        editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT).build();
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
 
-        // different address -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withAddress(VALID_ADDRESS_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        // different difficulty -> returns false
+        editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT).build();
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
+
+        // different equipment -> returns false
+        editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).build();
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
+
+        // different muscle -> returns false
+        editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT).build();
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
+
+        // different calories -> returns false
+        editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withCalories(VALID_CALORIES_BOB_WORKOUT).build();
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
+
+        // different instruction -> returns false
+        editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withInstruction(VALID_INSTRUCTION_BOB_WORKOUT).build();
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
 
         // different tags -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withTags(VALID_TAG_HUSBAND).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withTags(VALID_TAG_NIGHT).build();
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
     }
 }
