@@ -50,9 +50,9 @@ public class AddCommandParser implements Parser<AddCommand> {
         Instruction instruction = ParserUtil.parseInstruction(argMultimap.getValue(PREFIX_INSTRUCTION).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Person person = new Person(name, type, duration, difficulty, equipment, muscle, calories, instruction, tagList);
+        Workout workout = new Workout(name, type, duration, difficulty, equipment, muscle, calories, instruction, tagList);
 
-        return new AddCommand(person);
+        return new AddCommand(workout);
     }
 
     /**
