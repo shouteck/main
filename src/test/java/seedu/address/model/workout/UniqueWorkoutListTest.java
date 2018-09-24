@@ -3,11 +3,8 @@ package seedu.address.model.workout;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import seedu.address.model.workout.Workout;
-import seedu.address.model.workout.UniqueWorkoutList;
 import seedu.address.model.workout.exceptions.DuplicateWorkoutException;
 import seedu.address.model.workout.exceptions.WorkoutNotFoundException;
-import seedu.address.testutil.WorkoutBuilder;
 
 import java.util.Arrays;
 import java.util.Collections;

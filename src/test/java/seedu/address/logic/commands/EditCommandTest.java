@@ -10,12 +10,6 @@ import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB_WORKOUT;
 //import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_MORNING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -45,7 +39,7 @@ import seedu.address.model.workout.Workout;
 //import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.EditWorkoutDescriptorBuilder;
 //import seedu.address.testutil.PersonBuilder;
-import seedu.address.testutil.WorkoutBuilder;
+
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for EditCommand.

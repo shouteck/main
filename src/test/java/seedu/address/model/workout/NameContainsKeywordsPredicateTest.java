@@ -1,8 +1,6 @@
 package seedu.address.model.workout;
 
 import org.junit.Test;
-import seedu.address.model.workout.NameContainsKeywordsPredicate;
-import seedu.address.testutil.WorkoutBuilder;
 
 import java.util.Arrays;
 import java.util.Collections;
