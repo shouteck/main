@@ -3,26 +3,6 @@ package systemtests;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
-//import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
-//import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
-//import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
-//import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
-//import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
-//import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
-//import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
-//import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOB;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-//import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
-//import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
-//import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
-//import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
-//import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
-//import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
-//import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY_WORKOUT;
@@ -33,28 +13,29 @@ import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_BOB_WORKOUT
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.DURATION_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.DURATION_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.DIFFICULTY_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.DIFFICULTY_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.EQUIPMENT_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.EQUIPMENT_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.MUSCLE_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.MUSCLE_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.CALORIES_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.CALORIES_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.INSTRUCTION_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.INSTRUCTION_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_MORNING;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_NIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_MORNING;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-//import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
-//import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-//import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-//import static seedu.address.testutil.TypicalPersons.AMY;
-//import static seedu.address.testutil.TypicalPersons.BOB;
-//import static seedu.address.testutil.TypicalPersons.KEYWORD_MATCHING_MEIER;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_WORKOUTS;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_WORKOUT;
@@ -70,11 +51,6 @@ import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
-//import seedu.address.model.person.Name;
-//import seedu.address.model.person.Person;
-//import seedu.address.model.person.Address;
-//import seedu.address.model.person.Email;
-//import seedu.address.model.person.Phone;
 import seedu.address.model.workout.Name;
 import seedu.address.model.workout.Workout;
 import seedu.address.model.workout.Type;
@@ -85,11 +61,10 @@ import seedu.address.model.workout.Muscle;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Instruction;
 import seedu.address.model.tag.Tag;
-//import seedu.address.testutil.PersonBuilder;
-//import seedu.address.testutil.PersonUtil;
+import seedu.address.testutil.WorkoutBuilder;
 import seedu.address.testutil.WorkoutUtil;
 
-public class EditCommandSystemTest extends AddressBookSystemTest {
+public class EditCommandSystemTest extends WorkoutBookSystemTest {
 
     @Test
     public void edit() {
@@ -127,7 +102,7 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
         assertCommandSuccess(command, index, BOB_WORKOUT);
 
         /* Case: edit a workout with new values same as another workout's values but with different name -> edited */
-        assertTrue(getModel().getAddressBook().getWorkoutList().contains(BOB_WORKOUT));
+        assertTrue(getModel().getWorkoutBook().getWorkoutList().contains(BOB_WORKOUT));
         index = INDEX_SECOND_WORKOUT;
         assertNotEquals(getModel().getFilteredWorkoutList().get(index.getZeroBased()), BOB_WORKOUT);
         command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_AMY_WORKOUT + TYPE_DESC_BOB_WORKOUT
@@ -144,9 +119,9 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
         command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_BOB_WORKOUT + TYPE_DESC_AMY_WORKOUT
                 + DURATION_DESC_AMY_WORKOUT + DIFFICULTY_DESC_AMY_WORKOUT + EQUIPMENT_DESC_AMY_WORKOUT
                 + MUSCLE_DESC_AMY_WORKOUT + CALORIES_DESC_AMY_WORKOUT + INSTRUCTION_DESC_AMY_WORKOUT + TAG_DESC_MORNING + TAG_DESC_NIGHT;
-        editedWorkout = new WorkoutBuilder(BOB_WORKOUT).withType(VALID_TYPE_AMY_WORKOUT).withDuration(VALID_TYPE_AMY_WORKOUT)
-                .withDifficulty(VALID_TYPE_AMY_WORKOUT).withEquipment(VALID_TYPE_AMY_WORKOUT).withMuscle(VALID_TYPE_AMY_WORKOUT)
-                .withCalories(VALID_TYPE_AMY_WORKOUT).withInstruction(VALID_TYPE_AMY_WORKOUT)
+        editedWorkout = new WorkoutBuilder(BOB_WORKOUT).withType(VALID_TYPE_AMY_WORKOUT).withDuration(VALID_DURATION_AMY_WORKOUT)
+                .withDifficulty(VALID_DIFFICULTY_AMY_WORKOUT).withEquipment(VALID_EQUIPMENT_AMY_WORKOUT).withMuscle(VALID_MUSCLE_AMY_WORKOUT)
+                .withCalories(VALID_CALORIES_AMY_WORKOUT).withInstruction(VALID_INSTRUCTION_AMY_WORKOUT).build();
         assertCommandSuccess(command, index, editedWorkout);
 
         /* Case: clear tags -> cleared */
@@ -171,7 +146,7 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
          * -> rejected
          */
         showWorkoutsWithName(KEYWORD_MATCHING_MEIER);
-        int invalidIndex = getModel().getAddressBook().getWorkoutList().size();
+        int invalidIndex = getModel().getWorkoutBook().getWorkoutList().size();
         assertCommandFailure(EditCommand.COMMAND_WORD + " " + invalidIndex + NAME_DESC_BOB_WORKOUT,
                 Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
 
@@ -217,33 +192,36 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
         assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased() + INVALID_NAME_DESC,
                 Name.MESSAGE_NAME_CONSTRAINTS);
 
-        /* Case: invalid type -> rejected */
-        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased() + INVALID_TYPE_DESC,
-                Type.MESSAGE_TYPE_CONSTRAINTS);
-
-        /* Case: invalid duration -> rejected */
-        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased() + INVALID_DURATION_DESC,
-                Duration.MESSAGE_DURATION_CONSTRAINTS);
-
-        /* Case: invalid difficulty -> rejected */
-        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased() + INVALID_DIFFICULTY_DESC,
-                Difficulty.MESSAGE_DIFFICULTY_CONSTRAINTS);
-
-        /* Case: invalid equipment -> rejected */
-        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased() + INVALID_EQUIPMENT_DESC,
-                Equipment.MESSAGE_EQUIPMENT_CONSTRAINTS);
-
-        /* Case: invalid muscle -> rejected */
-        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased() + INVALID_MUSCLE_DESC,
-                Muscle.MESSAGE_MUSCLE_CONSTRAINTS);
-
-        /* Case: invalid calories -> rejected */
-        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased() + INVALID_CALORIES_DESC,
-                Calories.MESSAGE_CALORIES_CONSTRAINTS);
-
-        /* Case: invalid instruction -> rejected */
-        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased() + INVALID_INSTRUCTION_DESC,
-                Instruction.MESSAGE_INSTRUCTION_CONSTRAINTS);
+        /**
+         * To be uncommented once invalid test cases are thought of
+         */
+//        /* Case: invalid type -> rejected */
+//        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased() + INVALID_TYPE_DESC,
+//                Type.MESSAGE_TYPE_CONSTRAINTS);
+//
+//        /* Case: invalid duration -> rejected */
+//        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased() + INVALID_DURATION_DESC,
+//                Duration.MESSAGE_DURATION_CONSTRAINTS);
+//
+//        /* Case: invalid difficulty -> rejected */
+//        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased() + INVALID_DIFFICULTY_DESC,
+//                Difficulty.MESSAGE_DIFFICULTY_CONSTRAINTS);
+//
+//        /* Case: invalid equipment -> rejected */
+//        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased() + INVALID_EQUIPMENT_DESC,
+//                Equipment.MESSAGE_EQUIPMENT_CONSTRAINTS);
+//
+//        /* Case: invalid muscle -> rejected */
+//        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased() + INVALID_MUSCLE_DESC,
+//                Muscle.MESSAGE_MUSCLE_CONSTRAINTS);
+//
+//        /* Case: invalid calories -> rejected */
+//        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased() + INVALID_CALORIES_DESC,
+//                Calories.MESSAGE_CALORIES_CONSTRAINTS);
+//
+//        /* Case: invalid instruction -> rejected */
+//        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased() + INVALID_INSTRUCTION_DESC,
+//                Instruction.MESSAGE_INSTRUCTION_CONSTRAINTS);
 
         /* Case: invalid tag -> rejected */
         assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased() + INVALID_TAG_DESC,
@@ -251,7 +229,7 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: edit a workout with new values same as another workout's values -> rejected */
         executeCommand(WorkoutUtil.getAddCommand(BOB_WORKOUT));
-        assertTrue(getModel().getAddressBook().getWorkoutList().contains(BOB_WORKOUT));
+        assertTrue(getModel().getWorkoutBook().getWorkoutList().contains(BOB_WORKOUT));
         index = INDEX_FIRST_WORKOUT;
         assertFalse(getModel().getFilteredWorkoutList().get(index.getZeroBased()).equals(BOB_WORKOUT));
         command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_BOB_WORKOUT + TYPE_DESC_BOB_WORKOUT
@@ -355,8 +333,8 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
      * 5. Asserts that the command box has the default style class.<br>
      * Verifications 1 and 2 are performed by
      * {@code AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
-     * @see AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
-     * @see AddressBookSystemTest#assertSelectedCardChanged(Index)
+     * @see WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
+     * @see WorkoutBookSystemTest#assertSelectedCardChanged(Index)
      */
     private void assertCommandSuccess(String command, Model expectedModel, String expectedResultMessage,
             Index expectedSelectedCardIndex) {
@@ -379,8 +357,8 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
      * 3. Asserts that the browser url, selected card and status bar remain unchanged.<br>
      * 4. Asserts that the command box has the error style.<br>
      * Verifications 1 and 2 are performed by
-     * {@code AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
-     * @see AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
+     * {@code WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
+     * @see WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
      */
     private void assertCommandFailure(String command, String expectedResultMessage) {
         Model expectedModel = getModel();

@@ -67,20 +67,20 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditWorkoutDescriptor DESC_AMY;
-    public static final EditCommand.EditWorkoutDescriptor DESC_BOB;
+    public static final EditCommand.EditWorkoutDescriptor DESC_AMY_WORKOUT;
+    public static final EditCommand.EditWorkoutDescriptor DESC_BOB_WORKOUT;
 
     static {
-        DESC_AMY = new EditWorkoutDescriptorBuilder().withName(VALID_NAME_AMY_WORKOUT)
-                .withType(VALID_TYPE_AMY_WORKOUT).withDuration(VALID_DURATION_AMY_WORKOUT).withDifficulty(VALID_DIFFICULTY_AMY_WORKOUT)
-                .withEquipment(VALID_EQUIPMENT_AMY_WORKOUT).withMuscle(VALID_MUSCLE_AMY_WORKOUT)
-                .withCalories(VALID_CALORIES_AMY_WORKOUT).withInstruction(VALID_INSTRUCTION_AMY_WORKOUT)
-                .withTags(VALID_TAG_MORNING).build();
-        DESC_BOB = new EditWorkoutDescriptorBuilder().withName(VALID_NAME_BOB_WORKOUT)
-                .withType(VALID_TYPE_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT).withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT)
-                .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT)
-                .withCalories(VALID_CALORIES_BOB_WORKOUT).withInstruction(VALID_INSTRUCTION_BOB_WORKOUT)
-                .withTags(VALID_TAG_NIGHT).build();
+        DESC_AMY_WORKOUT = new EditWorkoutDescriptorBuilder().withName(VALID_NAME_AMY_WORKOUT)
+                        .withType(VALID_TYPE_AMY_WORKOUT).withDuration(VALID_DURATION_AMY_WORKOUT).withDifficulty(VALID_DIFFICULTY_AMY_WORKOUT)
+                        .withEquipment(VALID_EQUIPMENT_AMY_WORKOUT).withMuscle(VALID_MUSCLE_AMY_WORKOUT)
+                        .withCalories(VALID_CALORIES_AMY_WORKOUT).withInstruction(VALID_INSTRUCTION_AMY_WORKOUT)
+                        .withTags(VALID_TAG_MORNING).build();
+        DESC_BOB_WORKOUT = new EditWorkoutDescriptorBuilder().withName(VALID_NAME_BOB_WORKOUT)
+                        .withType(VALID_TYPE_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT).withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT)
+                        .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT)
+                        .withCalories(VALID_CALORIES_BOB_WORKOUT).withInstruction(VALID_INSTRUCTION_BOB_WORKOUT)
+                        .withTags(VALID_TAG_NIGHT).build();
     }
 
 
