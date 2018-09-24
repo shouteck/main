@@ -22,7 +22,7 @@ import seedu.address.model.util.SampleDataUtil;
 public class WorkoutBuilder {
 
     public static final String DEFAULT_NAME = "commando";
-    public static final String DEFAULT_TYPE = "strengh, cardio";
+    public static final String DEFAULT_TYPE = "strength, cardio";
     public static final String DEFAULT_DURATION = "20m";
     public static final String DEFAULT_DIFFICULTY = "Advanced";
     public static final String DEFAULT_EQUIPMENT = "dumbbell";
