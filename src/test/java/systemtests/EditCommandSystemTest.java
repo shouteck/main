@@ -31,35 +31,21 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_AMY_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.DURATION_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.DURATION_DESC_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_AMY_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.DIFFICULTY_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.DIFFICULTY_DESC_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_AMY_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.EQUIPMENT_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.EQUIPMENT_DESC_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_AMY_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.MUSCLE_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.MUSCLE_DESC_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_AMY_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.CALORIES_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.CALORIES_DESC_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_AMY_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.INSTRUCTION_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.INSTRUCTION_DESC_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_AMY_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_MORNING;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_NIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_MORNING;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -101,10 +87,9 @@ import seedu.address.model.workout.Instruction;
 import seedu.address.model.tag.Tag;
 //import seedu.address.testutil.PersonBuilder;
 //import seedu.address.testutil.PersonUtil;
-import seedu.address.testutil.WorkoutBuilder;
 import seedu.address.testutil.WorkoutUtil;
 
-public class EditCommandSystemTest extends WorkoutBookSystemTest {
+public class EditCommandSystemTest extends AddressBookSystemTest {
 
     @Test
     public void edit() {
@@ -142,7 +127,7 @@ public class EditCommandSystemTest extends WorkoutBookSystemTest {
         assertCommandSuccess(command, index, BOB_WORKOUT);
 
         /* Case: edit a workout with new values same as another workout's values but with different name -> edited */
-        assertTrue(getModel().getWorkoutBook().getWorkoutList().contains(BOB_WORKOUT));
+        assertTrue(getModel().getAddressBook().getWorkoutList().contains(BOB_WORKOUT));
         index = INDEX_SECOND_WORKOUT;
         assertNotEquals(getModel().getFilteredWorkoutList().get(index.getZeroBased()), BOB_WORKOUT);
         command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_AMY_WORKOUT + TYPE_DESC_BOB_WORKOUT
@@ -159,9 +144,9 @@ public class EditCommandSystemTest extends WorkoutBookSystemTest {
         command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_BOB_WORKOUT + TYPE_DESC_AMY_WORKOUT
                 + DURATION_DESC_AMY_WORKOUT + DIFFICULTY_DESC_AMY_WORKOUT + EQUIPMENT_DESC_AMY_WORKOUT
                 + MUSCLE_DESC_AMY_WORKOUT + CALORIES_DESC_AMY_WORKOUT + INSTRUCTION_DESC_AMY_WORKOUT + TAG_DESC_MORNING + TAG_DESC_NIGHT;
-        editedWorkout = new WorkoutBuilder(BOB_WORKOUT).withType(VALID_TYPE_AMY_WORKOUT).withDuration(VALID_DURATION_AMY_WORKOUT)
-                .withDifficulty(VALID_DIFFICULTY_AMY_WORKOUT).withEquipment(VALID_EQUIPMENT_AMY_WORKOUT).withMuscle(VALID_MUSCLE_AMY_WORKOUT)
-                .withCalories(VALID_CALORIES_AMY_WORKOUT).withInstruction(VALID_INSTRUCTION_AMY_WORKOUT)
+        editedWorkout = new WorkoutBuilder(BOB_WORKOUT).withType(VALID_TYPE_AMY_WORKOUT).withDuration(VALID_TYPE_AMY_WORKOUT)
+                .withDifficulty(VALID_TYPE_AMY_WORKOUT).withEquipment(VALID_TYPE_AMY_WORKOUT).withMuscle(VALID_TYPE_AMY_WORKOUT)
+                .withCalories(VALID_TYPE_AMY_WORKOUT).withInstruction(VALID_TYPE_AMY_WORKOUT)
         assertCommandSuccess(command, index, editedWorkout);
 
         /* Case: clear tags -> cleared */
@@ -173,7 +158,7 @@ public class EditCommandSystemTest extends WorkoutBookSystemTest {
 
         /* ------------------ Performing edit operation while a filtered list is being shown ------------------------ */
 
-        /* Case: filtered workout list, edit index within bounds of workout book and workout list -> edited */
+        /* Case: filtered workout list, edit index within bounds of address book and workout list -> edited */
         showWorkoutsWithName(KEYWORD_MATCHING_MEIER);
         index = INDEX_FIRST_WORKOUT;
         assertTrue(index.getZeroBased() < getModel().getFilteredWorkoutList().size());
@@ -182,11 +167,11 @@ public class EditCommandSystemTest extends WorkoutBookSystemTest {
         editedWorkout = new WorkoutBuilder(workoutToEdit).withName(VALID_NAME_BOB_WORKOUT).build();
         assertCommandSuccess(command, index, editedWorkout);
 
-        /* Case: filtered workout list, edit index within bounds of workout book but out of bounds of workout list
+        /* Case: filtered workout list, edit index within bounds of address book but out of bounds of workout list
          * -> rejected
          */
         showWorkoutsWithName(KEYWORD_MATCHING_MEIER);
-        int invalidIndex = getModel().getWorkoutBook().getWorkoutList().size();
+        int invalidIndex = getModel().getAddressBook().getWorkoutList().size();
         assertCommandFailure(EditCommand.COMMAND_WORD + " " + invalidIndex + NAME_DESC_BOB_WORKOUT,
                 Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
 
@@ -266,7 +251,7 @@ public class EditCommandSystemTest extends WorkoutBookSystemTest {
 
         /* Case: edit a workout with new values same as another workout's values -> rejected */
         executeCommand(WorkoutUtil.getAddCommand(BOB_WORKOUT));
-        assertTrue(getModel().getWorkoutBook().getWorkoutList().contains(BOB_WORKOUT));
+        assertTrue(getModel().getAddressBook().getWorkoutList().contains(BOB_WORKOUT));
         index = INDEX_FIRST_WORKOUT;
         assertFalse(getModel().getFilteredWorkoutList().get(index.getZeroBased()).equals(BOB_WORKOUT));
         command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_BOB_WORKOUT + TYPE_DESC_BOB_WORKOUT
@@ -369,9 +354,9 @@ public class EditCommandSystemTest extends WorkoutBookSystemTest {
      * 4. Asserts that the status bar's sync status changes.<br>
      * 5. Asserts that the command box has the default style class.<br>
      * Verifications 1 and 2 are performed by
-     * {@code WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
-     * @see WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
-     * @see WorkoutBookSystemTest#assertSelectedCardChanged(Index)
+     * {@code AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
+     * @see AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
+     * @see AddressBookSystemTest#assertSelectedCardChanged(Index)
      */
     private void assertCommandSuccess(String command, Model expectedModel, String expectedResultMessage,
             Index expectedSelectedCardIndex) {
@@ -394,8 +379,8 @@ public class EditCommandSystemTest extends WorkoutBookSystemTest {
      * 3. Asserts that the browser url, selected card and status bar remain unchanged.<br>
      * 4. Asserts that the command box has the error style.<br>
      * Verifications 1 and 2 are performed by
-     * {@code WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
-     * @see WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
+     * {@code AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
+     * @see AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
      */
     private void assertCommandFailure(String command, String expectedResultMessage) {
         Model expectedModel = getModel();
