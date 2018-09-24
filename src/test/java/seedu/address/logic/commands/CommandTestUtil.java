@@ -11,7 +11,7 @@ import java.util.List;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.AddressBook;
+import seedu.address.model.WorkoutBook;
 import seedu.address.model.Model;
 import seedu.address.model.workout.NameContainsKeywordsPredicate;
 import seedu.address.model.workout.Workout;
@@ -107,14 +107,14 @@ public class CommandTestUtil {
      * Executes the given {@code command}, confirms that <br>
      * - a {@code CommandException} is thrown <br>
      * - the CommandException message matches {@code expectedMessage} <br>
-     * - the address book and the filtered workout list in the {@code actualModel} remain unchanged <br>
+     * - the workout book and the filtered workout list in the {@code actualModel} remain unchanged <br>
      * - {@code actualCommandHistory} remains unchanged.
      */
     public static void assertCommandFailure(Command command, Model actualModel, CommandHistory actualCommandHistory,
             String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
-        AddressBook expectedAddressBook = new AddressBook(actualModel.getAddressBook());
+        WorkoutBook expectedWorkoutBook = new WorkoutBook(actualModel.getWorkoutBook());
         List<Workout> expectedFilteredList = new ArrayList<>(actualModel.getFilteredWorkoutList());
 
         CommandHistory expectedCommandHistory = new CommandHistory(actualCommandHistory);
@@ -124,7 +124,7 @@ public class CommandTestUtil {
             throw new AssertionError("The expected CommandException was not thrown.");
         } catch (CommandException e) {
             assertEquals(expectedMessage, e.getMessage());
-            assertEquals(expectedAddressBook, actualModel.getAddressBook());
+            assertEquals(expectedWorkoutBook, actualModel.getWorkoutBook());
             assertEquals(expectedFilteredList, actualModel.getFilteredWorkoutList());
             assertEquals(expectedCommandHistory, actualCommandHistory);
         }
@@ -132,7 +132,7 @@ public class CommandTestUtil {
 
     /**
      * Updates {@code model}'s filtered list to show only the workout at the given {@code targetIndex} in the
-     * {@code model}'s address book.
+     * {@code model}'s workout book.
      */
     public static void showWorkoutAtIndex(Model model, Index targetIndex) {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredWorkoutList().size());
@@ -145,12 +145,12 @@ public class CommandTestUtil {
     }
 
     /**
-     * Deletes the first workout in {@code model}'s filtered list from {@code model}'s address book.
+     * Deletes the first workout in {@code model}'s filtered list from {@code model}'s workout book.
      */
     public static void deleteFirstWorkout(Model model) {
         Workout firstWorkout = model.getFilteredWorkoutList().get(0);
         model.deleteWorkout(firstWorkout);
-        model.commitAddressBook();
+        model.commitWorkoutBook();
     }
 
 }

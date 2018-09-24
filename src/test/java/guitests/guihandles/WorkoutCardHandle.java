@@ -8,12 +8,12 @@ import com.google.common.collect.ImmutableMultiset;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
-import seedu.address.model.person.Person;
+import seedu.address.model.workout.Workout;
 
 /**
- * Provides a handle to a person card in the person list panel.
+ * Provides a handle to a workout card in the workout list panel.
  */
-public class PersonCardHandle extends NodeHandle<Node> {
+public class WorkoutCardHandle extends NodeHandle<Node> {
     private static final String ID_FIELD_ID = "#id";
     private static final String NAME_FIELD_ID = "#name";
     private static final String TYPE_FIELD_ID = "#type";
@@ -23,11 +23,6 @@ public class PersonCardHandle extends NodeHandle<Node> {
     private static final String MUSCLE_FIELD_ID = "#muscle";
     private static final String CALORIES_FIELD_ID = "#calories";
     private static final String INSTRUCTION_FIELD_ID = "#instruction";
-    /*
-    private static final String ADDRESS_FIELD_ID = "#address";
-    private static final String PHONE_FIELD_ID = "#phone";
-    private static final String EMAIL_FIELD_ID = "#email";
-    */
     private static final String TAGS_FIELD_ID = "#tags";
 
     private final Label idLabel;
@@ -39,14 +34,9 @@ public class PersonCardHandle extends NodeHandle<Node> {
     private final Label muscleLabel;
     private final Label caloriesLabel;
     private final Label instructionLabel;
-    /*
-    private final Label addressLabel;
-    private final Label phoneLabel;
-    private final Label emailLabel;
-    */
     private final List<Label> tagLabels;
 
-    public PersonCardHandle(Node cardNode) {
+    public WorkoutCardHandle(Node cardNode) {
         super(cardNode);
 
         idLabel = getChildNode(ID_FIELD_ID);
@@ -58,11 +48,6 @@ public class PersonCardHandle extends NodeHandle<Node> {
         muscleLabel = getChildNode(MUSCLE_FIELD_ID);
         caloriesLabel = getChildNode(CALORIES_FIELD_ID);
         instructionLabel = getChildNode(INSTRUCTION_FIELD_ID);
-        /*
-        addressLabel = getChildNode(ADDRESS_FIELD_ID);
-        phoneLabel = getChildNode(PHONE_FIELD_ID);
-        emailLabel = getChildNode(EMAIL_FIELD_ID);
-        */
 
         Region tagsContainer = getChildNode(TAGS_FIELD_ID);
         tagLabels = tagsContainer
@@ -108,19 +93,6 @@ public class PersonCardHandle extends NodeHandle<Node> {
         return instructionLabel.getText();
     }
 
-    /*
-    public String getAddress() {
-        return addressLabel.getText();
-    }
-
-    public String getPhone() {
-        return phoneLabel.getText();
-    }
-
-    public String getEmail() {
-        return emailLabel.getText();
-    }
-    */
     public List<String> getTags() {
         return tagLabels
                 .stream()
@@ -129,24 +101,19 @@ public class PersonCardHandle extends NodeHandle<Node> {
     }
 
     /**
-     * Returns true if this handle contains {@code person}.
+     * Returns true if this handle contains {@code workout}.
      */
-    public boolean equals(Person person) {
-        return getName().equals(person.getName().fullName)
-                /*
-                && getAddress().equals(person.getAddress().value)
-                && getPhone().equals(person.getPhone().value)
-                && getEmail().equals(person.getEmail().value)
-                */
-                && getType().equals(person.getType().fullType)
-                && getDuration().equals(person.getDuration().fullDuration)
-                && getDifficulty().equals(person.getDifficulty().fullDifficulty)
-                && getEquipment().equals(person.getEquipment().fullEquipment)
-                && getMuscle().equals(person.getMuscle().fullMuscle)
-                && getCalories().equals(person.getCalories().fullCalories)
-                && getInstruction().equals(person.getInstruction().fullInstruction)
-                && ImmutableMultiset.copyOf(getTags()).equals(ImmutableMultiset.copyOf(person.getTags().stream()
-                        .map(tag -> tag.tagName)
-                        .collect(Collectors.toList())));
+    public boolean equals(Workout workout) {
+        return getName().equals(workout.getName().fullName)
+                && getType().equals(workout.getType().fullType)
+                && getDuration().equals(workout.getDuration().fullDuration)
+                && getDifficulty().equals(workout.getDifficulty().fullDifficulty)
+                && getEquipment().equals(workout.getEquipment().fullEquipment)
+                && getMuscle().equals(workout.getMuscle().fullMuscle)
+                && getCalories().equals(workout.getCalories().fullCalories)
+                && getInstruction().equals(workout.getInstruction().fullInstruction)
+                && ImmutableMultiset.copyOf(getTags()).equals(ImmutableMultiset.copyOf(workout.getTags().stream()
+                .map(tag -> tag.tagName)
+                .collect(Collectors.toList())));
     }
 }
