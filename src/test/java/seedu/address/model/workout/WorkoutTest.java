@@ -3,12 +3,9 @@ package seedu.address.model.workout;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import seedu.address.model.workout.Workout;
-import seedu.address.testutil.WorkoutBuilder;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.*;
 import static seedu.address.testutil.TypicalWorkouts.ALICE;
 import static seedu.address.testutil.TypicalWorkouts.BOB;
 
