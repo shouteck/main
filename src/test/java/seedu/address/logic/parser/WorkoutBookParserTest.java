@@ -29,6 +29,7 @@ import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.workout.NameContainsKeywordsPredicate;
+import seedu.address.model.workout.Workout;
 import seedu.address.testutil.EditWorkoutDescriptorBuilder;
 import seedu.address.testutil.WorkoutBuilder;
 import seedu.address.testutil.WorkoutUtil;
