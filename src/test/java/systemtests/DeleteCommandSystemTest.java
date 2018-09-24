@@ -7,7 +7,7 @@ import static seedu.address.logic.commands.DeleteCommand.MESSAGE_DELETE_WORKOUT_
 import static seedu.address.testutil.TestUtil.getLastIndex;
 import static seedu.address.testutil.TestUtil.getMidIndex;
 import static seedu.address.testutil.TestUtil.getWorkout;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.KEYWORD_MATCHING_MEIER;
 
 import org.junit.Test;
@@ -31,8 +31,8 @@ public class DeleteCommandSystemTest extends WorkoutBookSystemTest {
 
         /* Case: delete the first workout in the list, command with leading spaces and trailing spaces -> deleted */
         Model expectedModel = getModel();
-        String command = "     " + DeleteCommand.COMMAND_WORD + "      " + INDEX_FIRST_PERSON.getOneBased() + "       ";
-        Workout deletedWorkout = removeWorkout(expectedModel, INDEX_FIRST_PERSON);
+        String command = "     " + DeleteCommand.COMMAND_WORD + "      " + INDEX_FIRST_WORKOUT.getOneBased() + "       ";
+        Workout deletedWorkout = removeWorkout(expectedModel, INDEX_FIRST_WORKOUT);
         String expectedResultMessage = String.format(MESSAGE_DELETE_WORKOUT_SUCCESS, deletedWorkout);
         assertCommandSuccess(command, expectedModel, expectedResultMessage);
 
@@ -41,7 +41,7 @@ public class DeleteCommandSystemTest extends WorkoutBookSystemTest {
         Index lastWorkoutIndex = getLastIndex(modelBeforeDeletingLast);
         assertCommandSuccess(lastWorkoutIndex);
 
-        /* Case: undo deleting the last workout in the list -> last person restored */
+        /* Case: undo deleting the last workout in the list -> last workout restored */
         command = UndoCommand.COMMAND_WORD;
         expectedResultMessage = UndoCommand.MESSAGE_SUCCESS;
         assertCommandSuccess(command, modelBeforeDeletingLast, expectedResultMessage);
@@ -60,7 +60,7 @@ public class DeleteCommandSystemTest extends WorkoutBookSystemTest {
 
         /* Case: filtered workout list, delete index within bounds of workout book and workout list -> deleted */
         showWorkoutsWithName(KEYWORD_MATCHING_MEIER);
-        Index index = INDEX_FIRST_PERSON;
+        Index index = INDEX_FIRST_WORKOUT;
         assertTrue(index.getZeroBased() < getModel().getFilteredWorkoutList().size());
         assertCommandSuccess(index);
 
@@ -74,7 +74,7 @@ public class DeleteCommandSystemTest extends WorkoutBookSystemTest {
 
         /* --------------------- Performing delete operation while a workout card is selected ------------------------ */
 
-        /* Case: delete the selected person -> person list panel selects the person before the deleted person */
+        /* Case: delete the selected workout -> workout list panel selects the workout before the deleted workout */
         showAllWorkouts();
         expectedModel = getModel();
         Index selectedIndex = getLastIndex(expectedModel);
@@ -112,8 +112,8 @@ public class DeleteCommandSystemTest extends WorkoutBookSystemTest {
     }
 
     /**
-     * Removes the {@code Person} at the specified {@code index} in {@code model}'s address book.
-     * @return the removed person
+     * Removes the {@code Workout} at the specified {@code index} in {@code model}'s address book.
+     * @return the removed workout
      */
     private Workout removeWorkout(Model model, Index index) {
         Workout targetWorkout = getWorkout(model, index);
@@ -122,14 +122,14 @@ public class DeleteCommandSystemTest extends WorkoutBookSystemTest {
     }
 
     /**
-     * Deletes the person at {@code toDelete} by creating a default {@code DeleteCommand} using {@code toDelete} and
+     * Deletes the workout at {@code toDelete} by creating a default {@code DeleteCommand} using {@code toDelete} and
      * performs the same verification as {@code assertCommandSuccess(String, Model, String)}.
      * @see DeleteCommandSystemTest#assertCommandSuccess(String, Model, String)
      */
     private void assertCommandSuccess(Index toDelete) {
         Model expectedModel = getModel();
-        Workout deletedPerson = removeWorkout(expectedModel, toDelete);
-        String expectedResultMessage = String.format(MESSAGE_DELETE_WORKOUT_SUCCESS, deletedPerson);
+        Workout deletedWorkout = removeWorkout(expectedModel, toDelete);
+        String expectedResultMessage = String.format(MESSAGE_DELETE_WORKOUT_SUCCESS, deletedWorkout);
 
         assertCommandSuccess(
                 DeleteCommand.COMMAND_WORD + " " + toDelete.getOneBased(), expectedModel, expectedResultMessage);
@@ -178,7 +178,7 @@ public class DeleteCommandSystemTest extends WorkoutBookSystemTest {
      * 3. Asserts that the browser url, selected card and status bar remain unchanged.<br>
      * 4. Asserts that the command box has the error style.<br>
      * Verifications 1 and 2 are performed by
-     * {@code AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
+     * {@code WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
      * @see WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
      */
     private void assertCommandFailure(String command, String expectedResultMessage) {
