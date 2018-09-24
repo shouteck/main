@@ -14,7 +14,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.model.workout.NameContainsKeywordsPredicate;
-import seedu.address.testutil.WorkoutBookBuilder;
+import seedu.address.testutil.AddressBookBuilder;
 
 public class ModelManagerTest {
     @Rule
@@ -29,12 +29,12 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void hasWorkout_WorkoutNotInWorkoutBook_returnsFalse() {
+    public void hasWorkout_workoutNotInWorkoutBook_returnsFalse() {
         assertFalse(modelManager.hasWorkout(ALICE_WORKOUT));
     }
 
     @Test
-    public void hasWorkout_WorkoutInWorkoutBook_returnsTrue() {
+    public void hasWorkout_workoutInWorkoutBook_returnsTrue() {
         modelManager.addWorkout(ALICE_WORKOUT);
         assertTrue(modelManager.hasWorkout(ALICE_WORKOUT));
     }
