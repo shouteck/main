@@ -14,11 +14,11 @@ import seedu.address.model.workout.*;
 import seedu.address.model.tag.Tag;
 
 /**
- * JAXB-friendly version of the Person.
+ * JAXB-friendly version of the Workout.
  */
-public class XmlAdaptedPerson {
+public class XmlAdaptedWorkout {
 
-    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
+    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Workout's %s field is missing!";
 
     @XmlElement(required = true)
     private String name;
@@ -40,17 +40,17 @@ public class XmlAdaptedPerson {
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
 
     /**
-     * Constructs an XmlAdaptedPerson.
+     * Constructs an XmlAdaptedWorkout.
      * This is the no-arg constructor that is required by JAXB.
      */
-    public XmlAdaptedPerson() {}
+    public XmlAdaptedWorkout() {}
 
     /**
-     * Constructs an {@code XmlAdaptedPerson} with the given person details.
+     * Constructs an {@code XmlAdaptedWorkout} with the given workout details.
      */
-    public XmlAdaptedPerson(String name, String type, String duration, String difficulty,
-                            String equipment, String muscle, String calories,
-                            String instruction, List<XmlAdaptedTag> tagged) {
+    public XmlAdaptedWorkout(String name, String type, String duration, String difficulty,
+                             String equipment, String muscle, String calories,
+                             String instruction, List<XmlAdaptedTag> tagged) {
         this.name = name;
         this.type = type;
         this.duration = duration;
@@ -65,11 +65,11 @@ public class XmlAdaptedPerson {
     }
 
     /**
-     * Converts a given Person into this class for JAXB use.
+     * Converts a given Workout into this class for JAXB use.
      *
-     * @param source future changes to this will not affect the created XmlAdaptedPerson
+     * @param source future changes to this will not affect the created XmlAdaptedWorkout
      */
-    public XmlAdaptedPerson(Person source) {
+    public XmlAdaptedWorkout(Workout source) {
         name = source.getName().fullName;
         type = source.getType().fullType;
         duration = source.getDuration().fullDuration;
@@ -84,14 +84,14 @@ public class XmlAdaptedPerson {
     }
 
     /**
-     * Converts this jaxb-friendly adapted person object into the model's Person object.
+     * Converts this jaxb-friendly adapted workout object into the model's Workout object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted person
+     * @throws IllegalValueException if there were any data constraints violated in the adapted Workout
      */
-    public Person toModelType() throws IllegalValueException {
-        final List<Tag> personTags = new ArrayList<>();
+    public Workout toModelType() throws IllegalValueException {
+        final List<Tag> workoutTags = new ArrayList<>();
         for (XmlAdaptedTag tag : tagged) {
-            personTags.add(tag.toModelType());
+            workoutTags.add(tag.toModelType());
         }
 
         if (name == null) {
@@ -157,8 +157,8 @@ public class XmlAdaptedPerson {
             throw new IllegalValueException(Instruction.MESSAGE_INSTRUCTION_CONSTRAINTS);
         }
         final Instruction modelInstruction = new Instruction(instruction);
-        final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelType, modelDuration, modelDifficulty, modelEquipment,
+        final Set<Tag> modelTags = new HashSet<>(workoutTags);
+        return new Workout(modelName, modelType, modelDuration, modelDifficulty, modelEquipment,
                 modelMuscle, modelCalories, modelInstruction, modelTags);
     }
 
@@ -168,19 +168,19 @@ public class XmlAdaptedPerson {
             return true;
         }
 
-        if (!(other instanceof XmlAdaptedPerson)) {
+        if (!(other instanceof XmlAdaptedWorkout)) {
             return false;
         }
 
-        XmlAdaptedPerson otherPerson = (XmlAdaptedPerson) other;
-        return Objects.equals(name, otherPerson.name)
-                && Objects.equals(type, otherPerson.type)
-                && Objects.equals(duration, otherPerson.duration)
-                && Objects.equals(difficulty, otherPerson.difficulty)
-                && Objects.equals(equipment, otherPerson.equipment)
-                && Objects.equals(muscle, otherPerson.muscle)
-                && Objects.equals(calories, otherPerson.calories)
-                && Objects.equals(instruction, otherPerson.instruction)
-                && tagged.equals(otherPerson.tagged);
+        XmlAdaptedWorkout otherWorkout = (XmlAdaptedWorkout) other;
+        return Objects.equals(name, otherWorkout.name)
+                && Objects.equals(type, otherWorkout.type)
+                && Objects.equals(duration, otherWorkout.duration)
+                && Objects.equals(difficulty, otherWorkout.difficulty)
+                && Objects.equals(equipment, otherWorkout.equipment)
+                && Objects.equals(muscle, otherWorkout.muscle)
+                && Objects.equals(calories, otherWorkout.calories)
+                && Objects.equals(instruction, otherWorkout.instruction)
+                && tagged.equals(otherWorkout.tagged);
     }
 }

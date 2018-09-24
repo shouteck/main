@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.WorkoutBook;
+import seedu.address.model.ReadOnlyWorkoutBook;
 import seedu.address.model.workout.*;
 import seedu.address.model.tag.Tag;
 
@@ -13,9 +13,9 @@ import seedu.address.model.tag.Tag;
  * Contains utility methods for populating {@code AddressBook} with sample data.
  */
 public class SampleDataUtil {
-    public static Person[] getSamplePersons() {
-        return new Person[] {
-            new Person(new Name("alex yeoh's workout"), new Type("strength"), new Duration("20m"),
+    public static Workout[] getSampleWorkouts() {
+        return new Workout[] {
+            new Workout(new Name("alex yeoh's workout"), new Type("strength"), new Duration("20m"),
                  new Difficulty("beginner"), new Equipment("dumbbell"), new Muscle("tricep"),
                  new Calories("150"), new Instruction("set1: tricep extension reps: 4-6"),
                  getTagSet("heavy", "morning"))
@@ -42,10 +42,10 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
-        AddressBook sampleAb = new AddressBook();
-        for (Person samplePerson : getSamplePersons()) {
-            sampleAb.addPerson(samplePerson);
+    public static ReadOnlyWorkoutBook getSampleWorkoutBook() {
+        WorkoutBook sampleAb = new WorkoutBook();
+        for (Workout samplePerson : getSampleWorkouts()) {
+            sampleAb.addWorkout(samplePerson);
         }
         return sampleAb;
     }
