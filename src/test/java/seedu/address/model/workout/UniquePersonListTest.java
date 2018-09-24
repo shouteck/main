@@ -147,38 +147,38 @@ public class UniqueWorkoutListTest {
     @Test
     public void setWrokouts_uniqueWorkoutList_replacesOwnListWithProvidedUniqueWorkoutList() {
         uniqueWorkoutList.add(ALICE);
-        UniquePersonList expectedUniquePersonList = new UniquePersonList();
-        expectedUniquePersonList.add(BOB);
-        uniquePersonList.setPersons(expectedUniquePersonList);
-        assertEquals(expectedUniquePersonList, uniquePersonList);
+        UniqueWorkoutList expectedUniqueWorkoutList = new UniqueWorkoutList();
+        expectedUniqueWorkoutList.add(BOB);
+        uniqueWorkoutList.setWorkouts(expectedUniqueWorkoutList);
+        assertEquals(expectedUniqueWorkoutList, uniqueWorkoutList);
     }
 
     @Test
-    public void setPersons_nullList_throwsNullPointerException() {
+    public void setWorkouts_nullList_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
-        uniquePersonList.setPersons((List<Person>) null);
+        uniqueWorkoutList.setWorkouts((List<Workout>) null);
     }
 
     @Test
-    public void setPersons_list_replacesOwnListWithProvidedList() {
-        uniquePersonList.add(ALICE);
-        List<Person> personList = Collections.singletonList(BOB);
-        uniquePersonList.setPersons(personList);
-        UniquePersonList expectedUniquePersonList = new UniquePersonList();
-        expectedUniquePersonList.add(BOB);
-        assertEquals(expectedUniquePersonList, uniquePersonList);
+    public void setWorkouts_list_replacesOwnListWithProvidedList() {
+        uniqueWorkoutList.add(ALICE);
+        List<Workout> workoutList = Collections.singletonList(BOB);
+        uniqueWorkoutList.setWorkouts(workoutList);
+        UniqueWorkoutList expectedUniqueWorkoutList = new UniqueWorkoutList();
+        expectedUniqueWorkoutList.add(BOB);
+        assertEquals(expectedUniqueWorkoutList, uniqueWorkoutList);
     }
 
     @Test
-    public void setPersons_listWithDuplicatePersons_throwsDuplicatePersonException() {
-        List<Person> listWithDuplicatePersons = Arrays.asList(ALICE, ALICE);
-        thrown.expect(DuplicatePersonException.class);
-        uniquePersonList.setPersons(listWithDuplicatePersons);
+    public void setWorkouts_listWithDuplicateWorkouts_throwsDuplicateWorkoutException() {
+        List<Workout> listWithDuplicateWorkouts = Arrays.asList(ALICE, ALICE);
+        thrown.expect(DuplicateWorkoutException.class);
+        uniqueWorkoutList.setWorkouts(listWithDuplicateWorkouts);
     }
 
     @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
         thrown.expect(UnsupportedOperationException.class);
-        uniquePersonList.asUnmodifiableObservableList().remove(0);
+        uniqueWorkoutList.asUnmodifiableObservableList().remove(0);
     }
 }
