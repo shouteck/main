@@ -154,14 +154,6 @@ public class WorkoutBuilder {
     }
 
 
-    /**
-     * Sets the {@code Email} of the {@code Person} that we are building.
-     */
-
-    public WorkoutBuilder withEmail(String difficulty) {
-        this.difficulty = new Difficulty(difficulty);
-        return this;
-    }
 
 
 
