@@ -38,7 +38,6 @@ public class WorkoutBuilder {
     private Muscle muscle;
     private Calories calories;
     private Instruction instruction;
-    private Set<Workout> workouts;
     private Set<Tag> tags;
 
 
@@ -52,7 +51,6 @@ public class WorkoutBuilder {
         muscle = new Muscle(DEFAULT_MUSCLE);
         calories = new Calories(DEFAULT_CALORIES);
         instruction = new Instruction(DEFAULT_INSTRUCTION);
-        workouts = new HashSet<>();
         tags = new HashSet<>();
     }
 
