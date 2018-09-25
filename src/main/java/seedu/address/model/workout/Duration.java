@@ -10,13 +10,13 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Duration {
 
     public static final String MESSAGE_DURATION_CONSTRAINTS =
-            "Duration should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Duration can only be in this format: 80m, 15m, 25m, up to 999m";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String DURATION_VALIDATION_REGEX = ".*";
+    public static final String DURATION_VALIDATION_REGEX = "\\d{1,3}[m]";
 
     public final String fullDuration;
 
