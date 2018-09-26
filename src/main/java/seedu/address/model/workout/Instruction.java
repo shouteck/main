@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Workout's Instruction in the address book.
+ * Represents a Workout's Instruction in the workout book.
  * Guarantees: immutable; is valid as declared in {@link #isValidInstruction(String)}
  */
 public class Instruction {
@@ -32,7 +32,7 @@ public class Instruction {
     }
 
     /**
-     * Returns true if a given string is a valid name.
+     * Returns true if a given string is a valid instruction.
      */
     public static boolean isValidInstruction(String test) { return test.matches(INSTRUCTION_VALIDATION_REGEX); }
 

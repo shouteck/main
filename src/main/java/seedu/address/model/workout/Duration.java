@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Workout's Duration in the address book.
+ * Represents a Workout's Duration in the workout book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDuration(String)}
  */
 public class Duration {
@@ -32,7 +32,7 @@ public class Duration {
     }
 
     /**
-     * Returns true if a given string is a valid name.
+     * Returns true if a given string is a valid duration.
      */
     public static boolean isValidDuration(String test) {
         return test.matches(DURATION_VALIDATION_REGEX);

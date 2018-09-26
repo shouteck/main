@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Workout's Muscle in the address book.
+ * Represents a Workout's Muscle in the workout book.
  * Guarantees: immutable; is valid as declared in {@link #isValidMuscle(String)}
  */
 public class Muscle {
@@ -32,7 +32,7 @@ public class Muscle {
     }
 
     /**
-     * Returns true if a given string is a valid name.
+     * Returns true if a given string is a valid muscle.
      */
     public static boolean isValidMuscle(String test) {
         return test.matches(MUSCLE_VALIDATION_REGEX);

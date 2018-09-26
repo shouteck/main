@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Workout's Type in the address book.
+ * Represents a Workout's Type in the workout book.
  * Guarantees: immutable; is valid as declared in {@link #isValidType(String)}
  */
 public class Type {
@@ -32,7 +32,7 @@ public class Type {
     }
 
     /**
-     * Returns true if a given string is a valid name.
+     * Returns true if a given string is a valid type.
      */
     public static boolean isValidType(String test) {
         return test.matches(TYPE_VALIDATION_REGEX);

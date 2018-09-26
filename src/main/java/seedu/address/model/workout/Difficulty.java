@@ -4,19 +4,19 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Workout's Difficulty in the address book.
+ * Represents a Workout's Difficulty in the workout book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDifficulty(String)}
  */
 public class Difficulty {
 
     public static final String MESSAGE_DIFFICULTY_CONSTRAINTS =
-            "Difficulty should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Difficulty should only be either beginner, intermediate or advanced";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String DIFFICULTY_VALIDATION_REGEX = ".*";
+    public static final String DIFFICULTY_VALIDATION_REGEX = "(beginner)|(intermediate)|(advanced)";
 
     public final String fullDifficulty;
 
@@ -32,7 +32,7 @@ public class Difficulty {
     }
 
     /**
-     * Returns true if a given string is a valid name.
+     * Returns true if a given string is a valid difficulty.
      */
     public static boolean isValidDifficulty(String test) {
         return test.matches(DIFFICULTY_VALIDATION_REGEX);
