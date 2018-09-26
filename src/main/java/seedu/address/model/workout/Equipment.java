@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Workout's Equipment in the address book.
+ * Represents a Workout's Equipment in the workout book.
  * Guarantees: immutable; is valid as declared in {@link #isValidEquipment(String)}
  */
 public class Equipment {
@@ -32,7 +32,7 @@ public class Equipment {
     }
 
     /**
-     * Returns true if a given string is a valid name.
+     * Returns true if a given string is a valid equipment.
      */
     public static boolean isValidEquipment(String test) {
         return test.matches(EQUIPMENT_VALIDATION_REGEX);

@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Workout's Calories in the address book.
+ * Represents a Workout's Calories in the workout book.
  * Guarantees: immutable; is valid as declared in {@link #isValidCalories(String)}
  */
 public class Calories {
@@ -23,7 +23,7 @@ public class Calories {
     /**
      * Constructs a {@code Calories}.
      *
-     * @param calories A valid calories.
+     * @param calories A valid calories value.
      */
     public Calories(String calories) {
         requireNonNull(calories);
@@ -32,7 +32,7 @@ public class Calories {
     }
 
     /**
-     * Returns true if a given string is a valid name.
+     * Returns true if a given string is a valid calories value.
      */
     public static boolean isValidCalories(String test) { return test.matches(CALORIES_VALIDATION_REGEX); }
 

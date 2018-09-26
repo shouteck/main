@@ -36,15 +36,17 @@ public class XmlUtilTest {
 
 //    private static final String INVALID_PHONE = "9482asf424";
 
-    private static final String VALID_NAME = "hans muster's workout";
+    private static final String VALID_NAME = "Hans Muster's workout";
     private static final String VALID_TYPE = "strength";
     private static final String VALID_DURATION = "20m";
     private static final String VALID_DIFFICULTY = "beginner";
     private static final String VALID_EQUIPMENT = "dumbbell";
     private static final String VALID_MUSCLE = "bicep";
-    private static final String VALID_CALORIES = "150";
-    private static final String VALID_INSTRUCTION = "set1: bicep curl reps: 4-6";
-    private static final List<XmlAdaptedTag> VALID_TAGS = Collections.singletonList(new XmlAdaptedTag("friends"));
+    private static final String VALID_CALORIES = "123";
+    private static final String VALID_INSTRUCTION = "set1: hammer curl reps: 4-6";
+    private static final List<XmlAdaptedTag> VALID_TAGS = Collections.singletonList(new XmlAdaptedTag("heavy"));
+
+    private static final String INVALID_CALORIES = "123abc";
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -95,8 +97,8 @@ public class XmlUtilTest {
         XmlAdaptedWorkout actualWorkout = XmlUtil.getDataFromFile(
                 INVALID_WORKOUT_FIELD_FILE, XmlAdaptedWorkoutWithRootElement.class);
         XmlAdaptedWorkout expectedWorkout = new XmlAdaptedWorkout(
-                null, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY, VALID_EQUIPMENT, VALID_MUSCLE,
-                VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
+                VALID_NAME, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY, VALID_EQUIPMENT, VALID_MUSCLE,
+                INVALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
         assertEquals(expectedWorkout, actualWorkout);
     }
 

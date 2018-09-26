@@ -24,7 +24,7 @@ public class WorkoutBuilder {
     public static final String DEFAULT_NAME = "commando";
     public static final String DEFAULT_TYPE = "strength, cardio";
     public static final String DEFAULT_DURATION = "20m";
-    public static final String DEFAULT_DIFFICULTY = "Advanced";
+    public static final String DEFAULT_DIFFICULTY = "advanced";
     public static final String DEFAULT_EQUIPMENT = "dumbbell";
     public static final String DEFAULT_MUSCLE = "bicep, tricep";
     public static final String DEFAULT_CALORIES = "150";
