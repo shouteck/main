@@ -40,8 +40,8 @@ public class WorkoutBook implements ReadOnlyWorkoutBook {
     //// list overwrite operations
 
     /**
-     * Replaces the contents of the Workout list with {@code Workouts}.
-     * {@code Workouts} must not contain duplicate workouts.
+     * Replaces the contents of the Workout list with {@code workouts}.
+     * {@code workouts} must not contain duplicate workouts.
      */
     public void setWorkouts(List<Workout> workouts) {
         this.workouts.setWorkouts(workouts);
