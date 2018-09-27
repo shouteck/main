@@ -46,7 +46,7 @@ public class XmlUtilTest {
     private static final String VALID_INSTRUCTION = "set1: hammer curl reps: 4-6";
     private static final List<XmlAdaptedTag> VALID_TAGS = Collections.singletonList(new XmlAdaptedTag("heavy"));
 
-    private static final String INVALID_CALORIES = "123abc";
+    private static final String INVALID_CALORIES = "123 calories";
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();

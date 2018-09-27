@@ -22,14 +22,14 @@ import seedu.address.model.workout.Instruction;
 import seedu.address.testutil.Assert;
 
 public class XmlAdaptedWorkoutTest {
-    private static final String INVALID_NAME = "R@chel";
-    private static final String INVALID_TYPE = "+651234";
-    private static final String INVALID_DURATION = "22h";
-    private static final String INVALID_DIFFICULTY = "bob";
-    private static final String INVALID_EQUIPMENT = "easy";
-    private static final String INVALID_MUSCLE = "bench";
-    private static final String INVALID_CALORIES = "132D";
-    private static final String INVALID_INSTRUCTION = "24123";
+    private static final String INVALID_NAME = "James's workout&";
+    private static final String INVALID_TYPE = "strength + cardio";
+    private static final String INVALID_DURATION = "5 minutes";
+    private static final String INVALID_DIFFICULTY = "difficult";
+    private static final String INVALID_EQUIPMENT = "dumbbell + mat";
+    private static final String INVALID_MUSCLE = "bicep + tricep";
+    private static final String INVALID_CALORIES = "123 calories";
+    //no invalid instructions
     private static final String INVALID_TAG = "#friend";
 
     private static final String VALID_NAME = BENSON_WORKOUT.getName().toString();
@@ -163,13 +163,7 @@ public class XmlAdaptedWorkoutTest {
         Assert.assertThrows(IllegalValueException.class, expectedMessage, workout::toModelType);
     }
 
-    @Test
-    public void toModelType_invalidInstruction_throwsIllegalValueException() {
-        XmlAdaptedWorkout workout = new XmlAdaptedWorkout(VALID_NAME, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY,
-                VALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, INVALID_INSTRUCTION, VALID_TAGS);
-        String expectedMessage = Instruction.MESSAGE_INSTRUCTION_CONSTRAINTS;
-        Assert.assertThrows(IllegalValueException.class, expectedMessage, workout::toModelType);
-    }
+    //no invalid instruction
 
     @Test
     public void toModelType_nullInstruction_throwsIllegalValueException() {
