@@ -10,13 +10,13 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Muscle {
 
     public static final String MESSAGE_MUSCLE_CONSTRAINTS =
-            "Muscle should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Muscle should only contain names separated by commas, and it should not be blank";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String MUSCLE_VALIDATION_REGEX = ".*";
+    public static final String MUSCLE_VALIDATION_REGEX = "[\\p{Alnum}|, ][\\p{Alnum}|, ]*";
 
     public final String fullMuscle;
 

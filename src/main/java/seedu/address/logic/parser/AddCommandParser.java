@@ -35,7 +35,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                         PREFIX_EQUIPMENT, PREFIX_MUSCLE, PREFIX_CALORIES, PREFIX_INSTRUCTION, PREFIX_TAG);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TYPE, PREFIX_DURATION, PREFIX_DIFFICULTY,
-                        PREFIX_EQUIPMENT, PREFIX_MUSCLE, PREFIX_INSTRUCTION)
+                        PREFIX_EQUIPMENT, PREFIX_MUSCLE, PREFIX_CALORIES, PREFIX_INSTRUCTION)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
@@ -50,7 +50,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         Instruction instruction = ParserUtil.parseInstruction(argMultimap.getValue(PREFIX_INSTRUCTION).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Workout workout = new Workout(name, type, duration, difficulty, equipment, muscle, calories, instruction, tagList);
+        Workout workout = new Workout(name, type, duration, difficulty, equipment, muscle, calories, instruction,
+                tagList);
 
         return new AddCommand(workout);
     }
