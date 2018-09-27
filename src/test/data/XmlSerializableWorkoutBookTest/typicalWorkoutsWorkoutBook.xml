@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!-- workoutBook save file which contains the same porkout values as in TypicalWorkouts#getTypicalWorkoutBook() -->
+<!-- WorkoutBook save file which contains the same Workout values as in TypicalWorkouts#getTypicalWorkoutBook() -->
 <workoutbook>
     <workouts>
 		<name>Alice Pauline's workout</name>
-        <type>strength</type>
-        <duration>45m</duration>
+        <type>balance</type>
+        <duration>5m</duration>
         <difficulty>advanced</difficulty>
 		<equipment>NIL</equipment>
-		<muscle>quadriceps</muscle>
-		<calories>200</calories>
-		<instruction>set1: squats reps: 15-20</instruction>
-        <tagged>intense</tagged>
+		<muscle>thigh</muscle>
+		<calories>20</calories>
+		<instruction>Walk heel to toe for 50 steps</instruction>
+        <tagged>relax</tagged>
     </workouts>
     <workouts>
 		<name>Benson Meier's workout</name>
@@ -69,7 +69,7 @@
         <duration>30m</duration>
         <difficulty>intermediate</difficulty>
 		<equipment>free weights</equipment>
-		<muscle>cheset</muscle>
+		<muscle>chest</muscle>
 		<calories>175</calories>
 		<instruction>6 sets of bench press, 6 reps per set of 70% max</instruction>
     </workouts>
