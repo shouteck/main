@@ -43,11 +43,11 @@ public class WorkoutTest {
         assertFalse(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
 
         // different name and duration -> returns false
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT).withDuration(VALID_TYPE_BOB_WORKOUT).build();
+        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT).build();
         assertFalse(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
 
         // different name and muscle -> returns false
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT).withMuscle(VALID_TYPE_BOB_WORKOUT).build();
+        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT).build();
         assertFalse(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
 
         // different attributes -> returns true
