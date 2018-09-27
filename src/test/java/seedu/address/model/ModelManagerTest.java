@@ -2,6 +2,8 @@ package seedu.address.model;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import java.lang.*;
+
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_WORKOUTS;
 import static seedu.address.testutil.TypicalWorkouts.ALICE_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.BENSON_WORKOUT;
@@ -69,7 +71,7 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(new ModelManager(differentWorkoutBook, userPrefs)));
 
         // different filteredList -> returns false
-        String[] keywords = ALICE_WORKOUT.getName().fullName.split("\\s+");
+        String[] keywords = ALICE_WORKOUT.getName().fullName.replace("workout","").split("\\s+");
         modelManager.updateFilteredWorkoutList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelManager(workoutBook, userPrefs)));
 
