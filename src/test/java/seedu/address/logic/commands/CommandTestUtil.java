@@ -62,6 +62,18 @@ public class CommandTestUtil {
     public static final String TAG_DESC_NIGHT = " " + PREFIX_TAG + VALID_TAG_NIGHT;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James's workout&"; // '&' not allowed in names
+    public static final String INVALID_TYPE_DESC = " " + PREFIX_TYPE + "strength + cardio"; // '+' not allowed in types
+    public static final String INVALID_DURATION_DESC = " " + PREFIX_DURATION + "5 minutes";
+                                // Duration must be in the form of [1-3 digits]m
+    public static final String INVALID_DIFFICULTY_DESC = " " + PREFIX_DIFFICULTY + "difficult";
+                                // Difficulty should only be either "beginner", "intermediate", or "advanced"
+    public static final String INVALID_EQUIPMENT_DESC = " " + PREFIX_EQUIPMENT + "dumbbell + mat";
+                                // '+' not allowed in equipments
+    public static final String INVALID_MUSCLE_DESC = " " + PREFIX_MUSCLE + "bicep + tricep";
+                                // '+' not allowed in muscles
+    public static final String INVALID_CALORIES_DESC = " " + PREFIX_CALORIES + "123 calories";
+                                // calories should be a positive number only
+    //no invalid instructions
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "morning*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";

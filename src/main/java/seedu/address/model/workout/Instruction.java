@@ -10,13 +10,14 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Instruction {
 
     public static final String MESSAGE_INSTRUCTION_CONSTRAINTS =
-            "Instruction should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Instruction should only contain alphanumeric characters , punctuation, and spaces,"
+            + "and it should not be blank";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String INSTRUCTION_VALIDATION_REGEX = "[\\p{Alnum}|\\p{Punct}|\\s]*";
+    public static final String INSTRUCTION_VALIDATION_REGEX = "[\\p{Alnum}|\\p{Punct}][\\p{Alnum} |\\p{Punct} ]*";
 
     public final String fullInstruction;
 
