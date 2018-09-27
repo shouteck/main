@@ -34,10 +34,10 @@ import seedu.address.model.workout.Workout;
 public class TypicalWorkouts {
 
     public static final Workout ALICE_WORKOUT = new WorkoutBuilder().withName("Alice Pauline's workout")
-            .withType("strength").withDuration("45m")
+            .withType("balance").withDuration("5m")
             .withDifficulty("advanced").withEquipment("NIL")
-            .withMuscle("quadriceps").withCalories("200")
-            .withInstruction("set1: squats reps: 15-20").withTags("intense").build();
+            .withMuscle("thigh").withCalories("20")
+            .withInstruction("Walk heel to toe for 50 steps").withTags("relax").build();
     public static final Workout BENSON_WORKOUT = new WorkoutBuilder().withName("Benson Meier's workout")
             .withType("strength").withDuration("10m")
             .withDifficulty("intermediate").withEquipment("bar")

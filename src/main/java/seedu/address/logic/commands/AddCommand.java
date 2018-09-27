@@ -44,7 +44,7 @@ public class AddCommand extends Command {
             + PREFIX_CALORIES + "150 "
             + PREFIX_INSTRUCTION + "set1: bicep curl reps: 4-6 "
             + PREFIX_TAG + "heavy "
-            + PREFIX_TAG + "current favourite ";
+            + PREFIX_TAG + "favourite";
 
     public static final String MESSAGE_SUCCESS = "New workout added: %1$s";
     public static final String MESSAGE_DUPLICATE_WORKOUT = "This workout already exists in the workout book";

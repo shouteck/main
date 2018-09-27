@@ -84,7 +84,7 @@ public class Workout {
     }
 
     /**
-     * Returns true if both workouts of the same name have at least one other identity field that is the same.
+     * Returns true if both workouts have the same name or all the other fields are the same
      * This defines a weaker notion of equality between two workouts.
      */
     public boolean isSameWorkout(Workout otherWorkout) {
@@ -93,9 +93,11 @@ public class Workout {
         }
 
         return otherWorkout != null
-                && otherWorkout.getName().equals(getName())
-                && (otherWorkout.getType().equals(getType()) || otherWorkout.getDuration().equals(getDuration())
-                || otherWorkout.getDifficulty().equals(getDifficulty()));
+                && (otherWorkout.getName().equals(getName())
+                || (otherWorkout.getType().equals(getType()) && otherWorkout.getDuration().equals(getDuration())
+                && otherWorkout.getDifficulty().equals(getDifficulty()) && otherWorkout.getEquipment().equals(getEquipment())
+                && otherWorkout.getMuscle().equals(getMuscle()) && otherWorkout.getCalories().equals(getCalories())
+                && otherWorkout.getInstruction().equals(getInstruction())));
     }
 
     /**
