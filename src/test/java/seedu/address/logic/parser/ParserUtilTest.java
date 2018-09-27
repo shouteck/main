@@ -21,14 +21,14 @@ import seedu.address.model.tag.Tag;
 import seedu.address.testutil.Assert;
 
 public class ParserUtilTest {
-    private static final String INVALID_NAME = "R@chel";
-    private static final String INVALID_TYPE = "+651234";
-    private static final String INVALID_DURATION = "22h";
-    private static final String INVALID_DIFFICULTY = "bob";
-    private static final String INVALID_EQUIPMENT = "easy";
-    private static final String INVALID_MUSCLE = "bench";
-    private static final String INVALID_CALORIES = "132D";
-    private static final String INVALID_INSTRUCTION = "24123";
+    private static final String INVALID_NAME = "James's workout&";
+    private static final String INVALID_TYPE = "strength + cardio";
+    private static final String INVALID_DURATION = "5 minutes";
+    private static final String INVALID_DIFFICULTY = "difficult";
+    private static final String INVALID_EQUIPMENT = "dumbbell + mat";
+    private static final String INVALID_MUSCLE = "bicep + tricep";
+    private static final String INVALID_CALORIES = "123 calories";
+    //no invalid instructions
     private static final String INVALID_TAG = "#friend";
 
     private static final String VALID_NAME = "commando workout";
@@ -38,7 +38,7 @@ public class ParserUtilTest {
     private static final String VALID_EQUIPMENT = "bench";
     private static final String VALID_MUSCLE = "biceps";
     private static final String VALID_CALORIES = "150";
-    private static final String VALID_INSTRUCTION = "set 1: bicep curl reps: 4-6 set 2: tricep extension reps: 4-6 ";
+    private static final String VALID_INSTRUCTION = "set 1: bicep curl reps: 4-6 set 2: tricep extension reps: 4-6";
     private static final String VALID_TAG_1 = "crazy";
     private static final String VALID_TAG_2 = "fun";
 
@@ -70,7 +70,7 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseName_null_throwsNullPointerException() {
+    public void paxrseName_null_throwsNullPointerEception() {
         Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseName((String) null));
     }
 
@@ -233,11 +233,6 @@ public class ParserUtilTest {
     @Test
     public void parseInstruction_null_throwsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseInstruction((String) null));
-    }
-
-    @Test
-    public void parseInstruction_invalidValue_throwsParseException() {
-        Assert.assertThrows(ParseException.class, () -> ParserUtil.parseInstruction(INVALID_INSTRUCTION));
     }
 
     @Test
