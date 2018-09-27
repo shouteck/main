@@ -88,7 +88,7 @@ public class WorkoutBuilder {
 
 
     /**
-     * Sets the {@code Address} of the {@code Person} that we are building.
+     * Sets the {@code Type} of the {@code Workout} that we are building.
      */
 
     public WorkoutBuilder withType(String type) {
@@ -97,7 +97,7 @@ public class WorkoutBuilder {
     }
 
     /**
-     * Sets the {@code Phone} of the {@code Person} that we are building.
+     * Sets the {@code Duration} of the {@code Workout} that we are building.
      */
 
     public WorkoutBuilder withDuration(String duration) {
@@ -107,7 +107,7 @@ public class WorkoutBuilder {
 
 
     /**
-     * Sets the {@code Email} of the {@code Person} that we are building.
+     * Sets the {@code Difficulty} of the {@code Workout} that we are building.
      */
 
     public WorkoutBuilder withDifficulty(String difficulty) {
@@ -116,7 +116,7 @@ public class WorkoutBuilder {
     }
 
     /**
-     * Sets the {@code Email} of the {@code Person} that we are building.
+     * Sets the {@code Equipment} of the {@code Workout} that we are building.
      */
 
     public WorkoutBuilder withEquipment(String equipment) {
@@ -125,7 +125,7 @@ public class WorkoutBuilder {
     }
 
     /**
-     * Sets the {@code Email} of the {@code Person} that we are building.
+     * Sets the {@code Muscle} of the {@code Workout} that we are building.
      */
 
     public WorkoutBuilder withMuscle(String muscle) {
@@ -134,7 +134,7 @@ public class WorkoutBuilder {
     }
 
     /**
-     * Sets the {@code Email} of the {@code Person} that we are building.
+     * Sets the {@code Calories} of the {@code Workout} that we are building.
      */
 
     public WorkoutBuilder withCalories(String calories) {
@@ -143,7 +143,7 @@ public class WorkoutBuilder {
     }
 
     /**
-     * Sets the {@code Email} of the {@code Person} that we are building.
+     * Sets the {@code Instruction} of the {@code Workout} that we are building.
      */
 
     public WorkoutBuilder withInstruction(String instruction) {
