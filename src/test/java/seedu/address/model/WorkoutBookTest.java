@@ -82,7 +82,7 @@ public class WorkoutBookTest {
         workoutBook.addWorkout(ALICE_WORKOUT);
         Workout editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT).withTags(VALID_TAG_NIGHT)
                 .build();
-        assertTrue(workoutBook.hasWorkout(ALICE_WORKOUT));
+        assertTrue(workoutBook.hasWorkout(editedAlice_Workout));
     }
 
     @Test

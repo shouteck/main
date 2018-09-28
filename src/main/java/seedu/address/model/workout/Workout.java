@@ -17,10 +17,10 @@ public class Workout {
 
     // Identity fields
     private final Name name;
-    private final Type type;
-    private final Difficulty difficulty;
 
     // Data fields
+    private final Type type;
+    private final Difficulty difficulty;
     private final Duration duration;
     private final Equipment equipment;
     private final Muscle muscle;
@@ -93,7 +93,7 @@ public class Workout {
         }
 
         return otherWorkout != null
-                && (otherWorkout.getName().equals(getName())
+                && ((otherWorkout.getName().equals(getName()))
                 || (otherWorkout.getType().equals(getType()) && otherWorkout.getDuration().equals(getDuration())
                 && otherWorkout.getDifficulty().equals(getDifficulty()) && otherWorkout.getEquipment().equals(getEquipment())
                 && otherWorkout.getMuscle().equals(getMuscle()) && otherWorkout.getCalories().equals(getCalories())
