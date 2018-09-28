@@ -16,6 +16,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ProfileCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
@@ -71,6 +72,9 @@ public class WorkoutBookParser {
 
             case HistoryCommand.COMMAND_WORD:
                 return new HistoryCommand();
+
+            case ProfileCommand.COMMAND_WORD:
+                return new ProfileCommand();
 
             case ExitCommand.COMMAND_WORD:
                 return new ExitCommand();
