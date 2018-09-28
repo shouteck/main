@@ -44,8 +44,10 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
          * -> added
          */
         Workout toAdd = AMY_WORKOUT;
-        String command = "   " + AddCommand.COMMAND_WORD + "  " + NAME_DESC_AMY_WORKOUT + "  " + TYPE_DESC_AMY_WORKOUT + " "
-                + DURATION_DESC_AMY_WORKOUT + "   " + DIFFICULTY_DESC_AMY_WORKOUT + "   " + TAG_DESC_MORNING + " ";
+        String command = "   " + AddCommand.COMMAND_WORD + "  " + NAME_DESC_AMY_WORKOUT + "  " + TYPE_DESC_AMY_WORKOUT
+                + "   " + DURATION_DESC_AMY_WORKOUT + "   " + DIFFICULTY_DESC_AMY_WORKOUT + "   "
+                + EQUIPMENT_DESC_AMY_WORKOUT + "   " + MUSCLE_DESC_AMY_WORKOUT + "   " + CALORIES_DESC_AMY_WORKOUT
+                + "   " + INSTRUCTION_DESC_AMY_WORKOUT + "   " + TAG_DESC_MORNING + " ";
         assertCommandSuccess(command, toAdd);
 
         /* Case: undo adding Amy to the list -> Amy deleted */
@@ -59,30 +61,15 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
         expectedResultMessage = RedoCommand.MESSAGE_SUCCESS;
         assertCommandSuccess(command, model, expectedResultMessage);
 
-        /* Case: add a workout with all fields same as another workout in the workout book except name -> added */
-        toAdd = new WorkoutBuilder(AMY_WORKOUT).withName(VALID_NAME_BOB_WORKOUT).build();
-        command = AddCommand.COMMAND_WORD + NAME_DESC_BOB_WORKOUT + TYPE_DESC_AMY_WORKOUT + DURATION_DESC_AMY_WORKOUT + DIFFICULTY_DESC_AMY_WORKOUT
-                + EQUIPMENT_DESC_AMY_WORKOUT + MUSCLE_DESC_AMY_WORKOUT + CALORIES_DESC_AMY_WORKOUT
-                + INSTRUCTION_DESC_AMY_WORKOUT + TAG_DESC_MORNING;
-        assertCommandSuccess(command, toAdd);
-
-        /* Case: add a workout with all fields same as another workout in the workout book except type and duration
-         * -> added
-         */
-        toAdd = new WorkoutBuilder(AMY_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT).build();
-        command = WorkoutUtil.getAddCommand(toAdd);
-        assertCommandSuccess(command, toAdd);
-
         /* Case: add to empty workout book -> added */
         deleteAllWorkouts();
         assertCommandSuccess(ALICE_WORKOUT);
 
         /* Case: add a workout with tags, command with parameters in random order -> added */
         toAdd = BOB_WORKOUT;
-        command = AddCommand.COMMAND_WORD + TAG_DESC_NIGHT + INSTRUCTION_DESC_BOB_WORKOUT + CALORIES_DESC_BOB_WORKOUT + MUSCLE_DESC_BOB_WORKOUT
-                + EQUIPMENT_DESC_BOB_WORKOUT + DIFFICULTY_DESC_BOB_WORKOUT + DURATION_DESC_BOB_WORKOUT + TYPE_DESC_BOB_WORKOUT
-                + NAME_DESC_BOB_WORKOUT
-                + TAG_DESC_MORNING;
+        command = AddCommand.COMMAND_WORD + TAG_DESC_NIGHT + INSTRUCTION_DESC_BOB_WORKOUT + CALORIES_DESC_BOB_WORKOUT
+                + MUSCLE_DESC_BOB_WORKOUT + EQUIPMENT_DESC_BOB_WORKOUT + DIFFICULTY_DESC_BOB_WORKOUT
+                + DURATION_DESC_BOB_WORKOUT + TYPE_DESC_BOB_WORKOUT + NAME_DESC_BOB_WORKOUT;
         assertCommandSuccess(command, toAdd);
 
         /* Case: add a workout, missing tags -> added */
@@ -94,7 +81,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
         showWorkoutsWithName(KEYWORD_MATCHING_MEIER);
         assertCommandSuccess(IDA_WORKOUT);
 
-        /* ------------------------ Perform add operation while a workout card is selected --------------------------- */
+        /* ------------------------ Perform add operation while a workout card is selected -------------------------- */
 
         /* Case: selects first card in the workout list, add a workout -> added, card selection remains unchanged */
         selectWorkout(Index.fromOneBased(1));
@@ -104,6 +91,11 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
         /* Case: add a duplicate workout -> rejected */
         command = WorkoutUtil.getAddCommand(HOON_WORKOUT);
+        assertCommandFailure(command, AddCommand.MESSAGE_DUPLICATE_WORKOUT);
+
+        /* Case: add a duplicate workout with all fields same as another workout, except name -> rejected */
+        toAdd = new WorkoutBuilder(AMY_WORKOUT).withName(VALID_NAME_BOB_WORKOUT).build();
+        command = WorkoutUtil.getAddCommand(toAdd);
         assertCommandFailure(command, AddCommand.MESSAGE_DUPLICATE_WORKOUT);
 
         /* Case: add a duplicate workout except with different type -> rejected */
@@ -146,27 +138,27 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
         assertCommandFailure(command, AddCommand.MESSAGE_DUPLICATE_WORKOUT);
 
         /* Case: missing name -> rejected */
-        command = AddCommand.COMMAND_WORD + TYPE_DESC_AMY_WORKOUT + DURATION_DESC_AMY_WORKOUT + DIFFICULTY_DESC_AMY_WORKOUT
-                + EQUIPMENT_DESC_AMY_WORKOUT + MUSCLE_DESC_AMY_WORKOUT + CALORIES_DESC_AMY_WORKOUT
-                + INSTRUCTION_DESC_AMY_WORKOUT;
+        command = AddCommand.COMMAND_WORD + TYPE_DESC_AMY_WORKOUT + DURATION_DESC_AMY_WORKOUT
+                + DIFFICULTY_DESC_AMY_WORKOUT + EQUIPMENT_DESC_AMY_WORKOUT + MUSCLE_DESC_AMY_WORKOUT
+                + CALORIES_DESC_AMY_WORKOUT + INSTRUCTION_DESC_AMY_WORKOUT;
         assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
 
         /* Case: missing type -> rejected */
-        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY_WORKOUT + DURATION_DESC_AMY_WORKOUT + DIFFICULTY_DESC_AMY_WORKOUT
-                + EQUIPMENT_DESC_AMY_WORKOUT + MUSCLE_DESC_AMY_WORKOUT + CALORIES_DESC_AMY_WORKOUT
-                + INSTRUCTION_DESC_AMY_WORKOUT;
+        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY_WORKOUT + DURATION_DESC_AMY_WORKOUT
+                + DIFFICULTY_DESC_AMY_WORKOUT + EQUIPMENT_DESC_AMY_WORKOUT + MUSCLE_DESC_AMY_WORKOUT
+                + CALORIES_DESC_AMY_WORKOUT + INSTRUCTION_DESC_AMY_WORKOUT;
         assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
 
         /* Case: missing duration -> rejected */
-        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY_WORKOUT + TYPE_DESC_AMY_WORKOUT + DIFFICULTY_DESC_AMY_WORKOUT
-                + EQUIPMENT_DESC_AMY_WORKOUT + MUSCLE_DESC_AMY_WORKOUT + CALORIES_DESC_AMY_WORKOUT
-                + INSTRUCTION_DESC_AMY_WORKOUT;
+        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY_WORKOUT + TYPE_DESC_AMY_WORKOUT
+                + DIFFICULTY_DESC_AMY_WORKOUT + EQUIPMENT_DESC_AMY_WORKOUT + MUSCLE_DESC_AMY_WORKOUT
+                + CALORIES_DESC_AMY_WORKOUT + INSTRUCTION_DESC_AMY_WORKOUT;
         assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
 
         /* Case: missing difficulty -> rejected */
-        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY_WORKOUT + TYPE_DESC_AMY_WORKOUT + DURATION_DESC_AMY_WORKOUT
-                + EQUIPMENT_DESC_AMY_WORKOUT + MUSCLE_DESC_AMY_WORKOUT + CALORIES_DESC_AMY_WORKOUT
-                + INSTRUCTION_DESC_AMY_WORKOUT;
+        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY_WORKOUT + TYPE_DESC_AMY_WORKOUT
+                + DURATION_DESC_AMY_WORKOUT + EQUIPMENT_DESC_AMY_WORKOUT + MUSCLE_DESC_AMY_WORKOUT
+                + CALORIES_DESC_AMY_WORKOUT + INSTRUCTION_DESC_AMY_WORKOUT;
         assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
 
         /* Case: missing equipment -> rejected */
@@ -205,9 +197,8 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
         /* Case: invalid tag -> rejected */
         command = AddCommand.COMMAND_WORD + NAME_DESC_AMY_WORKOUT + TYPE_DESC_AMY_WORKOUT + DURATION_DESC_AMY_WORKOUT
-                + DIFFICULTY_DESC_AMY_WORKOUT + EQUIPMENT_DESC_AMY_WORKOUT + MUSCLE_DESC_AMY_WORKOUT + CALORIES_DESC_AMY_WORKOUT
-                + INSTRUCTION_DESC_AMY_WORKOUT
-                + INVALID_TAG_DESC;
+                + DIFFICULTY_DESC_AMY_WORKOUT + EQUIPMENT_DESC_AMY_WORKOUT + MUSCLE_DESC_AMY_WORKOUT
+                + CALORIES_DESC_AMY_WORKOUT + INSTRUCTION_DESC_AMY_WORKOUT + INVALID_TAG_DESC;
         assertCommandFailure(command, Tag.MESSAGE_TAG_CONSTRAINTS);
     }
 
