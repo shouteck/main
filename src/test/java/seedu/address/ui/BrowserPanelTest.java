@@ -40,7 +40,8 @@ public class BrowserPanelTest extends GuiUnitTest {
 
         // associated web page of a workout
         postNow(selectionChangedEventStub);
-        URL expectedWorkoutUrl = new URL(BrowserPanel.SEARCH_PAGE_URL + ALICE_WORKOUT.getName().fullName.replaceAll(" ", "%20"));
+        URL expectedWorkoutUrl = new URL(BrowserPanel.SEARCH_PAGE_URL + ALICE_WORKOUT.getName().fullName
+                .replaceAll(" ", "%20").replaceAll("'", "%27"));
 
         waitUntilBrowserLoaded(browserPanelHandle);
         assertEquals(expectedWorkoutUrl, browserPanelHandle.getLoadedUrl());
