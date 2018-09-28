@@ -34,14 +34,14 @@ public class GuiTestAssert {
      * Asserts that {@code actualCard} displays the details of {@code expectedWorkout}.
      */
     public static void assertCardDisplaysWorkout(Workout expectedWorkout, WorkoutCardHandle actualCard) {
-        assertEquals(expectedWorkout.getName(), actualCard.getName());
-        assertEquals(expectedWorkout.getType(), actualCard.getType());
-        assertEquals(expectedWorkout.getDuration(), actualCard.getDuration());
-        assertEquals(expectedWorkout.getDifficulty(), actualCard.getDifficulty());
-        assertEquals(expectedWorkout.getEquipment(), actualCard.getEquipment());
-        assertEquals(expectedWorkout.getMuscle(), actualCard.getMuscle());
-        assertEquals(expectedWorkout.getCalories(), actualCard.getCalories());
-        assertEquals(expectedWorkout.getInstruction(), actualCard.getInstruction());
+        assertEquals(expectedWorkout.getName().fullName, actualCard.getName());
+        assertEquals(expectedWorkout.getType().fullType, actualCard.getType());
+        assertEquals(expectedWorkout.getDuration().fullDuration, actualCard.getDuration());
+        assertEquals(expectedWorkout.getDifficulty().fullDifficulty, actualCard.getDifficulty());
+        assertEquals(expectedWorkout.getEquipment().fullEquipment, actualCard.getEquipment());
+        assertEquals(expectedWorkout.getMuscle().fullMuscle, actualCard.getMuscle());
+        assertEquals(expectedWorkout.getCalories().fullCalories, actualCard.getCalories());
+        assertEquals(expectedWorkout.getInstruction().fullInstruction, actualCard.getInstruction());
         assertEquals(expectedWorkout.getTags().stream().map(tag -> tag.tagName).collect(Collectors.toList()),
                 actualCard.getTags());
     }

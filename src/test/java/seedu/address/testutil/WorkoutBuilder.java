@@ -28,7 +28,7 @@ public class WorkoutBuilder {
     public static final String DEFAULT_EQUIPMENT = "dumbbell";
     public static final String DEFAULT_MUSCLE = "bicep, tricep";
     public static final String DEFAULT_CALORIES = "150";
-    public static final String DEFAULT_INSTRUCTION = "set 1: bicep curl reps:4-6 set 2: tricep extension reps:4-6 tag/heavy";
+    public static final String DEFAULT_INSTRUCTION = "set 1: bicep curl reps: 4-6 set 2: tricep extension reps: 4-6";
 
     private Name name;
     private Type type;

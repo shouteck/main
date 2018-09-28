@@ -96,9 +96,13 @@ public class WorkoutListPanelTest extends GuiUnitTest {
         for (int i = 0; i < workoutCount; i++) {
             builder.append("<workouts>\n");
             builder.append("<name>").append(i).append("a</name>\n");
-            builder.append("<phone>000</phone>\n");
-            builder.append("<email>a@aa</email>\n");
-            builder.append("<workout>a</workout>\n");
+            builder.append("<type>a</type>\n");
+            builder.append("<duration>1m</duration>\n");
+            builder.append("<difficulty>beginner</difficulty>\n");
+            builder.append("<equipment>a</equipment>\n");
+            builder.append("<muscle>a</muscle>\n");
+            builder.append("<calories>").append(i).append("</calories>\n");
+            builder.append("<instruction>a</instruction>\n");
             builder.append("</workouts>\n");
         }
         builder.append("</workoutbook>\n");
