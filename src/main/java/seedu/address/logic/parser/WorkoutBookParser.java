@@ -78,7 +78,7 @@ public class WorkoutBookParser {
                 return new ProfileCommand();
 
             case RecommendCommand.COMMAND_WORD:
-                return new RecommendCommand();
+                return new RecommendCommandParser().parse(arguments);
 
             case ExitCommand.COMMAND_WORD:
                 return new ExitCommand();

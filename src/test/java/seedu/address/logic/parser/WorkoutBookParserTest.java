@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RECOMMEND;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 
 import java.util.Arrays;
@@ -72,7 +73,10 @@ public class WorkoutBookParserTest {
 
     @Test
     public void parseCommand_recommend() throws Exception {
-        assertTrue(parser.parseCommand(RecommendCommand.COMMAND_WORD) instanceof RecommendCommand);
+        final String difficulty = "Some difficulty.";
+        RecommendCommand command = (RecommendCommand)parser.parseCommand(RecommendCommand.COMMAND_WORD + " "
+                + PREFIX_RECOMMEND + difficulty);
+        assertEquals(new RecommendCommand(difficulty), command);
     }
 
     @Test
