@@ -30,7 +30,8 @@ public class FindCommandSystemTest extends WorkoutBookSystemTest {
          */
         String command = "   " + FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_MEIER + "   ";
         Model expectedModel = getModel();
-        ModelHelper.setFilteredList(expectedModel, BENSON_WORKOUT, DANIEL_WORKOUT); // first names of Benson and Daniel are "Meier"
+        ModelHelper.setFilteredList(expectedModel, BENSON_WORKOUT, DANIEL_WORKOUT);
+        // last names of Benson and Daniel are "Meier"
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
@@ -94,9 +95,8 @@ public class FindCommandSystemTest extends WorkoutBookSystemTest {
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find workout in workout book, keyword is substring of name -> 0 workouts found */
+        /* Case: find workout in workout book, keyword is substring of name -> 1 workouts found */
         command = FindCommand.COMMAND_WORD + " Mei";
-        ModelHelper.setFilteredList(expectedModel);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
