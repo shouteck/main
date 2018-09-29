@@ -22,6 +22,7 @@ import seedu.address.logic.commands.EditCommand.EditWorkoutDescriptor;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.RecommendCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RedoCommand;
@@ -67,6 +68,11 @@ public class WorkoutBookParserTest {
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_WORKOUT.getOneBased() + " " + WorkoutUtil.getEditWorkoutDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_WORKOUT, descriptor), command);
+    }
+
+    @Test
+    public void parseCommand_recommend() throws Exception {
+        assertTrue(parser.parseCommand(RecommendCommand.COMMAND_WORD) instanceof RecommendCommand);
     }
 
     @Test
