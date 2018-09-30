@@ -45,9 +45,9 @@ public class XmlAdaptedWorkoutTest {
             .collect(Collectors.toList());
 
     @Test
-    public void toModelType_validWorkoutDetails_returnsPerson() throws Exception {
-        XmlAdaptedWorkout person = new XmlAdaptedWorkout(BENSON_WORKOUT);
-        assertEquals(BENSON_WORKOUT, person.toModelType());
+    public void toModelType_validWorkoutDetails_returnsWorkout() throws Exception {
+        XmlAdaptedWorkout workout = new XmlAdaptedWorkout(BENSON_WORKOUT);
+        assertEquals(BENSON_WORKOUT, workout.toModelType());
     }
 
     @Test

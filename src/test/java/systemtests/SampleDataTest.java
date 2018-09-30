@@ -44,7 +44,7 @@ public class SampleDataTest extends WorkoutBookSystemTest {
     }
 
     @Test
-    public void addressBook_dataFileDoesNotExist_loadSampleData() {
+    public void workoutBook_dataFileDoesNotExist_loadSampleData() {
         Workout[] expectedList = SampleDataUtil.getSampleWorkouts();
         assertListMatching(getWorkoutListPanel(), expectedList);
     }

@@ -16,7 +16,7 @@ public class ClearCommandTest {
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
-    public void execute_emptyAddressBook_success() {
+    public void execute_emptyWorkoutBook_success() {
         Model model = new ModelManager();
         Model expectedModel = new ModelManager();
         expectedModel.commitWorkoutBook();
@@ -25,7 +25,7 @@ public class ClearCommandTest {
     }
 
     @Test
-    public void execute_nonEmptyAddressBook_success() {
+    public void execute_nonEmptyWorkoutBook_success() {
         Model model = new ModelManager(getTypicalWorkoutBook(), new UserPrefs());
         Model expectedModel = new ModelManager(getTypicalWorkoutBook(), new UserPrefs());
         expectedModel.resetData(new WorkoutBook());

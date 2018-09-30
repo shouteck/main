@@ -21,17 +21,17 @@ Role: Project Advisor
 image::shouteck.jpg[width="150", align="left"]
 {empty}[https://github.com/shouteck[github]] [<<johndoe#, portfolio>>]
 
-Role: Team Lead +
-Responsibilities: UI
+Role: Fake Team Leader +
+Responsibilities: Data
 
 '''
 
-=== Johnny Doe
-image::yijinl.jpg[width="150", align="left"]
-{empty}[http://github.com/yijinl[github]] [<<johndoe#, portfolio>>]
+=== Goh Si Jie
+image::sijie.jpg[width="150", align="left"]
+{empty}[http://github.com/sijieg[github]] [<<johndoe#, portfolio>>]
 
 Role: Developer +
-Responsibilities: Data
+Responsibilities: UI
 
 '''
 
@@ -46,7 +46,7 @@ Responsibilities: Dev Ops + Threading
 
 === Benson Meier
 image::yl_coder.jpg[width="150", align="left"]
-{empty}[http://github.com/yl-coder[github]] [<<johndoe#, portfolio>>]
+{empty}[http://github.com/yl-coder[githuab]] [<<johndoe#, portfolio>>]
 
 Role: Developer +
 Responsibilities: UI
