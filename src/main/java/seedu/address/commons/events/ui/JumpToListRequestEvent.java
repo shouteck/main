@@ -14,6 +14,10 @@ public class JumpToListRequestEvent extends BaseEvent {
         this.targetIndex = targetIndex.getZeroBased();
     }
 
+    public JumpToListRequestEvent(int targetIndex) {
+        this.targetIndex = targetIndex;
+    }
+
     @Override
     public String toString() {
         return getClass().getSimpleName();
