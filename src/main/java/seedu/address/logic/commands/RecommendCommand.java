@@ -1,9 +1,15 @@
 package seedu.address.logic.commands;
 
 import seedu.address.logic.CommandHistory;
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.workout.Workout;
+import seedu.address.commons.core.EventsCenter;
+import seedu.address.commons.events.ui.JumpToListRequestEvent;
 
+import java.util.List;
+import java.util.Random;
+
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RECOMMEND;
 
@@ -21,7 +27,7 @@ public class RecommendCommand extends Command {
             + "Example: " + COMMAND_WORD
             + PREFIX_RECOMMEND + "beginner";
 
-    public static final String MESSAGE_ARGUMENTS = "Difficulty: %1$s";
+    public static final String MESSAGE_SUCCESS = "Workout recommended!";
 
     private final String difficulty;
 
@@ -32,8 +38,16 @@ public class RecommendCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
-        throw new CommandException(String.format(MESSAGE_ARGUMENTS, difficulty));
+    public CommandResult execute(Model model, CommandHistory history) {
+        requireNonNull(model);
+
+        List<Workout> filteredWorkoutList = model.getFilteredWorkoutList();
+
+        Random rand = new Random();
+        int targetIndex =  rand.nextInt(filteredWorkoutList.size());
+
+        EventsCenter.getInstance().post(new JumpToListRequestEvent(targetIndex));
+        return new CommandResult(MESSAGE_SUCCESS);
     }
 
     @Override
