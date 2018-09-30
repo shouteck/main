@@ -25,6 +25,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.RecommendCommand;
 import seedu.address.logic.commands.HistoryCommand;
+import seedu.address.logic.commands.ProfileCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
@@ -97,6 +98,12 @@ public class WorkoutBookParserTest {
     public void parseCommand_help() throws Exception {
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + " 3") instanceof HelpCommand);
+    }
+
+    @Test
+    public void parseCommand_profile() throws Exception {
+        assertTrue(parser.parseCommand(ProfileCommand.COMMAND_WORD) instanceof ProfileCommand);
+        assertTrue(parser.parseCommand(ProfileCommand.COMMAND_WORD + " 3") instanceof ProfileCommand);
     }
 
     @Test

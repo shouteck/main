@@ -10,9 +10,9 @@ import javafx.stage.Stage;
  */
 public class ProfileWindowHandle extends StageHandle {
 
-    public static final String HELP_WINDOW_TITLE = "Profile";
+    public static final String PROFILE_WINDOW_TITLE = "Profile";
 
-    private static final String HELP_WINDOW_BROWSER_ID = "#browser";
+    private static final String PROFILE_WINDOW_BROWSER_ID = "#browser";
 
     public ProfileWindowHandle(Stage profileWindowStage) {
         super(profileWindowStage);
@@ -22,13 +22,13 @@ public class ProfileWindowHandle extends StageHandle {
      * Returns true if a profile window is currently present in the application.
      */
     public static boolean isWindowPresent() {
-        return new GuiRobot().isWindowShown(HELP_WINDOW_TITLE);
+        return new GuiRobot().isWindowShown(PROFILE_WINDOW_TITLE);
     }
 
     /**
      * Returns the {@code URL} of the currently loaded page.
      */
     public URL getLoadedUrl() {
-        return WebViewUtil.getLoadedUrl(getChildNode(HELP_WINDOW_BROWSER_ID));
+        return WebViewUtil.getLoadedUrl(getChildNode(PROFILE_WINDOW_BROWSER_ID));
     }
 }
