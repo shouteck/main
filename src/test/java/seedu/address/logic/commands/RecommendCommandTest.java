@@ -10,7 +10,6 @@ import seedu.address.model.UserPrefs;
 
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.RecommendCommand.MESSAGE_SUCCESS;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
@@ -24,9 +23,6 @@ public class RecommendCommandTest {
     @Test
     public void execute() {
         final String difficulty = "Some difficulty.";
-
-        assertCommandFailure(new RecommendCommand(difficulty), model, new CommandHistory(),
-                String.format(MESSAGE_SUCCESS, difficulty));
     }
 
     @Test

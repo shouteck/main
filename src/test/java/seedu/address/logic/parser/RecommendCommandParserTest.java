@@ -16,12 +16,12 @@ public class RecommendCommandParserTest {
     @Test
     public void parse_allFieldsPresent_success() {
         // have difficulty
-        String userInput = PREFIX_RECOMMEND + nonEmptyDifficulty;
+        String userInput = " " + PREFIX_RECOMMEND + nonEmptyDifficulty;
         RecommendCommand expectedCommand = new RecommendCommand(nonEmptyDifficulty);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // no difficulty
-        userInput = "" + PREFIX_RECOMMEND;
+        userInput = " " + PREFIX_RECOMMEND;
         expectedCommand = new RecommendCommand("");
         assertParseSuccess(parser, userInput, expectedCommand);
     }
@@ -31,6 +31,6 @@ public class RecommendCommandParserTest {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, RecommendCommand.MESSAGE_USAGE);
 
         // missing recommend prefix
-        assertParseFailure(parser, VALID_DIFFICULTY_AMY_WORKOUT, expectedMessage);
+        assertParseFailure(parser, " " + VALID_DIFFICULTY_AMY_WORKOUT, expectedMessage);
     }
 }

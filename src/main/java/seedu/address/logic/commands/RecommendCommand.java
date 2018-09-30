@@ -24,7 +24,7 @@ public class RecommendCommand extends Command {
             + "identified by the difficulty.\n"
             + "Parameters: "
             + PREFIX_RECOMMEND + "[DIFFICULTY]\n"
-            + "Example: " + COMMAND_WORD
+            + "Example: " + COMMAND_WORD + " "
             + PREFIX_RECOMMEND + "beginner";
 
     public static final String MESSAGE_SUCCESS = "Workout recommended!";
