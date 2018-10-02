@@ -83,7 +83,7 @@ public class ProfileCommandSystemTest extends WorkoutBookSystemTest {
         getMainWindowHandle().focus();
         executeCommand(ProfileCommand.COMMAND_WORD);
 
-        assertEquals(1, guiRobot.getNumberOfWindowsShown(ProfileWindowHandle.HELP_WINDOW_TITLE));
+        assertEquals(1, guiRobot.getNumberOfWindowsShown(ProfileWindowHandle.PROFILE_WINDOW_TITLE));
     }
 
     /**
@@ -93,7 +93,7 @@ public class ProfileCommandSystemTest extends WorkoutBookSystemTest {
         assertTrue(ERROR_MESSAGE, ProfileWindowHandle.isWindowPresent());
         guiRobot.pauseForHuman();
 
-        new ProfileWindowHandle(guiRobot.getStage(ProfileWindowHandle.HELP_WINDOW_TITLE)).close();
+        new ProfileWindowHandle(guiRobot.getStage(ProfileWindowHandle.PROFILE_WINDOW_TITLE)).close();
         getMainWindowHandle().focus();
     }
 

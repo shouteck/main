@@ -12,7 +12,7 @@ import seedu.address.model.workout.Workout;
  * Contains helper methods to set up {@code Model} for testing.
  */
 public class ModelHelper {
-    private static final Predicate<Workout> PREDICATE_MATCHING_NO_PERSONS = unused -> false;
+    private static final Predicate<Workout> PREDICATE_MATCHING_NO_WORKOUTS = unused -> false;
 
     /**
      * Updates {@code model}'s filtered list to display only {@code toDisplay}.
@@ -20,7 +20,7 @@ public class ModelHelper {
     public static void setFilteredList(Model model, List<Workout> toDisplay) {
         Optional<Predicate<Workout>> predicate =
                 toDisplay.stream().map(ModelHelper::getPredicateMatching).reduce(Predicate::or);
-        model.updateFilteredWorkoutList(predicate.orElse(PREDICATE_MATCHING_NO_PERSONS));
+        model.updateFilteredWorkoutList(predicate.orElse(PREDICATE_MATCHING_NO_WORKOUTS));
     }
 
     /**

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RECOMMEND;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 
 import java.util.Arrays;
@@ -22,7 +23,9 @@ import seedu.address.logic.commands.EditCommand.EditWorkoutDescriptor;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.RecommendCommand;
 import seedu.address.logic.commands.HistoryCommand;
+import seedu.address.logic.commands.ProfileCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
@@ -70,6 +73,14 @@ public class WorkoutBookParserTest {
     }
 
     @Test
+    public void parseCommand_recommend() throws Exception {
+        final String difficulty = "Some difficulty.";
+        RecommendCommand command = (RecommendCommand)parser.parseCommand(RecommendCommand.COMMAND_WORD + " "
+                + PREFIX_RECOMMEND + difficulty);
+        assertEquals(new RecommendCommand(difficulty), command);
+    }
+
+    @Test
     public void parseCommand_exit() throws Exception {
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD) instanceof ExitCommand);
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + " 3") instanceof ExitCommand);
@@ -87,6 +98,12 @@ public class WorkoutBookParserTest {
     public void parseCommand_help() throws Exception {
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + " 3") instanceof HelpCommand);
+    }
+
+    @Test
+    public void parseCommand_profile() throws Exception {
+        assertTrue(parser.parseCommand(ProfileCommand.COMMAND_WORD) instanceof ProfileCommand);
+        assertTrue(parser.parseCommand(ProfileCommand.COMMAND_WORD + " 3") instanceof ProfileCommand);
     }
 
     @Test
