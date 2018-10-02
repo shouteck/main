@@ -10,7 +10,7 @@ import seedu.address.model.workout.*;
 import seedu.address.model.tag.Tag;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code WorkoutBook} with sample data.
  */
 public class SampleDataUtil {
     public static Workout[] getSampleWorkouts() {
@@ -18,7 +18,7 @@ public class SampleDataUtil {
             new Workout(new Name("alex yeoh's workout"), new Type("strength"), new Duration("20m"),
                  new Difficulty("beginner"), new Equipment("dumbbell"), new Muscle("tricep"),
                  new Calories("150"), new Instruction("set1: tricep extension reps: 4-6"),
-                 getTagSet("heavy", "morning"))
+                 getTagSet("heavy", "morning", "future"))
             /*
             new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
                 new Address("Blk 30 Geylang Street 29, #06-40"),
