@@ -160,8 +160,24 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 
 === Listing entered commands : `profile`
 
-Shows the user profile
+Shows the user profile. +
 Format: `profile`
+
+=== Listing entered commands : `recommend`
+
+Recommend a workout from the existing workouts identified by the `PARAMETER`. +
+Format: `recommend r/[PARAMETER]`
+
+****
+* See Command Format for more details on which `PARAMETER` is acceptable.
+****
+
+Examples:
+
+* `recommend r/beginner` +
+Recommends a beginner workout.
+* `recommend r/strength` +
+Recommends a strength workout.
 
 === Undoing previous command : `undo`
 

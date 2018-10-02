@@ -54,7 +54,7 @@ Responsibilities: Data
 '''
 
 === Yan Yi Cheng
-image::yicheng.jpg[width="150", align="left"]
+image::Yicheng.jpg[width="150", align="left"]
 {empty}[http://github.com/yicheng12[github]] [<<johndoe#, portfolio>>]
 
 Role: Developer +
