@@ -52,7 +52,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         if (!isStateTagPresent(tagList)) {
-            throw new ParseException(String.format(MESSAGE_STATE_TAG_CONSTRAINTS, AddCommand.MESSAGE_USAGE));
+            System.out.print(String.format(MESSAGE_STATE_TAG_CONSTRAINTS, AddCommand.MESSAGE_USAGE));
         }
 
         Workout workout = new Workout(name, type, duration, difficulty, equipment, muscle, calories, instruction,
