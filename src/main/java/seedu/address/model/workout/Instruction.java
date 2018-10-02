@@ -11,7 +11,7 @@ public class Instruction {
 
     public static final String MESSAGE_INSTRUCTION_CONSTRAINTS =
             "Instruction should only contain alphanumeric characters , punctuation, and spaces,"
-            + "and it should not be blank";
+                    + "and it should not be blank";
 
     /*
      * The first character of the address must not be a whitespace,

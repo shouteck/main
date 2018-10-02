@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Calories {
 
     public static final String MESSAGE_CALORIES_CONSTRAINTS = "The number of calories must a positive integer"
-                                                            + " inclusive of 0.";
+            + " inclusive of 0.";
 
     /*
      * The first character of the address must not be a whitespace,
