@@ -13,7 +13,7 @@ import seedu.address.model.tag.Tag;
  * Represents a Workout in the workout book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Workout {
+public class Workout implements Comparable<Workout>{
 
     // Identity fields
     private final Name name;
@@ -124,6 +124,11 @@ public class Workout {
                 && otherWorkout.getCalories().equals(getCalories())
                 && otherWorkout.getInstruction().equals(getInstruction())
                 && otherWorkout.getTags().equals(getTags());
+    }
+
+    @Override
+    public int compareTo(Workout otherWorkout) {
+        return (Integer.parseInt(this.getCalories().fullCalories)- Integer.parseInt(otherWorkout.getCalories().fullCalories));
     }
 
     @Override
