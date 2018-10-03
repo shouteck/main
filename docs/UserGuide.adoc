@@ -264,4 +264,4 @@ e.g.`select 2`
 * *Undo* : `undo`
 * *Redo* : `redo`
 * *Recommend* : `recommend r/[PARAMETER]` +
-e.g. `recommend r/beginner`
+e.g. `recommend r/intermediate`
