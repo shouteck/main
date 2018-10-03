@@ -84,15 +84,15 @@ public class CommandTestUtil {
 
     static {
         DESC_AMY_WORKOUT = new EditWorkoutDescriptorBuilder().withName(VALID_NAME_AMY_WORKOUT)
-                        .withType(VALID_TYPE_AMY_WORKOUT).withDuration(VALID_DURATION_AMY_WORKOUT).withDifficulty(VALID_DIFFICULTY_AMY_WORKOUT)
-                        .withEquipment(VALID_EQUIPMENT_AMY_WORKOUT).withMuscle(VALID_MUSCLE_AMY_WORKOUT)
-                        .withCalories(VALID_CALORIES_AMY_WORKOUT).withInstruction(VALID_INSTRUCTION_AMY_WORKOUT)
-                        .withTags(VALID_TAG_MORNING).build();
+                .withType(VALID_TYPE_AMY_WORKOUT).withDuration(VALID_DURATION_AMY_WORKOUT)
+                .withDifficulty(VALID_DIFFICULTY_AMY_WORKOUT).withEquipment(VALID_EQUIPMENT_AMY_WORKOUT)
+                .withMuscle(VALID_MUSCLE_AMY_WORKOUT).withCalories(VALID_CALORIES_AMY_WORKOUT)
+                .withInstruction(VALID_INSTRUCTION_AMY_WORKOUT).withTags(VALID_TAG_MORNING).build();
         DESC_BOB_WORKOUT = new EditWorkoutDescriptorBuilder().withName(VALID_NAME_BOB_WORKOUT)
-                        .withType(VALID_TYPE_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT).withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT)
-                        .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT)
-                        .withCalories(VALID_CALORIES_BOB_WORKOUT).withInstruction(VALID_INSTRUCTION_BOB_WORKOUT)
-                        .withTags(VALID_TAG_NIGHT).build();
+                .withType(VALID_TYPE_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT)
+                .withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT).withEquipment(VALID_EQUIPMENT_BOB_WORKOUT)
+                .withMuscle(VALID_MUSCLE_BOB_WORKOUT).withCalories(VALID_CALORIES_BOB_WORKOUT)
+                .withInstruction(VALID_INSTRUCTION_BOB_WORKOUT).withTags(VALID_TAG_NIGHT).build();
     }
 
 

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RECOMMEND;
+import static seedu.address.logic.commands.CommandTestUtil.MUSCLE_DESC_BOB_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 
 import java.util.Arrays;
@@ -135,7 +136,10 @@ public class WorkoutBookParserTest {
 
     @Test
     public void parseCommand_track() throws Exception {
-        assertTrue(parser.parseCommand(TrackCommand.COMMAND_WORD) instanceof TrackCommand);
+        final String subcommand = "start";
+        TrackCommand command = (TrackCommand) parser.parseCommand(TrackCommand.COMMAND_WORD + " start "
+                + MUSCLE_DESC_BOB_WORKOUT);
+        assertEquals(new TrackCommand("start", MUSCLE_DESC_BOB_WORKOUT), command);
     }
 
     @Test

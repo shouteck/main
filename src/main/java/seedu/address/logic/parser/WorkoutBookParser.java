@@ -94,7 +94,7 @@ public class WorkoutBookParser {
                 return new RedoCommand();
 
             case TrackCommand.COMMAND_WORD:
-                return new TrackCommand();
+                return new TrackCommandParser().parse(arguments);
 
             default:
                 throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
