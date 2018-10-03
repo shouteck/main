@@ -831,17 +831,49 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 [width="59%",cols="22%,<23%,<25%,<30%",options="header",]
 |=======================================================================
 |Priority |As a ... |I want to ... |So that I can...
-|`* * *` |new user |see usage instructions |refer to instructions when I forget how to use the App
+|`* * *` |user |add a workout |store my favourite workouts
 
-|`* * *` |user |add a new person |
+|`* * *` |user |delete a workout |remove workouts which i do not want
 
-|`* * *` |user |delete a person |remove entries that I no longer need
+|`* * *` |user |edit a workout |modify the stored workouts to my liking
 
-|`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
+|`* * *` |user |select a workout |look at the details of the workout
 
-|`* *` |user |hide <<private-contact-detail,private contact details>> by default |minimize chance of someone else seeing them by accident
+|`* *` |user |find/filter a workout by name |locate a workout without having to search through my entire workout list
 
-|`*` |user with many persons in the address book |sort persons by name |locate a person easily
+|`* *` |user |find/filter a workout by type |locate a workout according to my preference
+
+|`* *` |user |find/filter a workout by duration |locate a workout that is suitable for my time constraints
+
+|`* *` |user |find/filter a workout by difficulty |locate a workout that is suitable for my proficiency level
+
+|`* *` |user |find/filter a workout by equipment required |locate a workout that utilises the equipment that I possess
+
+|`* *` |user |find/filter a workout by muscle group targeted |locate a workout that trains the muscle groups I am interested in
+
+|`* *` |user |find/filter a workout by calories |locate a workout that is suitable for my calories constraints
+
+|`* *` |user |find/filter/list a workout by date |see my past workouts and track my progress
+
+|`* *` |user |get recommendations on workouts |start a new workout
+
+|`* *` |user |favourite a workout |have easy access to all my favourite workouts
+
+|`* *` |user |set preference for workouts |get recommendations to these types of workouts
+
+|`* *` |user |add an image to my workout exercises |see how this exercise is supposed to be carried out
+
+|`* *` |user |rate a workout |give feedback to other users about workouts in the form of ratings
+
+|`* *` |user |import a workout from internet |have my workouts without manually typing everything
+
+|`* *` |user |list different versions of my workout |easily locate previous versions of my workout
+
+|`*` |user |be reminded when I do not workout for a certain period of time |finish a workout without forgetting halfway
+
+|`*` |user |share the workout |show an interesting workout to my friends
+
+|`*` |user |have a tutorial video on how to do a specific exercise |see how this exercise is supposed to be carried out
 |=======================================================================
 
 _{More to be added}_
@@ -849,17 +881,17 @@ _{More to be added}_
 [appendix]
 == Use Cases
 
-(For all use cases below, the *System* is the `AddressBook` and the *Actor* is the `user`, unless specified otherwise)
+(For all use cases below, the *System* is the `Workout Tracker` and the *Actor* is the `user`, unless specified otherwise)
 
 [discrete]
-=== Use case: Delete person
+=== Use case: Delete workout
 
 *MSS*
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to list workouts
+2.  Workout Tracker shows a list of workouts
+3.  User requests to delete a specific workout in the list
+4.  Workout Tracker deletes the workout
 +
 Use case ends.
 
@@ -873,7 +905,7 @@ Use case ends.
 * 3a. The given index is invalid.
 +
 [none]
-** 3a1. AddressBook shows an error message.
+** 3a1. Workout Tracker shows an error message.
 +
 Use case resumes at step 2.
 

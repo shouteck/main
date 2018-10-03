@@ -12,7 +12,7 @@ ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
 endif::[]
-:repoURL: https://github.com/CS2113-AY1819S1-T13-5/addressbook-level4
+:repoURL: https://github.com/CS2113-AY1819S1-T13-5/main
 
 By: `Team T13-5`      Since: `Sept 2018`      #Licence: `MIT`
 
@@ -157,6 +157,28 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 ====
 
 // tag::undoredo[]
+
+=== Listing entered commands : `profile`
+
+Shows the user profile. +
+Format: `profile`
+
+=== Listing entered commands : `recommend`
+
+Recommend a workout from the existing workouts identified by the `PARAMETER`. +
+Format: `recommend r/[PARAMETER]`
+
+****
+* See Command Format for more details on which `PARAMETER` is acceptable.
+****
+
+Examples:
+
+* `recommend r/beginner` +
+Recommends a beginner workout.
+* `recommend r/strength` +
+Recommends a strength workout.
+
 === Undoing previous command : `undo`
 
 Restores the workout book to the state before the previous _undoable_ command was executed. +
@@ -218,14 +240,8 @@ Format: `exit`
 
 === Saving the data
 
-workout book data are saved in the hard disk automatically after any command that changes the data. +
+Workout book data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
-
-// tag::dataencryption[]
-=== Encrypting data files `[coming in v2.0]`
-
-_{explain how the user can enable/disable data encryption}_
-// end::dataencryption[]
 
 == FAQ
 
@@ -247,3 +263,5 @@ e.g.`select 2`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`
+* *Recommend* : `recommend r/[PARAMETER]` +
+e.g. `recommend r/beginner`

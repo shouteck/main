@@ -44,11 +44,20 @@ Responsibilities: Data
 
 '''
 
-=== Benson Meier
-image::yl_coder.jpg[width="150", align="left"]
-{empty}[http://github.com/yl-coder[githuab]] [<<johndoe#, portfolio>>]
+=== Gary Heng Hui Shen
+image::gary.jpg[width="150", align="left"]
+{empty}[http://github.com/garyheng[github]] [<<johndoe#, portfolio>>]
 
 Role: Developer +
-Responsibilities: UI
+Responsibilities: Data
+
+'''
+
+=== Yan Yi Cheng
+image::Yicheng.jpg[width="150", align="left"]
+{empty}[http://github.com/yicheng12[github]] [<<johndoe#, portfolio>>]
+
+Role: Developer +
+Responsibilities: Data
 
 '''

@@ -1,4 +1,4 @@
-= Address Book (Level 4)
+= Workout Tracker
 ifdef::env-github,env-browser[:relfileprefix: docs/]
 
 https://travis-ci.org/se-edu/addressbook-level4[image:https://travis-ci.org/se-edu/addressbook-level4.svg?branch=master[Build Status]]
@@ -15,7 +15,7 @@ ifndef::env-github[]
 image::images/Ui.png[width="600"]
 endif::[]
 
-* Hoping to get started on that workout regime you always kept on the back burner? But wait, what's that other attractive workout you just read about? 
+* Hoping to get started on that workout regime you always kept on the back burner? But wait, what's that other attractive workout you just read about?
 
 * If you have too many workouts to choose from or wish to keep, then this *Workout Tracker* is for you!
 
