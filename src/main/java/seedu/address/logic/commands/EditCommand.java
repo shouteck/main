@@ -36,7 +36,7 @@ import seedu.address.model.workout.Instruction;
 import seedu.address.model.tag.Tag;
 
 /**
- * Edits the details of an existing workout in the address book.
+ * Edits the details of an existing workout in the workout book.
  */
 public class EditCommand extends Command {
 

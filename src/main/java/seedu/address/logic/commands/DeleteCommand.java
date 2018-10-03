@@ -12,7 +12,7 @@ import seedu.address.model.Model;
 import seedu.address.model.workout.Workout;
 
 /**
- * Deletes a workout identified using it's displayed index from the workout book.
+ * Deletes a workout identified using its displayed index from the workout book.
  */
 public class DeleteCommand extends Command {
 
