@@ -176,7 +176,7 @@ public class MainApp extends Application {
     private void initEventsCenter() {
         EventsCenter.getInstance().registerHandler(this);
     }
-    // HI
+
     @Override
     public void start(Stage primaryStage) {
         logger.info("Starting WorkoutBook " + MainApp.VERSION);
