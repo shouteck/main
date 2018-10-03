@@ -43,6 +43,7 @@ public class AddCommand extends Command {
             + PREFIX_MUSCLE + "bicep "
             + PREFIX_CALORIES + "150 "
             + PREFIX_INSTRUCTION + "set1: bicep curl reps: 4-6 "
+            + PREFIX_TAG + "future "
             + PREFIX_TAG + "heavy "
             + PREFIX_TAG + "favourite";
 

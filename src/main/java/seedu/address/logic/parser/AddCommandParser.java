@@ -10,6 +10,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INSTRUCTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.model.tag.Tag.MESSAGE_STATE_TAG_CONSTRAINTS;
 
 import java.util.Set;
 import java.util.stream.Stream;
@@ -50,6 +51,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         Instruction instruction = ParserUtil.parseInstruction(argMultimap.getValue(PREFIX_INSTRUCTION).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
+        if (!isStateTagPresent(tagList)) {
+            System.out.print(String.format(MESSAGE_STATE_TAG_CONSTRAINTS, AddCommand.MESSAGE_USAGE));
+        }
+
         Workout workout = new Workout(name, type, duration, difficulty, equipment, muscle, calories, instruction,
                 tagList);
 
@@ -64,4 +69,12 @@ public class AddCommandParser implements Parser<AddCommand> {
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 
+    /**
+     * Returns true if one of the prefix tags contains future, current or completed in the given
+     * {@code ArgumentMultimap}.
+     */
+    private static boolean isStateTagPresent(Set<Tag> tagList) {
+        return tagList.stream().map(Tag::toString).anyMatch(o -> (o.equals("[future]") || o.equals("[current]") ||
+            o.equals("[completed]")));
+    }
 }
