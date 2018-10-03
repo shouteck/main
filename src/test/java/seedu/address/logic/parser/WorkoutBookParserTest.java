@@ -29,6 +29,7 @@ import seedu.address.logic.commands.ProfileCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
+import seedu.address.logic.commands.TrackCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.workout.NameContainsKeywordsPredicate;
@@ -130,6 +131,11 @@ public class WorkoutBookParserTest {
         SelectCommand command = (SelectCommand) parser.parseCommand(
                 SelectCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased());
         assertEquals(new SelectCommand(INDEX_FIRST_WORKOUT), command);
+    }
+
+    @Test
+    public void parseCommand_track() throws Exception {
+        assertTrue(parser.parseCommand(TrackCommand.COMMAND_WORD) instanceof TrackCommand);
     }
 
     @Test
