@@ -22,6 +22,7 @@ import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.TrackCommand;
 import seedu.address.logic.commands.UndoCommand;
+import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -95,6 +96,9 @@ public class WorkoutBookParser {
 
             case TrackCommand.COMMAND_WORD:
                 return new TrackCommandParser().parse(arguments);
+
+            case SortCommand.COMMAND_WORD:
+                return new SortCommand();
 
             default:
                 throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

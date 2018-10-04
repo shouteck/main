@@ -9,5 +9,5 @@ public class Messages {
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
     public static final String MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX = "The workout index provided is invalid";
     public static final String MESSAGE_WORKOUTS_LISTED_OVERVIEW = "%1$d workouts listed!";
-
+    public static final String MESSAGE_WORKOUTS_SORTED = "Sorted workouts";
 }

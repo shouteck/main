@@ -42,6 +42,7 @@ public interface Model {
      */
     void updateWorkout(Workout target, Workout editedWorkout);
 
+
     /** Returns an unmodifiable view of the filtered workout list */
     ObservableList<Workout> getFilteredWorkoutList();
 
@@ -75,4 +76,6 @@ public interface Model {
      * Saves the current workout book state for undo/redo.
      */
     void commitWorkoutBook();
+
+    void sortFilteredWorkoutList();
 }

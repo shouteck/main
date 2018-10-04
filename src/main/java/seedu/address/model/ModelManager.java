@@ -3,6 +3,7 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Collections;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -75,6 +76,10 @@ public class ModelManager extends ComponentManager implements Model {
         indicateWorkoutBookChanged();
     }
 
+    @Override
+    public void sortFilteredWorkoutList() {
+        Collections.sort(filteredWorkouts);
+    }
     @Override
     public void updateWorkout(Workout target, Workout editedWorkout) {
         requireAllNonNull(target, editedWorkout);
