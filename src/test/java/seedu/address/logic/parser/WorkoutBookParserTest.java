@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RECOMMEND;
 import static seedu.address.logic.commands.CommandTestUtil.MUSCLE_DESC_BOB_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
@@ -16,6 +18,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import javafx.util.Pair;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
@@ -139,7 +142,7 @@ public class WorkoutBookParserTest {
         final String subcommand = "start";
         TrackCommand command = (TrackCommand) parser.parseCommand(TrackCommand.COMMAND_WORD + " start "
                 + MUSCLE_DESC_BOB_WORKOUT);
-        assertEquals(new TrackCommand("start", MUSCLE_DESC_BOB_WORKOUT), command);
+        assertEquals(new TrackCommand(subcommand, new Pair<>(PREFIX_MUSCLE, VALID_MUSCLE_BOB_WORKOUT)), command);
     }
 
     @Test
