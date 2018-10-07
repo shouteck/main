@@ -54,6 +54,12 @@ Format: `help`
 Adds a workout to the workout book +
 Format: `add name/NAME [type/TYPE] [duration/DURATION] [difficulty/DIFFICULTY] [equipment/EQUIPMENT] [muscle/MUSCLE] [calories/CALORIES] [instruction/INSTRUCTION] [tag/TAG]…​`
 
+****
+* A terminal message will appear if one of the tags do not include a state tag - future, current or completed.
+* The state tag is for the user to note the various things: future - untouched workouts, current - the workout that the user is currently focused on and completed - workouts that have been completed by the user.
+****
+
+
 [TIP]
 A workout can have any number of tags (including 0)
 
