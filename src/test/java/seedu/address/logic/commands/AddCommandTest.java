@@ -152,6 +152,11 @@ public class AddCommandTest {
         public void commitWorkoutBook() {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public void sortFilteredWorkoutList() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
