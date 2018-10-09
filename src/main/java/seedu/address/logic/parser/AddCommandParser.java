@@ -10,6 +10,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INSTRUCTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.ParserUtil.parseTag;
 import static seedu.address.model.tag.Tag.MESSAGE_STATE_TAG_CONSTRAINTS;
 
 import java.util.Set;
@@ -50,6 +51,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Calories calories = ParserUtil.parseCalories(argMultimap.getValue(PREFIX_CALORIES).get());
         Instruction instruction = ParserUtil.parseInstruction(argMultimap.getValue(PREFIX_INSTRUCTION).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        tagList.add(parseTag("future"));
 
         if (!isStateTagPresent(tagList)) {
             System.out.print(String.format(MESSAGE_STATE_TAG_CONSTRAINTS, AddCommand.MESSAGE_USAGE));
