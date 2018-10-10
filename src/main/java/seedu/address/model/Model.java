@@ -1,9 +1,10 @@
 package seedu.address.model;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.workout.Workout;
+import seedu.address.model.workout.*;
 
 /**
  * The API of the Model component.
@@ -78,4 +79,8 @@ public interface Model {
     void commitWorkoutBook();
 
     void sortFilteredWorkoutList();
+
+    public List<Workout> getFilteredInternalList(Duration duration);
+    public List<Workout> getFilteredInternalList(Difficulty difficulty);
+    public List<Workout> getFilteredInternalList(Calories calories);
 }
