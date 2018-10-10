@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +26,24 @@ import seedu.address.model.workout.exceptions.WorkoutNotFoundException;
 public class UniqueWorkoutList implements Iterable<Workout> {
 
     private final ObservableList<Workout> internalList = FXCollections.observableArrayList();
+
+    public List<Workout> getFilteredInternalList (Difficulty difficulty){
+        return internalList.stream()
+                .filter(w -> w.getDifficulty().fullDifficulty.contains(difficulty.fullDifficulty))
+                .collect(Collectors.toList());
+    }
+
+    public List<Workout> getFilteredInternalList (Duration duration){
+        return internalList.stream()
+                .filter(w -> w.getDuration().fullDuration.contains(duration.fullDuration))
+                .collect(Collectors.toList());
+    }
+
+    public List<Workout> getFilteredInternalList (Calories calories){
+        return internalList.stream()
+                .filter(w -> w.getCalories().fullCalories.contains(calories.fullCalories))
+                .collect(Collectors.toList());
+    }
 
     /**
      * Returns true if the list contains an equivalent workout as the given argument.
