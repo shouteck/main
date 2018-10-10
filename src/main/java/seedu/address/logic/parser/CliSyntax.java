@@ -14,7 +14,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_MUSCLE = new Prefix("muscle/");
     public static final Prefix PREFIX_CALORIES = new Prefix("calories/");
     public static final Prefix PREFIX_INSTRUCTION = new Prefix("instruction/");
-    public static final Prefix PREFIX_RECOMMEND = new Prefix("r/");
     public static final Prefix PREFIX_TAG = new Prefix("tag/");
 
 }
