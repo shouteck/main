@@ -78,6 +78,9 @@ public interface Model {
      */
     void commitWorkoutBook();
 
+    /**
+     * Sort the current workout book.
+     */
     void sortFilteredWorkoutList();
 
     public List<Workout> getFilteredInternalList(Duration duration);

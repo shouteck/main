@@ -97,6 +97,9 @@ public class WorkoutBook implements ReadOnlyWorkoutBook {
         workouts.setWorkout(target, editedWorkout);
     }
 
+    public void sortFilteredWorkoutList(){
+        workouts.sort();
+    }
     /**
      * Removes {@code key} from this {@code WorkoutBook}.
      * {@code key} must exist in the workout book.
