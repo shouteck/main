@@ -3,6 +3,7 @@ package seedu.address.model.workout;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -45,6 +46,16 @@ public class UniqueWorkoutList implements Iterable<Workout> {
         }
         internalList.add(toAdd);
     }
+
+    public void sort() {
+        internalList.sort(new Comparator<Workout>() {
+            @Override
+            public int compare(Workout o1, Workout o2) {
+                return o1.getName().fullName.compareTo(o2.getName().fullName) ;
+            }
+        });
+    }
+
 
     /**
      * Replaces the workout {@code target} in the list with {@code editedWorkout}.

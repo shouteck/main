@@ -77,5 +77,8 @@ public interface Model {
      */
     void commitWorkoutBook();
 
+    /**
+     * Sort the current workout book.
+     */
     void sortFilteredWorkoutList();
 }
