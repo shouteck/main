@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -13,7 +14,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.WorkoutBookChangedEvent;
-import seedu.address.model.workout.Workout;
+import seedu.address.model.workout.*;
 
 /**
  * Represents the in-memory model of the workout book data.
@@ -80,6 +81,22 @@ public class ModelManager extends ComponentManager implements Model {
     public void sortFilteredWorkoutList() {
         Collections.sort(filteredWorkouts);
     }
+
+    @Override
+    public List<Workout> getFilteredInternalList(Difficulty difficulty) {
+        return versionedWorkoutBook.getFilteredInternalList(difficulty);
+    }
+
+    @Override
+    public List<Workout> getFilteredInternalList(Duration duration) {
+        return versionedWorkoutBook.getFilteredInternalList(duration);
+    }
+
+    @Override
+    public List<Workout> getFilteredInternalList(Calories calories) {
+        return versionedWorkoutBook.getFilteredInternalList(calories);
+    }
+
     @Override
     public void updateWorkout(Workout target, Workout editedWorkout) {
         requireAllNonNull(target, editedWorkout);

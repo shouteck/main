@@ -57,4 +57,9 @@ public class ArgumentMultimap {
     public String getPreamble() {
         return getValue(new Prefix("")).orElse("");
     }
+
+    public int getSize() {
+        return argMultimap.size();
+    }
+
 }
