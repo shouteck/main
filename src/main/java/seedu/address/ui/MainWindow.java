@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import java.io.IOException;
 import java.util.logging.Logger;
 
 import com.google.common.eventbus.Subscribe;
@@ -63,7 +64,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane statusbarPlaceholder;
 
-    public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
+    public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) throws IOException {
         super(FXML, primaryStage);
 
         // Set dependencies
