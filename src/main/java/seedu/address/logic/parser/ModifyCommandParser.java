@@ -28,6 +28,11 @@ public class ModifyCommandParser {
      */
 
     public static final String USERPROFILE_FILE_PATH = "/docs/ProfileWindow.html";
+    public static final String GENDER_VALIDATION_REGEX = "(male)|(female)";
+    public static final String HEIGHT_VALIDATION_REGEX = "\\d{1}\\.\\d{2}";
+    public static final String WEIGHT_VALIDATION_REGEX = "\\d{2,3}\\.\\d{1}";
+    public static final String USERNAME_VALIDATION_REGEX = "[\\p{Alnum}|'][\\p{Alnum} |' ]*";
+    public static final String DIFFICULTY_VALIDATION_REGEX = "(beginner)|(intermediate)|(advanced)";
 
     public ModifyCommand parse(String args) throws IOException,ParseException{
         requireNonNull(args);
@@ -103,9 +108,9 @@ public class ModifyCommandParser {
         newWeight = newWeight.replaceFirst("Weight : ","");
         double h = Double.parseDouble(newHeight);
         double w = Double.parseDouble(newWeight);
-        DecimalFormat df = new DecimalFormat("#.#");
         double CalculateBMI = w / (h * h);
 
+        DecimalFormat df = new DecimalFormat("#.#");
         div_bmi.text("BMI : " + df.format(CalculateBMI));
         File temp = File.createTempFile("tempfile", ".html");
         FileUtils.writeStringToFile(temp, doc.outerHtml(), "UTF-8");
@@ -125,27 +130,22 @@ public class ModifyCommandParser {
     }
 
     private static boolean isValidGender(String gender) {
-        String GENDER_VALIDATION_REGEX = "(male)|(female)";
         return gender.toLowerCase().matches(GENDER_VALIDATION_REGEX);
     }
 
     private static boolean isValidHeight(String height) {
-        String HEIGHT_VALIDATION_REGEX = "\\d{1}\\.\\d{2}";
         return height.matches(HEIGHT_VALIDATION_REGEX);
     }
 
     private static boolean isValidWeight(String weight) {
-        String WEIGHT_VALIDATION_REGEX = "\\d{2,3}\\.\\d{1}";
         return weight.matches(WEIGHT_VALIDATION_REGEX);
     }
 
     private static boolean isValidUsername(String username) {
-        String USERNAME_VALIDATION_REGEX = "[\\p{Alnum}|'][\\p{Alnum} |' ]*";
         return username.matches(USERNAME_VALIDATION_REGEX);
     }
 
     private static boolean isValidPreferredDifficulty(String preferred_difficulty) {
-        String DIFFICULTY_VALIDATION_REGEX = "(beginner)|(intermediate)|(advanced)";
         return preferred_difficulty.toLowerCase().matches(DIFFICULTY_VALIDATION_REGEX);
     }
 }
