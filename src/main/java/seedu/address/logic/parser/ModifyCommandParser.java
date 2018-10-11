@@ -3,7 +3,7 @@ package seedu.address.logic.parser;
 
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.*;
 
 
 import org.jsoup.Jsoup;
@@ -39,6 +39,7 @@ public class ModifyCommandParser {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ModifyCommand.MESSAGE_USAGE));
         }
 
+
         String fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString().substring(6);
 
         Document doc = Jsoup.parse(new File(fileName), "UTF-8");
@@ -57,26 +58,42 @@ public class ModifyCommandParser {
 
         if (argMultimap.getValue(PREFIX_GENDER).isPresent()) {
             String Gender = argMultimap.getValue(PREFIX_GENDER).get();
+            if (!isValidGender(Gender)) {
+                throw new ParseException(String.format(MESSAGE_INVALID_GENDER, MESSAGE_VALID_GENDER));
+            }
             div_gender.text("Gender : " + Gender);
             newGender = Gender;
         }
         if (argMultimap.getValue(PREFIX_USERNAME).isPresent()) {
             String Username = argMultimap.getValue(PREFIX_USERNAME).get();
+            if (!isValidUsername(Username)) {
+                throw new ParseException(String.format(MESSAGE_INVALID_USERNAME, MESSAGE_VALID_USERNAME));
+            }
             div_username.text(Username);
             newUsername = Username;
         }
         if (argMultimap.getValue(PREFIX_HEIGHT).isPresent()) {
             String Height = argMultimap.getValue(PREFIX_HEIGHT).get();
+            if (!isValidHeight(Height)) {
+                throw new ParseException(String.format(MESSAGE_INVALID_HEIGHT, MESSAGE_VALID_HEIGHT));
+            }
             div_height.text("Height : " + Height + "m");
             newHeight = Height;
         }
         if (argMultimap.getValue(PREFIX_WEIGHT).isPresent()) {
             String Weight = argMultimap.getValue(PREFIX_WEIGHT).get();
+            if (!isValidWeight(Weight)) {
+                throw new ParseException(String.format(MESSAGE_INVALID_WEIGHT, MESSAGE_VALID_WEIGHT));
+            }
             div_weight.text("Weight : " + Weight + "kg");
             newWeight = Weight;
         }
         if (argMultimap.getValue(PREFIX_PREFERRED_DIFFICULTY).isPresent()) {
             String Preferred_Difficulty = argMultimap.getValue(PREFIX_PREFERRED_DIFFICULTY).get();
+            if (!isValidPreferredDifficulty(Preferred_Difficulty)) {
+                throw new ParseException(String.format(MESSAGE_INVALID_PREFERRED_DIFFICULTY,
+                        MESSAGE_VALID_PREFERRED_DIFFICULTY));
+            }
             div_preferred_difficulty.text("User's preferred difficulty: " + Preferred_Difficulty);
             newPreferredDifficulty = Preferred_Difficulty;
         }
@@ -107,4 +124,28 @@ public class ModifyCommandParser {
         return Stream.of(prefixes).anyMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 
+    private static boolean isValidGender(String gender) {
+        String GENDER_VALIDATION_REGEX = "(male)|(female)";
+        return gender.toLowerCase().matches(GENDER_VALIDATION_REGEX);
+    }
+
+    private static boolean isValidHeight(String height) {
+        String HEIGHT_VALIDATION_REGEX = "\\d{1}\\.\\d{2}";
+        return height.matches(HEIGHT_VALIDATION_REGEX);
+    }
+
+    private static boolean isValidWeight(String weight) {
+        String WEIGHT_VALIDATION_REGEX = "\\d{2,3}\\.\\d{1}";
+        return weight.matches(WEIGHT_VALIDATION_REGEX);
+    }
+
+    private static boolean isValidUsername(String username) {
+        String USERNAME_VALIDATION_REGEX = "[\\p{Alnum}|'][\\p{Alnum} |' ]*";
+        return username.matches(USERNAME_VALIDATION_REGEX);
+    }
+
+    private static boolean isValidPreferredDifficulty(String preferred_difficulty) {
+        String DIFFICULTY_VALIDATION_REGEX = "(beginner)|(intermediate)|(advanced)";
+        return preferred_difficulty.toLowerCase().matches(DIFFICULTY_VALIDATION_REGEX);
+    }
 }
