@@ -79,7 +79,8 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public void sortFilteredWorkoutList() {
-        Collections.sort(filteredWorkouts);
+        versionedWorkoutBook.sortFilteredWorkoutList();
+        indicateWorkoutBookChanged();
     }
 
     @Override
