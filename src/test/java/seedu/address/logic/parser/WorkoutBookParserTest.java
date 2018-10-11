@@ -16,8 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FUTURE;
@@ -42,6 +41,12 @@ public class WorkoutBookParserTest {
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + " 3") instanceof ClearCommand);
     }
+
+    @Test
+    public void parseCommand_remark() throws Exception {
+        assertTrue(parser.parseCommand(CurrentCommand.COMMAND_WORD) instanceof CurrentCommand);
+    }
+
 
     @Test
     public void parseCommand_delete() throws Exception {
