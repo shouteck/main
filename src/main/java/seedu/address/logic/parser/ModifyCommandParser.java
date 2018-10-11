@@ -42,7 +42,6 @@ public class ModifyCommandParser {
         String fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString().substring(6);
 
         Document doc = Jsoup.parse(new File(fileName), "UTF-8");
-        //modify username/gsj gender/male height/3.85 weight/92.3 preferred_difficulty/advanced
         Element div_gender = doc.getElementById("gender");
         Element div_username = doc.getElementById("username");
         Element div_height = doc.getElementById("height");
@@ -58,7 +57,7 @@ public class ModifyCommandParser {
 
         if (argMultimap.getValue(PREFIX_GENDER).isPresent()) {
             String Gender = argMultimap.getValue(PREFIX_GENDER).get();
-            div_gender.text(Gender);
+            div_gender.text("Gender : " + Gender);
             newGender = Gender;
         }
         if (argMultimap.getValue(PREFIX_USERNAME).isPresent()) {
@@ -68,12 +67,12 @@ public class ModifyCommandParser {
         }
         if (argMultimap.getValue(PREFIX_HEIGHT).isPresent()) {
             String Height = argMultimap.getValue(PREFIX_HEIGHT).get();
-            div_height.text(Height + "m");
+            div_height.text("Height : " + Height + "m");
             newHeight = Height;
         }
         if (argMultimap.getValue(PREFIX_WEIGHT).isPresent()) {
             String Weight = argMultimap.getValue(PREFIX_WEIGHT).get();
-            div_weight.text(Weight + "kg");
+            div_weight.text("Weight : " + Weight + "kg");
             newWeight = Weight;
         }
         if (argMultimap.getValue(PREFIX_PREFERRED_DIFFICULTY).isPresent()) {
@@ -81,12 +80,15 @@ public class ModifyCommandParser {
             div_preferred_difficulty.text("User's preferred difficulty: " + Preferred_Difficulty);
             newPreferredDifficulty = Preferred_Difficulty;
         }
-
+        newHeight = newHeight.replaceFirst("Height : ","");
+        newHeight = newHeight.replace("m","");
+        newWeight = newWeight.replaceFirst("kg","");
+        newWeight = newWeight.replaceFirst("Weight : ","");
         double h = Double.parseDouble(newHeight);
         double w = Double.parseDouble(newWeight);
         DecimalFormat df = new DecimalFormat("#.#");
-
         double CalculateBMI = w / (h * h);
+
         div_bmi.text("BMI : " + df.format(CalculateBMI));
         File temp = File.createTempFile("tempfile", ".html");
         FileUtils.writeStringToFile(temp, doc.outerHtml(), "UTF-8");
