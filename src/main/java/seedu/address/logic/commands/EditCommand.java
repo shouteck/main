@@ -61,7 +61,7 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_WORKOUT_SUCCESS = "Edited Workout: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_WORKOUT = "This workout already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_WORKOUT = "This workout already exists in the workout book.";
 
     private final Index index;
     private final EditWorkoutDescriptor editWorkoutDescriptor;

@@ -7,12 +7,18 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.*;
+import java.io.File;
+import java.awt.Desktop;
+import java.io.IOException;
+
 /**
  * Controller for a profile page
  */
 public class ProfileWindow extends UiPart<Stage> {
 
-    public static final String USERGUIDE_FILE_PATH = "/docs/ProfileWindow.html";
+    public static final String USERPROFILE_FILE_PATH = "/docs/ProfileWindow.html";
 
     private static final Logger logger = LogsCenter.getLogger(ProfileWindow.class);
     private static final String FXML = "ProfileWindow.fxml";
@@ -25,17 +31,18 @@ public class ProfileWindow extends UiPart<Stage> {
      *
      * @param root Stage to use as the root of the ProfileWindow.
      */
-    public ProfileWindow(Stage root) {
+    public ProfileWindow(Stage root) throws IOException{
         super(FXML, root);
 
-        String userGuideUrl = getClass().getResource(USERGUIDE_FILE_PATH).toString();
-        browser.getEngine().load(userGuideUrl);
+        String userProfileUrl = getClass().getResource(USERPROFILE_FILE_PATH).toString();
+        browser.getEngine().load(userProfileUrl);
+
     }
 
     /**
      * Creates a new ProfileWindow.
      */
-    public ProfileWindow() {
+    public ProfileWindow() throws IOException{
         this(new Stage());
     }
 
