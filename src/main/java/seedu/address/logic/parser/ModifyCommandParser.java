@@ -11,8 +11,7 @@ import org.jsoup.nodes.*;
 import java.io.*;
 import org.apache.commons.io.*;
 import java.text.DecimalFormat;
-
-
+import java.awt.Desktop;
 
 import seedu.address.logic.commands.ModifyCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -26,7 +25,6 @@ public class ModifyCommandParser {
      * Parses the given {@code String} of arguments in the context of the {@code ModifyCommand}
      * and returns a {@code ModifyCommand} object for execution.
      */
-
     public static final String USERPROFILE_FILE_PATH = "/docs/ProfileWindow.html";
     public static final String GENDER_VALIDATION_REGEX = "(male)|(female)";
     public static final String HEIGHT_VALIDATION_REGEX = "\\d{1}\\.\\d{2}";
@@ -44,9 +42,7 @@ public class ModifyCommandParser {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ModifyCommand.MESSAGE_USAGE));
         }
 
-
         String fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString().substring(6);
-
         Document doc = Jsoup.parse(new File(fileName), "UTF-8");
         Element div_gender = doc.getElementById("gender");
         Element div_username = doc.getElementById("username");
@@ -117,6 +113,8 @@ public class ModifyCommandParser {
         File newFile = new File(fileName);
         org.apache.commons.io.FileUtils.copyFile(temp, newFile);
         org.apache.commons.io.FileUtils.forceDelete(temp);
+        //Desktop desktop = Desktop.getDesktop();
+        //desktop.open(newFile);
 
         return new ModifyCommand(newGender, newUsername, newHeight, newWeight, newPreferredDifficulty);
     }
