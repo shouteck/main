@@ -7,11 +7,6 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.*;
-import java.io.File;
-import java.awt.Desktop;
-import java.io.IOException;
 
 /**
  * Controller for a profile page
@@ -31,7 +26,7 @@ public class ProfileWindow extends UiPart<Stage> {
      *
      * @param root Stage to use as the root of the ProfileWindow.
      */
-    public ProfileWindow(Stage root) throws IOException{
+    public ProfileWindow(Stage root) {
         super(FXML, root);
 
         String userProfileUrl = getClass().getResource(USERPROFILE_FILE_PATH).toString();
@@ -42,7 +37,7 @@ public class ProfileWindow extends UiPart<Stage> {
     /**
      * Creates a new ProfileWindow.
      */
-    public ProfileWindow() throws IOException{
+    public ProfileWindow() {
         this(new Stage());
     }
 

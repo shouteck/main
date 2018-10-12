@@ -26,11 +26,13 @@ public class ModifyCommand extends Command {
             + "[" + PREFIX_WEIGHT + "WEIGHT] "
             + "[" + PREFIX_PREFERRED_DIFFICULTY + "PREFERRED_DIFFICULTY] \n"
             + "Example: " + COMMAND_WORD + " "
+            + PREFIX_GENDER + "Female "
             + PREFIX_USERNAME + "Sarah "
-            + PREFIX_HEIGHT + "1.69m ";
+            + PREFIX_HEIGHT + "1.69 "
+            + PREFIX_WEIGHT + "87.2 "
+            + PREFIX_PREFERRED_DIFFICULTY + "beginner";
 
     public static final String MESSAGE_SUCCESS = "User profile has been modified!";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
 
     private final String gender;
     private final String username;
