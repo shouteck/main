@@ -5,27 +5,21 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB_WORKOUT;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_MORNING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showWorkoutAtIndex;
-//import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-//import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_WORKOUT;
-//import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
 import org.junit.Test;
@@ -114,14 +108,17 @@ public class EditCommandTest {
         Workout lastWorkout = model.getFilteredWorkoutList().get(indexLastWorkout.getZeroBased());
 
         WorkoutBuilder workoutInList = new WorkoutBuilder(lastWorkout);
-        Workout editedWorkout = workoutInList.withName(VALID_NAME_BOB_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT)
-                .withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT).withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT)
+        Workout editedWorkout = workoutInList.withName(VALID_NAME_BOB_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT)
+                .withDuration(VALID_DURATION_BOB_WORKOUT)
+                .withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT).withEquipment(VALID_EQUIPMENT_BOB_WORKOUT)
+                .withMuscle(VALID_MUSCLE_BOB_WORKOUT)
                 .withCalories(VALID_CALORIES_BOB_WORKOUT).withInstruction(VALID_INSTRUCTION_BOB_WORKOUT)
                 .withTags(VALID_TAG_MORNING).withTags(VALID_TAG_NIGHT).build();
 
         EditWorkoutDescriptor descriptor = new EditWorkoutDescriptorBuilder().withName(VALID_NAME_BOB_WORKOUT)
                 .withType(VALID_TYPE_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT)
-                .withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT).withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT)
+                .withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT).withEquipment(VALID_EQUIPMENT_BOB_WORKOUT)
+                .withMuscle(VALID_MUSCLE_BOB_WORKOUT)
                 .withCalories(VALID_CALORIES_BOB_WORKOUT).withInstruction(VALID_INSTRUCTION_BOB_WORKOUT)
                 .withTags(VALID_TAG_MORNING).withTags(VALID_TAG_NIGHT).build();
         EditCommand editCommand = new EditCommand(indexLastWorkout, descriptor);
