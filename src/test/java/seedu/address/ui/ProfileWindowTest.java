@@ -47,7 +47,7 @@ public class ProfileWindowTest extends GuiUnitTest {
     }
 
     @Test
-    public void focus_profileWindowNotFocused_focused() throws Exception {
+    public void focus_profileWindowNotFocused_focused() {
         // TODO: This test skip can be removed once this bug is fixed:
         // https://github.com/javafxports/openjdk-jfx/issues/50
         //
