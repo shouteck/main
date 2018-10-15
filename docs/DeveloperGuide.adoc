@@ -324,7 +324,7 @@ image::UndoRedoActivityDiagram.png[width="650"]
 // tag::recommend
 === Current implementation
 The user input is parsed into invoking a constructor based on the prefix the user has used in `_RecommendCommandParser_`.There are only three acceptable prefixes.
-(i.e. difficulty, calories, duration) The instance created is then passed to `_RecommendCommand_` which use `getFilteredWorkoutList()`
+(i.e. difficulty, calories, duration) The instance created is then passed to `_RecommendCommand_` which uses `getFilteredWorkoutList()`
 and `getFilteredInternalList()` methods of `Model` to generate a random workout to recommend to the user.
 The sequence diagram of this entire process can be seen in <<fig-RecommendCommandSD>> below:
 
