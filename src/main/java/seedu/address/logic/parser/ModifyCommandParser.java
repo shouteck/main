@@ -1,24 +1,5 @@
 package seedu.address.logic.parser;
 
-import java.io.File;
-import java.io.IOException;
-//import java.awt.Desktop;
-import java.text.DecimalFormat;
-import java.util.stream.Stream;
-
-
-//import javafx.stage.Stage;
-//import javafx.scene.*;
-//import javafx.fxml.FXMLLoader;
-
-import org.apache.commons.io.FileUtils;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-
-import seedu.address.logic.commands.ModifyCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-
 import static java.util.Objects.requireNonNull;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
@@ -39,6 +20,27 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PREFERRED_DIFFICULTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WEIGHT;
 
+import java.io.File;
+import java.io.IOException;
+//import java.awt.Desktop;
+import java.text.DecimalFormat;
+import java.util.stream.Stream;
+
+//import javafx.stage.Stage;
+//import javafx.scene.*;
+//import javafx.fxml.FXMLLoader;
+
+import org.apache.commons.io.FileUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import seedu.address.logic.commands.ModifyCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+
+/**
+ * Parses input arguments and creates a new ModifyCommand object
+ */
 public class ModifyCommandParser {
     /**
      * Parses the given {@code String} of arguments in the context of the {@code ModifyCommand}
@@ -54,7 +56,12 @@ public class ModifyCommandParser {
     //Stage root;
     //private static final String FXML = "ProfileWindow.fxml";
     //private final FXMLLoader fxmlLoader = new FXMLLoader();
-
+    /**
+     * Parses the given {@code String} of arguments in the context of the {@code ModifyCommand}
+     * and returns a {@code ModifyCommand} object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     * @throws IOException if the file does not exist or has the wrong name
+     */
     public ModifyCommand parse(String args) throws IOException, ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_USERNAME, PREFIX_HEIGHT, PREFIX_WEIGHT,
@@ -158,22 +165,37 @@ public class ModifyCommandParser {
         return Stream.of(prefixes).anyMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 
+    /**
+     * Returns true if the given string is a valid gender
+     */
     private static boolean isValidGender(String gender) {
         return gender.toLowerCase().matches(GENDER_VALIDATION_REGEX);
     }
 
+    /**
+     * Returns true if the given string is a valid height
+     */
     private static boolean isValidHeight(String height) {
         return height.matches(HEIGHT_VALIDATION_REGEX);
     }
 
+    /**
+     * Returns true if the given string is a valid weight
+     */
     private static boolean isValidWeight(String weight) {
         return weight.matches(WEIGHT_VALIDATION_REGEX);
     }
 
+    /**
+     * Returns true if the given string is a valid username
+     */
     private static boolean isValidUsername(String username) {
         return username.matches(USERNAME_VALIDATION_REGEX);
     }
 
+    /**
+     * Returns true if the given string is a valid difficulty
+     */
     private static boolean isValidPreferredDifficulty(String preferredDifficulty) {
         return preferredDifficulty.toLowerCase().matches(DIFFICULTY_VALIDATION_REGEX);
     }

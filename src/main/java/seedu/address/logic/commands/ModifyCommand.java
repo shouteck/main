@@ -12,7 +12,6 @@ import seedu.address.model.Model;
 /**
  * Modify the user profile in the Profile window.
  */
-
 public class ModifyCommand extends Command {
 
     public static final String COMMAND_WORD = "modify";
