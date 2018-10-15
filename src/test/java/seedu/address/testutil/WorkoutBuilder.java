@@ -77,7 +77,7 @@ public class WorkoutBuilder {
         return this;
     }
 
-      /**
+    /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Workout} that we are building.
      */
     public WorkoutBuilder withTags(String ... tags) {
@@ -149,10 +149,6 @@ public class WorkoutBuilder {
         this.instruction = new Instruction(instruction);
         return this;
     }
-
-
-
-
 
     public Workout build() {
         return new Workout(name, type, duration, difficulty, equipment, muscle, calories, instruction, tags);

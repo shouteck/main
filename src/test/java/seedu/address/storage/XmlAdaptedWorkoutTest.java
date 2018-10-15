@@ -178,7 +178,8 @@ public class XmlAdaptedWorkoutTest {
     public void toModelType_invalidTags_throwsIllegalValueException() {
         List<XmlAdaptedTag> invalidTags = new ArrayList<>(VALID_TAGS);
         invalidTags.add(new XmlAdaptedTag(INVALID_TAG));
-        XmlAdaptedWorkout workout = new XmlAdaptedWorkout(VALID_NAME, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY, VALID_EQUIPMENT,
+        XmlAdaptedWorkout workout = new XmlAdaptedWorkout(VALID_NAME, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY,
+                VALID_EQUIPMENT,
                 VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, invalidTags);
         Assert.assertThrows(IllegalValueException.class, workout::toModelType);
     }

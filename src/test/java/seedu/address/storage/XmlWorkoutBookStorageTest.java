@@ -17,8 +17,8 @@ import org.junit.rules.ExpectedException;
 import org.junit.rules.TemporaryFolder;
 
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.WorkoutBook;
 import seedu.address.model.ReadOnlyWorkoutBook;
+import seedu.address.model.WorkoutBook;
 
 public class XmlWorkoutBookStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "XmlWorkoutBookStorageTest");

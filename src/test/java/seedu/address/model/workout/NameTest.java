@@ -1,7 +1,6 @@
 package seedu.address.model.workout;
 
 import org.junit.Test;
-import seedu.address.model.workout.Name;
 import seedu.address.testutil.Assert;
 
 import static org.junit.Assert.assertFalse;
