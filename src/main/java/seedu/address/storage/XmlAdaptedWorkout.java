@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 
+import seedu.address.model.tag.Tag;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;
@@ -20,9 +21,6 @@ import seedu.address.model.workout.Muscle;
 import seedu.address.model.workout.Name;
 import seedu.address.model.workout.Type;
 import seedu.address.model.workout.Workout;
-
-
-import seedu.address.model.tag.Tag;
 
 /**
  * JAXB-friendly version of the Workout.

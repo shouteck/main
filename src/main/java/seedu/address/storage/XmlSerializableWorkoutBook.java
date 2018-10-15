@@ -9,8 +9,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.ReadOnlyWorkoutBook;
-import seedu.address.model.workout.Workout;
 import seedu.address.model.WorkoutBook;
+import seedu.address.model.workout.Workout;
 
 /**
  * An Immutable WorkoutBook that is serializable to XML format

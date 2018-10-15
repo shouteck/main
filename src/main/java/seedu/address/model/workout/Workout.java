@@ -97,7 +97,8 @@ public class Workout {
         return otherWorkout != null
                 && ((otherWorkout.getName().equals(getName()))
                 || (otherWorkout.getType().equals(getType()) && otherWorkout.getDuration().equals(getDuration())
-                && otherWorkout.getDifficulty().equals(getDifficulty()) && otherWorkout.getEquipment().equals(getEquipment())
+                && otherWorkout.getDifficulty().equals(getDifficulty())
+                && otherWorkout.getEquipment().equals(getEquipment())
                 && otherWorkout.getMuscle().equals(getMuscle()) && otherWorkout.getCalories().equals(getCalories())
                 && otherWorkout.getInstruction().equals(getInstruction())));
     }
