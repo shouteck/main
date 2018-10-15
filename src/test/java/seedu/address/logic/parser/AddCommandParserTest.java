@@ -36,10 +36,10 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_BOB_W
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
-
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_MORNING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
+
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalWorkouts.AMY_WORKOUT;
@@ -48,8 +48,15 @@ import static seedu.address.testutil.TypicalWorkouts.BOB_WORKOUT;
 import org.junit.Test;
 
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.model.workout.*;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Equipment;
+import seedu.address.model.workout.Muscle;
+import seedu.address.model.workout.Name;
+import seedu.address.model.workout.Type;
+import seedu.address.model.workout.Workout;
 import seedu.address.testutil.WorkoutBuilder;
 
 public class AddCommandParserTest {
@@ -117,7 +124,7 @@ public class AddCommandParserTest {
         Workout expectedWorkoutMultipleTags = new WorkoutBuilder(BOB_WORKOUT)
                 .withTags(VALID_TAG_MORNING, VALID_TAG_NIGHT).build();
         assertParseSuccess(parser, NAME_DESC_BOB_WORKOUT + TYPE_DESC_BOB_WORKOUT + DURATION_DESC_BOB_WORKOUT
-                + DIFFICULTY_DESC_BOB_WORKOUT  + EQUIPMENT_DESC_BOB_WORKOUT + MUSCLE_DESC_BOB_WORKOUT
+                + DIFFICULTY_DESC_BOB_WORKOUT + EQUIPMENT_DESC_BOB_WORKOUT + MUSCLE_DESC_BOB_WORKOUT
                 + CALORIES_DESC_BOB_WORKOUT + INSTRUCTION_DESC_BOB_WORKOUT + TAG_DESC_MORNING
                 + TAG_DESC_NIGHT, new AddCommand(expectedWorkoutMultipleTags));
     }
