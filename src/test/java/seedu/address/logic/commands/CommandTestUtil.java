@@ -2,7 +2,16 @@ package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.parser.CliSyntax.*;
+
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INSTRUCTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,8 +20,8 @@ import java.util.List;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.WorkoutBook;
 import seedu.address.model.Model;
+import seedu.address.model.WorkoutBook;
 import seedu.address.model.workout.NameContainsKeywordsPredicate;
 import seedu.address.model.workout.Workout;
 import seedu.address.testutil.EditWorkoutDescriptorBuilder;
@@ -64,16 +73,10 @@ public class CommandTestUtil {
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James's workout&"; // '&' not allowed in names
     public static final String INVALID_TYPE_DESC = " " + PREFIX_TYPE + "strength + cardio"; // '+' not allowed in types
     public static final String INVALID_DURATION_DESC = " " + PREFIX_DURATION + "5 minutes";
-                                // Duration must be in the form of [1-3 digits]m
     public static final String INVALID_DIFFICULTY_DESC = " " + PREFIX_DIFFICULTY + "difficult";
-                                // Difficulty should only be either "beginner", "intermediate", or "advanced"
     public static final String INVALID_EQUIPMENT_DESC = " " + PREFIX_EQUIPMENT + "dumbbell + mat";
-                                // '+' not allowed in equipments
     public static final String INVALID_MUSCLE_DESC = " " + PREFIX_MUSCLE + "bicep + tricep";
-                                // '+' not allowed in muscles
     public static final String INVALID_CALORIES_DESC = " " + PREFIX_CALORIES + "123 calories";
-                                // calories should be a positive number only
-    //no invalid instructions
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "morning*"; // '*' not allowed in tags
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
@@ -84,12 +87,14 @@ public class CommandTestUtil {
 
     static {
         DESC_AMY_WORKOUT = new EditWorkoutDescriptorBuilder().withName(VALID_NAME_AMY_WORKOUT)
-                        .withType(VALID_TYPE_AMY_WORKOUT).withDuration(VALID_DURATION_AMY_WORKOUT).withDifficulty(VALID_DIFFICULTY_AMY_WORKOUT)
+                        .withType(VALID_TYPE_AMY_WORKOUT).withDuration(VALID_DURATION_AMY_WORKOUT)
+                        .withDifficulty(VALID_DIFFICULTY_AMY_WORKOUT)
                         .withEquipment(VALID_EQUIPMENT_AMY_WORKOUT).withMuscle(VALID_MUSCLE_AMY_WORKOUT)
                         .withCalories(VALID_CALORIES_AMY_WORKOUT).withInstruction(VALID_INSTRUCTION_AMY_WORKOUT)
                         .withTags(VALID_TAG_MORNING).build();
         DESC_BOB_WORKOUT = new EditWorkoutDescriptorBuilder().withName(VALID_NAME_BOB_WORKOUT)
-                        .withType(VALID_TYPE_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT).withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT)
+                        .withType(VALID_TYPE_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT)
+                        .withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT)
                         .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT)
                         .withCalories(VALID_CALORIES_BOB_WORKOUT).withInstruction(VALID_INSTRUCTION_BOB_WORKOUT)
                         .withTags(VALID_TAG_NIGHT).build();

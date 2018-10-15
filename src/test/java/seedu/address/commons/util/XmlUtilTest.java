@@ -19,8 +19,8 @@ import seedu.address.model.WorkoutBook;
 import seedu.address.storage.XmlAdaptedTag;
 import seedu.address.storage.XmlAdaptedWorkout;
 import seedu.address.storage.XmlSerializableWorkoutBook;
-import seedu.address.testutil.WorkoutBookBuilder;
 import seedu.address.testutil.TestUtil;
+import seedu.address.testutil.WorkoutBookBuilder;
 import seedu.address.testutil.WorkoutBuilder;
 
 public class XmlUtilTest {
