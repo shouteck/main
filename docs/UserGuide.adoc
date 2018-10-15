@@ -183,19 +183,20 @@ Change the Profile's name to apple, height to 1.82m and update the BMI according
 
 === Listing entered commands : `recommend`
 
-Recommend a workout from the existing workouts identified by the `PARAMETER`. +
-Format: `recommend r/[PARAMETER]`
+Recommend a workout from the existing workouts identified by the `parameter` and `PARAMETER`. +
+Format: `recommend parameter/PARAMETER`
 
 ****
-* See Command Format for more details on which `PARAMETER` is acceptable.
+* `parameter` only accepts one of the three prefixes which are either difficulty, calories or duration.
+* See Command Format on which `PARAMETER` is acceptable for its corresponding `parameter`.
 ****
 
 Examples:
 
-* `recommend r/beginner` +
+* `recommend difficulty/beginner` +
 Recommends a beginner workout.
-* `recommend r/strength` +
-Recommends a strength workout.
+* `recommend duration/10m` +
+Recommends a 10 minute workout.
 
 === Undoing previous command : `undo`
 
