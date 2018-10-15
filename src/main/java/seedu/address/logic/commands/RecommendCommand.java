@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Random;
 
 import seedu.address.logic.CommandHistory;
-import seedu.address.model.Model;
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.events.ui.JumpToListRequestEvent;
+import seedu.address.model.Model;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;

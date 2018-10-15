@@ -31,7 +31,6 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
                 || !argMultimap.getPreamble().isEmpty() || argMultimap.getSize() > 2) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RecommendCommand.MESSAGE_USAGE));
         }
-
         if (!argMultimap.getAllValues(PREFIX_DURATION).isEmpty()) {
             Duration duration = ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION).get());
             return new RecommendCommand(duration);
