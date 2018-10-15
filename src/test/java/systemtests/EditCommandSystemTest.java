@@ -1,14 +1,39 @@
 package systemtests;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.*;
 
+import static seedu.address.logic.commands.CommandTestUtil.CALORIES_DESC_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.CALORIES_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.DIFFICULTY_DESC_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.DIFFICULTY_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.DURATION_DESC_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.DURATION_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.EQUIPMENT_DESC_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.EQUIPMENT_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.INSTRUCTION_DESC_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.INSTRUCTION_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_CALORIES_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_DIFFICULTY_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_DURATION_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_EQUIPMENT_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_MUSCLE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TYPE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.MUSCLE_DESC_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.MUSCLE_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_MORNING;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_NIGHT;
+import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_WORKOUTS;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.AMY_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.BOB_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.KEYWORD_MATCHING_MEIER;
@@ -92,7 +117,7 @@ public class EditCommandSystemTest extends WorkoutBookSystemTest {
         assertCommandFailure(EditCommand.COMMAND_WORD + " " + invalidIndex + NAME_DESC_BOB_WORKOUT,
                 Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
 
-        /* --------------------- Performing edit operation while a workout card is selected -------------------------- */
+        /* --------------------- Performing edit operation while a workout card is selected ----------------------- */
 
         /* Case: selects first card in the workout list, edit a workout -> edited, card selection remains unchanged but
          * browser url changes
@@ -107,7 +132,7 @@ public class EditCommandSystemTest extends WorkoutBookSystemTest {
         // browser's url is updated to reflect the new workout's name
         assertCommandSuccess(command, index, AMY_WORKOUT, index);
 
-        /* --------------------------------- Performing invalid edit operation -------------------------------------- */
+        /* --------------------------------- Performing invalid edit operation ------------------------------------ */
 
         /* Case: invalid index (0) -> rejected */
         assertCommandFailure(EditCommand.COMMAND_WORD + " 0" + NAME_DESC_BOB_WORKOUT,
@@ -169,7 +194,7 @@ public class EditCommandSystemTest extends WorkoutBookSystemTest {
         assertFalse(getModel().getFilteredWorkoutList().get(index.getZeroBased()).equals(BOB_WORKOUT));
         command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_BOB_WORKOUT + TYPE_DESC_BOB_WORKOUT
                 + DURATION_DESC_BOB_WORKOUT + DIFFICULTY_DESC_BOB_WORKOUT + EQUIPMENT_DESC_BOB_WORKOUT
-                + MUSCLE_DESC_BOB_WORKOUT + CALORIES_DESC_BOB_WORKOUT + INSTRUCTION_DESC_BOB_WORKOUT  + TAG_DESC_NIGHT;
+                + MUSCLE_DESC_BOB_WORKOUT + CALORIES_DESC_BOB_WORKOUT + INSTRUCTION_DESC_BOB_WORKOUT + TAG_DESC_NIGHT;
         assertCommandFailure(command, EditCommand.MESSAGE_DUPLICATE_WORKOUT);
 
         /* Case: edit a workout with new values same as another workout's values but with different tags

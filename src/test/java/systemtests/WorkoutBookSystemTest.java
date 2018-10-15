@@ -27,9 +27,9 @@ import guitests.guihandles.BrowserPanelHandle;
 import guitests.guihandles.CommandBoxHandle;
 import guitests.guihandles.MainMenuHandle;
 import guitests.guihandles.MainWindowHandle;
-import guitests.guihandles.WorkoutListPanelHandle;
 import guitests.guihandles.ResultDisplayHandle;
 import guitests.guihandles.StatusBarFooterHandle;
+import guitests.guihandles.WorkoutListPanelHandle;
 import seedu.address.MainApp;
 import seedu.address.TestApp;
 import seedu.address.commons.core.EventsCenter;
@@ -38,8 +38,8 @@ import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.SelectCommand;
-import seedu.address.model.WorkoutBook;
 import seedu.address.model.Model;
+import seedu.address.model.WorkoutBook;
 import seedu.address.testutil.TypicalWorkouts;
 import seedu.address.ui.BrowserPanel;
 import seedu.address.ui.CommandBox;
@@ -217,7 +217,7 @@ public abstract class WorkoutBookSystemTest {
         URL expectedUrl;
         try {
             expectedUrl = new URL(BrowserPanel.SEARCH_PAGE_URL + selectedCardName
-                    .replaceAll(" ", "%20").replaceAll("'","%27"));
+                    .replaceAll(" ", "%20").replaceAll("'", "%27"));
         } catch (MalformedURLException mue) {
             throw new AssertionError("URL expected to be valid.", mue);
         }
