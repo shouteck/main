@@ -6,6 +6,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 
+import java.util.List;
+import java.util.Random;
+
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.commons.core.EventsCenter;
@@ -14,9 +17,6 @@ import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;
 import seedu.address.model.workout.Workout;
-
-import java.util.List;
-import java.util.Random;
 
 /**
  * Recommends an existing workout from the workout book.
