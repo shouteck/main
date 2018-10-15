@@ -1,6 +1,5 @@
 package seedu.address.logic.commands;
 
-
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GENDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HEIGHT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PREFERRED_DIFFICULTY;
@@ -8,7 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WEIGHT;
 
 import seedu.address.logic.CommandHistory;
-import seedu.address.model.*;
+import seedu.address.model.Model;
 
 /**
  * Modify the user profile in the Profile window.
@@ -53,7 +52,7 @@ public class ModifyCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model, CommandHistory history){
+    public CommandResult execute(Model model, CommandHistory history) {
         return new CommandResult(MESSAGE_SUCCESS);
     }
 

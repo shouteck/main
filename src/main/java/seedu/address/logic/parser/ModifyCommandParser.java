@@ -5,19 +5,23 @@ import java.io.IOException;
 //import java.awt.Desktop;
 import java.text.DecimalFormat;
 import java.util.stream.Stream;
-import static java.util.Objects.requireNonNull;
+
 
 //import javafx.stage.Stage;
 //import javafx.scene.*;
 //import javafx.fxml.FXMLLoader;
 
-import org.apache.commons.io.*;
+import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.*;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
-import static seedu.address.commons.core.Messages.*;
+
 import seedu.address.logic.commands.ModifyCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.*;
 import static seedu.address.logic.parser.CliSyntax.*;
 
 public class ModifyCommandParser {
@@ -36,12 +40,12 @@ public class ModifyCommandParser {
     //private static final String FXML = "ProfileWindow.fxml";
     //private final FXMLLoader fxmlLoader = new FXMLLoader();
 
-    public ModifyCommand parse(String args) throws IOException,ParseException {
+    public ModifyCommand parse(String args) throws IOException, ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_USERNAME, PREFIX_HEIGHT, PREFIX_WEIGHT,
                 PREFIX_PREFERRED_DIFFICULTY, PREFIX_GENDER);
 
-        if (!isPrefixPresent(argMultimap, PREFIX_USERNAME, PREFIX_HEIGHT, PREFIX_WEIGHT,PREFIX_PREFERRED_DIFFICULTY,
+        if (!isPrefixPresent(argMultimap, PREFIX_USERNAME, PREFIX_HEIGHT, PREFIX_WEIGHT, PREFIX_PREFERRED_DIFFICULTY,
                 PREFIX_GENDER) || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ModifyCommand.MESSAGE_USAGE));
         }
@@ -102,16 +106,16 @@ public class ModifyCommandParser {
             divPreferredDifficulty.text("User's preferred difficulty: " + preferredDifficulty);
             newPreferredDifficulty = preferredDifficulty;
         }
-        newHeight = newHeight.replaceFirst("Height : ","");
-        newHeight = newHeight.replace("m","");
-        newWeight = newWeight.replaceFirst("kg","");
-        newWeight = newWeight.replaceFirst("Weight : ","");
+        newHeight = newHeight.replaceFirst("Height : ", "");
+        newHeight = newHeight.replace("m", "");
+        newWeight = newWeight.replaceFirst("kg", "");
+        newWeight = newWeight.replaceFirst("Weight : ", "");
         double h = Double.parseDouble(newHeight);
         double w = Double.parseDouble(newWeight);
-        double CalculateBMI = w / (h * h);
+        double calculateBmi = w / (h * h);
 
         DecimalFormat df = new DecimalFormat("#.#");
-        divBmi.text("BMI : " + df.format(CalculateBMI));
+        divBmi.text("BMI : " + df.format(calculateBmi));
         File temp = File.createTempFile("tempfile", ".html");
         FileUtils.writeStringToFile(temp, doc.outerHtml(), "UTF-8");
         File newFile = new File(fileName);
@@ -121,7 +125,7 @@ public class ModifyCommandParser {
         //fxmlLoader.getRoot();
         //Stage root = FXMLLoader.load(getClass().getResource(FXML));
 
-        //seedu.address.ui.UiPart.loadFxmlFile(seedu.address.ui.UiPart.getFxmlFileUrl(FXML),root);
+        //seedu.address.ui.UiPart.loadFxmlFile(seedu.address.ui.UiPart.getFxmlFileUrl(FXML), root);
         //new ProfileWindow(root);
 
 
@@ -155,7 +159,7 @@ public class ModifyCommandParser {
         return username.matches(USERNAME_VALIDATION_REGEX);
     }
 
-    private static boolean isValidPreferredDifficulty(String preferred_difficulty) {
-        return preferred_difficulty.toLowerCase().matches(DIFFICULTY_VALIDATION_REGEX);
+    private static boolean isValidPreferredDifficulty(String preferredDifficulty) {
+        return preferredDifficulty.toLowerCase().matches(DIFFICULTY_VALIDATION_REGEX);
     }
 }
