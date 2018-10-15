@@ -10,8 +10,17 @@ import java.util.stream.Collectors;
 import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.workout.*;
+
 import seedu.address.model.tag.Tag;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Equipment;
+import seedu.address.model.workout.Instruction;
+import seedu.address.model.workout.Muscle;
+import seedu.address.model.workout.Name;
+import seedu.address.model.workout.Type;
+import seedu.address.model.workout.Workout;
 
 /**
  * JAXB-friendly version of the Workout.
@@ -111,7 +120,8 @@ public class XmlAdaptedWorkout {
         final Type modelType = new Type(type);
 
         if (duration == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Duration.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Duration.class.getSimpleName()));
         }
         if (!Duration.isValidDuration(duration)) {
             throw new IllegalValueException(Duration.MESSAGE_DURATION_CONSTRAINTS);
@@ -119,7 +129,8 @@ public class XmlAdaptedWorkout {
         final Duration modelDuration = new Duration(duration);
 
         if (difficulty == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Difficulty.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Difficulty.class.getSimpleName()));
         }
         if (!Difficulty.isValidDifficulty(difficulty)) {
             throw new IllegalValueException(Difficulty.MESSAGE_DIFFICULTY_CONSTRAINTS);
@@ -127,7 +138,8 @@ public class XmlAdaptedWorkout {
         final Difficulty modelDifficulty = new Difficulty(difficulty);
 
         if (equipment == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Equipment.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Equipment.class.getSimpleName()));
         }
         if (!Equipment.isValidEquipment(equipment)) {
             throw new IllegalValueException(Equipment.MESSAGE_EQUIPMENT_CONSTRAINTS);
@@ -143,7 +155,8 @@ public class XmlAdaptedWorkout {
         final Muscle modelMuscle = new Muscle(muscle);
 
         if (calories == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Calories.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Calories.class.getSimpleName()));
         }
         if (!Calories.isValidCalories(calories)) {
             throw new IllegalValueException(Calories.MESSAGE_CALORIES_CONSTRAINTS);
@@ -151,7 +164,8 @@ public class XmlAdaptedWorkout {
         final Calories modelCalories = new Calories(calories);
 
         if (instruction == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Instruction.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Instruction.class.getSimpleName()));
         }
         if (!Instruction.isValidInstruction(instruction)) {
             throw new IllegalValueException(Instruction.MESSAGE_INSTRUCTION_CONSTRAINTS);
