@@ -169,6 +169,18 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 Shows the user profile. +
 Format: `profile`
 
+=== Listing entered commands : `modify`
+
+Modify the user's profile. +
+Format: `modify username/[USERNAME] gender/[GENDER] height/[HEIGHT] weight/[WEIGHT] preferred_difficulty/[DIFFICULTY]`
+
+Examples:
+
+* `modify username/apple` +
+Change the Profile's name to apple.
+* `modify username/apple height/1.82` +
+Change the Profile's name to apple, height to 1.82m and update the BMI accordingly.
+
 === Listing entered commands : `recommend`
 
 Recommend a workout from the existing workouts identified by the `PARAMETER`. +
@@ -271,3 +283,5 @@ e.g.`select 2`
 * *Redo* : `redo`
 * *Recommend* : `recommend r/[PARAMETER]` +
 e.g. `recommend r/intermediate`
+* *Modify* : `modify`
+e.g. `modify username/John Doe`
