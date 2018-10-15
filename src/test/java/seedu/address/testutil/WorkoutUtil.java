@@ -42,9 +42,7 @@ public class WorkoutUtil {
         sb.append(PREFIX_MUSCLE + workout.getMuscle().fullMuscle + " ");
         sb.append(PREFIX_CALORIES + workout.getCalories().fullCalories + " ");
         sb.append(PREFIX_INSTRUCTION + workout.getInstruction().fullInstruction + " ");
-        workout.getTags().stream().forEach(
-                s -> sb.append(PREFIX_TAG + s.tagName + " ")
-        );
+        workout.getTags().stream().forEach(s -> sb.append(PREFIX_TAG + s.tagName + " "));
         return sb.toString();
     }
 

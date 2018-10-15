@@ -5,15 +5,14 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import seedu.address.model.workout.exceptions.DuplicateWorkoutException;
 import seedu.address.model.workout.exceptions.WorkoutNotFoundException;
-import seedu.address.testutil.WorkoutBuilder;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.*;
-// import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-// import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static seedu.address.testutil.TypicalWorkouts.ALICE_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.BOB_WORKOUT;
 
@@ -43,7 +42,8 @@ public class UniqueWorkoutListTest {
     @Test
     public void contains_workoutWithSameIdentityFieldsInList_returnsTrue() {
         uniqueWorkoutList.add(ALICE_WORKOUT);
-        Workout editedAlice = new WorkoutBuilder(ALICE_WORKOUT).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        Workout editedAlice = new WorkoutBuilder(ALICE_WORKOUT).withAddress(VALID_ADDRESS_BOB)
+        .withTags(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(uniqueWorkoutList.contains(editedAlice));
     }
@@ -91,7 +91,8 @@ public class UniqueWorkoutListTest {
     @Test
     public void setWorkout_editedWorkoutHasSameIdentity_success() {
         uniqueWorkoutList.add(ALICE_WORKOUT);
-        Workout editedAlice = new WorkoutBuilder(ALICE_WORKOUT).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
+        Workout editedAlice = new WorkoutBuilder(ALICE_WORKOUT).withAddress(VALID_ADDRESS_BOB)
+        .withTags(VALID_TAG_HUSBAND)
                 .build();
         uniqueWorkoutList.setWorkout(ALICE_WORKOUT, editedAlice);
         UniqueWorkoutList expectedUniqueWorkoutList = new UniqueWorkoutList();

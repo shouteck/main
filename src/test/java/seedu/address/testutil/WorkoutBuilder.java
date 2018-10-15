@@ -150,10 +150,6 @@ public class WorkoutBuilder {
         return this;
     }
 
-
-
-
-
     public Workout build() {
         return new Workout(name, type, duration, difficulty, equipment, muscle, calories, instruction, tags);
     }

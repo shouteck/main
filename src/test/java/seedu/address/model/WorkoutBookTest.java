@@ -3,8 +3,8 @@ package seedu.address.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.ALICE_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
