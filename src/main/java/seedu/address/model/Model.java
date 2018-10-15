@@ -83,7 +83,7 @@ public interface Model {
      */
     void sortFilteredWorkoutList();
 
-    public List<Workout> getFilteredInternalList(Duration duration);
-    public List<Workout> getFilteredInternalList(Difficulty difficulty);
-    public List<Workout> getFilteredInternalList(Calories calories);
+    List<Workout> getFilteredInternalList(Duration duration);
+    List<Workout> getFilteredInternalList(Difficulty difficulty);
+    List<Workout> getFilteredInternalList(Calories calories);
 }
