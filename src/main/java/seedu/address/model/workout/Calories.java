@@ -34,7 +34,9 @@ public class Calories {
     /**
      * Returns true if a given string is a valid calories value.
      */
-    public static boolean isValidCalories(String test) { return test.matches(CALORIES_VALIDATION_REGEX); }
+    public static boolean isValidCalories(String test) {
+        return test.matches(CALORIES_VALIDATION_REGEX);
+    }
 
 
     @Override

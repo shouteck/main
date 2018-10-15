@@ -49,7 +49,9 @@ public class Workout {
         return name;
     }
 
-    public Type getType() { return type; }
+    public Type getType() {
+        return type;
+    }
 
     public Duration getDuration() {
         return duration;
@@ -91,11 +93,11 @@ public class Workout {
         if (otherWorkout == this) {
             return true;
         }
-
         return otherWorkout != null
                 && ((otherWorkout.getName().equals(getName()))
                 || (otherWorkout.getType().equals(getType()) && otherWorkout.getDuration().equals(getDuration())
-                && otherWorkout.getDifficulty().equals(getDifficulty()) && otherWorkout.getEquipment().equals(getEquipment())
+                && otherWorkout.getDifficulty().equals(getDifficulty())
+                && otherWorkout.getEquipment().equals(getEquipment())
                 && otherWorkout.getMuscle().equals(getMuscle()) && otherWorkout.getCalories().equals(getCalories())
                 && otherWorkout.getInstruction().equals(getInstruction())));
     }

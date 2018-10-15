@@ -2,8 +2,8 @@ package seedu.address.logic.commands;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GENDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HEIGHT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PREFERRED_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WEIGHT;
 
 import seedu.address.logic.CommandHistory;
@@ -12,7 +12,6 @@ import seedu.address.model.Model;
 /**
  * Modify the user profile in the Profile window.
  */
-
 public class ModifyCommand extends Command {
 
     public static final String COMMAND_WORD = "modify";
@@ -37,23 +36,22 @@ public class ModifyCommand extends Command {
     private final String username;
     private final String height;
     private final String weight;
-    private final String preferred_difficulty;
+    private final String preferredDifficulty;
 
 
     // element.owntext() return element w/o <b>
-    public ModifyCommand(String gender, String username, String height, String weight, String preferred_difficulty) {
+    public ModifyCommand(String gender, String username, String height, String weight, String preferredDifficulty) {
 
         this.gender = gender;
         this.username = username;
         this.height = height;
         this.weight = weight;
-        this.preferred_difficulty = preferred_difficulty;
+        this.preferredDifficulty = preferredDifficulty;
 
     }
 
     @Override
-    public CommandResult execute(Model model, CommandHistory history){
-
+    public CommandResult execute(Model model, CommandHistory history) {
         return new CommandResult(MESSAGE_SUCCESS);
     }
 
@@ -73,7 +71,7 @@ public class ModifyCommand extends Command {
                 && username.equals(e.username)
                 && height.equals(e.height)
                 && weight.equals(e.weight)
-                && preferred_difficulty.equals(e.preferred_difficulty);
+                && preferredDifficulty.equals(e.preferredDifficulty);
 
     }
 }
