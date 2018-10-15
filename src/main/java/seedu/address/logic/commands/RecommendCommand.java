@@ -1,5 +1,11 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.commons.core.EventsCenter;
@@ -11,12 +17,6 @@ import seedu.address.model.workout.Workout;
 
 import java.util.List;
 import java.util.Random;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 
 /**
  * Recommends an existing workout from the workout book.
@@ -71,8 +71,8 @@ public class RecommendCommand extends Command {
         }
 
         Random rand = new Random();
-        int randomIndex =  rand.nextInt(filteredInternalList.size());
-        Workout randomWorkout =  filteredInternalList.get(randomIndex);
+        int randomIndex = rand.nextInt(filteredInternalList.size());
+        Workout randomWorkout = filteredInternalList.get(randomIndex);
         int targetIndex = filteredWorkoutList.indexOf(randomWorkout);
 
         EventsCenter.getInstance().post(new JumpToListRequestEvent(targetIndex));
