@@ -4,10 +4,10 @@ build/
 .settings/
 .idea/
 lib/*
+*.iml
 *.log
 *.log.*
 *.csv
-*.iml
 config.json
 src/test/data/sandbox/
 preferences.json
@@ -16,5 +16,5 @@ preferences.json
 classes/
 /data/
 /bin/
-out/
 src/main/resources/docs/
+out/
