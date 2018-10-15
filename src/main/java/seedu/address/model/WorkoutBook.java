@@ -101,7 +101,7 @@ public class WorkoutBook implements ReadOnlyWorkoutBook {
         workouts.setWorkout(target, editedWorkout);
     }
 
-    public void sortFilteredWorkoutList(){
+    public void sortFilteredWorkoutList() {
         workouts.sort();
     }
 

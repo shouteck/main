@@ -82,7 +82,7 @@ public class AddCommandParser implements Parser<AddCommand> {
      * {@code ArgumentMultimap}.
      */
     private static boolean isStateTagPresent(Set<Tag> tagList) {
-        return tagList.stream().map(Tag::toString).anyMatch(o -> (o.equals("[future]") || o.equals("[current]") ||
-            o.equals("[completed]")));
+        return tagList.stream().map(Tag::toString).anyMatch(o -> (o.equals("[future]") || o.equals("[current]")
+                || o.equals("[completed]")));
     }
 }
