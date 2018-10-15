@@ -1,7 +1,6 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.CALORIES_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.CALORIES_DESC_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.DIFFICULTY_DESC_AMY_WORKOUT;
@@ -22,6 +21,7 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TYPE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.MUSCLE_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.MUSCLE_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_MORNING;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_NIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_AMY_WORKOUT;
@@ -43,7 +43,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_MORNING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
-
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
@@ -112,7 +111,7 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_TYPE_DESC, Type.MESSAGE_TYPE_CONSTRAINTS);
         assertParseFailure(parser, "1" + INVALID_DURATION_DESC, Duration.MESSAGE_DURATION_CONSTRAINTS);
         assertParseFailure(parser, "1" + INVALID_DIFFICULTY_DESC, Difficulty.MESSAGE_DIFFICULTY_CONSTRAINTS);
-        assertParseFailure(parser, "1" + INVALID_EQUIPMENT_DESC,  Equipment.MESSAGE_EQUIPMENT_CONSTRAINTS);
+        assertParseFailure(parser, "1" + INVALID_EQUIPMENT_DESC, Equipment.MESSAGE_EQUIPMENT_CONSTRAINTS);
         assertParseFailure(parser, "1" + INVALID_MUSCLE_DESC, Muscle.MESSAGE_MUSCLE_CONSTRAINTS);
         assertParseFailure(parser, "1" + INVALID_CALORIES_DESC, Calories.MESSAGE_CALORIES_CONSTRAINTS);
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_TAG_CONSTRAINTS);
@@ -120,12 +119,11 @@ public class EditCommandParserTest {
         /**
          * To be uncommented once invalid test cases are thought of
          */
-        // invalid type followed by valid duration
-//      assertParseFailure(parser, "1" + INVALID_TYPE_DESC + DURATION_DESC_AMY_WORKOUT, Type.MESSAGE_TYPE_CONSTRAINTS);
-//
-//        // valid type followed by invalid type. The test case for invalid type followed by valid type
-//        // is tested at {@code parse_invalidValueFollowedByValidValue_success()}
-//        assertParseFailure(parser, "1" + TYPE_DESC_BOB_WORKOUT + INVALID_TYPE_DESC, Type.MESSAGE_TYPE_CONSTRAINTS);
+        //invalid type followed by valid duration
+        //assertParseFailure(parser, "1" + INVALID_TYPE_DESC + DURATION_DESC_AMY_WORKOUT, Type.MESSAGE_TYPE_CONSTRAINTS);
+        // valid type followed by invalid type. The test case for invalid type followed by valid type
+        // is tested at {@code parse_invalidValueFollowedByValidValue_success()}
+        //assertParseFailure(parser, "1" + TYPE_DESC_BOB_WORKOUT + INVALID_TYPE_DESC, Type.MESSAGE_TYPE_CONSTRAINTS);
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Workout} being edited,
         // parsing it together with a valid tag results in error
@@ -139,10 +137,10 @@ public class EditCommandParserTest {
         /**
          * To be uncommented once invalid test cases are thought of
          */
-//        // multiple invalid values, but only the first invalid value is captured
-//        assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_TYPE_DESC + VALID_DURATION_AMY_WORKOUT
-//        + VALID_DIFFICULTY_AMY_WORKOUT + VALID_EQUIPMENT_AMY_WORKOUT + VALID_MUSCLE_AMY_WORKOUT
-//        + VALID_CALORIES_AMY_WORKOUT + VALID_INSTRUCTION_AMY_WORKOUT, Name.MESSAGE_NAME_CONSTRAINTS);
+        // multiple invalid values, but only the first invalid value is captured
+        //assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_TYPE_DESC + VALID_DURATION_AMY_WORKOUT
+        //+ VALID_DIFFICULTY_AMY_WORKOUT + VALID_EQUIPMENT_AMY_WORKOUT + VALID_MUSCLE_AMY_WORKOUT
+        //+ VALID_CALORIES_AMY_WORKOUT + VALID_INSTRUCTION_AMY_WORKOUT, Name.MESSAGE_NAME_CONSTRAINTS);
     }
 
     @Test
