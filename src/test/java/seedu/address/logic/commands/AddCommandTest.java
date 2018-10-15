@@ -7,6 +7,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.Rule;
@@ -19,6 +21,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.WorkoutBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyWorkoutBook;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
 import seedu.address.model.workout.Workout;
 import seedu.address.testutil.WorkoutBuilder;
 
@@ -121,6 +126,21 @@ public class AddCommandTest {
         @Override
         public ObservableList<Workout> getFilteredWorkoutList() {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public List<Workout> getFilteredInternalList(Difficulty difficulty){
+            return Collections.emptyList();
+        }
+
+        @Override
+        public List<Workout> getFilteredInternalList(Duration duration){
+            return Collections.emptyList();
+        }
+
+        @Override
+        public List<Workout> getFilteredInternalList(Calories calories){
+            return Collections.emptyList();
         }
 
         @Override
