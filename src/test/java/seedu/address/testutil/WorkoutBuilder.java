@@ -77,7 +77,7 @@ public class WorkoutBuilder {
         return this;
     }
 
-      /**
+    /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Workout} that we are building.
      */
     public WorkoutBuilder withTags(String ... tags) {
