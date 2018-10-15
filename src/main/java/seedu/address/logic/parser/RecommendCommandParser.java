@@ -35,6 +35,7 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
             Duration duration = ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION).get());
             return new RecommendCommand(duration);
         }
+
         if (!argMultimap.getAllValues(PREFIX_DIFFICULTY).isEmpty()) {
             Difficulty difficulty = ParserUtil.parseDifficulty(argMultimap.getValue(PREFIX_DIFFICULTY).get());
             return new RecommendCommand(difficulty);
