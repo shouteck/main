@@ -40,46 +40,46 @@ public class EditWorkoutDescriptorTest {
         assertFalse(DESC_AMY_WORKOUT.equals(DESC_BOB_WORKOUT));
 
         // different name -> returns false
-        EditWorkoutDescriptor editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT)
+        EditWorkoutDescriptor editedAmyWorkout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT)
                 .withName(VALID_NAME_BOB_WORKOUT).build();
-        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmyWorkout));
 
         // different type -> returns false
-        editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT).build();
-        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
+        editedAmyWorkout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT).build();
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmyWorkout));
 
         // different duration -> returns false
-        editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT)
+        editedAmyWorkout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT)
                 .build();
-        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmyWorkout));
 
         // different difficulty -> returns false
-        editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT)
+        editedAmyWorkout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT)
                 .withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT).build();
-        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmyWorkout));
 
         // different equipment -> returns false
-        editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT)
+        editedAmyWorkout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT)
                 .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).build();
-        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmyWorkout));
 
         // different muscle -> returns false
-        editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT)
+        editedAmyWorkout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT)
                 .build();
-        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmyWorkout));
 
         // different calories -> returns false
-        editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withCalories(VALID_CALORIES_BOB_WORKOUT)
+        editedAmyWorkout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withCalories(VALID_CALORIES_BOB_WORKOUT)
                 .build();
-        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmyWorkout));
 
         // different instruction -> returns false
-        editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT)
+        editedAmyWorkout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT)
                 .withInstruction(VALID_INSTRUCTION_BOB_WORKOUT).build();
-        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmyWorkout));
 
         // different tags -> returns false
-        editedAmy_Workout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withTags(VALID_TAG_NIGHT).build();
-        assertFalse(DESC_AMY_WORKOUT.equals(editedAmy_Workout));
+        editedAmyWorkout = new EditWorkoutDescriptorBuilder(DESC_AMY_WORKOUT).withTags(VALID_TAG_NIGHT).build();
+        assertFalse(DESC_AMY_WORKOUT.equals(editedAmyWorkout));
     }
 }
