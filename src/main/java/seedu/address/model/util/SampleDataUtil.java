@@ -4,9 +4,17 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Equipment;
+import seedu.address.model.workout.Instruction;
+import seedu.address.model.workout.Muscle;
+import seedu.address.model.workout.Name;
+import seedu.address.model.workout.Type;
+import seedu.address.model.workout.Workout;
 import seedu.address.model.WorkoutBook;
 import seedu.address.model.ReadOnlyWorkoutBook;
-import seedu.address.model.workout.*;
 import seedu.address.model.tag.Tag;
 
 /**
