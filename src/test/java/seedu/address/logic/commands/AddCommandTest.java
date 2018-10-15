@@ -129,17 +129,20 @@ public class AddCommandTest {
         }
 
         @Override
-        public List<Workout> getFilteredInternalList(Difficulty difficulty){
+        public List<Workout> getFilteredInternalList(Difficulty difficulty)
+        {
             return Collections.emptyList();
         }
 
         @Override
-        public List<Workout> getFilteredInternalList(Duration duration){
+        public List<Workout> getFilteredInternalList(Duration duration)
+        {
             return Collections.emptyList();
         }
 
         @Override
-        public List<Workout> getFilteredInternalList(Calories calories){
+        public List<Workout> getFilteredInternalList(Calories calories)
+        {
             return Collections.emptyList();
         }
 

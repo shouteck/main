@@ -16,12 +16,12 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.model.WorkoutBook;
-import seedu.address.storage.XmlAdaptedWorkout;
 import seedu.address.storage.XmlAdaptedTag;
+import seedu.address.storage.XmlAdaptedWorkout;
 import seedu.address.storage.XmlSerializableWorkoutBook;
 import seedu.address.testutil.WorkoutBookBuilder;
-import seedu.address.testutil.WorkoutBuilder;
 import seedu.address.testutil.TestUtil;
+import seedu.address.testutil.WorkoutBuilder;
 
 public class XmlUtilTest {
 
@@ -33,8 +33,6 @@ public class XmlUtilTest {
     private static final Path INVALID_WORKOUT_FIELD_FILE = TEST_DATA_FOLDER.resolve("invalidWorkoutField.xml");
     private static final Path VALID_WORKOUT_FILE = TEST_DATA_FOLDER.resolve("validWorkout.xml");
     private static final Path TEMP_FILE = TestUtil.getFilePathInSandboxFolder("tempWorkoutBook.xml");
-
-//    private static final String INVALID_PHONE = "9482asf424";
 
     private static final String VALID_NAME = "Hans Muster's workout";
     private static final String VALID_TYPE = "strength";

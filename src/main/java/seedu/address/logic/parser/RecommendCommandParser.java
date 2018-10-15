@@ -39,8 +39,7 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
         if (!argMultimap.getAllValues(PREFIX_DIFFICULTY).isEmpty()) {
             Difficulty difficulty = ParserUtil.parseDifficulty(argMultimap.getValue(PREFIX_DIFFICULTY).get());
             return new RecommendCommand(difficulty);
-        }
-        else {
+        } else {
             Calories calories = ParserUtil.parseCalories(argMultimap.getValue(PREFIX_CALORIES).get());
             return new RecommendCommand(calories);
         }
