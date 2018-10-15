@@ -4,15 +4,15 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
 
 import org.junit.Test;
 

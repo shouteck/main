@@ -2,9 +2,7 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_BOB_WORKOUT;
@@ -51,17 +49,8 @@ import org.junit.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
-//import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
-//import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.logic.commands.EditCommand.EditWorkoutDescriptor;
 import seedu.address.model.workout.Name;
-import seedu.address.model.workout.Type;
-import seedu.address.model.workout.Duration;
-import seedu.address.model.workout.Difficulty;
-import seedu.address.model.workout.Equipment;
-import seedu.address.model.workout.Muscle;
-import seedu.address.model.workout.Calories;
-import seedu.address.model.workout.Instruction;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.EditWorkoutDescriptorBuilder;
 

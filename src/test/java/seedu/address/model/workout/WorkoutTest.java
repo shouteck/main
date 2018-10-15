@@ -31,7 +31,8 @@ public class WorkoutTest {
         assertFalse(ALICE_WORKOUT.isSameWorkout(null));
 
         // different type and duration -> returns true
-        Workout editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT).build();
+        Workout editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT)
+                .withDuration(VALID_DURATION_BOB_WORKOUT).build();
         assertTrue(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
 
         // different name only -> returns true
@@ -39,27 +40,34 @@ public class WorkoutTest {
         assertTrue(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
 
         // different name and type -> returns false
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT).build();
+        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT)
+                .withType(VALID_TYPE_BOB_WORKOUT).build();
         assertFalse(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
 
         // different name and duration -> returns false
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT).build();
+        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT)
+                .withDuration(VALID_DURATION_BOB_WORKOUT).build();
         assertFalse(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
 
         // different name and muscle -> returns false
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT).build();
+        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT)
+                .withMuscle(VALID_MUSCLE_BOB_WORKOUT).build();
         assertFalse(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
 
         // different attributes -> returns true
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT).withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT)
-                .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT).withCalories(VALID_CALORIES_BOB_WORKOUT)
+        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT)
+                .withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT)
+                .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT)
+                .withCalories(VALID_CALORIES_BOB_WORKOUT)
                 .withInstruction(VALID_INSTRUCTION_BOB_WORKOUT)
                 .withTags(VALID_TAG_NIGHT).build();
         assertTrue(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
 
         // different attributes -> returns true
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT)
-                .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT).withCalories(VALID_CALORIES_BOB_WORKOUT)
+        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT)
+                .withDuration(VALID_DURATION_BOB_WORKOUT)
+                .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT)
+                .withCalories(VALID_CALORIES_BOB_WORKOUT)
                 .withInstruction(VALID_INSTRUCTION_BOB_WORKOUT)
                 .withTags(VALID_TAG_NIGHT).build();
         assertTrue(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
@@ -67,7 +75,8 @@ public class WorkoutTest {
 
         // different attributes -> returns true
         editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT)
-                .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT).withCalories(VALID_CALORIES_BOB_WORKOUT)
+                .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT)
+                .withCalories(VALID_CALORIES_BOB_WORKOUT)
                 .withInstruction(VALID_INSTRUCTION_BOB_WORKOUT)
                 .withTags(VALID_TAG_NIGHT).build();
         assertTrue(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
