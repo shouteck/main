@@ -5,8 +5,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import seedu.address.model.ReadOnlyWorkoutBook;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.WorkoutBook;
+import seedu.address.model.tag.Tag;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;

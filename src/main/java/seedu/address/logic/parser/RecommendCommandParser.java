@@ -2,16 +2,17 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+
+import java.util.stream.Stream;
 
 import seedu.address.logic.commands.RecommendCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;
-import seedu.address.model.workout.Type;
-
-import java.util.stream.Stream;
 
 /**
  * Parses input arguments and creates a new {@code RecommendCommand} object
@@ -30,7 +31,6 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
                 || !argMultimap.getPreamble().isEmpty() || argMultimap.getSize() > 2) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RecommendCommand.MESSAGE_USAGE));
         }
-
         if (!argMultimap.getAllValues(PREFIX_DURATION).isEmpty()) {
             Duration duration = ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION).get());
             return new RecommendCommand(duration);
@@ -39,7 +39,7 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
             Difficulty difficulty = ParserUtil.parseDifficulty(argMultimap.getValue(PREFIX_DIFFICULTY).get());
             return new RecommendCommand(difficulty);
         }
-        else  {
+        else {
             Calories calories = ParserUtil.parseCalories(argMultimap.getValue(PREFIX_CALORIES).get());
             return new RecommendCommand(calories);
         }

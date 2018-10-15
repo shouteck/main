@@ -24,16 +24,16 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.workout.Workout;
+import seedu.address.model.tag.Tag;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Equipment;
+import seedu.address.model.workout.Instruction;
+import seedu.address.model.workout.Muscle;
 import seedu.address.model.workout.Name;
 import seedu.address.model.workout.Type;
-import seedu.address.model.workout.Duration;
-import seedu.address.model.workout.Difficulty;
-import seedu.address.model.workout.Equipment;
-import seedu.address.model.workout.Muscle;
-import seedu.address.model.workout.Calories;
-import seedu.address.model.workout.Instruction;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.workout.Workout;
 
 /**
  * Edits the details of an existing workout in the workout book.
