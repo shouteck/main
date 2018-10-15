@@ -16,13 +16,28 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-
 import seedu.address.logic.commands.ModifyCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.*;
-import static seedu.address.logic.parser.CliSyntax.*;
+
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_GENDER;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_HEIGHT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PREFERRED_DIFFICULTY;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_USERNAME;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_WEIGHT;
+import static seedu.address.commons.core.Messages.MESSAGE_VALID_GENDER;
+import static seedu.address.commons.core.Messages.MESSAGE_VALID_HEIGHT;
+import static seedu.address.commons.core.Messages.MESSAGE_VALID_PREFERRED_DIFFICULTY;
+import static seedu.address.commons.core.Messages.MESSAGE_VALID_USERNAME;
+import static seedu.address.commons.core.Messages.MESSAGE_VALID_WEIGHT;
+
+import static seedu.address.logic.parser.CliSyntax.PREFIX_GENDER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HEIGHT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PREFERRED_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_WEIGHT;
 
 public class ModifyCommandParser {
     /**
