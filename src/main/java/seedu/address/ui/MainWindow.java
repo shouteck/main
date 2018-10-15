@@ -50,10 +50,10 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane commandBoxPlaceholder;
 
     @FXML
-    private MenuItem HelpMenuItem;
+    private MenuItem helpMenuItem;
 
     @FXML
-    private MenuItem ProfileMenuItem;
+    private MenuItem profileMenuItem;
 
     @FXML
     private StackPane workoutListPanelPlaceholder;
@@ -89,31 +89,35 @@ public class MainWindow extends UiPart<Stage> {
         return primaryStage;
     }
 
-    private void setHelpAccelerators() { setHelpAccelerator(HelpMenuItem, KeyCombination.valueOf("F1")); }
+    private void setHelpAccelerators() {
+        setHelpAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
+    }
 
-    private void setProfileAccelerators() { setProfileAccelerator(ProfileMenuItem, KeyCombination.valueOf("F2")); }
+    private void setProfileAccelerators() {
+        setProfileAccelerator(profileMenuItem, KeyCombination.valueOf("F2"));
+    }
 
     /**
      * Sets the accelerator of a MenuItem.
      * @param keyCombination the KeyCombination value of the accelerator
      */
-    private void setHelpAccelerator(MenuItem HelpMenuItem, KeyCombination keyCombination) {
-        HelpMenuItem.setAccelerator(keyCombination);
+    private void setHelpAccelerator(MenuItem helpMenuItem, KeyCombination keyCombination) {
+        helpMenuItem.setAccelerator(keyCombination);
 
         getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getTarget() instanceof TextInputControl && keyCombination.match(event)) {
-                HelpMenuItem.getOnAction().handle(new ActionEvent());
+                helpMenuItem.getOnAction().handle(new ActionEvent());
                 event.consume();
             }
         });
     }
 
-    private void setProfileAccelerator(MenuItem ProfileMenuItem, KeyCombination keyCombination) {
-        ProfileMenuItem.setAccelerator(keyCombination);
+    private void setProfileAccelerator(MenuItem profileMenuItem, KeyCombination keyCombination) {
+        profileMenuItem.setAccelerator(keyCombination);
 
         getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getTarget() instanceof TextInputControl && keyCombination.match(event)) {
-                ProfileMenuItem.getOnAction().handle(new ActionEvent());
+                profileMenuItem.getOnAction().handle(new ActionEvent());
                 event.consume();
             }
         });
