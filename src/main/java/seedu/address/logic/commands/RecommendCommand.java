@@ -62,7 +62,7 @@ public class RecommendCommand extends Command {
 
         List<Workout> filteredWorkoutList = model.getFilteredWorkoutList();
         List<Workout> filteredInternalList;
-        if (duration != null){
+        if (duration != null) {
             filteredInternalList = model.getFilteredInternalList(duration);
         } else if (difficulty != null) {
             filteredInternalList = model.getFilteredInternalList(difficulty);
