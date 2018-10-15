@@ -93,7 +93,6 @@ public class Workout {
         if (otherWorkout == this) {
             return true;
         }
-
         return otherWorkout != null
                 && ((otherWorkout.getName().equals(getName()))
                 || (otherWorkout.getType().equals(getType()) && otherWorkout.getDuration().equals(getDuration())
