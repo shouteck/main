@@ -49,7 +49,9 @@ public class Workout {
         return name;
     }
 
-    public Type getType() { return type; }
+    public Type getType() {
+        return type;
+    }
 
     public Duration getDuration() {
         return duration;

@@ -106,8 +106,8 @@ public class WorkoutBookParser {
         case SortCommand.COMMAND_WORD:
             return new SortCommand();
 
-            default:
-                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        default:
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
 
