@@ -334,21 +334,24 @@ image::RecommendCommandSD.PNG[width="900"]
 {nbsp}
 // end::recommend
 
-=== User Profile
+=== User Profile (Currently WIP)
 // tag::profile
 ==== Current implementation
-The profile window is first being loading by loading the `_profileWindow.fxml file`_. Thereafter, once the user request to open the profile window, it will then process it.
+The profile window is first being loading by loading the `_profileWindow.fxml file_`. Thereafter, once the user request to open the profile window, it will then process it.
 
 There are 3 ways to open a profile window.
 
 * User types "profile" in command box
 
+After executing the command `_profile_`, it will create an instance which uses `showProfileRequestEvent` method of `Events`. Then, the `UI` will return `handleProfile` and the profile window will show up.
+
 [[fig-ProfileCommand]]
 .Interactions inside `Logic` component for the *`profile`* command.
-image::ProfileCommand.PNG[width="900"]
+image::ProfileCommand.PNG[width="800"]
 
 * User click on profile on the menu
-a
+
+
 
 * User presses "F2"
 
