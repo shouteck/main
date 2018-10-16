@@ -347,13 +347,19 @@ There are 3 ways to open a profile window.
 
 ===== User types "profile" in command box
 
-After executing the command `profile`, it will create an instance which uses `showProfileRequestEvent` method of `Events`. Then, the `UI` will `handleShowProfileRequestEvent` and then return `handleProfile` and the profile window will show up.
+After executing the command `profile`, it will create an instance which uses `showProfileRequestEvent` method of `Events`. Then, the `UI` will `handleShowProfileRequestEvent` and then return `handleProfile` and the profile window will be opened.
 
 [[fig-ProfileCommand]]
 .Interactions inside `Logic` component for the *`profile`* command.
 image::ProfileCommand.PNG[width="800"]
 
 ===== User click on profile on the menu
+
+After clicking on `profile`, it will send an event `showProfileRequestEvent` to `Events`. It will then return `handleProfile` which will open up the profile window.
+
+[[fig-ClickProfile]]
+.Interactions inside `UI` component when clicking profile
+image::ClickProfile.PNG[width="800"]
 
 ===== User presses "F2"
 
