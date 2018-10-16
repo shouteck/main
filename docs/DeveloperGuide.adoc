@@ -340,6 +340,7 @@ image::RecommendCommandSD.PNG[width="900"]
 The profile window is first being loading by loading the `_profileWindow.fxml file`_. Thereafter, once the user request to open the profile window, it will then process it.
 
 There are 3 ways to open a profile window.
+
 * User types "profile" in command box
 * User click on profile on the menu
 * User presses "F2"
