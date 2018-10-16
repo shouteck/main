@@ -348,6 +348,7 @@ There are 3 ways to open a profile window.
 image::ProfileCommand.PNG[width="900"]
 
 * User click on profile on the menu
+a
 
 * User presses "F2"
 
