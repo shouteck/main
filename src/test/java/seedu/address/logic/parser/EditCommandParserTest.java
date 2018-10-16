@@ -120,9 +120,9 @@ public class EditCommandParserTest {
          * To be uncommented once invalid test cases are thought of
          */
         //invalid type followed by valid duration
-        //assertParseFailure(parser, "1" + INVALID_TYPE_DESC + DURATION_DESC_AMY_WORKOUT, Type.MESSAGE_TYPE_CONSTRAINTS);
-        // valid type followed by invalid type. The test case for invalid type followed by valid type
-        // is tested at {@code parse_invalidValueFollowedByValidValue_success()}
+        //assertParseFailure(parser, "1" + INVALID_TYPE_DESC +DURATION_DESC_AMY_WORKOUT, Type.MESSAGE_TYPE_CONSTRAINTS);
+        //valid type followed by invalid type. The test case for invalid type followed by valid type
+        //is tested at {@code parse_invalidValueFollowedByValidValue_success()}
         //assertParseFailure(parser, "1" + TYPE_DESC_BOB_WORKOUT + INVALID_TYPE_DESC, Type.MESSAGE_TYPE_CONSTRAINTS);
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Workout} being edited,
@@ -261,27 +261,27 @@ public class EditCommandParserTest {
     /**
      * To be uncommented once invalid test cases are thought of
      */
-//    @Test
-//    public void parse_invalidValueFollowedByValidValue_success() {
-//        // no other valid values specified
-//        Index targetIndex = INDEX_FIRST_WORKOUT;
-//        String userInput = targetIndex.getOneBased() + INVALID_TYPE_DESC + TYPE_DESC_BOB_WORKOUT;
-//      EditWorkoutDescriptor descriptor = new EditWorkoutDescriptorBuilder().withType(VALID_TYPE_BOB_WORKOUT).build();
-//        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
-//        assertParseSuccess(parser, userInput, expectedCommand);
-//
-//        // other valid values specified
-//        userInput = targetIndex.getOneBased() + DURATION_DESC_BOB_WORKOUT + INVALID_TYPE_DESC + TYPE_DESC_BOB_WORKOUT
-//            + DIFFICULTY_DESC_BOB_WORKOUT + EQUIPMENT_DESC_BOB_WORKOUT + MUSCLE_DESC_BOB_WORKOUT
-//            + CALORIES_DESC_BOB_WORKOUT + INSTRUCTION_DESC_BOB_WORKOUT;
-//
-//        descriptor = new EditWorkoutDescriptorBuilder().withType(VALID_TYPE_BOB_WORKOUT)
-//                .withDuration(VALID_DURATION_BOB_WORKOUT).withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT)
-//                .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT)
-//                .withCalories(VALID_CALORIES_BOB_WORKOUT).withInstruction(VALID_INSTRUCTION_BOB_WORKOUT).build();
-//        expectedCommand = new EditCommand(targetIndex, descriptor);
-//        assertParseSuccess(parser, userInput, expectedCommand);
-//    }
+    /* @Test
+    public void parse_invalidValueFollowedByValidValue_success() {
+        // no other valid values specified
+        Index targetIndex = INDEX_FIRST_WORKOUT;
+        String userInput = targetIndex.getOneBased() + INVALID_TYPE_DESC + TYPE_DESC_BOB_WORKOUT;
+        EditWorkoutDescriptor descriptor = new EditWorkoutDescriptorBuilder().withType(VALID_TYPE_BOB_WORKOUT).build();
+        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // other valid values specified
+        userInput = targetIndex.getOneBased() + DURATION_DESC_BOB_WORKOUT + INVALID_TYPE_DESC + TYPE_DESC_BOB_WORKOUT
+            + DIFFICULTY_DESC_BOB_WORKOUT + EQUIPMENT_DESC_BOB_WORKOUT + MUSCLE_DESC_BOB_WORKOUT
+            + CALORIES_DESC_BOB_WORKOUT + INSTRUCTION_DESC_BOB_WORKOUT;
+
+        descriptor = new EditWorkoutDescriptorBuilder().withType(VALID_TYPE_BOB_WORKOUT)
+                .withDuration(VALID_DURATION_BOB_WORKOUT).withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT)
+                .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT)
+                .withCalories(VALID_CALORIES_BOB_WORKOUT).withInstruction(VALID_INSTRUCTION_BOB_WORKOUT).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }*/
 
     @Test
     public void parse_resetTags_success() {
