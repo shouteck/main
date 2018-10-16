@@ -1,20 +1,21 @@
 package seedu.address.model.workout;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static seedu.address.testutil.TypicalWorkouts.ALICE_WORKOUT;
+import static seedu.address.testutil.TypicalWorkouts.BOB_WORKOUT;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
 import seedu.address.model.workout.exceptions.DuplicateWorkoutException;
 import seedu.address.model.workout.exceptions.WorkoutNotFoundException;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static seedu.address.testutil.TypicalWorkouts.ALICE_WORKOUT;
-import static seedu.address.testutil.TypicalWorkouts.BOB_WORKOUT;
 
 public class UniqueWorkoutListTest {
     @Rule

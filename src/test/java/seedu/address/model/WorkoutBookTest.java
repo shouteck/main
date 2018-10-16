@@ -51,9 +51,9 @@ public class WorkoutBookTest {
     @Test
     public void resetData_withDuplicateWorkouts_throwsDuplicateWorkoutException() {
         // Two workouts with the same identity fields
-        Workout editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT)
+        Workout editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT)
                 .withTags(VALID_TAG_NIGHT).build();
-        List<Workout> newWorkouts = Arrays.asList(ALICE_WORKOUT, editedAlice_Workout);
+        List<Workout> newWorkouts = Arrays.asList(ALICE_WORKOUT, editedAliceWorkout);
         WorkoutBookStub newData = new WorkoutBookStub(newWorkouts);
 
         thrown.expect(DuplicateWorkoutException.class);
@@ -80,9 +80,9 @@ public class WorkoutBookTest {
     @Test
     public void hasWorkout_workoutWithSameIdentityFieldsInWorkoutBook_returnsTrue() {
         workoutBook.addWorkout(ALICE_WORKOUT);
-        Workout editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT)
+        Workout editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT)
                 .withTags(VALID_TAG_NIGHT).build();
-        assertTrue(workoutBook.hasWorkout(editedAlice_Workout));
+        assertTrue(workoutBook.hasWorkout(editedAliceWorkout));
     }
 
     @Test
