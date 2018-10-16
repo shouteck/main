@@ -187,7 +187,7 @@ Recommend a workout from the existing workouts identified by the `parameter` and
 Format: `recommend parameter/PARAMETER`
 
 ****
-* `parameter` only accepts one of the three prefixes which are either `difficulty`, `calories` or `duration`.
+* `parameter` only accepts one of the three prefixes which is either `difficulty`, `calories` or `duration`.
 * See Command Format on which `PARAMETER` is acceptable for its corresponding `parameter`.
 ****
 
