@@ -343,7 +343,7 @@ There are 3 ways to open a profile window.
 
 * User types `"profile"` in command box
 * User clicks on `profile` on the menu bar
-* User presses the `"F2"` key
+* User presses the `F2` key
 
 ===== User types "profile" in command box
 
@@ -353,15 +353,21 @@ After executing the command `profile`, it will create an instance which uses `sh
 .Interactions inside `Logic` component for the *`profile`* command.
 image::ProfileCommand.PNG[width="800"]
 
-===== User click on profile on the menu
+===== User click on `profile` on the menu bar
 
 After clicking on `profile`, it will send an event `showProfileRequestEvent` to `Events`. It will then return `handleProfile` which will open up the profile window.
 
 [[fig-ClickProfile]]
 .Interactions inside `UI` component when clicking profile
-image::ClickProfile.PNG[width="800"]
+image::ClickProfile.PNG[width="600"]
 
-===== User presses "F2"
+===== User presses `F2` key
+
+The profile window is firstly being accelerated by the key `F2`. After pressing `F2`, it will sent a `ShowProfileRequestEvent()` event to the `EventsCentre`. Then, the `UI` will `handleShowProfileRequestEvent` and the profile window will be opened.
+
+[[fig-F2Profile]]
+.Interactions inside `UI` component when pressing `F2`
+image::F2Profile.PNG[width="700"]
 
 // end::profile
 
