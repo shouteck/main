@@ -342,6 +342,7 @@ The profile window is first being loading by loading the `_profileWindow.fxml fi
 There are 3 ways to open a profile window.
 
 * User types "profile" in command box
+
 [[fig-ProfileCommand]]
 .Interactions inside `Logic` component for the *`profile`* command.
 image::ProfileCommand.PNG[width="900"]
