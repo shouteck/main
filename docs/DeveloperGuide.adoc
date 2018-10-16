@@ -334,12 +334,23 @@ image::RecommendCommandSD.PNG[width="900"]
 {nbsp}
 // end::recommend
 
-// tag::dataencryption[]
-=== [Proposed] Data Encryption
+=== User Profile
+// tag::profile
+==== Current implementation
+The profile window is first being loading by loading the `_profileWindow.fxml file`_. Thereafter, once the user request to open the profile window, it will then process it.
 
-_{Explain here how the data encryption feature will be implemented}_
+There are 3 ways to open a profile window.
+* User types "profile" in command box
+* User click on profile on the menu
+* User presses "F2"
 
-// end::dataencryption[]
+===== User types "profile" in command box
+
+===== User click on profile on the menu
+
+===== User presses "F2"
+
+// end::profile
 
 === Logging
 
