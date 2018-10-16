@@ -337,7 +337,7 @@ image::RecommendCommandSD.PNG[width="900"]
 === User Profile (Currently WIP)
 // tag::profile
 ==== Current implementation
-The profile window is first being loading by loading the `_profileWindow.fxml file_`. Thereafter, once the user request to open the profile window, it will then process it.
+The profile window is first being loaded by loading the `_profileWindow.fxml file_`. Thereafter, once the user request to open the profile window, it will then process it.
 
 There are 3 ways to open a profile window.
 
