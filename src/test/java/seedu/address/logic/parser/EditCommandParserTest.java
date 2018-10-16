@@ -261,7 +261,7 @@ public class EditCommandParserTest {
     /**
      * To be uncommented once invalid test cases are thought of
      */
-   /* @Test
+    /* @Test
     public void parse_invalidValueFollowedByValidValue_success() {
         // no other valid values specified
         Index targetIndex = INDEX_FIRST_WORKOUT;
