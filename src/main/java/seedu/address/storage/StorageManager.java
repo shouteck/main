@@ -9,9 +9,11 @@ import com.google.common.eventbus.Subscribe;
 
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.events.model.TrackedDataChangedEvent;
 import seedu.address.commons.events.model.WorkoutBookChangedEvent;
 import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 import seedu.address.commons.exceptions.DataConversionException;
+import seedu.address.model.ReadOnlyTrackedData;
 import seedu.address.model.ReadOnlyWorkoutBook;
 import seedu.address.model.UserPrefs;
 
@@ -21,6 +23,7 @@ import seedu.address.model.UserPrefs;
 public class StorageManager extends ComponentManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
+    private TrackedDataStorage trackedDataStorage;
     private WorkoutBookStorage workoutBookStorage;
     private UserPrefsStorage userPrefsStorage;
 
@@ -90,4 +93,44 @@ public class StorageManager extends ComponentManager implements Storage {
         }
     }
 
+    // ================ TrackedData methods ==============================
+
+    @Override
+    public Path getTrackedDataFilePath() {
+        return trackedDataStorage.getTrackedDataFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlyTrackedData> readTrackedData() throws DataConversionException, IOException {
+        return readTrackedData(trackedDataStorage.getTrackedDataFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlyTrackedData> readTrackedData(Path filePath) throws DataConversionException, IOException {
+        logger.fine("Attempting to read data from file: " + filePath);
+        return trackedDataStorage.readTrackedData(filePath);
+    }
+
+    @Override
+    public void saveTrackedData(ReadOnlyTrackedData trackedData) throws IOException {
+        saveTrackedData(trackedData, trackedDataStorage.getTrackedDataFilePath());
+    }
+
+    @Override
+    public void saveTrackedData(ReadOnlyTrackedData trackedData, Path filePath) throws IOException {
+        logger.fine("Attempting to write to data file: " + filePath);
+        trackedDataStorage.saveTrackedData(trackedData, filePath);
+    }
+
+    @Override
+    @Subscribe
+    public void handleTrackedDataChangedEvent(TrackedDataChangedEvent trackedDataChanged) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(trackedDataChanged
+                , "Tracked data changed, saving to file"));
+        try {
+            saveTrackedData(trackedDataChanged.data);
+        } catch (IOException e) {
+            raise(new DataSavingExceptionEvent(e));
+        }
+    }
 }

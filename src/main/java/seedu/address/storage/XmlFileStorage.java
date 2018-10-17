@@ -36,4 +36,27 @@ public class XmlFileStorage {
         }
     }
 
+    /**
+     * Saves the given tracked data to the specified file.
+     */
+    public static void saveDataToFile(Path file, XmlSerializableTrackedData workoutBook)
+            throws FileNotFoundException {
+        try {
+            XmlUtil.saveDataToFile(file, workoutBook);
+        } catch (JAXBException e) {
+            throw new AssertionError("Unexpected exception " + e.getMessage(), e);
+        }
+    }
+
+    /**
+     * Returns tracked data in the file or an empty workout book
+     */
+    public static XmlSerializableTrackedData loadTrackedDataFromSaveFile(Path file) throws DataConversionException,
+            FileNotFoundException {
+        try {
+            return XmlUtil.getDataFromFile(file, XmlSerializableTrackedData.class);
+        } catch (JAXBException e) {
+            throw new DataConversionException(e);
+        }
+    }
 }
