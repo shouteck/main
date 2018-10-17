@@ -10,7 +10,7 @@ import seedu.address.logic.parser.ParserUtil;
 /**
  * WIP
  */
-public class  CurrentCommandParser implements Parser<CurrentCommand> {
+public class CurrentCommandParser implements Parser<CurrentCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the CurrentCommand
