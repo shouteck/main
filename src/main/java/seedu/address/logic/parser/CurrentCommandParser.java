@@ -13,7 +13,7 @@ public class CurrentCommandParser implements Parser<CurrentCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the CurrentCommand
-     * and returns an SelectCommand object for execution.
+     * and returns an CurrentCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     public CurrentCommand parse(String args) throws ParseException {

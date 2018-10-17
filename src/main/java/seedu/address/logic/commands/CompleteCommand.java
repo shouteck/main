@@ -17,26 +17,26 @@ import seedu.address.model.tag.Tag;
 import seedu.address.model.workout.*;
 
 /**
- * Changes a workout to be a current workout in the workout book.
+ * Changes a workout to be a completed workout in the workout book.
  */
-public class CurrentCommand extends Command {
+public class CompleteCommand extends Command {
 
-    public static final String COMMAND_WORD = "current";
+    public static final String COMMAND_WORD = "complete";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sets a workout to be a current workout identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sets a workout to be a completed workout identified "
             + "by the index number used in the displayed workout list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1 ";
 
-    public static final String MESSAGE_CURRENT_WORKOUT_SUCCESS = "Current Workout: %1$s";
-    public static final String MESSAGE_DUPLICATE_CURRENT_WORKOUT = "This workout is already current.";
+    public static final String MESSAGE_COMPLETE_WORKOUT_SUCCESS = "Completed Workout: %1$s";
+    public static final String MESSAGE_DUPLICATE_COMPLETE_WORKOUT = "This workout is already completed.";
 
     private final Index targetIndex;
 
     /**
      * @param targetIndex of the person in the filtered workout list to edit the state tag
      */
-    public CurrentCommand(Index targetIndex) {
+    public CompleteCommand(Index targetIndex) {
         requireNonNull(targetIndex);
 
         this.targetIndex = targetIndex;
@@ -53,7 +53,7 @@ public class CurrentCommand extends Command {
             model.updateWorkout(workoutToEdit, editedWorkout);
             model.updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
             model.commitWorkoutBook();
-            return new CommandResult(String.format(MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout));
+            return new CommandResult(String.format(MESSAGE_COMPLETE_WORKOUT_SUCCESS, editedWorkout));
         } catch (IndexOutOfBoundsException | ParseException e) {
             throw new CommandException(Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
         }
@@ -83,16 +83,16 @@ public class CurrentCommand extends Command {
         Tag current = parseTag("current");
         Tag completed = parseTag("completed");
 
-        if (originalTags.contains(current)) {
-            throw new CommandException(MESSAGE_DUPLICATE_CURRENT_WORKOUT);
+        if (originalTags.contains(completed)) {
+            throw new CommandException(MESSAGE_DUPLICATE_COMPLETE_WORKOUT);
         }
         if (originalTags.contains(future)) {
             updatedTags.remove(future);
         }
-        if (originalTags.contains(completed)) {
-            updatedTags.remove(completed);
+        if (originalTags.contains(current)) {
+            updatedTags.remove(current);
         }
-        updatedTags.add(current);
+        updatedTags.add(completed);
 
         return new Workout(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,
                 updatedMuscle, updatedCalories, updatedInstruction, updatedTags);
@@ -106,12 +106,12 @@ public class CurrentCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof CurrentCommand)) {
+        if (!(other instanceof CompleteCommand)) {
             return false;
         }
 
         // state check
-        CurrentCommand e = (CurrentCommand) other;
+        CompleteCommand e = (CompleteCommand) other;
         return targetIndex.equals(e.targetIndex);
     }
 }

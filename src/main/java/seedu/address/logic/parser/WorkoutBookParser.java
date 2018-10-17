@@ -45,6 +45,9 @@ public class WorkoutBookParser {
             case CurrentCommand.COMMAND_WORD:
                 return new CurrentCommandParser().parse(arguments);
 
+            case CompleteCommand.COMMAND_WORD:
+                return new CompleteCommandParser().parse(arguments);
+
             case SelectCommand.COMMAND_WORD:
                 return new SelectCommandParser().parse(arguments);
 
