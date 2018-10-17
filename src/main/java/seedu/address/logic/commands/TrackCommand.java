@@ -4,7 +4,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import javafx.util.Pair;
 import seedu.address.logic.CommandHistory;
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.Model;
 
@@ -34,18 +33,26 @@ public class TrackCommand extends Command {
     /**
      * @param parameter to be tracked
      */
-    public TrackCommand(String subcommand, Pair<Prefix, String> parameter){
+    public TrackCommand(String subcommand, Pair<Prefix, String> parameter) {
         requireAllNonNull(subcommand, parameter);
 
         this.subcommand = subcommand;
         this.parameter = parameter;
     }
 
+    /**
+     *
+     * WIP
+     */
     @Override
     public CommandResult execute(Model model, CommandHistory history) {
         return new CommandResult(String.format(MESSAGE_SUCCESS, parameter.getKey(), parameter.getValue()));
     }
 
+    /**
+     *
+     * WIP
+     */
     public boolean equals(Object other) {
         //check 1: same object
         if (other == this) {
@@ -53,7 +60,7 @@ public class TrackCommand extends Command {
         }
 
         //check 2: null
-        if(!(other instanceof TrackCommand)){
+        if (!(other instanceof TrackCommand)) {
             return false;
         }
 
@@ -62,7 +69,7 @@ public class TrackCommand extends Command {
         return subcommand.equals(t.subcommand) && parameter.equals(t.parameter);
     }
 
-    public static boolean isValidSubcommand(String test){
+    public static boolean isValidSubcommand(String test) {
         return test.matches(SUBCOMMAND_VALIDATION_REGEX);
     }
 }

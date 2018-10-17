@@ -56,14 +56,16 @@ public class ArgumentMultimap {
     /**
      * Returns number of arguments stored in the map.
      */
-    public int getNumberOfArgs() {return argMultimap.size();}
+    public int getNumberOfArgs() {
+        return argMultimap.size();
+    }
 
     /**
      * Returns the only argument in the map.
      */
-    public Pair<Prefix, String> getTheOnlyArg(){
-        for(Map.Entry<Prefix, List<String>> entry : argMultimap.entrySet()){
-            if(!entry.getKey().getPrefix().equals("")){
+    public Pair<Prefix, String> getTheOnlyArg() {
+        for (Map.Entry<Prefix, List<String>> entry : argMultimap.entrySet()) {
+            if (!entry.getKey().getPrefix().equals("")) {
                 return new Pair<>(entry.getKey(), entry.getValue().get(0));
             }
         }
