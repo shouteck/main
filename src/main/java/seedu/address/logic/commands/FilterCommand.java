@@ -15,7 +15,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 /**
  * WIP
  */
-public class FilterCommand extends Command{
+public class FilterCommand extends Command {
     public static final String COMMAND_WORD = "filter";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filter all workouts based on keywords "
