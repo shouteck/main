@@ -24,8 +24,8 @@ public class CurrentCommand extends Command {
     public static final String COMMAND_WORD = "current";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sets a workout to be the current workout identified "
-            + "by the index number used in the displayed workout list. "
-            + "Parameters: INDEX (must be a positive integer) "
+            + "by the index number used in the displayed workout list.\n"
+            + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1 ";
 
     public static final String MESSAGE_CURRENT_WORKOUT_SUCCESS = "Current Workout: %1$s";
@@ -47,24 +47,23 @@ public class CurrentCommand extends Command {
         requireNonNull(model);
 
         List<Workout> filteredWorkoutList = model.getFilteredWorkoutList();
-        Workout workoutToEdit = filteredWorkoutList.get(targetIndex.getZeroBased());
-        Workout editedWorkout = createEditedWorkout(workoutToEdit);
-
-        if (targetIndex.getZeroBased() >= filteredWorkoutList.size()) {
+        try {
+            Workout workoutToEdit = filteredWorkoutList.get(targetIndex.getZeroBased());
+            Workout editedWorkout = createEditedWorkout(workoutToEdit);
+            model.updateWorkout(workoutToEdit, editedWorkout);
+            model.updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
+            model.commitWorkoutBook();
+            return new CommandResult(String.format(MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout));
+        } catch (IndexOutOfBoundsException | ParseException e) {
             throw new CommandException(Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
         }
-
-        model.updateWorkout(workoutToEdit, editedWorkout);
-        model.updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
-        model.commitWorkoutBook();
-        return new CommandResult(String.format(MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout));
     }
 
     /**
      * Creates and returns a {@code Workout} with the details of {@code workoutToEdit}
      * edited with {@code editWorkoutDescriptor}.
      */
-    private static Workout createEditedWorkout(Workout workoutToEdit) {
+    private static Workout createEditedWorkout(Workout workoutToEdit) throws CommandException, ParseException {
         assert workoutToEdit != null;
 
         Name updatedName = workoutToEdit.getName();
@@ -80,18 +79,14 @@ public class CurrentCommand extends Command {
         for (Tag entry: originalTags) {
             updatedTags.add(entry);
         }
-        try {
-            Tag f = parseTag("future");
-            Tag c = parseTag("current");
+        Tag f = parseTag("future");
+        Tag c = parseTag("current");
 
-            if (originalTags.contains(c)) {
-                throw new CommandException(MESSAGE_DUPLICATE_CURRENT_WORKOUT);
-            }
-            updatedTags.remove(f);
-            updatedTags.add(c);
-        } catch (CommandException | ParseException e1) {
-            e1.printStackTrace();
+        if (originalTags.contains(c)) {
+            throw new CommandException(MESSAGE_DUPLICATE_CURRENT_WORKOUT);
         }
+        updatedTags.remove(f);
+        updatedTags.add(c);
 
         return new Workout(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,
                 updatedMuscle, updatedCalories, updatedInstruction, updatedTags);
