@@ -47,14 +47,14 @@ public class TrackCommandParser implements Parser<TrackCommand> {
         }
 
         // check 4: one prefix present but value is empty
-        if(argMultimap.getTheOnlyArg().getValue().equals("")){
+        if (argMultimap.getTheOnlyArg().getValue().equals("")) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, TrackCommand.MESSAGE_USAGE));
         }
 
         String subcommand;
         try {
             subcommand = ParserUtil.parseSubcommand(argMultimap.getPreamble());
-        } catch(IllegalValueException ive){
+        } catch (IllegalValueException ive) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, TrackCommand.MESSAGE_USAGE), ive);
         }
 

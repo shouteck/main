@@ -49,6 +49,10 @@ public class TrackCommand extends Command {
         return new CommandResult(String.format(MESSAGE_SUCCESS, parameter.getKey(), parameter.getValue()));
     }
 
+    /**
+     *
+     * WIP
+     */
     public boolean equals(Object other) {
         //check 1: same object
         if (other == this) {
@@ -56,7 +60,7 @@ public class TrackCommand extends Command {
         }
 
         //check 2: null
-        if(!(other instanceof TrackCommand)) {
+        if (!(other instanceof TrackCommand)) {
             return false;
         }
 

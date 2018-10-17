@@ -64,8 +64,8 @@ public class ArgumentMultimap {
      * Returns the only argument in the map.
      */
     public Pair<Prefix, String> getTheOnlyArg() {
-        for(Map.Entry<Prefix, List<String>> entry : argMultimap.entrySet()) {
-            if(!entry.getKey().getPrefix().equals("")){
+        for (Map.Entry<Prefix, List<String>> entry : argMultimap.entrySet()) {
+            if (!entry.getKey().getPrefix().equals("")) {
                 return new Pair<>(entry.getKey(), entry.getValue().get(0));
             }
         }
