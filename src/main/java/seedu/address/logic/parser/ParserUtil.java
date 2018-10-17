@@ -8,7 +8,7 @@ import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
-
+import seedu.address.logic.commands.TrackCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 import seedu.address.model.tag.Tag;
@@ -186,5 +186,20 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String subcommand} into a {@code instruction}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code instruction} is invalid.
+     */
+    public static String parseSubcommand(String subcommand) throws ParseException {
+        requireNonNull(subcommand);
+        String trimmedSubcommand = subcommand.trim();
+        if (!TrackCommand.isValidSubcommand(trimmedSubcommand)) {
+            throw new ParseException(TrackCommand.MESSAGE_SUBCOMMAND_CONSTRAINTS);
+        }
+        return trimmedSubcommand;
     }
 }
