@@ -10,7 +10,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * Parses input arguments and creates a new CurrentCommand object
  */
 public class CurrentCommandParser implements Parser<CurrentCommand> {
-    
     /**
      * Parses the given {@code String} of arguments in the context of the CurrentCommand
      * and returns an CurrentCommand object for execution.
