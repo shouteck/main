@@ -8,8 +8,13 @@ import seedu.address.model.workout.EquipmentPredicate;
 import seedu.address.model.workout.TypePredicate;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 
+/**
+ * WIP
+ */
 public class FilterCommand extends Command{
     public static final String COMMAND_WORD = "filter";
 
@@ -17,12 +22,7 @@ public class FilterCommand extends Command{
             + "Parameters: "
             + "[" + PREFIX_TYPE + "TYPE] "
             + "[" + PREFIX_DURATION + "DURATION] "
-//            + "[" + PREFIX_DIFFICULTY + "DIFFICULTY] "
             + "[" + PREFIX_EQUIPMENT + "EQUIPMENT] \n"
-//            + "[" + PREFIX_MUSCLE + "MUSCLE] "
-//            + "[" + PREFIX_CALORIES + "CALORIES] "
-//            + "[" + PREFIX_INSTRUCTION + "INSTRUCTION] "
-//            + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_EQUIPMENT + "dumbbell "
             + PREFIX_TYPE + "strength "
