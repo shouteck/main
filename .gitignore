@@ -20,3 +20,4 @@ src/main/resources/docs/
 out/
 src/test/java/systemtests/
 src/test/java/seedu/address/TestApp.java
+src/test/java/seedu/address/ui/ProfileWindowTest.java
