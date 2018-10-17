@@ -25,6 +25,7 @@ import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY_WORKOUT
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_FUTURE;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_MORNING;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_NIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_AMY_WORKOUT;
@@ -33,6 +34,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_BOB_WO
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FUTURE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
