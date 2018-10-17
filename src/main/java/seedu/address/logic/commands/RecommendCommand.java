@@ -1,17 +1,22 @@
 package seedu.address.logic.commands;
 
-import seedu.address.logic.CommandHistory;
-import seedu.address.model.Model;
-import seedu.address.model.workout.*;
-import seedu.address.commons.core.EventsCenter;
-import seedu.address.commons.events.ui.JumpToListRequestEvent;
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 
 import java.util.List;
 import java.util.Random;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
+import seedu.address.commons.core.EventsCenter;
+import seedu.address.commons.events.ui.JumpToListRequestEvent;
+import seedu.address.logic.CommandHistory;
+import seedu.address.model.Model;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Workout;
 
 /**
  * Recommends an existing workout from the workout book.
@@ -57,7 +62,7 @@ public class RecommendCommand extends Command {
 
         List<Workout> filteredWorkoutList = model.getFilteredWorkoutList();
         List<Workout> filteredInternalList;
-        if (duration != null){
+        if (duration != null) {
             filteredInternalList = model.getFilteredInternalList(duration);
         } else if (difficulty != null) {
             filteredInternalList = model.getFilteredInternalList(difficulty);
@@ -66,8 +71,8 @@ public class RecommendCommand extends Command {
         }
 
         Random rand = new Random();
-        int randomIndex =  rand.nextInt(filteredInternalList.size());
-        Workout randomWorkout =  filteredInternalList.get(randomIndex);
+        int randomIndex = rand.nextInt(filteredInternalList.size());
+        Workout randomWorkout = filteredInternalList.get(randomIndex);
         int targetIndex = filteredWorkoutList.indexOf(randomWorkout);
 
         EventsCenter.getInstance().post(new JumpToListRequestEvent(targetIndex));

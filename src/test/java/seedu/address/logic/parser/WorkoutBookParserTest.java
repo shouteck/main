@@ -1,10 +1,30 @@
 package seedu.address.logic.parser;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import seedu.address.logic.commands.*;
 import seedu.address.logic.commands.EditCommand.EditWorkoutDescriptor;
+import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.HistoryCommand;
+import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ProfileCommand;
+import seedu.address.logic.commands.RedoCommand;
+import seedu.address.logic.commands.SelectCommand;
+import seedu.address.logic.commands.TrackCommand;
+import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.workout.NameContainsKeywordsPredicate;
 import seedu.address.model.workout.Workout;
@@ -20,7 +40,6 @@ import static org.junit.Assert.*;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FUTURE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_RECOMMEND;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 
 public class WorkoutBookParserTest {
@@ -43,12 +62,6 @@ public class WorkoutBookParserTest {
     }
 
     @Test
-    public void parseCommand_remark() throws Exception {
-        assertTrue(parser.parseCommand(CurrentCommand.COMMAND_WORD) instanceof CurrentCommand);
-    }
-
-
-    @Test
     public void parseCommand_delete() throws Exception {
         DeleteCommand command = (DeleteCommand) parser.parseCommand(
                 DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased());
@@ -62,14 +75,6 @@ public class WorkoutBookParserTest {
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_WORKOUT.getOneBased() + " " + WorkoutUtil.getEditWorkoutDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_WORKOUT, descriptor), command);
-    }
-
-    @Test
-    public void parseCommand_recommend() throws Exception {
-        final String difficulty = "Some difficulty.";
-        RecommendCommand command = (RecommendCommand)parser.parseCommand(RecommendCommand.COMMAND_WORD + " "
-                + PREFIX_RECOMMEND + difficulty);
-        assertEquals(new RecommendCommand(difficulty), command);
     }
 
     @Test

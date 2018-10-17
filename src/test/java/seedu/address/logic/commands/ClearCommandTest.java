@@ -6,10 +6,10 @@ import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 import org.junit.Test;
 
 import seedu.address.logic.CommandHistory;
-import seedu.address.model.WorkoutBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.WorkoutBook;
 
 public class ClearCommandTest {
 

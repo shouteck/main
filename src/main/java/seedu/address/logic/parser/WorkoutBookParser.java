@@ -3,9 +3,28 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.HistoryCommand;
+import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ModifyCommand;
+import seedu.address.logic.commands.ProfileCommand;
+import seedu.address.logic.commands.RecommendCommand;
+import seedu.address.logic.commands.RedoCommand;
+import seedu.address.logic.commands.SelectCommand;
+import seedu.address.logic.commands.SortCommand;
+import seedu.address.logic.commands.TrackCommand;
+import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.*;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -26,7 +45,7 @@ public class WorkoutBookParser {
      * @return the command based on the user input
      * @throws ParseException if the user input does not conform the expected format
      */
-    public Command parseCommand(String userInput) throws ParseException {
+    public Command parseCommand(String userInput) throws ParseException, IOException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
@@ -63,6 +82,9 @@ public class WorkoutBookParser {
             case ListCommand.COMMAND_WORD:
                 return new ListCommand();
 
+            case ModifyCommand.COMMAND_WORD:
+                return new ModifyCommandParser().parse(arguments);
+
             case HistoryCommand.COMMAND_WORD:
                 return new HistoryCommand();
 
@@ -89,6 +111,9 @@ public class WorkoutBookParser {
 
             case SortCommand.COMMAND_WORD:
                 return new SortCommand();
+
+            case FilterCommand.COMMAND_WORD:
+                return new FilterCommandParser().parse(arguments);
 
             default:
                 throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

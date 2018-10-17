@@ -1,22 +1,21 @@
 package seedu.address.testutil;
 
-
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INSTRUCTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 
 import java.util.Set;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand.EditWorkoutDescriptor;
-import seedu.address.model.workout.Workout;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.workout.Workout;
 
 /**
  * A utility class for Workout.
@@ -43,14 +42,7 @@ public class WorkoutUtil {
         sb.append(PREFIX_MUSCLE + workout.getMuscle().fullMuscle + " ");
         sb.append(PREFIX_CALORIES + workout.getCalories().fullCalories + " ");
         sb.append(PREFIX_INSTRUCTION + workout.getInstruction().fullInstruction + " ");
-        /*
-        sb.append(PREFIX_PHONE + workout.getPhone().value + " ");
-        sb.append(PREFIX_EMAIL + workout.getEmail().value + " ");
-        sb.append(PREFIX_ADDRESS + workout.getAddress().value + " ");
-        */
-        workout.getTags().stream().forEach(
-                s -> sb.append(PREFIX_TAG + s.tagName + " ")
-        );
+        workout.getTags().stream().forEach(s -> sb.append(PREFIX_TAG + s.tagName + " "));
         return sb.toString();
     }
 
@@ -61,12 +53,17 @@ public class WorkoutUtil {
         StringBuilder sb = new StringBuilder();
         descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
         descriptor.getType().ifPresent(type -> sb.append(PREFIX_TYPE).append(type.fullType).append(" "));
-        descriptor.getDuration().ifPresent(duration -> sb.append(PREFIX_DURATION).append(duration.fullDuration).append(" "));
-        descriptor.getDifficulty().ifPresent(difficulty -> sb.append(PREFIX_DIFFICULTY).append(difficulty.fullDifficulty).append(" "));
-        descriptor.getEquipment().ifPresent(equipment -> sb.append(PREFIX_EQUIPMENT).append(equipment.fullEquipment).append(" "));
+        descriptor.getDuration().ifPresent(duration -> sb.append(PREFIX_DURATION).append(duration.fullDuration)
+                .append(" "));
+        descriptor.getDifficulty().ifPresent(difficulty -> sb.append(PREFIX_DIFFICULTY)
+                .append(difficulty.fullDifficulty).append(" "));
+        descriptor.getEquipment().ifPresent(equipment -> sb.append(PREFIX_EQUIPMENT).append(equipment.fullEquipment)
+                .append(" "));
         descriptor.getMuscle().ifPresent(muscle -> sb.append(PREFIX_MUSCLE).append(muscle.fullMuscle).append(" "));
-        descriptor.getCalories().ifPresent(calories -> sb.append(PREFIX_CALORIES).append(calories.fullCalories).append(" "));
-        descriptor.getInstruction().ifPresent(instruction -> sb.append(PREFIX_INSTRUCTION).append(instruction.fullInstruction).append(" "));
+        descriptor.getCalories().ifPresent(calories -> sb.append(PREFIX_CALORIES).append(calories.fullCalories)
+                .append(" "));
+        descriptor.getInstruction().ifPresent(instruction -> sb.append(PREFIX_INSTRUCTION)
+                .append(instruction.fullInstruction).append(" "));
 
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();

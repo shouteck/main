@@ -7,12 +7,13 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 
+
 /**
  * Controller for a profile page
  */
 public class ProfileWindow extends UiPart<Stage> {
 
-    public static final String USERGUIDE_FILE_PATH = "/docs/ProfileWindow.html";
+    public static final String USERPROFILE_FILE_PATH = "/docs/ProfileWindow.html";
 
     private static final Logger logger = LogsCenter.getLogger(ProfileWindow.class);
     private static final String FXML = "ProfileWindow.fxml";
@@ -28,8 +29,9 @@ public class ProfileWindow extends UiPart<Stage> {
     public ProfileWindow(Stage root) {
         super(FXML, root);
 
-        String userGuideUrl = getClass().getResource(USERGUIDE_FILE_PATH).toString();
-        browser.getEngine().load(userGuideUrl);
+        String userProfileUrl = getClass().getResource(USERPROFILE_FILE_PATH).toString();
+        browser.getEngine().load(userProfileUrl);
+
     }
 
     /**

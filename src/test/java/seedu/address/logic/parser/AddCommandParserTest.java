@@ -1,7 +1,45 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.*;
+import static seedu.address.logic.commands.CommandTestUtil.CALORIES_DESC_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.CALORIES_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.DIFFICULTY_DESC_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.DIFFICULTY_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.DURATION_DESC_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.DURATION_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.EQUIPMENT_DESC_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.EQUIPMENT_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.INSTRUCTION_DESC_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.INSTRUCTION_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_CALORIES_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_DIFFICULTY_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_DURATION_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_EQUIPMENT_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_MUSCLE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TYPE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.MUSCLE_DESC_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.MUSCLE_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
+import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_MORNING;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_NIGHT;
+import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_MORNING;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
+
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalWorkouts.AMY_WORKOUT;
@@ -10,8 +48,15 @@ import static seedu.address.testutil.TypicalWorkouts.BOB_WORKOUT;
 import org.junit.Test;
 
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.model.workout.*;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Equipment;
+import seedu.address.model.workout.Muscle;
+import seedu.address.model.workout.Name;
+import seedu.address.model.workout.Type;
+import seedu.address.model.workout.Workout;
 import seedu.address.testutil.WorkoutBuilder;
 
 public class AddCommandParserTest {
@@ -79,7 +124,7 @@ public class AddCommandParserTest {
         Workout expectedWorkoutMultipleTags = new WorkoutBuilder(BOB_WORKOUT)
                 .withTags(VALID_TAG_MORNING, VALID_TAG_NIGHT, VALID_TAG_FUTURE).build();
         assertParseSuccess(parser, NAME_DESC_BOB_WORKOUT + TYPE_DESC_BOB_WORKOUT + DURATION_DESC_BOB_WORKOUT
-                + DIFFICULTY_DESC_BOB_WORKOUT  + EQUIPMENT_DESC_BOB_WORKOUT + MUSCLE_DESC_BOB_WORKOUT
+                + DIFFICULTY_DESC_BOB_WORKOUT + EQUIPMENT_DESC_BOB_WORKOUT + MUSCLE_DESC_BOB_WORKOUT
                 + CALORIES_DESC_BOB_WORKOUT + INSTRUCTION_DESC_BOB_WORKOUT + TAG_DESC_MORNING
                 + TAG_DESC_NIGHT + TAG_DESC_FUTURE, new AddCommand(expectedWorkoutMultipleTags));
     }

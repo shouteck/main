@@ -1,4 +1,4 @@
-= AddressBook Level 4 - Developer Guide
+= Workout Book - Developer Guide
 :site-section: DeveloperGuide
 :toc:
 :toc-title:
@@ -201,7 +201,7 @@ image::DeletePersonSdForLogic.png[width="800"]
 === Model component
 
 .Structure of the Model Component
-image::ModelClassDiagram.png[width="800"]
+image::ModelClassDiagram.png[width="600"]
 
 *API* : link:{repoURL}/src/main/java/seedu/address/model/Model.java[`Model.java`]
 
@@ -318,6 +318,90 @@ image::UndoRedoActivityDiagram.png[width="650"]
 ** Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
+
+// tag::recommend[]
+=== Recommending a workout
+==== Current implementation
+The user input is parsed into invoking a constructor based on the prefix in the user input in `_RecommendCommandParser_`.There are only three acceptable prefixes. (i.e. `difficulty`, `calories`, `duration`) The instance created is then passed to `_RecommendCommand_` which uses `getFilteredWorkoutList()` and `getFilteredInternalList()` methods of `Model` to generate a random workout to recommend to the user.
+
+The sequence diagram of this entire process can be seen below:
+
+[[fig-RecommendCommandSD]]
+.Interactions inside `Logic` component for the *`recommend difficulty/beginner`* command.
+image::RecommendCommandSD.PNG[width="900"]
+
+==== Design Considerations
+
+==== Aspect: How recommend executes
+
+* **Alternative 1 (current choice):** Filters the workout list based on user's input and randomly generates a workout from that filtered list.
+** Pros: Easy to implement.
+** Cons: May not reflect what the user actually wants.
+* **Alternative 2:** Use machine learning algorithms.
+** Pros: Able to recommend a workout that is more accurate to what the user wants.
+** Cons: Complicated to implement. Requires a huge storage to store and record the substantial amount of data that comes from the interactions between the user and the application.
+// end::recommend[]
+
+=== User Profile
+// tag::profile
+==== Current implementation
+The profile window is first being loaded by loading the `_profileWindow.fxml file_`. Thereafter, once the user request to open the profile window, it will then process it.
+
+There are 3 ways to open a profile window.
+
+* User types `"profile"` in command box
+* User clicks on `profile` on the menu bar
+* User presses the `F2` key
+
+===== User types "profile" in command box
+
+After executing the command `profile`, it will create an instance which uses `showProfileRequestEvent` method of `Events`. Then, the `UI` will `handleShowProfileRequestEvent` and the profile window will be opened.
+
+[[fig-ProfileCommand]]
+.Interactions inside `Logic` component for the *`profile`* command.
+image::ProfileCommand.PNG[width="800"]
+
+===== User click on `profile` on the menu bar
+
+After clicking on `profile`, it will send an event `showProfileRequestEvent` to `Events`. It will then return `handleProfile` which will open up the profile window.
+
+[[fig-ClickProfile]]
+.Interactions inside `UI` component when clicking profile
+image::ClickProfile.PNG[width="600"]
+
+===== User presses `F2` key
+
+The profile window is firstly being accelerated by the key `F2`. After pressing `F2`, it will sent a `ShowProfileRequestEvent()` event to the `EventsCentre`. Then, the `UI` will `handleShowProfileRequestEvent` and the profile window will be opened.
+
+[[fig-F2Profile]]
+.Interactions inside `UI` component when pressing `F2`
+image::F2Profile.PNG[width="700"]
+
+// end::profile
+
+=== [Traversing feature]
+==== Current Implementation
+The traversing mechanism is facilitated by `VersionedAddressBook`. It extends `WorkoutBook`.
+It implements following commands: +
+
+* `sortCommand()` -Sorts the current workout book
+
+* `filterCommand()` -Filters the workout book
+
+* `searchCommand()` - Search the workout by partial keywords
+
+* `SelectCommand()` - Select the workout by index number
+
+Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
+
+Step 1. The user launches the application, `add` some workouts to the workout book, then `sort` the workout.
+The sort command calls the `sortFilteredWorkoutList()` of `Model` to sort the workout based on the names in alphabetical order.
+
+Step 2. The user executes the `filter` to find the workouts that contain `duration`, `equipment` and `type`.
+
+image::traversingSequenceDiagram.png[width="650"]
+
+// end::traversing[]
 
 // tag::dataencryption[]
 === [Proposed] Data Encryption

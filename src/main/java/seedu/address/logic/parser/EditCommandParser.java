@@ -2,15 +2,15 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INSTRUCTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -58,7 +58,8 @@ public class EditCommandParser implements Parser<EditCommand> {
             editWorkoutDescriptor.setDuration(ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION).get()));
         }
         if (argMultimap.getValue(PREFIX_DIFFICULTY).isPresent()) {
-            editWorkoutDescriptor.setDifficulty(ParserUtil.parseDifficulty(argMultimap.getValue(PREFIX_DIFFICULTY).get()));
+            editWorkoutDescriptor.setDifficulty(ParserUtil.parseDifficulty(argMultimap.getValue(PREFIX_DIFFICULTY)
+                    .get()));
         }
         if (argMultimap.getValue(PREFIX_EQUIPMENT).isPresent()) {
             editWorkoutDescriptor.setEquipment(ParserUtil.parseEquipment(argMultimap.getValue(PREFIX_EQUIPMENT).get()));
@@ -70,7 +71,8 @@ public class EditCommandParser implements Parser<EditCommand> {
             editWorkoutDescriptor.setCalories(ParserUtil.parseCalories(argMultimap.getValue(PREFIX_CALORIES).get()));
         }
         if (argMultimap.getValue(PREFIX_INSTRUCTION).isPresent()) {
-            editWorkoutDescriptor.setInstruction(ParserUtil.parseInstruction(argMultimap.getValue(PREFIX_INSTRUCTION).get()));
+            editWorkoutDescriptor.setInstruction(ParserUtil.parseInstruction(argMultimap.getValue(PREFIX_INSTRUCTION)
+                    .get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editWorkoutDescriptor::setTags);
 

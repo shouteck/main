@@ -16,8 +16,15 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.workout.*;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Equipment;
+import seedu.address.model.workout.Instruction;
+import seedu.address.model.workout.Muscle;
+import seedu.address.model.workout.Name;
+import seedu.address.model.workout.Type;
 import seedu.address.testutil.Assert;
 
 public class ParserUtilTest {
@@ -71,7 +78,7 @@ public class ParserUtilTest {
 
     @Test
     public void paxrseName_null_throwsNullPointerEception() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseName((String) null));
+        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseName(null));
     }
 
     @Test
@@ -94,7 +101,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseType_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseType((String) null));
+        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseType(null));
     }
 
     @Test
@@ -117,7 +124,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseDuration_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseDuration((String) null));
+        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseDuration(null));
     }
 
     @Test
@@ -140,7 +147,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseDifficulty_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseDifficulty((String) null));
+        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseDifficulty(null));
     }
 
     @Test
@@ -163,7 +170,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseEquipment_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseEquipment((String) null));
+        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseEquipment(null));
     }
 
     @Test
@@ -186,7 +193,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseMuscle_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseMuscle((String) null));
+        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseMuscle(null));
     }
 
     @Test
@@ -209,7 +216,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseCalories_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseCalories((String) null));
+        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseCalories(null));
     }
 
     @Test
@@ -232,7 +239,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseInstruction_null_throwsNullPointerException() {
-        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseInstruction((String) null));
+        Assert.assertThrows(NullPointerException.class, () -> ParserUtil.parseInstruction(null));
     }
 
     @Test

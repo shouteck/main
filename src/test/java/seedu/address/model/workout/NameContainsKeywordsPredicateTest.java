@@ -1,14 +1,15 @@
 package seedu.address.model.workout;
 
-import org.junit.Test;
-import seedu.address.testutil.WorkoutBuilder;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+
+import seedu.address.testutil.WorkoutBuilder;
 
 public class NameContainsKeywordsPredicateTest {
 
@@ -69,9 +70,9 @@ public class NameContainsKeywordsPredicateTest {
         /**
          * To be fixed later
          */
-//        // Keywords match phone, email and address, but does not match name
-//        predicate = new NameContainsKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
-//        assertFalse(predicate.test(new WorkoutBuilder().withName("Alice").withPhone("12345")
-//                .withEmail("alice@email.com").withAddress("Main Street").build()));
+        // Keywords match phone, email and address, but does not match name
+        /*predicate = new NameContainsKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
+        assertFalse(predicate.test(new WorkoutBuilder().withName("Alice").withPhone("12345")
+                .withEmail("alice@email.com").withAddress("Main Street").build()));*/
     }
 }

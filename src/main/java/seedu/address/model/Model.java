@@ -4,7 +4,11 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.workout.*;
+
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Workout;
 
 /**
  * The API of the Model component.
@@ -39,7 +43,8 @@ public interface Model {
     /**
      * Replaces the given workout {@code target} with {@code editedWorkout}.
      * {@code target} must exist in the workout book.
-     * The workout identity of {@code editedWorkout} must not be the same as another existing workout in the workout book.
+     * The workout identity of {@code editedWorkout} must not be the same as another existing workout in the workout
+     * book.
      */
     void updateWorkout(Workout target, Workout editedWorkout);
 
@@ -83,7 +88,7 @@ public interface Model {
      */
     void sortFilteredWorkoutList();
 
-    public List<Workout> getFilteredInternalList(Duration duration);
-    public List<Workout> getFilteredInternalList(Difficulty difficulty);
-    public List<Workout> getFilteredInternalList(Calories calories);
+    List<Workout> getFilteredInternalList(Duration duration);
+    List<Workout> getFilteredInternalList(Difficulty difficulty);
+    List<Workout> getFilteredInternalList(Calories calories);
 }

@@ -35,7 +35,9 @@ public class Instruction {
     /**
      * Returns true if a given string is a valid instruction.
      */
-    public static boolean isValidInstruction(String test) { return test.matches(INSTRUCTION_VALIDATION_REGEX); }
+    public static boolean isValidInstruction(String test) {
+        return test.matches(INSTRUCTION_VALIDATION_REGEX);
+    }
 
 
     @Override
