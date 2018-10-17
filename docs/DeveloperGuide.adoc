@@ -379,6 +379,37 @@ image::F2Profile.PNG[width="700"]
 
 // end::profile
 
+=== [Traversing feature]
+==== Current Implementation
+The traversing mechanism is facilitated by `VersionedAddressBook`. It extends `WorkoutBook`.
+It implements following commands: +
+
+* `sortCommand()` -Sorts the current workout book
+
+* `filterCommand()` -Filters the workout book
+
+* `searchCommand()` - Search the workout by partial keywords
+
+* `SelectCommand()` - Select the workout by index number
+
+Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
+
+Step 1. The user launches the application, `add` some workouts to the workout book, then `sort` the workout.
+The sort command calls the `sortFilteredWorkoutList()` of `Model` to sort the workout based on the names in alphabetical order.
+
+Step 2. The user executes the `filter` to find the workouts that contain `duration`, `equipment` and `type`.
+
+image::traversingSequenceDiagram.png[width="650"]
+
+// end::traversing[]
+
+// tag::dataencryption[]
+=== [Proposed] Data Encryption
+
+_{Explain here how the data encryption feature will be implemented}_
+
+// end::dataencryption[]
+
 === Logging
 
 We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
