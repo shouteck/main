@@ -1,12 +1,15 @@
 package seedu.address.logic.parser.exceptions;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CurrentCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-
+/**
+ * WIP
+ */
 public class  CurrentCommandParser implements Parser<CurrentCommand> {
 
     /**
