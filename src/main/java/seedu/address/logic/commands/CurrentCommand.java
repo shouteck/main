@@ -1,20 +1,29 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.ParserUtil.parseTag;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_WORKOUTS;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
-import static seedu.address.logic.parser.ParserUtil.parseTag;
-
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.workout.*;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Equipment;
+import seedu.address.model.workout.Instruction;
+import seedu.address.model.workout.Muscle;
+import seedu.address.model.workout.Name;
+import seedu.address.model.workout.Type;
+import seedu.address.model.workout.Workout;
 
 /**
  * Changes a workout to be a current workout in the workout book.
