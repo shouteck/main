@@ -34,10 +34,10 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_BOB_WO
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FUTURE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FUTURE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_MORNING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
@@ -137,7 +137,8 @@ public class AddCommandParserTest {
         Workout expectedWorkout = new WorkoutBuilder(AMY_WORKOUT).withTags(VALID_TAG_FUTURE).build();
         assertParseSuccess(parser, NAME_DESC_AMY_WORKOUT + TYPE_DESC_AMY_WORKOUT + DURATION_DESC_AMY_WORKOUT
                         + DIFFICULTY_DESC_AMY_WORKOUT + EQUIPMENT_DESC_AMY_WORKOUT + MUSCLE_DESC_AMY_WORKOUT
-                        + CALORIES_DESC_AMY_WORKOUT + INSTRUCTION_DESC_AMY_WORKOUT + TAG_DESC_FUTURE, new AddCommand(expectedWorkout));
+                        + CALORIES_DESC_AMY_WORKOUT + INSTRUCTION_DESC_AMY_WORKOUT + TAG_DESC_FUTURE,
+                new AddCommand(expectedWorkout));
     }
 
     @Test
