@@ -101,7 +101,7 @@ public class WorkoutBookParser {
             return new RedoCommand();
 
         case TrackCommand.COMMAND_WORD:
-            return new TrackCommand();
+            return new TrackCommandParser().parse(arguments);
 
         case SortCommand.COMMAND_WORD:
             return new SortCommand();
