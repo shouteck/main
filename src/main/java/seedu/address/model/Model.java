@@ -1,8 +1,13 @@
 package seedu.address.model;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
+
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
 import seedu.address.model.workout.Workout;
 
 /**
@@ -38,7 +43,8 @@ public interface Model {
     /**
      * Replaces the given workout {@code target} with {@code editedWorkout}.
      * {@code target} must exist in the workout book.
-     * The workout identity of {@code editedWorkout} must not be the same as another existing workout in the workout book.
+     * The workout identity of {@code editedWorkout} must not be the same as another existing workout in the workout
+     * book.
      */
     void updateWorkout(Workout target, Workout editedWorkout);
 
@@ -77,5 +83,12 @@ public interface Model {
      */
     void commitWorkoutBook();
 
+    /**
+     * Sort the current workout book.
+     */
     void sortFilteredWorkoutList();
+
+    List<Workout> getFilteredInternalList(Duration duration);
+    List<Workout> getFilteredInternalList(Difficulty difficulty);
+    List<Workout> getFilteredInternalList(Calories calories);
 }

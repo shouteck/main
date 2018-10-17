@@ -9,8 +9,8 @@ import java.nio.file.Path;
 import org.junit.Test;
 
 import seedu.address.model.WorkoutBook;
-import seedu.address.model.workout.Workout;
 import seedu.address.model.util.SampleDataUtil;
+import seedu.address.model.workout.Workout;
 import seedu.address.testutil.TestUtil;
 
 public class SampleDataTest extends WorkoutBookSystemTest {

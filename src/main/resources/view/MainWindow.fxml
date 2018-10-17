@@ -29,10 +29,10 @@
             <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
-            <MenuItem fx:id="HelpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
+            <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
           </Menu>
           <Menu mnemonicParsing="false" text="Profile">
-            <MenuItem fx:id="ProfileMenuItem" mnemonicParsing="false" onAction="#handleProfile" text="Profile" />
+            <MenuItem fx:id="profileMenuItem" mnemonicParsing="false" onAction="#handleProfile" text="Profile" />
           </Menu>
         </MenuBar>
 

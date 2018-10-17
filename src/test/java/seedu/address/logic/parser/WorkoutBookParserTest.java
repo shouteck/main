@@ -6,7 +6,6 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_RECOMMEND;
 import static seedu.address.logic.commands.CommandTestUtil.MUSCLE_DESC_BOB_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 
@@ -27,10 +26,9 @@ import seedu.address.logic.commands.EditCommand.EditWorkoutDescriptor;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.RecommendCommand;
 import seedu.address.logic.commands.HistoryCommand;
-import seedu.address.logic.commands.ProfileCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ProfileCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.TrackCommand;
@@ -75,14 +73,6 @@ public class WorkoutBookParserTest {
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_WORKOUT.getOneBased() + " " + WorkoutUtil.getEditWorkoutDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_WORKOUT, descriptor), command);
-    }
-
-    @Test
-    public void parseCommand_recommend() throws Exception {
-        final String difficulty = "Some difficulty.";
-        RecommendCommand command = (RecommendCommand)parser.parseCommand(RecommendCommand.COMMAND_WORD + " "
-                + PREFIX_RECOMMEND + difficulty);
-        assertEquals(new RecommendCommand(difficulty), command);
     }
 
     @Test

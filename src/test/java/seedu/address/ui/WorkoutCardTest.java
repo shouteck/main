@@ -16,7 +16,7 @@ public class WorkoutCardTest extends GuiUnitTest {
     @Test
     public void display() {
         // no tags
-        Workout workoutWithNoTags = new WorkoutBuilder().withTags(new String[0]).build();
+        Workout workoutWithNoTags = new WorkoutBuilder().withTags().build();
         WorkoutCard workoutCard = new WorkoutCard(workoutWithNoTags, 1);
         uiPartRule.setUiPart(workoutCard);
         assertCardDisplay(workoutCard, workoutWithNoTags, 1);

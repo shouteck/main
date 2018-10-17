@@ -7,7 +7,6 @@ import static seedu.address.logic.commands.TrackCommand.MESSAGE_ARGUMENTS_ACCEPT
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
-
 import org.junit.Test;
 
 import javafx.util.Pair;

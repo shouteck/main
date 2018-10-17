@@ -31,7 +31,8 @@ public class DeleteCommandSystemTest extends WorkoutBookSystemTest {
 
         /* Case: delete the first workout in the list, command with leading spaces and trailing spaces -> deleted */
         Model expectedModel = getModel();
-        String command = "     " + DeleteCommand.COMMAND_WORD + "      " + INDEX_FIRST_WORKOUT.getOneBased() + "       ";
+        String command = "     " + DeleteCommand.COMMAND_WORD + "      " + INDEX_FIRST_WORKOUT.getOneBased()
+                + "       ";
         Workout deletedWorkout = removeWorkout(expectedModel, INDEX_FIRST_WORKOUT);
         String expectedResultMessage = String.format(MESSAGE_DELETE_WORKOUT_SUCCESS, deletedWorkout);
         assertCommandSuccess(command, expectedModel, expectedResultMessage);
@@ -72,7 +73,7 @@ public class DeleteCommandSystemTest extends WorkoutBookSystemTest {
         command = DeleteCommand.COMMAND_WORD + " " + invalidIndex;
         assertCommandFailure(command, MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
 
-        /* --------------------- Performing delete operation while a workout card is selected ------------------------ */
+        /* --------------------- Performing delete operation while a workout card is selected ---------------------- */
 
         /* Case: delete the selected workout -> workout list panel selects the workout before the deleted workout */
         showAllWorkouts();

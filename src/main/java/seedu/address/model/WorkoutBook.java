@@ -5,8 +5,11 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.workout.Workout;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
 import seedu.address.model.workout.UniqueWorkoutList;
+import seedu.address.model.workout.Workout;
 
 /**
  * Wraps all data at the workout-book level
@@ -47,6 +50,19 @@ public class WorkoutBook implements ReadOnlyWorkoutBook {
         this.workouts.setWorkouts(workouts);
     }
 
+    public List<Workout> getFilteredInternalList (Difficulty difficulty) {
+        return workouts.getFilteredInternalList(difficulty);
+    }
+
+    public List<Workout> getFilteredInternalList (Duration duration) {
+        return workouts.getFilteredInternalList(duration);
+    }
+
+    public List<Workout> getFilteredInternalList (Calories calories) {
+        return workouts.getFilteredInternalList(calories);
+    }
+
+
     /**
      * Resets the existing data of this {@code WorkoutBook} with {@code newData}.
      */
@@ -77,12 +93,16 @@ public class WorkoutBook implements ReadOnlyWorkoutBook {
     /**
      * Replaces the given workout {@code target} in the list with {@code editedWorkout}.
      * {@code target} must exist in the workout book.
-     * The workout identity of {@code editedWorkout} must not be the same as another existing workout in the workout book.
+     * The workout identity of {@code editedWorkout} must not be the same as another existing workout in the workout
+     * book.
      */
     public void updateWorkout(Workout target, Workout editedWorkout) {
         requireNonNull(editedWorkout);
-
         workouts.setWorkout(target, editedWorkout);
+    }
+
+    public void sortFilteredWorkoutList() {
+        workouts.sort();
     }
 
     /**

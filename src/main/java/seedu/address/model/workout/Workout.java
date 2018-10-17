@@ -13,7 +13,7 @@ import seedu.address.model.tag.Tag;
  * Represents a Workout in the workout book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Workout implements Comparable<Workout>{
+public class Workout {
 
     // Identity fields
     private final Name name;
@@ -49,7 +49,9 @@ public class Workout implements Comparable<Workout>{
         return name;
     }
 
-    public Type getType() { return type; }
+    public Type getType() {
+        return type;
+    }
 
     public Duration getDuration() {
         return duration;
@@ -91,11 +93,11 @@ public class Workout implements Comparable<Workout>{
         if (otherWorkout == this) {
             return true;
         }
-
         return otherWorkout != null
                 && ((otherWorkout.getName().equals(getName()))
                 || (otherWorkout.getType().equals(getType()) && otherWorkout.getDuration().equals(getDuration())
-                && otherWorkout.getDifficulty().equals(getDifficulty()) && otherWorkout.getEquipment().equals(getEquipment())
+                && otherWorkout.getDifficulty().equals(getDifficulty())
+                && otherWorkout.getEquipment().equals(getEquipment())
                 && otherWorkout.getMuscle().equals(getMuscle()) && otherWorkout.getCalories().equals(getCalories())
                 && otherWorkout.getInstruction().equals(getInstruction())));
     }
@@ -126,10 +128,6 @@ public class Workout implements Comparable<Workout>{
                 && otherWorkout.getTags().equals(getTags());
     }
 
-    @Override
-    public int compareTo(Workout otherWorkout) {
-        return (Integer.parseInt(this.getCalories().fullCalories)- Integer.parseInt(otherWorkout.getCalories().fullCalories));
-    }
 
     @Override
     public int hashCode() {

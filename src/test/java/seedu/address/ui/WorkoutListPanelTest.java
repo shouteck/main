@@ -56,7 +56,8 @@ public class WorkoutListPanelTest extends GuiUnitTest {
         postNow(JUMP_TO_SECOND_EVENT);
         guiRobot.pauseForHuman();
 
-        WorkoutCardHandle expectedWorkout = workoutListPanelHandle.getWorkoutCardHandle(INDEX_SECOND_WORKOUT.getZeroBased());
+        WorkoutCardHandle expectedWorkout = workoutListPanelHandle.getWorkoutCardHandle(INDEX_SECOND_WORKOUT
+                .getZeroBased());
         WorkoutCardHandle selectedWorkout = workoutListPanelHandle.getHandleToSelectedCard();
         assertCardEquals(expectedWorkout, selectedWorkout);
     }

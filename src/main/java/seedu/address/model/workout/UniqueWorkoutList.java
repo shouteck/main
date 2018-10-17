@@ -3,8 +3,10 @@ package seedu.address.model.workout;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,10 +15,10 @@ import seedu.address.model.workout.exceptions.WorkoutNotFoundException;
 
 /**
  * A list of workouts that enforces uniqueness between its elements and does not allow nulls.
- * A workout is considered unique by comparing using {@code Workout#isSameWorkout(Workout)}. As such, adding and updating of
- * workouts uses Workout#isSameWorkout(Workout) for equality so as to ensure that the workout being added or updated is
- * unique in terms of identity in the UniqueWorkoutList. However, the removal of a workout uses Workout#equals(Object) so
- * as to ensure that the workout with exactly the same fields will be removed.
+ * A workout is considered unique by comparing using {@code Workout#isSameWorkout(Workout)}. As such, adding and
+ * updating of workouts uses Workout#isSameWorkout(Workout) for equality so as to ensure that the workout being added
+ * or updated is unique in terms of identity in the UniqueWorkoutList. However, the removal of a workout uses
+ * Workout#equals(Object) soas to ensure that the workout with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
@@ -25,6 +27,24 @@ import seedu.address.model.workout.exceptions.WorkoutNotFoundException;
 public class UniqueWorkoutList implements Iterable<Workout> {
 
     private final ObservableList<Workout> internalList = FXCollections.observableArrayList();
+
+    public List<Workout> getFilteredInternalList (Difficulty difficulty) {
+        return internalList.stream()
+                .filter(w -> w.getDifficulty().fullDifficulty.contains(difficulty.fullDifficulty))
+                .collect(Collectors.toList());
+    }
+
+    public List<Workout> getFilteredInternalList (Duration duration) {
+        return internalList.stream()
+                .filter(w -> w.getDuration().fullDuration.contains(duration.fullDuration))
+                .collect(Collectors.toList());
+    }
+
+    public List<Workout> getFilteredInternalList (Calories calories) {
+        return internalList.stream()
+                .filter(w -> w.getCalories().fullCalories.contains(calories.fullCalories))
+                .collect(Collectors.toList());
+    }
 
     /**
      * Returns true if the list contains an equivalent workout as the given argument.
@@ -45,6 +65,19 @@ public class UniqueWorkoutList implements Iterable<Workout> {
         }
         internalList.add(toAdd);
     }
+
+    /**
+     * Sorts the workout in the list
+     */
+    public void sort() {
+        internalList.sort(new Comparator<Workout>() {
+            @Override
+            public int compare(Workout o1, Workout o2) {
+                return o1.getName().fullName.compareTo(o2.getName().fullName);
+            }
+        });
+    }
+
 
     /**
      * Replaces the workout {@code target} in the list with {@code editedWorkout}.

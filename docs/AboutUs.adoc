@@ -18,7 +18,7 @@ Role: Project Advisor
 '''
 
 === Ting Shou Teck
-image::shouteck.jpg[width="150", align="left"]
+image::shouteck.png[width="150", align="left"]
 {empty}[https://github.com/shouteck[github]] [<<johndoe#, portfolio>>]
 
 Role: Fake Team Leader +
@@ -27,7 +27,7 @@ Responsibilities: Data
 '''
 
 === Goh Si Jie
-image::sijie.jpg[width="150", align="left"]
+image::sijie.png[width="150", align="left"]
 {empty}[http://github.com/sijieg[github]] [<<johndoe#, portfolio>>]
 
 Role: Developer +
@@ -36,7 +36,7 @@ Responsibilities: UI
 '''
 
 === Tew You Wen, Daryl
-image::daryl.jpg[width="150", align="left"]
+image::daryl.png[width="150", align="left"]
 {empty}[http://github.com/DarylTew[github]] [<<johndoe#, portfolio>>]
 
 Role: Developer +
@@ -45,7 +45,7 @@ Responsibilities: Data
 '''
 
 === Gary Heng Hui Shen
-image::gary.jpg[width="150", align="left"]
+image::gary.png[width="150", align="left"]
 {empty}[http://github.com/garyheng[github]] [<<johndoe#, portfolio>>]
 
 Role: Developer +
@@ -54,7 +54,7 @@ Responsibilities: Data
 '''
 
 === Yan Yi Cheng
-image::Yicheng.jpg[width="150", align="left"]
+image::Yicheng.png[width="150", align="left"]
 {empty}[http://github.com/yicheng12[github]] [<<johndoe#, portfolio>>]
 
 Role: Developer +

@@ -1,8 +1,8 @@
 package systemtests;
 
 import static org.junit.Assert.assertFalse;
-import static seedu.address.commons.core.Messages.MESSAGE_WORKOUTS_LISTED_OVERVIEW;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.commons.core.Messages.MESSAGE_WORKOUTS_LISTED_OVERVIEW;
 import static seedu.address.testutil.TypicalWorkouts.BENSON_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.CARL_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.DANIEL_WORKOUT;
@@ -155,7 +155,8 @@ public class FindCommandSystemTest extends WorkoutBookSystemTest {
         /* Case: find while a person is selected -> selected card deselected */
         showAllWorkouts();
         selectWorkout(Index.fromOneBased(1));
-        assertFalse(getWorkoutListPanel().getHandleToSelectedCard().getName().equals(DANIEL_WORKOUT.getName().fullName));
+        assertFalse(getWorkoutListPanel().getHandleToSelectedCard().getName()
+                .equals(DANIEL_WORKOUT.getName().fullName));
         command = FindCommand.COMMAND_WORD + " Daniel";
         ModelHelper.setFilteredList(expectedModel, DANIEL_WORKOUT);
         assertCommandSuccess(command, expectedModel);

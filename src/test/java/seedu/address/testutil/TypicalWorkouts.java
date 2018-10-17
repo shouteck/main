@@ -1,25 +1,23 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_AMY_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_AMY_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_AMY_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_AMY_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_AMY_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_BOB_WORKOUT;
-
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_MORNING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
-
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
 
 import java.util.ArrayList;
 import java.util.Arrays;

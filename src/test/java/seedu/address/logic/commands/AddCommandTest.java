@@ -7,6 +7,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.Rule;
@@ -16,9 +18,12 @@ import org.junit.rules.ExpectedException;
 import javafx.collections.ObservableList;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.WorkoutBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyWorkoutBook;
+import seedu.address.model.WorkoutBook;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
 import seedu.address.model.workout.Workout;
 import seedu.address.testutil.WorkoutBuilder;
 
@@ -62,16 +67,16 @@ public class AddCommandTest {
 
     @Test
     public void equals() {
-        Workout alice_workout = new WorkoutBuilder().withName("Alice's workout").build();
-        Workout bob_workout = new WorkoutBuilder().withName("Bob's workout").build();
-        AddCommand addAliceWorkoutCommand = new AddCommand(alice_workout);
-        AddCommand addBobWorkoutCommand = new AddCommand(bob_workout);
+        Workout aliceWorkout = new WorkoutBuilder().withName("Alice's workout").build();
+        Workout bobWorkout = new WorkoutBuilder().withName("Bob's workout").build();
+        AddCommand addAliceWorkoutCommand = new AddCommand(aliceWorkout);
+        AddCommand addBobWorkoutCommand = new AddCommand(bobWorkout);
 
         // same object -> returns true
         assertTrue(addAliceWorkoutCommand.equals(addAliceWorkoutCommand));
 
         // same values -> returns true
-        AddCommand addAliceWorkoutCommandCopy = new AddCommand(alice_workout);
+        AddCommand addAliceWorkoutCommandCopy = new AddCommand(aliceWorkout);
         assertTrue(addAliceWorkoutCommand.equals(addAliceWorkoutCommandCopy));
 
         // different types -> returns false
@@ -121,6 +126,21 @@ public class AddCommandTest {
         @Override
         public ObservableList<Workout> getFilteredWorkoutList() {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public List<Workout> getFilteredInternalList(Difficulty difficulty) {
+            return Collections.emptyList();
+        }
+
+        @Override
+        public List<Workout> getFilteredInternalList(Duration duration) {
+            return Collections.emptyList();
+        }
+
+        @Override
+        public List<Workout> getFilteredInternalList(Calories calories) {
+            return Collections.emptyList();
         }
 
         @Override

@@ -10,15 +10,16 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.commands.TrackCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+
+import seedu.address.model.tag.Tag;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Equipment;
+import seedu.address.model.workout.Instruction;
+import seedu.address.model.workout.Muscle;
 import seedu.address.model.workout.Name;
 import seedu.address.model.workout.Type;
-import seedu.address.model.workout.Duration;
-import seedu.address.model.workout.Difficulty;
-import seedu.address.model.workout.Equipment;
-import seedu.address.model.workout.Muscle;
-import seedu.address.model.workout.Calories;
-import seedu.address.model.workout.Instruction;
-import seedu.address.model.tag.Tag;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.

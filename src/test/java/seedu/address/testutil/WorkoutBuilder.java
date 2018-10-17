@@ -3,18 +3,17 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
-
-import seedu.address.model.workout.Name;
-import seedu.address.model.workout.Type;
-import seedu.address.model.workout.Duration;
-import seedu.address.model.workout.Difficulty;
-import seedu.address.model.workout.Equipment;
-import seedu.address.model.workout.Muscle;
-import seedu.address.model.workout.Calories;
-import seedu.address.model.workout.Instruction;
-import seedu.address.model.workout.Workout;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Equipment;
+import seedu.address.model.workout.Instruction;
+import seedu.address.model.workout.Muscle;
+import seedu.address.model.workout.Name;
+import seedu.address.model.workout.Type;
+import seedu.address.model.workout.Workout;
 
 /**
  * A utility class to help with building Person objects.
@@ -78,7 +77,7 @@ public class WorkoutBuilder {
         return this;
     }
 
-      /**
+    /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Workout} that we are building.
      */
     public WorkoutBuilder withTags(String ... tags) {
@@ -150,10 +149,6 @@ public class WorkoutBuilder {
         this.instruction = new Instruction(instruction);
         return this;
     }
-
-
-
-
 
     public Workout build() {
         return new Workout(name, type, duration, difficulty, equipment, muscle, calories, instruction, tags);

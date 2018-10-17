@@ -1,15 +1,25 @@
 package seedu.address.model.workout;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
+import static seedu.address.testutil.TypicalWorkouts.ALICE_WORKOUT;
+import static seedu.address.testutil.TypicalWorkouts.BOB_WORKOUT;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import seedu.address.testutil.WorkoutBuilder;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.*;
-import static seedu.address.testutil.TypicalWorkouts.ALICE_WORKOUT;
-import static seedu.address.testutil.TypicalWorkouts.BOB_WORKOUT;
+import seedu.address.testutil.WorkoutBuilder;
 
 public class WorkoutTest {
     @Rule
@@ -31,46 +41,55 @@ public class WorkoutTest {
         assertFalse(ALICE_WORKOUT.isSameWorkout(null));
 
         // different type and duration -> returns true
-        Workout editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT).build();
-        assertTrue(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
+        Workout editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT)
+                .withDuration(VALID_DURATION_BOB_WORKOUT).build();
+        assertTrue(ALICE_WORKOUT.isSameWorkout(editedAliceWorkout));
 
         // different name only -> returns true
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT).build();
-        assertTrue(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
+        editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT).build();
+        assertTrue(ALICE_WORKOUT.isSameWorkout(editedAliceWorkout));
 
         // different name and type -> returns false
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT).build();
-        assertFalse(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
+        editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT)
+                .withType(VALID_TYPE_BOB_WORKOUT).build();
+        assertFalse(ALICE_WORKOUT.isSameWorkout(editedAliceWorkout));
 
         // different name and duration -> returns false
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT).build();
-        assertFalse(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
+        editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT)
+                .withDuration(VALID_DURATION_BOB_WORKOUT).build();
+        assertFalse(ALICE_WORKOUT.isSameWorkout(editedAliceWorkout));
 
         // different name and muscle -> returns false
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT).build();
-        assertFalse(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
+        editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT)
+                .withMuscle(VALID_MUSCLE_BOB_WORKOUT).build();
+        assertFalse(ALICE_WORKOUT.isSameWorkout(editedAliceWorkout));
 
         // different attributes -> returns true
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT).withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT)
-                .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT).withCalories(VALID_CALORIES_BOB_WORKOUT)
+        editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT)
+                .withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT)
+                .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT)
+                .withCalories(VALID_CALORIES_BOB_WORKOUT)
                 .withInstruction(VALID_INSTRUCTION_BOB_WORKOUT)
                 .withTags(VALID_TAG_NIGHT).build();
-        assertTrue(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
+        assertTrue(ALICE_WORKOUT.isSameWorkout(editedAliceWorkout));
 
         // different attributes -> returns true
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT)
-                .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT).withCalories(VALID_CALORIES_BOB_WORKOUT)
+        editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT)
+                .withDuration(VALID_DURATION_BOB_WORKOUT)
+                .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT)
+                .withCalories(VALID_CALORIES_BOB_WORKOUT)
                 .withInstruction(VALID_INSTRUCTION_BOB_WORKOUT)
                 .withTags(VALID_TAG_NIGHT).build();
-        assertTrue(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
+        assertTrue(ALICE_WORKOUT.isSameWorkout(editedAliceWorkout));
 
 
         // different attributes -> returns true
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT)
-                .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT).withCalories(VALID_CALORIES_BOB_WORKOUT)
+        editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT)
+                .withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT)
+                .withCalories(VALID_CALORIES_BOB_WORKOUT)
                 .withInstruction(VALID_INSTRUCTION_BOB_WORKOUT)
                 .withTags(VALID_TAG_NIGHT).build();
-        assertTrue(ALICE_WORKOUT.isSameWorkout(editedAlice_Workout));
+        assertTrue(ALICE_WORKOUT.isSameWorkout(editedAliceWorkout));
 
     }
 
@@ -93,39 +112,39 @@ public class WorkoutTest {
         assertFalse(ALICE_WORKOUT.equals(BOB_WORKOUT));
 
         // different name -> returns false
-        Workout editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT).build();
-        assertFalse(ALICE_WORKOUT.equals(editedAlice_Workout));
+        Workout editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withName(VALID_NAME_BOB_WORKOUT).build();
+        assertFalse(ALICE_WORKOUT.equals(editedAliceWorkout));
 
         // different type -> returns false
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT).build();
-        assertFalse(ALICE_WORKOUT.equals(editedAlice_Workout));
+        editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withType(VALID_TYPE_BOB_WORKOUT).build();
+        assertFalse(ALICE_WORKOUT.equals(editedAliceWorkout));
 
         // different duration -> returns false
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT).build();
-        assertFalse(ALICE_WORKOUT.equals(editedAlice_Workout));
+        editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT).build();
+        assertFalse(ALICE_WORKOUT.equals(editedAliceWorkout));
 
         // different difficulty -> returns false
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT).build();
-        assertFalse(ALICE_WORKOUT.equals(editedAlice_Workout));
+        editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT).build();
+        assertFalse(ALICE_WORKOUT.equals(editedAliceWorkout));
 
         // different equipment -> returns false
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).build();
-        assertFalse(ALICE_WORKOUT.equals(editedAlice_Workout));
+        editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withEquipment(VALID_EQUIPMENT_BOB_WORKOUT).build();
+        assertFalse(ALICE_WORKOUT.equals(editedAliceWorkout));
 
         // different muscle -> returns false
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT).build();
-        assertFalse(ALICE_WORKOUT.equals(editedAlice_Workout));
+        editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withMuscle(VALID_MUSCLE_BOB_WORKOUT).build();
+        assertFalse(ALICE_WORKOUT.equals(editedAliceWorkout));
 
         // different calories -> returns false
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withCalories(VALID_CALORIES_BOB_WORKOUT).build();
-        assertFalse(ALICE_WORKOUT.equals(editedAlice_Workout));
+        editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withCalories(VALID_CALORIES_BOB_WORKOUT).build();
+        assertFalse(ALICE_WORKOUT.equals(editedAliceWorkout));
 
         // different instruction -> returns false
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withInstruction(VALID_INSTRUCTION_BOB_WORKOUT).build();
-        assertFalse(ALICE_WORKOUT.equals(editedAlice_Workout));
+        editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withInstruction(VALID_INSTRUCTION_BOB_WORKOUT).build();
+        assertFalse(ALICE_WORKOUT.equals(editedAliceWorkout));
 
         // different tags -> returns false
-        editedAlice_Workout = new WorkoutBuilder(ALICE_WORKOUT).withTags(VALID_TAG_NIGHT).build();
-        assertFalse(ALICE_WORKOUT.equals(editedAlice_Workout));
+        editedAliceWorkout = new WorkoutBuilder(ALICE_WORKOUT).withTags(VALID_TAG_NIGHT).build();
+        assertFalse(ALICE_WORKOUT.equals(editedAliceWorkout));
     }
 }
