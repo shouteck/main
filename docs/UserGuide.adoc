@@ -92,6 +92,23 @@ Edits the type and duration of the 1st workout to be `strength` and `20m` respec
 * `edit 2 name/Arnold's workout tag/` +
 Edits the name of the 2nd workout to be `Arnold's workout` and clears all existing tags.
 
+=== Locating workouts by name: `filter`
+
+Filters workouts whose types, durations, equipments contain any of the given keywords. +
+Format: `filter [type/TYPE] [duratiorn/DURATION] [equipment/EQUIPMENT]`
+
+****
+* The search is case insensitive. e.g `filter type/strength` will match `filter type/STRENGTH`
+* The order of the keywords does not matter. e.g. `filter type/strength duration/20m` will match `filter duration/20m type/strength`
+* Duration, equipment, type are searched.
+****
+
+Examples:
+
+* `filter duration/20m equipment/dumbbell type/strength` +
+Returns any workout having duration of `20m`, equipment of `dumbbell`, type of `strength`
+
+
 === Locating workouts by name: `find`
 
 Finds workouts whose names contain any of the given keywords. +
@@ -151,6 +168,26 @@ Selects the 2nd workout in the workout book.
 * `find commando` +
 `select 1` +
 Selects the 1st workout in the results of the `find` command.
+
+=== Selecting a workout : `sort`
+
+Sorts the workouts. +
+Format: `sort`
+
+****
+* Sorts the workout.
+* The index refers to the index number shown in the displayed workout list.
+****
+
+Examples:
+
+* `add name/joe's workout type/strength duration/20m difficulty/beginner equipment/dumbbell muscle/bicep calories/200 instruction/bicep curl reps: 4-6 tag/future​` +
+`sort` +
+Sorts a list of all workouts in the workout book based on names after `add` a new workout.
+
+* `delete 1` +
+`sort` +
+Sorts workout after `delete` a workout.
 
 === Listing entered commands : `history`
 
@@ -273,12 +310,15 @@ e.g. `add name/commando workout type/strength, cardio duration/20m difficulty/ad
 e.g. `delete 3`
 * *Edit* : `dit INDEX [name/NAME] [type/TYPE] [duration/DURATION] [difficulty/DIFFICULTY] [equipment/EQUIPMENT] [muscle/MUSCLE] [calories/CALORIES] [instruction/INSTRUCTION] [tag/TAG]…​` +
 e.g. `edit 1 type/light duration/25m`
+* *Filter* : `filter [type/TYPE] [duration/DURATION] [equipment/EQUIPMENT]` +
+e.g. `filter type/strength duration/20m equipment/dumbbell`
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +
 e.g. `find bench`
 * *List* : `list`
 * *Help* : `help`
 * *Select* : `select INDEX` +
 e.g.`select 2`
+* *Sort* : `sort`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`
