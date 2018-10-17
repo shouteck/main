@@ -46,7 +46,7 @@ public class UniqueWorkoutList implements Iterable<Workout> {
                 .collect(Collectors.toList());
     }
 
-    public List<Workout> getFilteredInternalList (Type type){
+    public List<Workout> getFilteredInternalList (Type type) {
         return internalList.stream()
                 .filter(w -> w.getType().fullType.contains(type.fullType))
                 .collect(Collectors.toList());

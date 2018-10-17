@@ -1,28 +1,28 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
+import seedu.address.model.workout.DurationPredicate;
+import seedu.address.model.workout.EquipmentPredicate;
+import seedu.address.model.workout.TypePredicate;
 
-import seedu.address.model.workout.*;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
-
-public class FilterCommand extends Command{
+/**
+ * WIP
+ */
+public class FilterCommand extends Command {
     public static final String COMMAND_WORD = "filter";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filter all workouts based on keywords "
             + "Parameters: "
             + "[" + PREFIX_TYPE + "TYPE] "
             + "[" + PREFIX_DURATION + "DURATION] "
- //           + "[" + PREFIX_DIFFICULTY + "DIFFICULTY] "
             + "[" + PREFIX_EQUIPMENT + "EQUIPMENT] \n"
-//            + "[" + PREFIX_MUSCLE + "MUSCLE] "
-//            + "[" + PREFIX_CALORIES + "CALORIES] "
-//            + "[" + PREFIX_INSTRUCTION + "INSTRUCTION] "
-//            + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_EQUIPMENT + "dumbbell "
             + PREFIX_TYPE + "strength "
@@ -34,7 +34,8 @@ public class FilterCommand extends Command{
     private final EquipmentPredicate equipmentPredicate;
     private final DurationPredicate durationPredicate;
 
-    public FilterCommand(DurationPredicate durationPredicate, TypePredicate typePredicate, EquipmentPredicate equipmentPredicate) {
+    public FilterCommand(DurationPredicate durationPredicate, TypePredicate typePredicate,
+                         EquipmentPredicate equipmentPredicate) {
         requireNonNull(durationPredicate);
         requireNonNull(typePredicate);
         requireNonNull(equipmentPredicate);

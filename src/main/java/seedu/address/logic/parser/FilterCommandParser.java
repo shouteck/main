@@ -1,20 +1,23 @@
 package seedu.address.logic.parser;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
+
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 import seedu.address.logic.commands.FilterCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.workout.DurationPredicate;
 import seedu.address.model.workout.EquipmentPredicate;
 import seedu.address.model.workout.TypePredicate;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_INSTRUCTION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-
+/**
+ * WIP
+ */
 public class FilterCommandParser implements Parser<FilterCommand> {
 
     /**

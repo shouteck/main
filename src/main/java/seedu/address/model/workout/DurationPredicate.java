@@ -1,9 +1,9 @@
 package seedu.address.model.workout;
 
-import seedu.address.commons.util.StringUtil;
-
 import java.util.List;
 import java.util.function.Predicate;
+
+import seedu.address.commons.util.StringUtil;
 
 /**
  * Tests that a {@code Workout}'s {@code Duration} matches any of the duration given.
