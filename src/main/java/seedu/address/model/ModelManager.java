@@ -13,6 +13,7 @@ import javafx.collections.transformation.FilteredList;
 
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.events.model.TrackedDataChangedEvent;
 import seedu.address.commons.events.model.WorkoutBookChangedEvent;
 
 import seedu.address.model.workout.Calories;
@@ -27,6 +28,7 @@ public class ModelManager extends ComponentManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final VersionedWorkoutBook versionedWorkoutBook;
+    private final VersionedTrackedData versionedTrackedData;
     private final FilteredList<Workout> filteredWorkouts;
 
     /**
@@ -38,6 +40,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         logger.fine("Initializing with workout book: " + workoutBook + " and user prefs " + userPrefs);
 
+        versionedTrackedData = new VersionedTrackedData(new TrackedData());
         versionedWorkoutBook = new VersionedWorkoutBook(workoutBook);
         filteredWorkouts = new FilteredList<>(versionedWorkoutBook.getWorkoutList());
     }
@@ -60,6 +63,7 @@ public class ModelManager extends ComponentManager implements Model {
     /** Raises an event to indicate the model has changed */
     private void indicateWorkoutBookChanged() {
         raise(new WorkoutBookChangedEvent(versionedWorkoutBook));
+        raise(new TrackedDataChangedEvent(versionedTrackedData));
     }
 
     @Override
@@ -76,6 +80,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public void addWorkout(Workout workout) {
+        versionedTrackedData.addWorkout(workout);
         versionedWorkoutBook.addWorkout(workout);
         updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
         indicateWorkoutBookChanged();

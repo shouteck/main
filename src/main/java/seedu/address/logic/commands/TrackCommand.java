@@ -46,6 +46,9 @@ public class TrackCommand extends Command {
      */
     @Override
     public CommandResult execute(Model model, CommandHistory history) {
+        //step 1: check whether list containing data being tracked exists
+        //step 2: check whether file specific to desired data exists
+        //step 2: write to file
         return new CommandResult(String.format(MESSAGE_SUCCESS, parameter.getKey(), parameter.getValue()));
     }
 

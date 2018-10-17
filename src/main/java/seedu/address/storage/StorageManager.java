@@ -23,14 +23,16 @@ import seedu.address.model.UserPrefs;
 public class StorageManager extends ComponentManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
-    private TrackedDataStorage trackedDataStorage;
     private WorkoutBookStorage workoutBookStorage;
+    private TrackedDataStorage trackedDataStorage;
     private UserPrefsStorage userPrefsStorage;
 
 
-    public StorageManager(WorkoutBookStorage workoutBookStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageManager(WorkoutBookStorage workoutBookStorage, TrackedDataStorage trackedDataStorage
+            , UserPrefsStorage userPrefsStorage) {
         super();
         this.workoutBookStorage = workoutBookStorage;
+        this.trackedDataStorage = trackedDataStorage;
         this.userPrefsStorage = userPrefsStorage;
     }
 

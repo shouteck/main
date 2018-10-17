@@ -13,6 +13,7 @@ public class UserPrefs {
 
     private GuiSettings guiSettings;
     private Path workoutBookFilePath = Paths.get("data" , "workoutbook.xml");
+    private Path trackedDataFilePath = Paths.get("data" , "trackeddata.xml");
 
     public UserPrefs() {
         setGuiSettings(500, 500, 0, 0);
@@ -36,6 +37,14 @@ public class UserPrefs {
 
     public void setWorkoutBookFilePath(Path workoutBookFilePath) {
         this.workoutBookFilePath = workoutBookFilePath;
+    }
+
+    public Path getTrackedDataFilePath() {
+        return trackedDataFilePath;
+    }
+
+    public void setTrackedDataFilePath(Path trackedDataFilePath) {
+        this.trackedDataFilePath = trackedDataFilePath;
     }
 
     @Override

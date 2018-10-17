@@ -29,8 +29,10 @@ import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
+import seedu.address.storage.TrackedDataStorage;
 import seedu.address.storage.UserPrefsStorage;
 import seedu.address.storage.WorkoutBookStorage;
+import seedu.address.storage.XmlTrackedDataStorage;
 import seedu.address.storage.XmlWorkoutBookStorage;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
@@ -63,7 +65,8 @@ public class MainApp extends Application {
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         userPrefs = initPrefs(userPrefsStorage);
         WorkoutBookStorage workoutBookStorage = new XmlWorkoutBookStorage(userPrefs.getWorkoutBookFilePath());
-        storage = new StorageManager(workoutBookStorage, userPrefsStorage);
+        TrackedDataStorage trackedDataStorage = new XmlTrackedDataStorage(userPrefs.getTrackedDataFilePath());
+        storage = new StorageManager(workoutBookStorage, trackedDataStorage, userPrefsStorage);
 
         initLogging(config);
 
