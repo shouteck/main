@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FUTURE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
 import static seedu.address.logic.commands.CommandTestUtil.MUSCLE_DESC_BOB_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
@@ -12,17 +13,16 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import javafx.util.Pair;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import javafx.util.Pair;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.*;
 import seedu.address.logic.commands.EditCommand.EditWorkoutDescriptor;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
@@ -40,16 +40,6 @@ import seedu.address.model.workout.Workout;
 import seedu.address.testutil.EditWorkoutDescriptorBuilder;
 import seedu.address.testutil.WorkoutBuilder;
 import seedu.address.testutil.WorkoutUtil;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.junit.Assert.*;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FUTURE;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 
 public class WorkoutBookParserTest {
     @Rule

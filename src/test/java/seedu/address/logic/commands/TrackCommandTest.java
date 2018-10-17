@@ -24,7 +24,7 @@ public class TrackCommandTest {
     private Model model = new ModelManager(getTypicalWorkoutBook(), new UserPrefs());
 
     @Test
-    public void execute(){
+    public void execute() {
         final String subcommand = "start";
         final Pair<Prefix, String> parameter = new Pair<>(PREFIX_MUSCLE, "bicep");
         assertCommandFailure(new TrackCommand(subcommand, parameter), model, new CommandHistory(),
@@ -32,7 +32,7 @@ public class TrackCommandTest {
     }
 
     @Test
-    public void equals(){
+    public void equals() {
         final TrackCommand testCommand = new TrackCommand("start", new Pair<>(PREFIX_MUSCLE, "bicep"));
 
         //check 1: same object -> returns true
