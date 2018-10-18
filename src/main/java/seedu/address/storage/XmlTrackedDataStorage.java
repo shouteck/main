@@ -14,7 +14,6 @@ import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.model.ReadOnlyTrackedData;
-import seedu.address.model.ReadOnlyWorkoutBook;
 
 /**
  * A class to access Tracked data stored as an xml file on the hard disk.
@@ -45,21 +44,20 @@ public class XmlTrackedDataStorage implements TrackedDataStorage {
      */
     public Optional<ReadOnlyTrackedData> readTrackedData(Path filePath) throws DataConversionException,
             FileNotFoundException {
-//        requireNonNull(filePath);
-//
-//        if (!Files.exists(filePath)) {
-//            logger.info("Tracked data file " + filePath + " not found");
-//            return Optional.empty();
-//        }
-//
-//        XmlSerializableTrackedData xmlTrackedData = XmlFileStorage.loadTrackedDataFromSaveFile(filePath);
-//        try {
-//            return Optional.of(xmlTrackedData.toModelType());
-//        } catch (IllegalValueException ive) {
-//            logger.info("Illegal values found in " + filePath + ": " + ive.getMessage());
-//            throw new DataConversionException(ive);
-//        }
-        return Optional.empty();
+        requireNonNull(filePath);
+
+        if (!Files.exists(filePath)) {
+            logger.info("Tracked data file " + filePath + " not found");
+            return Optional.empty();
+        }
+
+        XmlSerializableTrackedData xmlTrackedData = XmlFileStorage.loadTrackedDataFromSaveFile(filePath);
+        try {
+            return Optional.of(xmlTrackedData.toModelType());
+        } catch (IllegalValueException ive) {
+            logger.info("Illegal values found in " + filePath + ": " + ive.getMessage());
+            throw new DataConversionException(ive);
+        }
     }
 
     @Override

@@ -39,22 +39,46 @@ public class XmlFileStorage {
     /**
      * Saves the given tracked data to the specified file.
      */
-    public static void saveDataToFile(Path file, XmlSerializableTrackedData workoutBook)
+    public static void saveDataToFile(Path file, XmlSerializableTrackedData trackedData)
             throws FileNotFoundException {
         try {
-            XmlUtil.saveDataToFile(file, workoutBook);
+            XmlUtil.saveDataToFile(file, trackedData);
         } catch (JAXBException e) {
             throw new AssertionError("Unexpected exception " + e.getMessage(), e);
         }
     }
 
     /**
-     * Returns tracked data in the file or an empty workout book
+     * Returns tracked data in the file or an empty tracked data list
      */
     public static XmlSerializableTrackedData loadTrackedDataFromSaveFile(Path file) throws DataConversionException,
             FileNotFoundException {
         try {
             return XmlUtil.getDataFromFile(file, XmlSerializableTrackedData.class);
+        } catch (JAXBException e) {
+            throw new DataConversionException(e);
+        }
+    }
+
+    /**
+     * Saves the given parameter to the specified file.
+     */
+    public static void saveDataToFile(Path file, XmlSerializableTrackedDataList trackedDataList)
+            throws FileNotFoundException {
+        try {
+            XmlUtil.saveDataToFile(file, trackedDataList);
+        } catch (JAXBException e) {
+            throw new AssertionError("Unexpected exception " + e.getMessage(), e);
+        }
+    }
+
+    /**
+     * Returns tracked data in the file or an empty tracked data list
+     */
+    public static XmlSerializableTrackedDataList loadTrackedDataListFromSaveFile(Path file)
+            throws DataConversionException, FileNotFoundException {
+        try {
+            return XmlUtil.getDataFromFile(file, XmlSerializableTrackedDataList.class);
         } catch (JAXBException e) {
             throw new DataConversionException(e);
         }

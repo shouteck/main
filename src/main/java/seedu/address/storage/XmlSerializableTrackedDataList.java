@@ -8,17 +8,17 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.ReadOnlyTrackedData;
+import seedu.address.model.ReadOnlyTrackedDataList;
 import seedu.address.model.TrackedData;
 import seedu.address.model.workout.Workout;
 
 /**
- * An Immutable TrackedData that is serializable to XML format
+ * An Immutable tracked parameter list that is serializable to XML format
  */
-@XmlRootElement(name = "trackeddata")
-public class XmlSerializableTrackedData {
+@XmlRootElement(name = "trackeddatalist")
+public class XmlSerializableTrackedDataList {
 
-    public static final String MESSAGE_DUPLICATE_WORKOUT = "Tracked data list contains duplicate workout(s).";
+    public static final String MESSAGE_DUPLICATE_WORKOUT = "Tracked data list contains duplicate parameter(s).";
 
     @XmlElement
     private List<XmlAdaptedWorkout> workouts;
@@ -27,16 +27,16 @@ public class XmlSerializableTrackedData {
      * Creates an empty XmlSerializableTrackedData.
      * This empty constructor is required for marshalling.
      */
-    public XmlSerializableTrackedData() {
+    public XmlSerializableTrackedDataList() {
         workouts = new ArrayList<>();
     }
 
     /**
      * Conversion
      */
-    public XmlSerializableTrackedData(ReadOnlyTrackedData src) {
+    public XmlSerializableTrackedDataList(ReadOnlyTrackedDataList src) {
         this();
-        workouts.addAll(src.getTrackedData().stream().map(XmlAdaptedWorkout::new).collect(Collectors.toList()));
+        workouts.addAll(src.getTrackedDataList().stream().map(XmlAdaptedWorkout::new).collect(Collectors.toList()));
     }
 
     /**
@@ -63,9 +63,9 @@ public class XmlSerializableTrackedData {
             return true;
         }
 
-        if (!(other instanceof XmlSerializableTrackedData)) {
+        if (!(other instanceof XmlSerializableTrackedDataList)) {
             return false;
         }
-        return workouts.equals(((XmlSerializableTrackedData) other).workouts);
+        return workouts.equals(((XmlSerializableTrackedDataList) other).workouts);
     }
 }
