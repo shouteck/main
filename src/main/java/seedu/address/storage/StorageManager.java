@@ -9,18 +9,16 @@ import com.google.common.eventbus.Subscribe;
 
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.events.model.TrackedDataChangedEvent;
 import seedu.address.commons.events.model.TrackedDataListChangedEvent;
 import seedu.address.commons.events.model.WorkoutBookChangedEvent;
 import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.ReadOnlyTrackedData;
 import seedu.address.model.ReadOnlyTrackedDataList;
 import seedu.address.model.ReadOnlyWorkoutBook;
 import seedu.address.model.UserPrefs;
 
 /**
- * Manages storage of WorkoutBook data in local storage.
+ * Manages storage of WorkoutBook data and Tracked Data in local storage.
  */
 public class StorageManager extends ComponentManager implements Storage {
 

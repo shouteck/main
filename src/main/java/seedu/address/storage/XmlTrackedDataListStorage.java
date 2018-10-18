@@ -4,12 +4,14 @@ import static java.util.Objects.requireNonNull;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Optional;
 import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
+import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.model.ReadOnlyTrackedDataList;
 
@@ -42,14 +44,14 @@ public class XmlTrackedDataListStorage implements TrackedDataListStorage {
      */
     public Optional<ReadOnlyTrackedDataList> readTrackedDataList(Path filePath) throws DataConversionException,
             FileNotFoundException {
-//        requireNonNull(filePath);
-//
-//        if (!Files.exists(filePath)) {
-//            logger.info("Tracked data file " + filePath + " not found");
-//            return Optional.empty();
-//        }
-//
-//        XmlSerializableTrackedData xmlTrackedData = XmlFileStorage.loadTrackedDataFromSaveFile(filePath);
+        requireNonNull(filePath);
+
+        if (!Files.exists(filePath)) {
+            logger.info("Tracked data file " + filePath + " not found");
+            return Optional.empty();
+        }
+
+        XmlSerializableTrackedDataList xmlTrackedData = XmlFileStorage.loadTrackedDataListFromSaveFile(filePath);
 //        try {
 //            return Optional.of(xmlTrackedData.toModelType());
 //        } catch (IllegalValueException ive) {

@@ -18,7 +18,7 @@ import seedu.address.model.workout.exceptions.WorkoutNotFoundException;
  * A workout is considered unique by comparing using {@code Workout#isSameWorkout(Workout)}. As such, adding and
  * updating of workouts uses Workout#isSameWorkout(Workout) for equality so as to ensure that the workout being added
  * or updated is unique in terms of identity in the UniqueWorkoutList. However, the removal of a workout uses
- * Workout#equals(Object) soas to ensure that the workout with exactly the same fields will be removed.
+ * Workout#equals(Object) so as to ensure that the workout with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
