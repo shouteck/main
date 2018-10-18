@@ -92,6 +92,36 @@ Edits the type and duration of the 1st workout to be `strength` and `20m` respec
 * `edit 2 name/Arnold's workout tag/` +
 Edits the name of the 2nd workout to be `Arnold's workout` and clears all existing tags.
 
+=== Changing a workout to current : `current`
+
+Changes a workout to be a current workout in the workout book. +
+Format: `current INDEX`
+
+****
+* Changes the state tag of the workout at the specified `INDEX`. The index refers to the index number shown in the displayed workout list. The index *must be a positive integer* 1, 2, 3, ...
+* You can change the state tag from both `future` and `completed`.
+****
+
+Examples:
+
+* `current 1` +
+Changes the state tag of the 1st workout to be `current`.
+
+=== Changing a workout to completed : `complete`
+
+Changes a workout to be a completed workout in the workout book. +
+Format: `complete INDEX`
+
+****
+* Changes the state tag of the workout at the specified `INDEX`. The index refers to the index number shown in the displayed workout list. The index *must be a positive integer* 1, 2, 3, ...
+* You can change the state tag from both `future` and `current`.
+****
+
+Examples:
+
+* `complete 1` +
+Changes the state tag of the 1st workout to be `completed`.
+
 === Locating workouts by name: `filter`
 
 Filters workouts whose types, durations, equipments contain any of the given keywords. +
