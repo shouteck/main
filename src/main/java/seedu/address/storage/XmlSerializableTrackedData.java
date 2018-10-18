@@ -9,22 +9,22 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.ReadOnlyTrackedData;
-import seedu.address.model.WorkoutBook;
+import seedu.address.model.TrackedData;
 import seedu.address.model.workout.Workout;
 
 /**
  * An Immutable WorkoutBook that is serializable to XML format
  */
-@XmlRootElement(name = "workoutbook")
+@XmlRootElement(name = "trackeddata")
 public class XmlSerializableTrackedData {
 
-    public static final String MESSAGE_DUPLICATE_WORKOUT = "Workouts list contains duplicate workout(s).";
+    public static final String MESSAGE_DUPLICATE_WORKOUT = "Tracked data list contains duplicate workout(s).";
 
     @XmlElement
     private List<XmlAdaptedWorkout> workouts;
 
     /**
-     * Creates an empty XmlSerializableWorkoutBook.
+     * Creates an empty XmlSerializableTrackedData.
      * This empty constructor is required for marshalling.
      */
     public XmlSerializableTrackedData() {
@@ -40,21 +40,21 @@ public class XmlSerializableTrackedData {
     }
 
     /**
-     * Converts this workoutbook into the model's {@code WorkoutBook} object.
+     * Converts this tracked data list into the model's {@code TrackedData} object.
      *
      * @throws IllegalValueException if there were any data constraints violated or duplicates in the
      * {@code XmlAdaptedWorkout}.
      */
-    public WorkoutBook toModelType() throws IllegalValueException {
-        WorkoutBook workoutBook = new WorkoutBook();
+    public TrackedData toModelType() throws IllegalValueException {
+        TrackedData trackedData = new TrackedData();
         for (XmlAdaptedWorkout p : workouts) {
             Workout workout = p.toModelType();
-            if (workoutBook.hasWorkout(workout)) {
+            if (trackedData.hasWorkout(workout)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_WORKOUT);
             }
-            workoutBook.addWorkout(workout);
+            trackedData.addWorkout(workout);
         }
-        return workoutBook;
+        return trackedData;
     }
 
     @Override

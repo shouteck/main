@@ -88,6 +88,12 @@ public interface Model {
      */
     void sortFilteredWorkoutList();
 
+    /**
+     * Adds the given parameter to the tracking list.
+     * The parameter must not already exist in the tracking list.
+     */
+    void addDataToTrack();
+
     List<Workout> getFilteredInternalList(Duration duration);
     List<Workout> getFilteredInternalList(Difficulty difficulty);
     List<Workout> getFilteredInternalList(Calories calories);

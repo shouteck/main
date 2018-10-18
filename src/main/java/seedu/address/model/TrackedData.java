@@ -12,7 +12,7 @@ import seedu.address.model.workout.UniqueWorkoutList;
 import seedu.address.model.workout.Workout;
 
 /**
- * Wraps all data at the workout-book level
+ * Wraps all data at the workout-book level, for each tracked parameter
  * Duplicates are not allowed (by .isSameWorkout comparison)
  */
 public class TrackedData implements ReadOnlyTrackedData {
