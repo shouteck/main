@@ -358,7 +358,7 @@ There are 3 ways to open a profile window.
 After executing the command `profile`, it will create an instance which uses `showProfileRequestEvent` method of `Events`. Then, the `UI` will `handleShowProfileRequestEvent` and the profile window will be opened.
 
 [[fig-ProfileCommand]]
-.Interactions inside `Logic` component for the *`profile`* command.
+.Interactions inside `Logic` component for the *`profile`* command
 image::ProfileCommand.PNG[width="800"]
 
 ===== User click on `profile` on the menu bar
