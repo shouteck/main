@@ -1,5 +1,5 @@
 {
-  "ignoreGlobList": ["about-us/**", "**index.html"],
+  "ignoreGlobList": ["adoc cs css fxml gradle html java js json jsp md py tag xml"],
   "formats": ["html", "css"],
   "ignoreCommitList": ["90018e49f129ce7e0abdc8b18e91c9813588c601", "67890def"],
   "authors":
