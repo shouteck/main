@@ -366,7 +366,7 @@ image::ProfileCommand.PNG[width="800"]
 After clicking on `profile`, it will send an event `showProfileRequestEvent` to `Events`. It will then return `handleProfile` which will open up the profile window.
 
 [[fig-ClickProfile]]
-.Interactions inside `UI` component when clicking profile
+.Interactions inside `UI` component when user clicks profile
 image::ClickProfile.PNG[width="600"]
 
 ===== User presses `F2` key
@@ -374,7 +374,7 @@ image::ClickProfile.PNG[width="600"]
 The profile window is firstly being accelerated by the key `F2`. After pressing `F2`, it will sent a `ShowProfileRequestEvent()` event to the `EventsCentre`. Then, the `UI` will `handleShowProfileRequestEvent` and the profile window will be opened.
 
 [[fig-F2Profile]]
-.Interactions inside `UI` component when pressing `F2`
+.Interactions inside `UI` component when user presses `F2`
 image::F2Profile.PNG[width="700"]
 
 // end::profile
