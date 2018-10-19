@@ -27,7 +27,7 @@ Responsibilities: Data
 '''
 
 === Goh Si Jie
-image::sijie.png[width="150", align="left"]
+image::sijieg.png[width="150", align="left"]
 {empty}[http://github.com/sijieg[github]] [<<johndoe#, portfolio>>]
 
 Role: Developer +
@@ -36,7 +36,7 @@ Responsibilities: UI
 '''
 
 === Tew You Wen, Daryl
-image::daryl.png[width="150", align="left"]
+image::daryltew.png[width="150", align="left"]
 {empty}[http://github.com/DarylTew[github]] [<<johndoe#, portfolio>>]
 
 Role: Developer +
@@ -45,7 +45,7 @@ Responsibilities: Data
 '''
 
 === Gary Heng Hui Shen
-image::gary.png[width="150", align="left"]
+image::garyheng.png[width="150", align="left"]
 {empty}[http://github.com/garyheng[github]] [<<johndoe#, portfolio>>]
 
 Role: Developer +
@@ -54,7 +54,7 @@ Responsibilities: Data
 '''
 
 === Yan Yi Cheng
-image::Yicheng.png[width="150", align="left"]
+image::yicheng12.png[width="150", align="left"]
 {empty}[http://github.com/yicheng12[github]] [<<johndoe#, portfolio>>]
 
 Role: Developer +
