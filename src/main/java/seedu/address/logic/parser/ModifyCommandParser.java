@@ -135,7 +135,6 @@ public class ModifyCommandParser {
         //Converts string to numbers
         double h = Double.parseDouble(newHeight);
         double w = Double.parseDouble(newWeight);
-        
         double calculateBmi = w / (h * h);
 
         DecimalFormat df = new DecimalFormat("#.#");
