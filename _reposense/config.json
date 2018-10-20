@@ -1,33 +1,30 @@
 {
-  "ignoreGlobList": ["adoc cs css fxml gradle html java js json jsp md py tag xml"],
-  "formats": ["html", "css"],
-  "ignoreCommitList": ["90018e49f129ce7e0abdc8b18e91c9813588c601", "67890def"],
   "authors":
   [
     {
-      "githubId": "sijieg",
-      "displayName": "Si Jie",
-      "authorNames": ["sijieg","SJ"]
-    },
-    {
-      "githubId": "shouteck",
-      "displayName": "Shou Teck",
-      "authorNames": ["shouteck"]
+      "githubId": "SiJieg",
+      "displayName": "GOH...JIE",
+      "authorNames": ["SiJieg","sijieg","SJ"]
     },
     {
       "githubId": "garyheng",
-      "displayName": "Gary",
+      "displayName": "GAR...HEN",
       "authorNames": ["garyheng"]
     },
     {
-      "githubId": "yicheng12",
-      "displayName": "Yi Cheng",
-      "authorNames": ["yicheng12"]
+      "githubId": "DarylTew",
+      "displayName": "TEW...RYL",
+      "authorNames": ["DarylTew"]
     },
     {
-      "githubId": "DarylTew",
-      "displayName": "Daryl",
-      "authorNames": ["Daryl Tew","DarylTew"]
+      "githubId": "shouteck",
+      "displayName": "TIN...ECK",
+      "authorNames": ["shouteck"]
+    },
+    {
+      "githubId": "yicheng12",
+      "displayName": "YAN...ENG",
+      "authorNames": ["yicheng12"]
     }
   ]
 }
