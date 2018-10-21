@@ -422,13 +422,13 @@ Step 2. The user executes the current command to change the `future` tag in the 
 
 [[fig-Current]]
 .Interactions inside `Logic` component when pressing `current`
-image::CurrentCommandSD.png[width="700"]
+image::CurrentCommandSD.png[width="500"]
 
 Step 3. The user executes the complete command to change the `current` tag in the workout as specified by the index number to `completed`.
 
 [[fig-Complete]]
 .Interactions inside `Logic` component when pressing `complete`
-image::CompleteCommandSD.png[width="700"]
+image::CompleteCommandSD.png[width="500"]
 
 The user can consider changing the state tag directly without transitioning through `current` i.e. from `future` to `completed` by using the complete command.
 The user can also reverse the state tag i.e. from `completed` to `current` by using the current command.
