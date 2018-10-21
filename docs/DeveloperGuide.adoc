@@ -435,6 +435,29 @@ The user can also reverse the state tag i.e. from `completed` to `current` by us
 
 // end::memory[]
 
+// tag::trackfeature[]
+=== Tracking Feature
+==== Current Implementation
+==== Design Considerations
+===== Aspect 1:
+
+* **Alternative 1 (current choice):**
+** Pros:
+** Cons:
+* **Alternative 2:**
+** Pros:
+** Cons:
+
+===== Aspect 2:
+
+* **Alternative 1 (current choice):**
+** Pros:
+** Cons:
+* **Alternative 2:**
+** Pros:
+** Cons:
+// end::trackfeature[]
+
 // tag::dataencryption[]
 === [Proposed] Data Encryption
 
