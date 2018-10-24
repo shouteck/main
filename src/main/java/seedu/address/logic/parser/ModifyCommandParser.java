@@ -151,7 +151,6 @@ public class ModifyCommandParser {
         //seedu.address.ui.UiPart.loadFxmlFile(seedu.address.ui.UiPart.getFxmlFileUrl(FXML), root);
         //new ProfileWindow(root);
 
-
         //Desktop desktop = Desktop.getDesktop();
         //desktop.open(newFile);
 
