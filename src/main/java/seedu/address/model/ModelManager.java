@@ -88,18 +88,8 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public List<Workout> getFilteredInternalList(Difficulty difficulty) {
-        return versionedWorkoutBook.getFilteredInternalList(difficulty);
-    }
-
-    @Override
-    public List<Workout> getFilteredInternalList(Duration duration) {
-        return versionedWorkoutBook.getFilteredInternalList(duration);
-    }
-
-    @Override
-    public List<Workout> getFilteredInternalList(Calories calories) {
-        return versionedWorkoutBook.getFilteredInternalList(calories);
+    public List<Workout> getFilteredInternalList(RecommendArguments recommendArguments) {
+        return versionedWorkoutBook.getFilteredInternalList(recommendArguments);
     }
 
     @Override

@@ -50,18 +50,9 @@ public class WorkoutBook implements ReadOnlyWorkoutBook {
         this.workouts.setWorkouts(workouts);
     }
 
-    public List<Workout> getFilteredInternalList (Difficulty difficulty) {
-        return workouts.getFilteredInternalList(difficulty);
+    public List<Workout> getFilteredInternalList (RecommendArguments recommendArguments) {
+        return workouts.getFilteredInternalList(recommendArguments);
     }
-
-    public List<Workout> getFilteredInternalList (Duration duration) {
-        return workouts.getFilteredInternalList(duration);
-    }
-
-    public List<Workout> getFilteredInternalList (Calories calories) {
-        return workouts.getFilteredInternalList(calories);
-    }
-
 
     /**
      * Resets the existing data of this {@code WorkoutBook} with {@code newData}.

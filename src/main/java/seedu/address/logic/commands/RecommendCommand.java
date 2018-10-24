@@ -12,10 +12,9 @@ import java.util.Random;
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.logic.CommandHistory;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.workout.Calories;
-import seedu.address.model.workout.Difficulty;
-import seedu.address.model.workout.Duration;
+import seedu.address.model.RecommendArguments;
 import seedu.address.model.workout.Workout;
 
 /**
@@ -26,7 +25,7 @@ public class RecommendCommand extends Command {
     public static final String COMMAND_WORD = "recommend";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Recommends a workout from the workout book "
-            + "identified by one of DURATION,DIFFICULTY,CALORIES\n"
+            + "identified by a combination of DURATION,DIFFICULTY,CALORIES\n"
             + "Parameters: "
             + "[" + PREFIX_DURATION + "DURATION] "
             + "[" + PREFIX_DIFFICULTY + "DIFFICULTY] "
@@ -36,57 +35,45 @@ public class RecommendCommand extends Command {
 
 
     public static final String MESSAGE_SUCCESS = "Workout recommended!";
+    public static final String MESSAGE_NO_SUCH_WORKOUT = "There is no such workout in the workout book.";
 
-    private Duration duration = null;
-    private Difficulty difficulty = null;
-    private Calories calories = null;
+    private final RecommendArguments recommendArguments;
 
-    public RecommendCommand(Duration duration) {
-        requireAllNonNull(duration);
-        this.duration = duration;
-    }
-
-    public RecommendCommand(Difficulty difficulty) {
-        requireAllNonNull(difficulty);
-        this.difficulty = difficulty;
-    }
-
-    public RecommendCommand(Calories calories) {
-        requireAllNonNull(calories);
-        this.calories = calories;
+    public RecommendCommand(RecommendArguments recommendArguments) {
+        requireAllNonNull(recommendArguments);
+        this.recommendArguments = recommendArguments;
     }
 
     @Override
-    public CommandResult execute(Model model, CommandHistory history) {
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
 
         List<Workout> filteredWorkoutList = model.getFilteredWorkoutList();
         List<Workout> filteredInternalList;
-        if (duration != null) {
-            filteredInternalList = model.getFilteredInternalList(duration);
-        } else if (difficulty != null) {
-            filteredInternalList = model.getFilteredInternalList(difficulty);
-        } else {
-            filteredInternalList = model.getFilteredInternalList(calories);
+
+        filteredInternalList = model.getFilteredInternalList(recommendArguments);
+        if (filteredInternalList.isEmpty()) {
+            throw new CommandException(MESSAGE_NO_SUCH_WORKOUT);
         }
 
+        int targetIndex = getTargetIndex(filteredWorkoutList, filteredInternalList);
+
+        EventsCenter.getInstance().post(new JumpToListRequestEvent(targetIndex));
+        return new CommandResult(MESSAGE_SUCCESS);
+    }
+
+    private int getTargetIndex(List<Workout> filteredWorkoutList, List<Workout> filteredInternalList) {
         Random rand = new Random();
         int randomIndex = rand.nextInt(filteredInternalList.size());
         Workout randomWorkout = filteredInternalList.get(randomIndex);
-        int targetIndex = filteredWorkoutList.indexOf(randomWorkout);
-
-        EventsCenter.getInstance().post(new JumpToListRequestEvent(targetIndex));
-
-        return new CommandResult(MESSAGE_SUCCESS);
+        return filteredWorkoutList.indexOf(randomWorkout);
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof RecommendCommand // instanceof handles nulls
-                && duration.equals(((RecommendCommand) other).duration)
-                && difficulty.equals(((RecommendCommand) other).difficulty)
-                && calories.equals(((RecommendCommand) other).calories)); // state check
+                && recommendArguments.equals(((RecommendCommand) other).recommendArguments));
     }
 
 }

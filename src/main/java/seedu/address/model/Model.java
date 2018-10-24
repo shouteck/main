@@ -88,7 +88,9 @@ public interface Model {
      */
     void sortFilteredWorkoutList();
 
-    List<Workout> getFilteredInternalList(Duration duration);
-    List<Workout> getFilteredInternalList(Difficulty difficulty);
-    List<Workout> getFilteredInternalList(Calories calories);
+    /**
+     * Returns the filtered internal list.
+     */
+    List<Workout> getFilteredInternalList(RecommendArguments recommendArguments);
+
 }
