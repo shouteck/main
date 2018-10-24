@@ -20,6 +20,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyWorkoutBook;
+import seedu.address.model.RecommendArguments;
 import seedu.address.model.WorkoutBook;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
@@ -129,18 +130,8 @@ public class AddCommandTest {
         }
 
         @Override
-        public List<Workout> getFilteredInternalList(Difficulty difficulty) {
-            return Collections.emptyList();
-        }
-
-        @Override
-        public List<Workout> getFilteredInternalList(Duration duration) {
-            return Collections.emptyList();
-        }
-
-        @Override
-        public List<Workout> getFilteredInternalList(Calories calories) {
-            return Collections.emptyList();
+        public List<Workout> getFilteredInternalList(RecommendArguments recommendArguments) {
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
