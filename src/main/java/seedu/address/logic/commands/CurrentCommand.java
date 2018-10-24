@@ -104,7 +104,7 @@ public class CurrentCommand extends Command {
         updatedTags.add(current);
 
         return new Workout(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,
-                updatedMuscle, updatedCalories, updatedInstruction, updatedTags);
+                updatedMuscle, updatedCalories, updatedInstruction, updatedTags,null);
     }
 
     @Override

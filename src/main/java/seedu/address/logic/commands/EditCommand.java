@@ -118,7 +118,7 @@ public class EditCommand extends Command {
         Set<Tag> updatedTags = editWorkoutDescriptor.getTags().orElse(workoutToEdit.getTags());
 
         return new Workout(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,
-        updatedMuscle, updatedCalories, updatedInstruction, updatedTags);
+                updatedMuscle, updatedCalories, updatedInstruction, updatedTags, workoutToEdit.getRemark());
     }
 
     @Override

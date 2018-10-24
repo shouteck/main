@@ -46,6 +46,8 @@ public class WorkoutCard extends UiPart<Region> {
     private Label instruction;
     @FXML
     private FlowPane tags;
+    @FXML
+    private Label remark;
 
     public WorkoutCard(Workout workout, int displayedIndex) {
         super(FXML);
@@ -59,6 +61,7 @@ public class WorkoutCard extends UiPart<Region> {
         muscle.setText(workout.getMuscle().fullMuscle);
         calories.setText(workout.getCalories().fullCalories);
         instruction.setText(workout.getInstruction().fullInstruction);
+        remark.setText(workout.getRemark().fullRemark);
         workout.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
