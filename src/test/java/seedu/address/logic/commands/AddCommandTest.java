@@ -7,7 +7,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -22,9 +21,6 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyWorkoutBook;
 import seedu.address.model.RecommendArguments;
 import seedu.address.model.WorkoutBook;
-import seedu.address.model.workout.Calories;
-import seedu.address.model.workout.Difficulty;
-import seedu.address.model.workout.Duration;
 import seedu.address.model.workout.Workout;
 import seedu.address.testutil.WorkoutBuilder;
 
