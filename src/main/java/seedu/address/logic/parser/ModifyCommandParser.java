@@ -71,7 +71,7 @@ public class ModifyCommandParser {
                 PREFIX_GENDER) || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ModifyCommand.MESSAGE_USAGE));
         }
-
+        //remove the first 6 char of the string
         String fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString().substring(6);
         Document doc = Jsoup.parse(new File(fileName), "UTF-8");
         Element divGender = doc.getElementById("gender");
@@ -132,6 +132,7 @@ public class ModifyCommandParser {
         newHeight = newHeight.replace("m", "");
         newWeight = newWeight.replaceFirst("kg", "");
         newWeight = newWeight.replaceFirst("Weight : ", "");
+        //Converts string to numbers
         double h = Double.parseDouble(newHeight);
         double w = Double.parseDouble(newWeight);
         double calculateBmi = w / (h * h);
