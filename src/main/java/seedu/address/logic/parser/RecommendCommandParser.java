@@ -28,8 +28,8 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_DURATION,
                 PREFIX_DIFFICULTY, PREFIX_CALORIES);
 
-        if (!isPrefixPresent(argMultimap, PREFIX_DURATION, PREFIX_DIFFICULTY, PREFIX_CALORIES) || !argMultimap.
-                getPreamble().isEmpty()) {
+        if (!isPrefixPresent(argMultimap, PREFIX_DURATION, PREFIX_DIFFICULTY, PREFIX_CALORIES) || !argMultimap
+                .getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RecommendCommand.MESSAGE_USAGE));
         }
 

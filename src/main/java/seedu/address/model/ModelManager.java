@@ -15,9 +15,6 @@ import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.WorkoutBookChangedEvent;
 
-import seedu.address.model.workout.Calories;
-import seedu.address.model.workout.Difficulty;
-import seedu.address.model.workout.Duration;
 import seedu.address.model.workout.Workout;
 
 /**

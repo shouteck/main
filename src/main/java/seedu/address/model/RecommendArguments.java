@@ -4,6 +4,9 @@ import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;
 
+/**
+ * Represents a Recommend arguments in the workout book.
+ */
 public class RecommendArguments {
 
     private final Calories calories;
