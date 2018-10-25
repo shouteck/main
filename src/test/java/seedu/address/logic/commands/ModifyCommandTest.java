@@ -1,26 +1,8 @@
 package seedu.address.logic.commands;
 
-import static java.util.Objects.requireNonNull;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_GENDER;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_HEIGHT;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PREFERRED_DIFFICULTY;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_USERNAME;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_WEIGHT;
-import static seedu.address.commons.core.Messages.MESSAGE_VALID_GENDER;
-import static seedu.address.commons.core.Messages.MESSAGE_VALID_HEIGHT;
-import static seedu.address.commons.core.Messages.MESSAGE_VALID_PREFERRED_DIFFICULTY;
-import static seedu.address.commons.core.Messages.MESSAGE_VALID_USERNAME;
-import static seedu.address.commons.core.Messages.MESSAGE_VALID_WEIGHT;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_GENDER;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_HEIGHT;
@@ -32,28 +14,22 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_HEIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PREFERRED_DIFFICULTY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_USERNAME;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WEIGHT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_GENDER;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_HEIGHT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PREFERRED_DIFFICULTY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_WEIGHT;
 
 import java.io.File;
 import java.io.IOException;
 
-import java.text.DecimalFormat;
-import java.util.stream.Stream;
-
-import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import seedu.address.logic.CommandHistory;
-import seedu.address.logic.commands.ModifyCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+
+
 
 public class ModifyCommandTest {
     public static final String USERPROFILE_FILE_PATH = "/docs/ProfileWindow.html";
