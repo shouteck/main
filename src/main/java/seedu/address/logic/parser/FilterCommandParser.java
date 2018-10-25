@@ -51,6 +51,7 @@ public class FilterCommandParser implements Parser<FilterCommand> {
                 new EquipmentPredicate(Arrays.asList(equipmentKeywords)));
 
     }
+
     private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
