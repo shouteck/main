@@ -27,21 +27,33 @@ public class RecommendArguments {
         public Builder() {
         }
 
+        /**
+         * Calories setter for Builder
+         */
         public Builder withCalories(Optional<Calories> calories) {
             this.calories = calories;
             return this;
         }
 
+        /**
+         * Difficulty setter for Builder
+         */
         public Builder withDifficulty(Optional<Difficulty> difficulty) {
             this.difficulty = difficulty;
             return this;
         }
 
+        /**
+         * Duration setter for Builder
+         */
         public Builder withDuration(Optional<Duration> duration) {
             this.duration = duration;
             return this;
         }
 
+        /**
+         * Main constructor for RecommendArguments
+         */
         public RecommendArguments build() {
             RecommendArguments recommendArguments = new RecommendArguments();
             recommendArguments.setCalories(this.calories);
