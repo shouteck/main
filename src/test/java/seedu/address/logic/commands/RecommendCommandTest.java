@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
@@ -25,8 +26,6 @@ import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;
 import seedu.address.model.workout.Workout;
 import seedu.address.testutil.WorkoutBuilder;
-
-import static java.util.Objects.requireNonNull;
 
 public class RecommendCommandTest {
 
