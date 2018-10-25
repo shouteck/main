@@ -46,6 +46,11 @@ public class CommandTestUtil {
     public static final String VALID_CALORIES_BOB_WORKOUT = "150";
     public static final String VALID_INSTRUCTION_AMY_WORKOUT = "set1: flutter kick reps: 5-7";
     public static final String VALID_INSTRUCTION_BOB_WORKOUT = "set1: bicep curl reps: 4-6";
+    public static final String VALID_USERNAME = "gsj";
+    public static final String VALID_GENDER = "male";
+    public static final String VALID_HEIGHT = "1.83";
+    public static final String VALID_WEIGHT = "91.2";
+    public static final String VALID_PREFERRED_DIFFICULTY = "beginner";
 
     public static final String VALID_TAG_MORNING = "morning";
     public static final String VALID_TAG_NIGHT = "night";
@@ -80,6 +85,11 @@ public class CommandTestUtil {
     public static final String INVALID_MUSCLE_DESC = " " + PREFIX_MUSCLE + "bicep + tricep";
     public static final String INVALID_CALORIES_DESC = " " + PREFIX_CALORIES + "123 calories";
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "morning*"; // '*' not allowed in tags
+    public static final String INVALID_USERNAME = "gs_j@a";
+    public static final String INVALID_GENDER = "femal";
+    public static final String INVALID_HEIGHT = "183";
+    public static final String INVALID_WEIGHT = "911";
+    public static final String INVALID_PREFERRED_DIFFICULTY = "easy";
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
