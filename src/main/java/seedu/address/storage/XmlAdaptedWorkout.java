@@ -19,8 +19,8 @@ import seedu.address.model.workout.Equipment;
 import seedu.address.model.workout.Instruction;
 import seedu.address.model.workout.Muscle;
 import seedu.address.model.workout.Name;
-import seedu.address.model.workout.Type;
 import seedu.address.model.workout.Remark;
+import seedu.address.model.workout.Type;
 import seedu.address.model.workout.Workout;
 
 /**
@@ -91,7 +91,7 @@ public class XmlAdaptedWorkout {
         muscle = source.getMuscle().fullMuscle;
         calories = source.getCalories().fullCalories;
         instruction = source.getInstruction().fullInstruction;
-        remark = source.getRemark().fullRemark;
+        remark = source.getRemark() == null ? "" : source.getRemark().fullRemark;
         tagged = source.getTags().stream()
                 .map(XmlAdaptedTag::new)
                 .collect(Collectors.toList());
@@ -168,11 +168,12 @@ public class XmlAdaptedWorkout {
         }
         final Calories modelCalories = new Calories(calories);
 
-        if (remark == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Remark.class.getSimpleName()));
-        }
-        if(!Remark.isValidRemark(remark)) {
+//        if (remark == null) {
+//            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+//                    Remark.class.getSimpleName()));
+//        }
+
+        if (!Remark.isValidRemark(remark)) {
             throw new IllegalValueException(Remark.MESSAGE_REMARK_CONSTRAINTS);
         }
 

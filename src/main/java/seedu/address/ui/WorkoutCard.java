@@ -61,7 +61,7 @@ public class WorkoutCard extends UiPart<Region> {
         muscle.setText(workout.getMuscle().fullMuscle);
         calories.setText(workout.getCalories().fullCalories);
         instruction.setText(workout.getInstruction().fullInstruction);
-        remark.setText(workout.getRemark().fullRemark);
+        remark.setText(workout.getRemark() == null ? "" : workout.getRemark().fullRemark);
         workout.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 

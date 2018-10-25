@@ -1,6 +1,7 @@
 package seedu.address.model.workout;
 
-import static java.util.Objects.requireNonNull;
+import com.google.common.base.Strings;
+
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 
@@ -28,8 +29,8 @@ public class Remark {
      *
      * @param remark A valid remark.
      */
-    public Remark(String remark){
-        checkArgument(isValidRemark(remark),MESSAGE_REMARK_CONSTRAINTS);
+    public Remark(String remark) {
+        checkArgument(isValidRemark(remark), MESSAGE_REMARK_CONSTRAINTS);
         fullRemark = remark;
     }
 
@@ -38,7 +39,7 @@ public class Remark {
      */
     public static boolean isValidRemark(String test) {
 
-        return test.matches(REMARK_VALIDATION_REGEX);
+        return test == null || Strings.isNullOrEmpty(test) || test.matches(REMARK_VALIDATION_REGEX);
     }
 
 

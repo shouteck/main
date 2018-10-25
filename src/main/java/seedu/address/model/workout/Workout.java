@@ -80,7 +80,8 @@ public class Workout {
         return instruction;
     }
 
-    public Remark getRemark() {return remark;}
+    public Remark getRemark() {
+        return remark; }
 
 
     /**
