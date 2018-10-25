@@ -2,12 +2,19 @@ package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertEquals;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -18,12 +25,6 @@ import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;
 import seedu.address.model.workout.Workout;
 import seedu.address.testutil.WorkoutBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import static java.util.Objects.requireNonNull;
 
