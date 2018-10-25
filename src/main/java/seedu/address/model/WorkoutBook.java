@@ -5,9 +5,6 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.workout.Calories;
-import seedu.address.model.workout.Difficulty;
-import seedu.address.model.workout.Duration;
 import seedu.address.model.workout.UniqueWorkoutList;
 import seedu.address.model.workout.Workout;
 
@@ -50,18 +47,9 @@ public class WorkoutBook implements ReadOnlyWorkoutBook {
         this.workouts.setWorkouts(workouts);
     }
 
-    public List<Workout> getFilteredInternalList (Difficulty difficulty) {
-        return workouts.getFilteredInternalList(difficulty);
+    public List<Workout> getFilteredInternalList (RecommendArguments recommendArguments) {
+        return workouts.getFilteredInternalList(recommendArguments);
     }
-
-    public List<Workout> getFilteredInternalList (Duration duration) {
-        return workouts.getFilteredInternalList(duration);
-    }
-
-    public List<Workout> getFilteredInternalList (Calories calories) {
-        return workouts.getFilteredInternalList(calories);
-    }
-
 
     /**
      * Resets the existing data of this {@code WorkoutBook} with {@code newData}.

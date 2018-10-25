@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.RecommendArguments;
 import seedu.address.model.workout.exceptions.DuplicateWorkoutException;
 import seedu.address.model.workout.exceptions.WorkoutNotFoundException;
 
@@ -28,29 +29,17 @@ public class UniqueWorkoutList implements Iterable<Workout> {
 
     private final ObservableList<Workout> internalList = FXCollections.observableArrayList();
 
-    public List<Workout> getFilteredInternalList (Difficulty difficulty) {
+    public List<Workout> getFilteredInternalList (RecommendArguments recommendArguments) {
         return internalList.stream()
-                .filter(w -> w.getDifficulty().fullDifficulty.contains(difficulty.fullDifficulty))
+                .filter(!recommendArguments.isCaloriesNull() ? w -> w.getCalories().fullCalories
+                        .equals(recommendArguments.getCalories().toString()) : w -> w != null)
+                .filter(!recommendArguments.isDifficultyNull() ? w -> w.getDifficulty().fullDifficulty
+                        .equals(recommendArguments.getDifficulty().toString()) : w -> w != null)
+                .filter(!recommendArguments.isDurationNull() ? w -> w.getDuration().fullDuration
+                        .equals(recommendArguments.getDuration().toString()) : w -> w != null)
                 .collect(Collectors.toList());
     }
 
-    public List<Workout> getFilteredInternalList (Duration duration) {
-        return internalList.stream()
-                .filter(w -> w.getDuration().fullDuration.contains(duration.fullDuration))
-                .collect(Collectors.toList());
-    }
-
-    public List<Workout> getFilteredInternalList (Calories calories) {
-        return internalList.stream()
-                .filter(w -> w.getCalories().fullCalories.contains(calories.fullCalories))
-                .collect(Collectors.toList());
-    }
-
-    public List<Workout> getFilteredInternalList (Type type) {
-        return internalList.stream()
-                .filter(w -> w.getType().fullType.contains(type.fullType))
-                .collect(Collectors.toList());
-    }
     /**
      * Returns true if the list contains an equivalent workout as the given argument.
      */
