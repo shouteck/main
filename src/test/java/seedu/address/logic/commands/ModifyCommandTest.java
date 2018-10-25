@@ -3,7 +3,6 @@ package seedu.address.logic.commands;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_GENDER;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_HEIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PREFERRED_DIFFICULTY;
@@ -14,6 +13,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_HEIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PREFERRED_DIFFICULTY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_USERNAME;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WEIGHT;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,14 +33,14 @@ import seedu.address.model.ModelManager;
 
 public class ModifyCommandTest {
     public static final String USERPROFILE_FILE_PATH = "/docs/ProfileWindow.html";
-    public static final String MESSAGE_MODIFY_USERPROFILE_SUCCESS = "User profile has been modified! Please rerun the" +
-            " MainApp to see the changes.";
+    public static final String MESSAGE_MODIFY_USERPROFILE_SUCCESS = "User profile has been modified! Please rerun the"
+            + " MainApp to see the changes.";
 
-    String currentGender;
-    String currentUsername;
-    String currentHeight;
-    String currentWeight;
-    String currentPreferredDifficulty;
+    private static String currentGender;
+    private static String currentUsername;
+    private static String currentHeight;
+    private static String currentWeight;
+    private static String currentPreferredDifficulty;
 
     private Model model = new ModelManager();
     private Model expectedModel = new ModelManager();
