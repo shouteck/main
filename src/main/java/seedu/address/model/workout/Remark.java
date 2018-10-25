@@ -1,8 +1,8 @@
 package seedu.address.model.workout;
 
-import com.google.common.base.Strings;
-
 import static seedu.address.commons.util.AppUtil.checkArgument;
+
+import com.google.common.base.Strings;
 
 
 /**
