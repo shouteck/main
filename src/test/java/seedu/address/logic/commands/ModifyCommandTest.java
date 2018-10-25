@@ -1,6 +1,6 @@
 package seedu.address.logic.commands;
 
-import static org.junit.Assert.assertFalse;
+//import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_GENDER;
@@ -13,7 +13,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_HEIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PREFERRED_DIFFICULTY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_USERNAME;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WEIGHT;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+//import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 
 import java.io.File;
 import java.io.IOException;
