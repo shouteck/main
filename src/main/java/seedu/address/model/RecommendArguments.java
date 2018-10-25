@@ -1,10 +1,10 @@
 package seedu.address.model;
 
+import java.util.Optional;
+
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;
-
-import java.util.Optional;
 
 /**
  * Represents a Recommend arguments in the workout book.
@@ -15,6 +15,9 @@ public class RecommendArguments {
     private Optional<Difficulty> difficulty;
     private Optional<Duration> duration;
 
+    /**
+     * Builder pattern
+     */
     public static class Builder {
 
         private Optional<Calories> calories = Optional.empty();
@@ -22,24 +25,20 @@ public class RecommendArguments {
         private Optional<Duration> duration = Optional.empty();
 
         public Builder() {
-
         }
 
         public Builder withCalories(Optional<Calories> calories) {
             this.calories = calories;
-
             return this;
         }
 
         public Builder withDifficulty(Optional<Difficulty> difficulty) {
             this.difficulty = difficulty;
-
             return this;
         }
 
         public Builder withDuration(Optional<Duration> duration) {
             this.duration = duration;
-
             return this;
         }
 
@@ -53,7 +52,6 @@ public class RecommendArguments {
     }
 
     private RecommendArguments() {
-
     }
 
     /**
@@ -112,8 +110,7 @@ public class RecommendArguments {
         return !difficulty.isPresent();
     }
 
-    public boolean isDurationNull()
-    {
+    public boolean isDurationNull() {
         return !duration.isPresent();
     }
 
