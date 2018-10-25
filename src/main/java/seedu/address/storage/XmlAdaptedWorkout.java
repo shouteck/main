@@ -24,7 +24,7 @@ import seedu.address.model.workout.Type;
 import seedu.address.model.workout.Workout;
 
 /**
- * JAXB-friendly version of the Workout.
+ * JAXB-friendly version of the Workout
  */
 public class XmlAdaptedWorkout {
 
