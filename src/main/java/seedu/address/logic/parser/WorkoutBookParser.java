@@ -24,6 +24,7 @@ import seedu.address.logic.commands.ModifyCommand;
 import seedu.address.logic.commands.ProfileCommand;
 import seedu.address.logic.commands.RecommendCommand;
 import seedu.address.logic.commands.RedoCommand;
+import seedu.address.logic.commands.RemarkCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.TrackCommand;
@@ -113,6 +114,9 @@ public class WorkoutBookParser {
 
         case SortCommand.COMMAND_WORD:
             return new SortCommand();
+
+        case RemarkCommand.COMMAND_WORD:
+            return new RemarkCommandParser().parse(arguments);
 
         case FilterCommand.COMMAND_WORD:
             return new FilterCommandParser().parse(arguments);

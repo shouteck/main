@@ -61,7 +61,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         tagList.add(parseTag("future"));
 
         Workout workout = new Workout(name, type, duration, difficulty, equipment, muscle, calories, instruction,
-                tagList);
+                tagList, null);
 
         return new AddCommand(workout);
     }

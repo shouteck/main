@@ -19,6 +19,7 @@ import seedu.address.model.workout.Equipment;
 import seedu.address.model.workout.Instruction;
 import seedu.address.model.workout.Muscle;
 import seedu.address.model.workout.Name;
+import seedu.address.model.workout.Remark;
 import seedu.address.model.workout.Type;
 
 /**
@@ -159,6 +160,20 @@ public class ParserUtil {
             throw new ParseException(Instruction.MESSAGE_INSTRUCTION_CONSTRAINTS);
         }
         return new Instruction(trimmedInstruction);
+    }
+
+    /**
+     * Parses a {@code String remark} into a {@code remark}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code remark} is invalid.
+     */
+    public static Remark parseRemark(String remark) throws ParseException {
+        String trimmedRemark = remark.trim();
+        if (!Remark.isValidRemark(trimmedRemark)) {
+            throw new ParseException(Remark.MESSAGE_REMARK_CONSTRAINTS);
+        }
+        return new Remark(trimmedRemark);
     }
 
     /**
