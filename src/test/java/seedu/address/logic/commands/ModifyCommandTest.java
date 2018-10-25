@@ -79,16 +79,16 @@ public class ModifyCommandTest {
         String expectedMessage = String.format(MESSAGE_MODIFY_USERPROFILE_SUCCESS);
 
         // same gender -> returns true
-        //assertTrue(divGender.ownText().equals(VALID_GENDER));
+        assertTrue(divGender.ownText().equals(VALID_GENDER));
 
         // null gender -> returns false
-        //assertFalse(divGender.ownText().equals(null));
+        assertFalse(divGender.ownText().equals(null));
 
         // different gender -> returns false
-        //assertFalse(divGender.ownText().equals(INVALID_GENDER));
+        assertFalse(divGender.ownText().equals(INVALID_GENDER));
 
-        assertCommandSuccess(new ModifyCommand(VALID_GENDER, INVALID_USERNAME, INVALID_HEIGHT, INVALID_WEIGHT,
-                INVALID_PREFERRED_DIFFICULTY), model, commandHistory, expectedMessage, expectedModel);
+        /*assertCommandSuccess(new ModifyCommand(VALID_GENDER, INVALID_USERNAME, INVALID_HEIGHT, INVALID_WEIGHT,
+                INVALID_PREFERRED_DIFFICULTY), model, commandHistory, expectedMessage, expectedModel);*/
     }
 
     @Test
