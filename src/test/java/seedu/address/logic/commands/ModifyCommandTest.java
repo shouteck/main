@@ -1,8 +1,18 @@
 package seedu.address.logic.commands;
 
-/*import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+/*import static seedu.address.commons.core.Messages.MESSAGE_INVALID_GENDER;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_HEIGHT;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PREFERRED_DIFFICULTY;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_USERNAME;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_WEIGHT;
+import static seedu.address.commons.core.Messages.MESSAGE_VALID_GENDER;
+import static seedu.address.commons.core.Messages.MESSAGE_VALID_HEIGHT;
+import static seedu.address.commons.core.Messages.MESSAGE_VALID_PREFERRED_DIFFICULTY;
+import static seedu.address.commons.core.Messages.MESSAGE_VALID_USERNAME;
+import static seedu.address.commons.core.Messages.MESSAGE_VALID_WEIGHT;*/
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_GENDER;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_HEIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PREFERRED_DIFFICULTY;
@@ -13,7 +23,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_HEIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PREFERRED_DIFFICULTY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_USERNAME;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WEIGHT;
-//import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+//import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,18 +32,18 @@ import java.io.IOException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-//import org.junit.After;
-//import org.junit.Before;
-import org.junit.Test;*/
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-/*import seedu.address.logic.CommandHistory;
+import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
-import seedu.address.model.ModelManager;*/
+import seedu.address.model.ModelManager;
 
 
 
 public class ModifyCommandTest {
-    /*public static final String USERPROFILE_FILE_PATH = "/docs/ProfileWindow.html";
+    public static final String USERPROFILE_FILE_PATH = "/docs/ProfileWindow.html";
     public static final String MESSAGE_MODIFY_USERPROFILE_SUCCESS = "User profile has been modified! Please rerun the"
             + " MainApp to see the changes.";
 
@@ -44,9 +55,9 @@ public class ModifyCommandTest {
 
     private Model model = new ModelManager();
     private Model expectedModel = new ModelManager();
-    private CommandHistory commandHistory = new CommandHistory();/*
+    private CommandHistory commandHistory = new CommandHistory();
 
-    /*@Before
+    @Before
     public void setUp() throws IOException {
         String fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString().substring(6);
         Document doc = Jsoup.parse(new File(fileName), "UTF-8");
@@ -68,32 +79,32 @@ public class ModifyCommandTest {
         divUsername.text(INVALID_USERNAME);
         divWeight.text(INVALID_WEIGHT);
         divPreferredDifficulty.text(INVALID_PREFERRED_DIFFICULTY);
-    }*/
+    }
 
-    //@Test
-    //public void execute_singleField_success() {
-        /*String fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString().substring(6);
+    @Test
+    public void execute_singleField_success() throws IOException {
+        String fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString().substring(6);
         Document doc = Jsoup.parse(new File(fileName), "UTF-8");
         Element divGender = doc.getElementById("gender");
         divGender.text(VALID_GENDER);
-        String expectedMessage = String.format(MESSAGE_MODIFY_USERPROFILE_SUCCESS);*/
+        String expectedMessage = String.format(MESSAGE_MODIFY_USERPROFILE_SUCCESS);
 
-        // same gender -> returns true
-        //assertTrue(divGender.ownText().equals(VALID_GENDER));
+        //same gender -> returns true
+        assertTrue(divGender.ownText().equals(VALID_GENDER));
 
-        // null gender -> returns false
-        //assertFalse(divGender.ownText().equals(null));
+        //null gender -> returns false
+        assertFalse(divGender.ownText().equals(null));
 
         // different gender -> returns false
-        //assertFalse(divGender.ownText().equals(INVALID_GENDER));
+        assertFalse(divGender.ownText().equals(INVALID_GENDER));
 
-        /*assertCommandSuccess(new ModifyCommand(VALID_GENDER, INVALID_USERNAME, INVALID_HEIGHT, INVALID_WEIGHT,
-                INVALID_PREFERRED_DIFFICULTY), model, commandHistory, expectedMessage, expectedModel);*/
-    //}
+        assertCommandSuccess(new ModifyCommand(VALID_GENDER, INVALID_USERNAME, INVALID_HEIGHT, INVALID_WEIGHT,
+                INVALID_PREFERRED_DIFFICULTY), model, commandHistory, expectedMessage, expectedModel);
+    }
 
-    //@Test
-    //public void execute_allField_success() {
-        /*String fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString();
+    @Test
+    public void execute_allField_success() throws IOException {
+        String fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString().substring(6);
         String Name = "C:/Users/SJ/IdeaProjects/addressbook-level4/docs/ProfileWindow.html";
         //System.out.println(fileName);
         Document doc = Jsoup.parse(new File(fileName), "UTF-8");
@@ -109,10 +120,10 @@ public class ModifyCommandTest {
         divPreferredDifficulty.text(VALID_PREFERRED_DIFFICULTY);
 
         // same gender -> returns true
-        assertTrue(divGender.ownText().equals(VALID_GENDER));*/
+        assertTrue(divGender.ownText().equals(VALID_GENDER));
 
         // same height -> returns true
-        /*assertTrue(divHeight.ownText().equals(VALID_HEIGHT));
+        assertTrue(divHeight.ownText().equals(VALID_HEIGHT));
 
         // same weight -> returns true
         assertTrue(divWeight.ownText().equals(VALID_WEIGHT));
@@ -140,13 +151,13 @@ public class ModifyCommandTest {
 
         String expectedMessage = String.format(MESSAGE_MODIFY_USERPROFILE_SUCCESS);
         assertCommandSuccess(new ModifyCommand(VALID_GENDER, VALID_USERNAME, VALID_HEIGHT, VALID_WEIGHT,
-                VALID_PREFERRED_DIFFICULTY), model, commandHistory, expectedMessage, expectedModel);*/
-    //}
-    /*
-    @Test
+                VALID_PREFERRED_DIFFICULTY), model, commandHistory, expectedMessage, expectedModel);
+    }
+
+    /*@Test
     public void execute_invalidFieldEntered_failure() {
         String expectedWeightMessage = String.format(MESSAGE_INVALID_WEIGHT, MESSAGE_VALID_WEIGHT);
-        assertCommandFailure(new ModifyCommand(VALID_GENDER, VALID_USERNAME, VALID_HEIGHT, INVALID_WEIGHT,
+        assertCommandFailure(new ModifyCommandParser.parse()(VALID_GENDER, VALID_USERNAME, VALID_HEIGHT, INVALID_WEIGHT,
                 VALID_PREFERRED_DIFFICULTY), model, commandHistory, expectedWeightMessage);
 
         String expectedHeightMessage = String.format(MESSAGE_INVALID_HEIGHT, MESSAGE_VALID_HEIGHT);
@@ -157,15 +168,15 @@ public class ModifyCommandTest {
         assertCommandFailure(new ModifyCommand(VALID_GENDER, INVALID_USERNAME, VALID_HEIGHT, VALID_WEIGHT,
                 VALID_PREFERRED_DIFFICULTY), model, commandHistory, expectedUsernameMessage);
 
-        String expectedGenderMessage = String.format(MESSAGE_VALID_GENDER, MESSAGE_VALID_GENDER);
+        String expectedGenderMessage = String.format(MESSAGE_INVALID_GENDER, MESSAGE_VALID_GENDER);
         assertCommandFailure(new ModifyCommand(INVALID_GENDER, VALID_USERNAME, VALID_HEIGHT, VALID_WEIGHT,
                 VALID_PREFERRED_DIFFICULTY), model, commandHistory, expectedGenderMessage);
 
-        String expectedDifficultyMessage = String.format(MESSAGE_VALID_PREFERRED_DIFFICULTY,
+        String expectedDifficultyMessage = String.format(MESSAGE_INVALID_PREFERRED_DIFFICULTY,
                 MESSAGE_VALID_PREFERRED_DIFFICULTY);
         assertCommandFailure(new ModifyCommand(VALID_GENDER, VALID_USERNAME, VALID_HEIGHT, VALID_WEIGHT,
                 INVALID_PREFERRED_DIFFICULTY), model, commandHistory, expectedDifficultyMessage);
-    }
+    }*/
 
     @After
     public void revert() throws IOException {
@@ -181,5 +192,5 @@ public class ModifyCommandTest {
         divUsername.text(currentUsername);
         divPreferredDifficulty.text(currentPreferredDifficulty);
         divWeight.text(currentWeight);
-    }*/
+    }
 }
