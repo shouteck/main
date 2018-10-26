@@ -32,7 +32,7 @@ import seedu.address.model.ModelManager;
 
 
 public class ModifyCommandTest {
-    public static final String USERPROFILE_FILE_PATH = "/docs/html5/ProfileWindow.html";
+    public static final String USERPROFILE_FILE_PATH = "/docs/ProfileWindow.html";
     public static final String MESSAGE_MODIFY_USERPROFILE_SUCCESS = "User profile has been modified! Please rerun the"
             + " MainApp to see the changes.";
 
