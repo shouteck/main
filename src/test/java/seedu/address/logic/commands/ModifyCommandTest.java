@@ -46,7 +46,7 @@ public class ModifyCommandTest {
     private Model expectedModel = new ModelManager();
     private CommandHistory commandHistory = new CommandHistory();
 
-    @Before
+    /*@Before
     public void setUp() throws IOException {
         String fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString().substring(6);
         Document doc = Jsoup.parse(new File(fileName), "UTF-8");
@@ -68,7 +68,7 @@ public class ModifyCommandTest {
         divUsername.text(INVALID_USERNAME);
         divWeight.text(INVALID_WEIGHT);
         divPreferredDifficulty.text(INVALID_PREFERRED_DIFFICULTY);
-    }
+    }*/
 
     @Test
     public void execute_singleField_success() throws IOException {
@@ -164,7 +164,7 @@ public class ModifyCommandTest {
         assertCommandFailure(new ModifyCommand(VALID_GENDER, VALID_USERNAME, VALID_HEIGHT, VALID_WEIGHT,
                 INVALID_PREFERRED_DIFFICULTY), model, commandHistory, expectedDifficultyMessage);
     }
-    */
+
     @After
     public void revert() throws IOException {
         String fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString().substring(6);
@@ -179,5 +179,5 @@ public class ModifyCommandTest {
         divUsername.text(currentUsername);
         divPreferredDifficulty.text(currentPreferredDifficulty);
         divWeight.text(currentWeight);
-    }
+    }*/
 }
