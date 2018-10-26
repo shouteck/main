@@ -25,9 +25,9 @@ import org.jsoup.nodes.Element;
 //import org.junit.Before;
 import org.junit.Test;*/
 
-import seedu.address.logic.CommandHistory;
+/*import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
+import seedu.address.model.ModelManager;*/
 
 
 
@@ -71,7 +71,7 @@ public class ModifyCommandTest {
     }*/
 
     //@Test
-    public void execute_singleField_success() {
+    //public void execute_singleField_success() {
         /*String fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString().substring(6);
         Document doc = Jsoup.parse(new File(fileName), "UTF-8");
         Element divGender = doc.getElementById("gender");
@@ -89,10 +89,10 @@ public class ModifyCommandTest {
 
         /*assertCommandSuccess(new ModifyCommand(VALID_GENDER, INVALID_USERNAME, INVALID_HEIGHT, INVALID_WEIGHT,
                 INVALID_PREFERRED_DIFFICULTY), model, commandHistory, expectedMessage, expectedModel);*/
-    }
+    //}
 
     //@Test
-    public void execute_allField_success() {
+    //public void execute_allField_success() {
         /*String fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString();
         String Name = "C:/Users/SJ/IdeaProjects/addressbook-level4/docs/ProfileWindow.html";
         //System.out.println(fileName);
@@ -141,7 +141,7 @@ public class ModifyCommandTest {
         String expectedMessage = String.format(MESSAGE_MODIFY_USERPROFILE_SUCCESS);
         assertCommandSuccess(new ModifyCommand(VALID_GENDER, VALID_USERNAME, VALID_HEIGHT, VALID_WEIGHT,
                 VALID_PREFERRED_DIFFICULTY), model, commandHistory, expectedMessage, expectedModel);*/
-    }
+    //}
     /*
     @Test
     public void execute_invalidFieldEntered_failure() {
