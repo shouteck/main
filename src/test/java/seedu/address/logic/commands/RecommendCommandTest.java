@@ -51,7 +51,7 @@ public class RecommendCommandTest {
     }
 
     @Test
-    public void execute_AcceptedByModel_recommendSuccessful() throws Exception {
+    public void execute_acceptedByModel_recommendSuccessful() throws Exception {
         // Valid Calories
         Optional<Calories> calories = Optional.of(new Calories("150"));
         RecommendArguments recommendArguments = new RecommendArguments.Builder().withCalories(calories).build();

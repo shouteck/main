@@ -90,8 +90,8 @@ public class RecommendCommandParserTest {
         assertParseFailure(parser, " " + PREFIX_CALORIES + "hundred", Calories.MESSAGE_CALORIES_CONSTRAINTS);
 
         // Invalid Difficulty for non-case sensitive inputs
-        assertParseFailure(parser, " " + PREFIX_DIFFICULTY + "beginNer"
-                , Difficulty.MESSAGE_DIFFICULTY_CONSTRAINTS);
+        assertParseFailure(parser, " " + PREFIX_DIFFICULTY + "beginNer",
+                Difficulty.MESSAGE_DIFFICULTY_CONSTRAINTS);
 
         // Invalid Difficulty for integer
         assertParseFailure(parser, " " + PREFIX_DIFFICULTY + "1", Difficulty.MESSAGE_DIFFICULTY_CONSTRAINTS);
