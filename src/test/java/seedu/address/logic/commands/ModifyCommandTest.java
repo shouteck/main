@@ -94,7 +94,9 @@ public class ModifyCommandTest {
     @Test
     public void execute_allField_success() throws IOException {
         String fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString().substring(6);
-        Document doc = Jsoup.parse(new File(fileName), "UTF-8");
+        String Name = "C:/Users/SJ/IdeaProjects/addressbook-level4/out/production/resources/docs/ProfileWindow.html";
+        //System.out.println(fileName);
+        Document doc = Jsoup.parse(new File(Name), "UTF-8");
         Element divGender = doc.getElementById("gender");
         Element divUsername = doc.getElementById("username");
         Element divHeight = doc.getElementById("height");
