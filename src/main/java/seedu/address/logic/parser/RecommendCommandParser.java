@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.RecommendCommand;
@@ -39,21 +40,26 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
     }
 
     private RecommendArguments getRecommendArguments(ArgumentMultimap argMultimap) throws ParseException {
-        Duration duration = null;
-        Difficulty difficulty = null;
-        Calories calories = null;
+
+        RecommendArguments.Builder recommendArgumentsBuilder = new RecommendArguments.Builder();
 
         if (!argMultimap.getAllValues(PREFIX_DURATION).isEmpty()) {
-            duration = ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION).get());
+            Optional<Duration> duration = Optional.of(ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION)
+                    .get()));
+            recommendArgumentsBuilder.withDuration(duration);
         }
         if (!argMultimap.getAllValues(PREFIX_DIFFICULTY).isEmpty()) {
-            difficulty = ParserUtil.parseDifficulty(argMultimap.getValue(PREFIX_DIFFICULTY).get());
+            Optional<Difficulty> difficulty = Optional.of(ParserUtil.parseDifficulty(argMultimap
+                    .getValue(PREFIX_DIFFICULTY).get()));
+            recommendArgumentsBuilder.withDifficulty(difficulty);
         }
         if (!argMultimap.getAllValues(PREFIX_CALORIES).isEmpty()) {
-            calories = ParserUtil.parseCalories(argMultimap.getValue(PREFIX_CALORIES).get());
+            Optional<Calories> calories = Optional.of(ParserUtil.parseCalories(argMultimap.getValue(PREFIX_CALORIES)
+                    .get()));
+            recommendArgumentsBuilder.withCalories(calories);
         }
 
-        return new RecommendArguments(calories, difficulty, duration);
+        return recommendArgumentsBuilder.build();
     }
 
     /**
