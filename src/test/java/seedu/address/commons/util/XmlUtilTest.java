@@ -85,7 +85,7 @@ public class XmlUtilTest {
                 MISSING_WORKOUT_FIELD_FILE, XmlAdaptedWorkoutWithRootElement.class);
         XmlAdaptedWorkout expectedWorkout = new XmlAdaptedWorkout(
                 null, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY, VALID_EQUIPMENT, VALID_MUSCLE,
-                VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
+                VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS, null);
         assertEquals(expectedWorkout, actualWorkout);
     }
 
@@ -96,7 +96,7 @@ public class XmlUtilTest {
                 INVALID_WORKOUT_FIELD_FILE, XmlAdaptedWorkoutWithRootElement.class);
         XmlAdaptedWorkout expectedWorkout = new XmlAdaptedWorkout(
                 VALID_NAME, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY, VALID_EQUIPMENT, VALID_MUSCLE,
-                INVALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
+                INVALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS, null);
         assertEquals(expectedWorkout, actualWorkout);
     }
 
@@ -107,7 +107,7 @@ public class XmlUtilTest {
                 VALID_WORKOUT_FILE, XmlAdaptedWorkoutWithRootElement.class);
         XmlAdaptedWorkout expectedWorkout = new XmlAdaptedWorkout(
                 VALID_NAME, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY, VALID_EQUIPMENT, VALID_MUSCLE,
-                VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
+                VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS, null);
         assertEquals(expectedWorkout, actualWorkout);
     }
 

@@ -19,11 +19,12 @@ import seedu.address.model.workout.Equipment;
 import seedu.address.model.workout.Instruction;
 import seedu.address.model.workout.Muscle;
 import seedu.address.model.workout.Name;
+import seedu.address.model.workout.Remark;
 import seedu.address.model.workout.Type;
 import seedu.address.model.workout.Workout;
 
 /**
- * JAXB-friendly version of the Workout.
+ * JAXB-friendly version of the Workout
  */
 public class XmlAdaptedWorkout {
 
@@ -45,6 +46,8 @@ public class XmlAdaptedWorkout {
     private String calories;
     @XmlElement(required = true)
     private String instruction;
+    @XmlElement(required = true)
+    private String remark;
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
 
@@ -59,7 +62,7 @@ public class XmlAdaptedWorkout {
      */
     public XmlAdaptedWorkout(String name, String type, String duration, String difficulty,
                              String equipment, String muscle, String calories,
-                             String instruction, List<XmlAdaptedTag> tagged) {
+                             String instruction, List<XmlAdaptedTag> tagged, String remark) {
         this.name = name;
         this.type = type;
         this.duration = duration;
@@ -68,6 +71,7 @@ public class XmlAdaptedWorkout {
         this.muscle = muscle;
         this.calories = calories;
         this.instruction = instruction;
+        this.remark = remark;
         if (tagged != null) {
             this.tagged = new ArrayList<>(tagged);
         }
@@ -87,6 +91,7 @@ public class XmlAdaptedWorkout {
         muscle = source.getMuscle().fullMuscle;
         calories = source.getCalories().fullCalories;
         instruction = source.getInstruction().fullInstruction;
+        remark = source.getRemark() == null ? "" : source.getRemark().fullRemark;
         tagged = source.getTags().stream()
                 .map(XmlAdaptedTag::new)
                 .collect(Collectors.toList());
@@ -163,6 +168,20 @@ public class XmlAdaptedWorkout {
         }
         final Calories modelCalories = new Calories(calories);
 
+        //
+
+        //if (remark == null) {
+
+        //throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+
+        //Remark.class.getSimpleName()));
+
+        //}
+
+        if (!Remark.isValidRemark(remark)) {
+            throw new IllegalValueException(Remark.MESSAGE_REMARK_CONSTRAINTS);
+        }
+
         if (instruction == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Instruction.class.getSimpleName()));
@@ -173,7 +192,7 @@ public class XmlAdaptedWorkout {
         final Instruction modelInstruction = new Instruction(instruction);
         final Set<Tag> modelTags = new HashSet<>(workoutTags);
         return new Workout(modelName, modelType, modelDuration, modelDifficulty, modelEquipment,
-                modelMuscle, modelCalories, modelInstruction, modelTags);
+                modelMuscle, modelCalories, modelInstruction, modelTags, null);
     }
 
     @Override
@@ -195,6 +214,7 @@ public class XmlAdaptedWorkout {
                 && Objects.equals(muscle, otherWorkout.muscle)
                 && Objects.equals(calories, otherWorkout.calories)
                 && Objects.equals(instruction, otherWorkout.instruction)
-                && tagged.equals(otherWorkout.tagged);
+                && tagged.equals(otherWorkout.tagged)
+                && Objects.equals(remark, otherWorkout.remark);
     }
 }

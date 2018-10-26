@@ -151,7 +151,7 @@ public class WorkoutBuilder {
     }
 
     public Workout build() {
-        return new Workout(name, type, duration, difficulty, equipment, muscle, calories, instruction, tags);
+        return new Workout(name, type, duration, difficulty, equipment, muscle, calories, instruction, tags, null);
     }
 
 }
