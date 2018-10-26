@@ -94,7 +94,7 @@ public class WorkoutListPanelTest extends GuiUnitTest {
         StringBuilder builder = new StringBuilder();
         builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n");
         builder.append("<workoutbook>\n");
-        for (int i = 1; i <= workoutCount; i++) {
+        for (int i = 0; i < workoutCount; i++) {
             builder.append("<workouts>\n");
             builder.append("<name>").append(i).append("a</name>\n");
             builder.append("<type>a</type>\n");
@@ -102,8 +102,8 @@ public class WorkoutListPanelTest extends GuiUnitTest {
             builder.append("<difficulty>beginner</difficulty>\n");
             builder.append("<equipment>a</equipment>\n");
             builder.append("<muscle>a</muscle>\n");
-            builder.append("<calories>1<").append(i).append("</calories>\n");
-            builder.append("<instruction>a</instruction>\n");
+            builder.append("<calories>1</calories>\n");
+            builder.append("<instruction>").append(i).append("a</instruction>\n");
             builder.append("</workouts>\n");
         }
         builder.append("</workoutbook>\n");
