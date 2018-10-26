@@ -73,6 +73,7 @@ public class ModifyCommandParser {
         }
         //remove the first 6 char of the string
         String fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString().substring(6);
+        System.out.println(fileName);
         Document doc = Jsoup.parse(new File(fileName), "UTF-8");
         Element divGender = doc.getElementById("gender");
         Element divUsername = doc.getElementById("username");

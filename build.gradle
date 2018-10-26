@@ -238,12 +238,16 @@ task deployOfflineDocs(type: Copy) {
         include 'stylesheets/*'
         include 'images/*'
         include 'HelpWindow.html'
-        include 'ProfileWindow.html'
     }
 }
 
 task copyDummySearchPage(type: Copy) {
     from 'docs/DummySearchPage.html'
+    into "${buildDir}/docs/html5"
+}
+
+task copyProfileWindow(type: Copy) {
+    from 'docs/ProfileWindow.html'
     into "${buildDir}/docs/html5"
 }
 
