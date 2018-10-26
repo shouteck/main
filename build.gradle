@@ -52,6 +52,9 @@ jacocoTestReport {
 
 test {
     useJUnitPlatform()
+    testLogging {
+        exceptionFormat "full"
+    }
 }
 
 dependencies {
@@ -240,6 +243,11 @@ task deployOfflineDocs(type: Copy) {
 
 task copyDummySearchPage(type: Copy) {
     from 'docs/DummySearchPage.html'
+    into "${buildDir}/docs/html5"
+}
+
+task copyProfileWindow(type: Copy) {
+    from 'docs/ProfileWindow.html'
     into "${buildDir}/docs/html5"
 }
 
