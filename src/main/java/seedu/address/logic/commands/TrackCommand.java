@@ -51,7 +51,6 @@ public class TrackCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
 
-        //step 1: check whether list containing data being tracked exists
         if(subcommand.equals("start")) {
             if (model.hasParameter(parameter)) {
                 throw new CommandException(MESSAGE_DUPLICATE_PARAMETER);
@@ -65,8 +64,6 @@ public class TrackCommand extends Command {
             model.removeDataFromTrack(parameter);
             return new CommandResult(String.format(MESSAGE_STOP_SUCCESS, parameter.getPrefix(), parameter.getValue()));
         }
-        //step 2: check whether file specific to desired data exists
-        //step 2: write to file
         return null;
     }
 
