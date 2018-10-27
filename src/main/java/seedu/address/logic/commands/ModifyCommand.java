@@ -30,7 +30,8 @@ public class ModifyCommand extends Command {
             + PREFIX_WEIGHT + "87.2 "
             + PREFIX_PREFERRED_DIFFICULTY + "beginner";
 
-    public static final String MESSAGE_SUCCESS = "User profile has been modified!";
+    public static final String MESSAGE_SUCCESS = "User profile has been modified! Please rerun the"
+            + " MainApp to see the changes.";
 
     private final String gender;
     private final String username;

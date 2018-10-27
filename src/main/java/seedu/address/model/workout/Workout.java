@@ -26,13 +26,14 @@ public class Workout {
     private final Muscle muscle;
     private final Calories calories;
     private final Instruction instruction;
+    private final Remark remark;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
     public Workout(Name name, Type type, Duration duration, Difficulty difficulty, Equipment equipment,
-                  Muscle muscle, Calories calories, Instruction instruction, Set<Tag> tags) {
+                  Muscle muscle, Calories calories, Instruction instruction, Set<Tag> tags, Remark remark) {
         requireAllNonNull(name, type, duration, difficulty, equipment, muscle, calories, instruction, tags);
         this.name = name;
         this.type = type;
@@ -43,6 +44,8 @@ public class Workout {
         this.calories = calories;
         this.instruction = instruction;
         this.tags.addAll(tags);
+        this.remark = remark;
+
     }
 
     public Name getName() {
@@ -76,6 +79,10 @@ public class Workout {
     public Instruction getInstruction() {
         return instruction;
     }
+
+    public Remark getRemark() {
+        return remark; }
+
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}

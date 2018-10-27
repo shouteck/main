@@ -14,6 +14,7 @@ import seedu.address.model.workout.Equipment;
 import seedu.address.model.workout.Instruction;
 import seedu.address.model.workout.Muscle;
 import seedu.address.model.workout.Name;
+import seedu.address.model.workout.Remark;
 import seedu.address.model.workout.Type;
 import seedu.address.model.workout.Workout;
 
@@ -26,7 +27,10 @@ public class SampleDataUtil {
             new Workout(new Name("alex yeoh's workout"), new Type("strength"), new Duration("20m"),
                  new Difficulty("beginner"), new Equipment("dumbbell"), new Muscle("tricep"),
                  new Calories("150"), new Instruction("set1: tricep extension reps: 4-6"),
-                 getTagSet("heavy", "morning"))
+                 getTagSet("heavy", "morning"),
+                new Remark("This is a great upper body workout, targeting the muscles in arms,"
+                        + " the shoulders, the center and your back.")
+            )
         };
     }
 

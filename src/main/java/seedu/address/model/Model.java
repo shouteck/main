@@ -5,9 +5,6 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 
-import seedu.address.model.workout.Calories;
-import seedu.address.model.workout.Difficulty;
-import seedu.address.model.workout.Duration;
 import seedu.address.model.workout.Parameter;
 import seedu.address.model.workout.Workout;
 
@@ -106,7 +103,8 @@ public interface Model {
      */
     boolean hasParameter(Parameter parameter);
 
-    List<Workout> getFilteredInternalList(Duration duration);
-    List<Workout> getFilteredInternalList(Difficulty difficulty);
-    List<Workout> getFilteredInternalList(Calories calories);
+    /**
+     * Returns the filtered internal list.
+     */
+    List<Workout> getFilteredInternalList(RecommendArguments recommendArguments);
 }

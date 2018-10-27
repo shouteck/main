@@ -55,7 +55,7 @@ public class XmlAdaptedWorkoutTest {
     public void toModelType_invalidName_throwsIllegalValueException() {
         XmlAdaptedWorkout workout =
                 new XmlAdaptedWorkout(INVALID_NAME, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY, VALID_EQUIPMENT,
-                        VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
+                        VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS, null);
         String expectedMessage = Name.MESSAGE_NAME_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, workout::toModelType);
     }
@@ -63,7 +63,7 @@ public class XmlAdaptedWorkoutTest {
     @Test
     public void toModelType_nullName_throwsIllegalValueException() {
         XmlAdaptedWorkout workout = new XmlAdaptedWorkout(null, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY,
-                VALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
+                VALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS, null);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName());
         Assert.assertThrows(IllegalValueException.class, expectedMessage, workout::toModelType);
     }
@@ -71,7 +71,7 @@ public class XmlAdaptedWorkoutTest {
     @Test
     public void toModelType_invalidType_throwsIllegalValueException() {
         XmlAdaptedWorkout workout = new XmlAdaptedWorkout(VALID_NAME, INVALID_TYPE, VALID_DURATION, VALID_DIFFICULTY,
-                VALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
+                VALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS, null);
         String expectedMessage = Type.MESSAGE_TYPE_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, workout::toModelType);
     }
@@ -79,7 +79,7 @@ public class XmlAdaptedWorkoutTest {
     @Test
     public void toModelType_nullType_throwsIllegalValueException() {
         XmlAdaptedWorkout workout = new XmlAdaptedWorkout(VALID_NAME, null, VALID_DURATION, VALID_DIFFICULTY,
-                VALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
+                VALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS, null);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Type.class.getSimpleName());
         Assert.assertThrows(IllegalValueException.class, expectedMessage, workout::toModelType);
     }
@@ -87,7 +87,7 @@ public class XmlAdaptedWorkoutTest {
     @Test
     public void toModelType_invalidDuration_throwsIllegalValueException() {
         XmlAdaptedWorkout workout = new XmlAdaptedWorkout(VALID_NAME, VALID_TYPE, INVALID_DURATION, VALID_DIFFICULTY,
-                VALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
+                VALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS, null);
         String expectedMessage = Duration.MESSAGE_DURATION_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, workout::toModelType);
     }
@@ -95,7 +95,7 @@ public class XmlAdaptedWorkoutTest {
     @Test
     public void toModelType_nullDuration_throwsIllegalValueException() {
         XmlAdaptedWorkout workout = new XmlAdaptedWorkout(VALID_NAME, VALID_TYPE, null, VALID_DIFFICULTY,
-                VALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
+                VALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS, null);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Duration.class.getSimpleName());
         Assert.assertThrows(IllegalValueException.class, expectedMessage, workout::toModelType);
     }
@@ -103,7 +103,7 @@ public class XmlAdaptedWorkoutTest {
     @Test
     public void toModelType_invalidDifficulty_throwsIllegalValueException() {
         XmlAdaptedWorkout workout = new XmlAdaptedWorkout(VALID_NAME, VALID_TYPE, VALID_DURATION, INVALID_DIFFICULTY,
-                VALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
+                VALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS, null);
         String expectedMessage = Difficulty.MESSAGE_DIFFICULTY_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, workout::toModelType);
     }
@@ -111,7 +111,7 @@ public class XmlAdaptedWorkoutTest {
     @Test
     public void toModelType_nullDifficulty_throwsIllegalValueException() {
         XmlAdaptedWorkout workout = new XmlAdaptedWorkout(VALID_NAME, VALID_TYPE, VALID_DURATION, null,
-                VALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
+                VALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS, null);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Difficulty.class.getSimpleName());
         Assert.assertThrows(IllegalValueException.class, expectedMessage, workout::toModelType);
     }
@@ -119,7 +119,7 @@ public class XmlAdaptedWorkoutTest {
     @Test
     public void toModelType_invalidEquipment_throwsIllegalValueException() {
         XmlAdaptedWorkout workout = new XmlAdaptedWorkout(VALID_NAME, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY,
-                INVALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
+                INVALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS, null);
         String expectedMessage = Equipment.MESSAGE_EQUIPMENT_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, workout::toModelType);
     }
@@ -127,7 +127,7 @@ public class XmlAdaptedWorkoutTest {
     @Test
     public void toModelType_nullEquipment_throwsIllegalValueException() {
         XmlAdaptedWorkout workout = new XmlAdaptedWorkout(VALID_NAME, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY,
-                null, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
+                null, VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS, null);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Equipment.class.getSimpleName());
         Assert.assertThrows(IllegalValueException.class, expectedMessage, workout::toModelType);
     }
@@ -135,7 +135,7 @@ public class XmlAdaptedWorkoutTest {
     @Test
     public void toModelType_invalidMuscle_throwsIllegalValueException() {
         XmlAdaptedWorkout workout = new XmlAdaptedWorkout(VALID_NAME, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY,
-                VALID_EQUIPMENT, INVALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
+                VALID_EQUIPMENT, INVALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS, null);
         String expectedMessage = Muscle.MESSAGE_MUSCLE_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, workout::toModelType);
     }
@@ -143,7 +143,7 @@ public class XmlAdaptedWorkoutTest {
     @Test
     public void toModelType_nullMuscle_throwsIllegalValueException() {
         XmlAdaptedWorkout workout = new XmlAdaptedWorkout(VALID_NAME, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY,
-                VALID_EQUIPMENT, null, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
+                VALID_EQUIPMENT, null, VALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS, null);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Muscle.class.getSimpleName());
         Assert.assertThrows(IllegalValueException.class, expectedMessage, workout::toModelType);
     }
@@ -151,7 +151,7 @@ public class XmlAdaptedWorkoutTest {
     @Test
     public void toModelType_invalidCalories_throwsIllegalValueException() {
         XmlAdaptedWorkout workout = new XmlAdaptedWorkout(VALID_NAME, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY,
-                VALID_EQUIPMENT, VALID_MUSCLE, INVALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS);
+                VALID_EQUIPMENT, VALID_MUSCLE, INVALID_CALORIES, VALID_INSTRUCTION, VALID_TAGS, null);
         String expectedMessage = Calories.MESSAGE_CALORIES_CONSTRAINTS;
         Assert.assertThrows(IllegalValueException.class, expectedMessage, workout::toModelType);
     }
@@ -159,7 +159,7 @@ public class XmlAdaptedWorkoutTest {
     @Test
     public void toModelType_nullCalories_throwsIllegalValueException() {
         XmlAdaptedWorkout workout = new XmlAdaptedWorkout(VALID_NAME, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY,
-                VALID_EQUIPMENT, VALID_MUSCLE, null, VALID_INSTRUCTION, VALID_TAGS);
+                VALID_EQUIPMENT, VALID_MUSCLE, null, VALID_INSTRUCTION, VALID_TAGS, null);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Calories.class.getSimpleName());
         Assert.assertThrows(IllegalValueException.class, expectedMessage, workout::toModelType);
     }
@@ -169,7 +169,7 @@ public class XmlAdaptedWorkoutTest {
     @Test
     public void toModelType_nullInstruction_throwsIllegalValueException() {
         XmlAdaptedWorkout workout = new XmlAdaptedWorkout(VALID_NAME, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY,
-                VALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, null, VALID_TAGS);
+                VALID_EQUIPMENT, VALID_MUSCLE, VALID_CALORIES, null, VALID_TAGS, null);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Instruction.class.getSimpleName());
         Assert.assertThrows(IllegalValueException.class, expectedMessage, workout::toModelType);
     }
@@ -180,7 +180,7 @@ public class XmlAdaptedWorkoutTest {
         invalidTags.add(new XmlAdaptedTag(INVALID_TAG));
         XmlAdaptedWorkout workout = new XmlAdaptedWorkout(VALID_NAME, VALID_TYPE, VALID_DURATION, VALID_DIFFICULTY,
                 VALID_EQUIPMENT,
-                VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, invalidTags);
+                VALID_MUSCLE, VALID_CALORIES, VALID_INSTRUCTION, invalidTags, null);
         Assert.assertThrows(IllegalValueException.class, workout::toModelType);
     }
 

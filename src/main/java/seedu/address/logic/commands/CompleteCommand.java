@@ -104,7 +104,7 @@ public class CompleteCommand extends Command {
         updatedTags.add(completed);
 
         return new Workout(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,
-                updatedMuscle, updatedCalories, updatedInstruction, updatedTags);
+                updatedMuscle, updatedCalories, updatedInstruction, updatedTags, null);
     }
 
     @Override

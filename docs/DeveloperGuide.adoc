@@ -322,7 +322,7 @@ image::UndoRedoActivityDiagram.png[width="650"]
 // tag::recommend[]
 === Recommending a workout
 ==== Current implementation
-The user input is parsed into invoking a constructor based on the prefix in the user input in `_RecommendCommandParser_`.There are only three acceptable prefixes. (i.e. `difficulty`, `calories`, `duration`) The instance created is then passed to `_RecommendCommand_` which uses `getFilteredWorkoutList()` and `getFilteredInternalList()` methods of `Model` to generate a random workout to recommend to the user.
+The user input is parsed into invoking a constructor based on the prefixes in the user input in `_RecommendCommandParser_`.There are only three acceptable prefixes. (i.e. `difficulty`, `calories`, `duration`) The instance created is then passed to `_RecommendCommand_` which uses `getFilteredWorkoutList()` and `getFilteredInternalList()` methods of `Model` to generate a random workout to recommend to the user.
 
 The sequence diagram of this entire process can be seen below:
 
@@ -358,7 +358,7 @@ There are 3 ways to open a profile window.
 After executing the command `profile`, it will create an instance which uses `showProfileRequestEvent` method of `Events`. Then, the `UI` will `handleShowProfileRequestEvent` and the profile window will be opened.
 
 [[fig-ProfileCommand]]
-.Interactions inside `Logic` component for the *`profile`* command.
+.Interactions inside `Logic` component for the *`profile`* command
 image::ProfileCommand.PNG[width="800"]
 
 ===== User click on `profile` on the menu bar
@@ -366,7 +366,7 @@ image::ProfileCommand.PNG[width="800"]
 After clicking on `profile`, it will send an event `showProfileRequestEvent` to `Events`. It will then return `handleProfile` which will open up the profile window.
 
 [[fig-ClickProfile]]
-.Interactions inside `UI` component when clicking profile
+.Interactions inside `UI` component when user clicks profile
 image::ClickProfile.PNG[width="600"]
 
 ===== User presses `F2` key
@@ -374,7 +374,7 @@ image::ClickProfile.PNG[width="600"]
 The profile window is firstly being accelerated by the key `F2`. After pressing `F2`, it will sent a `ShowProfileRequestEvent()` event to the `EventsCentre`. Then, the `UI` will `handleShowProfileRequestEvent` and the profile window will be opened.
 
 [[fig-F2Profile]]
-.Interactions inside `UI` component when pressing `F2`
+.Interactions inside `UI` component when user presses `F2`
 image::F2Profile.PNG[width="700"]
 
 // end::profile
@@ -422,18 +422,41 @@ Step 2. The user executes the current command to change the `future` tag in the 
 
 [[fig-Current]]
 .Interactions inside `Logic` component when pressing `current`
-image::CurrentCommandSD.png[width="700"]
+image::CurrentCommandSD.png[width="500"]
 
 Step 3. The user executes the complete command to change the `current` tag in the workout as specified by the index number to `completed`.
 
 [[fig-Complete]]
 .Interactions inside `Logic` component when pressing `complete`
-image::CompleteCommandSD.png[width="700"]
+image::CompleteCommandSD.png[width="500"]
 
 The user can consider changing the state tag directly without transitioning through `current` i.e. from `future` to `completed` by using the complete command.
 The user can also reverse the state tag i.e. from `completed` to `current` by using the current command.
 
 // end::memory[]
+
+// tag::trackfeature[]
+=== Tracking Feature
+==== Current Implementation
+==== Design Considerations
+===== Aspect 1:
+
+* **Alternative 1 (current choice):**
+** Pros:
+** Cons:
+* **Alternative 2:**
+** Pros:
+** Cons:
+
+===== Aspect 2:
+
+* **Alternative 1 (current choice):**
+** Pros:
+** Cons:
+* **Alternative 2:**
+** Pros:
+** Cons:
+// end::trackfeature[]
 
 // tag::dataencryption[]
 === [Proposed] Data Encryption
