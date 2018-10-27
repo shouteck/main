@@ -34,20 +34,20 @@ public class ModelManager extends ComponentManager implements Model {
     /**
      * Initializes a ModelManager with the given workoutBook and userPrefs.
      */
-    public ModelManager(ReadOnlyWorkoutBook workoutBook, UserPrefs userPrefs) {
+    public ModelManager(ReadOnlyWorkoutBook workoutBook, ReadOnlyTrackedDataList trackedDataList, UserPrefs userPrefs) {
         super();
         requireAllNonNull(workoutBook, userPrefs);
 
         logger.fine("Initializing with workout book: " + workoutBook + " and user prefs " + userPrefs);
 
         versionedTrackedData = new VersionedTrackedData(new TrackedData());
-        versionedTrackedDataList = new VersionedTrackedDataList(new TrackedDataList());
+        versionedTrackedDataList = new VersionedTrackedDataList(trackedDataList);
         versionedWorkoutBook = new VersionedWorkoutBook(workoutBook);
         filteredWorkouts = new FilteredList<>(versionedWorkoutBook.getWorkoutList());
     }
 
     public ModelManager() {
-        this(new WorkoutBook(), new UserPrefs());
+        this(new WorkoutBook(), new TrackedDataList(), new UserPrefs());
     }
 
     @Override

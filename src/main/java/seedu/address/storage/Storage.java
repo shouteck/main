@@ -8,6 +8,7 @@ import seedu.address.commons.events.model.TrackedDataListChangedEvent;
 import seedu.address.commons.events.model.WorkoutBookChangedEvent;
 import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 import seedu.address.commons.exceptions.DataConversionException;
+import seedu.address.model.ReadOnlyTrackedDataList;
 import seedu.address.model.ReadOnlyWorkoutBook;
 import seedu.address.model.UserPrefs;
 
@@ -30,6 +31,12 @@ public interface Storage extends WorkoutBookStorage, UserPrefsStorage, TrackedDa
 
     @Override
     void saveWorkoutBook(ReadOnlyWorkoutBook workoutBook) throws IOException;
+
+    @Override
+    Optional<ReadOnlyTrackedDataList> readTrackedDataList() throws DataConversionException, IOException;
+
+    @Override
+    void saveTrackedDataList(ReadOnlyTrackedDataList trackedData) throws IOException;
 
     /**
      * Saves the current version of the Workout Book to the hard disk.

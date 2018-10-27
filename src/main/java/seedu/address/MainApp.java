@@ -22,7 +22,9 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.ReadOnlyTrackedDataList;
 import seedu.address.model.ReadOnlyWorkoutBook;
+import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.WorkoutBook;
 import seedu.address.model.util.SampleDataUtil;
@@ -87,7 +89,9 @@ public class MainApp extends Application {
      */
     private Model initModelManager(Storage storage, UserPrefs userPrefs) {
         Optional<ReadOnlyWorkoutBook> workoutBookOptional;
+        Optional<ReadOnlyTrackedDataList> trackedDataListOptional;
         ReadOnlyWorkoutBook initialData;
+        ReadOnlyTrackedDataList initialTrackedDataList;
         try {
             workoutBookOptional = storage.readWorkoutBook();
             if (!workoutBookOptional.isPresent()) {
@@ -102,7 +106,21 @@ public class MainApp extends Application {
             initialData = new WorkoutBook();
         }
 
-        return new ModelManager(initialData, userPrefs);
+        try {
+            trackedDataListOptional = storage.readTrackedDataList();
+            if (!trackedDataListOptional.isPresent()) {
+                logger.info("Data file not found. Will be starting with a empty TrackedDataList");
+            }
+            initialTrackedDataList = trackedDataListOptional.orElseGet(SampleDataUtil::getEmptyTrackedDataList);
+        } catch (DataConversionException e) {
+            logger.warning("Data file not in the correct format. Will be starting with an empty TrackedDataList");
+            initialTrackedDataList = new TrackedDataList();
+        } catch (IOException e) {
+            logger.warning("Problem while reading from the file. Will be starting with an empty TrackedDataList");
+            initialTrackedDataList = new TrackedDataList();
+        }
+
+        return new ModelManager(initialData, initialTrackedDataList, userPrefs);
     }
 
     private void initLogging(Config config) {
