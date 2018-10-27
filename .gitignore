@@ -22,3 +22,4 @@ src/test/java/systemtests/
 src/test/java/seedu/address/TestApp.java
 src/test/java/seedu/address/ui/ProfileWindowTest.java
 src/test/java/seedu/address/ui/MainWindowCloseTest.java
+src/test/java/seedu/address/commands/ModifyCommandTest.java
