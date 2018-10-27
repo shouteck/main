@@ -50,8 +50,8 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 ** *_TYPE_* is a list of workout types separated by commas, and it should not be blank. E.g. `cardio,strength,balance` and `cardio, strength, balance` are valid.
 ** *_INSTRUCTION_* should only contain alphanumeric characters, punctuation, spaces, and it should not be blank. E.g. `set1: dumbbell curls reps: 4-6`.
 ** *_USERNAME_* should only contain alphanumeric characters, and it should not be blank. E.g.  `John Doe` and `Jane` are valid.
-** *_HEIGHT_* should only be in the from x.xx whereby x is any integer. E.g. `1.72` and `1.88` are valid.
-** *_WEIGHT_* should only be in the from xx.x or xxx.x whereby x is any integer. E.g. `88.4` and `102.9` are valid.
+** *_HEIGHT_* should only be in the form x.xx whereby x is any integer. E.g. `1.72` and `1.88` are valid.
+** *_WEIGHT_* should only be in the form xx.x or xxx.x whereby x is any integer. E.g. `88.4` and `102.9` are valid.
 ** *_GENDER_* should only be either male or female.
 * Items in square brackets are optional e.g `name/NAME [tag/TAG]` can be used as `name/commando workout tag/strength` or as `name/commando workout`.
 * Items with `…`​ after them can be used multiple times including zero times e.g. `[tag/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `tag/strength`, `tag/strength tag/fast-paced` etc.
