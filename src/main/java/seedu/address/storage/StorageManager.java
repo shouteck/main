@@ -95,7 +95,7 @@ public class StorageManager extends ComponentManager implements Storage {
         }
     }
 
-    // ================ TrackedData methods ==============================
+    // ================ TrackedDataList methods ==============================
 
     @Override
     public Path getTrackedDataListFilePath() {

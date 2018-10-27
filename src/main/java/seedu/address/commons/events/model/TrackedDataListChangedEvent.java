@@ -14,6 +14,6 @@ public class TrackedDataListChangedEvent extends BaseEvent {
 
     @Override
     public String toString() {
-        return "number of workouts " + data.getTrackedDataList().size();
+        return "number of parameters being tracked " + data.getTrackedDataList().size();
     }
 }

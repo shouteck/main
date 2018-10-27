@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Parameter;
 import seedu.address.model.workout.Workout;
 
 /**
@@ -89,10 +90,16 @@ public interface Model {
     void sortFilteredWorkoutList();
 
     /**
-     * Adds the given parameter to the tracking list.
-     * The parameter must not already exist in the tracking list.
+     * Adds the given parameter to the tracked data list.
+     * The parameter must not already exist in the tracked data list.
      */
-    void addDataToTrack();
+    void addDataToTrack(Parameter parameter);
+
+    /**
+     * Deletes the given parameter.
+     * The parameter must exist in the tracked data list.
+     */
+    void removeDataFromTrack(Parameter parameter);
 
     List<Workout> getFilteredInternalList(Duration duration);
     List<Workout> getFilteredInternalList(Difficulty difficulty);

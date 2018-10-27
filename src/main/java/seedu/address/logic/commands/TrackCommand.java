@@ -2,10 +2,9 @@ package seedu.address.logic.commands;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import javafx.util.Pair;
 import seedu.address.logic.CommandHistory;
-import seedu.address.logic.parser.Prefix;
 import seedu.address.model.Model;
+import seedu.address.model.workout.Parameter;
 
 
 /**
@@ -25,15 +24,15 @@ public class TrackCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Now tracking %1$s%2$s";
 
     public static final String MESSAGE_SUBCOMMAND_CONSTRAINTS = "subcommand must be \"start\"";
-    public static final String SUBCOMMAND_VALIDATION_REGEX = "(start)";
+    public static final String SUBCOMMAND_VALIDATION_REGEX = "(start)|(stop)";
 
     private final String subcommand;
-    private final Pair<Prefix, String> parameter;
+    private final Parameter parameter;
 
     /**
      * @param parameter to be tracked
      */
-    public TrackCommand(String subcommand, Pair<Prefix, String> parameter) {
+    public TrackCommand(String subcommand, Parameter parameter) {
         requireAllNonNull(subcommand, parameter);
 
         this.subcommand = subcommand;
@@ -47,9 +46,14 @@ public class TrackCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) {
         //step 1: check whether list containing data being tracked exists
+        if(subcommand.equals("start")) {
+            model.addDataToTrack(parameter);
+        } else if(subcommand.equals("stop")){
+            model.removeDataFromTrack(parameter);
+        }
         //step 2: check whether file specific to desired data exists
         //step 2: write to file
-        return new CommandResult(String.format(MESSAGE_SUCCESS, parameter.getKey(), parameter.getValue()));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, parameter.getPrefix(), parameter.getValue()));
     }
 
     /**

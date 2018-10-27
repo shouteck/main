@@ -14,11 +14,13 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.TrackedDataChangedEvent;
+import seedu.address.commons.events.model.TrackedDataListChangedEvent;
 import seedu.address.commons.events.model.WorkoutBookChangedEvent;
 
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Parameter;
 import seedu.address.model.workout.Workout;
 
 /**
@@ -29,6 +31,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final VersionedWorkoutBook versionedWorkoutBook;
     private final VersionedTrackedData versionedTrackedData;
+    private final VersionedTrackedDataList versionedTrackedDataList;
     private final FilteredList<Workout> filteredWorkouts;
 
     /**
@@ -41,6 +44,7 @@ public class ModelManager extends ComponentManager implements Model {
         logger.fine("Initializing with workout book: " + workoutBook + " and user prefs " + userPrefs);
 
         versionedTrackedData = new VersionedTrackedData(new TrackedData());
+        versionedTrackedDataList = new VersionedTrackedDataList(new TrackedDataList());
         versionedWorkoutBook = new VersionedWorkoutBook(workoutBook);
         filteredWorkouts = new FilteredList<>(versionedWorkoutBook.getWorkoutList());
     }
@@ -64,6 +68,7 @@ public class ModelManager extends ComponentManager implements Model {
     private void indicateWorkoutBookChanged() {
         raise(new WorkoutBookChangedEvent(versionedWorkoutBook));
         raise(new TrackedDataChangedEvent(versionedTrackedData));
+        raise(new TrackedDataListChangedEvent(versionedTrackedDataList));
     }
 
     @Override
@@ -87,9 +92,17 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void addDataToTrack() {
-
+    public void addDataToTrack(Parameter parameter) {
+        versionedTrackedDataList.addParameter(parameter);
+        indicateWorkoutBookChanged();
     }
+
+    @Override
+    public void removeDataFromTrack(Parameter parameter) {
+        versionedTrackedDataList.removeParameter(parameter);
+        indicateWorkoutBookChanged();
+    }
+
 
     @Override
     public void sortFilteredWorkoutList() {

@@ -9,26 +9,26 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.ReadOnlyTrackedDataList;
-import seedu.address.model.TrackedData;
-import seedu.address.model.workout.Workout;
+import seedu.address.model.TrackedDataList;
+import seedu.address.model.workout.Parameter;
 
 /**
- * An Immutable tracked parameter list that is serializable to XML format
+ * An Immutable tracked data list that is serializable to XML format
  */
 @XmlRootElement(name = "trackeddatalist")
 public class XmlSerializableTrackedDataList {
 
-    public static final String MESSAGE_DUPLICATE_WORKOUT = "Tracked data list contains duplicate parameter(s).";
+    public static final String MESSAGE_DUPLICATE_PARAMETER = "Tracked data list contains duplicate parameter(s).";
 
     @XmlElement
-    private List<XmlAdaptedWorkout> workouts;
+    private List<XmlAdaptedParameter> parameters;
 
     /**
      * Creates an empty XmlSerializableTrackedData.
      * This empty constructor is required for marshalling.
      */
     public XmlSerializableTrackedDataList() {
-        workouts = new ArrayList<>();
+        parameters = new ArrayList<>();
     }
 
     /**
@@ -36,25 +36,25 @@ public class XmlSerializableTrackedDataList {
      */
     public XmlSerializableTrackedDataList(ReadOnlyTrackedDataList src) {
         this();
-        workouts.addAll(src.getTrackedDataList().stream().map(XmlAdaptedWorkout::new).collect(Collectors.toList()));
+        parameters.addAll(src.getTrackedDataList().stream().map(XmlAdaptedParameter::new).collect(Collectors.toList()));
     }
 
     /**
-     * Converts this tracked data list into the model's {@code TrackedData} object.
+     * Converts this tracked data list into the model's {@code TrackedDataList} object.
      *
      * @throws IllegalValueException if there were any data constraints violated or duplicates in the
-     * {@code XmlAdaptedWorkout}.
+     * {@code XmlAdaptedParameter}.
      */
-    public TrackedData toModelType() throws IllegalValueException {
-        TrackedData trackedData = new TrackedData();
-        for (XmlAdaptedWorkout p : workouts) {
-            Workout workout = p.toModelType();
-            if (trackedData.hasWorkout(workout)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_WORKOUT);
+    public TrackedDataList toModelType() throws IllegalValueException {
+        TrackedDataList trackedDataList = new TrackedDataList();
+        for (XmlAdaptedParameter p : parameters) {
+            Parameter parameter = p.toModelType();
+            if (trackedDataList.hasParameter(parameter)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_PARAMETER);
             }
-            trackedData.addWorkout(workout);
-        }
-        return trackedData;
+            trackedDataList.addParameter(parameter);
+    }
+        return trackedDataList;
     }
 
     @Override
@@ -66,6 +66,6 @@ public class XmlSerializableTrackedDataList {
         if (!(other instanceof XmlSerializableTrackedDataList)) {
             return false;
         }
-        return workouts.equals(((XmlSerializableTrackedDataList) other).workouts);
+        return parameters.equals(((XmlSerializableTrackedDataList) other).parameters);
     }
 }

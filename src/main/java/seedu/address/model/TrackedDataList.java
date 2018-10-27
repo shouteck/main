@@ -5,19 +5,22 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.logic.parser.Prefix;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Parameter;
+import seedu.address.model.workout.UniqueParameterList;
 import seedu.address.model.workout.UniqueWorkoutList;
 import seedu.address.model.workout.Workout;
 
 /**
- * Wraps all data at the workout-book level, for each tracked parameter
- * Duplicates are not allowed (by .isSameWorkout comparison)
+ * Wraps all data at the tracked data list level, for each tracked parameter
+ * Duplicates are not allowed (by .equals comparison)
  */
 public class TrackedDataList implements ReadOnlyTrackedDataList {
 
-    private final UniqueWorkoutList workouts;
+    private final UniqueParameterList parameters;
 
     /*
      * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
@@ -27,15 +30,15 @@ public class TrackedDataList implements ReadOnlyTrackedDataList {
      *   among constructors.
      */
     {
-        workouts = new UniqueWorkoutList();
+        parameters = new UniqueParameterList();
     }
 
     public TrackedDataList() {}
 
     /**
-     * Creates an WorkoutBook using the Workouts in the {@code toBeCopied}
+     * Creates an TrackedDataList using the tracked parameters in {@code toBeCopied}
      */
-    public TrackedDataList(ReadOnlyTrackedData toBeCopied) {
+    public TrackedDataList(ReadOnlyTrackedDataList toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -43,87 +46,79 @@ public class TrackedDataList implements ReadOnlyTrackedDataList {
     //// list overwrite operations
 
     /**
-     * Replaces the contents of the Workout list with {@code workouts}.
+     * Replaces the contents of the TrackedDataList with {@code parameters}.
      * {@code workouts} must not contain duplicate workouts.
      */
-    public void setWorkouts(List<Workout> workouts) {
-        this.workouts.setWorkouts(workouts);
+    public void setWorkouts(List<Parameter> parameters) {
+        this.parameters.setParameters(parameters);
     }
 
-    public List<Workout> getFilteredInternalList (Difficulty difficulty) {
-        return workouts.getFilteredInternalList(difficulty);
+    public List<Parameter> getFilteredInternalList (Prefix prefix) {
+        return parameters.getFilteredInternalList(prefix);
     }
 
-    public List<Workout> getFilteredInternalList (Duration duration) {
-        return workouts.getFilteredInternalList(duration);
-    }
-
-    public List<Workout> getFilteredInternalList (Calories calories) {
-        return workouts.getFilteredInternalList(calories);
+    public List<Parameter> getFilteredInternalList (String value) {
+        return parameters.getFilteredInternalList(value);
     }
 
 
     /**
-     * Resets the existing data of this {@code TrackedData} with {@code newData}.
+     * Resets the existing data of this {@code TrackedDataList} with {@code newData}.
      */
-    public void resetData(ReadOnlyTrackedData newData) {
+    public void resetData(ReadOnlyTrackedDataList newData) {
         requireNonNull(newData);
 
-        setWorkouts(newData.getTrackedData());
+        setWorkouts(newData.getTrackedDataList());
     }
 
-    //// workout-level operations
+    //// parameter-level operations
 
     /**
-     * Returns true if a workout with the same identity as {@code workout} exists in the tracked data.
+     * Returns true if a parameter with the same identity as {@code parameter} exists in the tracked data list.
      */
-    public boolean hasWorkout(Workout workout) {
-        requireNonNull(workout);
-        return workouts.contains(workout);
-    }
-
-    /**
-     * Adds a workout to the tracked data.
-     * The workout must not already exist in the tracked data.
-     */
-    public void addWorkout(Workout w) {
-        workouts.add(w);
-    }
-
-    public void sortFilteredWorkoutList() {
-        workouts.sort();
+    public boolean hasParameter(Parameter parameter) {
+        requireNonNull(parameter);
+        return parameters.contains(parameter);
     }
 
     /**
-     * Removes {@code key} from this {@code WorkoutBook}.
-     * {@code key} must exist in the workout book.
+     * Adds a parameter to the tracked data list.
+     * The parameter must not already exist in the tracked data list.
      */
-    public void removeWorkout(Workout key) {
-        workouts.remove(key);
+    public void addParameter(Parameter parameter) {
+        parameters.add(parameter);
+    }
+
+    /**
+     * Removes {@code key} from this {@code TrackedDataList}.
+     * {@code key} must exist in the TrackedDataList.
+     */
+    public void removeParameter(Parameter key) {
+        parameters.remove(key);
     }
 
     //// util methods
 
     @Override
     public String toString() {
-        return workouts.asUnmodifiableObservableList().size() + " workouts";
+        return parameters.asUnmodifiableObservableList().size() + " parameters";
         // TODO: refine later
     }
 
     @Override
-    public ObservableList<Workout> getTrackedDataList() {
-        return workouts.asUnmodifiableObservableList();
+    public ObservableList<Parameter> getTrackedDataList() {
+        return parameters.asUnmodifiableObservableList();
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof TrackedDataList // instanceof handles nulls
-                && workouts.equals(((TrackedDataList) other).workouts));
+                && parameters.equals(((TrackedDataList) other).parameters));
     }
 
     @Override
     public int hashCode() {
-        return workouts.hashCode();
+        return parameters.hashCode();
     }
 }
