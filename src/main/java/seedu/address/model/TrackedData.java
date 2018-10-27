@@ -50,19 +50,6 @@ public class TrackedData implements ReadOnlyTrackedData {
         this.workouts.setWorkouts(workouts);
     }
 
-    public List<Workout> getFilteredInternalList (Difficulty difficulty) {
-        return workouts.getFilteredInternalList(difficulty);
-    }
-
-    public List<Workout> getFilteredInternalList (Duration duration) {
-        return workouts.getFilteredInternalList(duration);
-    }
-
-    public List<Workout> getFilteredInternalList (Calories calories) {
-        return workouts.getFilteredInternalList(calories);
-    }
-
-
     /**
      * Resets the existing data of this {@code TrackedData} with {@code newData}.
      */
