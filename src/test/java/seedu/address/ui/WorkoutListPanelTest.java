@@ -102,8 +102,8 @@ public class WorkoutListPanelTest extends GuiUnitTest {
             builder.append("<difficulty>beginner</difficulty>\n");
             builder.append("<equipment>a</equipment>\n");
             builder.append("<muscle>a</muscle>\n");
-            builder.append("<calories>").append(i).append("</calories>\n");
-            builder.append("<instruction>a</instruction>\n");
+            builder.append("<calories>1</calories>\n");
+            builder.append("<instruction>").append(i).append("a</instruction>\n");
             builder.append("</workouts>\n");
         }
         builder.append("</workoutbook>\n");

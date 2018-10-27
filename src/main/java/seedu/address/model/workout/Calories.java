@@ -9,14 +9,15 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Calories {
 
-    public static final String MESSAGE_CALORIES_CONSTRAINTS = "The number of calories must a positive integer"
-            + " inclusive of 0.";
+    public static final String MESSAGE_CALORIES_CONSTRAINTS = "Calories must a positive integer"
+            + " from 1 to 1000, inclusive of 1 and 1000.";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String CALORIES_VALIDATION_REGEX = "^\\d+$";
+    public static final String CALORIES_VALIDATION_REGEX =
+            "([1-9]|[1-8][0-9]|9[0-9]|[1-8][0-9]{2}|9[0-8][0-9]|99[0-9]|1000)";
 
     public final String fullCalories;
 
