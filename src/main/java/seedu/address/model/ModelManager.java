@@ -67,7 +67,13 @@ public class ModelManager extends ComponentManager implements Model {
     /** Raises an event to indicate the model has changed */
     private void indicateWorkoutBookChanged() {
         raise(new WorkoutBookChangedEvent(versionedWorkoutBook));
+    }
+
+    private void indicateTrackedDataChanged() {
         raise(new TrackedDataChangedEvent(versionedTrackedData));
+    }
+
+    private void indicateTrackedDataListChanged() {
         raise(new TrackedDataListChangedEvent(versionedTrackedDataList));
     }
 
@@ -94,13 +100,19 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void addDataToTrack(Parameter parameter) {
         versionedTrackedDataList.addParameter(parameter);
-        indicateWorkoutBookChanged();
+        indicateTrackedDataListChanged();
     }
 
     @Override
     public void removeDataFromTrack(Parameter parameter) {
         versionedTrackedDataList.removeParameter(parameter);
-        indicateWorkoutBookChanged();
+        indicateTrackedDataListChanged();
+    }
+
+    @Override
+    public boolean hasParameter(Parameter parameter) {
+        requireNonNull(parameter);
+        return versionedTrackedDataList.hasParameter(parameter);
     }
 
 

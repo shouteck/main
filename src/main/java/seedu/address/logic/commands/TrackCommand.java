@@ -1,8 +1,10 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import seedu.address.logic.CommandHistory;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.workout.Parameter;
 
@@ -20,10 +22,12 @@ public class TrackCommand extends Command {
             + "Parameters: subcommand (parameter prefix)/parameter\n"
             + "Example: " + COMMAND_WORD + " start muscle/bicep";
 
-    public static final String MESSAGE_ARGUMENTS_ACCEPTED = "Subcommand: %1$s, Parameter: %2$s";
-    public static final String MESSAGE_SUCCESS = "Now tracking %1$s%2$s";
+    public static final String MESSAGE_START_SUCCESS = "Now tracking %1$s%2$s";
+    public static final String MESSAGE_STOP_SUCCESS = "Tracking of %1$s%2$s has been stopped";
+    public static final String MESSAGE_DUPLICATE_PARAMETER = "This parameter is already being tracked";
+    public static final String MESSAGE_MISSING_PARAMETER = "This parameter is not currently being tracked";
 
-    public static final String MESSAGE_SUBCOMMAND_CONSTRAINTS = "subcommand must be \"start\"";
+    public static final String MESSAGE_SUBCOMMAND_CONSTRAINTS = "subcommand must be \"start\" or \"stop\"";
     public static final String SUBCOMMAND_VALIDATION_REGEX = "(start)|(stop)";
 
     private final String subcommand;
@@ -44,16 +48,26 @@ public class TrackCommand extends Command {
      * WIP
      */
     @Override
-    public CommandResult execute(Model model, CommandHistory history) {
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
+        requireNonNull(model);
+
         //step 1: check whether list containing data being tracked exists
         if(subcommand.equals("start")) {
+            if (model.hasParameter(parameter)) {
+                throw new CommandException(MESSAGE_DUPLICATE_PARAMETER);
+            }
             model.addDataToTrack(parameter);
+            return new CommandResult(String.format(MESSAGE_START_SUCCESS, parameter.getPrefix(), parameter.getValue()));
         } else if(subcommand.equals("stop")){
+            if (!model.hasParameter(parameter)) {
+                throw new CommandException(MESSAGE_MISSING_PARAMETER);
+            }
             model.removeDataFromTrack(parameter);
+            return new CommandResult(String.format(MESSAGE_STOP_SUCCESS, parameter.getPrefix(), parameter.getValue()));
         }
         //step 2: check whether file specific to desired data exists
         //step 2: write to file
-        return new CommandResult(String.format(MESSAGE_SUCCESS, parameter.getPrefix(), parameter.getValue()));
+        return null;
     }
 
     /**

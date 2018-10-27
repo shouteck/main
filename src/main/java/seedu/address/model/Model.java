@@ -101,6 +101,11 @@ public interface Model {
      */
     void removeDataFromTrack(Parameter parameter);
 
+    /**
+     * Returns true if {@code parameter} exists in the tracked data list.
+     */
+    boolean hasParameter(Parameter parameter);
+
     List<Workout> getFilteredInternalList(Duration duration);
     List<Workout> getFilteredInternalList(Difficulty difficulty);
     List<Workout> getFilteredInternalList(Calories calories);
