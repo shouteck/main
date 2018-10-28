@@ -20,13 +20,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WEIGHT;
 
 import java.io.IOException;
-//import java.awt.Desktop;
 import java.text.DecimalFormat;
 import java.util.stream.Stream;
-
-//import javafx.stage.Stage;
-//import javafx.scene.*;
-//import javafx.fxml.FXMLLoader;
 
 import org.jsoup.nodes.Element;
 
@@ -41,14 +36,6 @@ import seedu.address.model.workout.Duration;
  * Parses input arguments and creates a new ModifyCommand object
  */
 public class ModifyCommandParser {
-    /**
-     * Parses the given {@code String} of arguments in the context of the {@code ModifyCommand}
-     * and returns a {@code ModifyCommand} object for execution.
-     */
-
-    //Stage root;
-    //private static final String FXML = "ProfileWindow.fxml";
-    //private final FXMLLoader fxmlLoader = new FXMLLoader();
     /**
      * Parses the given {@code String} of arguments in the context of the {@code ModifyCommand}
      * and returns a {@code ModifyCommand} object for execution.
@@ -133,18 +120,7 @@ public class ModifyCommandParser {
 
             DecimalFormat df = new DecimalFormat("#.#");
             profileWindowManager.setBmi("BMI : " + df.format(profileWindowManager.calculateBmi(newHeight, newWeight)));
-
             profileWindowManager.writeToFile();
-
-            //fxmlLoader.getRoot();
-            //Stage root = FXMLLoader.load(getClass().getResource(FXML));
-
-            //seedu.address.ui.UiPart.loadFxmlFile(seedu.address.ui.UiPart.getFxmlFileUrl(FXML), root);
-            //new ProfileWindow(root);
-
-
-            //Desktop desktop = Desktop.getDesktop();
-            //desktop.open(newFile);
 
             return new ModifyCommand(newGender, newUsername, newHeight, newWeight, newCalories, newDifficulty
                     , newDuration);
