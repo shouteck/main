@@ -49,8 +49,8 @@ public class ModifyCommand extends Command {
 
 
     // element.owntext() return element w/o <b>
-    public ModifyCommand(String gender, String username, String height, String weight, String calories
-            , String difficulty, String duration) {
+    public ModifyCommand(String gender, String username, String height, String weight, String calories,
+                         String difficulty, String duration) {
 
         this.gender = gender;
         this.username = username;

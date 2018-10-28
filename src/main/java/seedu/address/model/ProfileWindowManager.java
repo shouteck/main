@@ -1,18 +1,19 @@
 package seedu.address.model;
 
-import org.apache.commons.io.FileUtils;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import seedu.address.model.workout.Calories;
-import seedu.address.model.workout.Difficulty;
-import seedu.address.model.workout.Duration;
+import static seedu.address.ui.ProfileWindow.USERPROFILE_FILE_PATH;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 
-import static seedu.address.ui.ProfileWindow.USERPROFILE_FILE_PATH;
+import org.apache.commons.io.FileUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
 
 /**
  * Acts as a Facade for any methods to do with ProfileWindow
@@ -25,7 +26,7 @@ public class ProfileWindowManager {
     private static final String WEIGHT_VALIDATION_REGEX = "\\d{2,3}\\.\\d{1}";
     private static final String USERNAME_VALIDATION_REGEX = "[\\p{Alnum}|'][\\p{Alnum} |' ]*";
 
-    private static ProfileWindowManager SINGLE_INSTANCE = null;
+    private static ProfileWindowManager singleInstance = null;
 
     private Element gender;
     private Element username;
@@ -54,12 +55,12 @@ public class ProfileWindowManager {
     }
 
     public static ProfileWindowManager getInstance() throws IOException {
-        if (SINGLE_INSTANCE == null) {
+        if (singleInstance == null) {
             synchronized (ProfileWindowManager.class) {
-                SINGLE_INSTANCE = new ProfileWindowManager();
+                singleInstance = new ProfileWindowManager();
             }
         }
-        return SINGLE_INSTANCE;
+        return singleInstance;
     }
 
     public void writeToFile() throws IOException {

@@ -6,7 +6,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
@@ -15,7 +14,6 @@ import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.ProfileWindowManager;
 import seedu.address.model.RecommendArguments;
 import seedu.address.model.workout.Workout;
 

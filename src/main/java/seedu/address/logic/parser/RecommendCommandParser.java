@@ -1,7 +1,6 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
@@ -38,7 +37,8 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
             ProfileWindowManager profileWindowManager;
             try {
                 profileWindowManager = ProfileWindowManager.getInstance();
-                recommendArguments = new RecommendArguments.Builder().withCalories(profileWindowManager.extractCalories())
+                recommendArguments = new RecommendArguments.Builder().withCalories(profileWindowManager
+                        .extractCalories())
                         .withDifficulty(profileWindowManager.extractDifficulty())
                         .withDuration(profileWindowManager.extractDuration()).build();
             } catch (IOException e) {

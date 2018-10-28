@@ -122,14 +122,14 @@ public class ModifyCommandParser {
             profileWindowManager.setBmi("BMI : " + df.format(profileWindowManager.calculateBmi(newHeight, newWeight)));
             profileWindowManager.writeToFile();
 
-            return new ModifyCommand(newGender, newUsername, newHeight, newWeight, newCalories, newDifficulty
-                    , newDuration);
+            return new ModifyCommand(newGender, newUsername, newHeight, newWeight, newCalories, newDifficulty,
+                    newDuration);
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
             // Dummy
-            return new ModifyCommand(" ", "" , "" , "","",""
-                    , "");
+            return new ModifyCommand(" ", "", "", "", "", "",
+                    "");
         }
 
     }
