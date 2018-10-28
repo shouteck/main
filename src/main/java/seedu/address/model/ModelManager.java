@@ -151,6 +151,16 @@ public class ModelManager extends ComponentManager implements Model {
     //=========== Undo/Redo =================================================================================
 
     @Override
+    public boolean canUndoAll() {
+        return canUndoWorkoutBook();
+    }
+
+    @Override
+    public boolean canRedoAll() {
+        return canRedoWorkoutBook();
+    }
+
+    @Override
     public boolean canUndoWorkoutBook() {
         return versionedWorkoutBook.canUndo();
     }
@@ -168,6 +178,28 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public void redoWorkoutBook() {
+        versionedWorkoutBook.redo();
+        indicateWorkoutBookChanged();
+    }
+
+    @Override
+    public boolean canUndoTrackedDataList() {
+        return versionedWorkoutBook.canUndo();
+    }
+
+    @Override
+    public boolean canRedoTrackedDataList() {
+        return versionedWorkoutBook.canRedo();
+    }
+
+    @Override
+    public void undoTrackedDataList() {
+        versionedWorkoutBook.undo();
+        indicateWorkoutBookChanged();
+    }
+
+    @Override
+    public void redoTrackedDataList() {
         versionedWorkoutBook.redo();
         indicateWorkoutBookChanged();
     }

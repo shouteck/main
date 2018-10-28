@@ -57,6 +57,16 @@ public interface Model {
     void updateFilteredWorkoutList(Predicate<Workout> predicate);
 
     /**
+     * Returns true if the model has previous states to restore.
+     */
+    boolean canUndoAll();
+
+    /**
+     * Returns true if the model has undone states to restore.
+     */
+    boolean canRedoAll();
+
+    /**
      * Returns true if the model has previous workout book states to restore.
      */
     boolean canUndoWorkoutBook();
@@ -75,6 +85,26 @@ public interface Model {
      * Restores the model's workout book to its previously undone state.
      */
     void redoWorkoutBook();
+
+    /**
+     * Returns true if the model has previous workout book states to restore.
+     */
+    boolean canUndoTrackedDataList();
+
+    /**
+     * Returns true if the model has undone workout book states to restore.
+     */
+    boolean canRedoTrackedDataList();
+
+    /**
+     * Restores the model's workout book to its previous state.
+     */
+    void undoTrackedDataList();
+
+    /**
+     * Restores the model's workout book to its previously undone state.
+     */
+    void redoTrackedDataList();
 
     /**
      * Saves the current workout book state for undo/redo.
