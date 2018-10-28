@@ -63,6 +63,10 @@ public class ProfileWindowManager {
         return singleInstance;
     }
 
+    /**
+     * Writes to File.
+     * @throws IOException
+     */
     public void writeToFile() throws IOException {
         File temp = File.createTempFile("tempfile", ".html");
         FileUtils.writeStringToFile(temp, doc.outerHtml(), "UTF-8");
@@ -159,6 +163,12 @@ public class ProfileWindowManager {
         return Optional.of(new Duration(duration.ownText().substring(10)));
     }
 
+    /**
+     *
+     * @param height
+     * @param weight
+     * @return bmi
+     */
     public double calculateBmi(String height, String weight) {
         double h = Double.parseDouble(extractHeight(height));
         double w = Double.parseDouble(extractWeight(weight));
