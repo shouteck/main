@@ -56,7 +56,9 @@ public class ProfileWindowManager {
 
     public static ProfileWindowManager getInstance() throws IOException {
         if (singleInstance == null) {
-            singleInstance = new ProfileWindowManager();
+            synchronized (ProfileWindowManager.class) {
+                singleInstance = new ProfileWindowManager();
+            }
         }
         return singleInstance;
     }
