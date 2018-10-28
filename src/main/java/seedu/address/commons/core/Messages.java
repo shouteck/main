@@ -18,7 +18,5 @@ public class Messages {
     public static final String MESSAGE_VALID_HEIGHT = "Height should only be in x.xx form where x is an integer.";
     public static final String MESSAGE_INVALID_USERNAME = "Invalid Username format! \n%1$s";
     public static final String MESSAGE_VALID_USERNAME = "Username should only contain alphanumeric characters.";
-    public static final String MESSAGE_INVALID_PREFERRED_DIFFICULTY = "Invalid Difficulty format! \n%1$s";
-    public static final String MESSAGE_VALID_PREFERRED_DIFFICULTY =
-            "Preferred Difficulty should either be beginner, intermediate or advanced.";
+
 }
