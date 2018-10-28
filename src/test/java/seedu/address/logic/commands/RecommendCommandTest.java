@@ -51,8 +51,8 @@ public class RecommendCommandTest {
     }
 
     @Test
-    public void execute_singleFieldRecommend_successful() throws Exception {
-        // Calories
+    public void execute_acceptedByModel_recommendSuccessful() throws Exception {
+        // Valid Calories
         Optional<Calories> calories = Optional.of(new Calories("150"));
         RecommendArguments recommendArguments = new RecommendArguments.Builder().withCalories(calories).build();
         CommandResult commandResult = new RecommendCommand(recommendArguments).execute(modelStub, commandHistory);
@@ -60,7 +60,7 @@ public class RecommendCommandTest {
         assertEquals(RecommendCommand.MESSAGE_SUCCESS, commandResult.feedbackToUser);
         assertEquals(EMPTY_COMMAND_HISTORY, commandHistory);
 
-        // Difficulty
+        // Valid Difficulty
         Optional<Difficulty> difficulty = Optional.of(new Difficulty("advanced"));
         recommendArguments = new RecommendArguments.Builder().withDifficulty(difficulty).build();
         commandResult = new RecommendCommand(recommendArguments).execute(modelStub, commandHistory);
@@ -68,7 +68,7 @@ public class RecommendCommandTest {
         assertEquals(RecommendCommand.MESSAGE_SUCCESS, commandResult.feedbackToUser);
         assertEquals(EMPTY_COMMAND_HISTORY, commandHistory);
 
-        // Duration
+        // Valid Duration
         Optional<Duration> duration = Optional.of(new Duration("20m"));
         recommendArguments = new RecommendArguments.Builder().withDuration(duration).build();
         commandResult = new RecommendCommand(recommendArguments).execute(modelStub, commandHistory);
@@ -79,7 +79,7 @@ public class RecommendCommandTest {
 
     @Test
     public void execute_workoutNotFound_throwsCommandException() throws Exception {
-        // Calories
+        // Valid Calories
         Optional<Calories> calories = Optional.of(new Calories("200"));
         RecommendArguments recommendArguments = new RecommendArguments.Builder().withCalories(calories).build();
         RecommendCommand recommendCommand = new RecommendCommand(recommendArguments);
@@ -88,7 +88,7 @@ public class RecommendCommandTest {
         thrown.expectMessage(recommendCommand.MESSAGE_NO_SUCH_WORKOUT);
         recommendCommand.execute(modelStub, commandHistory);
 
-        // Difficulty
+        // Valid Difficulty
         Optional<Difficulty> difficulty = Optional.of(new Difficulty("beginner"));
         recommendArguments = new RecommendArguments.Builder().withDifficulty(difficulty).build();
         recommendCommand = new RecommendCommand(recommendArguments);
@@ -97,7 +97,7 @@ public class RecommendCommandTest {
         thrown.expectMessage(recommendCommand.MESSAGE_NO_SUCH_WORKOUT);
         recommendCommand.execute(modelStub, commandHistory);
 
-        // Duration
+        // Valid Duration
         Optional<Duration> duration = Optional.of(new Duration("10m"));
         recommendArguments = new RecommendArguments.Builder().withDuration(duration).build();
         recommendCommand = new RecommendCommand(recommendArguments);
