@@ -104,6 +104,11 @@ public interface Model {
     boolean hasParameter(Parameter parameter);
 
     /**
+     * Saves the current tracked data list state for undo/redo.
+     */
+    void commitTrackedDataList();
+
+    /**
      * Returns the filtered internal list.
      */
     List<Workout> getFilteredInternalList(RecommendArguments recommendArguments);

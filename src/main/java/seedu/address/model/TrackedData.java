@@ -12,7 +12,7 @@ import seedu.address.model.workout.UniqueWorkoutList;
 import seedu.address.model.workout.Workout;
 
 /**
- * Wraps all data at the workout-book level, for each tracked parameter
+ * Analogous to WorkoutBook; wraps all data at the workout-book level, for each tracked parameter
  * Duplicates are not allowed (by .isSameWorkout comparison)
  */
 public class TrackedData implements ReadOnlyTrackedData {
@@ -33,7 +33,7 @@ public class TrackedData implements ReadOnlyTrackedData {
     public TrackedData() {}
 
     /**
-     * Creates an WorkoutBook using the Workouts in the {@code toBeCopied}
+     * Creates an TrackedData workout book using the Workouts in the {@code toBeCopied}
      */
     public TrackedData(ReadOnlyTrackedData toBeCopied) {
         this();
@@ -70,8 +70,8 @@ public class TrackedData implements ReadOnlyTrackedData {
     }
 
     /**
-     * Adds a workout to the tracked data.
-     * The workout must not already exist in the tracked data.
+     * Adds a workout to the tracked data workout book.
+     * The workout must not already exist in the tracked data workout book.
      */
     public void addWorkout(Workout w) {
         workouts.add(w);
@@ -82,7 +82,7 @@ public class TrackedData implements ReadOnlyTrackedData {
     }
 
     /**
-     * Removes {@code key} from this {@code WorkoutBook}.
+     * Removes {@code key} from this {@code TrackedData}.
      * {@code key} must exist in the workout book.
      */
     public void removeWorkout(Workout key) {

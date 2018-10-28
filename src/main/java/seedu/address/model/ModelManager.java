@@ -88,7 +88,6 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public void addWorkout(Workout workout) {
-        versionedTrackedData.addWorkout(workout);
         versionedWorkoutBook.addWorkout(workout);
         updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
         indicateWorkoutBookChanged();
@@ -176,6 +175,11 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void commitWorkoutBook() {
         versionedWorkoutBook.commit();
+    }
+
+    @Override
+    public void commitTrackedDataList() {
+        versionedTrackedDataList.commit();
     }
 
     @Override
