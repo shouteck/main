@@ -51,13 +51,13 @@ public class TrackCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
 
-        if(subcommand.equals("start")) {
+        if (subcommand.equals("start")) {
             if (model.hasParameter(parameter)) {
                 throw new CommandException(MESSAGE_DUPLICATE_PARAMETER);
             }
             model.addDataToTrack(parameter);
             return new CommandResult(String.format(MESSAGE_START_SUCCESS, parameter.getPrefix(), parameter.getValue()));
-        } else if(subcommand.equals("stop")){
+        } else if (subcommand.equals("stop")) {
             if (!model.hasParameter(parameter)) {
                 throw new CommandException(MESSAGE_MISSING_PARAMETER);
             }

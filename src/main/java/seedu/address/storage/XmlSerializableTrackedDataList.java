@@ -53,7 +53,7 @@ public class XmlSerializableTrackedDataList {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PARAMETER);
             }
             trackedDataList.addParameter(parameter);
-    }
+        }
         return trackedDataList;
     }
 

@@ -5,7 +5,7 @@ import seedu.address.logic.parser.Prefix;
 /**
  * Represents a Parameter in the tracked data list.
  */
-public class Parameter{
+public class Parameter {
 
     private final Prefix prefix;
     private final String value;
@@ -15,11 +15,11 @@ public class Parameter{
         this.value = value;
     }
 
-    public Prefix getPrefix(){
+    public Prefix getPrefix() {
         return prefix;
     }
 
-    public String getValue(){
+    public String getValue() {
         return value;
     }
 

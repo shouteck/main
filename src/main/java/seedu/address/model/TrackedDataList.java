@@ -6,13 +6,8 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.logic.parser.Prefix;
-import seedu.address.model.workout.Calories;
-import seedu.address.model.workout.Difficulty;
-import seedu.address.model.workout.Duration;
 import seedu.address.model.workout.Parameter;
 import seedu.address.model.workout.UniqueParameterList;
-import seedu.address.model.workout.UniqueWorkoutList;
-import seedu.address.model.workout.Workout;
 
 /**
  * Wraps all data at the tracked data list level, for each tracked parameter

@@ -28,8 +28,8 @@ public class StorageManager extends ComponentManager implements Storage {
     private UserPrefsStorage userPrefsStorage;
 
 
-    public StorageManager(WorkoutBookStorage workoutBookStorage, TrackedDataListStorage trackedDataListStorage
-            , UserPrefsStorage userPrefsStorage) {
+    public StorageManager(WorkoutBookStorage workoutBookStorage, TrackedDataListStorage trackedDataListStorage,
+                          UserPrefsStorage userPrefsStorage) {
         super();
         this.workoutBookStorage = workoutBookStorage;
         this.trackedDataListStorage = trackedDataListStorage;
@@ -108,7 +108,8 @@ public class StorageManager extends ComponentManager implements Storage {
     }
 
     @Override
-    public Optional<ReadOnlyTrackedDataList> readTrackedDataList(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyTrackedDataList> readTrackedDataList(Path filePath) throws DataConversionException,
+            IOException {
         logger.fine("Attempting to read data from file: " + filePath);
         return trackedDataListStorage.readTrackedDataList(filePath);
     }
@@ -127,8 +128,8 @@ public class StorageManager extends ComponentManager implements Storage {
     @Override
     @Subscribe
     public void handleTrackedDataListChangedEvent(TrackedDataListChangedEvent trackedDataListChanged) {
-        logger.info(LogsCenter.getEventHandlingLogMessage(trackedDataListChanged
-                , "Tracked data list changed, saving to file"));
+        logger.info(LogsCenter.getEventHandlingLogMessage(trackedDataListChanged,
+                "Tracked data list changed, saving to file"));
         try {
             saveTrackedDataList(trackedDataListChanged.data);
         } catch (IOException e) {
