@@ -51,14 +51,13 @@ public class XmlTrackedDataListStorage implements TrackedDataListStorage {
             return Optional.empty();
         }
 
-        XmlSerializableTrackedDataList xmlTrackedData = XmlFileStorage.loadTrackedDataListFromSaveFile(filePath);
-//        try {
-//            return Optional.of(xmlTrackedData.toModelType());
-//        } catch (IllegalValueException ive) {
-//            logger.info("Illegal values found in " + filePath + ": " + ive.getMessage());
-//            throw new DataConversionException(ive);
-//        }
-        return Optional.empty();
+        XmlSerializableTrackedDataList xmlTrackedDataList = XmlFileStorage.loadTrackedDataListFromSaveFile(filePath);
+        try {
+            return Optional.of(xmlTrackedDataList.toModelType());
+        } catch (IllegalValueException ive) {
+            logger.info("Illegal values found in " + filePath + ": " + ive.getMessage());
+            throw new DataConversionException(ive);
+        }
     }
 
     @Override
