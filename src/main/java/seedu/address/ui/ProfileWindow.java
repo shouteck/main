@@ -30,6 +30,7 @@ public class ProfileWindow extends UiPart<Stage> {
         super(FXML, root);
 
         String userProfileUrl = getClass().getResource(USERPROFILE_FILE_PATH).toString();
+        System.out.println(userProfileUrl);
         browser.getEngine().load(userProfileUrl);
 
     }
