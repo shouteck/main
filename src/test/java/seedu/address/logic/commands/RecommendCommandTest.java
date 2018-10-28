@@ -19,11 +19,13 @@ import javafx.collections.ObservableList;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.ReadOnlyTrackedDataList;
 import seedu.address.model.ReadOnlyWorkoutBook;
 import seedu.address.model.RecommendArguments;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Parameter;
 import seedu.address.model.workout.Workout;
 import seedu.address.testutil.WorkoutBuilder;
 
@@ -130,6 +132,11 @@ public class RecommendCommandTest {
         }
 
         @Override
+        public ReadOnlyTrackedDataList getTrackedDataList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasWorkout(Workout workout) {
             throw new AssertionError("This method should not be called.");
         }
@@ -193,6 +200,21 @@ public class RecommendCommandTest {
 
         @Override
         public void sortFilteredWorkoutList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addDataToTrack(Parameter parameter) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void removeDataFromTrack(Parameter parameter) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasParameter(Parameter parameter) {
             throw new AssertionError("This method should not be called.");
         }
     }

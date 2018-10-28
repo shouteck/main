@@ -37,6 +37,7 @@ import seedu.address.logic.commands.TrackCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.workout.NameContainsKeywordsPredicate;
+import seedu.address.model.workout.Parameter;
 import seedu.address.model.workout.Workout;
 import seedu.address.testutil.EditWorkoutDescriptorBuilder;
 import seedu.address.testutil.WorkoutBuilder;
@@ -134,7 +135,7 @@ public class WorkoutBookParserTest {
         final String subcommand = "start";
         TrackCommand command = (TrackCommand) parser.parseCommand(TrackCommand.COMMAND_WORD + " start "
                 + MUSCLE_DESC_BOB_WORKOUT);
-        assertEquals(new TrackCommand(subcommand, new Pair<>(PREFIX_MUSCLE, VALID_MUSCLE_BOB_WORKOUT)), command);
+        assertEquals(new TrackCommand(subcommand, new Parameter(PREFIX_MUSCLE, VALID_MUSCLE_BOB_WORKOUT)), command);
     }
 
     @Test

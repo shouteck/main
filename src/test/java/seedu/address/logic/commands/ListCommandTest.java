@@ -11,6 +11,7 @@ import org.junit.Test;
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 
 /**
@@ -24,8 +25,8 @@ public class ListCommandTest {
 
     @Before
     public void setUp() {
-        model = new ModelManager(getTypicalWorkoutBook(), new UserPrefs());
-        expectedModel = new ModelManager(model.getWorkoutBook(), new UserPrefs());
+        model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new UserPrefs());
+        expectedModel = new ModelManager(model.getWorkoutBook(), new TrackedDataList(), new UserPrefs());
     }
 
     @Test
