@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Type {
 
     public static final String MESSAGE_TYPE_CONSTRAINTS =
-            "Types should only contain names separated by commas, and it should not be blank";
+            "Types should only contain names separated by commas, and it should not be blank.";
 
     /*
      * The first character of the address must not be a whitespace,

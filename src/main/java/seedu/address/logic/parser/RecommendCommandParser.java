@@ -6,11 +6,13 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 
+import java.io.IOException;
 import java.util.Optional;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.RecommendCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.ProfileWindowManager;
 import seedu.address.model.RecommendArguments;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
@@ -29,12 +31,21 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_DURATION,
                 PREFIX_DIFFICULTY, PREFIX_CALORIES);
 
-        if (!isPrefixPresent(argMultimap, PREFIX_DURATION, PREFIX_DIFFICULTY, PREFIX_CALORIES) || !argMultimap
-                .getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RecommendCommand.MESSAGE_USAGE));
+        RecommendArguments recommendArguments;
+        if (isPrefixPresent(argMultimap, PREFIX_DURATION, PREFIX_DIFFICULTY, PREFIX_CALORIES)) {
+            recommendArguments = getRecommendArguments(argMultimap);
+        } else {
+            ProfileWindowManager profileWindowManager;
+            try {
+                profileWindowManager = ProfileWindowManager.getInstance();
+                recommendArguments = new RecommendArguments.Builder().withCalories(profileWindowManager.extractCalories())
+                        .withDifficulty(profileWindowManager.extractDifficulty())
+                        .withDuration(profileWindowManager.extractDuration()).build();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+                recommendArguments = new RecommendArguments.Builder().build();
+            }
         }
-
-        RecommendArguments recommendArguments = getRecommendArguments(argMultimap);
 
         return new RecommendCommand(recommendArguments);
     }

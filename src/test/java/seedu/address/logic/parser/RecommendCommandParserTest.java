@@ -7,11 +7,13 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
+import java.io.IOException;
 import java.util.Optional;
 
 import org.junit.Test;
 
 import seedu.address.logic.commands.RecommendCommand;
+import seedu.address.model.ProfileWindowManager;
 import seedu.address.model.RecommendArguments;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
@@ -79,6 +81,22 @@ public class RecommendCommandParserTest {
     }
 
     @Test
+    public void parse_noFieldsPresent_success() {
+        // No fields
+        ProfileWindowManager profileWindowManager;
+        try {
+            profileWindowManager = ProfileWindowManager.getInstance();
+            RecommendArguments expectedRecommendArguments = new RecommendArguments.Builder()
+                    .withCalories(profileWindowManager.extractCalories())
+                    .withDifficulty(profileWindowManager.extractDifficulty())
+                    .withDuration(profileWindowManager.extractDuration()).build();
+            assertParseSuccess(parser, " ", new RecommendCommand(expectedRecommendArguments));
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
     public void parse_invalidValue_failure() {
         // Invalid Calories < 1
         assertParseFailure(parser, " " + PREFIX_CALORIES + "0", Calories.MESSAGE_CALORIES_CONSTRAINTS);
@@ -104,14 +122,6 @@ public class RecommendCommandParserTest {
 
         // Invalid Duration for non-integer
         assertParseFailure(parser, " " + PREFIX_DURATION + "fivem", Duration.MESSAGE_DURATION_CONSTRAINTS);
-    }
-
-    @Test
-    public void parse_compulsoryFieldMissing_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, RecommendCommand.MESSAGE_USAGE);
-
-        // Missing Calories, Difficulty and Duration fields
-        assertParseFailure(parser, " ", expectedMessage);
     }
 
 }
