@@ -9,6 +9,7 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 import java.io.IOException;
 import java.util.Optional;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import seedu.address.logic.commands.RecommendCommand;
@@ -20,6 +21,13 @@ import seedu.address.model.workout.Duration;
 
 public class RecommendCommandParserTest {
     private RecommendCommandParser parser = new RecommendCommandParser();
+
+    ProfileWindowManager profileWindowManager;
+
+    @Before
+    public void setUpProfileWindowManager() throws IOException {
+        profileWindowManager = ProfileWindowManager.getInstance();
+    }
 
     @Test
     public void parse_optionalFieldsMissing_success() {
@@ -82,8 +90,6 @@ public class RecommendCommandParserTest {
     @Test
     public void parse_noFieldsPresent_success() throws IOException {
         // No fields
-        ProfileWindowManager profileWindowManager;
-        profileWindowManager = ProfileWindowManager.getInstance();
         RecommendArguments expectedRecommendArguments = new RecommendArguments.Builder()
                 .withCalories(profileWindowManager.extractCalories())
                 .withDifficulty(profileWindowManager.extractDifficulty())
