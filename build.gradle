@@ -247,6 +247,11 @@ task copyDummySearchPage(type: Copy) {
     into "${buildDir}/docs/html5"
 }
 
+task copyProfileWindow(type: Copy) {
+    from 'docs/ProfileWindow.html'
+    into 'src/main/resources/docs'
+}
+
 deployOfflineDocs.dependsOn asciidoctor
 processResources.dependsOn deployOfflineDocs
 
