@@ -1,8 +1,10 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GENDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HEIGHT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PREFERRED_DIFFICULTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WEIGHT;
 
@@ -22,13 +24,17 @@ public class ModifyCommand extends Command {
             + "[" + PREFIX_USERNAME + "USERNAME] "
             + "[" + PREFIX_HEIGHT + "HEIGHT] "
             + "[" + PREFIX_WEIGHT + "WEIGHT] "
-            + "[" + PREFIX_PREFERRED_DIFFICULTY + "PREFERRED_DIFFICULTY] \n"
+            + "[" + PREFIX_CALORIES + "CALORIES] "
+            + "[" + PREFIX_DIFFICULTY + "DIFFICULTY] "
+            + "[" + PREFIX_DURATION + "DURATION] \n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_GENDER + "Female "
-            + PREFIX_USERNAME + "Sarah "
+            + PREFIX_GENDER + "female "
+            + PREFIX_USERNAME + "sarah "
             + PREFIX_HEIGHT + "1.69 "
             + PREFIX_WEIGHT + "87.2 "
-            + PREFIX_PREFERRED_DIFFICULTY + "beginner";
+            + PREFIX_CALORIES + "150 "
+            + PREFIX_DIFFICULTY + "beginner "
+            + PREFIX_DURATION + "15m";
 
     public static final String MESSAGE_SUCCESS = "User profile has been modified! Please rerun the"
             + " MainApp to see the changes.";
@@ -37,18 +43,22 @@ public class ModifyCommand extends Command {
     private final String username;
     private final String height;
     private final String weight;
-    private final String preferredDifficulty;
+    private final String difficulty;
+    private final String duration;
+    private final String calories;
 
 
     // element.owntext() return element w/o <b>
-    public ModifyCommand(String gender, String username, String height, String weight, String preferredDifficulty) {
+    public ModifyCommand(String gender, String username, String height, String weight, String calories,
+                         String difficulty, String duration) {
 
         this.gender = gender;
         this.username = username;
         this.height = height;
         this.weight = weight;
-        this.preferredDifficulty = preferredDifficulty;
-
+        this.difficulty = difficulty;
+        this.duration = duration;
+        this.calories = calories;
     }
 
     @Override
@@ -72,7 +82,8 @@ public class ModifyCommand extends Command {
                 && username.equals(e.username)
                 && height.equals(e.height)
                 && weight.equals(e.weight)
-                && preferredDifficulty.equals(e.preferredDifficulty);
-
+                && difficulty.equals(e.difficulty)
+                && duration.equals(e.duration)
+                && calories.equals(e.calories);
     }
 }

@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Equipment {
 
     public static final String MESSAGE_EQUIPMENT_CONSTRAINTS =
-            "Equipment should only contain names separated by commas, and it should not be blank";
+            "Equipment should only contain names separated by commas, and it should not be blank.";
 
     /*
      * The first character of the address must not be a whitespace,

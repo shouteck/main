@@ -31,11 +31,11 @@ public class UniqueWorkoutList implements Iterable<Workout> {
 
     public List<Workout> getFilteredInternalList (RecommendArguments recommendArguments) {
         return internalList.stream()
-                .filter(!recommendArguments.isCaloriesNull() ? w -> w.getCalories().fullCalories
+                .filter(!recommendArguments.isCaloriesNull() ? w -> w.getCalories().toString()
                         .equals(recommendArguments.getCalories().toString()) : w -> w != null)
-                .filter(!recommendArguments.isDifficultyNull() ? w -> w.getDifficulty().fullDifficulty
+                .filter(!recommendArguments.isDifficultyNull() ? w -> w.getDifficulty().toString()
                         .equals(recommendArguments.getDifficulty().toString()) : w -> w != null)
-                .filter(!recommendArguments.isDurationNull() ? w -> w.getDuration().fullDuration
+                .filter(!recommendArguments.isDurationNull() ? w -> w.getDuration().toString()
                         .equals(recommendArguments.getDuration().toString()) : w -> w != null)
                 .collect(Collectors.toList());
     }
