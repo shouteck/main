@@ -22,7 +22,7 @@ import seedu.address.model.workout.Duration;
 public class RecommendCommandParserTest {
     private RecommendCommandParser parser = new RecommendCommandParser();
 
-    ProfileWindowManager profileWindowManager;
+    private ProfileWindowManager profileWindowManager;
 
     @Before
     public void setUpProfileWindowManager() throws IOException {
