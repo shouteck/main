@@ -155,15 +155,15 @@ public class ModelManager extends ComponentManager implements Model {
 
     //=========== Undo/Redo =================================================================================
 
-    @Override
-    public boolean canUndoAll() {
-        return canUndoWorkoutBook();
-    }
+    //@Override
+    //public boolean canUndoAll() {
+    //    return canUndoWorkoutBook();
+    //}
 
-    @Override
-    public boolean canRedoAll() {
-        return canRedoWorkoutBook();
-    }
+    //@Override
+    //public boolean canRedoAll() {
+    //    return canRedoWorkoutBook();
+    //}
 
     @Override
     public boolean canUndoWorkoutBook() {
@@ -187,37 +187,37 @@ public class ModelManager extends ComponentManager implements Model {
         indicateWorkoutBookChanged();
     }
 
-    @Override
-    public boolean canUndoTrackedDataList() {
-        return versionedWorkoutBook.canUndo();
-    }
+    //@Override
+    //public boolean canUndoTrackedDataList() {
+    //return versionedWorkoutBook.canUndo();
+    //}
 
-    @Override
-    public boolean canRedoTrackedDataList() {
-        return versionedWorkoutBook.canRedo();
-    }
+    //@Override
+    //public boolean canRedoTrackedDataList() {
+    //return versionedWorkoutBook.canRedo();
+    //}
 
-    @Override
-    public void undoTrackedDataList() {
-        versionedWorkoutBook.undo();
-        indicateWorkoutBookChanged();
-    }
+    //@Override
+    //public void undoTrackedDataList() {
+    //    versionedWorkoutBook.undo();
+    //   indicateWorkoutBookChanged();
+    //}
 
-    @Override
-    public void redoTrackedDataList() {
-        versionedWorkoutBook.redo();
-        indicateWorkoutBookChanged();
-    }
+    //@Override
+    //public void redoTrackedDataList() {
+    //    versionedWorkoutBook.redo();
+    //indicateWorkoutBookChanged();
+    //}
 
     @Override
     public void commitWorkoutBook() {
         versionedWorkoutBook.commit();
     }
 
-    @Override
-    public void commitTrackedDataList() {
-        versionedTrackedDataList.commit();
-    }
+    //@Override
+    //public void commitTrackedDataList() {
+    //    versionedTrackedDataList.commit();
+    //}
 
     @Override
     public boolean equals(Object obj) {
