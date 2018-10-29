@@ -15,12 +15,12 @@ import static seedu.address.commons.core.Messages.MESSAGE_VALID_USERNAME;
 import static seedu.address.commons.core.Messages.MESSAGE_VALID_WEIGHT;*/
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_GENDER;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_HEIGHT;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_PREFERRED_DIFFICULTY;
+//import static seedu.address.logic.commands.CommandTestUtil.INVALID_PREFERRED_DIFFICULTY;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_USERNAME;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_WEIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_GENDER;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HEIGHT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PREFERRED_DIFFICULTY;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_PREFERRED_DIFFICULTY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_USERNAME;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WEIGHT;
 //import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -43,7 +43,7 @@ import seedu.address.model.ModelManager;
 
 
 public class ModifyCommandTest {
-    public static final String USERPROFILE_FILE_PATH = "/docs/ProfileWindow.html";
+    public static final String USERPROFILE_FILE_PATH = "/htmlFiles/ProfileWindow.html";
     public static final String MESSAGE_MODIFY_USERPROFILE_SUCCESS = "User profile has been modified! Please rerun the"
             + " MainApp to see the changes.";
 
@@ -65,20 +65,20 @@ public class ModifyCommandTest {
         Element divUsername = doc.getElementById("username");
         Element divHeight = doc.getElementById("height");
         Element divWeight = doc.getElementById("weight");
-        Element divPreferredDifficulty = doc.getElementById("preferred_difficulty");
+        //Element divPreferredDifficulty = doc.getElementById("preferred_difficulty");
 
         currentGender = divGender.ownText();
         currentUsername = divUsername.ownText();
         currentHeight = divHeight.ownText();
         currentWeight = divWeight.ownText();
-        currentPreferredDifficulty = divPreferredDifficulty.ownText();
+        //currentPreferredDifficulty = divPreferredDifficulty.ownText();
 
         //modify the content of profile window
         divGender.text(INVALID_GENDER);
         divHeight.text(INVALID_HEIGHT);
         divUsername.text(INVALID_USERNAME);
         divWeight.text(INVALID_WEIGHT);
-        divPreferredDifficulty.text(INVALID_PREFERRED_DIFFICULTY);
+        //divPreferredDifficulty.text(INVALID_PREFERRED_DIFFICULTY);
     }
 
     @Test
@@ -112,12 +112,12 @@ public class ModifyCommandTest {
         Element divUsername = doc.getElementById("username");
         Element divHeight = doc.getElementById("height");
         Element divWeight = doc.getElementById("weight");
-        Element divPreferredDifficulty = doc.getElementById("preferred_difficulty");
+        //Element divPreferredDifficulty = doc.getElementById("preferred_difficulty");
         divGender.text(VALID_GENDER);
         divHeight.text(VALID_HEIGHT);
         divWeight.text(VALID_WEIGHT);
         divUsername.text(VALID_USERNAME);
-        divPreferredDifficulty.text(VALID_PREFERRED_DIFFICULTY);
+        //divPreferredDifficulty.text(VALID_PREFERRED_DIFFICULTY);
 
         // same gender -> returns true
         assertTrue(divGender.ownText().equals(VALID_GENDER));
@@ -132,7 +132,7 @@ public class ModifyCommandTest {
         assertTrue(divUsername.ownText().equals(VALID_USERNAME));
 
         // same preferred difficulty -> returns true
-        assertTrue(divPreferredDifficulty.ownText().equals(VALID_PREFERRED_DIFFICULTY));
+        //assertTrue(divPreferredDifficulty.ownText().equals(VALID_PREFERRED_DIFFICULTY));
 
         // different gender -> returns false
         assertFalse(divGender.ownText().equals(INVALID_GENDER));
@@ -147,7 +147,7 @@ public class ModifyCommandTest {
         assertFalse(divUsername.ownText().equals(INVALID_USERNAME));
 
         // different preferred difficulty -> returns false
-        assertFalse(divPreferredDifficulty.ownText().equals(INVALID_PREFERRED_DIFFICULTY));
+        //assertFalse(divPreferredDifficulty.ownText().equals(INVALID_PREFERRED_DIFFICULTY));
 
         String expectedMessage = String.format(MESSAGE_MODIFY_USERPROFILE_SUCCESS);
         /*assertCommandSuccess(new ModifyCommand(VALID_GENDER, VALID_USERNAME, VALID_HEIGHT, VALID_WEIGHT,
@@ -186,11 +186,11 @@ public class ModifyCommandTest {
         Element divUsername = doc.getElementById("username");
         Element divHeight = doc.getElementById("height");
         Element divWeight = doc.getElementById("weight");
-        Element divPreferredDifficulty = doc.getElementById("preferred_difficulty");
+        //Element divPreferredDifficulty = doc.getElementById("preferred_difficulty");
         divGender.text(currentGender);
         divHeight.text(currentHeight);
         divUsername.text(currentUsername);
-        divPreferredDifficulty.text(currentPreferredDifficulty);
+        //divPreferredDifficulty.text(currentPreferredDifficulty);
         divWeight.text(currentWeight);
     }
 }
