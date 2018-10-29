@@ -15,6 +15,9 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Workout> PREDICATE_SHOW_ALL_WORKOUTS = unused -> true;
 
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Workout> PREDICATE_SHOW_ALL_PARAMETERS = unused -> true;
+
     /** Clears existing backing model and replaces with the provided new data. */
     void resetData(ReadOnlyWorkoutBook newData);
 
@@ -49,7 +52,6 @@ public interface Model {
      */
     void updateWorkout(Workout target, Workout editedWorkout);
 
-
     /** Returns an unmodifiable view of the filtered workout list */
     ObservableList<Workout> getFilteredWorkoutList();
 
@@ -59,15 +61,34 @@ public interface Model {
      */
     void updateFilteredWorkoutList(Predicate<Workout> predicate);
 
+    /** Returns an unmodifiable view of the filtered workout list */
+    ObservableList<Parameter> getFilteredTrackedDataList();
+
+    /**
+     * Updates the filter of the filtered workout list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredTrackedDataList(Predicate<Parameter> predicate);
+
     /**
      * Returns true if the model has previous states to restore.
      */
-    //boolean canUndoAll();
+    boolean canUndoModel();
 
     /**
      * Returns true if the model has undone states to restore.
      */
-    //boolean canRedoAll();
+    boolean canRedoModel();
+
+    /**
+     * Restores the model to its previous state.
+     */
+    void undoModel();
+
+    /**
+     * Restores the model to its previously undone state.
+     */
+    void redoModel();
 
     /**
      * Returns true if the model has previous workout book states to restore.
@@ -90,29 +111,39 @@ public interface Model {
     void redoWorkoutBook();
 
     /**
-     * Returns true if the model has previous workout book states to restore.
+     * Returns true if the model has previous tracked data list states to restore.
      */
-    //boolean canUndoTrackedDataList();
+    boolean canUndoTrackedDataList();
 
     /**
-     * Returns true if the model has undone workout book states to restore.
+     * Returns true if the model has undone tracked data list states to restore.
      */
-    //boolean canRedoTrackedDataList();
+    boolean canRedoTrackedDataList();
 
     /**
-     * Restores the model's workout book to its previous state.
+     * Restores the model's tracked data list to its previous state.
      */
-    //void undoTrackedDataList();
+    void undoTrackedDataList();
 
     /**
-     * Restores the model's workout book to its previously undone state.
+     * Restores the model's tracked data list to its previously undone state.
      */
-    //void redoTrackedDataList();
+    void redoTrackedDataList();
+
+    /**
+     * Saves the current model state for undo/redo.
+     */
+    void commitModel();
 
     /**
      * Saves the current workout book state for undo/redo.
      */
     void commitWorkoutBook();
+
+    /**
+     * Saves the current tracked data list state for undo/redo.
+     */
+    void commitTrackedDataList();
 
     /**
      * Sort the current workout book.
@@ -135,11 +166,6 @@ public interface Model {
      * Returns true if {@code parameter} exists in the tracked data list.
      */
     boolean hasParameter(Parameter parameter);
-
-    /**
-     * Saves the current tracked data list state for undo/redo.
-     */
-    //void commitTrackedDataList();
 
     /**
      * Returns the filtered internal list.
