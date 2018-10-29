@@ -87,9 +87,12 @@ public class TrackCommandParser implements Parser<TrackCommand> {
         } else if (prefix.equals(PREFIX_TAG)) {
             Tag tag = ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get());
             value = tag.tagName;
-        } else if (prefix.equals(PREFIX_REMARK)) {
-            Remark remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get());
-            value = remark.fullRemark;
+        }
+        else if (prefix.equals(PREFIX_REMARK)) {
+            throw new ParseException("Placeholder error message until Remark is fixed");
+            //to uncomment once remark is fixed
+            //Remark remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get());
+            //value = remark.fullRemark;
         }
 
         Parameter parameter = new Parameter(prefix, value);
