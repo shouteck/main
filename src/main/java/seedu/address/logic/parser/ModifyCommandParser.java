@@ -51,7 +51,6 @@ public class ModifyCommandParser {
                 PREFIX_GENDER, PREFIX_CALORIES, PREFIX_DURATION) || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ModifyCommand.MESSAGE_USAGE));
         }
-        //remove the first 6 char of the string
         ProfileWindowManager profileWindowManager;
         try {
             profileWindowManager = ProfileWindowManager.getInstance();

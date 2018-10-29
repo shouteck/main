@@ -150,6 +150,21 @@ public class ProfileWindowManager {
         weight = weight.replaceFirst("Weight : ", "");
         return weight;
     }
+    public String trimmedCalories(String calories) {
+        calories = calories.replaceFirst("calories : ","");
+        return calories;
+    }
+
+    public String trimmedDuration(String duration) {
+        duration = duration.replaceFirst("duration : ","");
+        duration = duration.replaceFirst("m","");
+        return duration;
+    }
+
+    public String trimmedDifficulty(String difficulty) {
+        difficulty = difficulty.replaceFirst("difficulty : ","");
+        return difficulty;
+    }
 
     public Optional<Calories> extractCalories() {
         return Optional.of(new Calories(calories.ownText().substring(10)));
@@ -173,6 +188,11 @@ public class ProfileWindowManager {
         double h = Double.parseDouble(extractHeight(height));
         double w = Double.parseDouble(extractWeight(weight));
         return w / (h * h);
+    }
+
+    public int convertStringIntoInt(String string) {
+        int integer = Integer.parseInt(string);
+        return integer;
     }
 
     /**
@@ -203,4 +223,29 @@ public class ProfileWindowManager {
         return username.matches(USERNAME_VALIDATION_REGEX);
     }
 
+    /**
+     * Returns true if the first difficulty is more difficult than the second
+     */
+    public boolean isMoreDifficult(String first, String second) {
+        if (first == "beginner") return false;
+        if ((first == "intermediate") && (second == "beginner")) return false;
+        if ((first == "advanced") && ((second == "beginner") || (second == "intermediate"))) return false;
+        return true;
+    }
+
+    /**
+     * Returns true if the first calories is higher or equal than the second
+     */
+    public boolean isHigherCalories(int first, int second) {
+        if(first>=second) return true;
+        else return false;
+    }
+
+    /**
+     * Returns true if the first duration is higher or equal than the second
+     */
+    public boolean isHigherDuration(int first, int second) {
+        if(first>=second) return true;
+        else return false;
+    }
 }
