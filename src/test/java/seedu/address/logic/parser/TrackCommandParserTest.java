@@ -9,7 +9,6 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 
 import org.junit.Test;
 
-import javafx.util.Pair;
 import seedu.address.logic.commands.TrackCommand;
 import seedu.address.model.workout.Parameter;
 
