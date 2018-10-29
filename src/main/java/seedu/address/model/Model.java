@@ -15,6 +15,9 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Workout> PREDICATE_SHOW_ALL_WORKOUTS = unused -> true;
 
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Workout> PREDICATE_SHOW_ALL_PARAMETERS = unused -> true;
+
     /** Clears existing backing model and replaces with the provided new data. */
     void resetData(ReadOnlyWorkoutBook newData);
 
@@ -49,7 +52,6 @@ public interface Model {
      */
     void updateWorkout(Workout target, Workout editedWorkout);
 
-
     /** Returns an unmodifiable view of the filtered workout list */
     ObservableList<Workout> getFilteredWorkoutList();
 
@@ -58,6 +60,15 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredWorkoutList(Predicate<Workout> predicate);
+
+    /** Returns an unmodifiable view of the filtered workout list */
+    ObservableList<Parameter> getFilteredTrackedDataList();
+
+    /**
+     * Updates the filter of the filtered workout list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredTrackedDataList(Predicate<Parameter> predicate);
 
     /**
      * Returns true if the model has previous states to restore.

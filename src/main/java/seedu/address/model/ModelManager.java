@@ -30,6 +30,7 @@ public class ModelManager extends ComponentManager implements Model {
     private final VersionedTrackedData versionedTrackedData;
     private final VersionedTrackedDataList versionedTrackedDataList;
     private final FilteredList<Workout> filteredWorkouts;
+    private final FilteredList<Parameter> filteredParameters;
 
     /**
      * Initializes a ModelManager with the given workoutBook and userPrefs.
@@ -42,6 +43,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         versionedTrackedData = new VersionedTrackedData(new TrackedData());
         versionedTrackedDataList = new VersionedTrackedDataList(trackedDataList);
+        filteredParameters = new FilteredList<>(versionedTrackedDataList.getTrackedDataList());
         versionedWorkoutBook = new VersionedWorkoutBook(workoutBook);
         filteredWorkouts = new FilteredList<>(versionedWorkoutBook.getWorkoutList());
     }
@@ -151,6 +153,23 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredWorkoutList(Predicate<Workout> predicate) {
         requireNonNull(predicate);
         filteredWorkouts.setPredicate(predicate);
+    }
+
+    //=========== Filtered Tracked Data List Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Parameter} backed by the internal list of
+     * {@code versionedTrackedDataList}
+     */
+    @Override
+    public ObservableList<Parameter> getFilteredTrackedDataList() {
+        return FXCollections.unmodifiableObservableList(filteredParameters);
+    }
+
+    @Override
+    public void updateFilteredTrackedDataList(Predicate<Parameter> predicate) {
+        requireNonNull(predicate);
+        filteredParameters.setPredicate(predicate);
     }
 
     //=========== Undo/Redo =================================================================================
