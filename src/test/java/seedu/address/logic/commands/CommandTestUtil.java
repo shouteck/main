@@ -179,7 +179,7 @@ public class CommandTestUtil {
     public static void deleteFirstWorkout(Model model) {
         Workout firstWorkout = model.getFilteredWorkoutList().get(0);
         model.deleteWorkout(firstWorkout);
-        model.commitWorkoutBook();
+        model.commitModel();
     }
 
 }
