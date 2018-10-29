@@ -62,7 +62,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public ReadOnlyTrackedDataList getTrackedDataList(){
+    public ReadOnlyTrackedDataList getTrackedDataList() {
         return versionedTrackedDataList;
     }
 
