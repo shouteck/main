@@ -17,7 +17,6 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.TrackCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.workout.Parameter;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
@@ -26,7 +25,7 @@ import seedu.address.model.workout.Equipment;
 import seedu.address.model.workout.Instruction;
 import seedu.address.model.workout.Muscle;
 import seedu.address.model.workout.Name;
-import seedu.address.model.workout.Remark;
+import seedu.address.model.workout.Parameter;
 import seedu.address.model.workout.Type;
 
 /**
@@ -87,8 +86,7 @@ public class TrackCommandParser implements Parser<TrackCommand> {
         } else if (prefix.equals(PREFIX_TAG)) {
             Tag tag = ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get());
             value = tag.tagName;
-        }
-        else if (prefix.equals(PREFIX_REMARK)) {
+        } else if (prefix.equals(PREFIX_REMARK)) {
             throw new ParseException("Placeholder error message until Remark is fixed");
             //to uncomment once remark is fixed
             //Remark remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get());
