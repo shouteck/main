@@ -18,8 +18,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import javafx.util.Pair;
-
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
@@ -37,6 +35,7 @@ import seedu.address.logic.commands.TrackCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.workout.NameContainsKeywordsPredicate;
+import seedu.address.model.workout.Parameter;
 import seedu.address.model.workout.Workout;
 import seedu.address.testutil.EditWorkoutDescriptorBuilder;
 import seedu.address.testutil.WorkoutBuilder;
@@ -134,7 +133,7 @@ public class WorkoutBookParserTest {
         final String subcommand = "start";
         TrackCommand command = (TrackCommand) parser.parseCommand(TrackCommand.COMMAND_WORD + " start "
                 + MUSCLE_DESC_BOB_WORKOUT);
-        assertEquals(new TrackCommand(subcommand, new Pair<>(PREFIX_MUSCLE, VALID_MUSCLE_BOB_WORKOUT)), command);
+        assertEquals(new TrackCommand(subcommand, new Parameter(PREFIX_MUSCLE, VALID_MUSCLE_BOB_WORKOUT)), command);
     }
 
     @Test

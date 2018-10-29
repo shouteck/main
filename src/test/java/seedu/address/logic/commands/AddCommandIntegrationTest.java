@@ -10,6 +10,7 @@ import org.junit.Test;
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.workout.Workout;
 import seedu.address.testutil.WorkoutBuilder;
@@ -24,14 +25,14 @@ public class AddCommandIntegrationTest {
 
     @Before
     public void setUp() {
-        model = new ModelManager(getTypicalWorkoutBook(), new UserPrefs());
+        model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new UserPrefs());
     }
 
     @Test
     public void execute_newWorkout_success() {
         Workout validWorkout = new WorkoutBuilder().build();
 
-        Model expectedModel = new ModelManager(model.getWorkoutBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(), new UserPrefs());
         expectedModel.addWorkout(validWorkout);
         expectedModel.commitWorkoutBook();
 

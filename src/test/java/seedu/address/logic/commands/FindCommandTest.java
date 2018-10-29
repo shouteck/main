@@ -18,6 +18,7 @@ import org.junit.Test;
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.workout.NameContainsKeywordsPredicate;
 
@@ -25,8 +26,8 @@ import seedu.address.model.workout.NameContainsKeywordsPredicate;
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
  */
 public class FindCommandTest {
-    private Model model = new ModelManager(getTypicalWorkoutBook(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalWorkoutBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new UserPrefs());
+    private Model expectedModel = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import javafx.util.Pair;
+import seedu.address.model.workout.Parameter;
 
 /**
  * Stores mapping of prefixes to their respective arguments.
@@ -63,10 +63,10 @@ public class ArgumentMultimap {
     /**
      * Returns the only argument in the map.
      */
-    public Pair<Prefix, String> getTheOnlyArg() {
+    public Parameter getTheOnlyArg() {
         for (Map.Entry<Prefix, List<String>> entry : argMultimap.entrySet()) {
             if (!entry.getKey().getPrefix().equals("")) {
-                return new Pair<>(entry.getKey(), entry.getValue().get(0));
+                return new Parameter(entry.getKey(), entry.getValue().get(0));
             }
         }
         return null;
