@@ -19,8 +19,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_USERNAME = new Prefix("username/");
     public static final Prefix PREFIX_HEIGHT = new Prefix("height/");
     public static final Prefix PREFIX_WEIGHT = new Prefix("weight/");
-    public static final Prefix PREFIX_PREFERRED_DIFFICULTY = new Prefix("preferred_difficulty/");
     public static final Prefix PREFIX_REMARK = new Prefix("r/");
-
 
 }

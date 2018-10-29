@@ -80,29 +80,35 @@ public class RecommendCommandTest {
     }
 
     @Test
-    public void execute_workoutNotFound_throwsCommandException() throws Exception {
+    public void execute_workoutNotFoundCalories_throwsCommandException() throws Exception {
         // Valid Calories
-        Optional<Calories> calories = Optional.of(new Calories("200"));
+        Optional<Calories> calories = Optional.of(new Calories("1000"));
         RecommendArguments recommendArguments = new RecommendArguments.Builder().withCalories(calories).build();
         RecommendCommand recommendCommand = new RecommendCommand(recommendArguments);
 
         thrown.expect(CommandException.class);
         thrown.expectMessage(recommendCommand.MESSAGE_NO_SUCH_WORKOUT);
         recommendCommand.execute(modelStub, commandHistory);
+    }
 
+    @Test
+    public void execute_workoutNotFoundDifficulty_throwsCommandException() throws Exception {
         // Valid Difficulty
-        Optional<Difficulty> difficulty = Optional.of(new Difficulty("beginner"));
-        recommendArguments = new RecommendArguments.Builder().withDifficulty(difficulty).build();
-        recommendCommand = new RecommendCommand(recommendArguments);
+        Optional<Difficulty> difficulty = Optional.of(new Difficulty("intermediate"));
+        RecommendArguments recommendArguments = new RecommendArguments.Builder().withDifficulty(difficulty).build();
+        RecommendCommand recommendCommand = new RecommendCommand(recommendArguments);
 
         thrown.expect(CommandException.class);
         thrown.expectMessage(recommendCommand.MESSAGE_NO_SUCH_WORKOUT);
         recommendCommand.execute(modelStub, commandHistory);
+    }
 
+    @Test
+    public void execute_workoutNotFoundDuration_throwsCommandException() throws Exception {
         // Valid Duration
-        Optional<Duration> duration = Optional.of(new Duration("10m"));
-        recommendArguments = new RecommendArguments.Builder().withDuration(duration).build();
-        recommendCommand = new RecommendCommand(recommendArguments);
+        Optional<Duration> duration = Optional.of(new Duration("1000m"));
+        RecommendArguments recommendArguments = new RecommendArguments.Builder().withDuration(duration).build();
+        RecommendCommand recommendCommand = new RecommendCommand(recommendArguments);
 
         thrown.expect(CommandException.class);
         thrown.expectMessage(recommendCommand.MESSAGE_NO_SUCH_WORKOUT);

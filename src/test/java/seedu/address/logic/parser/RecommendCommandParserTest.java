@@ -1,6 +1,5 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
@@ -77,7 +76,18 @@ public class RecommendCommandParserTest {
                         + " " + PREFIX_DURATION + "750m",
                 new RecommendCommand(expectedRecommendArguments));
     }
-
+    /*
+    @Test
+    public void parse_noFieldsPresent_success() throws IOException {
+        // No fields
+        ProfileWindowManager profileWindowManager = ProfileWindowManager.getInstance();
+        RecommendArguments expectedRecommendArguments = new RecommendArguments.Builder()
+                .withCalories(profileWindowManager.extractCalories())
+                .withDifficulty(profileWindowManager.extractDifficulty())
+                .withDuration(profileWindowManager.extractDuration()).build();
+        assertParseSuccess(parser, " ", new RecommendCommand(expectedRecommendArguments));
+    }
+    */
     @Test
     public void parse_invalidValue_failure() {
         // Invalid Calories < 1
@@ -104,14 +114,6 @@ public class RecommendCommandParserTest {
 
         // Invalid Duration for non-integer
         assertParseFailure(parser, " " + PREFIX_DURATION + "fivem", Duration.MESSAGE_DURATION_CONSTRAINTS);
-    }
-
-    @Test
-    public void parse_compulsoryFieldMissing_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, RecommendCommand.MESSAGE_USAGE);
-
-        // Missing Calories, Difficulty and Duration fields
-        assertParseFailure(parser, " ", expectedMessage);
     }
 
 }
