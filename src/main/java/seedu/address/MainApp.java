@@ -22,15 +22,19 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.ReadOnlyTrackedDataList;
 import seedu.address.model.ReadOnlyWorkoutBook;
+import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.WorkoutBook;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
+import seedu.address.storage.TrackedDataListStorage;
 import seedu.address.storage.UserPrefsStorage;
 import seedu.address.storage.WorkoutBookStorage;
+import seedu.address.storage.XmlTrackedDataListStorage;
 import seedu.address.storage.XmlWorkoutBookStorage;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
@@ -63,7 +67,9 @@ public class MainApp extends Application {
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         userPrefs = initPrefs(userPrefsStorage);
         WorkoutBookStorage workoutBookStorage = new XmlWorkoutBookStorage(userPrefs.getWorkoutBookFilePath());
-        storage = new StorageManager(workoutBookStorage, userPrefsStorage);
+        TrackedDataListStorage trackedDataListStorage =
+                new XmlTrackedDataListStorage(userPrefs.getTrackedDataListFilePath());
+        storage = new StorageManager(workoutBookStorage, trackedDataListStorage, userPrefsStorage);
 
         initLogging(config);
 
@@ -83,7 +89,9 @@ public class MainApp extends Application {
      */
     private Model initModelManager(Storage storage, UserPrefs userPrefs) {
         Optional<ReadOnlyWorkoutBook> workoutBookOptional;
+        Optional<ReadOnlyTrackedDataList> trackedDataListOptional;
         ReadOnlyWorkoutBook initialData;
+        ReadOnlyTrackedDataList initialTrackedDataList;
         try {
             workoutBookOptional = storage.readWorkoutBook();
             if (!workoutBookOptional.isPresent()) {
@@ -98,7 +106,21 @@ public class MainApp extends Application {
             initialData = new WorkoutBook();
         }
 
-        return new ModelManager(initialData, userPrefs);
+        try {
+            trackedDataListOptional = storage.readTrackedDataList();
+            if (!trackedDataListOptional.isPresent()) {
+                logger.info("Data file not found. Will be starting with a empty TrackedDataList");
+            }
+            initialTrackedDataList = trackedDataListOptional.orElseGet(SampleDataUtil::getEmptyTrackedDataList);
+        } catch (DataConversionException e) {
+            logger.warning("Data file not in the correct format. Will be starting with an empty TrackedDataList");
+            initialTrackedDataList = new TrackedDataList();
+        } catch (IOException e) {
+            logger.warning("Problem while reading from the file. Will be starting with an empty TrackedDataList");
+            initialTrackedDataList = new TrackedDataList();
+        }
+
+        return new ModelManager(initialData, initialTrackedDataList, userPrefs);
     }
 
     private void initLogging(Config config) {

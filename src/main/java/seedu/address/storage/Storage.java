@@ -4,16 +4,18 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
 
+import seedu.address.commons.events.model.TrackedDataListChangedEvent;
 import seedu.address.commons.events.model.WorkoutBookChangedEvent;
 import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 import seedu.address.commons.exceptions.DataConversionException;
+import seedu.address.model.ReadOnlyTrackedDataList;
 import seedu.address.model.ReadOnlyWorkoutBook;
 import seedu.address.model.UserPrefs;
 
 /**
  * API of the Storage component
  */
-public interface Storage extends WorkoutBookStorage, UserPrefsStorage {
+public interface Storage extends WorkoutBookStorage, UserPrefsStorage, TrackedDataListStorage {
 
     @Override
     Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;
@@ -30,10 +32,23 @@ public interface Storage extends WorkoutBookStorage, UserPrefsStorage {
     @Override
     void saveWorkoutBook(ReadOnlyWorkoutBook workoutBook) throws IOException;
 
+    @Override
+    Optional<ReadOnlyTrackedDataList> readTrackedDataList() throws DataConversionException, IOException;
+
+    @Override
+    void saveTrackedDataList(ReadOnlyTrackedDataList trackedData) throws IOException;
+
     /**
      * Saves the current version of the Workout Book to the hard disk.
      *   Creates the data file if it is missing.
      * Raises {@link DataSavingExceptionEvent} if there was an error during saving.
      */
     void handleWorkoutBookChangedEvent(WorkoutBookChangedEvent abce);
+
+    /**
+     * Saves the current version of the tracked data to the hard disk.
+     *   Creates the data file(s) if it is missing.
+     * Raises {@link DataSavingExceptionEvent} if there was an error during saving.
+     */
+    void handleTrackedDataListChangedEvent(TrackedDataListChangedEvent trackedDataListChanged);
 }

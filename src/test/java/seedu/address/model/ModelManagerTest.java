@@ -49,11 +49,12 @@ public class ModelManagerTest {
         WorkoutBook workoutBook = new WorkoutBookBuilder().withWorkout(ALICE_WORKOUT).withWorkout(BENSON_WORKOUT)
                 .build();
         WorkoutBook differentWorkoutBook = new WorkoutBook();
+        TrackedDataList trackedDataList = new TrackedDataList();
         UserPrefs userPrefs = new UserPrefs();
 
         // same values -> returns true
-        modelManager = new ModelManager(workoutBook, userPrefs);
-        ModelManager modelManagerCopy = new ModelManager(workoutBook, userPrefs);
+        modelManager = new ModelManager(workoutBook, trackedDataList, userPrefs);
+        ModelManager modelManagerCopy = new ModelManager(workoutBook, trackedDataList, userPrefs);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -66,7 +67,7 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(5));
 
         // different workoutBook -> returns false
-        assertFalse(modelManager.equals(new ModelManager(differentWorkoutBook, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(differentWorkoutBook, trackedDataList, userPrefs)));
 
         /* different filteredList -> returns false
         String[] keywords = ALICE_WORKOUT.getName().fullName.replace("workout","").split("\\s+");
@@ -80,6 +81,6 @@ public class ModelManagerTest {
         // different userPrefs -> returns true
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setWorkoutBookFilePath(Paths.get("differentFilePath"));
-        assertTrue(modelManager.equals(new ModelManager(workoutBook, differentUserPrefs)));
+        assertTrue(modelManager.equals(new ModelManager(workoutBook, trackedDataList, differentUserPrefs)));
     }
 }

@@ -11,12 +11,14 @@ import org.junit.Test;
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 
 public class UndoCommandTest {
 
-    private final Model model = new ModelManager(getTypicalWorkoutBook(), new UserPrefs());
-    private final Model expectedModel = new ModelManager(getTypicalWorkoutBook(), new UserPrefs());
+    private final Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new UserPrefs());
+    private final Model expectedModel = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(),
+            new UserPrefs());
     private final CommandHistory commandHistory = new CommandHistory();
 
     @Before

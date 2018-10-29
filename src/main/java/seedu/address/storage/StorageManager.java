@@ -9,25 +9,30 @@ import com.google.common.eventbus.Subscribe;
 
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.events.model.TrackedDataListChangedEvent;
 import seedu.address.commons.events.model.WorkoutBookChangedEvent;
 import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 import seedu.address.commons.exceptions.DataConversionException;
+import seedu.address.model.ReadOnlyTrackedDataList;
 import seedu.address.model.ReadOnlyWorkoutBook;
 import seedu.address.model.UserPrefs;
 
 /**
- * Manages storage of WorkoutBook data in local storage.
+ * Manages storage of WorkoutBook data and Tracked Data in local storage.
  */
 public class StorageManager extends ComponentManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private WorkoutBookStorage workoutBookStorage;
+    private TrackedDataListStorage trackedDataListStorage;
     private UserPrefsStorage userPrefsStorage;
 
 
-    public StorageManager(WorkoutBookStorage workoutBookStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageManager(WorkoutBookStorage workoutBookStorage, TrackedDataListStorage trackedDataListStorage,
+                          UserPrefsStorage userPrefsStorage) {
         super();
         this.workoutBookStorage = workoutBookStorage;
+        this.trackedDataListStorage = trackedDataListStorage;
         this.userPrefsStorage = userPrefsStorage;
     }
 
@@ -90,4 +95,45 @@ public class StorageManager extends ComponentManager implements Storage {
         }
     }
 
+    // ================ TrackedDataList methods ==============================
+
+    @Override
+    public Path getTrackedDataListFilePath() {
+        return trackedDataListStorage.getTrackedDataListFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlyTrackedDataList> readTrackedDataList() throws DataConversionException, IOException {
+        return readTrackedDataList(trackedDataListStorage.getTrackedDataListFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlyTrackedDataList> readTrackedDataList(Path filePath) throws DataConversionException,
+            IOException {
+        logger.fine("Attempting to read data from file: " + filePath);
+        return trackedDataListStorage.readTrackedDataList(filePath);
+    }
+
+    @Override
+    public void saveTrackedDataList(ReadOnlyTrackedDataList trackedDataList) throws IOException {
+        saveTrackedDataList(trackedDataList, trackedDataListStorage.getTrackedDataListFilePath());
+    }
+
+    @Override
+    public void saveTrackedDataList(ReadOnlyTrackedDataList trackedDataList, Path filePath) throws IOException {
+        logger.fine("Attempting to write to data file: " + filePath);
+        trackedDataListStorage.saveTrackedDataList(trackedDataList, filePath);
+    }
+
+    @Override
+    @Subscribe
+    public void handleTrackedDataListChangedEvent(TrackedDataListChangedEvent trackedDataListChanged) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(trackedDataListChanged,
+                "Tracked data list changed, saving to file"));
+        try {
+            saveTrackedDataList(trackedDataListChanged.data);
+        } catch (IOException e) {
+            raise(new DataSavingExceptionEvent(e));
+        }
+    }
 }

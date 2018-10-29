@@ -14,10 +14,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 
 import java.util.stream.Stream;
 
-import javafx.util.Pair;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.TrackCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.workout.Parameter;
 
 /**
  * Parses input arguments and creates a new TrackCommand object
@@ -58,7 +58,7 @@ public class TrackCommandParser implements Parser<TrackCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, TrackCommand.MESSAGE_USAGE), ive);
         }
 
-        Pair<Prefix, String> parameter = argMultimap.getTheOnlyArg();
+        Parameter parameter = argMultimap.getTheOnlyArg();
 
         return new TrackCommand(subcommand, parameter);
     }

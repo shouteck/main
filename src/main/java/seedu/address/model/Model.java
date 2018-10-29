@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 
+import seedu.address.model.workout.Parameter;
 import seedu.address.model.workout.Workout;
 
 /**
@@ -19,6 +20,9 @@ public interface Model {
 
     /** Returns the WorkoutBook */
     ReadOnlyWorkoutBook getWorkoutBook();
+
+    /** Returns the TrackedDataList */
+    ReadOnlyTrackedDataList getTrackedDataList();
 
     /**
      * Returns true if a workout with the same identity as {@code workout} exists in the workout book.
@@ -56,6 +60,16 @@ public interface Model {
     void updateFilteredWorkoutList(Predicate<Workout> predicate);
 
     /**
+     * Returns true if the model has previous states to restore.
+     */
+    //boolean canUndoAll();
+
+    /**
+     * Returns true if the model has undone states to restore.
+     */
+    //boolean canRedoAll();
+
+    /**
      * Returns true if the model has previous workout book states to restore.
      */
     boolean canUndoWorkoutBook();
@@ -76,6 +90,26 @@ public interface Model {
     void redoWorkoutBook();
 
     /**
+     * Returns true if the model has previous workout book states to restore.
+     */
+    //boolean canUndoTrackedDataList();
+
+    /**
+     * Returns true if the model has undone workout book states to restore.
+     */
+    //boolean canRedoTrackedDataList();
+
+    /**
+     * Restores the model's workout book to its previous state.
+     */
+    //void undoTrackedDataList();
+
+    /**
+     * Restores the model's workout book to its previously undone state.
+     */
+    //void redoTrackedDataList();
+
+    /**
      * Saves the current workout book state for undo/redo.
      */
     void commitWorkoutBook();
@@ -86,8 +120,29 @@ public interface Model {
     void sortFilteredWorkoutList();
 
     /**
+     * Adds the given parameter to the tracked data list.
+     * The parameter must not already exist in the tracked data list.
+     */
+    void addDataToTrack(Parameter parameter);
+
+    /**
+     * Deletes the given parameter.
+     * The parameter must exist in the tracked data list.
+     */
+    void removeDataFromTrack(Parameter parameter);
+
+    /**
+     * Returns true if {@code parameter} exists in the tracked data list.
+     */
+    boolean hasParameter(Parameter parameter);
+
+    /**
+     * Saves the current tracked data list state for undo/redo.
+     */
+    //void commitTrackedDataList();
+
+    /**
      * Returns the filtered internal list.
      */
     List<Workout> getFilteredInternalList(RecommendArguments recommendArguments);
-
 }
