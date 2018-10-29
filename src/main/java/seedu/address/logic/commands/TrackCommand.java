@@ -34,6 +34,7 @@ public class TrackCommand extends Command {
     private final Parameter parameter;
 
     /**
+     * @param subcommand to indicate starting/stopping of tracking
      * @param parameter to be tracked
      */
     public TrackCommand(String subcommand, Parameter parameter) {
@@ -43,10 +44,6 @@ public class TrackCommand extends Command {
         this.parameter = parameter;
     }
 
-    /**
-     *
-     * WIP
-     */
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
