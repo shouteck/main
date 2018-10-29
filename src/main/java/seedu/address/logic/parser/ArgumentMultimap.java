@@ -61,12 +61,12 @@ public class ArgumentMultimap {
     }
 
     /**
-     * Returns the only argument in the map.
+     * Returns the only Prefix in the map.
      */
-    public Parameter getTheOnlyArg() {
+    public Prefix getTheOnlyPrefix() {
         for (Map.Entry<Prefix, List<String>> entry : argMultimap.entrySet()) {
             if (!entry.getKey().getPrefix().equals("")) {
-                return new Parameter(entry.getKey(), entry.getValue().get(0));
+                return entry.getKey();
             }
         }
         return null;

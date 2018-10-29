@@ -204,10 +204,10 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String subcommand} into a {@code instruction}.
+     * Parses a {@code String subcommand}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code instruction} is invalid.
+     * @throws ParseException if the given {@code subcommand} is invalid.
      */
     public static String parseSubcommand(String subcommand) throws ParseException {
         requireNonNull(subcommand);

@@ -17,9 +17,9 @@ public class TrackCommand extends Command {
     public static final String COMMAND_WORD = "track";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": allows the user to track specific parameters listed in the command, for any new workouts that are"
+            + ": allows the user to track specific parameters listed in the command, for any new workouts that are "
             + "added after this command is entered.\n"
-            + "Parameters: subcommand (parameter prefix)/parameter\n"
+            + "Parameters: SUBCOMMAND PREFIX/VALUE\n"
             + "Example: " + COMMAND_WORD + " start muscle/bicep";
 
     public static final String MESSAGE_START_SUCCESS = "Now tracking %1$s%2$s";
