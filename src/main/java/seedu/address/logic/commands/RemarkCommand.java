@@ -62,7 +62,7 @@ public class RemarkCommand extends Command {
 
         model.updateWorkout(workoutToRemark, remarkedWorkout);
         model.updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
-        model.commitWorkoutBook();
+        model.commitModel();
         return new CommandResult(String.format(MESSAGE_REMARK_WORKOUT_SUCCESS, remarkedWorkout));
     }
 

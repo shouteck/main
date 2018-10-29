@@ -22,11 +22,11 @@ public class UndoCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
 
-        if (!model.canUndoWorkoutBook()) {
+        if (!model.canUndoModel()) {
             throw new CommandException(MESSAGE_FAILURE);
         }
 
-        model.undoWorkoutBook();
+        model.undoModel();
         model.updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
         return new CommandResult(MESSAGE_SUCCESS);
     }

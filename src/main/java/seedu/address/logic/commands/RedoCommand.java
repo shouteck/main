@@ -22,11 +22,11 @@ public class RedoCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
 
-        if (!model.canRedoWorkoutBook()) {
+        if (!model.canRedoModel()) {
             throw new CommandException(MESSAGE_FAILURE);
         }
 
-        model.redoWorkoutBook();
+        model.redoModel();
         model.updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
         return new CommandResult(MESSAGE_SUCCESS);
     }

@@ -56,12 +56,14 @@ public class TrackCommand extends Command {
                 throw new CommandException(MESSAGE_DUPLICATE_PARAMETER);
             }
             model.addDataToTrack(parameter);
+            model.commitModel();
             return new CommandResult(String.format(MESSAGE_START_SUCCESS, parameter.getPrefix(), parameter.getValue()));
         } else if (subcommand.equals("stop")) {
             if (!model.hasParameter(parameter)) {
                 throw new CommandException(MESSAGE_MISSING_PARAMETER);
             }
             model.removeDataFromTrack(parameter);
+            model.commitModel();
             return new CommandResult(String.format(MESSAGE_STOP_SUCCESS, parameter.getPrefix(), parameter.getValue()));
         }
         return null;

@@ -42,7 +42,7 @@ public class DeleteCommand extends Command {
 
         Workout workoutToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deleteWorkout(workoutToDelete);
-        model.commitWorkoutBook();
+        model.commitModel();
         return new CommandResult(String.format(MESSAGE_DELETE_WORKOUT_SUCCESS, workoutToDelete));
     }
 

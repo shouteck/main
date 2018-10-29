@@ -180,6 +180,26 @@ public class RecommendCommandTest {
         }
 
         @Override
+        public boolean canUndoModel() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean canRedoModel() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void undoModel() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void redoModel() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean canUndoWorkoutBook() {
             throw new AssertionError("This method should not be called.");
         }
@@ -200,7 +220,37 @@ public class RecommendCommandTest {
         }
 
         @Override
+        public boolean canUndoTrackedDataList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean canRedoTrackedDataList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void undoTrackedDataList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void redoTrackedDataList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void commitModel() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void commitWorkoutBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void commitTrackedDataList() {
             throw new AssertionError("This method should not be called.");
         }
 
