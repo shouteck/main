@@ -24,7 +24,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_PREFERRED_DIFFI
 import static seedu.address.logic.commands.CommandTestUtil.VALID_USERNAME;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WEIGHT;
 //import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+//import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 
 import java.io.File;
 import java.io.IOException;
@@ -105,7 +105,7 @@ public class ModifyCommandTest {
     @Test
     public void execute_allField_success() throws IOException {
         String fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString().substring(6);
-        String Name = "C:/Users/SJ/IdeaProjects/addressbook-level4/docs/ProfileWindow.html";
+        //String name = "C:/Users/SJ/IdeaProjects/addressbook-level4/docs/ProfileWindow.html";
         //System.out.println(fileName);
         Document doc = Jsoup.parse(new File(fileName), "UTF-8");
         Element divGender = doc.getElementById("gender");
