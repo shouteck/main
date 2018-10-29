@@ -49,8 +49,8 @@ public class CurrentCommand extends Command {
     public static final String MESSAGE_MORE_DIFFICULT = "This workout is more difficult than your indicated workout "
             + "difficulty.\n";
     public static final String MESSAGE_HIGHER_CALORIES = "This workout requires more calories to be burnt than your "
-            + "indicated calories.\n";
-    public static final String MESSAGE_HIGHER_DURATION = "This workout will take longer than your indicated duration."
+            + "preferred calories.\n";
+    public static final String MESSAGE_HIGHER_DURATION = "This workout will take longer than your preferred duration."
             + "\n";
     public static final String MESSAGE_CONTINUE = "Do you still want to make this workout current?";
 
@@ -127,25 +127,27 @@ public class CurrentCommand extends Command {
             userDuration = profileWindowManager.convertStringIntoInt(duration);
             if (profileWindowManager.isMoreDifficult(userDifficulty, updatedDifficulty.toString())) {
                 int reply = JOptionPane.showConfirmDialog(null, MESSAGE_MORE_DIFFICULT
-                        + MESSAGE_CONTINUE, "Yes", JOptionPane.YES_NO_OPTION);
+                        + MESSAGE_CONTINUE, "Making this workout current", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.NO_OPTION) {
                     success = false;
                     return new Workout(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,
                             updatedMuscle, updatedCalories, updatedInstruction, originalTags, null);
                 }
             }
-            if (profileWindowManager.isHigherCalories(userCalories, updatedCalories.hashCode())) {
+            if (profileWindowManager.isHigherCalories(profileWindowManager.convertStringIntoInt(profileWindowManager
+                    .trimmedCalories(updatedCalories.toString())), userCalories )) {
                 int reply = JOptionPane.showConfirmDialog(null, MESSAGE_HIGHER_CALORIES
-                        + MESSAGE_CONTINUE, "Yes", JOptionPane.YES_NO_OPTION);
+                        + MESSAGE_CONTINUE, "Making this workout current", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.NO_OPTION) {
                     success = false;
                     return new Workout(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,
                             updatedMuscle, updatedCalories, updatedInstruction, originalTags, null);
                 }
             }
-            if (profileWindowManager.isHigherDuration(userDuration, updatedDuration.hashCode())) {
+            if (profileWindowManager.isHigherDuration(profileWindowManager.convertStringIntoInt(profileWindowManager
+                    .trimmedDuration(updatedDuration.toString())), userDuration)) {
                 int reply = JOptionPane.showConfirmDialog(null, MESSAGE_HIGHER_DURATION
-                        + MESSAGE_CONTINUE, "Yes", JOptionPane.YES_NO_OPTION);
+                        + MESSAGE_CONTINUE, "Making this workout current", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.NO_OPTION) {
                     success = false;
                     return new Workout(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,

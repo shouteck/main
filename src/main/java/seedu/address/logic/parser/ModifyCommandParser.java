@@ -74,7 +74,7 @@ public class ModifyCommandParser {
                 if (!profileWindowManager.isValidGender(gender)) {
                     throw new ParseException(String.format(MESSAGE_INVALID_GENDER, MESSAGE_VALID_GENDER));
                 }
-                profileWindowManager.setGender("Gender : " + gender);
+                profileWindowManager.setGender("Gender: " + gender);
                 newGender = gender;
             }
             if (argMultimap.getValue(PREFIX_USERNAME).isPresent()) {
@@ -90,7 +90,7 @@ public class ModifyCommandParser {
                 if (!profileWindowManager.isValidHeight(height)) {
                     throw new ParseException(String.format(MESSAGE_INVALID_HEIGHT, MESSAGE_VALID_HEIGHT));
                 }
-                profileWindowManager.setHeight("Height : " + height + "m");
+                profileWindowManager.setHeight("Height: " + height + "m");
                 newHeight = height;
             }
             if (argMultimap.getValue(PREFIX_WEIGHT).isPresent()) {
@@ -98,7 +98,7 @@ public class ModifyCommandParser {
                 if (!profileWindowManager.isValidWeight(weight)) {
                     throw new ParseException(String.format(MESSAGE_INVALID_WEIGHT, MESSAGE_VALID_WEIGHT));
                 }
-                profileWindowManager.setWeight("Weight : " + weight + "kg");
+                profileWindowManager.setWeight("Weight: " + weight + "kg");
                 newWeight = weight;
             }
             if (argMultimap.getValue(PREFIX_DIFFICULTY).isPresent()) {

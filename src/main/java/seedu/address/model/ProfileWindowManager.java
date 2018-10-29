@@ -140,14 +140,14 @@ public class ProfileWindowManager {
     }
 
     private String extractHeight(String height) {
-        height = height.replaceFirst("Height : ", "");
-        height = height.replace("m", "");
+        height = height.replaceFirst("Height: ", "");
+        height = height.replaceFirst("m", "");
         return height;
     }
 
     private String extractWeight(String weight) {
         weight = weight.replaceFirst("kg", "");
-        weight = weight.replaceFirst("Weight : ", "");
+        weight = weight.replaceFirst("Weight: ", "");
         return weight;
     }
 
@@ -155,7 +155,7 @@ public class ProfileWindowManager {
      * Trims the string calories
      */
     public String trimmedCalories(String calories) {
-        calories = calories.replaceFirst("calories : ", "");
+        calories = calories.replaceFirst("Calories: ", "");
         return calories;
     }
 
@@ -163,7 +163,7 @@ public class ProfileWindowManager {
      * Trims the string duration
      */
     public String trimmedDuration(String duration) {
-        duration = duration.replaceFirst("duration : ", "");
+        duration = duration.replaceFirst("Duration: ", "");
         duration = duration.replaceFirst("m", "");
         return duration;
     }
@@ -172,7 +172,7 @@ public class ProfileWindowManager {
      * Trims the string difficulty
      */
     public String trimmedDifficulty(String difficulty) {
-        difficulty = difficulty.replaceFirst("difficulty : ", "");
+        difficulty = difficulty.replaceFirst("Difficulty: ", "");
         return difficulty;
     }
 
