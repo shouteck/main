@@ -237,7 +237,7 @@ public class ProfileWindowManager {
     }
 
     /**
-     * Returns true if the first difficulty is more difficult than the second
+     * Returns true if the first difficulty is more difficult than the second difficulty
      */
     public boolean isMoreDifficult(String first, String second) {
         if (first == "beginner") {
@@ -253,7 +253,7 @@ public class ProfileWindowManager {
     }
 
     /**
-     * Returns true if the first calories is higher or equal than the second
+     * Returns true if the first calories is higher or equal than the second calories
      */
     public boolean isHigherCalories(int first, int second) {
         if (first >= second) {
@@ -264,7 +264,7 @@ public class ProfileWindowManager {
     }
 
     /**
-     * Returns true if the first duration is higher or equal than the second
+     * Returns true if the first duration is higher or equal than the second duration
      */
     public boolean isHigherDuration(int first, int second) {
         if (first >= second) {
