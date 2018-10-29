@@ -170,7 +170,8 @@ public class ProfileWindowManager {
 
     /**
      * Trims the string difficulty
-     */    public String trimmedDifficulty(String difficulty) {
+     */
+    public String trimmedDifficulty(String difficulty) {
         difficulty = difficulty.replaceFirst("difficulty : ", "");
         return difficulty;
     }
