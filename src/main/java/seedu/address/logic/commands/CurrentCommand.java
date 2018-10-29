@@ -80,8 +80,7 @@ public class CurrentCommand extends Command {
                 model.updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
                 model.commitWorkoutBook();
                 return new CommandResult(String.format(MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout));
-            }
-            else {
+            } else {
                 return new CommandResult(MESSAGE_CURRENT_WORKOUT_FAILURE);
             }
 

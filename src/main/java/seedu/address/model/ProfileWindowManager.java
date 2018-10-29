@@ -151,18 +151,26 @@ public class ProfileWindowManager {
         return weight;
     }
 
+    /**
+     * Trims the string calories
+     */
     public String trimmedCalories(String calories) {
         calories = calories.replaceFirst("calories : ", "");
         return calories;
     }
 
+    /**
+     * Trims the string duration
+     */
     public String trimmedDuration(String duration) {
         duration = duration.replaceFirst("duration : ", "");
-        duration = duration.replaceFirst("m","");
+        duration = duration.replaceFirst("m", "");
         return duration;
     }
 
-    public String trimmedDifficulty(String difficulty) {
+    /**
+     * Trims the string difficulty
+     */    public String trimmedDifficulty(String difficulty) {
         difficulty = difficulty.replaceFirst("difficulty : ", "");
         return difficulty;
     }
@@ -180,7 +188,6 @@ public class ProfileWindowManager {
     }
 
     /**
-     *
      * @param height
      * @param weight
      * @return bmi
@@ -190,7 +197,11 @@ public class ProfileWindowManager {
         double w = Double.parseDouble(extractWeight(weight));
         return w / (h * h);
     }
-
+    /**
+     * Converts a String to integer.
+     * @param string to be converted
+     * @return integer
+     */
     public int convertStringIntoInt(String string) {
         int integer = Integer.parseInt(string);
         return integer;
@@ -244,10 +255,9 @@ public class ProfileWindowManager {
      * Returns true if the first calories is higher or equal than the second
      */
     public boolean isHigherCalories(int first, int second) {
-        if(first>=second) {
+        if (first >= second) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -256,10 +266,9 @@ public class ProfileWindowManager {
      * Returns true if the first duration is higher or equal than the second
      */
     public boolean isHigherDuration(int first, int second) {
-        if(first>=second) {
+        if (first >= second) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
