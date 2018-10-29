@@ -39,6 +39,7 @@ public class CompleteCommand extends Command {
 
     public static final String MESSAGE_COMPLETE_WORKOUT_SUCCESS = "Completed Workout: %1$s";
     public static final String MESSAGE_DUPLICATE_COMPLETE_WORKOUT = "This workout is already completed.";
+    public static final String MESSAGE_SKIPPED_COMPLETE_WORKOUT = "This workout must first be in the current state.";
 
     private final Index targetIndex;
 
@@ -61,6 +62,7 @@ public class CompleteCommand extends Command {
             Workout editedWorkout = createEditedWorkout(workoutToEdit);
             model.updateWorkout(workoutToEdit, editedWorkout);
             model.updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
+            CurrentCommand.currentWorkout = false;
             model.commitModel();
             return new CommandResult(String.format(MESSAGE_COMPLETE_WORKOUT_SUCCESS, editedWorkout));
         } catch (IndexOutOfBoundsException | ParseException e) {
@@ -96,7 +98,7 @@ public class CompleteCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_COMPLETE_WORKOUT);
         }
         if (originalTags.contains(future)) {
-            updatedTags.remove(future);
+            throw new CommandException(MESSAGE_SKIPPED_COMPLETE_WORKOUT);
         }
         if (originalTags.contains(current)) {
             updatedTags.remove(current);
