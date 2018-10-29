@@ -285,7 +285,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void commitWorkoutBook() {
+        public void commitModel() {
             // called by {@code AddCommand#execute()}
         }
 

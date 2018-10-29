@@ -26,23 +26,23 @@ public class RedoCommandTest {
         // set up of both models' undo/redo history
         deleteFirstWorkout(model);
         deleteFirstWorkout(model);
-        model.undoWorkoutBook();
-        model.undoWorkoutBook();
+        model.undoModel();
+        model.undoModel();
 
         deleteFirstWorkout(expectedModel);
         deleteFirstWorkout(expectedModel);
-        expectedModel.undoWorkoutBook();
-        expectedModel.undoWorkoutBook();
+        expectedModel.undoModel();
+        expectedModel.undoModel();
     }
 
     @Test
     public void execute() {
         // multiple redoable states in model
-        expectedModel.redoWorkoutBook();
+        expectedModel.redoModel();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
 
         // single redoable state in model
-        expectedModel.redoWorkoutBook();
+        expectedModel.redoModel();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
 
         // no redoable state in model
