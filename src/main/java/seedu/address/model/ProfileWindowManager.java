@@ -140,15 +140,40 @@ public class ProfileWindowManager {
     }
 
     private String extractHeight(String height) {
-        height = height.replaceFirst("Height : ", "");
-        height = height.replace("m", "");
+        height = height.replaceFirst("Height: ", "");
+        height = height.replaceFirst("m", "");
         return height;
     }
 
     private String extractWeight(String weight) {
         weight = weight.replaceFirst("kg", "");
-        weight = weight.replaceFirst("Weight : ", "");
+        weight = weight.replaceFirst("Weight: ", "");
         return weight;
+    }
+
+    /**
+     * Trims the string calories
+     */
+    public String trimmedCalories(String calories) {
+        calories = calories.replaceFirst("Calories: ", "");
+        return calories;
+    }
+
+    /**
+     * Trims the string duration
+     */
+    public String trimmedDuration(String duration) {
+        duration = duration.replaceFirst("Duration: ", "");
+        duration = duration.replaceFirst("m", "");
+        return duration;
+    }
+
+    /**
+     * Trims the string difficulty
+     */
+    public String trimmedDifficulty(String difficulty) {
+        difficulty = difficulty.replaceFirst("Difficulty: ", "");
+        return difficulty;
     }
 
     public Optional<Calories> extractCalories() {
@@ -164,7 +189,6 @@ public class ProfileWindowManager {
     }
 
     /**
-     *
      * @param height
      * @param weight
      * @return bmi
@@ -173,6 +197,15 @@ public class ProfileWindowManager {
         double h = Double.parseDouble(extractHeight(height));
         double w = Double.parseDouble(extractWeight(weight));
         return w / (h * h);
+    }
+    /**
+     * Converts a String to integer.
+     * @param string to be converted
+     * @return integer
+     */
+    public int convertStringIntoInt(String string) {
+        int integer = Integer.parseInt(string);
+        return integer;
     }
 
     /**
@@ -203,4 +236,41 @@ public class ProfileWindowManager {
         return username.matches(USERNAME_VALIDATION_REGEX);
     }
 
+    /**
+     * Returns true if the first difficulty is more difficult than the second difficulty
+     */
+    public boolean isMoreDifficult(String first, String second) {
+        if (first == "beginner") {
+            return false;
+        }
+        if ((first == "intermediate") && (second == "beginner")) {
+            return false;
+        }
+        if ((first == "advanced") && ((second == "beginner") || (second == "intermediate"))) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Returns true if the first calories is higher or equal than the second calories
+     */
+    public boolean isHigherCalories(int first, int second) {
+        if (first >= second) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Returns true if the first duration is higher or equal than the second duration
+     */
+    public boolean isHigherDuration(int first, int second) {
+        if (first >= second) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
