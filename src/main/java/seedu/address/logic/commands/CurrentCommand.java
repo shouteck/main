@@ -4,11 +4,11 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.ParserUtil.parseTag;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_WORKOUTS;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import java.io.IOException;
 import javax.swing.JOptionPane;
 
 import org.jsoup.nodes.Element;
@@ -54,8 +54,9 @@ public class CurrentCommand extends Command {
             + "\n";
     public static final String MESSAGE_CONTINUE = "Do you still want to make this workout current?";
 
+    private boolean success = true;
     private final Index targetIndex;
-    public boolean success = true;
+
 
     /**
      * @param targetIndex of the person in the filtered workout list to edit the state tag
@@ -106,8 +107,8 @@ public class CurrentCommand extends Command {
         Set<Tag> originalTags = workoutToEdit.getTags();
         Set<Tag> updatedTags = new HashSet<>();
 
-        int UserCalories;
-        int UserDuration;
+        int userCalories;
+        int userDuration;
 
         Tag current = parseTag("current");
         if (originalTags.contains(current)) {
@@ -120,32 +121,32 @@ public class CurrentCommand extends Command {
             Element divCalories = profileWindowManager.getCalories();
             Element divDuration = profileWindowManager.getDuration();
             Element divDifficulty = profileWindowManager.getDifficulty();
-            String UserDifficulty = profileWindowManager.trimmedDifficulty(divDifficulty.ownText());
-            String Calories = profileWindowManager.trimmedCalories(divCalories.ownText());
-            String Duration = profileWindowManager.trimmedDuration(divDuration.ownText());
-            UserCalories = profileWindowManager.convertStringIntoInt(Calories);
-            UserDuration = profileWindowManager.convertStringIntoInt(Duration);
-            if (profileWindowManager.isMoreDifficult(UserDifficulty, updatedDifficulty.toString())) {
+            String userDifficulty = profileWindowManager.trimmedDifficulty(divDifficulty.ownText());
+            String calories = profileWindowManager.trimmedCalories(divCalories.ownText());
+            String duration = profileWindowManager.trimmedDuration(divDuration.ownText());
+            userCalories = profileWindowManager.convertStringIntoInt(calories);
+            userDuration = profileWindowManager.convertStringIntoInt(duration);
+            if (profileWindowManager.isMoreDifficult(userDifficulty, updatedDifficulty.toString())) {
                 int reply = JOptionPane.showConfirmDialog(null, MESSAGE_MORE_DIFFICULT
-                        + MESSAGE_CONTINUE, "Yes",  JOptionPane.YES_NO_OPTION);
+                        + MESSAGE_CONTINUE, "Yes", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.NO_OPTION) {
                     success = false;
                     return new Workout(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,
                             updatedMuscle, updatedCalories, updatedInstruction, originalTags, null);
                 }
             }
-            if (profileWindowManager.isHigherCalories(UserCalories, updatedCalories.hashCode())) {
+            if (profileWindowManager.isHigherCalories(userCalories, updatedCalories.hashCode())) {
                 int reply = JOptionPane.showConfirmDialog(null, MESSAGE_HIGHER_CALORIES
-                        + MESSAGE_CONTINUE, "Yes",  JOptionPane.YES_NO_OPTION);
+                        + MESSAGE_CONTINUE, "Yes", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.NO_OPTION) {
                     success = false;
                     return new Workout(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,
                             updatedMuscle, updatedCalories, updatedInstruction, originalTags, null);
                 }
             }
-            if (profileWindowManager.isHigherDuration(UserDuration, updatedDuration.hashCode())) {
+            if (profileWindowManager.isHigherDuration(userDuration, updatedDuration.hashCode())) {
                 int reply = JOptionPane.showConfirmDialog(null, MESSAGE_HIGHER_DURATION
-                        + MESSAGE_CONTINUE, "Yes",  JOptionPane.YES_NO_OPTION);
+                        + MESSAGE_CONTINUE, "Yes", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.NO_OPTION) {
                     success = false;
                     return new Workout(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,

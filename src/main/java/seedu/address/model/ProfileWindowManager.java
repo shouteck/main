@@ -150,19 +150,20 @@ public class ProfileWindowManager {
         weight = weight.replaceFirst("Weight : ", "");
         return weight;
     }
+
     public String trimmedCalories(String calories) {
-        calories = calories.replaceFirst("calories : ","");
+        calories = calories.replaceFirst("calories : ", "");
         return calories;
     }
 
     public String trimmedDuration(String duration) {
-        duration = duration.replaceFirst("duration : ","");
+        duration = duration.replaceFirst("duration : ", "");
         duration = duration.replaceFirst("m","");
         return duration;
     }
 
     public String trimmedDifficulty(String difficulty) {
-        difficulty = difficulty.replaceFirst("difficulty : ","");
+        difficulty = difficulty.replaceFirst("difficulty : ", "");
         return difficulty;
     }
 
@@ -227,9 +228,15 @@ public class ProfileWindowManager {
      * Returns true if the first difficulty is more difficult than the second
      */
     public boolean isMoreDifficult(String first, String second) {
-        if (first == "beginner") return false;
-        if ((first == "intermediate") && (second == "beginner")) return false;
-        if ((first == "advanced") && ((second == "beginner") || (second == "intermediate"))) return false;
+        if (first == "beginner") {
+            return false;
+        }
+        if ((first == "intermediate") && (second == "beginner")) {
+            return false;
+        }
+        if ((first == "advanced") && ((second == "beginner") || (second == "intermediate"))) {
+            return false;
+        }
         return true;
     }
 
@@ -237,15 +244,23 @@ public class ProfileWindowManager {
      * Returns true if the first calories is higher or equal than the second
      */
     public boolean isHigherCalories(int first, int second) {
-        if(first>=second) return true;
-        else return false;
+        if(first>=second) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**
      * Returns true if the first duration is higher or equal than the second
      */
     public boolean isHigherDuration(int first, int second) {
-        if(first>=second) return true;
-        else return false;
+        if(first>=second) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
