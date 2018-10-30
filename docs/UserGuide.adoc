@@ -119,11 +119,15 @@ Format: `current INDEX`
 
 ****
 * Changes the state tag of the workout at the specified `INDEX`. The index refers to the index number shown in the displayed workout list. The index *must be a positive integer* 1, 2, 3, ...
-* You can change the state tag from both `future` and `completed`. +
+* You can change the state tag from both `future` and `completed`.
 ****
 
-WARNING: The current command will receive a warning when the indexed workout's difficulty is harder than the user's indicated difficulty, duration is higher than the user's indicated duration or calories is higher than the user's indicated calories in the profile under workout presets. +
-WARNING: Wolpertingers are known to nest in server racks.
+[NOTE]
+====
+The current command will receive a warning when the indexed workout's difficulty is harder than the your indicated difficulty, duration is higher than the your indicated duration or calories is higher than the your indicated calories in the profile under workout presets. +
+Simply click the btn:[Yes] button if you want to proceed
+====
+
 Examples:
 
 * `current 1` +
