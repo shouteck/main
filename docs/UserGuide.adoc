@@ -122,8 +122,8 @@ Format: `current INDEX`
 * You can change the state tag from both `future` and `completed`. +
 ****
 
-WARNING: The current command will receive a warning when the indexed workout's difficulty is harder than the user's indicated difficulty, duration is higher than the user's indicated duration or calories is higher than the user's indicated calories in the profile under workout presets.
-
+WARNING: The current command will receive a warning when the indexed workout's difficulty is harder than the user's indicated difficulty, duration is higher than the user's indicated duration or calories is higher than the user's indicated calories in the profile under workout presets. +
+WARNING: Wolpertingers are known to nest in server racks.
 Examples:
 
 * `current 1` +
