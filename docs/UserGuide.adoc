@@ -368,9 +368,55 @@ Format: `exit`
 Workout book data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
-== FAQ
+.Command Summary
+[%header,cols=2*]
+|===
+|Command
+|Example
 
-== Command Summary
+|Add
+|`add name/NAME type/TYPE duration/DURATION difficulty/DIFFICULTY equipment/EQUIPMENT muscle/MUSCLE calories/CALORIES instruction/INSTRUCTION [tag/TAG]...`
+
+|Clear
+|`clear`
+
+|Complete
+|`Complete 1`
+
+|Current
+|`Current 1`
+
+|Delete
+|`delete 1`
+
+|Exit
+|`exit`
+
+|Filter
+|`filter duration/20m equipment/dumbbell type/strength`
+
+|History
+|`history`
+
+|List
+|`list`
+
+|Modify
+|`modify gender/female username/sarah height/1.69 weight/87.2 calories/150 difficulty/beginner duration/15m`
+
+|Redo
+|`redo`
+
+|Select
+|`select 1`
+
+|Sort
+|`sort`
+
+|Undo
+|`undo`
+|===
+
 
 * *Add* : `add name/NAME type/TYPE duration/DURATION difficulty/DIFFICULTY equipment/EQUIPMENT muscle/MUSCLE calories/CALORIES instruction/INSTRUCTION [tag/TAG]...` +
 e.g. `add name/commando workout type/strength, cardio duration/20m difficulty/advanced equipment/dumbbell, bench muscle/bicep, tricep calories/150 instruction/set 1: bicep curl reps: 4-6 set 2: tricep extension reps: 4-6 tag/heavy`
