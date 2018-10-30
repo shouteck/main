@@ -64,6 +64,11 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 Format: `help`
 
+[NOTE]
+====
+Pressing the kbd:[F1] key will display the help window as well!
+====
+
 === Adding a workout: `add`
 
 Adds a workout to the workout book +
@@ -121,7 +126,13 @@ Format: `current INDEX`
 Examples:
 
 * `current 1` +
-Changes the state tag of the 1st workout to be `current`.
+Changes the state tag of the 1st workout to be `current`. +
+
+[NOTE]
+====
+The current command will receive a warning when the indexed workout's difficulty is harder than the your indicated difficulty, duration is higher than the your indicated duration or calories is higher than the your indicated calories in your user profile under workout presets. +
+Simply click the btn:[Yes] button if you want to proceed.
+====
 
 === Changing a workout to completed : `complete`
 
@@ -247,22 +258,33 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 
 // tag::undoredo[]
 
-=== Listing entered commands : `profile`
+=== Viewing user profile : `profile`
 
-Shows the user profile. +
+Shows the user profile. The user profile consists of username, height, weight, BMI. It also contains the workout preset for users such as calories, difficulty and duration which the user can set base on their preference. +
 Format: `profile`
 
-=== Listing entered commands : `modify`
+[NOTE]
+====
+Pressing the kbd:[F2] key will display the user profile as well!
+====
+
+=== Modifying user profile : `modify`
 
 Modify the user's profile. +
-Format: `modify username/[USERNAME] gender/[GENDER] height/[HEIGHT] weight/[WEIGHT] preferred_difficulty/[DIFFICULTY]`
+Format: `modify [gender/GENDER] [username/USERNAME] [height/HEIGHT] [weight/WEIGHT] [calories/CALORIES] [difficulty/DIFFICULTY] [duration/DURATION]`
+
+****
+* Accepts any combinations of the all the prefixes.
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+****
 
 Examples:
 
 * `modify username/apple` +
-Change the Profile's name to apple.
+Change your user profile's username to apple.
 * `modify username/apple height/1.82` +
-Change the Profile's name to apple, height to 1.82m and update the BMI accordingly.
+Change your user profile's username to apple, height to 1.82m and update the BMI accordingly.
 
 === Listing entered commands : `recommend`
 
@@ -347,30 +369,55 @@ Format: `exit`
 Workout book data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
-== FAQ
-
 == Command Summary
 
-* *Add* : `add name/NAME type/TYPE duration/DURATION difficulty/DIFFICULTY equipment/EQUIPMENT muscle/MUSCLE calories/CALORIES instruction/INSTRUCTION [tag/TAG]...` +
-e.g. `add name/commando workout type/strength, cardio duration/20m difficulty/advanced equipment/dumbbell, bench muscle/bicep, tricep calories/150 instruction/set 1: bicep curl reps: 4-6 set 2: tricep extension reps: 4-6 tag/heavy`
-* *Clear* : `clear`
-* *Delete* : `delete INDEX` +
-e.g. `delete 3`
-* *Edit* : `edit INDEX [name/NAME] [type/TYPE] [duration/DURATION] [difficulty/DIFFICULTY] [equipment/EQUIPMENT] [muscle/MUSCLE] [calories/CALORIES] [instruction/INSTRUCTION] [tag/TAG]…​` +
-e.g. `edit 1 type/light duration/25m`
-* *Filter* : `filter type/TYPE duration/DURATION equipment/EQUIPMENT` +
-e.g. `filter type/strength duration/20m equipment/dumbbell`
-* *Find* : `find KEYWORD [MORE_KEYWORDS]` +
-e.g. `find bench`
-* *List* : `list`
-* *Help* : `help`
-* *Select* : `select INDEX` +
-e.g.`select 2`
-* *Sort* : `sort`
-* *History* : `history`
-* *Undo* : `undo`
-* *Redo* : `redo`
-* *Recommend* : `recommend [calories/CALORIES] [difficulty/DIFFICULTY] [duration/DURATION]` +
-e.g. `recommend calories/150`
-* *Modify* : `modify` +
-e.g. `modify username/John Doe`
+[%header,cols=2*]
+|===
+|Command
+|Example
+
+|Add
+|`add name/NAME type/TYPE duration/DURATION difficulty/DIFFICULTY equipment/EQUIPMENT muscle/MUSCLE calories/CALORIES instruction/INSTRUCTION [tag/TAG]...`
+
+|Clear
+|`clear`
+
+|Complete
+|`Complete 1`
+
+|Current
+|`Current 1`
+
+|Delete
+|`delete 1`
+
+|Exit
+|`exit`
+
+|Filter
+|`filter duration/20m equipment/dumbbell type/strength`
+
+|History
+|`history`
+
+|List
+|`list`
+
+|Modify
+|`modify gender/female username/sarah height/1.69 weight/87.2 calories/150 difficulty/beginner duration/15m`
+
+|Recommend
+|`recommend difficulty/beginner`
+
+|Redo
+|`redo`
+
+|Select
+|`select 1`
+
+|Sort
+|`sort`
+
+|Undo
+|`undo`
+|===
