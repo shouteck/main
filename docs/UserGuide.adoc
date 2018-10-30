@@ -420,28 +420,3 @@ There is no need to save manually.
 |Undo
 |`undo`
 |===
-
-
-* *Add* : `add name/NAME type/TYPE duration/DURATION difficulty/DIFFICULTY equipment/EQUIPMENT muscle/MUSCLE calories/CALORIES instruction/INSTRUCTION [tag/TAG]...` +
-e.g. `add name/commando workout type/strength, cardio duration/20m difficulty/advanced equipment/dumbbell, bench muscle/bicep, tricep calories/150 instruction/set 1: bicep curl reps: 4-6 set 2: tricep extension reps: 4-6 tag/heavy`
-* *Clear* : `clear`
-* *Delete* : `delete INDEX` +
-e.g. `delete 3`
-* *Edit* : `edit INDEX [name/NAME] [type/TYPE] [duration/DURATION] [difficulty/DIFFICULTY] [equipment/EQUIPMENT] [muscle/MUSCLE] [calories/CALORIES] [instruction/INSTRUCTION] [tag/TAG]…​` +
-e.g. `edit 1 type/light duration/25m`
-* *Filter* : `filter type/TYPE duration/DURATION equipment/EQUIPMENT` +
-e.g. `filter type/strength duration/20m equipment/dumbbell`
-* *Find* : `find KEYWORD [MORE_KEYWORDS]` +
-e.g. `find bench`
-* *List* : `list`
-* *Help* : `help`
-* *Select* : `select INDEX` +
-e.g.`select 2`
-* *Sort* : `sort`
-* *History* : `history`
-* *Undo* : `undo`
-* *Redo* : `redo`
-* *Recommend* : `recommend [calories/CALORIES] [difficulty/DIFFICULTY] [duration/DURATION]` +
-e.g. `recommend calories/150`
-* *Modify* : `modify` +
-e.g. `modify username/John Doe`
