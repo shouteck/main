@@ -36,6 +36,8 @@ import seedu.address.model.workout.Workout;
  */
 public class CurrentCommand extends Command {
 
+    public static boolean currentWorkout;
+
     public static final String COMMAND_WORD = "current";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sets a workout to be the current workout identified "
@@ -55,7 +57,6 @@ public class CurrentCommand extends Command {
     public static final String MESSAGE_HIGHER_DURATION = "This workout will take longer than your preferred duration."
             + "\n";
     public static final String MESSAGE_CONTINUE = "Do you still want to make this workout current?";
-    public static boolean currentWorkout;
 
     private boolean success = true;
     private final Index targetIndex;
