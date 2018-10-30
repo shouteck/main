@@ -107,6 +107,9 @@ public class CurrentCommand extends Command {
         Instruction updatedInstruction = workoutToEdit.getInstruction();
         Set<Tag> originalTags = workoutToEdit.getTags();
         Set<Tag> updatedTags = new HashSet<>();
+        for (Tag entry: originalTags) {
+            updatedTags.add(entry);
+        }
 
         int userCalories;
         int userDuration;
@@ -155,8 +158,8 @@ public class CurrentCommand extends Command {
             System.out.println(e.getMessage());
         }
 
-        Tag current = parseTag("current");
         Tag future = parseTag("future");
+        Tag current = parseTag("current");
         Tag completed = parseTag("completed");
 
         if (currentWorkout) {
