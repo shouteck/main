@@ -265,7 +265,7 @@ Pressing the kbd:[F2] key will display open up the user profile as well!
 === Modifying user profile : `modify`
 
 Modify the user's profile. +
-Format: `modify [gender/GENDER] [username/USERNAME] [height/HEIGHT] [weight/WEIGHT] [calories/CALORIES] [difficulty/DIFFICULTY] [duration/DURATION] `
+Format: `modify [gender/GENDER] [username/USERNAME] [height/HEIGHT] [weight/WEIGHT] [calories/CALORIES] [difficulty/DIFFICULTY] [duration/DURATION]`
 
 Examples:
 
