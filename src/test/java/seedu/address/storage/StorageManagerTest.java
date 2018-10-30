@@ -32,9 +32,10 @@ public class StorageManagerTest {
 
     @Before
     public void setUp() {
-        XmlWorkoutBookStorage workoutBookStorage = new XmlWorkoutBookStorage(getTempFilePath("ab"));
+        XmlWorkoutBookStorage workoutBookStorage = new XmlWorkoutBookStorage(getTempFilePath("wb"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
-        storageManager = new StorageManager(workoutBookStorage, userPrefsStorage);
+        XmlTrackedDataListStorage trackedDataListStorage = new XmlTrackedDataListStorage(getTempFilePath("tdl"));
+        storageManager = new StorageManager(workoutBookStorage, trackedDataListStorage, userPrefsStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -78,6 +79,7 @@ public class StorageManagerTest {
     public void handleWorkoutBookChangedEvent_exceptionThrown_eventRaised() {
         // Create a StorageManager while injecting a stub that  throws an exception when the save method is called
         Storage storage = new StorageManager(new XmlWorkoutBookStorageExceptionThrowingStub(Paths.get("dummy")),
+                                             new XmlTrackedDataListStorage(Paths.get("dummy")),
                                              new JsonUserPrefsStorage(Paths.get("dummy")));
         storage.handleWorkoutBookChangedEvent(new WorkoutBookChangedEvent(new WorkoutBook()));
         assertTrue(eventsCollectorRule.eventsCollector.getMostRecent() instanceof DataSavingExceptionEvent);

@@ -9,15 +9,24 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INSTRUCTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 
 import java.util.stream.Stream;
 
-import javafx.util.Pair;
-import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.TrackCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.tag.Tag;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Equipment;
+import seedu.address.model.workout.Instruction;
+import seedu.address.model.workout.Muscle;
+import seedu.address.model.workout.Name;
+import seedu.address.model.workout.Parameter;
+import seedu.address.model.workout.Type;
 
 /**
  * Parses input arguments and creates a new TrackCommand object
@@ -34,31 +43,57 @@ public class TrackCommandParser implements Parser<TrackCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TYPE, PREFIX_DURATION, PREFIX_DIFFICULTY,
-                        PREFIX_EQUIPMENT, PREFIX_MUSCLE, PREFIX_CALORIES, PREFIX_INSTRUCTION, PREFIX_TAG);
+                        PREFIX_EQUIPMENT, PREFIX_MUSCLE, PREFIX_CALORIES, PREFIX_INSTRUCTION, PREFIX_TAG,
+                        PREFIX_REMARK);
 
         // check 1: no subcommand
         // check 2: no prefixes present
         // check 3: more than one prefix present
         if (argMultimap.getPreamble().isEmpty()
                 || !areAnyPrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TYPE, PREFIX_DURATION, PREFIX_DIFFICULTY,
-                PREFIX_EQUIPMENT, PREFIX_MUSCLE, PREFIX_CALORIES, PREFIX_INSTRUCTION)
+                PREFIX_EQUIPMENT, PREFIX_MUSCLE, PREFIX_CALORIES, PREFIX_INSTRUCTION, PREFIX_TAG, PREFIX_REMARK)
                 || areMultipleParametersPresent(argMultimap)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, TrackCommand.MESSAGE_USAGE));
         }
 
-        // check 4: one prefix present but value is empty
-        if (argMultimap.getTheOnlyArg().getValue().equals("")) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, TrackCommand.MESSAGE_USAGE));
+        String subcommand = ParserUtil.parseSubcommand(argMultimap.getPreamble());
+        Prefix prefix = argMultimap.getTheOnlyPrefix();
+        String value = null;
+        if (prefix.equals(PREFIX_NAME)) {
+            Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+            value = name.fullName;
+        } else if (prefix.equals(PREFIX_TYPE)) {
+            Type type = ParserUtil.parseType(argMultimap.getValue(PREFIX_TYPE).get());
+            value = type.fullType;
+        } else if (prefix.equals(PREFIX_DURATION)) {
+            Duration duration = ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION).get());
+            value = duration.fullDuration;
+        } else if (prefix.equals(PREFIX_DIFFICULTY)) {
+            Difficulty difficulty = ParserUtil.parseDifficulty(argMultimap.getValue(PREFIX_DIFFICULTY).get());
+            value = difficulty.fullDifficulty;
+        } else if (prefix.equals(PREFIX_EQUIPMENT)) {
+            Equipment equipment = ParserUtil.parseEquipment(argMultimap.getValue(PREFIX_EQUIPMENT).get());
+            value = equipment.fullEquipment;
+        } else if (prefix.equals(PREFIX_MUSCLE)) {
+            Muscle muscle = ParserUtil.parseMuscle(argMultimap.getValue(PREFIX_MUSCLE).get());
+            value = muscle.fullMuscle;
+        } else if (prefix.equals(PREFIX_CALORIES)) {
+            Calories calories = ParserUtil.parseCalories(argMultimap.getValue(PREFIX_CALORIES).get());
+            value = calories.fullCalories;
+        } else if (prefix.equals(PREFIX_INSTRUCTION)) {
+            Instruction instruction = ParserUtil.parseInstruction(argMultimap.getValue(PREFIX_INSTRUCTION).get());
+            value = instruction.fullInstruction;
+        } else if (prefix.equals(PREFIX_TAG)) {
+            Tag tag = ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get());
+            value = tag.tagName;
+        } else if (prefix.equals(PREFIX_REMARK)) {
+            throw new ParseException("Placeholder error message until Remark is fixed");
+            //to uncomment once remark is fixed
+            //Remark remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get());
+            //value = remark.fullRemark;
         }
 
-        String subcommand;
-        try {
-            subcommand = ParserUtil.parseSubcommand(argMultimap.getPreamble());
-        } catch (IllegalValueException ive) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, TrackCommand.MESSAGE_USAGE), ive);
-        }
-
-        Pair<Prefix, String> parameter = argMultimap.getTheOnlyArg();
+        Parameter parameter = new Parameter(prefix, value);
 
         return new TrackCommand(subcommand, parameter);
     }

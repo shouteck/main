@@ -11,12 +11,14 @@ import org.junit.Test;
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 
 public class UndoCommandTest {
 
-    private final Model model = new ModelManager(getTypicalWorkoutBook(), new UserPrefs());
-    private final Model expectedModel = new ModelManager(getTypicalWorkoutBook(), new UserPrefs());
+    private final Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new UserPrefs());
+    private final Model expectedModel = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(),
+            new UserPrefs());
     private final CommandHistory commandHistory = new CommandHistory();
 
     @Before
@@ -32,11 +34,11 @@ public class UndoCommandTest {
     @Test
     public void execute() {
         // multiple undoable states in model
-        expectedModel.undoWorkoutBook();
+        expectedModel.undoModel();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
         // single undoable state in model
-        expectedModel.undoWorkoutBook();
+        expectedModel.undoModel();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
         // no undoable states in model

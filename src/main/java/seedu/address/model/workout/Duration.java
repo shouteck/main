@@ -10,13 +10,14 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Duration {
 
     public static final String MESSAGE_DURATION_CONSTRAINTS =
-            "Duration can only be in this format: 80m, 15m, 25m, up to 999m";
+            "Duration can only be in this format: 20m, from 1m to 1000m, inclusive of 1m and 1000m.";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String DURATION_VALIDATION_REGEX = "\\d{1,3}[m]";
+    public static final String DURATION_VALIDATION_REGEX =
+            "([1-9]|[1-8][0-9]|9[0-9]|[1-8][0-9]{2}|9[0-8][0-9]|99[0-9]|1000)[m]";
 
     public final String fullDuration;
 

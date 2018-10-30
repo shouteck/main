@@ -19,7 +19,7 @@ import seedu.address.model.workout.exceptions.WorkoutNotFoundException;
  * A workout is considered unique by comparing using {@code Workout#isSameWorkout(Workout)}. As such, adding and
  * updating of workouts uses Workout#isSameWorkout(Workout) for equality so as to ensure that the workout being added
  * or updated is unique in terms of identity in the UniqueWorkoutList. However, the removal of a workout uses
- * Workout#equals(Object) soas to ensure that the workout with exactly the same fields will be removed.
+ * Workout#equals(Object) so as to ensure that the workout with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
@@ -31,11 +31,11 @@ public class UniqueWorkoutList implements Iterable<Workout> {
 
     public List<Workout> getFilteredInternalList (RecommendArguments recommendArguments) {
         return internalList.stream()
-                .filter(!recommendArguments.isCaloriesNull() ? w -> w.getCalories().fullCalories
+                .filter(!recommendArguments.isCaloriesNull() ? w -> w.getCalories().toString()
                         .equals(recommendArguments.getCalories().toString()) : w -> w != null)
-                .filter(!recommendArguments.isDifficultyNull() ? w -> w.getDifficulty().fullDifficulty
+                .filter(!recommendArguments.isDifficultyNull() ? w -> w.getDifficulty().toString()
                         .equals(recommendArguments.getDifficulty().toString()) : w -> w != null)
-                .filter(!recommendArguments.isDurationNull() ? w -> w.getDuration().fullDuration
+                .filter(!recommendArguments.isDurationNull() ? w -> w.getDuration().toString()
                         .equals(recommendArguments.getDuration().toString()) : w -> w != null)
                 .collect(Collectors.toList());
     }

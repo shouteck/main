@@ -19,7 +19,7 @@ public class SortCommand extends Command {
 
         model.sortFilteredWorkoutList();
 
-        model.commitWorkoutBook();
+        model.commitModel();
 
         return new CommandResult(MESSAGE_USAGE);
     }

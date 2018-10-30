@@ -26,10 +26,10 @@ WorkoutBook is for those who *prefer to use a desktop app for managing workouts*
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 .  Some example commands you can try:
 
-* *`list`* : lists all workouts
-* **`add`**`add name/commando workout type/strength duration/20m difficulty/advanced equipment/dumbbell, bench muscle/bicep, tricep calories/150 instruction/set 1: bicep curl reps: 4-6 set 2: tricep extension reps: 4-6 tag/heavy` : adds a Workout named `commando` to the WorkoutBook.
-* **`delete`**`3` : deletes the 3rd workout shown in the current list
-* *`exit`* : exits the app
+* *`list`* : Lists all workouts in the WorkoutBook.
+* **`add`**`name/commando workout type/strength duration/20m difficulty/advanced equipment/dumbbell, bench muscle/bicep, tricep calories/150 instruction/set 1: bicep curl reps: 4-6 set 2: tricep extension reps: 4-6 tag/heavy` : adds a Workout named `commando workout` to the WorkoutBook.
+* **`delete`**`3` : Deletes the 3rd workout shown in the current list of workouts.
+* *`exit`* : Exits the application.
 
 .  Refer to <<Features>> for details of each command.
 
@@ -40,9 +40,24 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 *Command Format*
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add name/NAME`, `NAME` is a parameter which can be used as `add name/commando workout`.
+* Below is a list of the remaining parameters with examples of their acceptable formats:
+
+** *_CALORIES_* are positive integers from 1 to 1000. E.g. `120`, `500`, etc.
+** *_DIFFICULTY_* and *_PREFERRED_DIFFICULTY_* should only be either beginner, intermediate or advanced.
+** *_DURATION_* should only be in this format: E.g. `20m`, `500m`, etc from 1m to 1000m.
+** *_EQUIPMENT_* is a list of equipment separated by commas, and it should not be blank. E.g. `dumbbell,bench,mat` and `dumbbell, bench, mat` are valid.
+** *_MUSCLE_* is a list of muscle groups separated by commas, and it should not be blank. E.g. `triceps,biceps,back` and `triceps, biceps, back` are valid.
+** *_TYPE_* is a list of workout types separated by commas, and it should not be blank. E.g. `cardio,strength,balance` and `cardio, strength, balance` are valid.
+** *_INSTRUCTION_* should only contain alphanumeric characters, punctuation, spaces, and it should not be blank. E.g. `set1: dumbbell curls reps: 4-6`.
+** *_USERNAME_* should only contain alphanumeric characters, and it should not be blank. E.g.  `John Doe` and `Jane` are valid.
+** *_HEIGHT_* should only be in the form x.xx whereby x is any integer. E.g. `1.72` and `1.88` are valid.
+** *_WEIGHT_* should only be in the form xx.x or xxx.x whereby x is any integer. E.g. `88.4` and `102.9` are valid.
+** *_GENDER_* should only be either male or female.
 * Items in square brackets are optional e.g `name/NAME [tag/TAG]` can be used as `name/commando workout tag/strength` or as `name/commando workout`.
 * Items with `…`​ after them can be used multiple times including zero times e.g. `[tag/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `tag/strength`, `tag/strength tag/fast-paced` etc.
 * Parameters can be in any order e.g. if the command specifies `name/NAME type/TYPE`, `type/TYPE name/NAME` is also acceptable.
+* White spaces after a slash are automatically trimmed. For example, `add name/ commando workout` and `add name/commando workout` are the same. However, the latter is more visually pleasing.
+* Duplicate parameters after one another will only take the last parameter input. For example, `add name/commando workout name/arnold workout` will only add the workout as arnold workout.
 ====
 
 === Viewing help : `help`
@@ -52,7 +67,7 @@ Format: `help`
 === Adding a workout: `add`
 
 Adds a workout to the workout book +
-Format: `add name/NAME [type/TYPE] [duration/DURATION] [difficulty/DIFFICULTY] [equipment/EQUIPMENT] [muscle/MUSCLE] [calories/CALORIES] [instruction/INSTRUCTION] [tag/TAG]…​`
+Format: `add name/NAME type/TYPE duration/DURATION difficulty/DIFFICULTY equipment/EQUIPMENT muscle/MUSCLE calories/CALORIES instruction/INSTRUCTION [tag/TAG]…​`
 
 ****
 * A terminal message will appear if one of the tags do not include a state tag - future, current or completed.
@@ -125,7 +140,7 @@ Changes the state tag of the 1st workout to be `completed`.
 === Locating workouts by name: `filter`
 
 Filters workouts whose types, durations, equipments contain any of the given keywords. +
-Format: `filter [type/TYPE] [duratiorn/DURATION] [equipment/EQUIPMENT]`
+Format: `filter type/TYPE duration/DURATION equipment/EQUIPMENT`
 
 ****
 * The search is case insensitive. e.g `filter type/strength` will match `filter type/STRENGTH`
@@ -136,7 +151,7 @@ Format: `filter [type/TYPE] [duratiorn/DURATION] [equipment/EQUIPMENT]`
 Examples:
 
 * `filter duration/20m equipment/dumbbell type/strength` +
-Returns any workout having duration of `20m`, equipment of `dumbbell`, type of `strength`
+Returns any workout having duration of `20m`, with equipment of `dumbbell` and of type `strength`.
 
 
 === Locating workouts by name: `find`
@@ -155,9 +170,9 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 Examples:
 
 * `find commando` +
-Returns `command workout`
+Returns `command workout`.
 * `find commando arnold's` +
-Returns any workout having names `commando` or `arnold's`
+Returns any workout having names `commando` or `arnold's`.
 
 === Deleting a workout : `delete`
 
@@ -335,14 +350,14 @@ There is no need to save manually.
 
 == Command Summary
 
-* *Add* `add name/NAME [type/TYPE] [duration/DURATION] [difficulty/DIFFICULTY] [equipment/EQUIPMENT] [muscle/MUSCLE] [calories/CALORIES] [instruction/INSTRUCTION] [tag/TAG]...` +
+* *Add* : `add name/NAME type/TYPE duration/DURATION difficulty/DIFFICULTY equipment/EQUIPMENT muscle/MUSCLE calories/CALORIES instruction/INSTRUCTION [tag/TAG]...` +
 e.g. `add name/commando workout type/strength, cardio duration/20m difficulty/advanced equipment/dumbbell, bench muscle/bicep, tricep calories/150 instruction/set 1: bicep curl reps: 4-6 set 2: tricep extension reps: 4-6 tag/heavy`
 * *Clear* : `clear`
 * *Delete* : `delete INDEX` +
 e.g. `delete 3`
-* *Edit* : `dit INDEX [name/NAME] [type/TYPE] [duration/DURATION] [difficulty/DIFFICULTY] [equipment/EQUIPMENT] [muscle/MUSCLE] [calories/CALORIES] [instruction/INSTRUCTION] [tag/TAG]…​` +
+* *Edit* : `edit INDEX [name/NAME] [type/TYPE] [duration/DURATION] [difficulty/DIFFICULTY] [equipment/EQUIPMENT] [muscle/MUSCLE] [calories/CALORIES] [instruction/INSTRUCTION] [tag/TAG]…​` +
 e.g. `edit 1 type/light duration/25m`
-* *Filter* : `filter [type/TYPE] [duration/DURATION] [equipment/EQUIPMENT]` +
+* *Filter* : `filter type/TYPE duration/DURATION equipment/EQUIPMENT` +
 e.g. `filter type/strength duration/20m equipment/dumbbell`
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +
 e.g. `find bench`
@@ -354,7 +369,7 @@ e.g.`select 2`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`
-* *Recommend* : `recommend r/[PARAMETER]` +
-e.g. `recommend r/intermediate`
-* *Modify* : `modify`
+* *Recommend* : `recommend [calories/CALORIES] [difficulty/DIFFICULTY] [duration/DURATION]` +
+e.g. `recommend calories/150`
+* *Modify* : `modify` +
 e.g. `modify username/John Doe`

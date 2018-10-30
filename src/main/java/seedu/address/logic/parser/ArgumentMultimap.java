@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import javafx.util.Pair;
-
 /**
  * Stores mapping of prefixes to their respective arguments.
  * Each key may be associated with multiple argument values.
@@ -61,12 +59,12 @@ public class ArgumentMultimap {
     }
 
     /**
-     * Returns the only argument in the map.
+     * Returns the only Prefix in the map.
      */
-    public Pair<Prefix, String> getTheOnlyArg() {
+    public Prefix getTheOnlyPrefix() {
         for (Map.Entry<Prefix, List<String>> entry : argMultimap.entrySet()) {
             if (!entry.getKey().getPrefix().equals("")) {
-                return new Pair<>(entry.getKey(), entry.getValue().get(0));
+                return entry.getKey();
             }
         }
         return null;

@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Difficulty {
 
     public static final String MESSAGE_DIFFICULTY_CONSTRAINTS =
-            "Difficulty should only be either beginner, intermediate or advanced";
+            "Difficulty should only be either beginner, intermediate or advanced.";
 
     /*
      * The first character of the address must not be a whitespace,

@@ -1,5 +1,7 @@
 package seedu.address.model;
 
+import java.util.Optional;
+
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;
@@ -9,38 +11,119 @@ import seedu.address.model.workout.Duration;
  */
 public class RecommendArguments {
 
-    private final Calories calories;
-    private final Difficulty difficulty;
-    private final Duration duration;
+    private Optional<Calories> calories;
+    private Optional<Difficulty> difficulty;
+    private Optional<Duration> duration;
 
-    public RecommendArguments(Calories calories, Difficulty difficulty, Duration duration) {
-        this.calories = calories;
-        this.difficulty = difficulty;
-        this.duration = duration;
+    /**
+     * Builder pattern
+     */
+    public static class Builder {
+
+        private Optional<Calories> calories = Optional.empty();
+        private Optional<Difficulty> difficulty = Optional.empty();
+        private Optional<Duration> duration = Optional.empty();
+
+        public Builder() {
+        }
+
+        /**
+         * Calories setter for Builder
+         */
+        public Builder withCalories(Optional<Calories> calories) {
+            this.calories = calories;
+            return this;
+        }
+
+        /**
+         * Difficulty setter for Builder
+         */
+        public Builder withDifficulty(Optional<Difficulty> difficulty) {
+            this.difficulty = difficulty;
+            return this;
+        }
+
+        /**
+         * Duration setter for Builder
+         */
+        public Builder withDuration(Optional<Duration> duration) {
+            this.duration = duration;
+            return this;
+        }
+
+        /**
+         * Main constructor for RecommendArguments
+         */
+        public RecommendArguments build() {
+            RecommendArguments recommendArguments = new RecommendArguments();
+            recommendArguments.setCalories(this.calories);
+            recommendArguments.setDifficulty(this.difficulty);
+            recommendArguments.setDuration(this.duration);
+            return recommendArguments;
+        }
+    }
+
+    private RecommendArguments() {
+    }
+
+    /**
+     * Returns true if both recommend arguments have the same identity and data fields.
+     * This defines a stronger notion of equality between two recommend arguments.
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof RecommendArguments)) {
+            return false;
+        }
+
+        RecommendArguments otherRecommendArguments = (RecommendArguments) other;
+
+        return ((otherRecommendArguments.isCaloriesNull() && isCaloriesNull())
+                || otherRecommendArguments.getCalories().equals(getCalories()))
+                && ((otherRecommendArguments.isDifficultyNull() && isDifficultyNull())
+                || otherRecommendArguments.getDifficulty().equals(getDifficulty()))
+                && ((otherRecommendArguments.isDurationNull() && isDurationNull())
+                || otherRecommendArguments.getDuration().equals(getDuration()));
     }
 
     public Calories getCalories() {
-        return calories;
+        return calories.get();
     }
 
     public Difficulty getDifficulty() {
-        return difficulty;
+        return difficulty.get();
     }
 
     public Duration getDuration() {
-        return duration;
+        return duration.get();
+    }
+
+    public void setCalories(Optional<Calories> calories) {
+        this.calories = calories;
+    }
+
+    public void setDifficulty(Optional<Difficulty> difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public void setDuration(Optional<Duration> duration) {
+        this.duration = duration;
     }
 
     public boolean isCaloriesNull() {
-        return calories == null;
+        return !calories.isPresent();
     }
 
     public boolean isDifficultyNull() {
-        return difficulty == null;
+        return !difficulty.isPresent();
     }
 
     public boolean isDurationNull() {
-        return duration == null;
+        return !duration.isPresent();
     }
 
 }

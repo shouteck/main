@@ -13,8 +13,11 @@ import javafx.collections.transformation.FilteredList;
 
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.events.model.TrackedDataChangedEvent;
+import seedu.address.commons.events.model.TrackedDataListChangedEvent;
 import seedu.address.commons.events.model.WorkoutBookChangedEvent;
 
+import seedu.address.model.workout.Parameter;
 import seedu.address.model.workout.Workout;
 
 /**
@@ -24,23 +27,29 @@ public class ModelManager extends ComponentManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final VersionedWorkoutBook versionedWorkoutBook;
+    private final VersionedTrackedData versionedTrackedData;
+    private final VersionedTrackedDataList versionedTrackedDataList;
     private final FilteredList<Workout> filteredWorkouts;
+    private final FilteredList<Parameter> filteredParameters;
 
     /**
      * Initializes a ModelManager with the given workoutBook and userPrefs.
      */
-    public ModelManager(ReadOnlyWorkoutBook workoutBook, UserPrefs userPrefs) {
+    public ModelManager(ReadOnlyWorkoutBook workoutBook, ReadOnlyTrackedDataList trackedDataList, UserPrefs userPrefs) {
         super();
         requireAllNonNull(workoutBook, userPrefs);
 
         logger.fine("Initializing with workout book: " + workoutBook + " and user prefs " + userPrefs);
 
+        versionedTrackedData = new VersionedTrackedData(new TrackedData());
+        versionedTrackedDataList = new VersionedTrackedDataList(trackedDataList);
+        filteredParameters = new FilteredList<>(versionedTrackedDataList.getTrackedDataList());
         versionedWorkoutBook = new VersionedWorkoutBook(workoutBook);
         filteredWorkouts = new FilteredList<>(versionedWorkoutBook.getWorkoutList());
     }
 
     public ModelManager() {
-        this(new WorkoutBook(), new UserPrefs());
+        this(new WorkoutBook(), new TrackedDataList(), new UserPrefs());
     }
 
     @Override
@@ -54,9 +63,22 @@ public class ModelManager extends ComponentManager implements Model {
         return versionedWorkoutBook;
     }
 
+    @Override
+    public ReadOnlyTrackedDataList getTrackedDataList() {
+        return versionedTrackedDataList;
+    }
+
     /** Raises an event to indicate the model has changed */
     private void indicateWorkoutBookChanged() {
         raise(new WorkoutBookChangedEvent(versionedWorkoutBook));
+    }
+
+    private void indicateTrackedDataChanged() {
+        raise(new TrackedDataChangedEvent(versionedTrackedData));
+    }
+
+    private void indicateTrackedDataListChanged() {
+        raise(new TrackedDataListChangedEvent(versionedTrackedDataList));
     }
 
     @Override
@@ -77,6 +99,25 @@ public class ModelManager extends ComponentManager implements Model {
         updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
         indicateWorkoutBookChanged();
     }
+
+    @Override
+    public void addDataToTrack(Parameter parameter) {
+        versionedTrackedDataList.addParameter(parameter);
+        indicateTrackedDataListChanged();
+    }
+
+    @Override
+    public void removeDataFromTrack(Parameter parameter) {
+        versionedTrackedDataList.removeParameter(parameter);
+        indicateTrackedDataListChanged();
+    }
+
+    @Override
+    public boolean hasParameter(Parameter parameter) {
+        requireNonNull(parameter);
+        return versionedTrackedDataList.hasParameter(parameter);
+    }
+
 
     @Override
     public void sortFilteredWorkoutList() {
@@ -114,7 +155,49 @@ public class ModelManager extends ComponentManager implements Model {
         filteredWorkouts.setPredicate(predicate);
     }
 
+    //=========== Filtered Tracked Data List Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Parameter} backed by the internal list of
+     * {@code versionedTrackedDataList}
+     */
+    @Override
+    public ObservableList<Parameter> getFilteredTrackedDataList() {
+        return FXCollections.unmodifiableObservableList(filteredParameters);
+    }
+
+    @Override
+    public void updateFilteredTrackedDataList(Predicate<Parameter> predicate) {
+        requireNonNull(predicate);
+        filteredParameters.setPredicate(predicate);
+    }
+
     //=========== Undo/Redo =================================================================================
+
+    @Override
+    public boolean canUndoModel() {
+        return canUndoWorkoutBook()
+                && canUndoTrackedDataList();
+    }
+
+    @Override
+    public boolean canRedoModel() {
+        return canRedoWorkoutBook()
+                && canRedoTrackedDataList();
+    }
+
+    @Override
+    public void undoModel() {
+        undoWorkoutBook();
+        undoTrackedDataList();
+    }
+
+    @Override
+    public void redoModel() {
+        redoWorkoutBook();
+        redoTrackedDataList();
+    }
+
 
     @Override
     public boolean canUndoWorkoutBook() {
@@ -139,8 +222,42 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
+    public boolean canUndoTrackedDataList() {
+        return versionedTrackedDataList.canUndo();
+    }
+
+    @Override
+    public boolean canRedoTrackedDataList() {
+        return versionedTrackedDataList.canRedo();
+    }
+
+    @Override
+    public void undoTrackedDataList() {
+        versionedTrackedDataList.undo();
+        indicateTrackedDataListChanged();
+    }
+
+    @Override
+    public void redoTrackedDataList() {
+        versionedTrackedDataList.redo();
+        indicateTrackedDataListChanged();
+    }
+
+    @Override
+    public void commitModel() {
+        commitWorkoutBook();
+        commitTrackedDataList();
+    }
+
+
+    @Override
     public void commitWorkoutBook() {
         versionedWorkoutBook.commit();
+    }
+
+    @Override
+    public void commitTrackedDataList() {
+        versionedTrackedDataList.commit();
     }
 
     @Override

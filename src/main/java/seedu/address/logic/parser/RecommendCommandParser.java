@@ -1,15 +1,17 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 
+import java.io.IOException;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.RecommendCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.ProfileWindowManager;
 import seedu.address.model.RecommendArguments;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
@@ -28,32 +30,47 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_DURATION,
                 PREFIX_DIFFICULTY, PREFIX_CALORIES);
 
-        if (!isPrefixPresent(argMultimap, PREFIX_DURATION, PREFIX_DIFFICULTY, PREFIX_CALORIES) || !argMultimap
-                .getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RecommendCommand.MESSAGE_USAGE));
+        RecommendArguments recommendArguments;
+        if (isPrefixPresent(argMultimap, PREFIX_DURATION, PREFIX_DIFFICULTY, PREFIX_CALORIES)) {
+            recommendArguments = getRecommendArguments(argMultimap);
+        } else {
+            ProfileWindowManager profileWindowManager;
+            try {
+                profileWindowManager = ProfileWindowManager.getInstance();
+                recommendArguments = new RecommendArguments.Builder().withCalories(profileWindowManager
+                        .extractCalories())
+                        .withDifficulty(profileWindowManager.extractDifficulty())
+                        .withDuration(profileWindowManager.extractDuration()).build();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+                recommendArguments = new RecommendArguments.Builder().build();
+            }
         }
-
-        RecommendArguments recommendArguments = getRecommendArguments(argMultimap);
 
         return new RecommendCommand(recommendArguments);
     }
 
     private RecommendArguments getRecommendArguments(ArgumentMultimap argMultimap) throws ParseException {
-        Duration duration = null;
-        Difficulty difficulty = null;
-        Calories calories = null;
+
+        RecommendArguments.Builder recommendArgumentsBuilder = new RecommendArguments.Builder();
 
         if (!argMultimap.getAllValues(PREFIX_DURATION).isEmpty()) {
-            duration = ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION).get());
+            Optional<Duration> duration = Optional.of(ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION)
+                    .get()));
+            recommendArgumentsBuilder.withDuration(duration);
         }
         if (!argMultimap.getAllValues(PREFIX_DIFFICULTY).isEmpty()) {
-            difficulty = ParserUtil.parseDifficulty(argMultimap.getValue(PREFIX_DIFFICULTY).get());
+            Optional<Difficulty> difficulty = Optional.of(ParserUtil.parseDifficulty(argMultimap
+                    .getValue(PREFIX_DIFFICULTY).get()));
+            recommendArgumentsBuilder.withDifficulty(difficulty);
         }
         if (!argMultimap.getAllValues(PREFIX_CALORIES).isEmpty()) {
-            calories = ParserUtil.parseCalories(argMultimap.getValue(PREFIX_CALORIES).get());
+            Optional<Calories> calories = Optional.of(ParserUtil.parseCalories(argMultimap.getValue(PREFIX_CALORIES)
+                    .get()));
+            recommendArgumentsBuilder.withCalories(calories);
         }
 
-        return new RecommendArguments(calories, difficulty, duration);
+        return recommendArgumentsBuilder.build();
     }
 
     /**

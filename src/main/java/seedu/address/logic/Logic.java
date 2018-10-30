@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.workout.Parameter;
 import seedu.address.model.workout.Workout;
 
 /**
@@ -25,6 +26,9 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of workouts */
     ObservableList<Workout> getFilteredWorkoutList();
+
+    /** Returns an unmodifiable view of the filtered list of parameters */
+    ObservableList<Parameter> getFilteredTrackedDataList();
 
     /** Returns the list of input entered by the user, encapsulated in a {@code ListElementPointer} object */
     ListElementPointer getHistorySnapshot();
