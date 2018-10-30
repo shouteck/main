@@ -57,8 +57,8 @@ public class CurrentCommand extends Command {
     public static final String MESSAGE_CONTINUE = "Do you still want to make this workout current?";
 
     private boolean success = true;
-    private final Index targetIndex;
     private static boolean currentWorkout;
+    private final Index targetIndex;
 
     /**
      * @param targetIndex of the person in the filtered workout list to edit the state tag
@@ -198,5 +198,7 @@ public class CurrentCommand extends Command {
         return targetIndex.equals(e.targetIndex);
     }
 
-    public static void setCurrentWorkout(boolean b) { currentWorkout = b; }
+    public static void setCurrentWorkout(boolean b) {
+        currentWorkout = b;
+    }
 }
