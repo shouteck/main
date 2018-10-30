@@ -115,7 +115,23 @@ public class EditCommand extends Command {
         Muscle updatedMuscle = editWorkoutDescriptor.getMuscle().orElse(workoutToEdit.getMuscle());
         Calories updatedCalories = editWorkoutDescriptor.getCalories().orElse(workoutToEdit.getCalories());
         Instruction updatedInstruction = editWorkoutDescriptor.getInstruction().orElse(workoutToEdit.getInstruction());
-        Set<Tag> updatedTags = editWorkoutDescriptor.getTags().orElse(workoutToEdit.getTags());
+
+        Tag stateTag = null;
+        for (Tag entry: workoutToEdit.getTags()) {
+            if (entry.tagName.equals("future")) {
+                stateTag = entry;
+            } else if (entry.tagName.equals("current")) {
+                stateTag = entry;
+            } else if (entry.tagName.equals("completed")) {
+                stateTag = entry;
+            } else {}
+        }
+        Set<Tag> originalTags = editWorkoutDescriptor.getTags().orElse(workoutToEdit.getTags());
+        Set<Tag> updatedTags = new HashSet<>();
+        for (Tag entry: originalTags) {
+            updatedTags.add(entry);
+        }
+        updatedTags.add(stateTag);
 
         return new Workout(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,
                 updatedMuscle, updatedCalories, updatedInstruction, updatedTags, workoutToEdit.getRemark());
