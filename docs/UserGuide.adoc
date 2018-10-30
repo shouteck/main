@@ -405,6 +405,9 @@ There is no need to save manually.
 |Modify
 |`modify gender/female username/sarah height/1.69 weight/87.2 calories/150 difficulty/beginner duration/15m`
 
+|Recommend
+|recommend difficulty/beginner
+
 |Redo
 |`redo`
 
