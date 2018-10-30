@@ -64,6 +64,11 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 Format: `help`
 
+[NOTE]
+====
+Pressing the kbd:[F1] key will display open up the help window as well!
+====
+
 === Adding a workout: `add`
 
 Adds a workout to the workout book +
@@ -247,15 +252,20 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 
 // tag::undoredo[]
 
-=== Listing entered commands : `profile`
+=== Viewing user profile : `profile`
 
 Shows the user profile. The user profile consists of username, height, weight, BMI. It also contains the workout preset for users such as calories, difficulty and duration which the user can set base on their preference. +
 Format: `profile`
 
-=== Listing entered commands : `modify`
+=== Modifying user profile : `modify`
 
 Modify the user's profile. +
-Format: `modify username/[USERNAME] gender/[GENDER] height/[HEIGHT] weight/[WEIGHT] preferred_difficulty/[DIFFICULTY]`
+Format: `modify [gender/GENDER] [username/USERNAME] [height/HEIGHT] [weight/WEIGHT] [calories/CALORIES] [difficulty/DIFFICULTY] [duration/DURATION] `
+
+[NOTE]
+====
+Pressing the kbd:[F2] key will display open up the user profile as well!
+====
 
 Examples:
 
