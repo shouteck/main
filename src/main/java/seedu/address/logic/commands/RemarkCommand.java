@@ -25,7 +25,7 @@ public class RemarkCommand extends Command {
             + ": Remark the workout identified by the index number used in the displayed workout list.\n"
             + "Parameters: INDEX (must be a positive integer)"
             + "[" + PREFIX_REMARK + "NAME]\n "
-            + "Example: " + COMMAND_WORD + " 1" + PREFIX_REMARK
+            + "Example: " + COMMAND_WORD + " 1 " + PREFIX_REMARK
             + "This is a great upper body workout, targeting the muscles in arms, "
             + "the shoulders, the center and your back.";
 
