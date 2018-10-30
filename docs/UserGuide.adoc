@@ -270,9 +270,9 @@ Format: `modify [gender/GENDER] [username/USERNAME] [height/HEIGHT] [weight/WEIG
 Examples:
 
 * `modify username/apple` +
-Change the Profile's name to apple.
+Change the profile's username to apple.
 * `modify username/apple height/1.82` +
-Change the Profile's name to apple, height to 1.82m and update the BMI accordingly.
+Change the profile's username to apple, height to 1.82m and update the BMI accordingly.
 
 === Listing entered commands : `recommend`
 
