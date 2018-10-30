@@ -36,8 +36,6 @@ import seedu.address.model.workout.Workout;
  */
 public class CurrentCommand extends Command {
 
-    public static boolean currentWorkout;
-
     public static final String COMMAND_WORD = "current";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sets a workout to be the current workout identified "
@@ -60,6 +58,7 @@ public class CurrentCommand extends Command {
 
     private boolean success = true;
     private final Index targetIndex;
+    private static boolean currentWorkout;
 
     /**
      * @param targetIndex of the person in the filtered workout list to edit the state tag
@@ -198,4 +197,6 @@ public class CurrentCommand extends Command {
         CurrentCommand e = (CurrentCommand) other;
         return targetIndex.equals(e.targetIndex);
     }
+
+    public static void setCurrentWorkout(boolean b) { currentWorkout = b; }
 }
