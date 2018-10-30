@@ -66,7 +66,7 @@ Format: `help`
 
 [NOTE]
 ====
-Pressing the kbd:[F1] key will display open up the help window as well!
+Pressing the kbd:[F1] key will display the help window as well!
 ====
 
 === Adding a workout: `add`
@@ -259,13 +259,19 @@ Format: `profile`
 
 [NOTE]
 ====
-Pressing the kbd:[F2] key will display open up the user profile as well!
+Pressing the kbd:[F2] key will display the user profile as well!
 ====
 
 === Modifying user profile : `modify`
 
 Modify the user's profile. +
 Format: `modify [gender/GENDER] [username/USERNAME] [height/HEIGHT] [weight/WEIGHT] [calories/CALORIES] [difficulty/DIFFICULTY] [duration/DURATION]`
+
+****
+* Accepts any combinations of the all the prefixes.
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+****
 
 Examples:
 
