@@ -44,7 +44,7 @@ public class CurrentCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 ";
 
     public static final String MESSAGE_CURRENT_WORKOUT_SUCCESS = "Current Workout: %1$s";
-    public static final String MESSAGE_CURRENT_WORKOUT_FAILURE = "Fail to make the workout current.";
+    public static final String MESSAGE_CURRENT_WORKOUT_FAILURE = "Failure to make the workout current.";
     public static final String MESSAGE_DUPLICATE_CURRENT_WORKOUT = "This workout is already current.";
     public static final String MESSAGE_MULTIPLE_CURRENT_WORKOUT = "There is already a current workout. Complete that "
             + "before trying again.";
