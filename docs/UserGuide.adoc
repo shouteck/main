@@ -18,7 +18,7 @@ By: `Team T13-5`      Since: `Sept 2018`      #Licence: `MIT`
 
 == Introduction
 
-WorkoutBook *test* is for those who *prefer to use a desktop app for managing workouts*. More importantly, WorkoutBook is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
+WorkoutBook is for those who *prefer to use a desktop app for managing workouts*. More importantly, WorkoutBook is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
 
 == Quick Start
 
@@ -114,7 +114,8 @@ Format: `current INDEX`
 
 ****
 * Changes the state tag of the workout at the specified `INDEX`. The index refers to the index number shown in the displayed workout list. The index *must be a positive integer* 1, 2, 3, ...
-* You can change the state tag from both `future` and `completed`.
+* You can change the state tag from both `future` and `completed`. The current command will receive a warning when the indexed workout's difficulty is harder than the user's indicated difficulty,
+* duration is higher than the user's indicated duration or calories is higher than the user's indicated calories.
 ****
 
 Examples:
