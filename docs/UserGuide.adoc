@@ -257,15 +257,15 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 Shows the user profile. The user profile consists of username, height, weight, BMI. It also contains the workout preset for users such as calories, difficulty and duration which the user can set base on their preference. +
 Format: `profile`
 
-=== Modifying user profile : `modify`
-
-Modify the user's profile. +
-Format: `modify [gender/GENDER] [username/USERNAME] [height/HEIGHT] [weight/WEIGHT] [calories/CALORIES] [difficulty/DIFFICULTY] [duration/DURATION] `
-
 [NOTE]
 ====
 Pressing the kbd:[F2] key will display open up the user profile as well!
 ====
+
+=== Modifying user profile : `modify`
+
+Modify the user's profile. +
+Format: `modify [gender/GENDER] [username/USERNAME] [height/HEIGHT] [weight/WEIGHT] [calories/CALORIES] [difficulty/DIFFICULTY] [duration/DURATION] `
 
 Examples:
 
