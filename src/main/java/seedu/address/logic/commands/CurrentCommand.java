@@ -55,8 +55,8 @@ public class CurrentCommand extends Command {
     public static final String MESSAGE_HIGHER_DURATION = "This workout will take longer than your preferred duration."
             + "\n";
     public static final String MESSAGE_CONTINUE = "Do you still want to make this workout current?";
-
     public static boolean currentWorkout;
+
     private boolean success = true;
     private final Index targetIndex;
 
