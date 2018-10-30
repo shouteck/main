@@ -65,20 +65,17 @@ public class ModifyCommandTest {
         Element divUsername = doc.getElementById("username");
         Element divHeight = doc.getElementById("height");
         Element divWeight = doc.getElementById("weight");
-        //Element divPreferredDifficulty = doc.getElementById("preferred_difficulty");
 
         currentGender = divGender.ownText();
         currentUsername = divUsername.ownText();
         currentHeight = divHeight.ownText();
         currentWeight = divWeight.ownText();
-        //currentPreferredDifficulty = divPreferredDifficulty.ownText();
 
         //modify the content of profile window
         divGender.text(INVALID_GENDER);
         divHeight.text(INVALID_HEIGHT);
         divUsername.text(INVALID_USERNAME);
         divWeight.text(INVALID_WEIGHT);
-        //divPreferredDifficulty.text(INVALID_PREFERRED_DIFFICULTY);
     }
 
     @Test
