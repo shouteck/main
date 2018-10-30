@@ -70,13 +70,13 @@ Adds a workout to the workout book +
 Format: `add name/NAME type/TYPE duration/DURATION difficulty/DIFFICULTY equipment/EQUIPMENT muscle/MUSCLE calories/CALORIES instruction/INSTRUCTION [tag/TAG]…​`
 
 ****
-* A terminal message will appear if one of the tags do not include a state tag - future, current or completed.
+* The state tag "future" will automatically be added to any new workout.
 * The state tag is for the user to note the various things: future - untouched workouts, current - the workout that the user is currently focused on and completed - workouts that have been completed by the user.
 ****
 
 
 [TIP]
-A workout can have any number of tags (including 0)
+A workout can have any number of tags (minimally 1)
 
 Examples:
 
@@ -96,8 +96,8 @@ Format: `edit INDEX name/NAME [type/TYPE] [duration/DURATION] [difficulty/DIFFIC
 * Edits the workout at the specified `INDEX`. The index refers to the index number shown in the displayed workout list. The index *must be a positive integer* 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the workout will be removed i.e adding of tags is not cumulative.
-* You can remove all the workout's tags by typing `tag/` without specifying any tags after it.
+* When editing tags, the existing tags of the workout except the state tag will be removed i.e adding of tags is not cumulative.
+* You can remove all the workout's tags except the state tag by typing `tag/` without specifying any tags after it.
 ****
 
 Examples:
@@ -105,16 +105,17 @@ Examples:
 * `edit 1 type/strength duration/20m` +
 Edits the type and duration of the 1st workout to be `strength` and `20m` respectively.
 * `edit 2 name/Arnold's workout tag/` +
-Edits the name of the 2nd workout to be `Arnold's workout` and clears all existing tags.
+Edits the name of the 2nd workout to be `Arnold's workout` and clears all existing tags except the state tag.
 
 === Changing a workout to current : `current`
 
-Changes a workout to be a current workout in the workout book. +
+Changes a workout to be the current workout in the workout book. +
 Format: `current INDEX`
 
 ****
 * Changes the state tag of the workout at the specified `INDEX`. The index refers to the index number shown in the displayed workout list. The index *must be a positive integer* 1, 2, 3, ...
 * You can change the state tag from both `future` and `completed`.
+* You only can have either zero or one current workout at any point in time.
 ****
 
 Examples:
@@ -129,7 +130,7 @@ Format: `complete INDEX`
 
 ****
 * Changes the state tag of the workout at the specified `INDEX`. The index refers to the index number shown in the displayed workout list. The index *must be a positive integer* 1, 2, 3, ...
-* You can change the state tag from both `future` and `current`.
+* You can change the state tag only from `current`.
 ****
 
 Examples:
