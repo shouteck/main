@@ -430,8 +430,8 @@ Step 3. The user executes the complete command to change the `current` tag in th
 .Interactions inside `Logic` component when pressing `complete`
 image::CompleteCommandSD.png[width="500"]
 
-The user can only change the state tag from `current` to `completed` by using the complete command.
-The user can only change the state tag from `future` to `current` or `completed` to `current` by using the current command.
+* The user can only change the state tag from `current` to `completed` by using the complete command.
+* The user can only change the state tag from `future` to `current` or `completed` to `current` by using the current command.
 
 // end::memory[]
 
