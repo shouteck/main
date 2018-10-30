@@ -124,7 +124,7 @@ public class EditCommand extends Command {
                 stateTag = entry;
             } else if (entry.tagName.equals("completed")) {
                 stateTag = entry;
-            } else {}
+            } else { }
         }
         Set<Tag> originalTags = editWorkoutDescriptor.getTags().orElse(workoutToEdit.getTags());
         Set<Tag> updatedTags = new HashSet<>();
