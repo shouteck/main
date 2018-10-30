@@ -11,7 +11,7 @@ import com.google.common.base.Strings;
  */
 public class Remark {
     public static final String MESSAGE_REMARK_CONSTRAINTS =
-            "Remark can take any values, and it should no be blank";
+            "Remark can be empty or a paragraph.";
 
 
     /*

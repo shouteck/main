@@ -181,6 +181,7 @@ public class XmlAdaptedWorkout {
         if (!Remark.isValidRemark(remark)) {
             throw new IllegalValueException(Remark.MESSAGE_REMARK_CONSTRAINTS);
         }
+        final Remark modelRemark = new Remark(remark);
 
         if (instruction == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -192,7 +193,7 @@ public class XmlAdaptedWorkout {
         final Instruction modelInstruction = new Instruction(instruction);
         final Set<Tag> modelTags = new HashSet<>(workoutTags);
         return new Workout(modelName, modelType, modelDuration, modelDifficulty, modelEquipment,
-                modelMuscle, modelCalories, modelInstruction, modelTags, null);
+                modelMuscle, modelCalories, modelInstruction, modelTags, modelRemark);
     }
 
     @Override
