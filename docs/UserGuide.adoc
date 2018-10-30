@@ -122,16 +122,16 @@ Format: `current INDEX`
 * You can change the state tag from both `future` and `completed`.
 ****
 
-[NOTE]
-====
-The current command will receive a warning when the indexed workout's difficulty is harder than the your indicated difficulty, duration is higher than the your indicated duration or calories is higher than the your indicated calories in the profile under workout presets. +
-Simply click the btn:[Yes] button if you want to proceed
-====
-
 Examples:
 
 * `current 1` +
-Changes the state tag of the 1st workout to be `current`.
+Changes the state tag of the 1st workout to be `current`. +
+
+[NOTE]
+====
+The current command will receive a warning when the indexed workout's difficulty is harder than the your indicated difficulty, duration is higher than the your indicated duration or calories is higher than the your indicated calories in the profile under workout presets. +
+Simply click the btn:[Yes] button if you want to proceed.
+====
 
 === Changing a workout to completed : `complete`
 
