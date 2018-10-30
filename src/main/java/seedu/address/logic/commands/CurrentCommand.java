@@ -135,7 +135,7 @@ public class CurrentCommand extends Command {
                 }
             }
             if (profileWindowManager.isHigherCalories(profileWindowManager.convertStringIntoInt(profileWindowManager
-                    .trimmedCalories(updatedCalories.toString())), userCalories )) {
+                    .trimmedCalories(updatedCalories.toString())), userCalories)) {
                 int reply = JOptionPane.showConfirmDialog(null, MESSAGE_HIGHER_CALORIES
                         + MESSAGE_CONTINUE, "Making this workout current", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.NO_OPTION) {
