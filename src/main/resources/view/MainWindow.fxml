@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.Label?>
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
          minWidth="950" minHeight="600" onCloseRequest="#handleExit">
   <icons>
@@ -43,7 +44,7 @@
         </StackPane>
 
         <StackPane VBox.vgrow="NEVER" fx:id="resultDisplayPlaceholder" styleClass="pane-with-border"
-                   minHeight="100" prefHeight="100" maxHeight="100">
+                   minHeight="135" prefHeight="100" maxHeight="100">
           <padding>
             <Insets top="5" right="10" bottom="5" left="10" />
           </padding>
@@ -67,6 +68,7 @@
             <padding>
               <Insets top="10" right="10" bottom="10" left="10" />
             </padding>
+            <Label fx:id="trackedDataListPanelTitle" text="Tracked Parameters" styleClass="label-bright" VBox.vgrow="NEVER"/>
             <StackPane fx:id="trackedDataListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
         </SplitPane>
