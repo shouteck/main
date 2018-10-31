@@ -29,7 +29,8 @@ import seedu.address.testutil.WorkoutBuilder;
 
 
 public class RemarkCommandTest {
-    private Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new TrackedData(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new TrackedData(),
+            new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
