@@ -33,7 +33,7 @@ public class TrackedData implements ReadOnlyTrackedData {
     public TrackedData() {}
 
     /**
-     * Creates an TrackedData workout book using the Workouts in the {@code toBeCopied}
+     * Creates an TrackedData using the Workouts in the {@code toBeCopied}
      */
     public TrackedData(ReadOnlyTrackedData toBeCopied) {
         this();
@@ -43,7 +43,7 @@ public class TrackedData implements ReadOnlyTrackedData {
     //// list overwrite operations
 
     /**
-     * Replaces the contents of the Workout list with {@code workouts}.
+     * Replaces the contents of the TrackedData with {@code workouts}.
      * {@code workouts} must not contain duplicate workouts.
      */
     public void setWorkouts(List<Workout> workouts) {
@@ -70,8 +70,8 @@ public class TrackedData implements ReadOnlyTrackedData {
     }
 
     /**
-     * Adds a workout to the tracked data workout book.
-     * The workout must not already exist in the tracked data workout book.
+     * Adds a workout to the TrackedData.
+     * The workout must not already exist in the TrackedData.
      */
     public void addWorkout(Workout w) {
         workouts.add(w);
@@ -106,7 +106,11 @@ public class TrackedData implements ReadOnlyTrackedData {
         return workouts.hashCode();
     }
 
-
+    /**
+     * A list of workouts that allows for duplicates between its elements, and does not allow nulls.
+     *
+     * Supports a minimal set of list operations.
+     */
     public class WorkoutList implements Iterable<Workout> {
 
         private final ObservableList<Workout> internalList = FXCollections.observableArrayList();

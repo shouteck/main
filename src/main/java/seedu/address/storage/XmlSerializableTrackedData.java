@@ -44,9 +44,6 @@ public class XmlSerializableTrackedData {
         TrackedData trackedData = new TrackedData();
         for (XmlAdaptedWorkout p : workouts) {
             Workout workout = p.toModelType();
-            //if (trackedData.hasWorkout(workout)) {
-                //throw new IllegalValueException(MESSAGE_DUPLICATE_WORKOUT);
-            //}
             trackedData.addWorkout(workout);
         }
         return trackedData;
