@@ -194,6 +194,23 @@ Deletes the 2nd workout in the workout book.
 `delete 1` +
 Deletes the 1st workout in the results of the `find` command.
 
+=== Deleting a workout : `remark`
+
+Remarks the specified workout from the workout book. +
+Format: `remark INDEX [r/REMARK]`
+
+****
+* Remarks the workout at the specified `INDEX`. The index refers to the index number shown in the displayed workout list. The index *must be a positive integer* 1, 2, 3, ...
+* You can remove all the workout's remarks by typing `r/` without specifying any remarks after it.
+****
+
+Examples:
+
+* `remark 1 r/This workout trains bicep` +
+Remarks the 1st workout as `This workout trains bicep`.
+* `remark 2 r/` +
+Clears the remark of the 2nd workout.
+
 === Selecting a workout : `select`
 
 Selects the workout identified by the index number used in the displayed workout list. +
@@ -363,6 +380,7 @@ e.g. `filter type/strength duration/20m equipment/dumbbell`
 e.g. `find bench`
 * *List* : `list`
 * *Help* : `help`
+* *Remark* : `remark INDEX [r/REMARK]`
 * *Select* : `select INDEX` +
 e.g.`select 2`
 * *Sort* : `sort`

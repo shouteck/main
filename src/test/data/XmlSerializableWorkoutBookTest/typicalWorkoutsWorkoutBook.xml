@@ -10,6 +10,7 @@
 		<muscle>thigh</muscle>
 		<calories>20</calories>
 		<instruction>Walk heel to toe for 50 steps</instruction>
+        <remark>This workout trains thigh</remark>
         <tagged>relax</tagged>
     </workouts>
     <workouts>
@@ -21,6 +22,7 @@
 		<muscle>deltoids</muscle>
 		<calories>100</calories>
 		<instruction>set1: shoulder press reps: 5-7</instruction>
+        <remark>This workout trains deltoids</remark>
         <tagged>heavy</tagged>
     </workouts>
     <workouts>
@@ -32,6 +34,7 @@
 		<muscle>legs</muscle>
 		<calories>135</calories>
 		<instruction>set1: leg raises reps: 15-20</instruction>
+        <remark>This workout trains legs</remark>
     </workouts>
     <workouts>
 		<name>Daniel Meier's workout</name>
@@ -42,6 +45,7 @@
 		<muscle>legs</muscle>
 		<calories>200</calories>
 		<instruction>30 minutes slow jog</instruction>
+        <remark>This workout trains legs</remark>
         <tagged>favourite</tagged>
     </workouts>
     <workouts>
@@ -53,6 +57,7 @@
 		<muscle>legs</muscle>
 		<calories>100</calories>
 		<instruction>20 minutes brisk walk</instruction>
+        <remark>This workout trains legs</remark>
     </workouts>
     <workouts>
 		<name>Fiona Kunz's workout</name>
@@ -63,6 +68,7 @@
 		<muscle>arms</muscle>
 		<calories>225</calories>
 		<instruction>set1: medicine ball throw reps: 25-30</instruction>
+        <remark>This workout trains arms</remark>
     </workouts>
     <workouts>
 		<name>George Best's workout</name>
@@ -73,5 +79,6 @@
 		<muscle>chest</muscle>
 		<calories>175</calories>
 		<instruction>6 sets of bench press, 6 reps per set of 70% max</instruction>
+        <remark>This workout trains chest</remark>
     </workouts>
 </workoutbook>

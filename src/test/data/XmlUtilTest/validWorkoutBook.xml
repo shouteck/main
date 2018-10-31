@@ -9,6 +9,7 @@
         <muscle>bicep</muscle>
         <calories>123</calories>
         <instruction>set1: hammer curl reps: 4-6</instruction>
+        <remark>This workout trains bicep</remark>
         <tagged>heavy</tagged>
     </workouts>
     <workouts>
@@ -20,6 +21,7 @@
         <muscle>quadriceps</muscle>
         <calories>200</calories>
         <instruction>set1: squats reps: 15-20</instruction>
+        <remark>This workout trains quadriceps</remark>
         <tagged>intense</tagged>
     </workouts>
     <workouts>
@@ -31,6 +33,7 @@
         <muscle>deltoids</muscle>
         <calories>100</calories>
         <instruction>set1: shoulder press reps: 5-7</instruction>
+        <remark>This workout trains deltoids</remark>
         <tagged>heavy</tagged>
     </workouts>
     <workouts>
@@ -42,6 +45,7 @@
         <muscle>legs</muscle>
         <calories>135</calories>
         <instruction>set1: leg raises reps: 15-20</instruction>
+        <remark>This workout trains legs</remark>
     </workouts>
     <workouts>
         <name>Werner Meyer's workout</name>
@@ -52,6 +56,7 @@
         <muscle>legs</muscle>
         <calories>200</calories>
         <instruction>30 minutes slow jog</instruction>
+        <remark>This workout trains legs</remark>
         <tagged>favourite</tagged>
     </workouts>
     <workouts>
@@ -63,6 +68,7 @@
         <muscle>legs</muscle>
         <calories>100</calories>
         <instruction>20 minutes brisk walk</instruction>
+        <remark>This workout trains legs</remark>
     </workouts>
     <workouts>
         <name>Anna Best's workout</name>
@@ -73,6 +79,7 @@
         <muscle>arms</muscle>
         <calories>225</calories>
         <instruction>set1: medicine ball throw reps: 25-30</instruction>
+        <remark>This workout trains arms</remark>
     </workouts>
     <workouts>
         <name>Stefan Meier's workout</name>
@@ -83,6 +90,7 @@
         <muscle>chest</muscle>
         <calories>175</calories>
         <instruction>6 sets of bench press, 6 reps per set of 70% max</instruction>
+        <remark>This workout trains chest</remark>
         <tagged>heavy</tagged>
     </workouts>
     <workouts>
@@ -94,5 +102,6 @@
         <muscle>core</muscle>
         <calories>90</calories>
         <instruction>set1: planks reps: 5 x 1 minute</instruction>
+        <remark>This workout trains core</remark>
     </workouts>
 </workoutbook>

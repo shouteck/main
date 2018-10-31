@@ -34,6 +34,7 @@ public class Remark {
         fullRemark = remark;
     }
 
+
     /**
      * Returns true if a given string is a valid remark.
      */
@@ -41,7 +42,6 @@ public class Remark {
 
         return test == null || Strings.isNullOrEmpty(test) || test.matches(REMARK_VALIDATION_REGEX);
     }
-
 
     @Override
     public String toString() {

@@ -32,7 +32,6 @@ public class RemarkCommand extends Command {
     public static final String MESSAGE_REMARK_WORKOUT_SUCCESS = "Remark workout: %1$s";
     public static final String MESSAGE_DUPLICATE_WORKOUT = "This workout already exists in the workout book.";
 
-
     private final Index index;
     private final Remark remark;
 
@@ -43,6 +42,9 @@ public class RemarkCommand extends Command {
         this.remark = remark;
     }
 
+    public Remark getRemark() {
+        return remark;
+    }
 
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
@@ -80,5 +82,21 @@ public class RemarkCommand extends Command {
                 workoutToRemark.getInstruction(), workoutToRemark.getTags(), remark);
     }
 
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+        if (other == this) {
+            return true;
+        }
 
+        // instanceof handles nulls
+        if (!(other instanceof RemarkCommand)) {
+            return false;
+        }
+
+        // state check
+        RemarkCommand e = (RemarkCommand) other;
+        return index.equals(e.index)
+                && remark.equals(e.remark);
+    }
 }
