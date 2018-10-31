@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.ParserUtil.parseTag;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_WORKOUTS;
 
 import java.util.HashSet;
@@ -12,7 +11,6 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.workout.Calories;
@@ -39,7 +37,7 @@ public class CompleteCommand extends Command {
 
     public static final String MESSAGE_COMPLETE_WORKOUT_SUCCESS = "Completed Workout: %1$s";
     public static final String MESSAGE_DUPLICATE_COMPLETE_WORKOUT = "This workout is already completed.";
-    public static final String MESSAGE_SKIPPED_COMPLETE_WORKOUT = "This workout must first be in the current state.";
+    public static final String MESSAGE_SKIPPED_COMPLETE_WORKOUT = "This workout must already be in the current state.";
 
     private final Index targetIndex;
 
@@ -66,7 +64,7 @@ public class CompleteCommand extends Command {
             model.checkDataForTrack(editedWorkout);
             model.commitModel();
             return new CommandResult(String.format(MESSAGE_COMPLETE_WORKOUT_SUCCESS, editedWorkout));
-        } catch (IndexOutOfBoundsException | ParseException e) {
+        } catch (IndexOutOfBoundsException e) {
             throw new CommandException(Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
         }
     }
@@ -75,7 +73,7 @@ public class CompleteCommand extends Command {
      * Creates and returns a {@code Workout} with the details of {@code workoutToEdit}
      * edited with {@code editWorkoutDescriptor}.
      */
-    private static Workout createEditedWorkout(Workout workoutToEdit) throws CommandException, ParseException {
+    private static Workout createEditedWorkout(Workout workoutToEdit) throws CommandException {
         assert workoutToEdit != null;
 
         Name updatedName = workoutToEdit.getName();
@@ -91,9 +89,9 @@ public class CompleteCommand extends Command {
         for (Tag entry: originalTags) {
             updatedTags.add(entry);
         }
-        Tag future = parseTag("future");
-        Tag current = parseTag("current");
-        Tag completed = parseTag("completed");
+        Tag future = new Tag("future");
+        Tag current = new Tag("current");
+        Tag completed = new Tag("completed");
 
         if (originalTags.contains(completed)) {
             throw new CommandException(MESSAGE_DUPLICATE_COMPLETE_WORKOUT);
