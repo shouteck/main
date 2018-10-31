@@ -12,6 +12,7 @@ import seedu.address.model.workout.Equipment;
 import seedu.address.model.workout.Instruction;
 import seedu.address.model.workout.Muscle;
 import seedu.address.model.workout.Name;
+import seedu.address.model.workout.Remark;
 import seedu.address.model.workout.Type;
 import seedu.address.model.workout.Workout;
 
@@ -28,6 +29,7 @@ public class WorkoutBuilder {
     public static final String DEFAULT_MUSCLE = "bicep, tricep";
     public static final String DEFAULT_CALORIES = "150";
     public static final String DEFAULT_INSTRUCTION = "set 1: bicep curl reps: 4-6 set 2: tricep extension reps: 4-6";
+    public static final String DEFAULT_REMARK = "This workout trains bicep";
 
     private Name name;
     private Type type;
@@ -38,7 +40,7 @@ public class WorkoutBuilder {
     private Calories calories;
     private Instruction instruction;
     private Set<Tag> tags;
-
+    private Remark remark;
 
 
     public WorkoutBuilder() {
@@ -50,6 +52,7 @@ public class WorkoutBuilder {
         muscle = new Muscle(DEFAULT_MUSCLE);
         calories = new Calories(DEFAULT_CALORIES);
         instruction = new Instruction(DEFAULT_INSTRUCTION);
+        remark = new Remark(DEFAULT_REMARK);
         tags = new HashSet<>();
     }
 
@@ -65,7 +68,7 @@ public class WorkoutBuilder {
         muscle = workoutToCopy.getMuscle();
         calories = workoutToCopy.getCalories();
         instruction = workoutToCopy.getInstruction();
-
+        remark = workoutToCopy.getRemark();
         tags = new HashSet<>(workoutToCopy.getTags());
     }
 
@@ -150,8 +153,17 @@ public class WorkoutBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Type} of the {@code Workout} that we are building.
+     */
+
+    public WorkoutBuilder withRemark(String remark) {
+        this.remark = new Remark(remark);
+        return this;
+    }
+
     public Workout build() {
-        return new Workout(name, type, duration, difficulty, equipment, muscle, calories, instruction, tags, null);
+        return new Workout(name, type, duration, difficulty, equipment, muscle, calories, instruction, tags, remark);
     }
 
 }

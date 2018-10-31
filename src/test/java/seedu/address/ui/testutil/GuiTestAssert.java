@@ -42,6 +42,7 @@ public class GuiTestAssert {
         assertEquals(expectedWorkout.getMuscle().fullMuscle, actualCard.getMuscle());
         assertEquals(expectedWorkout.getCalories().fullCalories, actualCard.getCalories());
         assertEquals(expectedWorkout.getInstruction().fullInstruction, actualCard.getInstruction());
+        assertEquals(expectedWorkout.getRemark().fullRemark, actualCard.getRemark());
         assertEquals(expectedWorkout.getTags().stream().map(tag -> tag.tagName).collect(Collectors.toList()),
                 actualCard.getTags());
     }
