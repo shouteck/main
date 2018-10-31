@@ -86,7 +86,8 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<?> expectedException, String expectedMessage)
             throws IOException {
-        Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
+                model.getTrackedData(), new UserPrefs());
         assertCommandBehavior(expectedException, inputCommand, expectedMessage, expectedModel);
     }
 

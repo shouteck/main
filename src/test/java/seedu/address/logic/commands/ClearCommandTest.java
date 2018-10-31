@@ -8,6 +8,7 @@ import org.junit.Test;
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.TrackedData;
 import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.WorkoutBook;
@@ -27,8 +28,10 @@ public class ClearCommandTest {
 
     @Test
     public void execute_nonEmptyWorkoutBook_success() {
-        Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new UserPrefs());
-        Model expectedModel = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new UserPrefs());
+        Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new TrackedData(),
+                new UserPrefs());
+        Model expectedModel = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new TrackedData(),
+                new UserPrefs());
         expectedModel.resetData(new WorkoutBook());
         expectedModel.commitWorkoutBook();
 

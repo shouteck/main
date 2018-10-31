@@ -17,6 +17,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.TrackedData;
 import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.workout.Workout;
@@ -27,7 +28,8 @@ import seedu.address.model.workout.Workout;
  */
 public class DeleteCommandTest {
 
-    private Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new TrackedData(),
+            new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
@@ -38,7 +40,7 @@ public class DeleteCommandTest {
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_WORKOUT_SUCCESS, workoutToDelete);
 
         ModelManager expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
-                new UserPrefs());
+                model.getTrackedData(), new UserPrefs());
         expectedModel.deleteWorkout(workoutToDelete);
         expectedModel.commitWorkoutBook();
 
@@ -62,7 +64,8 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_WORKOUT_SUCCESS, workoutToDelete);
 
-        Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
+                model.getTrackedData(), new UserPrefs());
         expectedModel.deleteWorkout(workoutToDelete);
         expectedModel.commitWorkoutBook();
         showNoWorkout(expectedModel);
@@ -87,7 +90,8 @@ public class DeleteCommandTest {
     public void executeUndoRedo_validIndexUnfilteredList_success() throws Exception {
         Workout workoutToDelete = model.getFilteredWorkoutList().get(INDEX_FIRST_WORKOUT.getZeroBased());
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_WORKOUT);
-        Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
+                model.getTrackedData(), new UserPrefs());
         expectedModel.deleteWorkout(workoutToDelete);
         expectedModel.commitWorkoutBook();
 
@@ -126,7 +130,8 @@ public class DeleteCommandTest {
     @Test
     public void executeUndoRedo_validIndexFilteredList_sameWorkoutDeleted() throws Exception {
         DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_WORKOUT);
-        Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
+                model.getTrackedData(), new UserPrefs());
 
         showWorkoutAtIndex(model, INDEX_SECOND_WORKOUT);
         Workout workoutToDelete = model.getFilteredWorkoutList().get(INDEX_FIRST_WORKOUT.getZeroBased());

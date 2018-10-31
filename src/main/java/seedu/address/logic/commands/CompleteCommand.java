@@ -61,6 +61,7 @@ public class CompleteCommand extends Command {
             model.updateWorkout(workoutToEdit, editedWorkout);
             model.updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
             CurrentCommand.setCurrentWorkout(false);
+            model.checkDataForTrack(editedWorkout);
             model.commitModel();
             return new CommandResult(String.format(MESSAGE_COMPLETE_WORKOUT_SUCCESS, editedWorkout));
         } catch (IndexOutOfBoundsException e) {

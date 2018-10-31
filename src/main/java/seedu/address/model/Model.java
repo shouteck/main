@@ -16,7 +16,7 @@ public interface Model {
     Predicate<Workout> PREDICATE_SHOW_ALL_WORKOUTS = unused -> true;
 
     /** {@code Predicate} that always evaluate to true */
-    Predicate<Workout> PREDICATE_SHOW_ALL_PARAMETERS = unused -> true;
+    Predicate<Parameter> PREDICATE_SHOW_ALL_PARAMETERS = unused -> true;
 
     /** Clears existing backing model and replaces with the provided new data. */
     void resetData(ReadOnlyWorkoutBook newData);
@@ -26,6 +26,9 @@ public interface Model {
 
     /** Returns the TrackedDataList */
     ReadOnlyTrackedDataList getTrackedDataList();
+
+    /** Returns the TrackedData */
+    ReadOnlyTrackedData getTrackedData();
 
     /**
      * Returns true if a workout with the same identity as {@code workout} exists in the workout book.
@@ -65,7 +68,7 @@ public interface Model {
     ObservableList<Parameter> getFilteredTrackedDataList();
 
     /**
-     * Updates the filter of the filtered workout list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered tracked data list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredTrackedDataList(Predicate<Parameter> predicate);
@@ -131,6 +134,26 @@ public interface Model {
     void redoTrackedDataList();
 
     /**
+     * Returns true if the model has previous tracked data states to restore.
+     */
+    boolean canUndoTrackedData();
+
+    /**
+     * Returns true if the model has undone tracked data states to restore.
+     */
+    boolean canRedoTrackedData();
+
+    /**
+     * Restores the model's tracked data to its previous state.
+     */
+    void undoTrackedData();
+
+    /**
+     * Restores the model's tracked data to its previously undone state.
+     */
+    void redoTrackedData();
+
+    /**
      * Saves the current model state for undo/redo.
      */
     void commitModel();
@@ -144,6 +167,11 @@ public interface Model {
      * Saves the current tracked data list state for undo/redo.
      */
     void commitTrackedDataList();
+
+    /**
+     * Saves the current tracked data  state for undo/redo.
+     */
+    void commitTrackedData();
 
     /**
      * Sort the current workout book.
@@ -161,6 +189,11 @@ public interface Model {
      * The parameter must exist in the tracked data list.
      */
     void removeDataFromTrack(Parameter parameter);
+
+    /**
+     * Check whether the completed workout should be tracked.
+     */
+    void checkDataForTrack(Workout workout);
 
     /**
      * Returns true if {@code parameter} exists in the tracked data list.
