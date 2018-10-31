@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.REMARK_DESC_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_REMARK_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -34,7 +33,7 @@ public class RemarkCommandTest {
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
-        Remark remark = new Remark(REMARK_DESC_BOB_WORKOUT);
+        Remark remark = new Remark(VALID_REMARK_BOB_WORKOUT);
         Workout remarkedWorkout = model.getFilteredWorkoutList().get(INDEX_FIRST_WORKOUT.getZeroBased());
         RemarkCommand remarkCommand = new RemarkCommand(INDEX_FIRST_WORKOUT, remark);
         String expectedMessage = String.format(RemarkCommand.MESSAGE_REMARK_WORKOUT_SUCCESS, remarkedWorkout);
@@ -89,10 +88,10 @@ public class RemarkCommandTest {
     @Test
     public void equals() {
         final RemarkCommand standardCommand = new RemarkCommand(INDEX_FIRST_WORKOUT,
-                new Remark(REMARK_DESC_BOB_WORKOUT));
+                new Remark(VALID_REMARK_BOB_WORKOUT));
 
         // same values -> returns true
-        Remark copyRemark = new Remark(REMARK_DESC_BOB_WORKOUT);
+        Remark copyRemark = new Remark(VALID_REMARK_BOB_WORKOUT);
         RemarkCommand commandWithSameValues = new RemarkCommand(INDEX_FIRST_WORKOUT, copyRemark);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
@@ -104,7 +103,7 @@ public class RemarkCommandTest {
 
         // different index -> returns false
         assertFalse(standardCommand.equals(new RemarkCommand(INDEX_SECOND_WORKOUT,
-                new Remark(REMARK_DESC_BOB_WORKOUT))));
+                new Remark(VALID_REMARK_BOB_WORKOUT))));
     }
 
 }

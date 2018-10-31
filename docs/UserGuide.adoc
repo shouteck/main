@@ -16,6 +16,11 @@ endif::[]
 
 By: `Team T13-5`      Since: `Sept 2018`      #Licence: `MIT`
 
+
+
+
+
+
 == Introduction
 
 WorkoutBook is for those who *prefer to use a desktop app for managing workouts*. More importantly, WorkoutBook is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
