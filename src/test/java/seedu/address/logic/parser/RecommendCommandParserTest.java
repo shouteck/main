@@ -6,13 +6,11 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
-import java.io.IOException;
 import java.util.Optional;
 
 import org.junit.Test;
 
 import seedu.address.logic.commands.RecommendCommand;
-import seedu.address.model.ProfileWindowManager;
 import seedu.address.model.RecommendArguments;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
