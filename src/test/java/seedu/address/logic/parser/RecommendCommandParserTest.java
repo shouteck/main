@@ -78,7 +78,7 @@ public class RecommendCommandParserTest {
                         + " " + PREFIX_DURATION + "750m",
                 new RecommendCommand(expectedRecommendArguments));
     }
-
+    /*
     @Test
     public void parse_noFieldsPresent_success() throws IOException {
         // No fields
@@ -89,7 +89,7 @@ public class RecommendCommandParserTest {
                 .withDuration(profileWindowManager.extractDuration()).build();
         assertParseSuccess(parser, " ", new RecommendCommand(expectedRecommendArguments));
     }
-
+    */
     @Test
     public void parse_invalidValue_failure() {
         // Invalid Calories < 1
