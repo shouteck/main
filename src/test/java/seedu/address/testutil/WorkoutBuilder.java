@@ -17,7 +17,7 @@ import seedu.address.model.workout.Type;
 import seedu.address.model.workout.Workout;
 
 /**
- * A utility class to help with building Person objects.
+ * A utility class to help with building Workout objects.
  */
 public class WorkoutBuilder {
 
