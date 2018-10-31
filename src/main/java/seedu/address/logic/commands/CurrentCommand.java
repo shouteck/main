@@ -32,20 +32,22 @@ import seedu.address.model.workout.Type;
 import seedu.address.model.workout.Workout;
 
 /**
- * Changes a workout to be a current workout in the workout book.
+ * Changes a workout to be the current workout in the workout book.
  */
 public class CurrentCommand extends Command {
 
     public static final String COMMAND_WORD = "current";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sets a workout to be a current workout identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sets a workout to be the current workout identified "
             + "by the index number used in the displayed workout list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1 ";
 
     public static final String MESSAGE_CURRENT_WORKOUT_SUCCESS = "Current Workout: %1$s";
-    public static final String MESSAGE_CURRENT_WORKOUT_FAILURE = "Fail to make the workout current.";
+    public static final String MESSAGE_CURRENT_WORKOUT_FAILURE = "Failure to make the workout current.";
     public static final String MESSAGE_DUPLICATE_CURRENT_WORKOUT = "This workout is already current.";
+    public static final String MESSAGE_MULTIPLE_CURRENT_WORKOUT = "There is already a current workout. Complete that "
+            + "before trying again.";
     public static final String MESSAGE_MORE_DIFFICULT = "This workout is more difficult than your indicated workout "
             + "difficulty.\n";
     public static final String MESSAGE_HIGHER_CALORIES = "This workout requires more calories to be burnt than your "
@@ -54,9 +56,10 @@ public class CurrentCommand extends Command {
             + "\n";
     public static final String MESSAGE_CONTINUE = "Do you still want to make this workout current?";
 
+    private static boolean currentWorkout;
+
     private boolean success = true;
     private final Index targetIndex;
-
 
     /**
      * @param targetIndex of the person in the filtered workout list to edit the state tag
@@ -79,11 +82,11 @@ public class CurrentCommand extends Command {
                 model.updateWorkout(workoutToEdit, editedWorkout);
                 model.updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
                 model.commitWorkoutBook();
+                this.currentWorkout = true;
                 return new CommandResult(String.format(MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout));
             } else {
                 return new CommandResult(MESSAGE_CURRENT_WORKOUT_FAILURE);
             }
-
         } catch (IndexOutOfBoundsException | ParseException e) {
             throw new CommandException(Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
         }
@@ -105,14 +108,12 @@ public class CurrentCommand extends Command {
         Instruction updatedInstruction = workoutToEdit.getInstruction();
         Set<Tag> originalTags = workoutToEdit.getTags();
         Set<Tag> updatedTags = new HashSet<>();
+        for (Tag entry: originalTags) {
+            updatedTags.add(entry);
+        }
 
         int userCalories;
         int userDuration;
-
-        Tag current = parseTag("current");
-        if (originalTags.contains(current)) {
-            throw new CommandException(MESSAGE_DUPLICATE_CURRENT_WORKOUT);
-        }
 
         ProfileWindowManager profileWindowManager;
         try {
@@ -157,8 +158,17 @@ public class CurrentCommand extends Command {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+
         Tag future = parseTag("future");
+        Tag current = parseTag("current");
         Tag completed = parseTag("completed");
+
+        if (currentWorkout) {
+            throw new CommandException(MESSAGE_MULTIPLE_CURRENT_WORKOUT);
+        }
+        if (originalTags.contains(current)) {
+            throw new CommandException(MESSAGE_DUPLICATE_CURRENT_WORKOUT);
+        }
 
         if (originalTags.contains(future)) {
             updatedTags.remove(future);
@@ -187,5 +197,9 @@ public class CurrentCommand extends Command {
         // state check
         CurrentCommand e = (CurrentCommand) other;
         return targetIndex.equals(e.targetIndex);
+    }
+
+    public static void setCurrentWorkout(boolean b) {
+        currentWorkout = b;
     }
 }
