@@ -400,9 +400,13 @@ The sort command calls the `sortFilteredWorkoutList()` of `Model` to sort the wo
 
 Step 2. The user executes `filter` to find the workouts that contain `duration`, `equipment` and `type`.
 
+Step 3. The user executes `remark` to remark a workout
+
 image::traversingSequenceDiagram.png[width="650"]
 
-// end::traversing[]
+image::HighLevelRemarkSequenceDiagrams.png[width="650"]
+
+// end::traversing and remark[]
 
 === Memory feature
 //tag::memory
