@@ -129,9 +129,15 @@ public class EditCommand extends Command {
         Set<Tag> originalTags = editWorkoutDescriptor.getTags().orElse(workoutToEdit.getTags());
         Set<Tag> updatedTags = new HashSet<>();
         for (Tag entry: originalTags) {
-            updatedTags.add(entry);
+            if (entry.tagName.equals("future") || entry.tagName.equals("current")
+                || entry.tagName.equals("completed")) {
+            } else {
+                updatedTags.add(entry);
+            }
         }
-        updatedTags.add(stateTag);
+        if (stateTag != null) {
+            updatedTags.add(stateTag);
+        }
 
         return new Workout(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,
                 updatedMuscle, updatedCalories, updatedInstruction, updatedTags, workoutToEdit.getRemark());

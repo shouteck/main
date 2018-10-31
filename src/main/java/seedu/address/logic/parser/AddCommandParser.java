@@ -58,6 +58,11 @@ public class AddCommandParser implements Parser<AddCommand> {
         Calories calories = ParserUtil.parseCalories(argMultimap.getValue(PREFIX_CALORIES).get());
         Instruction instruction = ParserUtil.parseInstruction(argMultimap.getValue(PREFIX_INSTRUCTION).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        for (Tag entry: tagList) {
+            if (entry.tagName.equals("current") || entry.tagName.equals("completed")) {
+                throw new ParseException(AddCommand.MESSAGE_TAG_FAILURE);
+            }
+        }
         tagList.add(parseTag("future"));
 
         Workout workout = new Workout(name, type, duration, difficulty, equipment, muscle, calories, instruction,
