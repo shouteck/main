@@ -452,10 +452,7 @@ Shown below is an example scenario for the tracking feature.
 
 Step 1: The user executes `track start muscle/bicep`. The user input is parsed to create a `Parameter` object containing the prefix `muscle/` and the value `bicep`. The `Parameter` is stored into `TrackedDataList`. The UI then reflects the new `Parameter` being tracked.
 
-[[fig-TrackStart]]
-.Interactions inside `Logic` component when user enters `track start muscle/bicep`
 image::TrackCommandSequenceDiagram1.png[width="800"]
-
 
 Step 2: The user executes `complete INDEX` on a desired workout. The `complete` command calls `Model#checkDataForTrack()`, which iterates through `TrackedDataList` to check whether any `Parameter` is present in the completed workout.
 

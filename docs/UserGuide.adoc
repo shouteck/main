@@ -154,6 +154,25 @@ Examples:
 * `complete 1` +
 Changes the state tag of the 1st workout to be `completed`.
 
+=== Tracking specific parameters in completed workouts: `track`
+Tracks user-specified parameters in workouts that are marked complete via the `complete` command.
+Format: `track SUBCOMMAND PREFIX/VALUE`
+
+****
+* `SUBCOMMAND` can only be either `start` or `stop`. If it's `start`, WorkoutBook will start tracking the parameter, and for `stop`, WorkoutBook will stop the tracing.
+* If `SUBCOMMAND` is `stop`, `PREFIX/VALUE` must already be in the list of parameters being tracked.
+* Completed workouts are recorded only if the value of the corresponding prefix matches `VALUE`.
+* `PREFIX/VALUE` follows the acceptable formats for the workout parameters as stated above.
+****
+
+Examples:
+
+* `track start muscle/bicep` +
+Starts tracking the parameter `muscle/bicep` in completed workouts. +
+Any completed workout after this command is entered, that has the parameter `muscle/bicep` present, will be recorded.
+* `track stop calories/100` +
+Stops tracking the parameter `calories/100`, if it is currently being tracked.
+
 === Filtering workouts by type, duration, and equipment: `filter`
 
 Filters workouts whose types, durations, equipments contain any of the given keywords. +
