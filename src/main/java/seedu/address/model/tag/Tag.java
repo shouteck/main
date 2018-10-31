@@ -30,11 +30,7 @@ public class Tag {
      * Returns true if a given string is a valid tag name.
      */
     public static boolean isValidTagName(String test) {
-        if (test.equals("current") || test.equals("completed")) {
-            return false;
-        } else {
-            return test.matches(TAG_VALIDATION_REGEX);
-        }
+        return test.matches(TAG_VALIDATION_REGEX);
     }
 
     @Override

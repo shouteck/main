@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.ParserUtil.parseTag;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_WORKOUTS;
 
 import java.io.IOException;
@@ -17,7 +16,6 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ProfileWindowManager;
 import seedu.address.model.tag.Tag;
@@ -81,13 +79,13 @@ public class CurrentCommand extends Command {
             if (success) {
                 model.updateWorkout(workoutToEdit, editedWorkout);
                 model.updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
-                model.commitWorkoutBook();
+                model.commitModel();
                 this.currentWorkout = true;
                 return new CommandResult(String.format(MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout));
             } else {
                 return new CommandResult(MESSAGE_CURRENT_WORKOUT_FAILURE);
             }
-        } catch (IndexOutOfBoundsException | ParseException e) {
+        } catch (IndexOutOfBoundsException e) {
             throw new CommandException(Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
         }
     }
@@ -96,7 +94,7 @@ public class CurrentCommand extends Command {
      * Creates and returns a {@code Workout} with the details of {@code workoutToEdit}
      * edited with {@code editWorkoutDescriptor}.
      */
-    private Workout createEditedWorkout(Workout workoutToEdit) throws CommandException, ParseException {
+    private Workout createEditedWorkout(Workout workoutToEdit) throws CommandException {
         assert workoutToEdit != null;
         Name updatedName = workoutToEdit.getName();
         Type updatedType = workoutToEdit.getType();
@@ -159,9 +157,9 @@ public class CurrentCommand extends Command {
             System.out.println(e.getMessage());
         }
 
-        Tag future = parseTag("future");
-        Tag current = parseTag("current");
-        Tag completed = parseTag("completed");
+        Tag future = new Tag("future");
+        Tag current = new Tag("current");
+        Tag completed = new Tag("completed");
 
         if (currentWorkout) {
             throw new CommandException(MESSAGE_MULTIPLE_CURRENT_WORKOUT);
