@@ -16,6 +16,7 @@ import org.junit.Test;
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.TrackedData;
 import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.workout.DurationPredicate;
@@ -25,8 +26,10 @@ import seedu.address.model.workout.TypePredicate;
 
 
 public class FilterCommandTest {
-    private Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new TrackedData(),
+            new UserPrefs());
+    private Model expectedModel = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new TrackedData(),
+            new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test

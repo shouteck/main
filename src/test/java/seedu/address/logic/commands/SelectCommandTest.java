@@ -20,6 +20,7 @@ import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.TrackedData;
 import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 import seedu.address.ui.testutil.EventsCollectorRule;
@@ -31,8 +32,10 @@ public class SelectCommandTest {
     @Rule
     public final EventsCollectorRule eventsCollectorRule = new EventsCollectorRule();
 
-    private Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new TrackedData(),
+            new UserPrefs());
+    private Model expectedModel = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new TrackedData(),
+            new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test

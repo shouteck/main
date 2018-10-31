@@ -3,7 +3,7 @@ package seedu.address.commons.events.model;
 import seedu.address.commons.events.BaseEvent;
 import seedu.address.model.ReadOnlyTrackedDataList;
 
-/** Indicates the WorkoutBook in the model has changed*/
+/** Indicates the TrackedDataList in the model has changed*/
 public class TrackedDataListChangedEvent extends BaseEvent {
 
     public final ReadOnlyTrackedDataList data;

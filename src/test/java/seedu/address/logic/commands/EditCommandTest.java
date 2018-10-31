@@ -30,6 +30,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.EditCommand.EditWorkoutDescriptor;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.TrackedData;
 import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.WorkoutBook;
@@ -44,7 +45,8 @@ import seedu.address.testutil.WorkoutBuilder;
  */
 public class EditCommandTest {
 
-    private Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new TrackedData(),
+            new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
@@ -55,8 +57,8 @@ public class EditCommandTest {
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_WORKOUT_SUCCESS, editedWorkout);
 
-        Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), new TrackedDataList(),
-                new UserPrefs());
+        Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
+                model.getTrackedData(), new UserPrefs());
         expectedModel.updateWorkout(model.getFilteredWorkoutList().get(0), editedWorkout);
         expectedModel.commitWorkoutBook();
 
@@ -87,7 +89,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_WORKOUT_SUCCESS, editedWorkout);
 
         Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
-                new UserPrefs());
+                model.getTrackedData(), new UserPrefs());
         expectedModel.updateWorkout(lastWorkout, editedWorkout);
         expectedModel.commitWorkoutBook();
 
@@ -102,7 +104,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_WORKOUT_SUCCESS, editedWorkout);
 
         Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
-                new UserPrefs());
+                model.getTrackedData(), new UserPrefs());
         expectedModel.commitWorkoutBook();
 
         assertCommandSuccess(editCommand, model, commandHistory, expectedMessage, expectedModel);
@@ -120,7 +122,7 @@ public class EditCommandTest {
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_WORKOUT_SUCCESS, editedWorkout);
 
         Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
-                new UserPrefs());
+                model.getTrackedData(), new UserPrefs());
         expectedModel.updateWorkout(model.getFilteredWorkoutList().get(0), editedWorkout);
         expectedModel.commitWorkoutBook();
 
@@ -181,7 +183,7 @@ public class EditCommandTest {
         EditWorkoutDescriptor descriptor = new EditWorkoutDescriptorBuilder(editedWorkout).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_WORKOUT, descriptor);
         Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
-                new UserPrefs());
+                model.getTrackedData(), new UserPrefs());
         expectedModel.updateWorkout(workoutToEdit, editedWorkout);
         expectedModel.commitWorkoutBook();
 
@@ -224,7 +226,7 @@ public class EditCommandTest {
         EditWorkoutDescriptor descriptor = new EditWorkoutDescriptorBuilder(editedWorkout).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_WORKOUT, descriptor);
         Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
-                new UserPrefs());
+                model.getTrackedData(), new UserPrefs());
 
         showWorkoutAtIndex(model, INDEX_SECOND_WORKOUT);
         Workout workoutToEdit = model.getFilteredWorkoutList().get(INDEX_FIRST_WORKOUT.getZeroBased());

@@ -18,8 +18,6 @@ import seedu.address.model.workout.Workout;
 @XmlRootElement(name = "trackeddata")
 public class XmlSerializableTrackedData {
 
-    public static final String MESSAGE_DUPLICATE_WORKOUT = "Tracked data list contains duplicate workout(s).";
-
     @XmlElement
     private List<XmlAdaptedWorkout> workouts;
 
@@ -41,17 +39,11 @@ public class XmlSerializableTrackedData {
 
     /**
      * Converts this tracked data list into the model's {@code TrackedData} object.
-     *
-     * @throws IllegalValueException if there were any data constraints violated or duplicates in the
-     * {@code XmlAdaptedWorkout}.
      */
     public TrackedData toModelType() throws IllegalValueException {
         TrackedData trackedData = new TrackedData();
         for (XmlAdaptedWorkout p : workouts) {
             Workout workout = p.toModelType();
-            if (trackedData.hasWorkout(workout)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_WORKOUT);
-            }
             trackedData.addWorkout(workout);
         }
         return trackedData;

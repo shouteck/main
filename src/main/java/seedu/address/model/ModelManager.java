@@ -2,8 +2,19 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INSTRUCTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 
 import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -17,7 +28,18 @@ import seedu.address.commons.events.model.TrackedDataChangedEvent;
 import seedu.address.commons.events.model.TrackedDataListChangedEvent;
 import seedu.address.commons.events.model.WorkoutBookChangedEvent;
 
+import seedu.address.logic.parser.Prefix;
+import seedu.address.model.tag.Tag;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Equipment;
+import seedu.address.model.workout.Instruction;
+import seedu.address.model.workout.Muscle;
+import seedu.address.model.workout.Name;
 import seedu.address.model.workout.Parameter;
+import seedu.address.model.workout.Remark;
+import seedu.address.model.workout.Type;
 import seedu.address.model.workout.Workout;
 
 /**
@@ -27,29 +49,32 @@ public class ModelManager extends ComponentManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final VersionedWorkoutBook versionedWorkoutBook;
-    private final VersionedTrackedData versionedTrackedData;
     private final VersionedTrackedDataList versionedTrackedDataList;
+    private final VersionedTrackedData versionedTrackedData;
     private final FilteredList<Workout> filteredWorkouts;
     private final FilteredList<Parameter> filteredParameters;
+    private final FilteredList<Workout> filteredTrackedData;
 
     /**
      * Initializes a ModelManager with the given workoutBook and userPrefs.
      */
-    public ModelManager(ReadOnlyWorkoutBook workoutBook, ReadOnlyTrackedDataList trackedDataList, UserPrefs userPrefs) {
+    public ModelManager(ReadOnlyWorkoutBook workoutBook, ReadOnlyTrackedDataList trackedDataList,
+                        ReadOnlyTrackedData trackedData, UserPrefs userPrefs) {
         super();
         requireAllNonNull(workoutBook, userPrefs);
 
         logger.fine("Initializing with workout book: " + workoutBook + " and user prefs " + userPrefs);
 
-        versionedTrackedData = new VersionedTrackedData(new TrackedData());
-        versionedTrackedDataList = new VersionedTrackedDataList(trackedDataList);
-        filteredParameters = new FilteredList<>(versionedTrackedDataList.getTrackedDataList());
         versionedWorkoutBook = new VersionedWorkoutBook(workoutBook);
         filteredWorkouts = new FilteredList<>(versionedWorkoutBook.getWorkoutList());
+        versionedTrackedDataList = new VersionedTrackedDataList(trackedDataList);
+        filteredParameters = new FilteredList<>(versionedTrackedDataList.getTrackedDataList());
+        versionedTrackedData = new VersionedTrackedData(trackedData);
+        filteredTrackedData = new FilteredList<>(versionedTrackedData.getTrackedData());
     }
 
     public ModelManager() {
-        this(new WorkoutBook(), new TrackedDataList(), new UserPrefs());
+        this(new WorkoutBook(), new TrackedDataList(), new TrackedData(), new UserPrefs());
     }
 
     @Override
@@ -66,6 +91,11 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public ReadOnlyTrackedDataList getTrackedDataList() {
         return versionedTrackedDataList;
+    }
+
+    @Override
+    public ReadOnlyTrackedData getTrackedData() {
+        return versionedTrackedData;
     }
 
     /** Raises an event to indicate the model has changed */
@@ -103,6 +133,7 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void addDataToTrack(Parameter parameter) {
         versionedTrackedDataList.addParameter(parameter);
+        updateFilteredTrackedDataList(PREDICATE_SHOW_ALL_PARAMETERS);
         indicateTrackedDataListChanged();
     }
 
@@ -112,12 +143,78 @@ public class ModelManager extends ComponentManager implements Model {
         indicateTrackedDataListChanged();
     }
 
+    //TODO
+    @Override
+    public void checkDataForTrack(Workout workout) {
+        boolean hasParameter = false;
+        for (Parameter p : filteredParameters) {
+            Prefix prefix = p.getPrefix();
+            String value = p.getValue();
+            if (prefix.equals(PREFIX_NAME)) {
+                Name name = workout.getName();
+                if (name.fullName.equals(value)) {
+                    hasParameter = true;
+                }
+            } else if (prefix.equals(PREFIX_TYPE)) {
+                Type type = workout.getType();
+                if (type.fullType.equals(value)) {
+                    hasParameter = true;
+                }
+            } else if (prefix.equals(PREFIX_DURATION)) {
+                Duration duration = workout.getDuration();
+                if (duration.fullDuration.equals(value)) {
+                    hasParameter = true;
+                }
+            } else if (prefix.equals(PREFIX_DIFFICULTY)) {
+                Difficulty difficulty = workout.getDifficulty();
+                if (difficulty.fullDifficulty.equals(value)) {
+                    hasParameter = true;
+                }
+            } else if (prefix.equals(PREFIX_EQUIPMENT)) {
+                Equipment equipment = workout.getEquipment();
+                if (equipment.fullEquipment.equals(value)) {
+                    hasParameter = true;
+                }
+            } else if (prefix.equals(PREFIX_MUSCLE)) {
+                Muscle muscle = workout.getMuscle();
+                if (muscle.fullMuscle.equals(value)) {
+                    hasParameter = true;
+                }
+            } else if (prefix.equals(PREFIX_CALORIES)) {
+                Calories calories = workout.getCalories();
+                if (calories.fullCalories.equals(value)) {
+                    hasParameter = true;
+                }
+            } else if (prefix.equals(PREFIX_INSTRUCTION)) {
+                Instruction instruction = workout.getInstruction();
+                if (instruction.fullInstruction.equals(value)) {
+                    hasParameter = true;
+                }
+            } else if (prefix.equals(PREFIX_TAG)) {
+                Set<Tag> tagSet = workout.getTags();
+                for (Tag tag : tagSet) {
+                    if (tag.tagName.equals(value)) {
+                        hasParameter = true;
+                    }
+                }
+            } else if (prefix.equals(PREFIX_REMARK)) {
+                Remark remark = workout.getRemark();
+                if (remark.fullRemark.equals(value)) {
+                    hasParameter = true;
+                }
+            }
+        }
+        if (hasParameter) {
+            versionedTrackedData.addWorkout(workout);
+        }
+        indicateTrackedDataChanged();
+    }
+
     @Override
     public boolean hasParameter(Parameter parameter) {
         requireNonNull(parameter);
         return versionedTrackedDataList.hasParameter(parameter);
     }
-
 
     @Override
     public void sortFilteredWorkoutList() {
@@ -177,27 +274,30 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public boolean canUndoModel() {
         return canUndoWorkoutBook()
-                && canUndoTrackedDataList();
+                && canUndoTrackedDataList()
+                && canUndoTrackedData();
     }
 
     @Override
     public boolean canRedoModel() {
         return canRedoWorkoutBook()
-                && canRedoTrackedDataList();
+                && canRedoTrackedDataList()
+                && canRedoTrackedData();
     }
 
     @Override
     public void undoModel() {
         undoWorkoutBook();
         undoTrackedDataList();
+        undoTrackedData();;
     }
 
     @Override
     public void redoModel() {
         redoWorkoutBook();
         redoTrackedDataList();
+        redoTrackedData();
     }
-
 
     @Override
     public boolean canUndoWorkoutBook() {
@@ -244,11 +344,33 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
+    public boolean canUndoTrackedData() {
+        return versionedTrackedData.canUndo();
+    }
+
+    @Override
+    public boolean canRedoTrackedData() {
+        return versionedTrackedData.canRedo();
+    }
+
+    @Override
+    public void undoTrackedData() {
+        versionedTrackedData.undo();
+        indicateTrackedDataChanged();
+    }
+
+    @Override
+    public void redoTrackedData() {
+        versionedTrackedData.redo();
+        indicateTrackedDataChanged();
+    }
+
+    @Override
     public void commitModel() {
         commitWorkoutBook();
         commitTrackedDataList();
+        commitTrackedData();
     }
-
 
     @Override
     public void commitWorkoutBook() {
@@ -258,6 +380,11 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void commitTrackedDataList() {
         versionedTrackedDataList.commit();
+    }
+
+    @Override
+    public void commitTrackedData() {
+        versionedTrackedData.commit();
     }
 
     @Override
