@@ -314,8 +314,8 @@ Recommend a workout from the existing workouts. +
 Format: `recommend [calories/CALORIES] [difficulty/DIFFICULTY] [duration/DURATION]`
 
 ****
-* Accepts any combinations of the three prefixes.
-* At least one of the optional fields must be provided.
+* Accepts any combinations of the three prefixes including zero combinations.
+* If you did not input any prefixes, the workout recommended will be according to the fields under the Workout Presets in your profile.
 * The workout recommended has exactly the same inputs as the one you have entered E.g. `recommend difficulty/beginner` will only recommend the workout that have difficulty level as beginner.
 ****
 
