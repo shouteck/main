@@ -159,7 +159,7 @@ Tracks user-specified parameters in workouts that are marked complete via the `c
 Format: `track SUBCOMMAND PREFIX/VALUE`
 
 ****
-* `SUBCOMMAND` can only be either `start` or `stop`. If it's `start`, WorkoutBook will start tracking the parameter, and for `stop`, WorkoutBook will stop the tracing.
+* `SUBCOMMAND` can only be either `start` or `stop`. If it's `start`, WorkoutBook will start tracking the parameter, and for `stop`, WorkoutBook will stop the tracking.
 * If `SUBCOMMAND` is `stop`, `PREFIX/VALUE` must already be in the list of parameters being tracked.
 * Completed workouts are recorded only if the value of the corresponding prefix matches `VALUE`.
 * `PREFIX/VALUE` follows the acceptable formats for the workout parameters as stated above.
@@ -465,6 +465,9 @@ There is no need to save manually.
 
 |Sort
 |`sort`
+
+|Track
+|`track SUBCOMMAND PREFIX/VALUE`
 
 |Undo
 |`undo`
