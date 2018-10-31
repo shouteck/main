@@ -379,7 +379,7 @@ image::F2Profile.PNG[width="700"]
 
 // end::profile
 
-=== [Traversing feature]
+=== Traversing and remark feature
 //tag::traversing
 ==== Current Implementation
 The traversing mechanism is facilitated by `VersionedAddressBook`. It extends `WorkoutBook`.
@@ -389,9 +389,9 @@ It implements following commands: +
 
 * `FilterCommand()` -Filters the workout book
 
-* `SearchCommand()` - Search the workout by partial keywords
+* `SelectCommand()` -Select the workout by index number
 
-* `SelectCommand()` - Select the workout by index number
+* `RemarkCommand()` -Remark the workout by index number
 
 Given below is an example usage scenario and how the traversing mechanism behaves at each step.
 
