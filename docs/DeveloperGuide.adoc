@@ -406,7 +406,7 @@ image::traversingSequenceDiagram.png[width="650"]
 
 image::HighLevelRemarkSequenceDiagrams.png[width="650"]
 
-// end::traversing and remark[]
+// end::traversing
 
 === Memory feature
 //tag::memory
@@ -437,30 +437,30 @@ image::CompleteCommandSD.png[width="500"]
 * The user can only change the state tag from `current` to `completed` by using the complete command.
 * The user can only change the state tag from `future` to `current` or `completed` to `current` by using the current command.
 
-// end::memory[]
+// end::memory
 
-// tag::trackfeature[]
 === Tracking Feature
+// tag::trackfeature
 ==== Current Implementation
+The user input is parsed into `_TrackCommandParser_` to generate a `Parameter` object, which is then passed on to `_TrackCommand_`. Upon execution of the command, the `Parameter` is then stored in/removed from the `TrackedDataList`. This `TrackedDataList` stores all the `Parameters` currently being tracked.
+
+When a workout is marked as completed using the memory feature, the model will scan the `TrackedDataList` to check if any of the tracked `Parameters` are present in the completed workout. If present, they will be stored in `TrackedData`.
+
+`TrackedData` is analogous to `WorkoutBook`, but it does not enforce uniqueness between workouts, so as to allow for every completed workout that contains tracked parameters to be stored, regardless of uniqueness. This is done by utilising a `WorkoutList` object, analogous to the `UniqueWorkoutList` object used by `WorkoutBook`, with similar methods that allow for duplicates.
+
+
+
 ==== Design Considerations
-===== Aspect 1:
+===== Aspect 1: How the workouts that match tracked parameters are stored
 
-* **Alternative 1 (current choice):**
-** Pros:
-** Cons:
-* **Alternative 2:**
-** Pros:
-** Cons:
+* **Alternative 1 (current choice):** All tracked workouts are stored in one file, `_trackeddata.xml_`
+** Pros: Easy to implement storage of the desired workouts.
+** Cons: Filtering has to be done when finding workouts in the file that have a particular parameter present.
+* **Alternative 2:** Tracked workouts are stored in separate files, with one file for each parameter being tracked.
+** Pros: Viewing of tracked workouts is easy, with each file containing the workouts specific to the tracked parameter.
+** Cons: Difficult to specify the `Path` for each individual file, especially when the parameters in the `TrackedDataList` can vary widely during app usage.
 
-===== Aspect 2:
-
-* **Alternative 1 (current choice):**
-** Pros:
-** Cons:
-* **Alternative 2:**
-** Pros:
-** Cons:
-// end::trackfeature[]
+// end::trackfeature
 
 // tag::dataencryption[]
 === [Proposed] Data Encryption
