@@ -9,7 +9,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Tag {
 
-    public static final String MESSAGE_TAG_CONSTRAINTS = "Tags names should be alphanumeric";
+    public static final String MESSAGE_TAG_CONSTRAINTS = "Tags names should be alphanumeric and cannot contain "
+            + "be any of the exact words \"current\" or \"completed\"";
     public static final String TAG_VALIDATION_REGEX = "\\p{Alnum}+";
 
     public final String tagName;
@@ -29,7 +30,11 @@ public class Tag {
      * Returns true if a given string is a valid tag name.
      */
     public static boolean isValidTagName(String test) {
-        return test.matches(TAG_VALIDATION_REGEX);
+        if (test.equals("current") || test.equals("completed")) {
+            return false;
+        } else {
+            return test.matches(TAG_VALIDATION_REGEX);
+        }
     }
 
     @Override
