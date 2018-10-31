@@ -44,7 +44,7 @@ public class TrackedDataList implements ReadOnlyTrackedDataList {
      * Replaces the contents of the TrackedDataList with {@code parameters}.
      * {@code workouts} must not contain duplicate workouts.
      */
-    public void setWorkouts(List<Parameter> parameters) {
+    public void setParameters(List<Parameter> parameters) {
         this.parameters.setParameters(parameters);
     }
 
@@ -63,7 +63,7 @@ public class TrackedDataList implements ReadOnlyTrackedDataList {
     public void resetData(ReadOnlyTrackedDataList newData) {
         requireNonNull(newData);
 
-        setWorkouts(newData.getTrackedDataList());
+        setParameters(newData.getTrackedDataList());
     }
 
     //// parameter-level operations

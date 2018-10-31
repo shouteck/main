@@ -22,8 +22,10 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.ReadOnlyTrackedData;
 import seedu.address.model.ReadOnlyTrackedDataList;
 import seedu.address.model.ReadOnlyWorkoutBook;
+import seedu.address.model.TrackedData;
 import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.WorkoutBook;
@@ -32,9 +34,11 @@ import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.TrackedDataListStorage;
+import seedu.address.storage.TrackedDataStorage;
 import seedu.address.storage.UserPrefsStorage;
 import seedu.address.storage.WorkoutBookStorage;
 import seedu.address.storage.XmlTrackedDataListStorage;
+import seedu.address.storage.XmlTrackedDataStorage;
 import seedu.address.storage.XmlWorkoutBookStorage;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
@@ -69,7 +73,9 @@ public class MainApp extends Application {
         WorkoutBookStorage workoutBookStorage = new XmlWorkoutBookStorage(userPrefs.getWorkoutBookFilePath());
         TrackedDataListStorage trackedDataListStorage =
                 new XmlTrackedDataListStorage(userPrefs.getTrackedDataListFilePath());
-        storage = new StorageManager(workoutBookStorage, trackedDataListStorage, userPrefsStorage);
+        TrackedDataStorage trackedDatatStorage =
+                new XmlTrackedDataStorage(userPrefs.getTrackedDataFilePath());
+        storage = new StorageManager(workoutBookStorage, trackedDataListStorage, trackedDatatStorage, userPrefsStorage);
 
         initLogging(config);
 
@@ -89,8 +95,10 @@ public class MainApp extends Application {
      */
     private Model initModelManager(Storage storage, UserPrefs userPrefs) {
         Optional<ReadOnlyWorkoutBook> workoutBookOptional;
+        Optional<ReadOnlyTrackedData> trackedDataOptional;
         Optional<ReadOnlyTrackedDataList> trackedDataListOptional;
         ReadOnlyWorkoutBook initialData;
+        ReadOnlyTrackedData initialTrackedData;
         ReadOnlyTrackedDataList initialTrackedDataList;
         try {
             workoutBookOptional = storage.readWorkoutBook();
@@ -120,7 +128,21 @@ public class MainApp extends Application {
             initialTrackedDataList = new TrackedDataList();
         }
 
-        return new ModelManager(initialData, initialTrackedDataList, userPrefs);
+        try {
+            trackedDataOptional = storage.readTrackedData();
+            if (!trackedDataOptional.isPresent()) {
+                logger.info("Data file not found. Will be starting with a empty TrackedData");
+            }
+            initialTrackedData = trackedDataOptional.orElseGet(SampleDataUtil::getEmptyTrackedData);
+        } catch (DataConversionException e) {
+            logger.warning("Data file not in the correct format. Will be starting with an empty TrackedData");
+            initialTrackedData = new TrackedData();
+        } catch (IOException e) {
+            logger.warning("Problem while reading from the file. Will be starting with an empty TrackedData");
+            initialTrackedData = new TrackedData();
+        }
+
+        return new ModelManager(initialData, initialTrackedDataList, initialTrackedData, userPrefs);
     }
 
     private void initLogging(Config config) {

@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import seedu.address.model.ReadOnlyTrackedData;
 import seedu.address.model.ReadOnlyTrackedDataList;
 import seedu.address.model.ReadOnlyWorkoutBook;
+import seedu.address.model.TrackedData;
 import seedu.address.model.TrackedDataList;
 import seedu.address.model.WorkoutBook;
 import seedu.address.model.tag.Tag;
@@ -44,10 +46,14 @@ public class SampleDataUtil {
         return sampleWb;
     }
 
-
     public static ReadOnlyTrackedDataList getEmptyTrackedDataList() {
         TrackedDataList emptyTrackedDataList = new TrackedDataList();
         return emptyTrackedDataList;
+    }
+
+    public static ReadOnlyTrackedData getEmptyTrackedData() {
+        TrackedData emptyTrackedData = new TrackedData();
+        return emptyTrackedData;
     }
 
     /**

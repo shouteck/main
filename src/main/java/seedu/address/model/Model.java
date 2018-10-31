@@ -16,7 +16,7 @@ public interface Model {
     Predicate<Workout> PREDICATE_SHOW_ALL_WORKOUTS = unused -> true;
 
     /** {@code Predicate} that always evaluate to true */
-    Predicate<Workout> PREDICATE_SHOW_ALL_PARAMETERS = unused -> true;
+    Predicate<Parameter> PREDICATE_SHOW_ALL_PARAMETERS = unused -> true;
 
     /** Clears existing backing model and replaces with the provided new data. */
     void resetData(ReadOnlyWorkoutBook newData);
@@ -65,7 +65,7 @@ public interface Model {
     ObservableList<Parameter> getFilteredTrackedDataList();
 
     /**
-     * Updates the filter of the filtered workout list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered tracked data list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredTrackedDataList(Predicate<Parameter> predicate);
@@ -161,6 +161,11 @@ public interface Model {
      * The parameter must exist in the tracked data list.
      */
     void removeDataFromTrack(Parameter parameter);
+
+    /**
+     * Check whether the completed workout should be tracked.
+     */
+    void checkDataForTrack(Workout workout);
 
     /**
      * Returns true if {@code parameter} exists in the tracked data list.

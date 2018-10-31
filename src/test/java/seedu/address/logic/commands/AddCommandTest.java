@@ -243,6 +243,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void checkDataForTrack(Workout workout) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasParameter(Parameter parameter) {
             throw new AssertionError("This method should not be called.");
         }

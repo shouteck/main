@@ -27,29 +27,32 @@ public class ModelManager extends ComponentManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final VersionedWorkoutBook versionedWorkoutBook;
-    private final VersionedTrackedData versionedTrackedData;
     private final VersionedTrackedDataList versionedTrackedDataList;
+    private final VersionedTrackedData versionedTrackedData;
     private final FilteredList<Workout> filteredWorkouts;
     private final FilteredList<Parameter> filteredParameters;
+    private final FilteredList<Workout> filteredTrackedData;
 
     /**
      * Initializes a ModelManager with the given workoutBook and userPrefs.
      */
-    public ModelManager(ReadOnlyWorkoutBook workoutBook, ReadOnlyTrackedDataList trackedDataList, UserPrefs userPrefs) {
+    public ModelManager(ReadOnlyWorkoutBook workoutBook, ReadOnlyTrackedDataList trackedDataList,
+                        ReadOnlyTrackedData trackedData, UserPrefs userPrefs) {
         super();
         requireAllNonNull(workoutBook, userPrefs);
 
         logger.fine("Initializing with workout book: " + workoutBook + " and user prefs " + userPrefs);
 
-        versionedTrackedData = new VersionedTrackedData(new TrackedData());
-        versionedTrackedDataList = new VersionedTrackedDataList(trackedDataList);
-        filteredParameters = new FilteredList<>(versionedTrackedDataList.getTrackedDataList());
         versionedWorkoutBook = new VersionedWorkoutBook(workoutBook);
         filteredWorkouts = new FilteredList<>(versionedWorkoutBook.getWorkoutList());
+        versionedTrackedDataList = new VersionedTrackedDataList(trackedDataList);
+        filteredParameters = new FilteredList<>(versionedTrackedDataList.getTrackedDataList());
+        versionedTrackedData = new VersionedTrackedData(trackedData);
+        filteredTrackedData = new FilteredList<>(versionedTrackedData.getTrackedData());
     }
 
     public ModelManager() {
-        this(new WorkoutBook(), new TrackedDataList(), new UserPrefs());
+        this(new WorkoutBook(), new TrackedDataList(), new TrackedData(), new UserPrefs());
     }
 
     @Override
@@ -103,6 +106,7 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void addDataToTrack(Parameter parameter) {
         versionedTrackedDataList.addParameter(parameter);
+        updateFilteredTrackedDataList(PREDICATE_SHOW_ALL_PARAMETERS);
         indicateTrackedDataListChanged();
     }
 
@@ -110,6 +114,12 @@ public class ModelManager extends ComponentManager implements Model {
     public void removeDataFromTrack(Parameter parameter) {
         versionedTrackedDataList.removeParameter(parameter);
         indicateTrackedDataListChanged();
+    }
+
+    @Override
+    public void checkDataForTrack(Workout workout) {
+        //versionedTrackedData.addWorkout(workout);
+        indicateTrackedDataChanged();
     }
 
     @Override
