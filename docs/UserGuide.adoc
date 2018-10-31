@@ -316,6 +316,7 @@ Format: `recommend [calories/CALORIES] [difficulty/DIFFICULTY] [duration/DURATIO
 ****
 * Accepts any combinations of the three prefixes.
 * At least one of the optional fields must be provided.
+* The workout recommended has exactly the same inputs as the one you have entered E.g. `recommend difficulty/beginner` will only recommend the workouts that have difficulty level as beginner.
 ****
 
 Examples:
