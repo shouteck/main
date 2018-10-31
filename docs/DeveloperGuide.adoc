@@ -12,9 +12,9 @@ ifdef::env-github[]
 :note-caption: :information_source:
 :warning-caption: :warning:
 endif::[]
-:repoURL: https://github.com/se-edu/addressbook-level4/tree/master
+:repoURL: https://github.com/CS2113-AY1819S1-T13-5/main/tree/master
 
-By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
+By: `Team T13-5`      Since: `Sep 2018`      Licence: `MIT`
 
 == Setting up
 
@@ -455,6 +455,7 @@ Step 1: The user executes `track start muscle/bicep`. The user input is parsed t
 [[fig-TrackStart]]
 .Interactions inside `Logic` component when user enters `track start muscle/bicep`
 image::TrackCommandSequenceDiagram1.png[width="800"]
+
 
 Step 2: The user executes `complete INDEX` on a desired workout. The `complete` command calls `Model#checkDataForTrack()`, which iterates through `TrackedDataList` to check whether any `Parameter` is present in the completed workout.
 
