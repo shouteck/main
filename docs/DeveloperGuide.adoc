@@ -334,7 +334,7 @@ image::RecommendCommandSD.PNG[width="900"]
 
 ==== Aspect: How recommend executes
 
-* **Alternative 1 (current choice):** Filters the workout list based on user's input and randomly generates a workout from that filtered list.
+* **Alternative 1 (current choice):** Filters the workout list based on user's input and randomly retrieves a workout from that filtered list.
 ** Pros: Easy to implement.
 ** Cons: May not reflect what the user actually wants.
 * **Alternative 2:** Use machine learning algorithms.

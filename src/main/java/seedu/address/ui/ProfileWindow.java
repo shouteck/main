@@ -7,7 +7,6 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 
-
 /**
  * Controller for a profile page
  */
@@ -31,7 +30,6 @@ public class ProfileWindow extends UiPart<Stage> {
 
         String userProfileUrl = getClass().getResource(USERPROFILE_FILE_PATH).toString();
         browser.getEngine().load(userProfileUrl);
-
     }
 
     /**
