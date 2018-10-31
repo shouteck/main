@@ -34,7 +34,7 @@ public class VersionedTrackedData extends TrackedData {
     }
 
     /**
-     * Restores the workout book to its previous state.
+     * Restores the tracked data to its previous state.
      */
     public void undo() {
         if (!canUndo()) {

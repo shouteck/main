@@ -250,6 +250,26 @@ public class RecommendCommandTest {
         }
 
         @Override
+        public boolean canUndoTrackedData() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean canRedoTrackedData() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void undoTrackedData() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void redoTrackedData() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void commitModel() {
             throw new AssertionError("This method should not be called.");
         }
@@ -261,6 +281,11 @@ public class RecommendCommandTest {
 
         @Override
         public void commitTrackedDataList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void commitTrackedData() {
             throw new AssertionError("This method should not be called.");
         }
 

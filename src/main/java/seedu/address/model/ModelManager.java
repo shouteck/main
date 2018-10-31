@@ -118,7 +118,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public void checkDataForTrack(Workout workout) {
-        //versionedTrackedData.addWorkout(workout);
+        versionedTrackedData.addWorkout(workout);
         indicateTrackedDataChanged();
     }
 
@@ -187,27 +187,30 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public boolean canUndoModel() {
         return canUndoWorkoutBook()
-                && canUndoTrackedDataList();
+                && canUndoTrackedDataList()
+                && canUndoTrackedData();
     }
 
     @Override
     public boolean canRedoModel() {
         return canRedoWorkoutBook()
-                && canRedoTrackedDataList();
+                && canRedoTrackedDataList()
+                && canRedoTrackedData();
     }
 
     @Override
     public void undoModel() {
         undoWorkoutBook();
         undoTrackedDataList();
+        undoTrackedData();;
     }
 
     @Override
     public void redoModel() {
         redoWorkoutBook();
         redoTrackedDataList();
+        redoTrackedData();
     }
-
 
     @Override
     public boolean canUndoWorkoutBook() {
@@ -254,11 +257,33 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
+    public boolean canUndoTrackedData() {
+        return versionedTrackedData.canUndo();
+    }
+
+    @Override
+    public boolean canRedoTrackedData() {
+        return versionedTrackedData.canRedo();
+    }
+
+    @Override
+    public void undoTrackedData() {
+        versionedTrackedData.undo();
+        indicateTrackedDataChanged();
+    }
+
+    @Override
+    public void redoTrackedData() {
+        versionedTrackedData.redo();
+        indicateTrackedDataChanged();
+    }
+
+    @Override
     public void commitModel() {
         commitWorkoutBook();
         commitTrackedDataList();
+        commitTrackedData();
     }
-
 
     @Override
     public void commitWorkoutBook() {
@@ -268,6 +293,11 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void commitTrackedDataList() {
         versionedTrackedDataList.commit();
+    }
+
+    @Override
+    public void commitTrackedData() {
+        versionedTrackedData.commit();
     }
 
     @Override

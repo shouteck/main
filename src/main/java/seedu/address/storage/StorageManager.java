@@ -175,7 +175,7 @@ public class StorageManager extends ComponentManager implements Storage {
     @Subscribe
     public void handleTrackedDataChangedEvent(TrackedDataChangedEvent trackedDataChanged) {
         logger.info(LogsCenter.getEventHandlingLogMessage(trackedDataChanged,
-                "Tracked data list changed, saving to file"));
+                "Tracked data changed, saving to file"));
         try {
             saveTrackedData(trackedDataChanged.data);
         } catch (IOException e) {

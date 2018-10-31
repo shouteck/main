@@ -131,6 +131,26 @@ public interface Model {
     void redoTrackedDataList();
 
     /**
+     * Returns true if the model has previous tracked data states to restore.
+     */
+    boolean canUndoTrackedData();
+
+    /**
+     * Returns true if the model has undone tracked data states to restore.
+     */
+    boolean canRedoTrackedData();
+
+    /**
+     * Restores the model's tracked data to its previous state.
+     */
+    void undoTrackedData();
+
+    /**
+     * Restores the model's tracked data to its previously undone state.
+     */
+    void redoTrackedData();
+
+    /**
      * Saves the current model state for undo/redo.
      */
     void commitModel();
@@ -144,6 +164,11 @@ public interface Model {
      * Saves the current tracked data list state for undo/redo.
      */
     void commitTrackedDataList();
+
+    /**
+     * Saves the current tracked data  state for undo/redo.
+     */
+    void commitTrackedData();
 
     /**
      * Sort the current workout book.
