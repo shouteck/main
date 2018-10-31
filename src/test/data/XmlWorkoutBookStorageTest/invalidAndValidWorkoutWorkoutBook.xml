@@ -10,6 +10,7 @@
 		<muscle>quadriceps</muscle>
 		<calories>200</calories>
 		<instruction>set1: squats reps: 15-20</instruction>
+        <remark>This workout trains biceps</remark>
         <tagged>intense</tagged>
     </workouts>
     <!-- Workout with invalid workout field -->
@@ -22,6 +23,7 @@
 		<muscle>quadriceps</muscle>
 		<calories>200</calories>
 		<instruction>set1: squats reps: 15-20</instruction>
+        <remark>This workout trains biceps</remark>
         <tagged>intense</tagged>
     </workouts>
 </workoutbook>

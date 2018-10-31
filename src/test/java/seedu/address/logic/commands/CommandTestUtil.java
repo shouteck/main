@@ -10,6 +10,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INSTRUCTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 
@@ -46,6 +47,8 @@ public class CommandTestUtil {
     public static final String VALID_CALORIES_BOB_WORKOUT = "150";
     public static final String VALID_INSTRUCTION_AMY_WORKOUT = "set1: flutter kick reps: 5-7";
     public static final String VALID_INSTRUCTION_BOB_WORKOUT = "set1: bicep curl reps: 4-6";
+    public static final String VALID_REMARK_AMY_WORKOUT = "This workout trains your tricep";
+    public static final String VALID_REMARK_BOB_WORKOUT = "This workout trains your thigh";
     public static final String VALID_USERNAME = "gsj";
     public static final String VALID_GENDER = "male";
     public static final String VALID_HEIGHT = "1.83";
@@ -69,6 +72,8 @@ public class CommandTestUtil {
     public static final String EQUIPMENT_DESC_BOB_WORKOUT = " " + PREFIX_EQUIPMENT + VALID_EQUIPMENT_BOB_WORKOUT;
     public static final String MUSCLE_DESC_AMY_WORKOUT = " " + PREFIX_MUSCLE + VALID_MUSCLE_AMY_WORKOUT;
     public static final String MUSCLE_DESC_BOB_WORKOUT = " " + PREFIX_MUSCLE + VALID_MUSCLE_BOB_WORKOUT;
+    public static final String REMARK_DESC_AMY_WORKOUT = " " + PREFIX_REMARK + VALID_REMARK_AMY_WORKOUT;
+    public static final String REMARK_DESC_BOB_WORKOUT = " " + PREFIX_REMARK + VALID_REMARK_BOB_WORKOUT;
     public static final String CALORIES_DESC_AMY_WORKOUT = " " + PREFIX_CALORIES + VALID_CALORIES_AMY_WORKOUT;
     public static final String CALORIES_DESC_BOB_WORKOUT = " " + PREFIX_CALORIES + VALID_CALORIES_BOB_WORKOUT;
     public static final String INSTRUCTION_DESC_AMY_WORKOUT = " " + PREFIX_INSTRUCTION + VALID_INSTRUCTION_AMY_WORKOUT;
