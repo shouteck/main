@@ -49,6 +49,7 @@ public class AddCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New workout added with default future tag: %1$s";
     public static final String MESSAGE_DUPLICATE_WORKOUT = "This workout already exists in the workout book";
+    public static final String MESSAGE_TAG_FAILURE = "Tags cannot be exact words of current or completed";
 
     private final Workout toAdd;
 

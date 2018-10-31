@@ -5,7 +5,6 @@ import static seedu.address.logic.commands.CommandTestUtil.REMARK_DESC_AMY_WORKO
 import static seedu.address.logic.commands.CommandTestUtil.REMARK_DESC_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_REMARK_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_REMARK_BOB_WORKOUT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
