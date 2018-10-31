@@ -64,7 +64,7 @@ public class EditCommandSystemTest extends WorkoutBookSystemTest {
     public void edit() {
         Model model = getModel();
 
-        *//* ----------------- Performing edit operation while an unfiltered list is being shown ---------------------- *//*
+        *//* ----------------- Performing edit operation while an unfiltered list is being shown ------------------ *//*
 
         *//* Case: edit all fields, command with leading spaces, trailing spaces and multiple spaces between each field
          * -> edited
@@ -102,7 +102,7 @@ public class EditCommandSystemTest extends WorkoutBookSystemTest {
         editedWorkout = new WorkoutBuilder(workoutToEdit).withTags().build();
         assertCommandSuccess(command, index, editedWorkout);
 
-        *//* ------------------ Performing edit operation while a filtered list is being shown ------------------------ *//*
+        *//* ------------------ Performing edit operation while a filtered list is being shown ------------------- *//*
 
         *//**
          * this test is causing an "Exception in Async Thread", can't find a way to solve it at the moment
@@ -126,10 +126,10 @@ public class EditCommandSystemTest extends WorkoutBookSystemTest {
         assertCommandFailure(EditCommand.COMMAND_WORD + " " + invalidIndex + NAME_DESC_BOB_WORKOUT,
                 Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
 
-        *//* --------------------- Performing edit operation while a workout card is selected ----------------------- *//*
+        *//* --------------------- Performing edit operation while a workout card is selected -------------------- *//*
 
-        *//* Case: selects first card in the workout list, edit a workout -> edited, card selection remains unchanged but
-         * browser url changes
+        *//* Case: selects first card in the workout list, edit a workout -> edited, card selection remains unchanged
+        but browser url changes
          *//*
         showAllWorkouts();
         index = INDEX_FIRST_WORKOUT;
@@ -141,7 +141,7 @@ public class EditCommandSystemTest extends WorkoutBookSystemTest {
         // browser's url is updated to reflect the new workout's name
         assertCommandSuccess(command, index, AMY_WORKOUT, index);
 
-        *//* --------------------------------- Performing invalid edit operation ------------------------------------ *//*
+        *//* --------------------------------- Performing invalid edit operation --------------------------------- *//*
 
         *//* Case: invalid index (0) -> rejected *//*
         assertCommandFailure(EditCommand.COMMAND_WORD + " 0" + NAME_DESC_BOB_WORKOUT,
@@ -282,7 +282,8 @@ public class EditCommandSystemTest extends WorkoutBookSystemTest {
     }
 
     *//**
-     * Performs the same verification as {@code assertCommandSuccess(String, Model, String, Index)} and in addition,<br>
+     * Performs the same verification as {@code assertCommandSuccess(String, Model, String, Index)} and in addition,
+     * <br>
      * 1. Asserts that result display box displays the success message of executing {@code EditCommand}.<br>
      * 2. Asserts that the model related components are updated to reflect the workout at index {@code toEdit} being
      * updated to values specified {@code editedWorkout}.<br>
