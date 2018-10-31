@@ -11,7 +11,7 @@ import com.google.common.base.Strings;
  */
 public class Remark {
     public static final String MESSAGE_REMARK_CONSTRAINTS =
-            "Remark can take any values, and it should no be blank.";
+            "Remark can be empty or a paragraph.";
 
 
     /*
@@ -34,6 +34,7 @@ public class Remark {
         fullRemark = remark;
     }
 
+
     /**
      * Returns true if a given string is a valid remark.
      */
@@ -41,7 +42,6 @@ public class Remark {
 
         return test == null || Strings.isNullOrEmpty(test) || test.matches(REMARK_VALIDATION_REGEX);
     }
-
 
     @Override
     public String toString() {

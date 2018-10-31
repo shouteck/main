@@ -30,14 +30,17 @@ import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ProfileCommand;
 import seedu.address.logic.commands.RedoCommand;
+import seedu.address.logic.commands.RemarkCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.TrackCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.workout.NameContainsKeywordsPredicate;
 import seedu.address.model.workout.Parameter;
+import seedu.address.model.workout.Remark;
 import seedu.address.model.workout.Workout;
 import seedu.address.testutil.EditWorkoutDescriptorBuilder;
+import seedu.address.testutil.RemarkBuilder;
 import seedu.address.testutil.WorkoutBuilder;
 import seedu.address.testutil.WorkoutUtil;
 
@@ -140,6 +143,16 @@ public class WorkoutBookParserTest {
     public void parseCommand_redoCommandWord_returnsRedoCommand() throws Exception {
         assertTrue(parser.parseCommand(RedoCommand.COMMAND_WORD) instanceof RedoCommand);
         assertTrue(parser.parseCommand("redo 1") instanceof RedoCommand);
+    }
+
+    @Test
+    public void parseCommand_remark() throws Exception {
+        Workout workout = new WorkoutBuilder().build();
+        Remark remark = new RemarkBuilder(workout).build();
+        RemarkCommand command = (RemarkCommand) parser.parseCommand(RemarkCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_WORKOUT.getOneBased() + " "
+                + WorkoutUtil.getRemarkWorkoutDetails(remark));
+        assertEquals(new RemarkCommand(INDEX_FIRST_WORKOUT, remark), command);
     }
 
     @Test

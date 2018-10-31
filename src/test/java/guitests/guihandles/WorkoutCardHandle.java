@@ -23,6 +23,7 @@ public class WorkoutCardHandle extends NodeHandle<Node> {
     private static final String MUSCLE_FIELD_ID = "#muscle";
     private static final String CALORIES_FIELD_ID = "#calories";
     private static final String INSTRUCTION_FIELD_ID = "#instruction";
+    private static final String REMARK_FIELD_ID = "#remark";
     private static final String TAGS_FIELD_ID = "#tags";
 
     private final Label idLabel;
@@ -34,6 +35,7 @@ public class WorkoutCardHandle extends NodeHandle<Node> {
     private final Label muscleLabel;
     private final Label caloriesLabel;
     private final Label instructionLabel;
+    private final Label remarkLabel;
     private final List<Label> tagLabels;
 
     public WorkoutCardHandle(Node cardNode) {
@@ -48,6 +50,7 @@ public class WorkoutCardHandle extends NodeHandle<Node> {
         muscleLabel = getChildNode(MUSCLE_FIELD_ID);
         caloriesLabel = getChildNode(CALORIES_FIELD_ID);
         instructionLabel = getChildNode(INSTRUCTION_FIELD_ID);
+        remarkLabel = getChildNode(REMARK_FIELD_ID);
 
         Region tagsContainer = getChildNode(TAGS_FIELD_ID);
         tagLabels = tagsContainer
@@ -93,6 +96,9 @@ public class WorkoutCardHandle extends NodeHandle<Node> {
         return instructionLabel.getText();
     }
 
+    public String getRemark () {
+        return remarkLabel.getText(); }
+
     public List<String> getTags() {
         return tagLabels
                 .stream()
@@ -112,6 +118,7 @@ public class WorkoutCardHandle extends NodeHandle<Node> {
                 && getMuscle().equals(workout.getMuscle().fullMuscle)
                 && getCalories().equals(workout.getCalories().fullCalories)
                 && getInstruction().equals(workout.getInstruction().fullInstruction)
+                && getRemark().equals(workout.getRemark().fullRemark)
                 && ImmutableMultiset.copyOf(getTags()).equals(ImmutableMultiset.copyOf(workout.getTags().stream()
                 .map(tag -> tag.tagName)
                 .collect(Collectors.toList())));

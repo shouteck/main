@@ -16,6 +16,11 @@ endif::[]
 
 By: `Team T13-5`      Since: `Sept 2018`      #Licence: `MIT`
 
+
+
+
+
+
 == Introduction
 
 WorkoutBook is for those who *prefer to use a desktop app for managing workouts*. More importantly, WorkoutBook is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
@@ -149,7 +154,7 @@ Examples:
 * `complete 1` +
 Changes the state tag of the 1st workout to be `completed`.
 
-=== Locating workouts by name: `filter`
+=== Filtering workouts by type, duration, and equipment: `filter`
 
 Filters workouts whose types, durations, equipments contain any of the given keywords. +
 Format: `filter type/TYPE duration/DURATION equipment/EQUIPMENT`
@@ -206,6 +211,23 @@ Deletes the 2nd workout in the workout book.
 `delete 1` +
 Deletes the 1st workout in the results of the `find` command.
 
+=== Remarking a workout : `remark`
+
+Remarks the specified workout from the workout book. +
+Format: `remark INDEX [r/REMARK]`
+
+****
+* Remarks the workout at the specified `INDEX`. The index refers to the index number shown in the displayed workout list. The index *must be a positive integer* 1, 2, 3, ...
+* You can remove all the workout's remarks by typing `r/` without specifying any remarks after it.
+****
+
+Examples:
+
+* `remark 1 r/This workout trains bicep` +
+Remarks the 1st workout as `This workout trains bicep`.
+* `remark 2 r/` +
+Clears the remark of the 2nd workout.
+
 === Selecting a workout : `select`
 
 Selects the workout identified by the index number used in the displayed workout list. +
@@ -226,7 +248,7 @@ Selects the 2nd workout in the workout book.
 `select 1` +
 Selects the 1st workout in the results of the `find` command.
 
-=== Selecting a workout : `sort`
+=== Sorting a workout : `sort`
 
 Sorts the workouts. +
 Format: `sort`
@@ -391,6 +413,9 @@ There is no need to save manually.
 |Delete
 |`delete 1`
 
+|Edit
+|`edit 1 name/NAME ...`
+
 |Exit
 |`exit`
 
@@ -411,6 +436,9 @@ There is no need to save manually.
 
 |Redo
 |`redo`
+
+|Remark
+|`remark 1 r/REMARK`
 
 |Select
 |`select 1`

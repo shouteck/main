@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INSTRUCTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 
@@ -15,6 +16,7 @@ import java.util.Set;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand.EditWorkoutDescriptor;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.workout.Remark;
 import seedu.address.model.workout.Workout;
 
 /**
@@ -73,6 +75,17 @@ public class WorkoutUtil {
                 tags.forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
             }
         }
+        return sb.toString();
+    }
+
+    /**
+     *
+     * @param remark
+     * @return
+     */
+    public static String getRemarkWorkoutDetails(Remark remark) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(PREFIX_REMARK).append(remark.fullRemark);
         return sb.toString();
     }
 }

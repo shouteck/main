@@ -33,7 +33,8 @@ public class TypicalWorkouts {
             .withType("balance").withDuration("5m")
             .withDifficulty("advanced").withEquipment("NIL")
             .withMuscle("thigh").withCalories("20")
-            .withInstruction("Walk heel to toe for 50 steps").withTags("relax").build();
+            .withInstruction("Walk heel to toe for 50 steps").withRemark("This workout trains thigh")
+            .withTags("relax").build();
     public static final Workout BENSON_WORKOUT = new WorkoutBuilder().withName("Benson Meier's workout")
             .withType("strength").withDuration("10m")
             .withDifficulty("intermediate").withEquipment("bar")
