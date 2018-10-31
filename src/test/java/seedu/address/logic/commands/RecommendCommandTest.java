@@ -19,6 +19,7 @@ import javafx.collections.ObservableList;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.ReadOnlyTrackedData;
 import seedu.address.model.ReadOnlyTrackedDataList;
 import seedu.address.model.ReadOnlyWorkoutBook;
 import seedu.address.model.RecommendArguments;
@@ -143,6 +144,11 @@ public class RecommendCommandTest {
         }
 
         @Override
+        public ReadOnlyTrackedData getTrackedData() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasWorkout(Workout workout) {
             throw new AssertionError("This method should not be called.");
         }
@@ -250,6 +256,26 @@ public class RecommendCommandTest {
         }
 
         @Override
+        public boolean canUndoTrackedData() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean canRedoTrackedData() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void undoTrackedData() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void redoTrackedData() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void commitModel() {
             throw new AssertionError("This method should not be called.");
         }
@@ -265,6 +291,11 @@ public class RecommendCommandTest {
         }
 
         @Override
+        public void commitTrackedData() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void sortFilteredWorkoutList() {
             throw new AssertionError("This method should not be called.");
         }
@@ -276,6 +307,11 @@ public class RecommendCommandTest {
 
         @Override
         public void removeDataFromTrack(Parameter parameter) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void checkDataForTrack(Workout workout) {
             throw new AssertionError("This method should not be called.");
         }
 
