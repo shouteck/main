@@ -62,7 +62,6 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_WORKOUT_SUCCESS = "Edited Workout: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_WORKOUT = "This workout already exists in the workout book.";
-    public static final String MESSAGE_TAG_FAILURE = "Tags cannot be exact words of current or completed";
 
     private final Index index;
     private final EditWorkoutDescriptor editWorkoutDescriptor;
@@ -105,8 +104,7 @@ public class EditCommand extends Command {
      * Creates and returns a {@code Workout} with the details of {@code workoutToEdit}
      * edited with {@code editWorkoutDescriptor}.
      */
-    private static Workout createEditedWorkout(Workout workoutToEdit, EditWorkoutDescriptor editWorkoutDescriptor)
-            throws CommandException {
+    private static Workout createEditedWorkout(Workout workoutToEdit, EditWorkoutDescriptor editWorkoutDescriptor) {
         assert workoutToEdit != null;
 
         Name updatedName = editWorkoutDescriptor.getName().orElse(workoutToEdit.getName());
