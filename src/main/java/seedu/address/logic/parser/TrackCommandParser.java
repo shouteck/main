@@ -26,6 +26,7 @@ import seedu.address.model.workout.Instruction;
 import seedu.address.model.workout.Muscle;
 import seedu.address.model.workout.Name;
 import seedu.address.model.workout.Parameter;
+import seedu.address.model.workout.Remark;
 import seedu.address.model.workout.Type;
 
 /**
@@ -87,10 +88,8 @@ public class TrackCommandParser implements Parser<TrackCommand> {
             Tag tag = ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get());
             value = tag.tagName;
         } else if (prefix.equals(PREFIX_REMARK)) {
-            throw new ParseException("Placeholder error message until Remark is fixed");
-            //to uncomment once remark is fixed
-            //Remark remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get());
-            //value = remark.fullRemark;
+            Remark remark = ParserUtil.parseRemark(argMultimap.getValue(PREFIX_REMARK).get());
+            value = remark.fullRemark;
         }
 
         Parameter parameter = new Parameter(prefix, value);

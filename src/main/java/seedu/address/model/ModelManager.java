@@ -2,8 +2,19 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INSTRUCTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 
 import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -17,7 +28,18 @@ import seedu.address.commons.events.model.TrackedDataChangedEvent;
 import seedu.address.commons.events.model.TrackedDataListChangedEvent;
 import seedu.address.commons.events.model.WorkoutBookChangedEvent;
 
+import seedu.address.logic.parser.Prefix;
+import seedu.address.model.tag.Tag;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Equipment;
+import seedu.address.model.workout.Instruction;
+import seedu.address.model.workout.Muscle;
+import seedu.address.model.workout.Name;
 import seedu.address.model.workout.Parameter;
+import seedu.address.model.workout.Remark;
+import seedu.address.model.workout.Type;
 import seedu.address.model.workout.Workout;
 
 /**
@@ -116,9 +138,70 @@ public class ModelManager extends ComponentManager implements Model {
         indicateTrackedDataListChanged();
     }
 
+    //TODO
     @Override
     public void checkDataForTrack(Workout workout) {
-        versionedTrackedData.addWorkout(workout);
+        boolean hasParameter = false;
+        for (Parameter p : filteredParameters) {
+            Prefix prefix = p.getPrefix();
+            String value = p.getValue();
+            if (prefix.equals(PREFIX_NAME)) {
+                Name name = workout.getName();
+                if (name.fullName.equals(value)) {
+                    hasParameter = true;
+                }
+            } else if (prefix.equals(PREFIX_TYPE)) {
+                Type type = workout.getType();
+                if (type.fullType.equals(value)) {
+                    hasParameter = true;
+                }
+            } else if (prefix.equals(PREFIX_DURATION)) {
+                Duration duration = workout.getDuration();
+                if (duration.fullDuration.equals(value)) {
+                    hasParameter = true;
+                }
+            } else if (prefix.equals(PREFIX_DIFFICULTY)) {
+                Difficulty difficulty = workout.getDifficulty();
+                if (difficulty.fullDifficulty.equals(value)) {
+                    hasParameter = true;
+                }
+            } else if (prefix.equals(PREFIX_EQUIPMENT)) {
+                Equipment equipment = workout.getEquipment();
+                if (equipment.fullEquipment.equals(value)) {
+                    hasParameter = true;
+                }
+            } else if (prefix.equals(PREFIX_MUSCLE)) {
+                Muscle muscle = workout.getMuscle();
+                if (muscle.fullMuscle.equals(value)) {
+                    hasParameter = true;
+                }
+            } else if (prefix.equals(PREFIX_CALORIES)) {
+                Calories calories = workout.getCalories();
+                if (calories.fullCalories.equals(value)) {
+                    hasParameter = true;
+                }
+            } else if (prefix.equals(PREFIX_INSTRUCTION)) {
+                Instruction instruction = workout.getInstruction();
+                if (instruction.fullInstruction.equals(value)) {
+                    hasParameter = true;
+                }
+            } else if (prefix.equals(PREFIX_TAG)) {
+                Set<Tag> tagSet = workout.getTags();
+                for (Tag tag : tagSet) {
+                    if (tag.tagName.equals(value)) {
+                        hasParameter = true;
+                    }
+                }
+            } else if (prefix.equals(PREFIX_REMARK)) {
+                Remark remark = workout.getRemark();
+                if (remark.fullRemark.equals(value)) {
+                    hasParameter = true;
+                }
+            }
+        }
+        if (hasParameter) {
+            versionedTrackedData.addWorkout(workout);
+        }
         indicateTrackedDataChanged();
     }
 
@@ -127,7 +210,6 @@ public class ModelManager extends ComponentManager implements Model {
         requireNonNull(parameter);
         return versionedTrackedDataList.hasParameter(parameter);
     }
-
 
     @Override
     public void sortFilteredWorkoutList() {
