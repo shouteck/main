@@ -18,6 +18,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.TrackedData;
 import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.WorkoutBook;
@@ -28,7 +29,7 @@ import seedu.address.testutil.WorkoutBuilder;
 
 
 public class RemarkCommandTest {
-    private Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new TrackedData(), new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
@@ -37,8 +38,8 @@ public class RemarkCommandTest {
         Workout remarkedWorkout = model.getFilteredWorkoutList().get(INDEX_FIRST_WORKOUT.getZeroBased());
         RemarkCommand remarkCommand = new RemarkCommand(INDEX_FIRST_WORKOUT, remark);
         String expectedMessage = String.format(RemarkCommand.MESSAGE_REMARK_WORKOUT_SUCCESS, remarkedWorkout);
-        Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), new TrackedDataList(),
-                new UserPrefs());
+        Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
+                model.getTrackedData(), new UserPrefs());
         expectedModel.updateWorkout(model.getFilteredWorkoutList().get(0), remarkedWorkout);
         expectedModel.commitWorkoutBook();
         assertCommandSuccess(remarkCommand, model, commandHistory, expectedMessage, expectedModel);
@@ -56,7 +57,7 @@ public class RemarkCommandTest {
         String expectedMessage = String.format(RemarkCommand.MESSAGE_REMARK_WORKOUT_SUCCESS, remarkedWorkout);
 
         Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
-                new UserPrefs());
+                model.getTrackedData(), new UserPrefs());
         expectedModel.updateWorkout(model.getFilteredWorkoutList().get(0), remarkedWorkout);
         expectedModel.commitWorkoutBook();
         assertCommandSuccess(remarkCommand, model, commandHistory, expectedMessage, expectedModel);

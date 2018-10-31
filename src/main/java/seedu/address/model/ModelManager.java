@@ -93,6 +93,11 @@ public class ModelManager extends ComponentManager implements Model {
         return versionedTrackedDataList;
     }
 
+    @Override
+    public ReadOnlyTrackedData getTrackedData() {
+        return versionedTrackedData;
+    }
+
     /** Raises an event to indicate the model has changed */
     private void indicateWorkoutBookChanged() {
         raise(new WorkoutBookChangedEvent(versionedWorkoutBook));

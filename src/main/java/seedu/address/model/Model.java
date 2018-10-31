@@ -27,6 +27,9 @@ public interface Model {
     /** Returns the TrackedDataList */
     ReadOnlyTrackedDataList getTrackedDataList();
 
+    /** Returns the TrackedData */
+    ReadOnlyTrackedData getTrackedData();
+
     /**
      * Returns true if a workout with the same identity as {@code workout} exists in the workout book.
      */

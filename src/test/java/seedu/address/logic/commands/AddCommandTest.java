@@ -18,6 +18,7 @@ import javafx.collections.ObservableList;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.ReadOnlyTrackedData;
 import seedu.address.model.ReadOnlyTrackedDataList;
 import seedu.address.model.ReadOnlyWorkoutBook;
 import seedu.address.model.RecommendArguments;
@@ -109,6 +110,11 @@ public class AddCommandTest {
 
         @Override
         public ReadOnlyTrackedDataList getTrackedDataList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyTrackedData getTrackedData() {
             throw new AssertionError("This method should not be called.");
         }
 
