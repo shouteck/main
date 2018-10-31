@@ -30,7 +30,7 @@ import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_NIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
+// import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_WORKOUTS;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
