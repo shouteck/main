@@ -37,7 +37,7 @@ public class CompleteCommand extends Command {
 
     public static final String MESSAGE_COMPLETE_WORKOUT_SUCCESS = "Completed Workout: %1$s";
     public static final String MESSAGE_DUPLICATE_COMPLETE_WORKOUT = "This workout is already completed.";
-    public static final String MESSAGE_SKIPPED_COMPLETE_WORKOUT = "This workout must first be in the current state.";
+    public static final String MESSAGE_SKIPPED_COMPLETE_WORKOUT = "This workout must already be in the current state.";
 
     private final Index targetIndex;
 
