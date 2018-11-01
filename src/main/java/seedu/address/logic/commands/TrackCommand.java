@@ -63,7 +63,7 @@ public class TrackCommand extends Command {
             model.commitModel();
             return new CommandResult(String.format(MESSAGE_STOP_SUCCESS, parameter.getPrefix(), parameter.getValue()));
         }
-        return null;
+        throw new CommandException(MESSAGE_SUBCOMMAND_CONSTRAINTS);
     }
 
     /**
