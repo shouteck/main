@@ -46,8 +46,6 @@ public class ModifyCommand extends Command {
     private final String difficulty;
     private final String duration;
     private final String calories;
-
-    
     public ModifyCommand(String gender, String username, String height, String weight, String calories,
                          String difficulty, String duration) {
 
