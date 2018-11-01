@@ -62,7 +62,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_WORKOUT_SUCCESS = "Edited Workout: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_WORKOUT = "This workout already exists in the workout book.";
-    public static final String MESSAGE_TAG_ERROR = "Tags which are to be edited in cannot be future, current or"
+    public static final String MESSAGE_TAG_ERROR = "Tags which are to be edited in cannot be future, current or "
             + "completed.";
 
     private final Index index;
