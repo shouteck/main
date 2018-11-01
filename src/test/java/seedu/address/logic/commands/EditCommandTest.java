@@ -41,7 +41,8 @@ import seedu.address.testutil.WorkoutBuilder;
 
 
 /**
- * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for EditCommand.
+ * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
+ * {@code EditCommand}.
  */
 public class EditCommandTest {
 
