@@ -79,8 +79,8 @@ public class CurrentCommand extends Command {
             if (success) {
                 model.updateWorkout(workoutToEdit, editedWorkout);
                 model.updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
-                model.commitModel();
                 this.currentWorkout = true;
+                model.commitModel();
                 return new CommandResult(String.format(MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout));
             } else {
                 return new CommandResult(MESSAGE_CURRENT_WORKOUT_FAILURE);
