@@ -12,9 +12,9 @@ ifdef::env-github[]
 :note-caption: :information_source:
 :warning-caption: :warning:
 endif::[]
-:repoURL: https://github.com/se-edu/addressbook-level4/tree/master
+:repoURL: https://github.com/CS2113-AY1819S1-T13-5/main/tree/master
 
-By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
+By: `Team T13-5`      Since: `Sep 2018`      Licence: `MIT`
 
 == Setting up
 
@@ -406,7 +406,7 @@ image::traversingSequenceDiagram.png[width="650"]
 
 image::HighLevelRemarkSequenceDiagrams.png[width="650"]
 
-// end::traversing and remark[]
+// end::traversing
 
 === Memory feature
 //tag::memory
@@ -426,48 +426,49 @@ Step 2. The user executes the current command to change the `future` tag in the 
 
 [[fig-Current]]
 .Interactions inside `Logic` component when pressing `current`
-image::CurrentCommandSD.png[width="500"]
+image::CurrentCommandSD.png[width="800"]
 
 Step 3. The user executes the complete command to change the `current` tag in the workout as specified by the index number to `completed`.
 
 [[fig-Complete]]
 .Interactions inside `Logic` component when pressing `complete`
-image::CompleteCommandSD.png[width="500"]
+image::CompleteCommandSD.png[width="800"]
 
 * The user can only change the state tag from `current` to `completed` by using the complete command.
 * The user can only change the state tag from `future` to `current` or `completed` to `current` by using the current command.
 
-// end::memory[]
+// end::memory
 
-// tag::trackfeature[]
 === Tracking Feature
+// tag::trackfeature
 ==== Current Implementation
+The user input is parsed into `_TrackCommandParser_` to generate a `Parameter` object, which is then passed on to `_TrackCommand_`. Upon execution of the command, the `Parameter` is then stored in/removed from the `TrackedDataList`. This `TrackedDataList` stores all the `Parameter` objects currently being tracked.
+
+When a workout is marked as completed using the memory feature, if any tracked `Parameter` is present in the workout, if will be stored in `TrackedData`.
+
+`TrackedData` is analogous to `WorkoutBook`, but it does not enforce uniqueness between workouts, so as to allow for every completed workout that contains tracked parameters to be stored, regardless of uniqueness. This is done by utilising a `WorkoutList` object, analogous to the `UniqueWorkoutList` object used by `WorkoutBook`, with similar methods that allow for duplicates.
+
+Shown below is an example scenario for the tracking feature.
+
+Step 1: The user executes `track start muscle/bicep`. The user input is parsed to create a `Parameter` object containing the prefix `muscle/` and the value `bicep`. The `Parameter` is stored into `TrackedDataList`. The UI then reflects the new `Parameter` being tracked.
+
+image::TrackCommandSequenceDiagram1.png[width="800"]
+
+Step 2: The user executes `complete INDEX` on a desired workout. The `complete` command calls `Model#checkDataForTrack()`, which iterates through `TrackedDataList` to check whether any `Parameter` is present in the completed workout.
+
+Step 3: If any `Parameter` is present, the workout is stored both `TrackedData` and `WorkoutBook`. If none are present, the workout is just stored in `WorkoutBook`.
+
 ==== Design Considerations
-===== Aspect 1:
+===== Aspect 1: How the workouts that match tracked parameters are stored
 
-* **Alternative 1 (current choice):**
-** Pros:
-** Cons:
-* **Alternative 2:**
-** Pros:
-** Cons:
+* **Alternative 1 (current choice):** All tracked workouts are stored in one file, `_trackeddata.xml_`
+** Pros: Easy to implement storage of the desired workouts.
+** Cons: Filtering has to be done when finding workouts in the file that have a particular parameter present.
+* **Alternative 2:** Tracked workouts are stored in separate files, with one file for each parameter being tracked.
+** Pros: Viewing of tracked workouts is easy, with each file containing the workouts specific to the tracked parameter.
+** Cons: Difficult to specify the `Path` for each individual file, especially when the parameters in the `TrackedDataList` can vary widely during app usage.
 
-===== Aspect 2:
-
-* **Alternative 1 (current choice):**
-** Pros:
-** Cons:
-* **Alternative 2:**
-** Pros:
-** Cons:
-// end::trackfeature[]
-
-// tag::dataencryption[]
-=== [Proposed] Data Encryption
-
-_{Explain here how the data encryption feature will be implemented}_
-
-// end::dataencryption[]
+// end::trackfeature
 
 === Logging
 
