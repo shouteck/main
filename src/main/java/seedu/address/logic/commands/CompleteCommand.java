@@ -73,7 +73,7 @@ public class CompleteCommand extends Command {
      * Creates and returns a {@code Workout} with the details of {@code workoutToEdit}
      * edited with {@code editWorkoutDescriptor}.
      */
-    private static Workout createEditedWorkout(Workout workoutToEdit) throws CommandException {
+    public static Workout createEditedWorkout(Workout workoutToEdit) throws CommandException {
         assert workoutToEdit != null;
 
         Name updatedName = workoutToEdit.getName();

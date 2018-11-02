@@ -56,7 +56,7 @@ public class CurrentCommand extends Command {
 
     private static boolean currentWorkout;
 
-    private boolean success = true;
+    private static boolean success = true;
     private final Index targetIndex;
 
     /**
@@ -94,7 +94,7 @@ public class CurrentCommand extends Command {
      * Creates and returns a {@code Workout} with the details of {@code workoutToEdit}
      * edited with {@code editWorkoutDescriptor}.
      */
-    private Workout createEditedWorkout(Workout workoutToEdit) throws CommandException {
+    public static Workout createEditedWorkout(Workout workoutToEdit) throws CommandException {
         assert workoutToEdit != null;
         Name updatedName = workoutToEdit.getName();
         Type updatedType = workoutToEdit.getType();
