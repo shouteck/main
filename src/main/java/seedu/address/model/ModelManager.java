@@ -268,6 +268,23 @@ public class ModelManager extends ComponentManager implements Model {
         filteredParameters.setPredicate(predicate);
     }
 
+    //=========== Filtered Tracked Data Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Workout} backed by the internal list of
+     * {@code versionedTrackedData}
+     */
+    @Override
+    public ObservableList<Workout> getFilteredTrackedData() {
+        return FXCollections.unmodifiableObservableList(filteredTrackedData);
+    }
+
+    @Override
+    public void updateFilteredTrackedData(Predicate<Workout> predicate) {
+        requireNonNull(predicate);
+        filteredTrackedData.setPredicate(predicate);
+    }
+
     //=========== Undo/Redo =================================================================================
 
     @Override
@@ -401,7 +418,11 @@ public class ModelManager extends ComponentManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return versionedWorkoutBook.equals(other.versionedWorkoutBook)
-                && filteredWorkouts.equals(other.filteredWorkouts);
+                && filteredWorkouts.equals(other.filteredWorkouts)
+                && versionedTrackedDataList.equals(other.versionedTrackedDataList)
+                && filteredParameters.equals(other.filteredParameters)
+                && versionedTrackedData.equals(other.versionedTrackedData)
+                && filteredTrackedData.equals(other.filteredTrackedData);
     }
 
 }

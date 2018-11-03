@@ -196,6 +196,17 @@ public class RecommendCommandTest {
         }
 
         @Override
+        public ObservableList<Workout> getFilteredTrackedData() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredTrackedData(Predicate<Workout> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+
+        @Override
         public boolean canUndoModel() {
             throw new AssertionError("This method should not be called.");
         }
