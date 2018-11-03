@@ -143,7 +143,6 @@ public class ModelManager extends ComponentManager implements Model {
         indicateTrackedDataListChanged();
     }
 
-    //TODO
     @Override
     public void checkDataForTrack(Workout workout) {
         boolean hasParameter = false;
