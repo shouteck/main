@@ -30,12 +30,12 @@ public class UniqueParameterListTest {
     }
 
     @Test
-    public void contains_ParameterNotInList_returnsFalse() {
+    public void contains_parameterNotInList_returnsFalse() {
         assertFalse(uniqueParameterList.contains(NAME_PARAMETER));
     }
 
     @Test
-    public void contains_ParameterInList_returnsTrue() {
+    public void contains_parameterInList_returnsTrue() {
         uniqueParameterList.add(NAME_PARAMETER);
         assertTrue(uniqueParameterList.contains(NAME_PARAMETER));
     }
