@@ -3,8 +3,8 @@ package seedu.address.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.testutil.ParameterBuilder.DEFAULT_PREFIX;
 import static seedu.address.testutil.ParameterBuilder.DEFAULT_NAME;
+import static seedu.address.testutil.ParameterBuilder.DEFAULT_PREFIX;
 import static seedu.address.testutil.TypicalParameters.NAME_PARAMETER;
 import static seedu.address.testutil.TypicalParameters.getTypicalTrackedDataList;
 

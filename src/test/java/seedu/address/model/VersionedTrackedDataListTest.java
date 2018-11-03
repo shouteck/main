@@ -4,9 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static seedu.address.testutil.TypicalParameters.DURATION_PARAMETER;
 import static seedu.address.testutil.TypicalParameters.NAME_PARAMETER;
 import static seedu.address.testutil.TypicalParameters.TYPE_PARAMETER;
-import static seedu.address.testutil.TypicalParameters.DURATION_PARAMETER;
+
 
 import java.util.Arrays;
 import java.util.Collections;
