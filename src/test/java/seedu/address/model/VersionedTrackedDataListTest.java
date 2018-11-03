@@ -8,7 +8,6 @@ import static seedu.address.testutil.TypicalParameters.DURATION_PARAMETER;
 import static seedu.address.testutil.TypicalParameters.NAME_PARAMETER;
 import static seedu.address.testutil.TypicalParameters.TYPE_PARAMETER;
 
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
