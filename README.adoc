@@ -9,7 +9,7 @@ image::docs/images/Ui.png[width="600"]
 endif::[]
 
 ifndef::env-github[]
-image::docs/images/Ui.png[width="600"]
+image::images/Ui.png[width="600"]
 endif::[]
 
 * Hoping to get started on that workout regime you always kept on the back burner? But wait, what's that other attractive workout you just read about?
