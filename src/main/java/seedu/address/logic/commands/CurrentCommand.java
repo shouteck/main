@@ -192,17 +192,17 @@ public class CurrentCommand extends Command {
             return MESSAGE_MORE_DIFFICULT + MESSAGE_CONTINUE;
         } else if (((difficulty && calories) == true) && (duration == false)) {
             return "This workout is more difficult than your indicated workout difficulty and requires more calories to"
-            + " be burnt than your preferred calories.\n" + MESSAGE_CONTINUE;
+                + " be burnt than your preferred calories.\n" + MESSAGE_CONTINUE;
         } else if (((difficulty && duration) == true) && (calories == false)) {
             return "This workout is more difficult than your indicated workout difficulty and will take longer than "
-            + "your preferred duration.\n" + MESSAGE_CONTINUE;
+                + "your preferred duration.\n" + MESSAGE_CONTINUE;
         } else if (((calories && duration) == true) && (difficulty == false)) {
             return "This workout requires more calories to be burnt than your preferred calories and will take longer "
-            + "than your preferred duration.\n" + MESSAGE_CONTINUE;
+                + "than your preferred duration.\n" + MESSAGE_CONTINUE;
         } else {
             return "This workout is more difficult than your indicated workout difficulty and requires more calories to"
-            + " be burnt than your preferred calories and will take longer than your preferred duration.\n"
-            + MESSAGE_CONTINUE;
+                + " be burnt than your preferred calories and will take longer than your preferred duration.\n"
+                    + MESSAGE_CONTINUE;
         }
     }
 
