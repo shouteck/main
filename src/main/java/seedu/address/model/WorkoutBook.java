@@ -106,7 +106,6 @@ public class WorkoutBook implements ReadOnlyWorkoutBook {
     @Override
     public String toString() {
         return workouts.asUnmodifiableObservableList().size() + " workouts";
-        // TODO: refine later
     }
 
     @Override

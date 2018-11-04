@@ -143,7 +143,6 @@ public class ModelManager extends ComponentManager implements Model {
         indicateTrackedDataListChanged();
     }
 
-    //TODO
     @Override
     public void checkDataForTrack(Workout workout) {
         boolean hasParameter = false;
@@ -207,6 +206,7 @@ public class ModelManager extends ComponentManager implements Model {
         if (hasParameter) {
             versionedTrackedData.addWorkout(workout);
         }
+        updateFilteredTrackedData(PREDICATE_SHOW_ALL_WORKOUTS);
         indicateTrackedDataChanged();
     }
 
@@ -267,6 +267,23 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredTrackedDataList(Predicate<Parameter> predicate) {
         requireNonNull(predicate);
         filteredParameters.setPredicate(predicate);
+    }
+
+    //=========== Filtered Tracked Data Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Workout} backed by the internal list of
+     * {@code versionedTrackedData}
+     */
+    @Override
+    public ObservableList<Workout> getFilteredTrackedData() {
+        return FXCollections.unmodifiableObservableList(filteredTrackedData);
+    }
+
+    @Override
+    public void updateFilteredTrackedData(Predicate<Workout> predicate) {
+        requireNonNull(predicate);
+        filteredTrackedData.setPredicate(predicate);
     }
 
     //=========== Undo/Redo =================================================================================
@@ -402,7 +419,11 @@ public class ModelManager extends ComponentManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return versionedWorkoutBook.equals(other.versionedWorkoutBook)
-                && filteredWorkouts.equals(other.filteredWorkouts);
+                && filteredWorkouts.equals(other.filteredWorkouts)
+                && versionedTrackedDataList.equals(other.versionedTrackedDataList)
+                && filteredParameters.equals(other.filteredParameters)
+                && versionedTrackedData.equals(other.versionedTrackedData)
+                && filteredTrackedData.equals(other.filteredTrackedData);
     }
 
 }

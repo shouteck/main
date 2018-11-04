@@ -8,6 +8,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showWorkoutAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_WORKOUT;
+import static seedu.address.testutil.TypicalParameters.getTypicalTrackedDataList;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
 import org.junit.Test;
@@ -18,7 +19,6 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.TrackedData;
-import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.workout.Workout;
 
@@ -28,7 +28,7 @@ import seedu.address.model.workout.Workout;
  */
 public class DeleteCommandTest {
 
-    private Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new TrackedData(),
+    private Model model = new ModelManager(getTypicalWorkoutBook(), getTypicalTrackedDataList(), new TrackedData(),
             new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
@@ -42,7 +42,7 @@ public class DeleteCommandTest {
         ModelManager expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
                 model.getTrackedData(), new UserPrefs());
         expectedModel.deleteWorkout(workoutToDelete);
-        expectedModel.commitWorkoutBook();
+        expectedModel.commitModel();
 
         assertCommandSuccess(deleteCommand, model, commandHistory, expectedMessage, expectedModel);
     }
@@ -67,7 +67,7 @@ public class DeleteCommandTest {
         Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
                 model.getTrackedData(), new UserPrefs());
         expectedModel.deleteWorkout(workoutToDelete);
-        expectedModel.commitWorkoutBook();
+        expectedModel.commitModel();
         showNoWorkout(expectedModel);
 
         assertCommandSuccess(deleteCommand, model, commandHistory, expectedMessage, expectedModel);
@@ -93,17 +93,17 @@ public class DeleteCommandTest {
         Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
                 model.getTrackedData(), new UserPrefs());
         expectedModel.deleteWorkout(workoutToDelete);
-        expectedModel.commitWorkoutBook();
+        expectedModel.commitModel();
 
         // delete -> first workout deleted
         deleteCommand.execute(model, commandHistory);
 
         // undo -> reverts workout book back to previous state and filtered workout list to show all workouts
-        expectedModel.undoWorkoutBook();
+        expectedModel.undoModel();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
         // redo -> same first workout deleted again
-        expectedModel.redoWorkoutBook();
+        expectedModel.redoModel();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
@@ -136,18 +136,18 @@ public class DeleteCommandTest {
         showWorkoutAtIndex(model, INDEX_SECOND_WORKOUT);
         Workout workoutToDelete = model.getFilteredWorkoutList().get(INDEX_FIRST_WORKOUT.getZeroBased());
         expectedModel.deleteWorkout(workoutToDelete);
-        expectedModel.commitWorkoutBook();
+        expectedModel.commitModel();
 
         // delete -> deletes second workout in unfiltered workout list / first workout in filtered workout list
         deleteCommand.execute(model, commandHistory);
 
         // undo -> reverts workout book back to previous state and filtered workout list to show all workouts
-        expectedModel.undoWorkoutBook();
+        expectedModel.undoModel();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
         assertNotEquals(workoutToDelete, model.getFilteredWorkoutList().get(INDEX_FIRST_WORKOUT.getZeroBased()));
         // redo -> deletes same second workout in unfiltered workout list
-        expectedModel.redoWorkoutBook();
+        expectedModel.redoModel();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
 

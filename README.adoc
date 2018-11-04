@@ -2,10 +2,10 @@
 ifdef::env-github,env-browser[:relfileprefix: docs/]
 
 https://travis-ci.org/CS2113-AY1819S1-T13-5/main[image:https://travis-ci.org/CS2113-AY1819S1-T13-5/main.svg?branch=master[Build Status]]
-https://coveralls.io/github/se-edu/addressbook-level4?branch=master[image:https://coveralls.io/repos/github/se-edu/addressbook-level4/badge.svg?branch=master[Coverage Status]]
+https://coveralls.io/github/CS2113-AY1819S1-T13-5/main?branch=master[image:https://coveralls.io/repos/github/CS2113-AY1819S1-T13-5/main/badge.svg?branch=master[Coverage Status]]
 
 ifdef::env-github[]
-image::docs/images/temp_UI.png[width="600"]
+image::docs/images/Ui.png[width="600"]
 endif::[]
 
 ifndef::env-github[]

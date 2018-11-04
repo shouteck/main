@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.testutil.TypicalParameters.getTypicalTrackedDataList;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
 import org.junit.Before;
@@ -11,7 +12,6 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.TrackedData;
-import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.workout.Workout;
 import seedu.address.testutil.WorkoutBuilder;
@@ -26,7 +26,7 @@ public class AddCommandIntegrationTest {
 
     @Before
     public void setUp() {
-        model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(),
+        model = new ModelManager(getTypicalWorkoutBook(), getTypicalTrackedDataList(),
                 new TrackedData(), new UserPrefs());
     }
 
@@ -37,7 +37,7 @@ public class AddCommandIntegrationTest {
         Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
                 model.getTrackedData(), new UserPrefs());
         expectedModel.addWorkout(validWorkout);
-        expectedModel.commitWorkoutBook();
+        expectedModel.commitModel();
 
         assertCommandSuccess(new AddCommand(validWorkout), model, commandHistory,
                 String.format(AddCommand.MESSAGE_SUCCESS, validWorkout), expectedModel);
