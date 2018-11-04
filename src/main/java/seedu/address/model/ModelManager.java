@@ -206,6 +206,7 @@ public class ModelManager extends ComponentManager implements Model {
         if (hasParameter) {
             versionedTrackedData.addWorkout(workout);
         }
+        updateFilteredTrackedData(PREDICATE_SHOW_ALL_WORKOUTS);
         indicateTrackedDataChanged();
     }
 
