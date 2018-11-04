@@ -240,19 +240,15 @@ public class ProfileWindowManager {
      */
     public boolean isMoreDifficult(String first, String second) {
         if (first.matches("beginner")) {
-            System.out.println("1");
             return false;
         }
         if ((first.matches("intermediate")) && (second.matches("beginner"))) {
-            System.out.println("2");
             return true;
         }
         if ((first.matches("advanced")) && ((second.matches("beginner"))
                 || (second.matches("intermediate")))) {
-            System.out.println("3");
             return true;
         }
-        System.out.println("4");
         return false;
     }
 
