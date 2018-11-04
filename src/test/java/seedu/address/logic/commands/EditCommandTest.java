@@ -20,6 +20,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showWorkoutAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_WORKOUT;
+import static seedu.address.testutil.TypicalParameters.getTypicalTrackedDataList;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
 import org.junit.Test;
@@ -31,7 +32,6 @@ import seedu.address.logic.commands.EditCommand.EditWorkoutDescriptor;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.TrackedData;
-import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.WorkoutBook;
 import seedu.address.model.workout.Workout;
@@ -46,7 +46,7 @@ import seedu.address.testutil.WorkoutBuilder;
  */
 public class EditCommandTest {
 
-    private Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new TrackedData(),
+    private Model model = new ModelManager(getTypicalWorkoutBook(), getTypicalTrackedDataList(), new TrackedData(),
             new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
@@ -61,7 +61,7 @@ public class EditCommandTest {
         Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
                 model.getTrackedData(), new UserPrefs());
         expectedModel.updateWorkout(model.getFilteredWorkoutList().get(0), editedWorkout);
-        expectedModel.commitWorkoutBook();
+        expectedModel.commitModel();
 
         assertCommandSuccess(editCommand, model, commandHistory, expectedMessage, expectedModel);
     }
@@ -92,7 +92,7 @@ public class EditCommandTest {
         Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
                 model.getTrackedData(), new UserPrefs());
         expectedModel.updateWorkout(lastWorkout, editedWorkout);
-        expectedModel.commitWorkoutBook();
+        expectedModel.commitModel();
 
         assertCommandSuccess(editCommand, model, commandHistory, expectedMessage, expectedModel);
     }
@@ -106,7 +106,7 @@ public class EditCommandTest {
 
         Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
                 model.getTrackedData(), new UserPrefs());
-        expectedModel.commitWorkoutBook();
+        expectedModel.commitModel();
 
         assertCommandSuccess(editCommand, model, commandHistory, expectedMessage, expectedModel);
     }
@@ -125,7 +125,7 @@ public class EditCommandTest {
         Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
                 model.getTrackedData(), new UserPrefs());
         expectedModel.updateWorkout(model.getFilteredWorkoutList().get(0), editedWorkout);
-        expectedModel.commitWorkoutBook();
+        expectedModel.commitModel();
 
         assertCommandSuccess(editCommand, model, commandHistory, expectedMessage, expectedModel);
     }
@@ -186,17 +186,17 @@ public class EditCommandTest {
         Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
                 model.getTrackedData(), new UserPrefs());
         expectedModel.updateWorkout(workoutToEdit, editedWorkout);
-        expectedModel.commitWorkoutBook();
+        expectedModel.commitModel();
 
         // edit -> first workout edited
         editCommand.execute(model, commandHistory);
 
         // undo -> reverts workoutbook back to previous state and filtered workout list to show all workouts
-        expectedModel.undoWorkoutBook();
+        expectedModel.undoModel();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
         // redo -> same first workout edited again
-        expectedModel.redoWorkoutBook();
+        expectedModel.redoModel();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
@@ -232,18 +232,18 @@ public class EditCommandTest {
         showWorkoutAtIndex(model, INDEX_SECOND_WORKOUT);
         Workout workoutToEdit = model.getFilteredWorkoutList().get(INDEX_FIRST_WORKOUT.getZeroBased());
         expectedModel.updateWorkout(workoutToEdit, editedWorkout);
-        expectedModel.commitWorkoutBook();
+        expectedModel.commitModel();
 
         // edit -> edits second workout in unfiltered workout list / first workout in filtered workout list
         editCommand.execute(model, commandHistory);
 
         // undo -> reverts workoutbook back to previous state and filtered workout list to show all workout
-        expectedModel.undoWorkoutBook();
+        expectedModel.undoModel();
         assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
 
         assertNotEquals(model.getFilteredWorkoutList().get(INDEX_FIRST_WORKOUT.getZeroBased()), workoutToEdit);
         // redo -> edits same second workout in unfiltered workout list
-        expectedModel.redoWorkoutBook();
+        expectedModel.redoModel();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
