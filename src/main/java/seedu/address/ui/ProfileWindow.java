@@ -15,8 +15,6 @@ import seedu.address.commons.core.LogsCenter;
  */
 public class ProfileWindow extends UiPart<Stage> {
 
-    public static final String USERPROFILE_FILE_PATH = "/htmlFiles/ProfileWindow.html";
-
     private static final Logger logger = LogsCenter.getLogger(ProfileWindow.class);
     private static final String FXML = "ProfileWindow.fxml";
 
@@ -71,17 +69,4 @@ public class ProfileWindow extends UiPart<Stage> {
         Desktop.getDesktop().browse(htmlFile.toURI());
     }
 
-    /**
-     * Returns true if the profile window is currently being shown.
-     */
-    public boolean isShowing() {
-        return getRoot().isShowing();
-    }
-
-    /**
-     * Focuses on the profile window.
-     */
-    public void focus() {
-        getRoot().requestFocus();
-    }
 }
