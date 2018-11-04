@@ -145,7 +145,7 @@ public class UniqueWorkoutListTest {
     }
 
     @Test
-    public void setWrokouts_uniqueWorkoutList_replacesOwnListWithProvidedUniqueWorkoutList() {
+    public void setWorkouts_uniqueWorkoutList_replacesOwnListWithProvidedUniqueWorkoutList() {
         uniqueWorkoutList.add(ALICE_WORKOUT);
         UniqueWorkoutList expectedUniqueWorkoutList = new UniqueWorkoutList();
         expectedUniqueWorkoutList.add(BOB_WORKOUT);

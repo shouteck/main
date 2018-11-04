@@ -64,7 +64,7 @@ public interface Model {
      */
     void updateFilteredWorkoutList(Predicate<Workout> predicate);
 
-    /** Returns an unmodifiable view of the filtered workout list */
+    /** Returns an unmodifiable view of the filtered tracked data list */
     ObservableList<Parameter> getFilteredTrackedDataList();
 
     /**
@@ -72,6 +72,15 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredTrackedDataList(Predicate<Parameter> predicate);
+
+    /** Returns an unmodifiable view of the filtered tracked data */
+    ObservableList<Workout> getFilteredTrackedData();
+
+    /**
+     * Updates the filter of the filtered tracked data to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredTrackedData(Predicate<Workout> predicate);
 
     /**
      * Returns true if the model has previous states to restore.

@@ -32,7 +32,7 @@ public class WorkoutListPanelTest extends GuiUnitTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "sandbox");
 
-    private static final long CARD_CREATION_AND_DELETION_TIMEOUT = 2500;
+    private static final long CARD_CREATION_AND_DELETION_TIMEOUT = 10000;
 
     private WorkoutListPanelHandle workoutListPanelHandle;
 

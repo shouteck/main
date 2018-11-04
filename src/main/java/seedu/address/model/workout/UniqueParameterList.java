@@ -19,7 +19,7 @@ import seedu.address.model.workout.exceptions.ParameterNotFoundException;
  * A parameter is considered unique by comparing using {@code Parameter#equals(Object)}. As such, adding and
  * updating of parameters uses Parameter#equals(Object) for equality so as to ensure that the parameter being added
  * or updated is unique in terms of identity in the UniqueParameterList. The removal of a parameter also uses
- * Parameter#equals(Object) so as to ensure that the workout with exactly the same fields will be removed.
+ * Parameter#equals(Object) so as to ensure that the parameter with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
@@ -84,14 +84,14 @@ public class UniqueParameterList implements Iterable<Parameter> {
         }
     }
 
-    public void setWorkouts(UniqueParameterList replacement) {
+    public void setParameters(UniqueParameterList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
     }
 
     /**
      * Replaces the contents of this list with {@code parameters}.
-     * {@code parameters} must not contain duplicate workouts.
+     * {@code parameters} must not contain duplicate parameters.
      */
     public void setParameters(List<Parameter> parameters) {
         requireAllNonNull(parameters);

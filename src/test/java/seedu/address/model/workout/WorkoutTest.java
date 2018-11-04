@@ -105,7 +105,7 @@ public class WorkoutTest {
         // null -> returns false
         assertFalse(ALICE_WORKOUT.equals(null));
 
-        // different type -> returns false
+        // different type of object -> returns false
         assertFalse(ALICE_WORKOUT.equals(5));
 
         // different workout -> returns false
