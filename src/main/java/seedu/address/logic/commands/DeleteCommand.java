@@ -3,12 +3,14 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.tag.Tag;
 import seedu.address.model.workout.Workout;
 
 /**
@@ -41,6 +43,12 @@ public class DeleteCommand extends Command {
         }
 
         Workout workoutToDelete = lastShownList.get(targetIndex.getZeroBased());
+        Set<Tag> tagList = workoutToDelete.getTags();
+        for (Tag entry: tagList) {
+            if (entry.tagName.equals("current")) {
+                CurrentCommand.setCurrentWorkout(false);
+            }
+        }
         model.deleteWorkout(workoutToDelete);
         model.commitModel();
         return new CommandResult(String.format(MESSAGE_DELETE_WORKOUT_SUCCESS, workoutToDelete));
