@@ -175,6 +175,14 @@ public class CurrentCommand extends Command {
                 updatedMuscle, updatedCalories, updatedInstruction, updatedTags, null);
     }
 
+    /**
+     * Gives the appropriate pop up message depending on the difficulty, calories and duration
+     *
+     * @param difficulty boolean to check if the user's difficulty is harder than the workout's difficulty
+     * @param calories boolean to check if the user's indicated calories is higher than the workout's calories
+     * @param duration boolean to check if the user's indicated duration is higher than the workout's duration
+     * @return the appropriate pop up message
+     */
     private String popUpMessage(boolean difficulty, boolean calories, boolean duration) {
         if (((difficulty || calories) == false) && duration) {
             return MESSAGE_HIGHER_DURATION + MESSAGE_CONTINUE;

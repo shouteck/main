@@ -32,6 +32,11 @@ Windows developers are highly recommended to use JDK `9`.
 IntelliJ by default has Gradle and JavaFx plugins installed. +
 Do not disable them. If you have disabled them, go to `File` > `Settings` > `Plugins` to re-enable them.
 
+. If you are downloading the `workoutbook.jar` file
++
+[WARNING]
+You must include this link:https://github.com/sijieg/main/blob/master/ProfileWindow.html[`ProfileWindow.html`] file in the same location as your `workoutbook.jar` file or else you will not be able to run the `workoutbook.jar`
+
 
 === Setting up the project in your computer
 
