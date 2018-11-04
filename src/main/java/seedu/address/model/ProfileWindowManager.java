@@ -1,7 +1,5 @@
 package seedu.address.model;
 
-import static seedu.address.ui.ProfileWindow.USERPROFILE_FILE_PATH;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
@@ -41,7 +39,8 @@ public class ProfileWindowManager {
     private String fileName;
 
     private ProfileWindowManager() throws IOException {
-        fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString().substring(6);
+        String workingDir = System.getProperty("user.dir");
+        fileName = workingDir + "\\ProfileWindow.html";
         doc = Jsoup.parse(new File(fileName), "UTF-8");
 
         this.gender = doc.getElementById("gender");
