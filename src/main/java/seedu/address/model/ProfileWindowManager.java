@@ -253,7 +253,7 @@ public class ProfileWindowManager {
     }
 
     /**
-     * Returns true if the first calories is higher or equal than the second calories
+     * Returns true if the first calories is higher than the second calories
      */
     public boolean isHigherCalories(int first, int second) {
         if (first > second) {
@@ -264,7 +264,7 @@ public class ProfileWindowManager {
     }
 
     /**
-     * Returns true if the first duration is higher or equal than the second duration
+     * Returns true if the first duration is higher than the second duration
      */
     public boolean isHigherDuration(int first, int second) {
         if (first > second) {

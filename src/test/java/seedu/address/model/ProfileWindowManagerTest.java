@@ -83,7 +83,21 @@ public class ProfileWindowManagerTest {
         String validStringInteger = "123";
 
         assertEquals(profileWindowManager.convertStringIntoInt(validStringInteger),123);
+    }
 
+    @Test
+    public void isHigherCaloriesTest() throws IOException {
+        ProfileWindowManager profileWindowManager;
+        profileWindowManager = ProfileWindowManager.getInstance();
+        int lowerCalories = 150;
+        int higherCalories = 160;
+        int sameCalories = 150;
+        assertTrue(profileWindowManager.isHigherCalories(higherCalories,lowerCalories));
+
+        //Should return false since lowerCalories is not higher than higherCalories
+        assertFalse(profileWindowManager.isHigherCalories(lowerCalories,higherCalories));
+        ////Should return false since lowerCalories is not higher than sameCalories
+        assertFalse(profileWindowManager.isHigherCalories(lowerCalories,sameCalories));
     }
 
 }
