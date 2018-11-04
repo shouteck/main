@@ -10,16 +10,16 @@ import static seedu.address.logic.commands.TrackCommand.MESSAGE_START_SUCCESS;
 import static seedu.address.logic.commands.TrackCommand.MESSAGE_STOP_SUCCESS;
 import static seedu.address.logic.commands.TrackCommand.MESSAGE_SUBCOMMAND_CONSTRAINTS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
+import static seedu.address.testutil.TypicalParameters.NAME_PARAMETER;
+import static seedu.address.testutil.TypicalParameters.getTypicalTrackedDataList;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.TrackedData;
-import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.workout.Parameter;
 
@@ -28,16 +28,9 @@ import seedu.address.model.workout.Parameter;
  */
 public class TrackCommandTest {
 
-    private Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new TrackedData(),
+    private Model model = new ModelManager(getTypicalWorkoutBook(), getTypicalTrackedDataList(), new TrackedData(),
            new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
-
-    @Before
-    public void setUp() {
-        //set up model to have a tracked parameter
-        Parameter parameter = new Parameter(PREFIX_MUSCLE, "hamstring");
-        model.addDataToTrack(parameter);
-    }
 
     @Test
     public void execute_validSubcommandStart_success() {
@@ -58,7 +51,7 @@ public class TrackCommandTest {
     @Test
     public void execute_validSubcommandStop_success() {
         String subcommand = "stop";
-        Parameter parameter = new Parameter(PREFIX_MUSCLE, "hamstring");
+        Parameter parameter = NAME_PARAMETER;
         TrackCommand trackCommand = new TrackCommand(subcommand, parameter);
 
         String expectedMessage = String.format(MESSAGE_STOP_SUCCESS, parameter.getPrefix(), parameter.getValue());
@@ -84,6 +77,9 @@ public class TrackCommandTest {
 
     @Test
     public void execute_validSubcommandStartWithExistingParameter_failure() {
+        Parameter defaultParameter = new Parameter(PREFIX_MUSCLE, "hamstring");
+        model.addDataToTrack(defaultParameter);
+
         String subcommand = "start";
         Parameter parameter = new Parameter(PREFIX_MUSCLE, "hamstring");
         TrackCommand trackCommand = new TrackCommand(subcommand, parameter);

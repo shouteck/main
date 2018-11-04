@@ -97,7 +97,6 @@ public class TrackedDataList implements ReadOnlyTrackedDataList {
     @Override
     public String toString() {
         return parameters.asUnmodifiableObservableList().size() + " parameters";
-        // TODO: refine later
     }
 
     @Override

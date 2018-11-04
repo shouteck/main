@@ -86,7 +86,6 @@ public class TrackedData implements ReadOnlyTrackedData {
     @Override
     public String toString() {
         return workouts.asUnmodifiableObservableList().size() + " workouts";
-        // TODO: refine later
     }
 
     @Override

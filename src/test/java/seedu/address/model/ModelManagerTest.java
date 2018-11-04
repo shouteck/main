@@ -4,6 +4,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_WORKOUTS;
+import static seedu.address.testutil.TypicalParameters.NAME_PARAMETER;
+import static seedu.address.testutil.TypicalParameters.TYPE_PARAMETER;
 import static seedu.address.testutil.TypicalWorkouts.ALICE_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.BENSON_WORKOUT;
 
@@ -13,6 +15,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import seedu.address.testutil.TrackedDataListBuilder;
 import seedu.address.testutil.WorkoutBookBuilder;
 
 public class ModelManagerTest {
@@ -39,9 +42,38 @@ public class ModelManagerTest {
     }
 
     @Test
+    public void hasParameter_nullWorkout_throwsNullPointerException() {
+        thrown.expect(NullPointerException.class);
+        modelManager.hasParameter(null);
+    }
+
+    @Test
+    public void hasParameter_parameterNotInTrackedDataList_returnsFalse() {
+        assertFalse(modelManager.hasParameter(NAME_PARAMETER));
+    }
+
+    @Test
+    public void hasParameter_parameterInTrackedDataList_returnsTrue() {
+        modelManager.addDataToTrack(NAME_PARAMETER);
+        assertTrue(modelManager.hasParameter(NAME_PARAMETER));
+    }
+
+    @Test
     public void getFilteredWorkoutList_modifyList_throwsUnsupportedOperationException() {
         thrown.expect(UnsupportedOperationException.class);
         modelManager.getFilteredWorkoutList().remove(0);
+    }
+
+    @Test
+    public void getFilteredTrackedDataList_modifyList_throwsUnsupportedOperationException() {
+        thrown.expect(UnsupportedOperationException.class);
+        modelManager.getFilteredTrackedDataList().remove(0);
+    }
+
+    @Test
+    public void getFilteredTrackedData_modifyList_throwsUnsupportedOperationException() {
+        thrown.expect(UnsupportedOperationException.class);
+        modelManager.getFilteredTrackedData().remove(0);
     }
 
     @Test
@@ -49,7 +81,9 @@ public class ModelManagerTest {
         WorkoutBook workoutBook = new WorkoutBookBuilder().withWorkout(ALICE_WORKOUT).withWorkout(BENSON_WORKOUT)
                 .build();
         WorkoutBook differentWorkoutBook = new WorkoutBook();
-        TrackedDataList trackedDataList = new TrackedDataList();
+        TrackedDataList trackedDataList = new TrackedDataListBuilder().withParameter(NAME_PARAMETER)
+                .withParameter(TYPE_PARAMETER).build();
+        TrackedDataList differentTrackedDataList = new TrackedDataList();
         TrackedData trackedData = new TrackedData();
         UserPrefs userPrefs = new UserPrefs();
 
@@ -69,6 +103,10 @@ public class ModelManagerTest {
 
         // different workoutBook -> returns false
         assertFalse(modelManager.equals(new ModelManager(differentWorkoutBook, trackedDataList, trackedData,
+                userPrefs)));
+
+        // different trackedDataList -> returns false
+        assertFalse(modelManager.equals(new ModelManager(workoutBook, differentTrackedDataList, trackedData,
                 userPrefs)));
 
         /* different filteredList -> returns false
