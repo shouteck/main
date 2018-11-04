@@ -69,4 +69,17 @@ public class ProfileWindow extends UiPart<Stage> {
         Desktop.getDesktop().browse(htmlFile.toURI());
     }
 
+    /**
+     * Returns true if the profile window is currently being shown.
+     */
+    public boolean isShowing() {
+        return getRoot().isShowing();
+    }
+
+    /**
+     * Focuses on the profile window.
+     */
+    public void focus() {
+        getRoot().requestFocus();
+    }
 }
