@@ -184,35 +184,22 @@ public class CurrentCommand extends Command {
      * @return the appropriate pop up message
      */
     private String popUpMessage(boolean difficulty, boolean calories, boolean duration) {
-        if (((difficulty || calories) == false) && duration)
-        {
+        if (((difficulty || calories) == false) && duration) {
             return MESSAGE_HIGHER_DURATION + MESSAGE_CONTINUE;
-        }
-        else if (((difficulty || duration) == false) && calories)
-        {
+        } else if (((difficulty || duration) == false) && calories) {
             return MESSAGE_HIGHER_CALORIES + MESSAGE_CONTINUE;
-        }
-        else if (((calories || duration) == false) && difficulty)
-        {
+        } else if (((calories || duration) == false) && difficulty) {
             return MESSAGE_MORE_DIFFICULT + MESSAGE_CONTINUE;
-        }
-        else if (((difficulty && calories) == true) && (duration == false))
-        {
+        } else if (((difficulty && calories) == true) && (duration == false)) {
             return "This workout is more difficult than your indicated workout difficulty and requires more calories to"
             + " be burnt than your preferred calories.\n" + MESSAGE_CONTINUE;
-        }
-        else if (((difficulty && duration) == true) && (calories == false))
-        {
+        } else if (((difficulty && duration) == true) && (calories == false)) {
             return "This workout is more difficult than your indicated workout difficulty and will take longer than "
                     + "your preferred duration.\n" + MESSAGE_CONTINUE;
-        }
-        else if (((calories && duration) == true) && (difficulty == false))
-        {
+        } else if (((calories && duration) == true) && (difficulty == false)) {
             return "This workout requires more calories to be burnt than your preferred calories and will take longer "
                     + "than your preferred duration.\n" + MESSAGE_CONTINUE;
-        }
-        else
-        {
+        } else {
             return "This workout is more difficult than your indicated workout difficulty and requires more calories to"
                     + " be burnt than your preferred calories and will take longer than your preferred duration.\n"
                     + MESSAGE_CONTINUE;
