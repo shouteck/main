@@ -239,23 +239,28 @@ public class ProfileWindowManager {
      * Returns true if the first difficulty is more difficult than the second difficulty
      */
     public boolean isMoreDifficult(String first, String second) {
-        if (first == "beginner") {
+        if (first.matches("beginner")) {
+            System.out.println("1");
             return false;
         }
-        if ((first == "intermediate") && (second == "beginner")) {
-            return false;
+        if ((first.matches("intermediate")) && (second.matches("beginner"))) {
+            System.out.println("2");
+            return true;
         }
-        if ((first == "advanced") && ((second == "beginner") || (second == "intermediate"))) {
-            return false;
+        if ((first.matches("advanced")) && ((second.matches("beginner"))
+                || (second.matches("intermediate")))) {
+            System.out.println("3");
+            return true;
         }
-        return true;
+        System.out.println("4");
+        return false;
     }
 
     /**
      * Returns true if the first calories is higher or equal than the second calories
      */
     public boolean isHigherCalories(int first, int second) {
-        if (first >= second) {
+        if (first > second) {
             return true;
         } else {
             return false;
@@ -266,7 +271,7 @@ public class ProfileWindowManager {
      * Returns true if the first duration is higher or equal than the second duration
      */
     public boolean isHigherDuration(int first, int second) {
-        if (first >= second) {
+        if (first > second) {
             return true;
         } else {
             return false;

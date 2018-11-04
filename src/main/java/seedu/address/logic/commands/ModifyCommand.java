@@ -36,8 +36,7 @@ public class ModifyCommand extends Command {
             + PREFIX_DIFFICULTY + "beginner "
             + PREFIX_DURATION + "15m";
 
-    public static final String MESSAGE_SUCCESS = "User profile has been modified! Please rerun the"
-            + " file to see the changes.";
+    public static final String MESSAGE_SUCCESS = "User profile has been modified!";
 
     private final String gender;
     private final String username;
