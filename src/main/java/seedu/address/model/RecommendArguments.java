@@ -1,5 +1,7 @@
 package seedu.address.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import seedu.address.model.workout.Calories;
@@ -15,6 +17,10 @@ public class RecommendArguments {
     private Optional<Difficulty> difficulty;
     private Optional<Duration> duration;
 
+    private Optional<Boolean> caloriesOptionality;
+    private Optional<Boolean> difficultyOptionality;
+    private Optional<Boolean> durationOptionality;
+
     /**
      * Builder pattern
      */
@@ -24,30 +30,37 @@ public class RecommendArguments {
         private Optional<Difficulty> difficulty = Optional.empty();
         private Optional<Duration> duration = Optional.empty();
 
+        private Optional<Boolean> caloriesOptionality = Optional.empty();
+        private Optional<Boolean> difficultyOptionality = Optional.empty();
+        private Optional<Boolean> durationOptionality = Optional.empty();
+
         public Builder() {
         }
 
         /**
          * Calories setter for Builder
          */
-        public Builder withCalories(Optional<Calories> calories) {
+        public Builder withCalories(Optional<Calories> calories, Optional<Boolean> optionality) {
             this.calories = calories;
+            this.caloriesOptionality = optionality;
             return this;
         }
 
         /**
          * Difficulty setter for Builder
          */
-        public Builder withDifficulty(Optional<Difficulty> difficulty) {
+        public Builder withDifficulty(Optional<Difficulty> difficulty, Optional<Boolean> optionality) {
             this.difficulty = difficulty;
+            this.difficultyOptionality = optionality;
             return this;
         }
 
         /**
          * Duration setter for Builder
          */
-        public Builder withDuration(Optional<Duration> duration) {
+        public Builder withDuration(Optional<Duration> duration, Optional<Boolean> optionality) {
             this.duration = duration;
+            this.durationOptionality = optionality;
             return this;
         }
 
@@ -56,9 +69,9 @@ public class RecommendArguments {
          */
         public RecommendArguments build() {
             RecommendArguments recommendArguments = new RecommendArguments();
-            recommendArguments.setCalories(this.calories);
-            recommendArguments.setDifficulty(this.difficulty);
-            recommendArguments.setDuration(this.duration);
+            recommendArguments.setCalories(this.calories, this.caloriesOptionality);
+            recommendArguments.setDifficulty(this.difficulty, this.difficultyOptionality);
+            recommendArguments.setDuration(this.duration, this.durationOptionality);
             return recommendArguments;
         }
     }
@@ -82,12 +95,18 @@ public class RecommendArguments {
 
         RecommendArguments otherRecommendArguments = (RecommendArguments) other;
 
-        return ((otherRecommendArguments.isCaloriesNull() && isCaloriesNull())
-                || otherRecommendArguments.getCalories().equals(getCalories()))
+        return (((otherRecommendArguments.isCaloriesNull() && isCaloriesNull())
+                || ((!otherRecommendArguments.isCaloriesNull() && !isCaloriesNull())
+                && (otherRecommendArguments.getCalories().equals(getCalories())
+                && otherRecommendArguments.getCaloriesOptionality().equals(getCaloriesOptionality()))))
                 && ((otherRecommendArguments.isDifficultyNull() && isDifficultyNull())
-                || otherRecommendArguments.getDifficulty().equals(getDifficulty()))
+                || ((!otherRecommendArguments.isDifficultyNull() && !isDifficultyNull())
+                && (otherRecommendArguments.getDifficulty().equals(getDifficulty())
+                && otherRecommendArguments.getDifficultyOptionality().equals(getDifficultyOptionality()))))
                 && ((otherRecommendArguments.isDurationNull() && isDurationNull())
-                || otherRecommendArguments.getDuration().equals(getDuration()));
+                || ((!otherRecommendArguments.isDurationNull() && !isDurationNull())
+                && (otherRecommendArguments.getDuration().equals(getDuration())
+                && otherRecommendArguments.getDurationOptionality().equals(getDurationOptionality())))));
     }
 
     public Calories getCalories() {
@@ -102,16 +121,31 @@ public class RecommendArguments {
         return duration.get();
     }
 
-    public void setCalories(Optional<Calories> calories) {
+    public Boolean getCaloriesOptionality() {
+        return caloriesOptionality.get();
+    }
+
+    public Boolean getDifficultyOptionality() {
+        return difficultyOptionality.get();
+    }
+
+    public Boolean getDurationOptionality() {
+        return durationOptionality.get();
+    }
+
+    public void setCalories(Optional<Calories> calories, Optional<Boolean> optionality) {
         this.calories = calories;
+        this.caloriesOptionality = optionality;
     }
 
-    public void setDifficulty(Optional<Difficulty> difficulty) {
+    public void setDifficulty(Optional<Difficulty> difficulty, Optional<Boolean> optionality) {
         this.difficulty = difficulty;
+        this.difficultyOptionality = optionality;
     }
 
-    public void setDuration(Optional<Duration> duration) {
+    public void setDuration(Optional<Duration> duration, Optional<Boolean> optionality) {
         this.duration = duration;
+        this.durationOptionality = optionality;
     }
 
     public boolean isCaloriesNull() {
@@ -124,6 +158,11 @@ public class RecommendArguments {
 
     public boolean isDurationNull() {
         return !duration.isPresent();
+    }
+
+    public ArrayList<Boolean> getOptionalsList() {
+        return new ArrayList<>(List.of(caloriesOptionality.get(), difficultyOptionality.get(),
+                durationOptionality.get()));
     }
 
 }

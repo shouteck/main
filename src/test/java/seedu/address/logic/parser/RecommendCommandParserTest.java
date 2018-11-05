@@ -1,16 +1,22 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_CALORIES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_DURATION;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
+import java.io.IOException;
 import java.util.Optional;
 
 import org.junit.Test;
 
 import seedu.address.logic.commands.RecommendCommand;
+import seedu.address.model.ProfileWindowManager;
 import seedu.address.model.RecommendArguments;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
@@ -23,43 +29,46 @@ public class RecommendCommandParserTest {
     public void parse_optionalFieldsMissing_success() {
         // Valid Calories without Difficulty and Duration fields
         Optional<Calories> calories = Optional.of(new Calories("1"));
-        RecommendArguments expectedRecommendArguments = new RecommendArguments.Builder().withCalories(calories).build();
+        RecommendArguments expectedRecommendArguments = new RecommendArguments.Builder().withCalories(calories,
+                Optional.of(false)).build();
         assertParseSuccess(parser, " " + PREFIX_CALORIES + "1",
                 new RecommendCommand(expectedRecommendArguments));
 
         // Valid Difficulty without Calories and Duration fields
         Optional<Difficulty> difficulty = Optional.of(new Difficulty("beginner"));
-        expectedRecommendArguments = new RecommendArguments.Builder().withDifficulty(difficulty).build();
+        expectedRecommendArguments = new RecommendArguments.Builder().withDifficulty(difficulty,
+                Optional.of(false)).build();
         assertParseSuccess(parser, " " + PREFIX_DIFFICULTY + "beginner",
                 new RecommendCommand(expectedRecommendArguments));
 
         // Valid Duration without Calories and Difficulty fields
         Optional<Duration> duration = Optional.of(new Duration("1m"));
-        expectedRecommendArguments = new RecommendArguments.Builder().withDuration(duration).build();
+        expectedRecommendArguments = new RecommendArguments.Builder().withDuration(duration,
+                Optional.of(false)).build();
         assertParseSuccess(parser, " " + PREFIX_DURATION + "1m",
                 new RecommendCommand(expectedRecommendArguments));
 
         // Valid Calories and Difficulty without Duration field
         calories = Optional.of(new Calories("1000"));
         difficulty = Optional.of(new Difficulty("intermediate"));
-        expectedRecommendArguments = new RecommendArguments.Builder().withCalories(calories)
-                .withDifficulty(difficulty).build();
+        expectedRecommendArguments = new RecommendArguments.Builder().withCalories(calories, Optional.of(false))
+                .withDifficulty(difficulty, Optional.of(false)).build();
         assertParseSuccess(parser, " " + PREFIX_CALORIES + "1000" + " " + PREFIX_DIFFICULTY + "intermediate",
                 new RecommendCommand(expectedRecommendArguments));
 
         // Valid Calories and Duration without Difficulty field
         calories = Optional.of(new Calories("500"));
         duration = Optional.of(new Duration("1000m"));
-        expectedRecommendArguments = new RecommendArguments.Builder().withCalories(calories)
-                .withDuration(duration).build();
+        expectedRecommendArguments = new RecommendArguments.Builder().withCalories(calories, Optional.of(false))
+                .withDuration(duration, Optional.of(false)).build();
         assertParseSuccess(parser, " " + PREFIX_CALORIES + "500" + " " + PREFIX_DURATION + "1000m",
                 new RecommendCommand(expectedRecommendArguments));
 
         // Valid Difficulty and Duration without Calories Field
         difficulty = Optional.of(new Difficulty("advanced"));
         duration = Optional.of(new Duration("500m"));
-        expectedRecommendArguments = new RecommendArguments.Builder().withDifficulty(difficulty)
-                .withDuration(duration).build();
+        expectedRecommendArguments = new RecommendArguments.Builder().withDifficulty(difficulty, Optional.of(false))
+                .withDuration(duration, Optional.of(false)).build();
         assertParseSuccess(parser, " " + PREFIX_DIFFICULTY + "advanced" + " " + PREFIX_DURATION + "500m",
                 new RecommendCommand(expectedRecommendArguments));
     }
@@ -70,24 +79,86 @@ public class RecommendCommandParserTest {
         Optional<Calories> calories = Optional.of(new Calories("750"));
         Optional<Difficulty> difficulty = Optional.of(new Difficulty("intermediate"));
         Optional<Duration> duration = Optional.of(new Duration("750m"));
-        RecommendArguments expectedRecommendArguments = new RecommendArguments.Builder().withCalories(calories)
-                .withDifficulty(difficulty).withDuration(duration).build();
+        RecommendArguments expectedRecommendArguments = new RecommendArguments.Builder().withCalories(calories,
+                Optional.of(false))
+                .withDifficulty(difficulty, Optional.of(false)).withDuration(duration, Optional.of(false)).build();
         assertParseSuccess(parser, " " + PREFIX_CALORIES + "750" + " " + PREFIX_DIFFICULTY + "intermediate"
                         + " " + PREFIX_DURATION + "750m",
                 new RecommendCommand(expectedRecommendArguments));
     }
-    /*
+
+    @Test
+    public void parse_OptionalFieldsPresent_success() {
+        // 1 Optionals 2 Non-optionals
+        Optional<Calories> calories = Optional.of(new Calories("875"));
+        Optional<Difficulty> difficulty = Optional.of(new Difficulty("advanced"));
+        Optional<Duration> duration = Optional.of(new Duration("875m"));
+        RecommendArguments expectedRecommendArguments = new RecommendArguments.Builder().withCalories(calories,
+                Optional.of(true))
+                .withDifficulty(difficulty, Optional.of(false))
+                .withDuration(duration, Optional.of(false)).build();
+        assertParseSuccess(parser, " " + PREFIX_OPTIONAL_CALORIES + "875" + " " + PREFIX_DIFFICULTY
+                        + "advanced" + " " + PREFIX_DURATION + "875m",
+                new RecommendCommand(expectedRecommendArguments));
+
+        // 2 Optionals 1 Non-optionals
+        calories = Optional.of(new Calories("375"));
+        difficulty = Optional.of(new Difficulty("beginner"));
+        duration = Optional.of(new Duration("375m"));
+        expectedRecommendArguments = new RecommendArguments.Builder().withCalories(calories,
+                Optional.of(true))
+                .withDifficulty(difficulty, Optional.of(true))
+                .withDuration(duration, Optional.of(false)).build();
+        assertParseSuccess(parser, " " + PREFIX_OPTIONAL_CALORIES + "375" + " " + PREFIX_OPTIONAL_DIFFICULTY
+                        + "beginner" + " " + PREFIX_DURATION + "375m",
+                new RecommendCommand(expectedRecommendArguments));
+
+        // 3 Optionals 0 Non-optionals
+        calories = Optional.of(new Calories("625"));
+        difficulty = Optional.of(new Difficulty("intermediate"));
+        duration = Optional.of(new Duration("625m"));
+        expectedRecommendArguments = new RecommendArguments.Builder().withCalories(calories,
+                Optional.of(true))
+                .withDifficulty(difficulty, Optional.of(true))
+                .withDuration(duration, Optional.of(true)).build();
+        assertParseSuccess(parser, " " + PREFIX_OPTIONAL_CALORIES + "625" + " " + PREFIX_OPTIONAL_DIFFICULTY
+                        + "intermediate" + " " + PREFIX_OPTIONAL_DURATION + "625m",
+                new RecommendCommand(expectedRecommendArguments));
+    }
+
+
     @Test
     public void parse_noFieldsPresent_success() throws IOException {
         // No fields
         ProfileWindowManager profileWindowManager = ProfileWindowManager.getInstance();
         RecommendArguments expectedRecommendArguments = new RecommendArguments.Builder()
-                .withCalories(profileWindowManager.extractCalories())
-                .withDifficulty(profileWindowManager.extractDifficulty())
-                .withDuration(profileWindowManager.extractDuration()).build();
+                .withCalories(profileWindowManager.extractCalories(), Optional.of(false))
+                .withDifficulty(profileWindowManager.extractDifficulty(), Optional.of(false))
+                .withDuration(profileWindowManager.extractDuration(), Optional.of(false)).build();
         assertParseSuccess(parser, " ", new RecommendCommand(expectedRecommendArguments));
     }
-    */
+
+
+    @Test
+    public void parse_invalidOptionalFields_failure() {
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, RecommendCommand.MESSAGE_OPTIONALS);
+
+        // 2 Optionals 0 Non-optionals
+        assertParseFailure(parser, " " + PREFIX_OPTIONAL_CALORIES + "500" + " " + PREFIX_OPTIONAL_DIFFICULTY
+                + "beginner", expectedMessage);
+
+        // 1 Optionals 0 Non-optionals
+        assertParseFailure(parser, " " + PREFIX_OPTIONAL_CALORIES + "200", expectedMessage);
+    }
+
+    @Test
+    public void parse_invalidFields_failure() {
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, RecommendCommand.MESSAGE_USAGE);
+
+        // Gibberish input with alphabet, integer, special character
+        assertParseFailure(parser, " " + "a1!", expectedMessage);
+    }
+
     @Test
     public void parse_invalidValue_failure() {
         // Invalid Calories < 1

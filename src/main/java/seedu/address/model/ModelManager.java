@@ -223,8 +223,8 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public List<Workout> getFilteredInternalList(RecommendArguments recommendArguments) {
-        return versionedWorkoutBook.getFilteredInternalList(recommendArguments);
+    public List<Workout> getFinalFilteredInternalList(RecommendArguments recommendArguments) {
+        return versionedWorkoutBook.getFinalFilteredInternalList(recommendArguments);
     }
 
     @Override
