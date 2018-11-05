@@ -41,7 +41,7 @@ public class ProfileWindowManager {
 
     private ProfileWindowManager() throws IOException {
         String workingDir = System.getProperty("user.dir");
-        fileName = workingDir + "\\ProfileWindow.html";
+        fileName = workingDir + "/ProfileWindow.html";
         doc = Jsoup.parse(new File(fileName), "UTF-8");
 
         this.gender = doc.getElementById("gender");
