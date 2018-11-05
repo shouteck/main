@@ -117,20 +117,20 @@ public class ProfileWindowManagerTest {
     }
 
     @Test
-    public void calculateBMITest() throws IOException {
+    public void calculateBmiTest() throws IOException {
         ProfileWindowManager profileWindowManager;
         profileWindowManager = ProfileWindowManager.getInstance();
         String validHeight = "1.83";
         String validWeight = "88.1";
         String validWeight2 = "78.1";
-        double actualBMI = profileWindowManager.calculateBmi(validHeight, validWeight);
-        double actualBMI2 = profileWindowManager.calculateBmi(validHeight, validWeight2);
+        double actualBmi = profileWindowManager.calculateBmi(validHeight, validWeight);
+        double actualBmi2 = profileWindowManager.calculateBmi(validHeight, validWeight2);
         double expectedBMI = 26.3;
 
-        assertEquals(expectedBMI, actualBMI, 0.1);
+        assertEquals(expectedBMI, actualBmi, 0.1);
 
         //Wrong expectedBMI should return not equal
-        assertNotEquals(expectedBMI, actualBMI);
+        assertNotEquals(expectedBMI, actualBmi2);
 
     }
 }
