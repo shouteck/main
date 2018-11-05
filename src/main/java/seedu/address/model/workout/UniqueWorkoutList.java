@@ -92,7 +92,8 @@ public class UniqueWorkoutList implements Iterable<Workout> {
                         .toString().equals(recommendArguments.getCalories().toString()) : w -> w != null)
                 .filter((!recommendArguments.isDifficultyNull() && conditionsList.get(1)) ? w -> w.getDifficulty()
                         .toString().equals(recommendArguments.getDifficulty().toString()) : w -> w != null)
-                .filter((!recommendArguments.isDurationNull() && conditionsList.get(2)) ? w -> w.getDuration().toString()
+                .filter((!recommendArguments.isDurationNull() && conditionsList.get(2))
+                        ? w -> w.getDuration().toString()
                         .equals(recommendArguments.getDuration().toString()) : w -> w != null)
                 .collect(Collectors.toList());
         return filteredInternalList;

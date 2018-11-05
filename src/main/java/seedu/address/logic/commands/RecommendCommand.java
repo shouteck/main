@@ -48,8 +48,8 @@ public class RecommendCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Workout recommended!";
     public static final String MESSAGE_NO_SUCH_WORKOUT = "There is no such workout in the workout book.";
-    public static final String MESSAGE_OPTIONALS = "You need to supply all three prefixes as inputs," +
-            " be it optional or non-optional!";
+    public static final String MESSAGE_OPTIONALS = "You need to supply all three prefixes as inputs,"
+            + " be it optional or non-optional!";
 
     private final RecommendArguments recommendArguments;
 

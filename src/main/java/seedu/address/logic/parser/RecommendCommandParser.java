@@ -76,7 +76,8 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
             Optional<Duration> duration = Optional.of(ParserUtil.parseDuration(argMultimap
                     .getValue(PREFIX_OPTIONAL_DURATION).get()));
             recommendArgumentsBuilder.withDuration(duration, Optional.of(true));
-        } if (!argMultimap.getAllValues(PREFIX_DIFFICULTY).isEmpty()) {
+        }
+        if (!argMultimap.getAllValues(PREFIX_DIFFICULTY).isEmpty()) {
             Optional<Difficulty> difficulty = Optional.of(ParserUtil.parseDifficulty(argMultimap
                     .getValue(PREFIX_DIFFICULTY).get()));
             recommendArgumentsBuilder.withDifficulty(difficulty, Optional.of(false));
@@ -84,7 +85,8 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
             Optional<Difficulty> difficulty = Optional.of(ParserUtil.parseDifficulty(argMultimap
                     .getValue(PREFIX_OPTIONAL_DIFFICULTY).get()));
             recommendArgumentsBuilder.withDifficulty(difficulty, Optional.of(true));
-        } if (!argMultimap.getAllValues(PREFIX_CALORIES).isEmpty()) {
+        }
+        if (!argMultimap.getAllValues(PREFIX_CALORIES).isEmpty()) {
             Optional<Calories> calories = Optional.of(ParserUtil.parseCalories(argMultimap.getValue(PREFIX_CALORIES)
                     .get()));
             recommendArgumentsBuilder.withCalories(calories, Optional.of(false));
