@@ -48,6 +48,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import org.junit.rules.ExpectedException;
+
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.parser.ModifyCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -57,6 +58,9 @@ import seedu.address.model.ModelManager;
 
 public class ModifyCommandTest {
     public static final String MESSAGE_MODIFY_USERPROFILE_SUCCESS = "User profile has been modified!";
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     private static String currentGender;
     private static String currentUsername;
@@ -71,9 +75,6 @@ public class ModifyCommandTest {
     private Model model = new ModelManager();
     private Model expectedModel = new ModelManager();
     private CommandHistory commandHistory = new CommandHistory();
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
 
     @Before
     public void setUp() throws IOException {
@@ -99,7 +100,7 @@ public class ModifyCommandTest {
     }
 
     @Test
-    public void constructor_nullRecommendArguments_throwsNullPointerException() throws ParseException{
+    public void constructor_nullRecommendArguments_throwsNullPointerException() throws ParseException {
         thrown.expect(NullPointerException.class);
         new ModifyCommandParser().parse(null);
     }
