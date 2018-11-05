@@ -35,29 +35,29 @@ public class UniqueWorkoutList implements Iterable<Workout> {
         if (recommendArguments.isDurationNull() || recommendArguments.isDifficultyNull()
                 || recommendArguments.isCaloriesNull()) {
             return getFilteredInternalList(recommendArguments,
-                    new ArrayList<>(List.of(true,true,true)));
+                    new ArrayList<>(List.of(true, true, true)));
         }
 
         List<Workout> finalFilteredInternalList;
         ArrayList<Boolean> optionalsList = recommendArguments.getOptionalsList();
 
         int totalOptionals = 0;
-        for (int i = 0; i<optionalsList.size(); i++) {
+        for (int i = 0; i < optionalsList.size(); i++) {
             if (optionalsList.get(i)) {
                 totalOptionals++;
             }
         }
 
         finalFilteredInternalList = getFilteredInternalList(recommendArguments,
-                new ArrayList<>(List.of(true,true,true)));
+                new ArrayList<>(List.of(true, true, true)));
 
         // 3 Choose 2 (3 Optionals)
         if (finalFilteredInternalList.isEmpty() && totalOptionals == 3) {
-            for (int i = 0; i<optionalsList.size() ; i++) {
-                ArrayList<Boolean> conditionsList = new ArrayList<>(List.of(!optionalsList.get(0),!optionalsList.get(1),
-                        !optionalsList.get(2)));
+            for (int i = 0; i < optionalsList.size(); i++) {
+                ArrayList<Boolean> conditionsList = new ArrayList<>(List.of(!optionalsList.get(0),
+                        !optionalsList.get(1), !optionalsList.get(2)));
                 conditionsList.set(i, true);
-                for (int j = i+1; j<optionalsList.size(); j++) {
+                for (int j = i + 1; j < optionalsList.size(); j++) {
                     conditionsList.set(j, true);
                     finalFilteredInternalList.addAll(getFilteredInternalList(recommendArguments, conditionsList));
                 }
@@ -66,9 +66,9 @@ public class UniqueWorkoutList implements Iterable<Workout> {
 
         // 3 Choose 1 (2 Optionals, 3 Optionals)
         if (finalFilteredInternalList.isEmpty() && totalOptionals >= 2) {
-            for (int i = 0; i<optionalsList.size() ; i++) {
-                ArrayList<Boolean> conditionsList = new ArrayList<>(List.of(!optionalsList.get(0),!optionalsList.get(1),
-                        !optionalsList.get(2)));
+            for (int i = 0; i < optionalsList.size(); i++) {
+                ArrayList<Boolean> conditionsList = new ArrayList<>(List.of(!optionalsList.get(0),
+                        !optionalsList.get(1), !optionalsList.get(2)));
                 if (optionalsList.get(i)) {
                     conditionsList.set(i, true);
                     finalFilteredInternalList.addAll(getFilteredInternalList(recommendArguments, conditionsList));
@@ -92,7 +92,7 @@ public class UniqueWorkoutList implements Iterable<Workout> {
                         .toString().equals(recommendArguments.getCalories().toString()) : w -> w != null)
                 .filter((!recommendArguments.isDifficultyNull() && conditionsList.get(1)) ? w -> w.getDifficulty()
                         .toString().equals(recommendArguments.getDifficulty().toString()) : w -> w != null)
-                .filter((!recommendArguments.isDurationNull() && conditionsList.get(2))? w -> w.getDuration().toString()
+                .filter((!recommendArguments.isDurationNull() && conditionsList.get(2)) ? w -> w.getDuration().toString()
                         .equals(recommendArguments.getDuration().toString()) : w -> w != null)
                 .collect(Collectors.toList());
         return filteredInternalList;

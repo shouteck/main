@@ -2,7 +2,12 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_CALORIES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_DURATION;
 
 import java.util.List;
 import java.util.Random;
@@ -40,7 +45,6 @@ public class RecommendCommand extends Command {
             + PREFIX_OPTIONAL_CALORIES + "150 "
             + PREFIX_DIFFICULTY + "beginner "
             + PREFIX_DURATION + "20m";
-
 
     public static final String MESSAGE_SUCCESS = "Workout recommended!";
     public static final String MESSAGE_NO_SUCH_WORKOUT = "There is no such workout in the workout book.";

@@ -45,7 +45,7 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
             } else {
                 recommendArguments = getRecommendArguments(argMultimap);
             }
-        } else if (argMultimap.getPreamble().isEmpty()){
+        } else if (argMultimap.getPreamble().isEmpty()) {
             ProfileWindowManager profileWindowManager;
             try {
                 profileWindowManager = ProfileWindowManager.getInstance();
@@ -72,28 +72,23 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
             Optional<Duration> duration = Optional.of(ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION)
                     .get()));
             recommendArgumentsBuilder.withDuration(duration, Optional.of(false));
-        }
-        else if (!argMultimap.getAllValues(PREFIX_OPTIONAL_DURATION).isEmpty()) {
+        } else if (!argMultimap.getAllValues(PREFIX_OPTIONAL_DURATION).isEmpty()) {
             Optional<Duration> duration = Optional.of(ParserUtil.parseDuration(argMultimap
                     .getValue(PREFIX_OPTIONAL_DURATION).get()));
             recommendArgumentsBuilder.withDuration(duration, Optional.of(true));
-        }
-        if (!argMultimap.getAllValues(PREFIX_DIFFICULTY).isEmpty()) {
+        } if (!argMultimap.getAllValues(PREFIX_DIFFICULTY).isEmpty()) {
             Optional<Difficulty> difficulty = Optional.of(ParserUtil.parseDifficulty(argMultimap
                     .getValue(PREFIX_DIFFICULTY).get()));
             recommendArgumentsBuilder.withDifficulty(difficulty, Optional.of(false));
-        }
-        else if (!argMultimap.getAllValues(PREFIX_OPTIONAL_DIFFICULTY).isEmpty()) {
+        } else if (!argMultimap.getAllValues(PREFIX_OPTIONAL_DIFFICULTY).isEmpty()) {
             Optional<Difficulty> difficulty = Optional.of(ParserUtil.parseDifficulty(argMultimap
                     .getValue(PREFIX_OPTIONAL_DIFFICULTY).get()));
             recommendArgumentsBuilder.withDifficulty(difficulty, Optional.of(true));
-        }
-        if (!argMultimap.getAllValues(PREFIX_CALORIES).isEmpty()) {
+        } if (!argMultimap.getAllValues(PREFIX_CALORIES).isEmpty()) {
             Optional<Calories> calories = Optional.of(ParserUtil.parseCalories(argMultimap.getValue(PREFIX_CALORIES)
                     .get()));
             recommendArgumentsBuilder.withCalories(calories, Optional.of(false));
-        }
-        else if (!argMultimap.getAllValues(PREFIX_OPTIONAL_CALORIES).isEmpty()) {
+        } else if (!argMultimap.getAllValues(PREFIX_OPTIONAL_CALORIES).isEmpty()) {
             Optional<Calories> calories = Optional.of(ParserUtil.parseCalories(argMultimap
                     .getValue(PREFIX_OPTIONAL_CALORIES).get()));
             recommendArgumentsBuilder.withCalories(calories, Optional.of(true));
