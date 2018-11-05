@@ -112,7 +112,7 @@ public class ModifyCommandTest {
 
         expectedAttributes.add(VALID_GENDER);
         actualAttributes.add(divGender.ownText());
-        // valid gender
+        //valid gender
         String commandGender = " " + PREFIX_GENDER + VALID_GENDER;
         assertModifyCommandSuccess(new ModifyCommandParser().parse(commandGender), actualAttributes, model,
                 commandHistory, expectedSuccessMessage, expectedAttributes);
