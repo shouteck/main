@@ -1,7 +1,5 @@
 package seedu.address.model;
 
-import static seedu.address.ui.ProfileWindow.USERPROFILE_FILE_PATH;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
@@ -39,9 +37,11 @@ public class ProfileWindowManager {
 
     private Document doc;
     private String fileName;
+    private FileUtils fileUtils;
 
     private ProfileWindowManager() throws IOException {
-        fileName = getClass().getResource(USERPROFILE_FILE_PATH).toString().substring(6);
+        String workingDir = System.getProperty("user.dir");
+        fileName = workingDir + "/ProfileWindow.html";
         doc = Jsoup.parse(new File(fileName), "UTF-8");
 
         this.gender = doc.getElementById("gender");
@@ -71,8 +71,8 @@ public class ProfileWindowManager {
         File temp = File.createTempFile("tempfile", ".html");
         FileUtils.writeStringToFile(temp, doc.outerHtml(), "UTF-8");
         File newFile = new File(fileName);
-        org.apache.commons.io.FileUtils.copyFile(temp, newFile);
-        org.apache.commons.io.FileUtils.forceDelete(temp);
+        fileUtils.copyFile(temp, newFile);
+        fileUtils.forceDelete(temp);
     }
 
     public Element getGender() {
@@ -240,23 +240,24 @@ public class ProfileWindowManager {
      * Returns true if the first difficulty is more difficult than the second difficulty
      */
     public boolean isMoreDifficult(String first, String second) {
-        if (first == "beginner") {
+        if (first.matches("beginner")) {
             return false;
         }
-        if ((first == "intermediate") && (second == "beginner")) {
-            return false;
+        if ((first.matches("intermediate")) && (second.matches("beginner"))) {
+            return true;
         }
-        if ((first == "advanced") && ((second == "beginner") || (second == "intermediate"))) {
-            return false;
+        if ((first.matches("advanced")) && ((second.matches("beginner"))
+                || (second.matches("intermediate")))) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     /**
-     * Returns true if the first calories is higher or equal than the second calories
+     * Returns true if the first calories is higher than the second calories
      */
     public boolean isHigherCalories(int first, int second) {
-        if (first >= second) {
+        if (first > second) {
             return true;
         } else {
             return false;
@@ -264,10 +265,10 @@ public class ProfileWindowManager {
     }
 
     /**
-     * Returns true if the first duration is higher or equal than the second duration
+     * Returns true if the first duration is higher than the second duration
      */
     public boolean isHigherDuration(int first, int second) {
-        if (first >= second) {
+        if (first > second) {
             return true;
         } else {
             return false;

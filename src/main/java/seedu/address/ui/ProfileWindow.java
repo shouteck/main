@@ -1,5 +1,8 @@
 package seedu.address.ui;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
@@ -11,8 +14,6 @@ import seedu.address.commons.core.LogsCenter;
  * Controller for a profile page
  */
 public class ProfileWindow extends UiPart<Stage> {
-
-    public static final String USERPROFILE_FILE_PATH = "/htmlFiles/ProfileWindow.html";
 
     private static final Logger logger = LogsCenter.getLogger(ProfileWindow.class);
     private static final String FXML = "ProfileWindow.fxml";
@@ -28,7 +29,9 @@ public class ProfileWindow extends UiPart<Stage> {
     public ProfileWindow(Stage root) {
         super(FXML, root);
 
-        String userProfileUrl = getClass().getResource(USERPROFILE_FILE_PATH).toString();
+        String workingDir = System.getProperty("user.dir");
+        String userProfileUrl = workingDir + "\\ProfileWindow.html";
+
         browser.getEngine().load(userProfileUrl);
     }
 
@@ -57,9 +60,13 @@ public class ProfileWindow extends UiPart<Stage> {
      *     </li>
      * </ul>
      */
-    public void show() {
+    public void show() throws IOException {
         logger.fine("Showing profile page about the application.");
-        getRoot().show();
+        String workingDir = System.getProperty("user.dir");
+        String userProfileUrl = workingDir + "\\ProfileWindow.html";
+        browser.getEngine().load(userProfileUrl);
+        File htmlFile = new File(userProfileUrl);
+        Desktop.getDesktop().browse(htmlFile.toURI());
     }
 
     /**
