@@ -37,6 +37,7 @@ public class ProfileWindowManager {
 
     private Document doc;
     private String fileName;
+    private FileUtils fileUtils;
 
     private ProfileWindowManager() throws IOException {
         String workingDir = System.getProperty("user.dir");
@@ -70,8 +71,8 @@ public class ProfileWindowManager {
         File temp = File.createTempFile("tempfile", ".html");
         FileUtils.writeStringToFile(temp, doc.outerHtml(), "UTF-8");
         File newFile = new File(fileName);
-        org.apache.commons.io.FileUtils.copyFile(temp, newFile);
-        org.apache.commons.io.FileUtils.forceDelete(temp);
+        fileUtils.copyFile(temp, newFile);
+        fileUtils.forceDelete(temp);
     }
 
     public Element getGender() {

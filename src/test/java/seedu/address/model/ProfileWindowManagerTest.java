@@ -1,27 +1,13 @@
 package seedu.address.model;
 
-import static java.util.Objects.requireNonNull;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
-import java.text.DecimalFormat;
-import java.util.stream.Stream;
-
-import org.jsoup.nodes.Element;
-
-import seedu.address.logic.commands.ModifyCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ProfileWindowManager;
-import seedu.address.model.workout.Calories;
-import seedu.address.model.workout.Difficulty;
-import seedu.address.model.workout.Duration;
 
 import org.junit.Test;
-
-import java.io.IOException;
 
 public class ProfileWindowManagerTest {
     
@@ -42,7 +28,7 @@ public class ProfileWindowManagerTest {
         profileWindowManager = ProfileWindowManager.getInstance();
         String validWeight = "66.2";
         String invalidWeight = "94.88";
-        String invalidWeight2 = "94.8 kg";
+        String invalidWeight2 = "94.8kg";
         
         assertTrue(profileWindowManager.isValidWeight(validWeight));
         //Weight should be in the format xx.xx where x is any integer.
@@ -99,5 +85,52 @@ public class ProfileWindowManagerTest {
         ////Should return false since lowerCalories is not higher than sameCalories
         assertFalse(profileWindowManager.isHigherCalories(lowerCalories,sameCalories));
     }
+    
+    @Test
+    public void isHigherDurationTest() throws IOException {
+        ProfileWindowManager profileWindowManager;
+        profileWindowManager = ProfileWindowManager.getInstance();
+        int lowerDuration = 20;
+        int higherDuration = 21;
+        int sameDuration = 20;
+        assertTrue(profileWindowManager.isHigherDuration(higherDuration,lowerDuration));
 
+        //Should return false since lowerDuration is not higher than higherDuration
+        assertFalse(profileWindowManager.isHigherDuration(lowerDuration,higherDuration));
+        ////Should return false since lowerDuration is not higher than sameDuration
+        assertFalse(profileWindowManager.isHigherDuration(lowerDuration,sameDuration));
+    }
+
+    @Test
+    public void isMoreDifficultTest() throws IOException {
+        ProfileWindowManager profileWindowManager;
+        profileWindowManager = ProfileWindowManager.getInstance();
+        String lowerDifficulty = "beginner";
+        String higherDifficulty = "intermediate";
+        String sameDifficulty = "beginner";
+        assertTrue(profileWindowManager.isMoreDifficult(higherDifficulty,lowerDifficulty));
+
+        //Should return false since lowerDifficult is not higher than higherDifficult
+        assertFalse(profileWindowManager.isMoreDifficult(lowerDifficulty,higherDifficulty));
+        ////Should return false since lowerDifficult is not higher than sameDifficult
+        assertFalse(profileWindowManager.isMoreDifficult(lowerDifficulty,sameDifficulty));
+    }
+
+    @Test
+    public void calculateBMITest() throws IOException {
+        ProfileWindowManager profileWindowManager;
+        profileWindowManager = ProfileWindowManager.getInstance();
+        String validHeight = "1.83";
+        String validWeight = "88.1";
+        String validWeight2 = "78.1";
+        double actualBMI = profileWindowManager.calculateBmi(validHeight,validWeight);
+        double actualBMI2 = profileWindowManager.calculateBmi(validHeight,validWeight2);
+        double expectedBMI = 26.3;
+
+        assertEquals(expectedBMI, actualBMI, 0.1);
+
+        //Wrong expectedBMI should return not equal
+        assertNotEquals(expectedBMI, actualBMI);
+
+    }
 }
