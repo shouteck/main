@@ -125,12 +125,12 @@ public class ProfileWindowManagerTest {
         String validWeight2 = "78.1";
         double actualBmi = profileWindowManager.calculateBmi(validHeight, validWeight);
         double actualBmi2 = profileWindowManager.calculateBmi(validHeight, validWeight2);
-        double expectedBMI = 26.3;
+        double expectedBmi = 26.3;
 
-        assertEquals(expectedBMI, actualBmi, 0.1);
+        assertEquals(expectedBmi, actualBmi, 0.1);
 
         //Wrong expectedBMI should return not equal
-        assertNotEquals(expectedBMI, actualBmi2);
+        assertNotEquals(expectedBmi, actualBmi2);
 
     }
 }
