@@ -126,7 +126,6 @@ public class RecommendCommandParserTest {
                 new RecommendCommand(expectedRecommendArguments));
     }
 
-
     @Test
     public void parse_noFieldsPresent_success() throws IOException {
         // No fields
@@ -137,7 +136,6 @@ public class RecommendCommandParserTest {
                 .withDuration(profileWindowManager.extractDuration(), Optional.of(false)).build();
         assertParseSuccess(parser, " ", new RecommendCommand(expectedRecommendArguments));
     }
-
 
     @Test
     public void parse_invalidOptionalFields_failure() {

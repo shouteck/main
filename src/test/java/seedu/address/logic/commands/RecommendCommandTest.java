@@ -86,6 +86,7 @@ public class RecommendCommandTest {
         Optional<Duration> duration = Optional.of(new Duration("1m"));
         RecommendArguments recommendArgumentsDuration = new RecommendArguments.Builder().withDuration(duration,
                 Optional.of(false)).build();
+
         // Valid Optional Calories, Difficulty and Duration
         Optional<Calories> calories = Optional.of(new Calories("1000"));
         Optional<Difficulty> difficulty = Optional.of(new Difficulty("intermediate"));
