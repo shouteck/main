@@ -10,7 +10,7 @@ import java.io.IOException;
 import org.junit.Test;
 
 public class ProfileWindowManagerTest {
-    
+
     @Test
     public void isValidGenderTest() throws IOException {
         ProfileWindowManager profileWindowManager;
@@ -29,7 +29,7 @@ public class ProfileWindowManagerTest {
         String validWeight = "66.2";
         String invalidWeight = "94.88";
         String invalidWeight2 = "94.8kg";
-        
+
         assertTrue(profileWindowManager.isValidWeight(validWeight));
         //Weight should be in the format xx.xx where x is any integer.
         assertFalse(profileWindowManager.isValidWeight(invalidWeight));
@@ -82,10 +82,10 @@ public class ProfileWindowManagerTest {
 
         //Should return false since lowerCalories is not higher than higherCalories
         assertFalse(profileWindowManager.isHigherCalories(lowerCalories,higherCalories));
-        ////Should return false since lowerCalories is not higher than sameCalories
+        //Should return false since lowerCalories is not higher than sameCalories
         assertFalse(profileWindowManager.isHigherCalories(lowerCalories,sameCalories));
     }
-    
+
     @Test
     public void isHigherDurationTest() throws IOException {
         ProfileWindowManager profileWindowManager;
@@ -97,7 +97,7 @@ public class ProfileWindowManagerTest {
 
         //Should return false since lowerDuration is not higher than higherDuration
         assertFalse(profileWindowManager.isHigherDuration(lowerDuration,higherDuration));
-        ////Should return false since lowerDuration is not higher than sameDuration
+        //Should return false since lowerDuration is not higher than sameDuration
         assertFalse(profileWindowManager.isHigherDuration(lowerDuration,sameDuration));
     }
 
@@ -112,7 +112,7 @@ public class ProfileWindowManagerTest {
 
         //Should return false since lowerDifficult is not higher than higherDifficult
         assertFalse(profileWindowManager.isMoreDifficult(lowerDifficulty,higherDifficulty));
-        ////Should return false since lowerDifficult is not higher than sameDifficult
+        //Should return false since lowerDifficult is not higher than sameDifficult
         assertFalse(profileWindowManager.isMoreDifficult(lowerDifficulty,sameDifficulty));
     }
 
