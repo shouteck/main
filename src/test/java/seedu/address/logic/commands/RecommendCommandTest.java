@@ -93,24 +93,24 @@ public class RecommendCommandTest {
         RecommendArguments recommendArgumentsCalories = new RecommendArguments.Builder().withCalories(calories,
                 Optional.of(true)).withDifficulty(difficulty, Optional.of(true)).withDuration(duration,
                 Optional.of(true)).build();
-        RecommendCommand recommend_recommendArgumentsDuration = new RecommendCommand(recommendArgumentsDuration);
-        RecommendCommand recommend_recommendArgumentsCalories = new RecommendCommand(recommendArgumentsCalories);
+        RecommendCommand recommendCommandArgumentsDuration = new RecommendCommand(recommendArgumentsDuration);
+        RecommendCommand recommendCommandArgumentsCalories = new RecommendCommand(recommendArgumentsCalories);
 
         // Same object -> returns true
-        assertTrue(recommend_recommendArgumentsDuration.equals(recommend_recommendArgumentsDuration));
+        assertTrue(recommendCommandArgumentsDuration.equals(recommendCommandArgumentsDuration));
 
         // Same values -> return true
         RecommendCommand recommend_recommendArgumentsDurationCopy = new RecommendCommand(recommendArgumentsDuration);
-        assertTrue(recommend_recommendArgumentsDuration.equals(recommend_recommendArgumentsDurationCopy));
+        assertTrue(recommendCommandArgumentsDuration.equals(recommend_recommendArgumentsDurationCopy));
 
         // Different types -> return false
-        assertFalse(recommend_recommendArgumentsDuration.equals(1));
+        assertFalse(recommendCommandArgumentsDuration.equals(1));
 
         // Null -> returns false
-        assertFalse(recommend_recommendArgumentsDuration.equals(null));
+        assertFalse(recommendCommandArgumentsDuration.equals(null));
 
         // Different recommendArguments -> returns false
-        assertFalse(recommend_recommendArgumentsDuration.equals(recommend_recommendArgumentsCalories));
+        assertFalse(recommendCommandArgumentsDuration.equals(recommendCommandArgumentsCalories));
     }
 
     /**

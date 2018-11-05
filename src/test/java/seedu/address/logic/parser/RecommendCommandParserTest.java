@@ -88,7 +88,7 @@ public class RecommendCommandParserTest {
     }
 
     @Test
-    public void parse_OptionalFieldsPresent_success() {
+    public void parse_optionalFieldsPresent_success() {
         // 1 Optionals 2 Non-optionals
         Optional<Calories> calories = Optional.of(new Calories("875"));
         Optional<Difficulty> difficulty = Optional.of(new Difficulty("advanced"));
