@@ -68,7 +68,7 @@ public class ProfileWindowManagerTest {
         profileWindowManager = ProfileWindowManager.getInstance();
         String validStringInteger = "123";
 
-        assertEquals(profileWindowManager.convertStringIntoInt(validStringInteger),123);
+        assertEquals(profileWindowManager.convertStringIntoInt(validStringInteger), 123);
     }
 
     @Test
@@ -78,12 +78,12 @@ public class ProfileWindowManagerTest {
         int lowerCalories = 150;
         int higherCalories = 160;
         int sameCalories = 150;
-        assertTrue(profileWindowManager.isHigherCalories(higherCalories,lowerCalories));
+        assertTrue(profileWindowManager.isHigherCalories(higherCalories, lowerCalories));
 
         //Should return false since lowerCalories is not higher than higherCalories
-        assertFalse(profileWindowManager.isHigherCalories(lowerCalories,higherCalories));
+        assertFalse(profileWindowManager.isHigherCalories(lowerCalories, higherCalories));
         //Should return false since lowerCalories is not higher than sameCalories
-        assertFalse(profileWindowManager.isHigherCalories(lowerCalories,sameCalories));
+        assertFalse(profileWindowManager.isHigherCalories(lowerCalories, sameCalories));
     }
 
     @Test
@@ -93,12 +93,12 @@ public class ProfileWindowManagerTest {
         int lowerDuration = 20;
         int higherDuration = 21;
         int sameDuration = 20;
-        assertTrue(profileWindowManager.isHigherDuration(higherDuration,lowerDuration));
+        assertTrue(profileWindowManager.isHigherDuration(higherDuration, lowerDuration));
 
         //Should return false since lowerDuration is not higher than higherDuration
-        assertFalse(profileWindowManager.isHigherDuration(lowerDuration,higherDuration));
+        assertFalse(profileWindowManager.isHigherDuration(lowerDuration, higherDuration));
         //Should return false since lowerDuration is not higher than sameDuration
-        assertFalse(profileWindowManager.isHigherDuration(lowerDuration,sameDuration));
+        assertFalse(profileWindowManager.isHigherDuration(lowerDuration, sameDuration));
     }
 
     @Test
@@ -108,12 +108,12 @@ public class ProfileWindowManagerTest {
         String lowerDifficulty = "beginner";
         String higherDifficulty = "intermediate";
         String sameDifficulty = "beginner";
-        assertTrue(profileWindowManager.isMoreDifficult(higherDifficulty,lowerDifficulty));
+        assertTrue(profileWindowManager.isMoreDifficult(higherDifficulty, lowerDifficulty));
 
         //Should return false since lowerDifficult is not higher than higherDifficult
-        assertFalse(profileWindowManager.isMoreDifficult(lowerDifficulty,higherDifficulty));
+        assertFalse(profileWindowManager.isMoreDifficult(lowerDifficulty, higherDifficulty));
         //Should return false since lowerDifficult is not higher than sameDifficult
-        assertFalse(profileWindowManager.isMoreDifficult(lowerDifficulty,sameDifficulty));
+        assertFalse(profileWindowManager.isMoreDifficult(lowerDifficulty, sameDifficulty));
     }
 
     @Test
@@ -123,8 +123,8 @@ public class ProfileWindowManagerTest {
         String validHeight = "1.83";
         String validWeight = "88.1";
         String validWeight2 = "78.1";
-        double actualBMI = profileWindowManager.calculateBmi(validHeight,validWeight);
-        double actualBMI2 = profileWindowManager.calculateBmi(validHeight,validWeight2);
+        double actualBMI = profileWindowManager.calculateBmi(validHeight, validWeight);
+        double actualBMI2 = profileWindowManager.calculateBmi(validHeight, validWeight2);
         double expectedBMI = 26.3;
 
         assertEquals(expectedBMI, actualBMI, 0.1);
