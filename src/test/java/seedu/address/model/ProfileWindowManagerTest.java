@@ -67,8 +67,12 @@ public class ProfileWindowManagerTest {
         ProfileWindowManager profileWindowManager;
         profileWindowManager = ProfileWindowManager.getInstance();
         String validStringInteger = "123";
+        String validUpperStringInteger = "124";
+        String validLowerStringInteger = "124";
 
-        assertEquals(profileWindowManager.convertStringIntoInt(validStringInteger), 123);
+        assertEquals(123, profileWindowManager.convertStringIntoInt(validStringInteger));
+        assertNotEquals(123, profileWindowManager.convertStringIntoInt(validUpperStringInteger));
+        assertNotEquals(123, profileWindowManager.convertStringIntoInt(validLowerStringInteger));
     }
 
     @Test
@@ -110,9 +114,9 @@ public class ProfileWindowManagerTest {
         String sameDifficulty = "beginner";
         assertTrue(profileWindowManager.isMoreDifficult(higherDifficulty, lowerDifficulty));
 
-        //Should return false since lowerDifficult is not higher than higherDifficult
+        //Should return false since lowerDifficult is not more difficult than higherDifficult
         assertFalse(profileWindowManager.isMoreDifficult(lowerDifficulty, higherDifficulty));
-        //Should return false since lowerDifficult is not higher than sameDifficult
+        //Should return false since lowerDifficult is not more difficult than sameDifficult
         assertFalse(profileWindowManager.isMoreDifficult(lowerDifficulty, sameDifficulty));
     }
 
@@ -129,7 +133,7 @@ public class ProfileWindowManagerTest {
 
         assertEquals(expectedBmi, actualBmi, 0.1);
 
-        //Wrong expectedBMI should return not equal
+        //Wrong expectedBMI should be not equal
         assertNotEquals(expectedBmi, actualBmi2);
 
     }
