@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import seedu.address.commons.core.EventsCenter;
@@ -12,6 +13,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.workout.Parameter;
+import seedu.address.model.workout.WorkoutContainsParameterPredicate;
 
 /**
  * Selects a person identified using its displayed index from the workout book.
@@ -30,6 +32,8 @@ public class SelectCommand extends Command {
 
     private final Index targetIndex;
 
+    private WorkoutContainsParameterPredicate predicate;
+
     public SelectCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
@@ -38,13 +42,19 @@ public class SelectCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
 
-        List<Parameter> filteredTrackedData = model.getFilteredTrackedDataList();
+        List<Parameter> filteredParameters = model.getFilteredTrackedDataList();
+        Parameter parameter = filteredParameters.get(targetIndex.getZeroBased());
+        List<Parameter> parameters = new ArrayList<>();
+        parameters.add(parameter);
+        predicate = new WorkoutContainsParameterPredicate(parameters);
 
-        if (targetIndex.getZeroBased() >= filteredTrackedData.size()) {
+        if (targetIndex.getZeroBased() >= filteredParameters.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PARAMETER_DISPLAYED_INDEX);
         }
 
         EventsCenter.getInstance().post(new JumpToListRequestEvent(targetIndex));
+        model.updateFilteredTrackedData(predicate);
+
         return new CommandResult(String.format(MESSAGE_SELECT_PARAMETER_SUCCESS, targetIndex.getOneBased()));
 
     }
