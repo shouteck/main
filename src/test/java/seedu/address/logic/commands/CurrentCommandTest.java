@@ -42,22 +42,22 @@ public class CurrentCommandTest {
         CurrentCommand.setCurrentWorkout(false);
     }
 
-//    @Test
-//    public void execute_validIndexUnfilteredList_success() throws CommandException {
-//
-//        Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_EIGHTH_WORKOUT.getZeroBased());
-//        Workout editedWorkout = createEditedWorkout(currentWorkout);
-//        CurrentCommand currentCommand = new CurrentCommand(INDEX_EIGHTH_WORKOUT);
-//
-//        String expectedMessage = String.format(CurrentCommand.MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout);
-//
-//        Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
-//                model.getTrackedData(), new UserPrefs());
-//        expectedModel.updateWorkout(model.getFilteredWorkoutList().get(7), editedWorkout);
-//        expectedModel.commitModel();
-//
-//        assertCommandSuccess(currentCommand, model, commandHistory, expectedMessage, expectedModel);
-//    }
+    /*@Test
+    public void execute_validIndexUnfilteredList_success() throws CommandException {
+
+        Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_EIGHTH_WORKOUT.getZeroBased());
+        Workout editedWorkout = createEditedWorkout(currentWorkout);
+        CurrentCommand currentCommand = new CurrentCommand(INDEX_EIGHTH_WORKOUT);
+
+        String expectedMessage = String.format(CurrentCommand.MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout);
+
+        Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
+                model.getTrackedData(), new UserPrefs());
+        expectedModel.updateWorkout(model.getFilteredWorkoutList().get(7), editedWorkout);
+        expectedModel.commitModel();
+
+        assertCommandSuccess(currentCommand, model, commandHistory, expectedMessage, expectedModel);
+    }*/
 
     @Test
     public void execute_preexistingCurrentWorkoutUnfilteredList_failure() {
@@ -75,23 +75,23 @@ public class CurrentCommandTest {
         assertCommandFailure(currentCommand, model, commandHistory, Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
     }
 
-//    @Test
-//    public void execute_validIndexFilteredList_success() throws CommandException {
-//        showWorkoutAtIndex(model, INDEX_EIGHTH_WORKOUT);
-//
-//        Workout editedWorkout = createEditedWorkout(model.getFilteredWorkoutList()
-//                .get(INDEX_FIRST_WORKOUT.getZeroBased()));
-//        CurrentCommand currentCommand = new CurrentCommand(INDEX_FIRST_WORKOUT);
-//
-//        String expectedMessage = String.format(CurrentCommand.MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout);
-//
-//        Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
-//                model.getTrackedData(), new UserPrefs());
-//        expectedModel.updateWorkout(model.getFilteredWorkoutList().get(0), editedWorkout);
-//        expectedModel.commitModel();
-//
-//        assertCommandSuccess(currentCommand, model, commandHistory, expectedMessage, expectedModel);
-//    }
+   /* @Test
+    public void execute_validIndexFilteredList_success() throws CommandException {
+        showWorkoutAtIndex(model, INDEX_EIGHTH_WORKOUT);
+
+        Workout editedWorkout = createEditedWorkout(model.getFilteredWorkoutList()
+                .get(INDEX_FIRST_WORKOUT.getZeroBased()));
+        CurrentCommand currentCommand = new CurrentCommand(INDEX_FIRST_WORKOUT);
+
+        String expectedMessage = String.format(CurrentCommand.MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout);
+
+        Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
+                model.getTrackedData(), new UserPrefs());
+        expectedModel.updateWorkout(model.getFilteredWorkoutList().get(0), editedWorkout);
+        expectedModel.commitModel();
+
+        assertCommandSuccess(currentCommand, model, commandHistory, expectedMessage, expectedModel);
+    }*/
 
     @Test
     public void execute_preexistingCurrentWorkoutFilteredList_failure() {
@@ -116,27 +116,27 @@ public class CurrentCommandTest {
         assertCommandFailure(currentCommand, model, commandHistory, Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
     }
 
-//    @Test
-//    public void executeUndoRedo_validIndexUnfilteredList_success() throws Exception {
-//        Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_FIRST_WORKOUT.getZeroBased());
-//        CurrentCommand currentCommand = new CurrentCommand(INDEX_FIRST_WORKOUT);
-//        Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
-//                model.getTrackedData(), new UserPrefs());
-//        Workout editedWorkout = createEditedWorkout(currentWorkout);
-//        expectedModel.updateWorkout(currentWorkout, editedWorkout);
-//        expectedModel.commitModel();
-//
-//        // current -> first workout set to current
-//        currentCommand.execute(model, commandHistory);
-//
-//        // undo -> reverts workout book back to previous state and filtered workout list to show all workouts
-//        expectedModel.undoModel();
-//        assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
-//
-//        // redo -> same first workout deleted again
-//        expectedModel.redoModel();
-//        assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
-//    }
+    /*@Test
+    public void executeUndoRedo_validIndexUnfilteredList_success() throws Exception {
+        Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_FIRST_WORKOUT.getZeroBased());
+        CurrentCommand currentCommand = new CurrentCommand(INDEX_FIRST_WORKOUT);
+        Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
+                model.getTrackedData(), new UserPrefs());
+        Workout editedWorkout = createEditedWorkout(currentWorkout);
+        expectedModel.updateWorkout(currentWorkout, editedWorkout);
+        expectedModel.commitModel();
+
+        // current -> first workout set to current
+        currentCommand.execute(model, commandHistory);
+
+        // undo -> reverts workout book back to previous state and filtered workout list to show all workouts
+        expectedModel.undoModel();
+        assertCommandSuccess(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_SUCCESS, expectedModel);
+
+        // redo -> same first workout deleted again
+        expectedModel.redoModel();
+        assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
+    }*/
 
     @Test
     public void executeUndoRedo_invalidIndexUnfilteredList_failure() {
