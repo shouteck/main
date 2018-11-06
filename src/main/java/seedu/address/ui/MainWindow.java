@@ -36,7 +36,6 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    //private BrowserPanel browserPanel;
     private WorkoutListPanel workoutListPanel;
     private CurrentAndTrackPanel currentAndTrackPanel;
     private TrackedDataListPanel trackedDataListPanel;
@@ -44,9 +43,6 @@ public class MainWindow extends UiPart<Stage> {
     private UserPrefs prefs;
     private HelpWindow helpWindow;
     private ProfileWindow profileWindow;
-
-    //@FXML
-    //private StackPane browserPlaceholder;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -135,8 +131,6 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        //browserPanel = new BrowserPanel();
-        //browserPlaceholder.getChildren().add(browserPanel.getRoot());
 
         workoutListPanel = new WorkoutListPanel(logic.getFilteredWorkoutList());
         workoutListPanelPlaceholder.getChildren().add(workoutListPanel.getRoot());

@@ -123,6 +123,7 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void deleteWorkout(Workout target) {
         versionedWorkoutBook.removeWorkout(target);
+        updateFilteredTrackedData(PREDICATE_SHOW_NO_WORKOUTS);
         indicateWorkoutBookChanged();
     }
 
@@ -130,6 +131,7 @@ public class ModelManager extends ComponentManager implements Model {
     public void addWorkout(Workout workout) {
         versionedWorkoutBook.addWorkout(workout);
         updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
+        updateFilteredTrackedData(PREDICATE_SHOW_NO_WORKOUTS);
         indicateWorkoutBookChanged();
     }
 
@@ -137,12 +139,14 @@ public class ModelManager extends ComponentManager implements Model {
     public void addDataToTrack(Parameter parameter) {
         versionedTrackedDataList.addParameter(parameter);
         updateFilteredTrackedDataList(PREDICATE_SHOW_ALL_PARAMETERS);
+        updateFilteredTrackedData(PREDICATE_SHOW_NO_WORKOUTS);
         indicateTrackedDataListChanged();
     }
 
     @Override
     public void removeDataFromTrack(Parameter parameter) {
         versionedTrackedDataList.removeParameter(parameter);
+        updateFilteredTrackedData(PREDICATE_SHOW_NO_WORKOUTS);
         indicateTrackedDataListChanged();
     }
 
@@ -222,6 +226,7 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void sortFilteredWorkoutList() {
         versionedWorkoutBook.sortFilteredWorkoutList();
+        updateFilteredTrackedData(PREDICATE_SHOW_NO_WORKOUTS);
         indicateWorkoutBookChanged();
     }
 
@@ -235,6 +240,7 @@ public class ModelManager extends ComponentManager implements Model {
         requireAllNonNull(target, editedWorkout);
 
         versionedWorkoutBook.updateWorkout(target, editedWorkout);
+        updateFilteredTrackedData(PREDICATE_SHOW_NO_WORKOUTS);
         indicateWorkoutBookChanged();
     }
 
@@ -307,6 +313,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public void undoModel() {
+        updateFilteredTrackedData(PREDICATE_SHOW_NO_WORKOUTS);
         undoWorkoutBook();
         undoTrackedDataList();
         undoTrackedData();
@@ -314,6 +321,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public void redoModel() {
+        updateFilteredTrackedData(PREDICATE_SHOW_NO_WORKOUTS);
         redoWorkoutBook();
         redoTrackedDataList();
         redoTrackedData();
