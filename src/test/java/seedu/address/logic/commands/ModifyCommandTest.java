@@ -3,22 +3,24 @@ package seedu.address.logic.commands;
 //import static org.junit.Assert.assertFalse;
 //import static org.junit.Assert.assertTrue;
 
-//import static seedu.address.commons.core.Messages.MESSAGE_INVALID_GENDER;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_GENDER;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_HEIGHT;
 //import static seedu.address.commons.core.Messages.MESSAGE_INVALID_DIFFICULTY;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_USERNAME;
-//import static seedu.address.commons.core.Messages.MESSAGE_VALID_GENDER;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_WEIGHT;
+import static seedu.address.commons.core.Messages.MESSAGE_VALID_GENDER;
 import static seedu.address.commons.core.Messages.MESSAGE_VALID_HEIGHT;
 //import static seedu.address.commons.core.Messages.MESSAGE_VALID_DIFFICULTY;
 import static seedu.address.commons.core.Messages.MESSAGE_VALID_USERNAME;
+import static seedu.address.commons.core.Messages.MESSAGE_VALID_WEIGHT;
 /*import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_CALORIES;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_DIFFICULTY;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_DURATION;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_GENDER;*/
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_DURATION;*/
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_GENDER;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_HEIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_USERNAME;
-//import static seedu.address.logic.commands.CommandTestUtil.INVALID_WEIGHT;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_WEIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION;
@@ -57,7 +59,7 @@ import seedu.address.model.ModelManager;
 
 
 public class ModifyCommandTest {
-    public static final String MESSAGE_MODIFY_USERPROFILE_SUCCESS = "User profile has been modified!";
+    private static final String MESSAGE_MODIFY_USERPROFILE_SUCCESS = "User profile has been modified!";
 
     private static String currentGender;
     private static String currentUsername;
@@ -73,7 +75,6 @@ public class ModifyCommandTest {
     private String fileName;
     private Document doc;
     private Model model = new ModelManager();
-    private Model expectedModel = new ModelManager();
     private CommandHistory commandHistory = new CommandHistory();
 
     @Before
@@ -107,8 +108,8 @@ public class ModifyCommandTest {
 
     @Test
     public void execute_singleField_success() throws IOException, ParseException {
-        ArrayList<String> expectedAttributes = new ArrayList<String>();
-        ArrayList<String> actualAttributes = new ArrayList<String>();
+        ArrayList<String> expectedAttributes = new ArrayList<>();
+        ArrayList<String> actualAttributes = new ArrayList<>();
         ModifyCommandParser modifyCommandParser = new ModifyCommandParser();
 
         String workingDir = System.getProperty("user.dir");
@@ -128,23 +129,47 @@ public class ModifyCommandTest {
                 commandHistory, expectedSuccessMessage, expectedAttributes);
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
-    public void execute_singleField_failure() throws ParseException {
+    public void execute_singleFieldHeight_failure() throws ParseException {
         String expectedFailureMessage = String.format(MESSAGE_INVALID_HEIGHT, MESSAGE_VALID_HEIGHT);
         ModifyCommandParser modifyCommandParser = new ModifyCommandParser();
 
-        //valid gender
-        String commandGender = " " + PREFIX_HEIGHT + INVALID_HEIGHT;
+        //invalid height
+        String commandInvalidHeight = " " + PREFIX_HEIGHT + INVALID_HEIGHT;
 
         thrown.expectMessage(expectedFailureMessage);
-        modifyCommandParser.parse(commandGender);
+        modifyCommandParser.parse(commandInvalidHeight);
     }
 
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void execute_singleFieldWeight_failure() throws ParseException {
+        String expectedFailureMessage = String.format(MESSAGE_INVALID_WEIGHT, MESSAGE_VALID_WEIGHT);
+        ModifyCommandParser modifyCommandParser = new ModifyCommandParser();
 
+        //invalid weight
+        String commandInvalidWeight = " " + PREFIX_WEIGHT + INVALID_WEIGHT;
+        thrown.expectMessage(expectedFailureMessage);
+        modifyCommandParser.parse(commandInvalidWeight);
+    }
+
+    @SuppressWarnings("Duplicates")
+    @Test
+    public void execute_singleFieldGender_failure() throws ParseException {
+        String expectedFailureMessage = String.format(MESSAGE_INVALID_GENDER, MESSAGE_VALID_GENDER);
+        ModifyCommandParser modifyCommandParser = new ModifyCommandParser();
+
+        //invalid weight
+        String commandInvalidGender = " " + PREFIX_GENDER + INVALID_GENDER;
+        thrown.expectMessage(expectedFailureMessage);
+        modifyCommandParser.parse(commandInvalidGender);
+    }
+    
     @Test
     public void execute_multipleField_success() throws IOException, ParseException {
-        ArrayList<String> expectedAttributes = new ArrayList<String>();
-        ArrayList<String> actualAttributes = new ArrayList<String>();
+        ArrayList<String> expectedAttributes = new ArrayList<>();
+        ArrayList<String> actualAttributes = new ArrayList<>();
         ModifyCommandParser modifyCommandParser = new ModifyCommandParser();
 
         String workingDir = System.getProperty("user.dir");
@@ -161,7 +186,7 @@ public class ModifyCommandTest {
         divUsername.text(VALID_USERNAME);
         divCalories.text(VALID_CALORIES);
 
-        //expected attritubes
+        //expected attributes
         expectedAttributes.add(VALID_CALORIES);
         expectedAttributes.add(VALID_GENDER);
         expectedAttributes.add(VALID_HEIGHT);
@@ -199,8 +224,8 @@ public class ModifyCommandTest {
 
     @Test
     public void execute_allField_success() throws IOException, ParseException {
-        ArrayList<String> expectedAttributes = new ArrayList<String>();
-        ArrayList<String> actualAttributes = new ArrayList<String>();
+        ArrayList<String> expectedAttributes = new ArrayList<>();
+        ArrayList<String> actualAttributes = new ArrayList<>();
         ModifyCommandParser modifyCommandParser = new ModifyCommandParser();
 
         String workingDir = System.getProperty("user.dir");
@@ -221,7 +246,7 @@ public class ModifyCommandTest {
         divCalories.text(VALID_CALORIES);
         divDuration.text(VALID_DURATION);
 
-        //expected attritubes
+        //expected attributes
         expectedAttributes.add(VALID_CALORIES);
         expectedAttributes.add(VALID_DIFFICULTY);
         expectedAttributes.add(VALID_DURATION);
