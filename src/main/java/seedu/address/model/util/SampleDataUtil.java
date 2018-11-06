@@ -63,10 +63,10 @@ public class SampleDataUtil {
     public static Parameter[] getSampleParameters() {
         return new Parameter[] {
             new Parameter(new Prefix("name/"), "commando"),
-                    new Parameter(new Prefix("duration/"), "20m"),
-                    new Parameter(new Prefix("difficulty/"), "advanced"),
-                    new Parameter(new Prefix("equipment/"), "dumbbell"),
-                    new Parameter(new Prefix("calories/"), "150"),
+            new Parameter(new Prefix("duration/"), "20m"),
+            new Parameter(new Prefix("difficulty/"), "advanced"),
+            new Parameter(new Prefix("equipment/"), "dumbbell"),
+            new Parameter(new Prefix("calories/"), "150")
         };
     }
 
