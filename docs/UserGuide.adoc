@@ -348,7 +348,16 @@ There are two ways to use the `recommend` command.
 *Recommend directly from the Workout Presets in your profile*
 
 Format: `recommend`
-Type `recommend` in the command box, press kbd:[Enter].
+
+[[fig-UserProfileCard]]
+.After you have provided the appropriate properties in your profile.
+image::userprofilecard.PNG[width="450"]
+{nbsp} +
+Type `recommend` in the command box, press kbd:[Enter] and you have <<fig-NoPrefixRecommend>>. +
+{nbsp} +
+[[fig-NoPrefixRecommend]]
+.Recommended result with exactly the same properties as the workout presets in <<fig-UserProfileCard>>
+image::noprefixrecommend.PNG[width="450"]
 
 *Recommend through the inputs in the command box*
 
