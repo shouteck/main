@@ -336,18 +336,37 @@ Change your user profile's username to apple, height to 1.82m and update the BMI
 
 === Recommending a workout : `recommend`
 
-Recommends workout from the existing workouts. +
-Format: `recommend [mode/MODE] [calories/CALORIES or ocalories/CALORIES] [difficulty/DIFFICULTY or odifficulty/ODIFFICULTY] [duration/DURATION or oduration/DURATION]`
+Recommends workout from the existing workouts.
+
+There are two ways to use the `recommend` command.
 
 ****
-* If you did not input any prefixes, the workout recommended will be according to the fields under the Workout Presets in your profile.
-* Mode is a compulsory prefix when you want to recommend with any combinations of the three prefixes from `calories`, `difficulty` and `duration` excluding zero combinations.
-* Recommend single, multiple or all workouts depending on the `MODE`.
-* If you did not use Optional prefixes which has an `o` in front of either of the three prefixes from `calories`, `difficulty` and `duration`, The workout recommended has
-exactly the same inputs as the one you have entered E.g. `recommend mode/single difficulty/beginner` will only recommend the workout that have difficulty level as beginner.
-* If you do use Optional prefixes, you have to supply all the three prefixes `calories`, `difficulty` and `duration` where they can be in their Optional form or not.
-E.g `recommend mode/single ocalories/150 difficulty/beginner duration/10m` will recommend a workout with these three properties if it is present or the next best alternative
-which is a 10 minute workout with a difficulty level of beginner.
+* Recommend directly from the Workout Presets in your profile.
+* Recommend through the inputs in the command box.
+****
+
+*Recommend directly from the Workout Presets in your profile*
+
+Format: `recommend`
+Type `recommend` in the command box, press kbd:[Enter].
+
+*Recommend through the inputs in the command box*
+
+There are two ways to recommend through the inputs.
+
+****
+* Recommend without optional prefixes.
+* Recommend with optional prefixes.
+****
+
+**Recommend without optional prefixes**
+
+Format: `recommend mode/MODE [calories/CALORIES] [difficulty/DIFFICULTY] [duration/DURATION]`
+
+****
+* At least one of the optional fields must be provided.
+* You can choose to recommend single, multiple or even all workouts based on the specified `MODE`.
+* Workout recommended will have properties exactly the same as the inputs you have entered in the command box.
 ****
 
 Examples:
@@ -358,12 +377,24 @@ Recommends a beginner workout.
 Recommends two 10 minute workout that burns 150 calories.
 * `recommend mode/all duration/35m calories/200 difficulty/advanced` +
 Recommends all advanced 35 minute workout that burns 200 calories.
-* `recommend mode/single calories/250 difficult/intermediate oduration/10m` +
-Recommends a 10 minute intermediate workout if it is present or else it will recommend an intermediate workout that burns 250 calories.
-* `recommend mode/single calories/300 odifficulty/beginner oduration/20m` +
-Recommends a 20 minute beginner workout that burns 300 calories if it is present or else it will recommend the next best alternative.
-* `recommend mode/single ocalories/350 odifficulty/advanced oduration/30m` +
-Recommends a 30 minute advanced workout that burns 350 calories if it is present or else it will recommend the next best alternative.
+
+**Recommend with optional prefixes**
+
+Format: `recommend mode/MODE ocalories or calories/CALORIES odifficulty or difficulty/DIFFICULTY oduration or duration/DURATION`
+
+****
+* You can choose to recommend single, multiple or even all workouts based on the specified `MODE`.
+* Workout recommended will try to match as much as possible to the inputs you have entered in the command box.
+****
+
+Examples:
+
+* `recommend mode/single calories/150 difficulty/intermediate oduration/10m` +
+Recommends a 10 minute intermediate workout if there exist this workout or else it will recommend an intermediate workout that burns 150 calories.
+* `recommend mode/multiple 3 calories/125 odifficulty/beginner oduration/10m` +
+Recommends three 10 minute beginner workouts that burns 125 calories if there exist these workouts or else it will recommend the next best alternative.
+* `recommend mode/all ocalories/160 odifficulty/advanced oduration/10m` +
+Recommends all the 10 minute advanced workouts that burns 160 calories if there exist these workouts or else it will recommend the next best alternative.
 
 === Undoing previous command : `undo`
 
