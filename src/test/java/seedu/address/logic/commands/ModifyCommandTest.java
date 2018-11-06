@@ -165,7 +165,7 @@ public class ModifyCommandTest {
         thrown.expectMessage(expectedFailureMessage);
         modifyCommandParser.parse(commandInvalidGender);
     }
-    
+
     @Test
     public void execute_multipleField_success() throws IOException, ParseException {
         ArrayList<String> expectedAttributes = new ArrayList<>();
