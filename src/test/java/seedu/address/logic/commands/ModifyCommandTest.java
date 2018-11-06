@@ -59,9 +59,6 @@ import seedu.address.model.ModelManager;
 public class ModifyCommandTest {
     public static final String MESSAGE_MODIFY_USERPROFILE_SUCCESS = "User profile has been modified!";
 
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
     private static String currentGender;
     private static String currentUsername;
     private static String currentHeight;
@@ -69,6 +66,9 @@ public class ModifyCommandTest {
     private static String currentDifficulty;
     private static String currentCalories;
     private static String currentDuration;
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     private String fileName;
     private Document doc;
