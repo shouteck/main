@@ -34,33 +34,6 @@ public class WorkoutListPanel extends UiPart<Region> {
     private void setConnections(ObservableList<Workout> workoutList) {
         workoutListView.setItems(workoutList);
         workoutListView.setCellFactory(listView -> new WorkoutListViewCell());
-        setEventHandlerForSelectionChangeEvent();
-    }
-
-    private void setEventHandlerForSelectionChangeEvent() {
-        workoutListView.getSelectionModel().selectedItemProperty()
-                .addListener((observable, oldValue, newValue) -> {
-                    if (newValue != null) {
-                        logger.fine("Selection in workout list panel changed to : '" + newValue + "'");
-                        raise(new WorkoutPanelSelectionChangedEvent(newValue));
-                    }
-                });
-    }
-
-    /**
-     * Scrolls to the {@code WorkoutCard} at the {@code index} and selects it.
-     */
-    private void scrollTo(int index) {
-        Platform.runLater(() -> {
-            workoutListView.scrollTo(index);
-            workoutListView.getSelectionModel().clearAndSelect(index);
-        });
-    }
-
-    @Subscribe
-    private void handleJumpToListRequestEvent(JumpToListRequestEvent event) {
-        logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        scrollTo(event.targetIndex);
     }
 
     /**
