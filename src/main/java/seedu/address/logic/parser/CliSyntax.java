@@ -23,5 +23,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_HEIGHT = new Prefix("height/");
     public static final Prefix PREFIX_WEIGHT = new Prefix("weight/");
     public static final Prefix PREFIX_REMARK = new Prefix("r/");
+    public static final Prefix PREFIX_MODE = new Prefix("mode/");
 
 }

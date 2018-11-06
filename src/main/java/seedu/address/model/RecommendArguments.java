@@ -7,6 +7,7 @@ import java.util.Optional;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Mode;
 
 /**
  * Represents a Recommend arguments in the workout book.
@@ -21,6 +22,8 @@ public class RecommendArguments {
     private Optional<Boolean> difficultyOptionality;
     private Optional<Boolean> durationOptionality;
 
+    private Optional<Mode> mode;
+
     /**
      * Builder pattern
      */
@@ -33,6 +36,8 @@ public class RecommendArguments {
         private Optional<Boolean> caloriesOptionality = Optional.empty();
         private Optional<Boolean> difficultyOptionality = Optional.empty();
         private Optional<Boolean> durationOptionality = Optional.empty();
+
+        private Optional<Mode> mode = Optional.empty();
 
         public Builder() {
         }
@@ -65,6 +70,14 @@ public class RecommendArguments {
         }
 
         /**
+         * Mode setter for Builder
+         */
+        public Builder withMode(Optional<Mode> mode) {
+            this.mode = mode;
+            return this;
+        }
+
+        /**
          * Main constructor for RecommendArguments
          */
         public RecommendArguments build() {
@@ -72,6 +85,7 @@ public class RecommendArguments {
             recommendArguments.setCalories(this.calories, this.caloriesOptionality);
             recommendArguments.setDifficulty(this.difficulty, this.difficultyOptionality);
             recommendArguments.setDuration(this.duration, this.durationOptionality);
+            recommendArguments.setMode(this.mode);
             return recommendArguments;
         }
     }
@@ -106,7 +120,10 @@ public class RecommendArguments {
                 && ((otherRecommendArguments.isDurationNull() && isDurationNull())
                 || ((!otherRecommendArguments.isDurationNull() && !isDurationNull())
                 && (otherRecommendArguments.getDuration().equals(getDuration())
-                && otherRecommendArguments.getDurationOptionality().equals(getDurationOptionality())))));
+                && otherRecommendArguments.getDurationOptionality().equals(getDurationOptionality()))))
+                && ((otherRecommendArguments.isModeNull() && isModeNull())
+                || ((!otherRecommendArguments.isModeNull() && !isModeNull())
+                && (otherRecommendArguments.getMode().equals(getMode())))));
     }
 
     public Calories getCalories() {
@@ -119,6 +136,10 @@ public class RecommendArguments {
 
     public Duration getDuration() {
         return duration.get();
+    }
+
+    public Mode getMode() {
+        return mode.get();
     }
 
     public Boolean getCaloriesOptionality() {
@@ -148,6 +169,10 @@ public class RecommendArguments {
         this.durationOptionality = optionality;
     }
 
+    public void setMode(Optional<Mode> mode) {
+        this.mode = mode;
+    }
+
     public boolean isCaloriesNull() {
         return !calories.isPresent();
     }
@@ -158,6 +183,10 @@ public class RecommendArguments {
 
     public boolean isDurationNull() {
         return !duration.isPresent();
+    }
+
+    public boolean isModeNull() {
+        return !mode.isPresent();
     }
 
     public ArrayList<Boolean> getOptionalsList() {

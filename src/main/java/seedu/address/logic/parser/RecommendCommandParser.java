@@ -5,6 +5,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MODE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_CALORIES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_DIFFICULTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_DURATION;
@@ -20,6 +21,7 @@ import seedu.address.model.RecommendArguments;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Mode;
 
 /**
  * Parses input arguments and creates a new {@code RecommendCommand} object
@@ -31,13 +33,14 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
      */
     public RecommendCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_DURATION,
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_MODE, PREFIX_DURATION,
                 PREFIX_DIFFICULTY, PREFIX_CALORIES, PREFIX_OPTIONAL_CALORIES, PREFIX_OPTIONAL_DIFFICULTY,
                 PREFIX_OPTIONAL_DURATION);
 
         RecommendArguments recommendArguments;
-        if (isPrefixPresent(argMultimap, PREFIX_DURATION, PREFIX_DIFFICULTY, PREFIX_CALORIES, PREFIX_OPTIONAL_CALORIES,
-                PREFIX_OPTIONAL_DIFFICULTY, PREFIX_OPTIONAL_DURATION)) {
+        if (isPrefixPresent(argMultimap, PREFIX_MODE) && isPrefixPresent(argMultimap, PREFIX_DURATION,
+                PREFIX_DIFFICULTY, PREFIX_CALORIES, PREFIX_OPTIONAL_CALORIES, PREFIX_OPTIONAL_DIFFICULTY,
+                PREFIX_OPTIONAL_DURATION)) {
             if (isPrefixPresent(argMultimap, PREFIX_OPTIONAL_CALORIES, PREFIX_OPTIONAL_DIFFICULTY,
                     PREFIX_OPTIONAL_DURATION) && !isOptionalValid(argMultimap)) {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
@@ -45,7 +48,7 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
             } else {
                 recommendArguments = getRecommendArguments(argMultimap);
             }
-        } else if (argMultimap.getPreamble().isEmpty()) {
+        } else if (argMultimap.getPreamble().isEmpty() && argMultimap.getTheOnlyPrefix() == null) {
             ProfileWindowManager profileWindowManager;
             try {
                 profileWindowManager = ProfileWindowManager.getInstance();
@@ -95,6 +98,9 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
                     .getValue(PREFIX_OPTIONAL_CALORIES).get()));
             recommendArgumentsBuilder.withCalories(calories, Optional.of(true));
         }
+
+        Optional<Mode> mode = Optional.of(ParserUtil.parseMode(argMultimap.getValue(PREFIX_MODE).get()));
+        recommendArgumentsBuilder.withMode(mode);
 
         return recommendArgumentsBuilder.build();
     }

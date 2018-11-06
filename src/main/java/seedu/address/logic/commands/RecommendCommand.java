@@ -18,7 +18,9 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.RecommendArguments;
+import seedu.address.model.workout.Mode;
 import seedu.address.model.workout.Workout;
+import seedu.address.model.workout.WorkoutsPredicate;
 
 /**
  * Recommends an existing workout from the workout book.
@@ -50,6 +52,9 @@ public class RecommendCommand extends Command {
     public static final String MESSAGE_NO_SUCH_WORKOUT = "There is no such workout in the workout book.";
     public static final String MESSAGE_OPTIONALS = "You need to supply all three prefixes as inputs,"
             + " be it optional or non-optional!";
+    public static final String MESSAGE_INVALID_WORKOUTS_RECOMMENDED_SIZE = "The recommended workout size "
+            + "provided has exceeded the current number of workouts recommended.\n"
+            + "Current number of workouts recommended: %1$s";
 
     private final RecommendArguments recommendArguments;
 
@@ -70,9 +75,26 @@ public class RecommendCommand extends Command {
             throw new CommandException(MESSAGE_NO_SUCH_WORKOUT);
         }
 
-        int targetIndex = getTargetIndex(filteredWorkoutList, filteredInternalList);
-
-        EventsCenter.getInstance().post(new JumpToListRequestEvent(targetIndex));
+        if (recommendArguments.isModeNull() || (!recommendArguments.isModeNull() && recommendArguments.getMode()
+                .toString().equals("single"))) {
+            int targetIndex = getTargetIndex(filteredWorkoutList, filteredInternalList);
+            EventsCenter.getInstance().post(new JumpToListRequestEvent(targetIndex));
+        } else {
+            Mode mode = recommendArguments.getMode();
+            if (mode.toString().equals("all")) {
+                WorkoutsPredicate workoutsPredicate = new WorkoutsPredicate(filteredInternalList);
+                model.updateFilteredWorkoutList(workoutsPredicate);
+            } else {
+                int multipleInteger = mode.getMultipleInteger(mode.toString());
+                if (multipleInteger > filteredInternalList.size()) {
+                    throw new CommandException(String.format(MESSAGE_INVALID_WORKOUTS_RECOMMENDED_SIZE,
+                            filteredInternalList.size()));
+                }
+                List<Workout> subFilteredInternalList = filteredInternalList.subList(0, multipleInteger);
+                WorkoutsPredicate workoutsPredicate = new WorkoutsPredicate(subFilteredInternalList);
+                model.updateFilteredWorkoutList(workoutsPredicate);
+            }
+        }
         return new CommandResult(MESSAGE_SUCCESS);
     }
 
