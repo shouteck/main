@@ -53,7 +53,7 @@ public class CurrentCommandTest {
 
         Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
                 model.getTrackedData(), new UserPrefs());
-        expectedModel.updateWorkout(model.getFilteredWorkoutList().get(9), editedWorkout);
+        expectedModel.updateWorkout(model.getFilteredWorkoutList().get(7), editedWorkout);
         expectedModel.commitModel();
 
         assertCommandSuccess(currentCommand, model, commandHistory, expectedMessage, expectedModel);
