@@ -94,7 +94,7 @@ public class CurrentCommand extends Command {
      * Creates and returns a {@code Workout} with the details of {@code workoutToEdit}
      * edited with {@code editWorkoutDescriptor}.
      */
-    public Workout createEditedWorkout(Workout workoutToEdit) throws CommandException {
+    private Workout createEditedWorkout(Workout workoutToEdit) throws CommandException {
         assert workoutToEdit != null;
         Name updatedName = workoutToEdit.getName();
         Type updatedType = workoutToEdit.getType();
@@ -110,8 +110,6 @@ public class CurrentCommand extends Command {
             updatedTags.add(entry);
         }
 
-        int userCalories;
-        int userDuration;
         boolean moreDifficult = false;
         boolean higherCalories = false;
         boolean higherDuration = false;
@@ -133,18 +131,20 @@ public class CurrentCommand extends Command {
             String userDifficulty = profileWindowManager.trimmedDifficulty(divDifficulty.ownText());
             String calories = profileWindowManager.trimmedCalories(divCalories.ownText());
             String duration = profileWindowManager.trimmedDuration(divDuration.ownText());
-            userCalories = profileWindowManager.convertStringIntoInt(calories);
-            userDuration = profileWindowManager.convertStringIntoInt(duration);
             if (profileWindowManager.isMoreDifficult(updatedDifficulty.toString(), userDifficulty)) {
                 moreDifficult = true;
             }
-            if (profileWindowManager.isHigherCalories(profileWindowManager.convertStringIntoInt(profileWindowManager
-                    .trimmedCalories(updatedCalories.toString())), userCalories)) {
-                higherCalories = true;
+            if (calories.matches("any") == false) {
+                if (profileWindowManager.isHigherCalories(profileWindowManager.convertStringIntoInt(profileWindowManager
+                        .trimmedCalories(updatedCalories.toString())), profileWindowManager.convertStringIntoInt(calories))) {
+                    higherCalories = true;
+                }
             }
-            if (profileWindowManager.isHigherDuration(profileWindowManager.convertStringIntoInt(profileWindowManager
-                    .trimmedDuration(updatedDuration.toString())), userDuration)) {
-                higherDuration = true;
+            if (duration.matches("any") == false) {
+                if (profileWindowManager.isHigherDuration(profileWindowManager.convertStringIntoInt(profileWindowManager
+                        .trimmedDuration(updatedDuration.toString())), profileWindowManager.convertStringIntoInt(duration))) {
+                    higherDuration = true;
+                }
             }
             if ((moreDifficult || higherCalories || higherDuration) == true) {
                 String message = popUpMessage(moreDifficult, higherCalories, higherDuration);
