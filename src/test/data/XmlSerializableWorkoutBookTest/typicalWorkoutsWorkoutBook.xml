@@ -81,4 +81,16 @@
 		<instruction>6 sets of bench press, 6 reps per set of 70% max</instruction>
         <remark>This workout trains chest</remark>
     </workouts>
+    <workouts>
+        <name>John Pauline's workout</name>
+        <type>cardio</type>
+        <duration>45m</duration>
+        <difficulty>intermediate</difficulty>
+        <equipment>NIL</equipment>
+        <muscle>legs</muscle>
+        <calories>300</calories>
+        <instruction>45 minutes slow jog</instruction>
+        <tagged>future</tagged>
+        <remark>This workout trains legs</remark>
+    </workouts>
 </workoutbook>
