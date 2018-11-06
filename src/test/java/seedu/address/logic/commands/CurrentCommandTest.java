@@ -7,9 +7,9 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showWorkoutAtIndex;
 import static seedu.address.logic.commands.CurrentCommand.MESSAGE_MULTIPLE_CURRENT_WORKOUT;
 import static seedu.address.logic.commands.CurrentCommand.createEditedWorkout;
+import static seedu.address.testutil.TypicalIndexes.INDEX_EIGHTH_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_WORKOUT;
-import static seedu.address.testutil.TypicalIndexes.INDEX_EIGHTH_WORKOUT;
 import static seedu.address.testutil.TypicalParameters.getTypicalTrackedDataList;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
@@ -79,7 +79,8 @@ public class CurrentCommandTest {
     public void execute_validIndexFilteredList_success() throws CommandException {
         showWorkoutAtIndex(model, INDEX_EIGHTH_WORKOUT);
 
-        Workout editedWorkout = createEditedWorkout(model.getFilteredWorkoutList().get(INDEX_FIRST_WORKOUT.getZeroBased()));
+        Workout editedWorkout = createEditedWorkout(model.getFilteredWorkoutList()
+                .get(INDEX_FIRST_WORKOUT.getZeroBased()));
         CurrentCommand currentCommand = new CurrentCommand(INDEX_FIRST_WORKOUT);
 
         String expectedMessage = String.format(CurrentCommand.MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout);
