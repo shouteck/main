@@ -67,8 +67,8 @@ public class WorkoutContainsParameterPredicate implements Predicate<Workout> {
         } else if (prefix.equals(PREFIX_TAG)) {
             Set<Tag> tags = workout.getTags();
             boolean hasValue = false;
-            for(Tag tag : tags) {
-                if(tag.tagName.contains(parameters.get(0).getValue())) {
+            for (Tag tag : tags) {
+                if (tag.tagName.contains(parameters.get(0).getValue())) {
                     hasValue = true;
                 }
             }

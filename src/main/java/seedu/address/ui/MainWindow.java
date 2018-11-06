@@ -219,10 +219,6 @@ public class MainWindow extends UiPart<Stage> {
         return workoutListPanel;
     }
 
-    //void releaseResources() {
-        //browserPanel.freeResources();
-    //}
-
     @Subscribe
     private void handleShowHelpEvent(ShowHelpRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
