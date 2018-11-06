@@ -2,17 +2,17 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_CALORIES;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_DURATION;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_DIFFICULTY;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_DURATION;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_GENDER;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_HEIGHT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_WEIGHT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_USERNAME;
 import static seedu.address.commons.core.Messages.MESSAGE_VALID_CALORIES;
-import static seedu.address.commons.core.Messages.MESSAGE_VALID_DURATION;
 import static seedu.address.commons.core.Messages.MESSAGE_VALID_DIFFICULTY;
+import static seedu.address.commons.core.Messages.MESSAGE_VALID_DURATION;
 import static seedu.address.commons.core.Messages.MESSAGE_VALID_GENDER;
 import static seedu.address.commons.core.Messages.MESSAGE_VALID_HEIGHT;
 import static seedu.address.commons.core.Messages.MESSAGE_VALID_WEIGHT;
@@ -34,9 +34,6 @@ import org.jsoup.nodes.Element;
 import seedu.address.logic.commands.ModifyCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ProfileWindowManager;
-import seedu.address.model.workout.Calories;
-import seedu.address.model.workout.Difficulty;
-import seedu.address.model.workout.Duration;
 
 /**
  * Parses input arguments and creates a new ModifyCommand object
