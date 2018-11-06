@@ -78,14 +78,14 @@ public class EditCommandTest {
                 .withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT).withEquipment(VALID_EQUIPMENT_BOB_WORKOUT)
                 .withMuscle(VALID_MUSCLE_BOB_WORKOUT)
                 .withCalories(VALID_CALORIES_BOB_WORKOUT).withInstruction(VALID_INSTRUCTION_BOB_WORKOUT)
-                .withTags(VALID_TAG_MORNING).withTags(VALID_TAG_NIGHT).withTags(VALID_TAG_FUTURE).build();
+                .withTags(VALID_TAG_FUTURE).build();
 
         EditWorkoutDescriptor descriptor = new EditWorkoutDescriptorBuilder().withName(VALID_NAME_BOB_WORKOUT)
                 .withType(VALID_TYPE_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT)
                 .withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT).withEquipment(VALID_EQUIPMENT_BOB_WORKOUT)
                 .withMuscle(VALID_MUSCLE_BOB_WORKOUT)
                 .withCalories(VALID_CALORIES_BOB_WORKOUT).withInstruction(VALID_INSTRUCTION_BOB_WORKOUT)
-                .withTags(VALID_TAG_MORNING).withTags(VALID_TAG_NIGHT).withTags(VALID_TAG_FUTURE).build();
+                .withTags(VALID_TAG_FUTURE).build();
         EditCommand editCommand = new EditCommand(indexLastWorkout, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_WORKOUT_SUCCESS, editedWorkout);
