@@ -13,8 +13,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_BOB
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FUTURE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_MORNING;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
