@@ -58,6 +58,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 ** *_HEIGHT_* should only be in the form x.xx whereby x is any integer. E.g. `1.72` and `1.88` are valid.
 ** *_WEIGHT_* should only be in the form xx.x or xxx.x whereby x is any integer. E.g. `88.4` and `102.9` are valid.
 ** *_GENDER_* should only be either male or female.
+** *_MODE_* should only be either `all`, `single` or `multiple INTEGER` where INTEGER are positive integers from 1 to 1000. E.g `multiple 777`.
 * Items in square brackets are optional e.g `name/NAME [tag/TAG]` can be used as `name/commando workout tag/strength` or as `name/commando workout`.
 * Items with `…`​ after them can be used multiple times including zero times e.g. `[tag/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `tag/strength`, `tag/strength tag/fast-paced` etc.
 * Parameters can be in any order e.g. if the command specifies `name/NAME type/TYPE`, `type/TYPE name/NAME` is also acceptable.
@@ -335,23 +336,34 @@ Change your user profile's username to apple, height to 1.82m and update the BMI
 
 === Recommending a workout : `recommend`
 
-Recommend a workout from the existing workouts. +
-Format: `recommend [calories/CALORIES] [difficulty/DIFFICULTY] [duration/DURATION]`
+Recommends workout from the existing workouts. +
+Format: `recommend [mode/MODE] [calories/CALORIES or ocalories/CALORIES] [difficulty/DIFFICULTY or odifficulty/ODIFFICULTY] [duration/DURATION or oduration/DURATION]`
 
 ****
-* Accepts any combinations of the three prefixes including zero combinations.
 * If you did not input any prefixes, the workout recommended will be according to the fields under the Workout Presets in your profile.
-* The workout recommended has exactly the same inputs as the one you have entered E.g. `recommend difficulty/beginner` will only recommend the workout that have difficulty level as beginner.
+* Mode is a compulsory prefix when you want to recommend with any combinations of the three prefixes from `calories`, `difficulty` and `duration` excluding zero combinations.
+* Recommend single, multiple or all workouts depending on the `MODE`.
+* If you did not use Optional prefixes which has an `o` in front of either of the three prefixes from `calories`, `difficulty` and `duration`, The workout recommended has
+exactly the same inputs as the one you have entered E.g. `recommend mode/single difficulty/beginner` will only recommend the workout that have difficulty level as beginner.
+* If you do use Optional prefixes, you have to supply all the three prefixes `calories`, `difficulty` and `duration` where they can be in their Optional form or not.
+E.g `recommend mode/single ocalories/150 difficulty/beginner duration/10m` will recommend a workout with these three properties if it is present or the next best alternative
+which is a 10 minute workout with a difficulty level of beginner.
 ****
 
 Examples:
 
-* `recommend difficulty/beginner` +
+* `recommend mode/single difficulty/beginner` +
 Recommends a beginner workout.
-* `recommend duration/10m calories/150` +
-Recommends a 10 minute workout that burns 150 calories.
-* `recommend duration/35m calories/200 difficulty/advanced` +
-Recommends an advanced 35 minute workout that burns 200 calories.
+* `recommend mode/multiple 2 duration/10m calories/150` +
+Recommends two 10 minute workout that burns 150 calories.
+* `recommend mode/all duration/35m calories/200 difficulty/advanced` +
+Recommends all advanced 35 minute workout that burns 200 calories.
+* `recommend mode/single calories/250 difficult/intermediate oduration/10m` +
+Recommends a 10 minute intermediate workout if it is present or else it will recommend an intermediate workout that burns 250 calories.
+* `recommend mode/single calories/300 odifficulty/beginner oduration/20m` +
+Recommends a 20 minute beginner workout that burns 300 calories if it is present or else it will recommend the next best alternative.
+* `recommend mode/single ocalories/350 odifficulty/advanced oduration/30m` +
+Recommends a 30 minute advanced workout that burns 350 calories if it is present or else it will recommend the next best alternative.
 
 === Undoing previous command : `undo`
 
