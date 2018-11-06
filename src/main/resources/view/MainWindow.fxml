@@ -13,7 +13,7 @@
 
 <?import javafx.scene.control.Label?>
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-         minWidth="950" minHeight="600" onCloseRequest="#handleExit">
+         minWidth="1200" minHeight="600" onCloseRequest="#handleExit">
   <icons>
     <Image url="@/images/workoutbook.png" />
   </icons>
@@ -63,6 +63,13 @@
               <Insets top="10" right="10" bottom="10" left="10" />
             </padding>
           </StackPane>
+
+          <VBox fx:id="currentAndTrack" minWidth="350" maxWidth="350" SplitPane.resizableWithParent="false">
+            <padding>
+              <Insets top="10" right="10" bottom="10" left="10" />
+            </padding>
+            <StackPane fx:id="currentAndTrackPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+          </VBox>
 
           <VBox fx:id="trackedDataList" minWidth="200" maxWidth="200" SplitPane.resizableWithParent="false">
             <padding>

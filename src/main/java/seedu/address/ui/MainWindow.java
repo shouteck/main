@@ -38,6 +38,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private BrowserPanel browserPanel;
     private WorkoutListPanel workoutListPanel;
+    private CurrentAndTrackPanel currentAndTrackPanel;
     private TrackedDataListPanel trackedDataListPanel;
     private Config config;
     private UserPrefs prefs;
@@ -58,6 +59,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane workoutListPanelPlaceholder;
+
+    @FXML
+    private StackPane currentAndTrackPanelPlaceholder;
 
     @FXML
     private StackPane trackedDataListPanelPlaceholder;
@@ -136,6 +140,9 @@ public class MainWindow extends UiPart<Stage> {
 
         workoutListPanel = new WorkoutListPanel(logic.getFilteredWorkoutList());
         workoutListPanelPlaceholder.getChildren().add(workoutListPanel.getRoot());
+
+        currentAndTrackPanel = new CurrentAndTrackPanel(logic.getFilteredTrackedData());
+        currentAndTrackPanelPlaceholder.getChildren().add(currentAndTrackPanel.getRoot());
 
         trackedDataListPanel = new TrackedDataListPanel(logic.getFilteredTrackedDataList());
         trackedDataListPanelPlaceholder.getChildren().add(trackedDataListPanel.getRoot());
