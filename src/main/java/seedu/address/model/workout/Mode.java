@@ -1,7 +1,5 @@
 package seedu.address.model.workout;
 
-import seedu.address.logic.parser.ParserUtil;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 

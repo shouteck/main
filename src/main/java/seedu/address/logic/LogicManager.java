@@ -3,9 +3,7 @@ package seedu.address.logic;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.Command;
@@ -14,7 +12,6 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.WorkoutBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
-import seedu.address.model.RecommendArguments;
 import seedu.address.model.workout.Parameter;
 import seedu.address.model.workout.Workout;
 
