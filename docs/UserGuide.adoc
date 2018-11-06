@@ -358,6 +358,7 @@ Type `recommend` in the command box, press kbd:[Enter] and you have <<fig-NoPref
 [[fig-NoPrefixRecommend]]
 .Recommended result with exactly the same properties as the workout presets in <<fig-UserProfileCard>>
 image::noprefixrecommend.PNG[width="450"]
+{nbsp} +
 
 *Recommend through the inputs in the command box*
 
