@@ -35,6 +35,7 @@ public class FilterCommandParser implements Parser<FilterCommand> {
                 PREFIX_EQUIPMENT)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_USAGE));
+
         }
 
         String trimmedArgs = args.trim();

@@ -181,7 +181,7 @@ Format: `filter type/TYPE duration/DURATION equipment/EQUIPMENT`
 ****
 * The search is case insensitive. e.g `filter type/strength` will match `filter type/STRENGTH`
 * The order of the keywords does not matter. e.g. `filter type/strength duration/20m` will match `filter duration/20m type/strength`
-* Duration, equipment, type are searched.
+* Three parameters: Duration, equipment, type are searched.
 ****
 
 Examples:
