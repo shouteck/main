@@ -130,7 +130,7 @@ public class EditCommand extends Command {
         Set<Tag> updatedTags = new HashSet<>();
         for (Tag entry: originalTags) {
             if (entry.tagName.equals("future") || entry.tagName.equals("current")
-                || entry.tagName.equals("completed")) {
+                    || entry.tagName.equals("completed")) {
             } else {
                 updatedTags.add(entry);
             }
@@ -199,7 +199,7 @@ public class EditCommand extends Command {
          */
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyNonNull(name, type, duration, difficulty, equipment, muscle, calories,
-            instruction, tags);
+                    instruction, tags);
         }
 
         public void setName(Name name) {
