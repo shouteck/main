@@ -1,12 +1,17 @@
 package systemtests;
 
+import static guitests.guihandles.WebViewUtil.waitUntilBrowserLoaded;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static seedu.address.ui.BrowserPanel.DEFAULT_PAGE;
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_INITIAL;
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_UPDATED;
+import static seedu.address.ui.UiPart.FXML_FILE_FOLDER;
 import static seedu.address.ui.testutil.GuiTestAssert.assertListMatching;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -18,6 +23,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
 
+import guitests.guihandles.BrowserPanelHandle;
 import guitests.guihandles.CommandBoxHandle;
 import guitests.guihandles.MainMenuHandle;
 import guitests.guihandles.MainWindowHandle;
@@ -25,6 +31,7 @@ import guitests.guihandles.ResultDisplayHandle;
 import guitests.guihandles.StatusBarFooterHandle;
 import guitests.guihandles.TrackedDataListPanelHandle;
 import guitests.guihandles.WorkoutListPanelHandle;
+import seedu.address.MainApp;
 import seedu.address.TestApp;
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.core.index.Index;
@@ -35,6 +42,7 @@ import seedu.address.logic.commands.SelectCommand;
 import seedu.address.model.Model;
 import seedu.address.model.WorkoutBook;
 import seedu.address.testutil.TypicalWorkouts;
+import seedu.address.ui.BrowserPanel;
 import seedu.address.ui.CommandBox;
 
 /**
@@ -64,6 +72,7 @@ public abstract class WorkoutBookSystemTest {
         testApp = setupHelper.setupApplication(this::getInitialData, getDataFileLocation());
         mainWindowHandle = setupHelper.setupMainWindowHandle();
 
+        waitUntilBrowserLoaded(getBrowserPanel());
         assertApplicationStartingStateIsCorrect();
     }
 
@@ -107,6 +116,10 @@ public abstract class WorkoutBookSystemTest {
         return mainWindowHandle.getMainMenu();
     }
 
+    public BrowserPanelHandle getBrowserPanel() {
+        return mainWindowHandle.getBrowserPanel();
+    }
+
     public StatusBarFooterHandle getStatusBarFooter() {
         return mainWindowHandle.getStatusBarFooter();
     }
@@ -126,6 +139,8 @@ public abstract class WorkoutBookSystemTest {
         clockRule.setInjectedClockToCurrentTime();
 
         mainWindowHandle.getCommandBox().run(command);
+
+        waitUntilBrowserLoaded(getBrowserPanel());
     }
 
     /**
@@ -174,39 +189,55 @@ public abstract class WorkoutBookSystemTest {
     }
 
     /**
-     * Calls {@code WorkoutListPanelHandle} and {@code StatusBarFooterHandle} to remember
+     * Calls {@code BrowserPanelHandle}, {@code WorkoutListPanelHandle} and {@code StatusBarFooterHandle} to remember
      * their current state.
      */
     private void rememberStates() {
         StatusBarFooterHandle statusBarFooterHandle = getStatusBarFooter();
+        getBrowserPanel().rememberUrl();
         statusBarFooterHandle.rememberSaveLocation();
         statusBarFooterHandle.rememberSyncStatus();
         getWorkoutListPanel().rememberSelectedWorkoutCard();
     }
 
     /**
-     * Asserts that the previously selected card is now deselected.
+     * Asserts that the previously selected card is now deselected and the browser's url remains displaying the details
+     * of the previously selected workout.
+     * @see BrowserPanelHandle#isUrlChanged()
      */
     protected void assertSelectedCardDeselected() {
+        assertFalse(getBrowserPanel().isUrlChanged());
         assertFalse(getWorkoutListPanel().isAnyCardSelected());
     }
 
     /**
-     * Asserts that only the card at {@code expectedSelectedCardIndex} is selected.
+     * Asserts that the browser's url is changed to display the details of the workout in the workout list panel at
+     * {@code expectedSelectedCardIndex}, and only the card at {@code expectedSelectedCardIndex} is selected.
+     * @see BrowserPanelHandle#isUrlChanged()
      * @see WorkoutListPanelHandle#isSelectedWorkoutCardChanged()
      */
     protected void assertSelectedCardChanged(Index expectedSelectedCardIndex) {
         getWorkoutListPanel().navigateToCard(getWorkoutListPanel().getSelectedCardIndex());
         String selectedCardName = getWorkoutListPanel().getHandleToSelectedCard().getName();
+        URL expectedUrl;
+        try {
+            expectedUrl = new URL(BrowserPanel.SEARCH_PAGE_URL + selectedCardName
+                    .replaceAll(" ", "%20").replaceAll("'", "%27"));
+        } catch (MalformedURLException mue) {
+            throw new AssertionError("URL expected to be valid.", mue);
+        }
+        assertEquals(expectedUrl, getBrowserPanel().getLoadedUrl());
 
         assertEquals(expectedSelectedCardIndex.getZeroBased(), getWorkoutListPanel().getSelectedCardIndex());
     }
 
     /**
-     * Asserts that the selected card in the workout list panel remain unchanged.
+     * Asserts that the browser's url and the selected card in the workout list panel remain unchanged.
+     * @see BrowserPanelHandle#isUrlChanged()
      * @see WorkoutListPanelHandle#isSelectedWorkoutCardChanged()
      */
     protected void assertSelectedCardUnchanged() {
+        assertFalse(getBrowserPanel().isUrlChanged());
         assertFalse(getWorkoutListPanel().isSelectedWorkoutCardChanged());
     }
 
@@ -252,6 +283,7 @@ public abstract class WorkoutBookSystemTest {
         assertEquals("", getCommandBox().getInput());
         assertEquals("", getResultDisplay().getText());
         assertListMatching(getWorkoutListPanel(), getModel().getFilteredWorkoutList());
+        assertEquals(MainApp.class.getResource(FXML_FILE_FOLDER + DEFAULT_PAGE), getBrowserPanel().getLoadedUrl());
         assertEquals(Paths.get(".").resolve(testApp.getStorageSaveLocation()).toString(),
                 getStatusBarFooter().getSaveLocation());
         assertEquals(SYNC_STATUS_INITIAL, getStatusBarFooter().getSyncStatus());
