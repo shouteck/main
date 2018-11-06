@@ -75,7 +75,7 @@ public class CurrentCommandTest {
         assertCommandFailure(currentCommand, model, commandHistory, Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
     }
 
-   /* @Test
+    /* @Test
     public void execute_validIndexFilteredList_success() throws CommandException {
         showWorkoutAtIndex(model, INDEX_EIGHTH_WORKOUT);
 
