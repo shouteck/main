@@ -58,20 +58,14 @@
             <StackPane fx:id="workoutListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
 
-          <StackPane fx:id="browserPlaceholder" prefWidth="340" >
-            <padding>
-              <Insets top="10" right="10" bottom="10" left="10" />
-            </padding>
-          </StackPane>
-
-          <VBox fx:id="currentAndTrack" minWidth="350" maxWidth="350" SplitPane.resizableWithParent="false">
+          <VBox fx:id="currentAndTrack" minWidth="350" prefWidth="500" SplitPane.resizableWithParent="false">
             <padding>
               <Insets top="10" right="10" bottom="10" left="10" />
             </padding>
             <StackPane fx:id="currentAndTrackPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
 
-          <VBox fx:id="trackedDataList" minWidth="200" maxWidth="200" SplitPane.resizableWithParent="false">
+          <VBox fx:id="trackedDataList" minWidth="300" maxWidth="300" SplitPane.resizableWithParent="false">
             <padding>
               <Insets top="10" right="10" bottom="10" left="10" />
             </padding>

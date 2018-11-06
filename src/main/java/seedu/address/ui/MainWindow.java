@@ -36,7 +36,7 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private BrowserPanel browserPanel;
+    //private BrowserPanel browserPanel;
     private WorkoutListPanel workoutListPanel;
     private CurrentAndTrackPanel currentAndTrackPanel;
     private TrackedDataListPanel trackedDataListPanel;
@@ -45,8 +45,8 @@ public class MainWindow extends UiPart<Stage> {
     private HelpWindow helpWindow;
     private ProfileWindow profileWindow;
 
-    @FXML
-    private StackPane browserPlaceholder;
+    //@FXML
+    //private StackPane browserPlaceholder;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -135,8 +135,8 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        browserPanel = new BrowserPanel();
-        browserPlaceholder.getChildren().add(browserPanel.getRoot());
+        //browserPanel = new BrowserPanel();
+        //browserPlaceholder.getChildren().add(browserPanel.getRoot());
 
         workoutListPanel = new WorkoutListPanel(logic.getFilteredWorkoutList());
         workoutListPanelPlaceholder.getChildren().add(workoutListPanel.getRoot());
@@ -225,9 +225,9 @@ public class MainWindow extends UiPart<Stage> {
         return workoutListPanel;
     }
 
-    void releaseResources() {
-        browserPanel.freeResources();
-    }
+    //void releaseResources() {
+        //browserPanel.freeResources();
+    //}
 
     @Subscribe
     private void handleShowHelpEvent(ShowHelpRequestEvent event) {
