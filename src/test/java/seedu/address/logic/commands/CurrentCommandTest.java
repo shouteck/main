@@ -9,7 +9,7 @@ import static seedu.address.logic.commands.CurrentCommand.MESSAGE_MULTIPLE_CURRE
 import static seedu.address.logic.commands.CurrentCommand.createEditedWorkout;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_WORKOUT;
-import static seedu.address.testutil.TypicalIndexes.INDEX_TENTH_WORKOUT;
+import static seedu.address.testutil.TypicalIndexes.INDEX_EIGHTH_WORKOUT;
 import static seedu.address.testutil.TypicalParameters.getTypicalTrackedDataList;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
@@ -45,9 +45,9 @@ public class CurrentCommandTest {
     @Test
     public void execute_validIndexUnfilteredList_success() throws CommandException {
 
-        Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_TENTH_WORKOUT.getZeroBased());
+        Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_EIGHTH_WORKOUT.getZeroBased());
         Workout editedWorkout = createEditedWorkout(currentWorkout);
-        CurrentCommand currentCommand = new CurrentCommand(INDEX_TENTH_WORKOUT);
+        CurrentCommand currentCommand = new CurrentCommand(INDEX_EIGHTH_WORKOUT);
 
         String expectedMessage = String.format(CurrentCommand.MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout);
 
@@ -62,7 +62,7 @@ public class CurrentCommandTest {
     @Test
     public void execute_preexistingCurrentWorkoutUnfilteredList_failure() {
         CurrentCommand.setCurrentWorkout(true);
-        CurrentCommand currentCommand = new CurrentCommand(INDEX_TENTH_WORKOUT);
+        CurrentCommand currentCommand = new CurrentCommand(INDEX_EIGHTH_WORKOUT);
 
         assertCommandFailure(currentCommand, model, commandHistory, MESSAGE_MULTIPLE_CURRENT_WORKOUT);
     }
@@ -77,7 +77,7 @@ public class CurrentCommandTest {
 
     @Test
     public void execute_validIndexFilteredList_success() throws CommandException {
-        showWorkoutAtIndex(model, INDEX_TENTH_WORKOUT);
+        showWorkoutAtIndex(model, INDEX_EIGHTH_WORKOUT);
 
         Workout editedWorkout = createEditedWorkout(model.getFilteredWorkoutList().get(INDEX_FIRST_WORKOUT.getZeroBased()));
         CurrentCommand currentCommand = new CurrentCommand(INDEX_FIRST_WORKOUT);
@@ -95,7 +95,7 @@ public class CurrentCommandTest {
     @Test
     public void execute_preexistingCurrentWorkoutFilteredList_failure() {
         CurrentCommand.setCurrentWorkout(true);
-        showWorkoutAtIndex(model, INDEX_TENTH_WORKOUT);
+        showWorkoutAtIndex(model, INDEX_EIGHTH_WORKOUT);
 
         CurrentCommand currentCommand = new CurrentCommand(INDEX_FIRST_WORKOUT);
 
