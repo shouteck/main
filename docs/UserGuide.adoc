@@ -351,7 +351,7 @@ Format: `recommend`
 
 [[fig-UserProfileCard]]
 .After you have provided the appropriate properties in your profile.
-image::userprofilecard.PNG[width="450"]
+image::userprofilecard.PNG[width="500"]
 {nbsp} +
 Type `recommend` in the command box, press kbd:[Enter] and you have <<fig-NoPrefixRecommend>>. +
 {nbsp} +
