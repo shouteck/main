@@ -274,7 +274,7 @@ public class ProfileWindowManager {
      * Returns true if the workout's difficulty is more difficult than the user's difficulty
      */
     public boolean isMoreDifficult(String workout, String user) {
-        if (user.matches("any")) return false;
+        if (user.matches("any")) { return false; }
         if (workout.matches("beginner")) {
             return false;
         }

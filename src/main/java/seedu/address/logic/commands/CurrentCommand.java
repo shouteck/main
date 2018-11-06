@@ -136,13 +136,15 @@ public class CurrentCommand extends Command {
             }
             if (!calories.matches("any")) {
                 if (profileWindowManager.isHigherCalories(profileWindowManager.convertStringIntoInt(profileWindowManager
-                        .trimmedCalories(updatedCalories.toString())), profileWindowManager.convertStringIntoInt(calories))) {
+                        .trimmedCalories(updatedCalories.toString())),
+                        profileWindowManager.convertStringIntoInt(calories))) {
                     higherCalories = true;
                 }
             }
             if (!duration.matches("any")) {
                 if (profileWindowManager.isHigherDuration(profileWindowManager.convertStringIntoInt(profileWindowManager
-                        .trimmedDuration(updatedDuration.toString())), profileWindowManager.convertStringIntoInt(duration))) {
+                        .trimmedDuration(updatedDuration.toString())),
+                        profileWindowManager.convertStringIntoInt(duration))) {
                     higherDuration = true;
                 }
             }
