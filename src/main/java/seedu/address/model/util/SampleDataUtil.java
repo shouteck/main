@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import seedu.address.logic.parser.Prefix;
 import seedu.address.model.ReadOnlyTrackedData;
 import seedu.address.model.ReadOnlyTrackedDataList;
 import seedu.address.model.ReadOnlyWorkoutBook;
@@ -18,6 +19,7 @@ import seedu.address.model.workout.Equipment;
 import seedu.address.model.workout.Instruction;
 import seedu.address.model.workout.Muscle;
 import seedu.address.model.workout.Name;
+import seedu.address.model.workout.Parameter;
 import seedu.address.model.workout.Remark;
 import seedu.address.model.workout.Type;
 import seedu.address.model.workout.Workout;
@@ -58,9 +60,22 @@ public class SampleDataUtil {
         return sampleWb;
     }
 
-    public static ReadOnlyTrackedDataList getEmptyTrackedDataList() {
-        TrackedDataList emptyTrackedDataList = new TrackedDataList();
-        return emptyTrackedDataList;
+    public static Parameter[] getSampleParameters() {
+        return new Parameter[] {
+            new Parameter(new Prefix("name/"), "commando"),
+                new Parameter(new Prefix("duration/"), "20m"),
+                new Parameter(new Prefix("difficulty/"), "advanced"),
+                new Parameter(new Prefix("equipment/"), "dumbbell"),
+                new Parameter(new Prefix("calories/"), "150"),
+        };
+    }
+
+    public static ReadOnlyTrackedDataList getSampleTrackedDataList() {
+        TrackedDataList sampleTdl = new TrackedDataList();
+        for(Parameter sampleParameter : getSampleParameters()){
+            sampleTdl.addParameter(sampleParameter);
+        }
+        return sampleTdl;
     }
 
     public static ReadOnlyTrackedData getEmptyTrackedData() {
