@@ -63,16 +63,16 @@ public class SampleDataUtil {
     public static Parameter[] getSampleParameters() {
         return new Parameter[] {
             new Parameter(new Prefix("name/"), "commando"),
-                new Parameter(new Prefix("duration/"), "20m"),
-                new Parameter(new Prefix("difficulty/"), "advanced"),
-                new Parameter(new Prefix("equipment/"), "dumbbell"),
-                new Parameter(new Prefix("calories/"), "150"),
+                    new Parameter(new Prefix("duration/"), "20m"),
+                    new Parameter(new Prefix("difficulty/"), "advanced"),
+                    new Parameter(new Prefix("equipment/"), "dumbbell"),
+                    new Parameter(new Prefix("calories/"), "150"),
         };
     }
 
     public static ReadOnlyTrackedDataList getSampleTrackedDataList() {
         TrackedDataList sampleTdl = new TrackedDataList();
-        for(Parameter sampleParameter : getSampleParameters()){
+        for (Parameter sampleParameter : getSampleParameters()) {
             sampleTdl.addParameter(sampleParameter);
         }
         return sampleTdl;
