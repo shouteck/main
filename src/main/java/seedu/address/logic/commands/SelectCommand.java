@@ -43,15 +43,15 @@ public class SelectCommand extends Command {
         requireNonNull(model);
 
         List<Parameter> filteredParameters = model.getFilteredTrackedDataList();
-        Parameter parameter = filteredParameters.get(targetIndex.getZeroBased());
-        List<Parameter> parameters = new ArrayList<>();
-        parameters.add(parameter);
-        predicate = new WorkoutContainsParameterPredicate(parameters);
 
         if (targetIndex.getZeroBased() >= filteredParameters.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PARAMETER_DISPLAYED_INDEX);
         }
 
+        Parameter parameter = filteredParameters.get(targetIndex.getZeroBased());
+        List<Parameter> parameters = new ArrayList<>();
+        parameters.add(parameter);
+        predicate = new WorkoutContainsParameterPredicate(parameters);
         EventsCenter.getInstance().post(new JumpToListRequestEvent(targetIndex));
         model.updateFilteredTrackedData(predicate);
 

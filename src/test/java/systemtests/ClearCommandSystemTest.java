@@ -36,12 +36,6 @@ public class ClearCommandSystemTest extends WorkoutBookSystemTest {
         assertCommandSuccess(command, expectedResultMessage, new ModelManager());
         assertSelectedCardUnchanged();
 
-        /* Case: selects first card in workout list and clears workout book -> cleared and no card selected */
-        executeCommand(UndoCommand.COMMAND_WORD); // restores the original workout book
-        selectWorkout(Index.fromOneBased(1));
-        assertCommandSuccess(ClearCommand.COMMAND_WORD);
-        assertSelectedCardDeselected();
-
         /* Case: filters the workout list before clearing -> entire workout book cleared */
         executeCommand(UndoCommand.COMMAND_WORD); // restores the original workout book
         showWorkoutsWithName(KEYWORD_MATCHING_MEIER);

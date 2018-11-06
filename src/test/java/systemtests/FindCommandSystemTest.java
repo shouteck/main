@@ -152,16 +152,6 @@ public class FindCommandSystemTest extends WorkoutBookSystemTest {
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find while a person is selected -> selected card deselected */
-        showAllWorkouts();
-        selectWorkout(Index.fromOneBased(1));
-        assertFalse(getWorkoutListPanel().getHandleToSelectedCard().getName()
-                .equals(DANIEL_WORKOUT.getName().fullName));
-        command = FindCommand.COMMAND_WORD + " Daniel";
-        ModelHelper.setFilteredList(expectedModel, DANIEL_WORKOUT);
-        assertCommandSuccess(command, expectedModel);
-        assertSelectedCardDeselected();
-
         /* Case: find person in empty address book -> 0 persons found */
         deleteAllWorkouts();
         command = FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_MEIER;

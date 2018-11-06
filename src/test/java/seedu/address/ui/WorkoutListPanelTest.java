@@ -50,18 +50,6 @@ public class WorkoutListPanelTest extends GuiUnitTest {
         }
     }
 
-    @Test
-    public void handleJumpToListRequestEvent() {
-        initUi(TYPICAL_WORKOUTS);
-        postNow(JUMP_TO_SECOND_EVENT);
-        guiRobot.pauseForHuman();
-
-        WorkoutCardHandle expectedWorkout = workoutListPanelHandle.getWorkoutCardHandle(INDEX_SECOND_WORKOUT
-                .getZeroBased());
-        WorkoutCardHandle selectedWorkout = workoutListPanelHandle.getHandleToSelectedCard();
-        assertCardEquals(expectedWorkout, selectedWorkout);
-    }
-
     /**
      * Verifies that creating and deleting large number of workouts in {@code WorkoutListPanel} requires lesser than
      * {@code CARD_CREATION_AND_DELETION_TIMEOUT} milliseconds to execute.
