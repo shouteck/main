@@ -73,6 +73,7 @@ public class ModelManager extends ComponentManager implements Model {
         filteredParameters = new FilteredList<>(versionedTrackedDataList.getTrackedDataList());
         versionedTrackedData = new VersionedTrackedData(trackedData);
         filteredTrackedData = new FilteredList<>(versionedTrackedData.getTrackedData());
+        updateFilteredTrackedData(PREDICATE_SHOW_NO_WORKOUTS);
     }
 
     public ModelManager() {
@@ -208,7 +209,7 @@ public class ModelManager extends ComponentManager implements Model {
         if (hasParameter) {
             versionedTrackedData.addWorkout(workout);
         }
-        updateFilteredTrackedData(PREDICATE_SHOW_ALL_WORKOUTS);
+        updateFilteredTrackedData(PREDICATE_SHOW_NO_WORKOUTS);
         indicateTrackedDataChanged();
     }
 
