@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 
 import java.util.Arrays;
+import java.util.StringTokenizer;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.FilterCommand;
@@ -46,10 +47,14 @@ public class FilterCommandParser implements Parser<FilterCommand> {
         String durationKeywords = argMultimap.getValue(PREFIX_DURATION).get();
         String equipmentKeywords = argMultimap.getValue(PREFIX_EQUIPMENT).get();
 
+        StringTokenizer tk = new StringTokenizer(typeKeywords);
+        StringTokenizer dk = new StringTokenizer(durationKeywords);
+        StringTokenizer ek = new StringTokenizer(equipmentKeywords);
+
         return new FilterCommand(
-                new DurationPredicate(Arrays.asList(durationKeywords)),
-                new TypePredicate(Arrays.asList(typeKeywords)),
-                new EquipmentPredicate(Arrays.asList(equipmentKeywords)));
+                new DurationPredicate(Arrays.asList(dk.nextToken(" "))),
+                new TypePredicate(Arrays.asList(tk.nextToken(" "))),
+                new EquipmentPredicate(Arrays.asList(ek.nextToken(" "))));
 
     }
 

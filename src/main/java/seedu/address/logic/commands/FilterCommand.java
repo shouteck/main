@@ -28,7 +28,8 @@ public class FilterCommand extends Command {
             + PREFIX_TYPE + "strength "
             + PREFIX_DURATION + "20m ";
 
-    public static final String MESSAGE_NOT_FILTERED = "At least one field to filter must be provided.";
+    public static final String MESSAGE_NOT_FILTERED = "All fields to filter must be provided.";
+    public static final String MESSAGE_CONSTRAINTS = "The keyword should not be more than one word";
 
     private final TypePredicate typePredicate;
     private final EquipmentPredicate equipmentPredicate;
