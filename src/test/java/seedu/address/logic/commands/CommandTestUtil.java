@@ -70,6 +70,7 @@ public class CommandTestUtil {
     public static final String VALID_TAG_NIGHT = "night";
     public static final String VALID_TAG_FUTURE = "future";
     public static final String VALID_TAG_CURRENT = "current";
+    public static final String VALID_TAG_COMPLETED = "completed";
 
     public static final String NAME_DESC_AMY_WORKOUT = " " + PREFIX_NAME + VALID_NAME_AMY_WORKOUT;
     public static final String NAME_DESC_BOB_WORKOUT = " " + PREFIX_NAME + VALID_NAME_BOB_WORKOUT;
