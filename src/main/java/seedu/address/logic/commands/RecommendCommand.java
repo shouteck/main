@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Random;
 
 import seedu.address.commons.core.EventsCenter;
-import seedu.address.commons.events.ui.JumpToListRequestEvent;
+import seedu.address.commons.events.ui.JumpToRecommendListRequestEvent;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -77,7 +77,7 @@ public class RecommendCommand extends Command {
         if (recommendArguments.isModeNull() || (!recommendArguments.isModeNull() && recommendArguments.getMode()
                 .isModeSingle())) {
             int targetIndex = getTargetIndex(filteredWorkoutList, filteredInternalList);
-            EventsCenter.getInstance().post(new JumpToListRequestEvent(targetIndex));
+            EventsCenter.getInstance().post(new JumpToRecommendListRequestEvent(targetIndex));
         } else {
             Mode mode = recommendArguments.getMode();
             if (mode.isModeAll()) {
