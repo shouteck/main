@@ -13,7 +13,7 @@ import seedu.address.model.workout.EquipmentPredicate;
 import seedu.address.model.workout.TypePredicate;
 
 /**
- * WIP
+ * filter the workouts with duration, type and equipment
  */
 public class FilterCommand extends Command {
     public static final String COMMAND_WORD = "filter";
