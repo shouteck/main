@@ -14,10 +14,7 @@ TO BE CHANGED
 == Summary of contributions
 
 * *Major enhancement*: added *the memory feature which enables users to manage future, current and completed workouts*
-** [.underline]#What it does#: This allows the WorkoutBook user add new workouts with an automatic state tag of `future`. In order to set 
-a workout to current, he uses the `current` command which changes the state tag to `current`. He can then finish the workout by setting
-the state tag to `completed` using the `complete` command. However, he can always choose to reactivate the workout by changing its state
-tag to `current` using the `current` command again.
+** [.underline]#What it does#: This allows the WorkoutBook user add new workouts with an automatic state tag of `future`. In order to set a workout to current, he uses the `current` command which changes the state tag to `current`. He can then finish the workout by setting the state tag to `completed` using the `complete` command. However, he can always choose to reactivate the workout by changing its state tag to `current` using the `current` command again.
 ** [.underline]#Justification#: This feature was implemented to allow WorkoutBook users to remember easily the relevance of each workout
 according to their desired criteria. `future` reminds the user that they are untouched. `current` informs the user that he is focussing 
 on this specific one. `completed` tells the user that he has finished this workout before. This hence allows the user to avoid 
