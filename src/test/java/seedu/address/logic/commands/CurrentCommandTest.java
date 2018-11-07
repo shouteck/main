@@ -2,9 +2,7 @@ package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
-//import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showWorkoutAtIndex;
+import static seedu.address.logic.commands.CommandTestUtil.*;
 import static seedu.address.logic.commands.CurrentCommand.MESSAGE_MULTIPLE_CURRENT_WORKOUT;
 //import static seedu.address.logic.commands.CurrentCommand.createEditedWorkout;
 import static seedu.address.testutil.TypicalIndexes.INDEX_EIGHTH_WORKOUT;
@@ -19,13 +17,13 @@ import org.junit.Test;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
-//import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.TrackedData;
 import seedu.address.model.UserPrefs;
-//import seedu.address.model.WorkoutBook;
-//import seedu.address.model.workout.Workout;
+import seedu.address.model.workout.Workout;
+import seedu.address.testutil.WorkoutBuilder;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
@@ -42,11 +40,19 @@ public class CurrentCommandTest {
         CurrentCommand.setCurrentWorkout(false);
     }
 
-    /*@Test
+    @Test
     public void execute_validIndexUnfilteredList_success() throws CommandException {
 
         Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_EIGHTH_WORKOUT.getZeroBased());
-        Workout editedWorkout = createEditedWorkout(currentWorkout);
+        WorkoutBuilder workoutInList = new WorkoutBuilder(currentWorkout);
+        // Change the parameters to be John's - this might mean having to remove the workout from TypicalWorkout and typicalWorkoutsWorkoutBook.xml
+        Workout editedWorkout = workoutInList.withName(VALID_NAME_JOHN_WORKOUT).withType(VALID_TYPE_JOHN_WORKOUT)
+                .withDuration(VALID_DURATION_JOHN_WORKOUT)
+                .withDifficulty(VALID_DIFFICULTY_JOHN_WORKOUT).withEquipment(VALID_EQUIPMENT_JOHN_WORKOUT)
+                .withMuscle(VALID_MUSCLE_JOHN_WORKOUT)
+                .withCalories(VALID_CALORIES_JOHN_WORKOUT).withInstruction(VALID_INSTRUCTION_JOHN_WORKOUT)
+                .withTags(VALID_TAG_CURRENT).withRemark(VALID_REMARK_JOHN_WORKOUT).build();
+//        Workout editedWorkout = createEditedWorkout(currentWorkout);
         CurrentCommand currentCommand = new CurrentCommand(INDEX_EIGHTH_WORKOUT);
 
         String expectedMessage = String.format(CurrentCommand.MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout);
@@ -57,7 +63,7 @@ public class CurrentCommandTest {
         expectedModel.commitModel();
 
         assertCommandSuccess(currentCommand, model, commandHistory, expectedMessage, expectedModel);
-    }*/
+    }
 
     @Test
     public void execute_preexistingCurrentWorkoutUnfilteredList_failure() {

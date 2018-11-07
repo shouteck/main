@@ -2,20 +2,29 @@ package seedu.address.testutil;
 
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_JOHN_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_JOHN_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_JOHN_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_JOHN_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_JOHN_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_JOHN_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FUTURE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_JOHN_WORKOUT;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -65,11 +74,11 @@ public class TypicalWorkouts {
             .withDifficulty("intermediate").withEquipment("free weights")
             .withMuscle("chest").withCalories("175")
             .withInstruction("6 sets of bench press, 6 reps per set of 70% max").build();
-    public static final Workout JOHN_WORKOUT = new WorkoutBuilder().withName("John Pauline's workout")
-            .withType("cardio").withDuration("45m")
-            .withDifficulty("intermediate").withEquipment("NIL")
-            .withMuscle("legs").withCalories("300")
-            .withInstruction("45 minutes slow jog").withTags("future").build();
+//    public static final Workout JOHN_WORKOUT = new WorkoutBuilder().withName("John Pauline's workout")
+//            .withType("cardio").withDuration("45m")
+//            .withDifficulty("intermediate").withEquipment("NIL")
+//            .withMuscle("legs").withCalories("300")
+//            .withInstruction("45 minutes slow jog").withTags("future").build();
 
     // Manually added
     public static final Workout HOON_WORKOUT = new WorkoutBuilder().withName("Hoon Meier's workout")
@@ -88,12 +97,17 @@ public class TypicalWorkouts {
             .withType(VALID_TYPE_AMY_WORKOUT).withDuration(VALID_DURATION_AMY_WORKOUT)
             .withDifficulty(VALID_DIFFICULTY_AMY_WORKOUT).withEquipment(VALID_EQUIPMENT_AMY_WORKOUT)
             .withMuscle(VALID_MUSCLE_AMY_WORKOUT).withCalories(VALID_CALORIES_AMY_WORKOUT)
-            .withInstruction(VALID_INSTRUCTION_AMY_WORKOUT).withTags("future").build();
+            .withInstruction(VALID_INSTRUCTION_AMY_WORKOUT).withTags(VALID_TAG_FUTURE).build();
     public static final Workout BOB_WORKOUT = new WorkoutBuilder().withName(VALID_NAME_BOB_WORKOUT)
             .withType(VALID_TYPE_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT)
             .withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT).withEquipment(VALID_EQUIPMENT_BOB_WORKOUT)
             .withMuscle(VALID_MUSCLE_BOB_WORKOUT).withCalories(VALID_CALORIES_BOB_WORKOUT)
-            .withInstruction(VALID_INSTRUCTION_BOB_WORKOUT).withTags("future").build();
+            .withInstruction(VALID_INSTRUCTION_BOB_WORKOUT).withTags(VALID_TAG_FUTURE).build();
+    public static final Workout JOHN_WORKOUT = new WorkoutBuilder().withName(VALID_NAME_JOHN_WORKOUT)
+            .withType(VALID_TYPE_JOHN_WORKOUT).withDuration(VALID_DURATION_JOHN_WORKOUT)
+            .withDifficulty(VALID_DIFFICULTY_JOHN_WORKOUT).withEquipment(VALID_EQUIPMENT_JOHN_WORKOUT)
+            .withMuscle(VALID_MUSCLE_JOHN_WORKOUT).withCalories(VALID_CALORIES_JOHN_WORKOUT)
+            .withInstruction(VALID_INSTRUCTION_JOHN_WORKOUT).withTags(VALID_TAG_FUTURE).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
