@@ -86,7 +86,7 @@ Format: `add name/NAME type/TYPE duration/DURATION difficulty/DIFFICULTY equipme
 
 
 [TIP]
-A workout can have any number of tags (minimally 1)
+A workout can have any number of tags (minimally 1 which is the state tag)
 
 [NOTE]
 ====
@@ -113,6 +113,7 @@ Format: `edit INDEX name/NAME [type/TYPE] [duration/DURATION] [difficulty/DIFFIC
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the workout except the state tag will be removed i.e adding of tags is not cumulative.
 * You can remove all the workout's tags except the state tag by typing `tag/` without specifying any tags after it.
+* Regarding the editing of tags, parameters using words reserved for states i.e. "future", "current" or "completed" will be ignored.
 ****
 
 Examples:
@@ -121,6 +122,8 @@ Examples:
 Edits the type and duration of the 1st workout to be `strength` and `20m` respectively.
 * `edit 2 name/Arnold's workout tag/` +
 Edits the name of the 2nd workout to be `Arnold's workout` and clears all existing tags except the state tag.
+* `edit 3 type/cardio tag/current tag/night difficulty/advanced` +
+Edits the third workout to have `cardio` as the type, tags continue to have the existing state tag and `night` and lastly, `advanced` as the difficulty.
 
 === Changing a workout to current : `current`
 
@@ -136,7 +139,7 @@ Format: `current INDEX`
 Examples:
 
 * `current 1` +
-Changes the state tag of the 1st workout to be `current`. +
+Changes the state tag of the 1st workout to be `current`.
 
 [NOTE]
 ====
