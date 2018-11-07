@@ -87,7 +87,7 @@ Format: `add name/NAME type/TYPE duration/DURATION difficulty/DIFFICULTY equipme
 
 
 [TIP]
-A workout can have any number of tags (minimally 1)
+A workout can have any number of tags (minimally 1 which is the state tag)
 
 [NOTE]
 ====
@@ -114,6 +114,7 @@ Format: `edit INDEX name/NAME [type/TYPE] [duration/DURATION] [difficulty/DIFFIC
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the workout except the state tag will be removed i.e adding of tags is not cumulative.
 * You can remove all the workout's tags except the state tag by typing `tag/` without specifying any tags after it.
+* Regarding the editing of tags, parameters using words reserved for states i.e. "future", "current" or "completed" will be ignored.
 ****
 
 Examples:
@@ -122,7 +123,10 @@ Examples:
 Edits the type and duration of the 1st workout to be `strength` and `20m` respectively.
 * `edit 2 name/Arnold's workout tag/` +
 Edits the name of the 2nd workout to be `Arnold's workout` and clears all existing tags except the state tag.
+* `edit 3 type/cardio tag/current tag/night difficulty/advanced` +
+Edits the third workout to have `cardio` as the type, tags continue to have the existing state tag and `night` and lastly, `advanced` as the difficulty.
 
+// tag::current[]
 === Changing a workout to current : `current`
 
 Changes a workout to be the current workout in the workout book. +
@@ -137,14 +141,16 @@ Format: `current INDEX`
 Examples:
 
 * `current 1` +
-Changes the state tag of the 1st workout to be `current`. +
+Changes the state tag of the 1st workout to be `current`.
 
 [NOTE]
 ====
 The current command will receive a warning when the indexed workout's difficulty is harder than the your indicated difficulty, duration is higher than the your indicated duration or calories is higher than the your indicated calories in your user profile under workout presets. +
 Simply click the btn:[Yes] button if you want to proceed.
 ====
+//end::current[]
 
+// tag::complete[]
 === Changing a workout to completed : `complete`
 
 Changes a workout to be a completed workout in the workout book. +
@@ -159,6 +165,7 @@ Examples:
 
 * `complete 1` +
 Changes the state tag of the 1st workout to be `completed`.
+//end::complete[]
 
 // tag::tracking[]
 === Tracking specific parameters in completed workouts: `track`
@@ -181,6 +188,7 @@ Any completed workout after this command is entered, that has the parameter `mus
 Stops tracking the parameter `calories/100`, if it is currently being tracked.
 // tag::tracking[]
 
+//tag::filter[]
 === Filtering workouts by type, duration, and equipment: `filter`
 
 Filters workouts whose types, durations, equipments contain any of the given keywords. +
@@ -189,7 +197,8 @@ Format: `filter type/TYPE duration/DURATION equipment/EQUIPMENT`
 ****
 * The search is case insensitive. e.g `filter type/strength` will match `filter type/STRENGTH`
 * The order of the keywords does not matter. e.g. `filter type/strength duration/20m` will match `filter duration/20m type/strength`
-* Duration, equipment, type are searched.
+* Three parameters: Duration, equipment, type are searched.
+* If the keywords are more than one word, only the first word will be filtered.
 ****
 
 Examples:
@@ -197,6 +206,13 @@ Examples:
 * `filter duration/20m equipment/dumbbell type/strength` +
 Returns any workout having duration of `20m`, with equipment of `dumbbell` and of type `strength`.
 
+* `filter duration/20m type/strength equipment/dumbbell` is the same as `filter duration/20m
+equipment/dumbbell type/strength`.
+
+* `filter duration/20m type/strength equipment/free weights` is the same as `filter duration/20m
+type/strength equipment/free`.
+
+//end::filter[]
 
 === Locating workouts by name: `find`
 
@@ -238,6 +254,7 @@ Deletes the 2nd workout in the workout book.
 `delete 1` +
 Deletes the 1st workout in the results of the `find` command.
 
+//tag::remark[]
 === Remarking a workout : `remark`
 
 Remarks the specified workout from the workout book. +
@@ -254,6 +271,8 @@ Examples:
 Remarks the 1st workout as `This workout trains bicep`.
 * `remark 2 r/` +
 Clears the remark of the 2nd workout.
+
+//end::remark[]
 
 === Selecting a workout : `select`
 
@@ -275,6 +294,8 @@ Selects the 2nd workout in the workout book.
 `select 1` +
 Selects the 1st workout in the results of the `find` command.
 
+// tag::sort[]
+
 === Sorting a workout : `sort`
 
 Sorts the workouts. +
@@ -295,6 +316,8 @@ Sorts a list of all workouts in the workout book based on names after `add` a ne
 `sort` +
 Sorts workout after `delete` a workout.
 
+// end::sort[]
+
 === Listing entered commands : `history`
 
 Lists all the commands that you have entered in reverse chronological order. +
@@ -305,15 +328,21 @@ Format: `history`
 Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and next input respectively in the command box.
 ====
 
+//tag::profile[]
+
 === Viewing user profile : `profile`
 
-Shows the user profile. The user profile consists of username, height, weight, BMI. It also contains the workout preset for users such as calories, difficulty and duration which the user can set base on their preference. +
+Shows the user profile. The user profile consists of username, gender, height, weight, BMI. It also contains the workout preset for users such as calories, difficulty and duration which the user can set base on their preference. +
 Format: `profile`
 
 [NOTE]
 ====
 Pressing the kbd:[F2] key will display the user profile as well!
 ====
+
+//end::profile[]
+
+//tag::modify[]
 
 === Modifying user profile : `modify`
 
@@ -337,6 +366,8 @@ Examples:
 Change your user profile's username to apple.
 * `modify username/apple height/1.82` +
 Change your user profile's username to apple, height to 1.82m and update the BMI accordingly.
+
+//tag::modify[]
 
 === Recommending a workout : `recommend`
 
@@ -485,6 +516,8 @@ Format: `exit`
 Workout book data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
+// tag::commandsummary[]
+
 == Command Summary
 
 [%header,cols=2*]
@@ -546,3 +579,5 @@ There is no need to save manually.
 |Undo
 |`undo`
 |===
+
+// end::commandsummary[]

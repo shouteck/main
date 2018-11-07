@@ -45,7 +45,7 @@ public class CurrentCommand extends Command {
     public static final String MESSAGE_CURRENT_WORKOUT_FAILURE = "Fail to make the workout current.";
     public static final String MESSAGE_DUPLICATE_CURRENT_WORKOUT = "This workout is already current.";
     public static final String MESSAGE_MULTIPLE_CURRENT_WORKOUT = "There is already a current workout. Complete that "
-            + "before trying again.";
+            + "before attempting again.";
     public static final String MESSAGE_MORE_DIFFICULT = "This workout is more difficult than your indicated workout "
             + "difficulty.\n";
     public static final String MESSAGE_HIGHER_CALORIES = "This workout requires more calories to be burnt than your "
