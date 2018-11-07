@@ -340,7 +340,16 @@ Change your user profile's username to apple, height to 1.82m and update the BMI
 
 === Recommending a workout : `recommend`
 
-Recommends workout from the existing workouts.
+Recommends workout from the workout book.
+
+[NOTE]
+====
+Recommend command only recommends workout from the current workout list.
+====
+
+[TIP]
+To recommend from the entire list of workouts, you should first type `list` in the command box and press kbd:[Enter] to
+retrieve the entire list of workouts.
 
 There are two ways to use the `recommend` command.
 
