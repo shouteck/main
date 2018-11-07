@@ -28,9 +28,10 @@ TO BE CHANGED
 * *Other contributions*:
 
 ** Project management:
-*** Managed releases `v1.3` on GitHub
-*** Assisted in the morphing of the product from AB4 to Workout book
+*** Managed and facilitated releases `v1.2 to v1.3` on GitHub
+*** Assisted in the morphing of the product from AB4 to Workout book (https://github.com[#6], https://github.com[#7], https://github.com[#9], https://github.com[#13], https://github.com[#15], https://github.com[#18], https://github.com[#21], https://github.com[#25], https://github.com[#32], https://github.com[#35], https://github.com[#37], https://github.com[#41], https://github.com[#43])
 ** Enhancements to existing features:
+*** Wrote additional tests for existing features to increase coverage from 88% to 92% (https://github.com/CS2113-AY1819S1-T13-5/main/pull/204[#204])
 ** Documentation:
 *** Improved the content of the User Guide by collating the command summary in a table format (https://github.com/CS2113-AY1819S1-T13-5/main/pull/164[#164]) and the Developer Guide to reflect new functions of the WorkoutBook (https://github.com/CS2113-AY1819S1-T13-5/main/pull/172[#172])
 ** Tools:
