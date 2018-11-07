@@ -22,7 +22,7 @@ public class ProfileWindow extends UiPart<Stage> {
     /**
      * Creates a new ProfileWindow.
      *
-     * @param root Stage to use as the root of the ProfileWindow.
+     * @param root Stage to use as the root of the ProfileWindow. 
      */
     public ProfileWindow(Stage root) {
 
