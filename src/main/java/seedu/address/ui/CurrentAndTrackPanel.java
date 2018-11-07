@@ -11,30 +11,30 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.workout.Workout;
 
 /**
- * Panel containing the list of workouts.
+ * Panel containing the current workout and tracked data.
  */
-public class WorkoutListPanel extends UiPart<Region> {
-    private static final String FXML = "WorkoutListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(WorkoutListPanel.class);
+public class CurrentAndTrackPanel extends UiPart<Region> {
+    private static final String FXML = "CurrentAndTrackPanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(CurrentAndTrackPanel.class);
 
     @FXML
-    private ListView<Workout> workoutListView;
+    private ListView<Workout> currentAndTrackView;
 
-    public WorkoutListPanel(ObservableList<Workout> workoutList) {
+    public CurrentAndTrackPanel(ObservableList<Workout> trackedData) {
         super(FXML);
-        setConnections(workoutList);
+        setConnections(trackedData);
         registerAsAnEventHandler(this);
     }
 
-    private void setConnections(ObservableList<Workout> workoutList) {
-        workoutListView.setItems(workoutList);
-        workoutListView.setCellFactory(listView -> new WorkoutListViewCell());
+    private void setConnections(ObservableList<Workout> trackedData) {
+        currentAndTrackView.setItems(trackedData);
+        currentAndTrackView.setCellFactory(listView -> new CurrentAndTrackViewCell());
     }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Workout} using a {@code WorkoutCard}.
      */
-    class WorkoutListViewCell extends ListCell<Workout> {
+    class CurrentAndTrackViewCell extends ListCell<Workout> {
         @Override
         protected void updateItem(Workout workout, boolean empty) {
             super.updateItem(workout, empty);

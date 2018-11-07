@@ -73,19 +73,6 @@ public class DeleteCommandSystemTest extends WorkoutBookSystemTest {
         command = DeleteCommand.COMMAND_WORD + " " + invalidIndex;
         assertCommandFailure(command, MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
 
-        /* --------------------- Performing delete operation while a workout card is selected ---------------------- */
-
-        /* Case: delete the selected workout -> workout list panel selects the workout before the deleted workout */
-        showAllWorkouts();
-        expectedModel = getModel();
-        Index selectedIndex = getLastIndex(expectedModel);
-        Index expectedIndex = Index.fromZeroBased(selectedIndex.getZeroBased() - 1);
-        selectWorkout(selectedIndex);
-        command = DeleteCommand.COMMAND_WORD + " " + selectedIndex.getOneBased();
-        deletedWorkout = removeWorkout(expectedModel, selectedIndex);
-        expectedResultMessage = String.format(MESSAGE_DELETE_WORKOUT_SUCCESS, deletedWorkout);
-        assertCommandSuccess(command, expectedModel, expectedResultMessage, expectedIndex);
-
         /* --------------------------------- Performing invalid delete operation ------------------------------------ */
 
         /* Case: invalid index (0) -> rejected */

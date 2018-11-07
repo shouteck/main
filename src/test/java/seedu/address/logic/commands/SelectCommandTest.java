@@ -5,10 +5,10 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showWorkoutAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_WORKOUT;
+import static seedu.address.testutil.TypicalParameters.getTypicalTrackedDataList;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
 import org.junit.Rule;
@@ -21,7 +21,6 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.TrackedData;
-import seedu.address.model.TrackedDataList;
 import seedu.address.model.UserPrefs;
 import seedu.address.ui.testutil.EventsCollectorRule;
 
@@ -32,15 +31,15 @@ public class SelectCommandTest {
     @Rule
     public final EventsCollectorRule eventsCollectorRule = new EventsCollectorRule();
 
-    private Model model = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new TrackedData(),
+    private Model model = new ModelManager(getTypicalWorkoutBook(), getTypicalTrackedDataList(), new TrackedData(),
             new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalWorkoutBook(), new TrackedDataList(), new TrackedData(),
-            new UserPrefs());
+    private Model expectedModel = new ModelManager(getTypicalWorkoutBook(), getTypicalTrackedDataList(),
+            new TrackedData(), new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        Index lastWorkoutIndex = Index.fromOneBased(model.getFilteredWorkoutList().size());
+        Index lastWorkoutIndex = Index.fromOneBased(model.getFilteredTrackedDataList().size());
 
         assertExecutionSuccess(INDEX_FIRST_WORKOUT);
         assertExecutionSuccess(INDEX_THIRD_WORKOUT);
@@ -49,29 +48,9 @@ public class SelectCommandTest {
 
     @Test
     public void execute_invalidIndexUnfilteredList_failure() {
-        Index outOfBoundsIndex = Index.fromOneBased(model.getFilteredWorkoutList().size() + 1);
+        Index outOfBoundsIndex = Index.fromOneBased(model.getFilteredTrackedDataList().size() + 1);
 
-        assertExecutionFailure(outOfBoundsIndex, Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
-    }
-
-    @Test
-    public void execute_validIndexFilteredList_success() {
-        showWorkoutAtIndex(model, INDEX_FIRST_WORKOUT);
-        showWorkoutAtIndex(expectedModel, INDEX_FIRST_WORKOUT);
-
-        assertExecutionSuccess(INDEX_FIRST_WORKOUT);
-    }
-
-    @Test
-    public void execute_invalidIndexFilteredList_failure() {
-        showWorkoutAtIndex(model, INDEX_FIRST_WORKOUT);
-        showWorkoutAtIndex(expectedModel, INDEX_FIRST_WORKOUT);
-
-        Index outOfBoundsIndex = INDEX_SECOND_WORKOUT;
-        // ensures that outOfBoundIndex is still in bounds of workout book list
-        assertTrue(outOfBoundsIndex.getZeroBased() < model.getWorkoutBook().getWorkoutList().size());
-
-        assertExecutionFailure(outOfBoundsIndex, Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
+        assertExecutionFailure(outOfBoundsIndex, Messages.MESSAGE_INVALID_PARAMETER_DISPLAYED_INDEX);
     }
 
     @Test
@@ -102,7 +81,7 @@ public class SelectCommandTest {
      */
     private void assertExecutionSuccess(Index index) {
         SelectCommand selectCommand = new SelectCommand(index);
-        String expectedMessage = String.format(SelectCommand.MESSAGE_SELECT_WORKOUT_SUCCESS, index.getOneBased());
+        String expectedMessage = String.format(SelectCommand.MESSAGE_SELECT_PARAMETER_SUCCESS, index.getOneBased());
 
         assertCommandSuccess(selectCommand, model, commandHistory, expectedMessage, expectedModel);
 

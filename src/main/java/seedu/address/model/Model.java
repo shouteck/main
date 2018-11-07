@@ -15,6 +15,9 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Workout> PREDICATE_SHOW_ALL_WORKOUTS = unused -> true;
 
+    /** {@code Predicate} that always evaluate to false */
+    Predicate<Workout> PREDICATE_SHOW_NO_WORKOUTS = unused -> false;
+
     /** {@code Predicate} that always evaluate to true */
     Predicate<Parameter> PREDICATE_SHOW_ALL_PARAMETERS = unused -> true;
 
