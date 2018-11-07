@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Random;
 
 import seedu.address.commons.core.EventsCenter;
-import seedu.address.commons.events.ui.JumpToListRequestEvent;
+import seedu.address.commons.events.ui.JumpToRecommendListRequestEvent;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -68,20 +68,19 @@ public class RecommendCommand extends Command {
         requireNonNull(model);
 
         List<Workout> filteredWorkoutList = model.getFilteredWorkoutList();
-        List<Workout> filteredInternalList;
+        List<Workout> filteredInternalList = model.getFinalFilteredInternalList(recommendArguments);
 
-        filteredInternalList = model.getFinalFilteredInternalList(recommendArguments);
         if (filteredInternalList.isEmpty()) {
             throw new CommandException(MESSAGE_NO_SUCH_WORKOUT);
         }
 
         if (recommendArguments.isModeNull() || (!recommendArguments.isModeNull() && recommendArguments.getMode()
-                .toString().equals("single"))) {
+                .isModeSingle())) {
             int targetIndex = getTargetIndex(filteredWorkoutList, filteredInternalList);
-            EventsCenter.getInstance().post(new JumpToListRequestEvent(targetIndex));
+            EventsCenter.getInstance().post(new JumpToRecommendListRequestEvent(targetIndex));
         } else {
             Mode mode = recommendArguments.getMode();
-            if (mode.toString().equals("all")) {
+            if (mode.isModeAll()) {
                 WorkoutsPredicate workoutsPredicate = new WorkoutsPredicate(filteredInternalList);
                 model.updateFilteredWorkoutList(workoutsPredicate);
             } else {

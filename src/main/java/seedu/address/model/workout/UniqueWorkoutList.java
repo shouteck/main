@@ -41,12 +41,7 @@ public class UniqueWorkoutList implements Iterable<Workout> {
         List<Workout> finalFilteredInternalList;
         ArrayList<Boolean> optionalsList = recommendArguments.getOptionalsList();
 
-        int totalOptionals = 0;
-        for (int i = 0; i < optionalsList.size(); i++) {
-            if (optionalsList.get(i)) {
-                totalOptionals++;
-            }
-        }
+        int totalOptionals = recommendArguments.getTotalOptionals();
 
         finalFilteredInternalList = getFilteredInternalList(recommendArguments,
                 new ArrayList<>(List.of(true, true, true)));
