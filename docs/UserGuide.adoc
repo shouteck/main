@@ -187,6 +187,7 @@ Format: `filter type/TYPE duration/DURATION equipment/EQUIPMENT`
 * The search is case insensitive. e.g `filter type/strength` will match `filter type/STRENGTH`
 * The order of the keywords does not matter. e.g. `filter type/strength duration/20m` will match `filter duration/20m type/strength`
 * Three parameters: Duration, equipment, type are searched.
+* If the keywords are more than one word, only the first word will be filtered.
 ****
 
 Examples:
@@ -194,6 +195,11 @@ Examples:
 * `filter duration/20m equipment/dumbbell type/strength` +
 Returns any workout having duration of `20m`, with equipment of `dumbbell` and of type `strength`.
 
+* `filter duration/20m type/strength equipment/dumbbell` is the same as `filter duration/20m
+equipment/dumbbell type/strength`.
+
+* `filter duration/20m type/strength equipment/free weights` is the same as `filter duration/20m
+type/strength equipment/free`.
 
 === Locating workouts by name: `find`
 
