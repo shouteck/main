@@ -52,7 +52,7 @@ public class CurrentCommandTest {
         CurrentCommand.setCurrentWorkout(false);
     }
 
-   /* @Test
+    /* @Test
     public void execute_validIndexUnfilteredList_success() {
         Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_EIGHTH_WORKOUT.getZeroBased());
         WorkoutBuilder workoutInList = new WorkoutBuilder(currentWorkout);
