@@ -348,7 +348,7 @@ image::RecommendCommandSD.PNG[width="900"]
 // end::recommend[]
 
 === User Profile
-// tag::profile
+// tag::profile[]
 ==== Current implementation
 The profile window is first being loaded by loading the `_profileWindow.fxml file_`. Thereafter, once the user request to open the profile window, it will then process it.
 
@@ -382,7 +382,7 @@ The profile window is firstly being accelerated by the key `F2`. After pressing 
 .Interactions inside `UI` component when user presses `F2`
 image::F2Profile.PNG[width="700"]
 
-// end::profile
+// end::profile[]
 
 
 // tag::TR
