@@ -384,6 +384,8 @@ image::F2Profile.PNG[width="700"]
 
 // end::profile[]
 
+
+// tag::TR
 === Traversing and remark feature
 //tag::traversing
 ==== Current Implementation
@@ -392,26 +394,35 @@ It implements following commands: +
 
 * `SortCommand()` -Sorts the current workout book
 
-* `FilterCommand()` -Filters the workout book
+* `FilterCommand()` -Filters the workout book with three parameters (duration, equipment, type)
 
 * `SelectCommand()` -Select the workout by index number
 
 * `RemarkCommand()` -Remark the workout by index number
 
-Given below is an example usage scenario and how the traversing mechanism behaves at each step.
+Given below is an example usage scenario and how the traversing and remark mechanism behaves at each step.
 
-Step 1. The user launches the application, `add` some workouts to the workout book, then `sort` the workout.
-The sort command calls the `sortFilteredWorkoutList()` of `Model` to sort the workout based on the names in alphabetical order.
+Step 1. The user launches the application, `add` some workouts to the workout book, by executing `add name/commando workout
+type/strength, cardio duration/20m difficulty/advanced equipment/dumbbell, bench muscle/bicep, tricep calories/150
+instruction/set 1: bicep curl reps: 4-6 set 2: tricep extension reps: 4-6 tag/heavy`, then `sort` the workout.
+The sort command calls the `sortFilteredWorkoutList()` of `Model` to sort the workout based on the names in ascending alphabetical order.
 
-Step 2. The user executes `filter` to find the workouts that contain `duration`, `equipment` and `type`.
+Step 2. The user executes `filter` to find the workouts with parameters of `duration`, `equipment` and `type`.
+i.e. `filter type/strength duration/20m equipment/dumbbell` The filter command uses the functional interface Predicate to test
+whether the workouts contain keywords, and return the workouts that include keywords. The `DurationPredicate`, `EquipmentPredicate`,
+and `TypePredicate` will be generated based on the UserInput which parsed by `FilterCommandParser`, and then the Predicates
+will be passed to `Filtercommand`. It collects the workouts that contain all three keywords by Predicate chaining.
 
-Step 3. The user executes `remark` to remark a workout
+Step 3. The user executes `remark` to remark a workout. In remark command, the createRemarkedCommand
+is called to create a workout which is remarked.Then, it calls `updateWorkout()` of `Model` to update the workout that is remarked.
+Next, the remark command calls `updateFilteredWorkoutList()` of `Model` to update the list of workouts.
 
-image::traversingSequenceDiagram.png[width="650"]
+image::traversingSequenceDiagram.png[width="800"]
 
-image::HighLevelRemarkSequenceDiagrams.png[width="650"]
+image::HighLevelRemarkSequenceDiagrams.png[width="800"]
 
 // end::traversing
+// end::TR
 
 === Memory feature
 //tag::memory
