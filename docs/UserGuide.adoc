@@ -304,6 +304,8 @@ Format: `history`
 Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and next input respectively in the command box.
 ====
 
+//tag::profile[]
+
 === Viewing user profile : `profile`
 
 Shows the user profile. The user profile consists of username, height, weight, BMI. It also contains the workout preset for users such as calories, difficulty and duration which the user can set base on their preference. +
@@ -313,6 +315,10 @@ Format: `profile`
 ====
 Pressing the kbd:[F2] key will display the user profile as well!
 ====
+
+//end::profile[]
+
+//tag::modify[]
 
 === Modifying user profile : `modify`
 
@@ -336,6 +342,8 @@ Examples:
 Change your user profile's username to apple.
 * `modify username/apple height/1.82` +
 Change your user profile's username to apple, height to 1.82m and update the BMI accordingly.
+
+//tag::modify[]
 
 === Recommending a workout : `recommend`
 
@@ -423,6 +431,8 @@ Format: `exit`
 Workout book data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
+// tag::commandsummary[]
+
 == Command Summary
 
 [%header,cols=2*]
@@ -484,3 +494,5 @@ There is no need to save manually.
 |Undo
 |`undo`
 |===
+
+// end::commandsummary[]
