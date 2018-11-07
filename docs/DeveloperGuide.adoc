@@ -327,25 +327,40 @@ image::UndoRedoActivityDiagram.png[width="650"]
 // tag::recommend[]
 === Recommending a workout
 ==== Current implementation
-The user input is parsed into invoking a constructor based on the prefixes in the user input in `_RecommendCommandParser_`.There are only three acceptable prefixes. (i.e. `difficulty`, `calories`, `duration`) The instance created is then passed to `_RecommendCommand_` which uses `getFilteredWorkoutList()` and `getFilteredInternalList()` methods of `Model` to generate a random workout to recommend to the user.
+There are several functionalities in the recommend command and to invoke certain functionalities, different combination
+of inputs are considered.When the user keys in the input in the command box, the user input is parsed in
+RecommendCommandParser.An instance of RecommendArguments class will be instantiated corresponding to the user input and
+this instance is then passed to RecommendCommand in the Logic component.
 
-The sequence diagram of this entire process can be seen below:
+In order to recommend a suitable workout for a given combination of inputs which are stored in the RecommendArguments
+instance, we must first find out what are the suitable workouts present in our current workout list.
 
-[[fig-RecommendCommandSD]]
-.Interactions inside `Logic` component for the *`recommend difficulty/beginner`* command.
-image::RecommendCommandSD.PNG[width="900"]
+The instance of RecommendArguments is passed through a getFinalFilteredInternalList() method in the Model component.
+This method works by filtering the current workout list to match the user inputs as much as possible to return a
+filtered list instead of mutating the original copy.
 
+Here, we introduce the notion of optional prefixes where users are allowed to indicate whether certain properties are
+mandatory or good to have to have in their workouts. By allowing users the flexibility to decide the mandatory
+properties they want in a workout, we can cut down the number of steps taken by a user to arrive at their optimal
+recommended workout. The worst case scenario of finding an optimal workout takes approximately 2^(n) steps,
+where n is the number of properties which is 3 in this case.
+
+There are different levels in what workouts are to be recommended and considered. The algorithm ensures that the workout
+recommended will be of the highest level or the greatest match.
+// end::recommend[]
+
+// tag::recommend-considerations[]
 ==== Design Considerations
 
-==== Aspect: How recommend executes
+==== Aspect: Recommendation Systems
 
-* **Alternative 1 (current choice):** Filters the workout list based on user's input and randomly retrieves a workout from that filtered list.
-** Pros: Easy to implement.
-** Cons: May not reflect what the user actually wants.
-* **Alternative 2:** Use machine learning algorithms.
-** Pros: Able to recommend a workout that is more accurate to what the user wants.
-** Cons: Complicated to implement. Requires a huge storage to store and record the substantial amount of data that comes from the interactions between the user and the application.
-// end::recommend[]
+* **Alternative 1 (current choice):** Recommend based on user's input.
+** Pros: The user has more control over what they want in the recommended workout, and the implementation is simple.
+** Cons: The user has to take more steps to successfully get a recommended workout of their choice. (Always has to key in the inputs)
+* **Alternative 2:** Recommend based on user's interactions with the system.
+** Pros: The optimal workout will be recommended immediately without supplying any inputs.
+** Cons: Implementation requires processing big data which has to be stored in a database and all of these processes are complicated.
+// end::recommend-considerations[]
 
 === User Profile
 // tag::profile

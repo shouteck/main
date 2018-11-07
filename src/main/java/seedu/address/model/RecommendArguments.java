@@ -194,4 +194,15 @@ public class RecommendArguments {
                 durationOptionality.get()));
     }
 
+    public int getTotalOptionals() {
+        int totalOptionals = 0;
+        ArrayList<Boolean> optionalsList = getOptionalsList();
+        for (int i = 0; i < optionalsList.size(); i++) {
+            if (optionalsList.get(i)) {
+                totalOptionals++;
+            }
+        }
+        return totalOptionals;
+    }
+
 }
