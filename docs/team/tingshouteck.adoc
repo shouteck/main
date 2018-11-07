@@ -1,0 +1,66 @@
+= Ting Shou Teck - Project Portfolio
+:site-section: AboutUs
+:imagesDir: ../images
+:stylesDir: ../stylesheets
+
+== PROJECT: WorkoutBook
+
+---
+
+== Overview
+
+TO BE CHANGED
+
+== Summary of contributions
+
+* *Major enhancement*: added *the ability to recommend workouts*
+** What it does: allows the user to find workouts that have the respective `calories`, `duration` and `difficulty` if specified.
+User can also find workouts that have the respective `calories`, `duration` and `difficulty` under the workout presets in the user profile.
+** Justification: User is able to conveniently find workouts to start if the user knows the respective `calories`, `duration` and `difficulty` the user would want in a new workout.
+** Highlights: This feature required a in-depth analysis of design alternatives where I implemented a builder pattern to accommodate the vast amount of different combinations of constructors that have to called.
+Moreover, I have to decide on a meaningful way of expressing user inputs on the CLI so it is intuitive to the user.
+** Credits: _{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}_
+
+* *Minor enhancement*: WIP
+
+* *Code contributed*: [https://nuscs2113-ay1819s1.github.io/dashboard/#=undefined&search=shouteck[Project Code Dashboard]]
+
+* *Other contributions*:
+
+** Project management:
+*** Managed releases `v1.1` - `v1.2` (2 releases) on GitHub
+** Enhancements to existing features:
+*** WIP
+*** WIP
+** Documentation:
+*** WIP
+** Community:
+*** WIP
+** Tools:
+*** WIP
+
+_{you can add/remove categories in the list above}_
+
+== Contributions to the User Guide
+
+
+|===
+|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+|===
+
+include::../UserGuide.adoc[tag=undoredo]
+
+== Contributions to the Developer Guide
+
+|===
+|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|===
+
+include::../DeveloperGuide.adoc[tag=undoredo]
+
+
+== PROJECT: PowerPointLabs
+
+---
+
+_{Optionally, you may include other projects in your portfolio.}_
