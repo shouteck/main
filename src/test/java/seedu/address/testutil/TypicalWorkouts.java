@@ -74,11 +74,6 @@ public class TypicalWorkouts {
             .withDifficulty("intermediate").withEquipment("free weights")
             .withMuscle("chest").withCalories("175")
             .withInstruction("6 sets of bench press, 6 reps per set of 70% max").build();
-//    public static final Workout JOHN_WORKOUT = new WorkoutBuilder().withName("John Pauline's workout")
-//            .withType("cardio").withDuration("45m")
-//            .withDifficulty("intermediate").withEquipment("NIL")
-//            .withMuscle("legs").withCalories("300")
-//            .withInstruction("45 minutes slow jog").withTags("future").build();
 
     // Manually added
     public static final Workout HOON_WORKOUT = new WorkoutBuilder().withName("Hoon Meier's workout")
