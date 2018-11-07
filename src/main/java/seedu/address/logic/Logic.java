@@ -30,6 +30,9 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of parameters */
     ObservableList<Parameter> getFilteredTrackedDataList();
 
+    /** Returns an unmodifiable view of the filtered list of tracked data */
+    ObservableList<Workout> getFilteredTrackedData();
+
     /** Returns the list of input entered by the user, encapsulated in a {@code ListElementPointer} object */
     ListElementPointer getHistorySnapshot();
 }

@@ -41,18 +41,18 @@ public class CurrentCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1 ";
 
-    private static final String MESSAGE_CURRENT_WORKOUT_SUCCESS = "Current Workout: %1$s";
-    private static final String MESSAGE_CURRENT_WORKOUT_FAILURE = "Fail to make the workout current.";
-    private static final String MESSAGE_DUPLICATE_CURRENT_WORKOUT = "This workout is already current.";
-    private static final String MESSAGE_MULTIPLE_CURRENT_WORKOUT = "There is already a current workout. Complete that "
+    public static final String MESSAGE_CURRENT_WORKOUT_SUCCESS = "Current Workout: %1$s";
+    public static final String MESSAGE_CURRENT_WORKOUT_FAILURE = "Fail to make the workout current.";
+    public static final String MESSAGE_DUPLICATE_CURRENT_WORKOUT = "This workout is already current.";
+    public static final String MESSAGE_MULTIPLE_CURRENT_WORKOUT = "There is already a current workout. Complete that "
             + "before trying again.";
-    private static final String MESSAGE_MORE_DIFFICULT = "This workout is more difficult than your indicated workout "
+    public static final String MESSAGE_MORE_DIFFICULT = "This workout is more difficult than your indicated workout "
             + "difficulty.\n";
-    private static final String MESSAGE_HIGHER_CALORIES = "This workout requires more calories to be burnt than your "
+    public static final String MESSAGE_HIGHER_CALORIES = "This workout requires more calories to be burnt than your "
             + "preferred calories.\n";
-    private static final String MESSAGE_HIGHER_DURATION = "This workout will take longer than your preferred duration."
+    public static final String MESSAGE_HIGHER_DURATION = "This workout will take longer than your preferred duration."
             + "\n";
-    private static final String MESSAGE_CONTINUE = "Do you still want to make this workout current?";
+    public static final String MESSAGE_CONTINUE = "Do you still want to make this workout current?";
 
     private static boolean currentWorkout;
 
@@ -94,7 +94,7 @@ public class CurrentCommand extends Command {
      * Creates and returns a {@code Workout} with the details of {@code workoutToEdit}
      * edited with {@code editWorkoutDescriptor}.
      */
-    private Workout createEditedWorkout(Workout workoutToEdit) throws CommandException {
+    public static Workout createEditedWorkout(Workout workoutToEdit) throws CommandException {
         assert workoutToEdit != null;
         Name updatedName = workoutToEdit.getName();
         Type updatedType = workoutToEdit.getType();
@@ -136,14 +136,14 @@ public class CurrentCommand extends Command {
             }
             if (!calories.matches("any")) {
                 if (profileWindowManager.isHigherCalories(profileWindowManager.convertStringIntoInt(profileWindowManager
-                        .trimmedCalories(updatedCalories.toString())),
+                                .trimmedCalories(updatedCalories.toString())),
                         profileWindowManager.convertStringIntoInt(calories))) {
                     higherCalories = true;
                 }
             }
             if (!duration.matches("any")) {
                 if (profileWindowManager.isHigherDuration(profileWindowManager.convertStringIntoInt(profileWindowManager
-                        .trimmedDuration(updatedDuration.toString())),
+                                .trimmedDuration(updatedDuration.toString())),
                         profileWindowManager.convertStringIntoInt(duration))) {
                     higherDuration = true;
                 }
@@ -185,7 +185,7 @@ public class CurrentCommand extends Command {
      * @param duration boolean to check if the user's indicated duration is higher than the workout's duration
      * @return the appropriate pop up message
      */
-    private String popUpMessage(boolean difficulty, boolean calories, boolean duration) {
+    private static String popUpMessage(boolean difficulty, boolean calories, boolean duration) {
         if ((!(difficulty || calories)) && duration) {
             return MESSAGE_HIGHER_DURATION + MESSAGE_CONTINUE;
         } else if ((!(difficulty || duration)) && calories) {
@@ -194,16 +194,16 @@ public class CurrentCommand extends Command {
             return MESSAGE_MORE_DIFFICULT + MESSAGE_CONTINUE;
         } else if ((difficulty && calories) && (!duration)) {
             return "This workout is more difficult than your indicated workout difficulty and requires more calories to"
-                + " be burnt than your preferred calories.\n" + MESSAGE_CONTINUE;
+                    + " be burnt than your preferred calories.\n" + MESSAGE_CONTINUE;
         } else if ((difficulty && duration) && (!calories)) {
             return "This workout is more difficult than your indicated workout difficulty and will take longer than "
-                + "your preferred duration.\n" + MESSAGE_CONTINUE;
+                    + "your preferred duration.\n" + MESSAGE_CONTINUE;
         } else if ((calories && duration) && (!difficulty)) {
             return "This workout requires more calories to be burnt than your preferred calories and will take longer "
-                + "than your preferred duration.\n" + MESSAGE_CONTINUE;
+                    + "than your preferred duration.\n" + MESSAGE_CONTINUE;
         } else {
             return "This workout is more difficult than your indicated workout difficulty and requires more calories to"
-                + " be burnt than your preferred calories and will take longer than your preferred duration.\n"
+                    + " be burnt than your preferred calories and will take longer than your preferred duration.\n"
                     + MESSAGE_CONTINUE;
         }
     }

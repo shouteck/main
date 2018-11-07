@@ -160,6 +160,7 @@ Examples:
 * `complete 1` +
 Changes the state tag of the 1st workout to be `completed`.
 
+// tag::tracking[]
 === Tracking specific parameters in completed workouts: `track`
 Tracks user-specified parameters in workouts that are marked complete via the `complete` command.
 Format: `track SUBCOMMAND PREFIX/VALUE`
@@ -178,6 +179,7 @@ Starts tracking the parameter `muscle/bicep` in completed workouts. +
 Any completed workout after this command is entered, that has the parameter `muscle/bicep` present, will be recorded.
 * `track stop calories/100` +
 Stops tracking the parameter `calories/100`, if it is currently being tracked.
+// tag::tracking[]
 
 === Filtering workouts by type, duration, and equipment: `filter`
 
@@ -303,8 +305,6 @@ Format: `history`
 Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and next input respectively in the command box.
 ====
 
-// tag::undoredo[]
-
 === Viewing user profile : `profile`
 
 Shows the user profile. The user profile consists of username, height, weight, BMI. It also contains the workout preset for users such as calories, difficulty and duration which the user can set base on their preference. +
@@ -409,6 +409,8 @@ Recommends a 10 minute intermediate workout if there exist this workout or else 
 Recommends three 10 minute beginner workouts that burns 125 calories if there exist these workouts or else it will recommend the next best alternative.
 * `recommend mode/all ocalories/160 odifficulty/advanced oduration/10m` +
 Recommends all the 10 minute advanced workouts that burns 160 calories if there exist these workouts or else it will recommend the next best alternative.
+
+// tag::undoredo[]
 
 === Undoing previous command : `undo`
 

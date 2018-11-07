@@ -36,16 +36,17 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private BrowserPanel browserPanel;
+    //private BrowserPanel browserPanel;
     private WorkoutListPanel workoutListPanel;
+    private CurrentAndTrackPanel currentAndTrackPanel;
     private TrackedDataListPanel trackedDataListPanel;
     private Config config;
     private UserPrefs prefs;
     private HelpWindow helpWindow;
     private ProfileWindow profileWindow;
 
-    @FXML
-    private StackPane browserPlaceholder;
+    //@FXML
+    //private StackPane browserPlaceholder;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -58,6 +59,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane workoutListPanelPlaceholder;
+
+    @FXML
+    private StackPane currentAndTrackPanelPlaceholder;
 
     @FXML
     private StackPane trackedDataListPanelPlaceholder;
@@ -131,11 +135,14 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        browserPanel = new BrowserPanel();
-        browserPlaceholder.getChildren().add(browserPanel.getRoot());
+        //browserPanel = new BrowserPanel();
+        //browserPlaceholder.getChildren().add(browserPanel.getRoot());
 
         workoutListPanel = new WorkoutListPanel(logic.getFilteredWorkoutList());
         workoutListPanelPlaceholder.getChildren().add(workoutListPanel.getRoot());
+
+        currentAndTrackPanel = new CurrentAndTrackPanel(logic.getFilteredTrackedData());
+        currentAndTrackPanelPlaceholder.getChildren().add(currentAndTrackPanel.getRoot());
 
         trackedDataListPanel = new TrackedDataListPanel(logic.getFilteredTrackedDataList());
         trackedDataListPanelPlaceholder.getChildren().add(trackedDataListPanel.getRoot());
@@ -216,10 +223,6 @@ public class MainWindow extends UiPart<Stage> {
 
     public WorkoutListPanel getWorkoutListPanel() {
         return workoutListPanel;
-    }
-
-    void releaseResources() {
-        browserPanel.freeResources();
     }
 
     @Subscribe
