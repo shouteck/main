@@ -13,7 +13,7 @@ TO BE CHANGED
 
 == Summary of contributions
 
-* *Major enhancement*: added *the user profile for users to use to key in their basic information and workout preference*
+* *Major enhancement*: added *the user profile for users to use to key in their basic information and workout preference*.
 ** [.underline]#What it does#: This allows the WorkoutBook user to view and modify their user profile details and workout preference anytime.
 ** [.underline]#Justification#: This feature was implemented to allow WorkoutBook users to keep a user profile and their workout preference so that when they choose their workouts, it will show a warning if the workout they want to do does not meet their workout preference.
 ** [.underline]#Highlights#: This feature affects the current and recommend command that are already available. The workout preference will be used in these 2 commands to provide a warning pop up message for the current command and the recommend command can be base on the user's preference.
@@ -29,9 +29,9 @@ TO BE CHANGED
 
 ** Project management:
 *** Managed and facilitated releases `v1.2 to v1.3` on GitHub
-*** Assisted in the morphing of the product from AB4 to Workout book (https://github.com[#6], https://github.com[#7], https://github.com[#9], https://github.com[#13], https://github.com[#15], https://github.com[#18], https://github.com[#21], https://github.com[#25], https://github.com[#32], https://github.com[#35], https://github.com[#37], https://github.com[#41], https://github.com[#43])
+*** Assisted in the morphing of the product from AB4 to Workout book.
 ** Enhancements to existing features:
-*** Wrote additional tests for existing features to increase coverage from 88% to 92% (https://github.com/CS2113-AY1819S1-T13-5/main/pull/204[#204])
+*** Wrote additional tests for existing features to increase coverage from 77.6% to 80.8% (https://github.com/CS2113-AY1819S1-T13-5/main/pull/205[#205])
 ** Documentation:
 *** Improved the content of the User Guide by collating the command summary in a table format (https://github.com/CS2113-AY1819S1-T13-5/main/pull/164[#164]) and the Developer Guide to reflect new functions of the WorkoutBook (https://github.com/CS2113-AY1819S1-T13-5/main/pull/172[#172])
 ** Tools:
