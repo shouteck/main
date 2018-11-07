@@ -75,12 +75,12 @@ public class RecommendCommand extends Command {
         }
 
         if (recommendArguments.isModeNull() || (!recommendArguments.isModeNull() && recommendArguments.getMode()
-                .toString().equals("single"))) {
+                .isModeSingle())) {
             int targetIndex = getTargetIndex(filteredWorkoutList, filteredInternalList);
             EventsCenter.getInstance().post(new JumpToListRequestEvent(targetIndex));
         } else {
             Mode mode = recommendArguments.getMode();
-            if (mode.toString().equals("all")) {
+            if (mode.isModeAll()) {
                 WorkoutsPredicate workoutsPredicate = new WorkoutsPredicate(filteredInternalList);
                 model.updateFilteredWorkoutList(workoutsPredicate);
             } else {

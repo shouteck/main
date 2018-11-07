@@ -153,10 +153,18 @@ public class RecommendCommandParserTest {
     public void parse_noFieldsPresent_success() throws IOException {
         // No fields
         ProfileWindowManager profileWindowManager = ProfileWindowManager.getInstance();
-        RecommendArguments expectedRecommendArguments = new RecommendArguments.Builder()
-                .withCalories(profileWindowManager.extractCalories(), Optional.of(false))
-                .withDifficulty(profileWindowManager.extractDifficulty(), Optional.of(false))
-                .withDuration(profileWindowManager.extractDuration(), Optional.of(false)).build();
+        RecommendArguments.Builder expectedRecommendArgumentsBuilder = new RecommendArguments.Builder();
+        if (!profileWindowManager.isCaloriesAny()) {
+            expectedRecommendArgumentsBuilder.withCalories(profileWindowManager.extractCalories(), Optional.of(false));
+        }
+        if (!profileWindowManager.isDifficultyAny()) {
+            expectedRecommendArgumentsBuilder.withDifficulty(profileWindowManager.extractDifficulty(),
+                    Optional.of(false));
+        }
+        if (!profileWindowManager.isDurationAny()) {
+            expectedRecommendArgumentsBuilder.withDuration(profileWindowManager.extractDuration(), Optional.of(false));
+        }
+        RecommendArguments expectedRecommendArguments = expectedRecommendArgumentsBuilder.build();
         assertParseSuccess(parser, " ", new RecommendCommand(expectedRecommendArguments));
     }
 
