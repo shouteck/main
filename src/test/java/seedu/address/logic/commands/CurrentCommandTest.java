@@ -2,6 +2,16 @@ package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_JOHN_WORKOUT;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_JOHN_WORKOUT;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_JOHN_WORKOUT;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_JOHN_WORKOUT;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_JOHN_WORKOUT;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_JOHN_WORKOUT;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_JOHN_WORKOUT;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_REMARK_JOHN_WORKOUT;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_CURRENT;
+//import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_JOHN_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 //import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showWorkoutAtIndex;
@@ -24,8 +34,8 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.TrackedData;
 import seedu.address.model.UserPrefs;
-//import seedu.address.model.WorkoutBook;
 //import seedu.address.model.workout.Workout;
+//import seedu.address.testutil.WorkoutBuilder;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
@@ -42,11 +52,17 @@ public class CurrentCommandTest {
         CurrentCommand.setCurrentWorkout(false);
     }
 
-    /*@Test
-    public void execute_validIndexUnfilteredList_success() throws CommandException {
-
+    /* @Test
+    public void execute_validIndexUnfilteredList_success() {
         Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_EIGHTH_WORKOUT.getZeroBased());
-        Workout editedWorkout = createEditedWorkout(currentWorkout);
+        WorkoutBuilder workoutInList = new WorkoutBuilder(currentWorkout);
+        Workout editedWorkout = workoutInList.withName(VALID_NAME_JOHN_WORKOUT).withType(VALID_TYPE_JOHN_WORKOUT)
+                .withDuration(VALID_DURATION_JOHN_WORKOUT)
+                .withDifficulty(VALID_DIFFICULTY_JOHN_WORKOUT).withEquipment(VALID_EQUIPMENT_JOHN_WORKOUT)
+                .withMuscle(VALID_MUSCLE_JOHN_WORKOUT)
+                .withCalories(VALID_CALORIES_JOHN_WORKOUT).withInstruction(VALID_INSTRUCTION_JOHN_WORKOUT)
+                .withTags(VALID_TAG_CURRENT).withRemark(VALID_REMARK_JOHN_WORKOUT).build();
+
         CurrentCommand currentCommand = new CurrentCommand(INDEX_EIGHTH_WORKOUT);
 
         String expectedMessage = String.format(CurrentCommand.MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout);
