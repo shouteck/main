@@ -10,7 +10,7 @@ public interface ReadOnlyTrackedData {
 
     /**
      * Returns an unmodifiable view of a tracked data workoutbook.
-     * This list will not contain any duplicate workout.
+     * This list will can contain duplicate workouts.
      */
     ObservableList<Workout> getTrackedData();
 

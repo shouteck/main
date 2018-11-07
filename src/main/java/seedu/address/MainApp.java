@@ -119,7 +119,7 @@ public class MainApp extends Application {
             if (!trackedDataListOptional.isPresent()) {
                 logger.info("Data file not found. Will be starting with a empty TrackedDataList");
             }
-            initialTrackedDataList = trackedDataListOptional.orElseGet(SampleDataUtil::getEmptyTrackedDataList);
+            initialTrackedDataList = trackedDataListOptional.orElseGet(SampleDataUtil::getSampleTrackedDataList);
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. Will be starting with an empty TrackedDataList");
             initialTrackedDataList = new TrackedDataList();

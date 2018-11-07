@@ -3,11 +3,9 @@ package seedu.address.ui;
 import static java.time.Duration.ofMillis;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
-import static seedu.address.testutil.EventsUtil.postNow;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkouts;
 import static seedu.address.ui.testutil.GuiTestAssert.assertCardDisplaysWorkout;
-import static seedu.address.ui.testutil.GuiTestAssert.assertCardEquals;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -48,18 +46,6 @@ public class WorkoutListPanelTest extends GuiUnitTest {
             assertCardDisplaysWorkout(expectedWorkout, actualCard);
             assertEquals(Integer.toString(i + 1) + ". ", actualCard.getId());
         }
-    }
-
-    @Test
-    public void handleJumpToListRequestEvent() {
-        initUi(TYPICAL_WORKOUTS);
-        postNow(JUMP_TO_SECOND_EVENT);
-        guiRobot.pauseForHuman();
-
-        WorkoutCardHandle expectedWorkout = workoutListPanelHandle.getWorkoutCardHandle(INDEX_SECOND_WORKOUT
-                .getZeroBased());
-        WorkoutCardHandle selectedWorkout = workoutListPanelHandle.getHandleToSelectedCard();
-        assertCardEquals(expectedWorkout, selectedWorkout);
     }
 
     /**

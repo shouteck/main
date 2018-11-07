@@ -8,6 +8,7 @@ public class Messages {
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command";
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
     public static final String MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX = "The workout index provided is invalid";
+    public static final String MESSAGE_INVALID_PARAMETER_DISPLAYED_INDEX = "The parameter index provided is invalid";
     public static final String MESSAGE_WORKOUTS_LISTED_OVERVIEW = "%1$d workouts listed!";
     public static final String MESSAGE_WORKOUTS_SORTED = "Sorted workouts";
     public static final String MESSAGE_INVALID_CALORIES = "Invalid Calories format! \n%1$s";
