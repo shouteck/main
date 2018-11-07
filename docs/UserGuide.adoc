@@ -125,6 +125,7 @@ Edits the name of the 2nd workout to be `Arnold's workout` and clears all existi
 * `edit 3 type/cardio tag/current tag/night difficulty/advanced` +
 Edits the third workout to have `cardio` as the type, tags continue to have the existing state tag and `night` and lastly, `advanced` as the difficulty.
 
+// tag::current[]
 === Changing a workout to current : `current`
 
 Changes a workout to be the current workout in the workout book. +
@@ -146,7 +147,9 @@ Changes the state tag of the 1st workout to be `current`.
 The current command will receive a warning when the indexed workout's difficulty is harder than the your indicated difficulty, duration is higher than the your indicated duration or calories is higher than the your indicated calories in your user profile under workout presets. +
 Simply click the btn:[Yes] button if you want to proceed.
 ====
+//end::current[]
 
+// tag::complete[]
 === Changing a workout to completed : `complete`
 
 Changes a workout to be a completed workout in the workout book. +
@@ -161,6 +164,7 @@ Examples:
 
 * `complete 1` +
 Changes the state tag of the 1st workout to be `completed`.
+//end::complete[]
 
 // tag::tracking[]
 === Tracking specific parameters in completed workouts: `track`
