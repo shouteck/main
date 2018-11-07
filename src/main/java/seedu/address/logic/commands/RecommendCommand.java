@@ -68,9 +68,8 @@ public class RecommendCommand extends Command {
         requireNonNull(model);
 
         List<Workout> filteredWorkoutList = model.getFilteredWorkoutList();
-        List<Workout> filteredInternalList;
+        List<Workout> filteredInternalList = model.getFinalFilteredInternalList(recommendArguments);
 
-        filteredInternalList = model.getFinalFilteredInternalList(recommendArguments);
         if (filteredInternalList.isEmpty()) {
             throw new CommandException(MESSAGE_NO_SUCH_WORKOUT);
         }
