@@ -6,7 +6,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 
 /**
- * Sorts (WIP)
+ * Sorts all workout based on names
  */
 public class SortCommand extends Command {
     public static final String COMMAND_WORD = "sort";
