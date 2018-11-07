@@ -180,6 +180,7 @@ Any completed workout after this command is entered, that has the parameter `mus
 Stops tracking the parameter `calories/100`, if it is currently being tracked.
 // tag::tracking[]
 
+//tag::filter[]
 === Filtering workouts by type, duration, and equipment: `filter`
 
 Filters workouts whose types, durations, equipments contain any of the given keywords. +
@@ -202,6 +203,8 @@ equipment/dumbbell type/strength`.
 
 * `filter duration/20m type/strength equipment/free weights` is the same as `filter duration/20m
 type/strength equipment/free`.
+
+//end::filter[]
 
 === Locating workouts by name: `find`
 
@@ -243,6 +246,7 @@ Deletes the 2nd workout in the workout book.
 `delete 1` +
 Deletes the 1st workout in the results of the `find` command.
 
+//tag::remark[]
 === Remarking a workout : `remark`
 
 Remarks the specified workout from the workout book. +
@@ -259,6 +263,8 @@ Examples:
 Remarks the 1st workout as `This workout trains bicep`.
 * `remark 2 r/` +
 Clears the remark of the 2nd workout.
+
+//end::remark[]
 
 === Selecting a workout : `select`
 
@@ -280,6 +286,8 @@ Selects the 2nd workout in the workout book.
 `select 1` +
 Selects the 1st workout in the results of the `find` command.
 
+// tag::sort[]
+
 === Sorting a workout : `sort`
 
 Sorts the workouts. +
@@ -299,6 +307,8 @@ Sorts a list of all workouts in the workout book based on names after `add` a ne
 * `delete 1` +
 `sort` +
 Sorts workout after `delete` a workout.
+
+// end::sort[]
 
 === Listing entered commands : `history`
 

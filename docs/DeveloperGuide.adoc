@@ -384,6 +384,8 @@ image::F2Profile.PNG[width="700"]
 
 // end::profile
 
+
+// tag::TR
 === Traversing and remark feature
 //tag::traversing
 ==== Current Implementation
@@ -420,6 +422,7 @@ image::traversingSequenceDiagram.png[width="800"]
 image::HighLevelRemarkSequenceDiagrams.png[width="800"]
 
 // end::traversing
+// end::TR
 
 === Memory feature
 //tag::memory
