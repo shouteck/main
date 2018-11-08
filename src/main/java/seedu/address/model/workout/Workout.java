@@ -80,8 +80,7 @@ public class Workout {
         return instruction;
     }
 
-    public Remark getRemark() {
-        return (remark == null) ? new Remark("This workout trains bicep") : remark; }
+    public Remark getRemark() { return remark; }
 
 
     /**

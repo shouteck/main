@@ -3,7 +3,7 @@
 <workoutbook>
     <workouts>
         <name>Alice Pauline's workout</name>
-        <type>balance</type>
+        <type>strength</type>
         <duration>5m</duration>
         <difficulty>advanced</difficulty>
         <equipment>NIL</equipment>
@@ -12,7 +12,7 @@
         <instruction>Walk heel to toe for 50 steps</instruction>
         <tagged>relax</tagged>
         <tagged>future</tagged>
-        <remark>This workout trains bicep</remark>
+        <remark>This workout trains thigh</remark>
     </workouts>
     <workouts>
         <name>Benson Meier's workout</name>
@@ -24,6 +24,7 @@
         <calories>100</calories>
         <instruction>set1: shoulder press reps: 5-7</instruction>
         <tagged>heavy</tagged>
+        <tagged>future</tagged>
         <remark>This workout trains deltoids</remark>
     </workouts>
     <workouts>
@@ -35,6 +36,7 @@
         <muscle>legs</muscle>
         <calories>135</calories>
         <instruction>set1: leg raises reps: 15-20</instruction>
+        <tagged>future</tagged>
         <remark>This workout trains legs</remark>
     </workouts>
     <workouts>
@@ -47,6 +49,7 @@
         <calories>200</calories>
         <instruction>30 minutes slow jog</instruction>
         <tagged>favourite</tagged>
+        <tagged>future</tagged>
         <remark>This workout trains legs</remark>
     </workouts>
     <workouts>
@@ -58,6 +61,7 @@
         <muscle>legs</muscle>
         <calories>100</calories>
         <instruction>20 minutes brisk walk</instruction>
+        <tagged>future</tagged>
         <remark>This workout trains legs</remark>
     </workouts>
     <workouts>
@@ -69,6 +73,7 @@
         <muscle>arms</muscle>
         <calories>225</calories>
         <instruction>set1: medicine ball throw reps: 25-30</instruction>
+        <tagged>future</tagged>
         <remark>This workout trains arms</remark>
     </workouts>
     <workouts>
@@ -80,6 +85,7 @@
         <muscle>chest</muscle>
         <calories>175</calories>
         <instruction>6 sets of bench press, 6 reps per set of 70% max</instruction>
+        <tagged>future</tagged>
         <remark>This workout trains chest</remark>
     </workouts>
     <workouts>

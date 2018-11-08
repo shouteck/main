@@ -44,42 +44,45 @@ public class TypicalWorkouts {
     public static final Workout ALICE_WORKOUT = new WorkoutBuilder().withName("Alice Pauline's workout")
             .withType("balance").withDuration("5m")
             .withDifficulty("advanced").withEquipment("NIL")
-            .withMuscle("thigh").withCalories("20")
-            .withInstruction("Walk heel to toe for 50 steps").withTags("relax", "future")
+            .withMuscle("bicep").withCalories("20")
+            .withInstruction("Set1: chin-ups as many as you can").withTags("rigorous", "future")
             .withRemark("This workout trains bicep").build();
     public static final Workout BENSON_WORKOUT = new WorkoutBuilder().withName("Benson Meier's workout")
             .withType("strength").withDuration("10m")
             .withDifficulty("intermediate").withEquipment("bar")
             .withMuscle("deltoids").withCalories("100")
-            .withInstruction("set1: shoulder press reps: 5-7").withTags("heavy")
+            .withInstruction("set1: shoulder press reps: 5-7").withTags("heavy", "future")
             .withRemark("This workout trains deltoids").build();
     public static final Workout CARL_WORKOUT = new WorkoutBuilder().withName("Carl Kurz's workout")
             .withType("cardio").withDuration("25m")
             .withDifficulty("intermediate").withEquipment("NIL")
             .withMuscle("legs").withCalories("135")
-            .withInstruction("set1: leg raises reps: 15-20").withRemark("This workout trains legs").build();
+            .withInstruction("set1: leg raises reps: 15-20").withTags("future")
+            .withRemark("This workout trains legs").build();
     public static final Workout DANIEL_WORKOUT = new WorkoutBuilder().withName("Daniel Meier's workout")
             .withType("cardio").withDuration("30m")
             .withDifficulty("intermediate").withEquipment("NIL")
             .withMuscle("legs").withCalories("200")
-            .withInstruction("30 minutes slow jog").withTags("favourite")
+            .withInstruction("30 minutes slow jog").withTags("favourite", "future")
             .withRemark("This workout trains legs").build();
     public static final Workout ELLE_WORKOUT = new WorkoutBuilder().withName("Elle Meyer's workout")
             .withType("endurance").withDuration("20m")
             .withDifficulty("beginner").withEquipment("NIL")
             .withMuscle("legs").withCalories("100")
-            .withInstruction("20 minutes brisk walk").withRemark("This workout trains legs").build();
+            .withInstruction("20 minutes brisk walk").withTags("future")
+            .withRemark("This workout trains legs").build();
     public static final Workout FIONA_WORKOUT = new WorkoutBuilder().withName("Fiona Kunz's workout")
             .withType("strength").withDuration("40m")
             .withDifficulty("advanced").withEquipment("medicine ball")
             .withMuscle("arms").withCalories("225")
-            .withInstruction("set1: medicine ball throw reps: 25-30").withRemark("This workout trains arms").build();
+            .withInstruction("set1: medicine ball throw reps: 25-30").withTags("future")
+            .withRemark("This workout trains arms").build();
     public static final Workout GEORGE_WORKOUT = new WorkoutBuilder().withName("George Best's workout")
             .withType("strength").withDuration("30m")
             .withDifficulty("intermediate").withEquipment("free weights")
             .withMuscle("chest").withCalories("175")
-            .withInstruction("6 sets of bench press, 6 reps per set of 70% max").withRemark("This workout trains chest")
-            .build();
+            .withInstruction("6 sets of bench press, 6 reps per set of 70% max").withTags("future")
+            .withRemark("This workout trains chest").build();
 
     // Manually added
     public static final Workout HOON_WORKOUT = new WorkoutBuilder().withName("Hoon Meier's workout")
