@@ -2,12 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_CALORIES;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_DIFFICULTY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_DURATION;
+import static seedu.address.logic.parser.CliSyntax.*;
 
 import java.util.List;
 import java.util.Random;
@@ -29,21 +24,24 @@ public class RecommendCommand extends Command {
 
     public static final String COMMAND_WORD = "recommend";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Recommends a workout from the workout book "
-            + "identified by a combination of DURATION,DIFFICULTY,CALORIES "
-            + "or by a combination of optionals DURATION,DIFFICULTY,CALORIES\n"
-            + "Two ways: Non-optional and optional\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Recommends workout from the workout book\n"
+            + "Three ways: Recommend from user profile, Recommend with non-optional parameters" + " and "
+            + "Recommend with optional parameters\n"
             + "Non-optional Parameters: "
+            + PREFIX_MODE + "MODE "
             + "[" + PREFIX_DURATION + "DURATION] "
             + "[" + PREFIX_DIFFICULTY + "DIFFICULTY] "
             + "[" + PREFIX_CALORIES + "CALORIES]\n"
             + "Non-optional Example: " + COMMAND_WORD + " "
+            + PREFIX_MODE + "single "
             + PREFIX_DURATION + "20m\n"
             + "Optional Parameters: "
+            + PREFIX_MODE + "MODE "
             + PREFIX_OPTIONAL_CALORIES + "CALORIES" + " or " + PREFIX_CALORIES + "CALORIES "
             + PREFIX_OPTIONAL_DIFFICULTY + "DIFFICULTY" + " or " + PREFIX_DIFFICULTY + "DIFFICULTY "
             + PREFIX_OPTIONAL_DURATION + "DURATION" + " or " + PREFIX_DURATION + "DURATION\n"
             + "Optional Example: " + COMMAND_WORD + " "
+            + PREFIX_MODE + "multiple 2 "
             + PREFIX_OPTIONAL_CALORIES + "150 "
             + PREFIX_DIFFICULTY + "beginner "
             + PREFIX_DURATION + "20m";

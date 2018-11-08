@@ -382,7 +382,7 @@ image::SDForRecommendNonEvent.png[width="900"]
 {nbsp} +
 
 `recommend` command is integrated with the profile. User can find a workout with the respective data types `Calories`, `Difficulty` and `Duration` if specified under the workout presets in the profile.
-After that, user just have to type `recommend` in the command box, press kbd:[Enter] to get the workout.
+After that, user just have to type `recommend` in the command box, press enter to get the workout.
 Since the sequence is very similar to single mode recommend, the sequence diagram of this entire process can be seen in Figure 12 and 13.
 // end::recommend[]
 
