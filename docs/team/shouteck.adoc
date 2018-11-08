@@ -14,10 +14,9 @@ TO BE CHANGED
 == Summary of contributions
 
 * *Major enhancement*: added *the ability to recommend workouts*
-** [.underline]#What it does#:
-Allows the user to find workouts that have the respective `Calories`, `Duration` and `Difficulty`.
-Allows the user to find workouts that have the respective `Calories`, `Duration` and `Difficulty` under the workout presets in the user profile.
-Allows the user the flexibility to decide whether any of these `Calories`, `Duration` and `Difficulty` is mandatory or good to have when finding workouts.
+** [.underline]#What it does#: Allows the user to find workouts that have the respective `Calories`, `Duration` and `Difficulty`.
+Moreover, user is also able to find workouts that have the respective `Calories`, `Duration` and `Difficulty` under the workout presets in the user profile.
+With the notion of optional parameters, it allows the user the flexibility to decide whether any of these `Calories`, `Duration` and `Difficulty` is mandatory or good to have when finding workouts.
 ** [.underline]#Justification#: User is able to conveniently find workouts to start if the user knows the respective `Calories`, `Duration` and `Difficulty` the user would want in a new workout.
 ** [.underline]#Highlights#: This feature required a in-depth analysis of design alternatives where I implemented a builder pattern to accommodate the vast amount of different combinations of constructors that have to called. Moreover, I have to decide on a meaningful way of expressing user inputs on the CLI so that it is intuitive to the user.
 
