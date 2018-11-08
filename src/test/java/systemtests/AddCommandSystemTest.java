@@ -1,4 +1,3 @@
-
 package systemtests;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
@@ -33,7 +32,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.TypicalWorkouts.ALICE_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.AMY_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.BOB_WORKOUT;
-import static seedu.address.testutil.TypicalWorkouts.CARL_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.HOON_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.IDA_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.KEYWORD_MATCHING_MEIER;
@@ -41,7 +39,6 @@ import static seedu.address.testutil.TypicalWorkouts.KEYWORD_MATCHING_MEIER;
 import org.junit.Test;
 
 import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;

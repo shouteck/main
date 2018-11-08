@@ -1,12 +1,5 @@
 package seedu.address.testutil;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import seedu.address.model.WorkoutBook;
-import seedu.address.model.workout.Workout;
-
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_JOHN_WORKOUT;
@@ -35,6 +28,13 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_JOHN_WORKOUT;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import seedu.address.model.WorkoutBook;
+import seedu.address.model.workout.Workout;
 
 /**
  * A utility class containing a list of {@code Workouts} objects to be used in tests.
