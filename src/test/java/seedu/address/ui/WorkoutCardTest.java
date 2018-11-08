@@ -12,7 +12,7 @@ import seedu.address.model.workout.Workout;
 import seedu.address.testutil.WorkoutBuilder;
 
 public class WorkoutCardTest extends GuiUnitTest {
-    
+
     @Test
     public void equals() {
         Workout workout = new WorkoutBuilder().build();
