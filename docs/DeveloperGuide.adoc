@@ -395,8 +395,10 @@ image::SDForRecommendNonEvent.png[width="900"]
 ** Cons: Implementation requires processing big data which has to be stored in a database and all of these processes are complicated.
 // end::recommend-considerations[]
 
-=== User Profile
 // tag::profile[]
+
+=== User Profile
+
 ==== Current implementation
 The profile window is first being loaded by loading the `_profileWindow.fxml file_`. Thereafter, once the user request to open the profile window, it will then process it.
 
@@ -430,8 +432,41 @@ The profile window is firstly being accelerated by the key `F2`. After pressing 
 .Interactions inside `UI` component when user presses `F2`
 image::F2Profile.PNG[width="700"]
 
+==== Design Considerations
+
+===== Aspect: UI
+
+* **Alternative 1 (current choice):** Opens a new window (similar to HelpWindow)
+** Pros: Does not take up space from the UI especially since we only have limited space.
+** Cons: User can only access it via a new window; troublesome as they have to open(and close) them after they look at it.
+* **Alternative 2:** Adopt it inside the UI (etc. replacing the BrowserPanel)
+** Pros: User does not need to do anything to view the user profile.
+** Cons: Takes up space and the implementation would require heavy modification to the UI class.
+
 // end::profile[]
 
+// tag::modify[]
+
+=== Modifying the User Profile
+
+==== Current Implementation
+
+This modify feature only affects the `ProfileWindow.html` file and *will not* affect the workout book. It gives the user a platform to store their personal information and workout presets.
+
+When the user keys in the input in the command box, the input is parsed in the `ModifyCommandParser`. An instance of `ProfileWindowManager` class will be instantiated and this will parse the `ProfileWindow.html` file via J.soup.
+
+After parsing the file, the `ModifyCommandParser` will then find out which argument are to be edited. The parsed input will specify which attribute are to be edited according to their prefixes.
+After performing a boolean check to confirm which attribute have to be edited, the instance of `ProfileWindowManager` will then change the attribute. Once the attribute has been change, it will then proceed to load the new file.
+
+As J.soup only alters the text of the `ProfileWindow.html` file and will not overwrite it, the instance of `ProfileWindowManager` will first create an (empty) temporary html file, copy all the content of the altered `ProfileWindow.html` file
+to the temporary html file, then overwrite the current `ProfileWindow.html` file with the temporary html file and proceed to delete the temporary html file.
+
+.Class diagram that shows the how the different class interacts when executing modify command
+image::ModifyClassDiagram.PNG[width="700"]
+
+// end::modify[]
+
+====
 
 // tag::TR
 === Traversing and remark feature
