@@ -189,6 +189,19 @@ public class ProfileWindowManager {
         return gender;
     }
 
+    public boolean isCaloriesAny() {
+        return calories.ownText().substring(10).equals("any");
+    }
+
+    public boolean isDifficultyAny() {
+        return difficulty.ownText().substring(12).equals("any");
+    }
+
+    public boolean isDurationAny() {
+        return duration.ownText().substring(10).equals("any");
+    }
+
+
     public Optional<Calories> extractCalories() {
         return Optional.of(new Calories(calories.ownText().substring(10)));
     }

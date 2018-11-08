@@ -52,10 +52,18 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
             ProfileWindowManager profileWindowManager;
             try {
                 profileWindowManager = ProfileWindowManager.getInstance();
-                recommendArguments = new RecommendArguments.Builder().withCalories(profileWindowManager
-                        .extractCalories(), Optional.of(false))
-                        .withDifficulty(profileWindowManager.extractDifficulty(), Optional.of(false))
-                        .withDuration(profileWindowManager.extractDuration(), Optional.of(false)).build();
+                RecommendArguments.Builder recommendArgumentsBuilder = new RecommendArguments.Builder();
+                if (!profileWindowManager.isCaloriesAny()) {
+                    recommendArgumentsBuilder.withCalories(profileWindowManager.extractCalories(), Optional.of(false));
+                }
+                if (!profileWindowManager.isDifficultyAny()) {
+                    recommendArgumentsBuilder.withDifficulty(profileWindowManager.extractDifficulty(),
+                            Optional.of(false));
+                }
+                if (!profileWindowManager.isDurationAny()) {
+                    recommendArgumentsBuilder.withDuration(profileWindowManager.extractDuration(), Optional.of(false));
+                }
+                recommendArguments = recommendArgumentsBuilder.build();
             } catch (IOException e) {
                 System.out.println(e.getMessage());
                 recommendArguments = new RecommendArguments.Builder().build();
