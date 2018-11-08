@@ -44,7 +44,9 @@ TO BE CHANGED
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-include::../UserGuide.adoc[tag=profile,tag=modify,tag=commandsummary]
+include::../UserGuide.adoc[tag=profile]
+include::../UserGuide.adoc[tag=modify]
+include::../UserGuide.adoc[tag=commandsummary]
 
 == Contributions to the Developer Guide
 
