@@ -54,13 +54,13 @@ public class WorkoutCard extends UiPart<Region> {
         this.workout = workout;
         id.setText(displayedIndex + ". ");
         name.setText(workout.getName().fullName);
-        type.setText("Type: " + workout.getType().fullType);
-        duration.setText("Duration: " + workout.getDuration().fullDuration);
-        difficulty.setText("Difficulty: " + workout.getDifficulty().fullDifficulty);
-        equipment.setText("Equipment: " + workout.getEquipment().fullEquipment);
-        muscle.setText("Muscle: " + workout.getMuscle().fullMuscle);
-        calories.setText("Calories: " + workout.getCalories().fullCalories);
-        instruction.setText("Instructions: " + workout.getInstruction().fullInstruction);
+        type.setText(workout.getType().fullType);
+        duration.setText(workout.getDuration().fullDuration);
+        difficulty.setText(workout.getDifficulty().fullDifficulty);
+        equipment.setText(workout.getEquipment().fullEquipment);
+        muscle.setText(workout.getMuscle().fullMuscle);
+        calories.setText(workout.getCalories().fullCalories);
+        instruction.setText(workout.getInstruction().fullInstruction);
         remark.setText(workout.getRemark() == null ? "" : workout.getRemark().fullRemark);
         workout.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
