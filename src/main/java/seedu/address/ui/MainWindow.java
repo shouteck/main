@@ -1,6 +1,5 @@
 package seedu.address.ui;
 
-import java.io.IOException;
 import java.util.logging.Logger;
 
 import com.google.common.eventbus.Subscribe;
@@ -201,7 +200,7 @@ public class MainWindow extends UiPart<Stage> {
      * Opens the profile window or focuses on it if it's already opened.
      */
     @FXML
-    public void handleProfile() throws IOException {
+    public void handleProfile() {
         if (!profileWindow.isShowing()) {
             profileWindow.show();
         } else {
@@ -232,7 +231,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     @Subscribe
-    private void handleShowProfileEvent(ShowProfileRequestEvent event) throws IOException {
+    private void handleShowProfileEvent(ShowProfileRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         handleProfile();
     }
