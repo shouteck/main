@@ -345,6 +345,7 @@ The original workout list in the `UI` is not modified. The activity diagram belo
 image::ADForRecommendCommand.png[width="800"]
 {nbsp} +
 
+On command execution, a new `JumpToRecommendListRequestEvent` is created and posted to `EventsCenter`.
 Shown below is the component interactions for the `recommend mode/single calories/150` command.
 
 [[fig-RecommendEventSD]]
@@ -352,7 +353,8 @@ Shown below is the component interactions for the `recommend mode/single calorie
 image::SDForRecommendEvent.png[width="700"]
 {nbsp} +
 
-The event then propagates through `EventsCenter` to the `UI`. The `UI` will call `handleJumpToRecommendListRequestEvent()` to handle the event, which eventually results in the the `UI` being updated to scroll to the workout in the `WorkoutListPanel` and selecting it.
+The event then propagates through `EventsCenter` to the `WorkoutListPanel`.
+The `WorkoutListPanel` will call `handleJumpToRecommendListRequestEvent()` and update the `UI` to scroll to and select the workout.
 The process is shown in the Figure below.
 
 [[fig-RecommendEventHandlingSD]]
