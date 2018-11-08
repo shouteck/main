@@ -14,9 +14,9 @@ import guitests.guihandles.ProfileWindowHandle;
 
 public class ProfileWindowTest extends GuiUnitTest {
 
+    private static final String userProfileUrl = System.getProperty("user.dir") + "\\ProfileWindow.html";
     private ProfileWindow profileWindow;
     private ProfileWindowHandle profileWindowHandle;
-    private static final String userProfileUrl = System.getProperty("user.dir") + "\\ProfileWindow.html";
 
     @Before
     public void setUp() throws Exception {
