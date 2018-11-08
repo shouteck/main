@@ -63,7 +63,8 @@
 //        */
 //
 //
-//        /* Case: add a workout without tags to a non-empty workout book, command with leading spaces and trailing spaces
+//        /* Case: add a workout without tags to a non-empty workout book,
+// command with leading spaces and trailing spaces
 //         -> added
 //        */
 //
