@@ -7,7 +7,34 @@ import java.util.List;
 import seedu.address.model.WorkoutBook;
 import seedu.address.model.workout.Workout;
 
-import static seedu.address.logic.commands.CommandTestUtil.*;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REMARK_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REMARK_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FUTURE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_AMY_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_JOHN_WORKOUT;
 
 /**
  * A utility class containing a list of {@code Workouts} objects to be used in tests.

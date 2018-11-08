@@ -126,8 +126,8 @@ command with leading spaces and trailing spaces
          Case: selects first card in the workout list, add a workout -> added, card selection remains unchanged
         */
 
-//        selectWorkout(Index.fromOneBased(1));
-//        assertCommandSuccess(CARL_WORKOUT);
+        /*selectWorkout(Index.fromOneBased(1));
+        assertCommandSuccess(CARL_WORKOUT);*/
 
         /*
          ----------------------------------- Perform invalid add operations ---------------------------------------
