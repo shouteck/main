@@ -363,7 +363,7 @@ image::SDForRecommendEventHandling.png[width="500"]
 {nbsp} +
 
 For the other path, the filtered list returned from the `getFinalFilteredInternalList()` is passed to `WorkoutsPredicate` which compares every workout in the filtered list to the entire list of workouts.
-The predicate will only be true when the workout matches at least one of the workouts in the filtered list.
+The predicate will only be true when the workout matches AT LEAST ONE of the workouts in the filtered list.
 The implementation of that can be seen below:
 [source,java]
 ----
@@ -373,13 +373,17 @@ public boolean test(Workout workout) {
             .anyMatch(keyWorkouts -> workout.equals(keyWorkouts));
 }
 ----
-`WorkoutsPredicate` instance is then passed to `updateFilteredWorkoutList()` method of `Model` to change the entire list of workouts displayed to those that matched at least one of the workouts.
+`WorkoutsPredicate` instance is then passed to `updateFilteredWorkoutList()` method of `Model` to modify the entire list of workouts displayed to those that matched at least one of the workouts.
 The sequence diagram of this entire process can be seen below:
 
 [[fig-RecommendNonEventSD]]
 .Interactions inside the `Logic` component for the `recommend mode/single calories/150` command.
 image::SDForRecommendNonEvent.png[width="900"]
-{nbsp}
+{nbsp} +
+
+`recommend` command is integrated with the profile. User can find a workout with the respective data types `Calories`, `Difficulty` and `Duration` if specified under the workout presets in the profile.
+After that, user just have to type `recommend` in the command box, press kbd:[Enter] to get the workout.
+Since the sequence is very similar to single mode recommend, the sequence diagram of this entire process can be seen in Figure 12 and 13.
 // end::recommend[]
 
 // tag::recommend-considerations[]
