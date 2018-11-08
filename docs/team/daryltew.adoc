@@ -1,4 +1,4 @@
-= Tew You Wen, Daryl - Project Portfolio
+= Daryl Tew - Project Portfolio
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
