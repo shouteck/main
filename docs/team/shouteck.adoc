@@ -18,7 +18,7 @@ TO BE CHANGED
 Moreover, user is also able to find workouts that have the respective `Calories`, `Duration` and `Difficulty` under the workout presets in the user profile.
 With the notion of optional parameters, it allows the user the flexibility to decide whether any of these `Calories`, `Duration` and `Difficulty` is mandatory or good to have when finding workouts.
 ** [.underline]#Justification#: User is able to conveniently find workouts to start if the user knows the respective `Calories`, `Duration` and `Difficulty` the user would want in a new workout.
-** [.underline]#Highlights#: This feature required a in-depth analysis of design alternatives where I implemented a builder pattern to accommodate the vast amount of different combinations of constructors that have to called. Moreover, I have to decide on a meaningful way of expressing user inputs on the CLI so that it is intuitive to the user.
+** [.underline]#Highlights#: This feature required an in-depth analysis of design alternatives where I implemented a builder pattern to accommodate the vast amount of different combinations of constructors that have to be called. Moreover, I have to decide on a meaningful way of expressing user inputs on the CLI so that it is intuitive to the user.
 
 * *Minor enhancement*:
 ** Implemented a Facade pattern to provide a simpler interface to work on called `ProfileWindowManager` where it handles the methods of the user profile. (link:https://github.com/CS2103JAN2018-F09-B2/main/pull/12[#12])
@@ -34,8 +34,6 @@ With the notion of optional parameters, it allows the user the flexibility to de
 ** Documentation:
 *** Added `Command Format` in the User Guide for a summary of parameters that are used in our application. (link:https://github.com/CS2113-AY1819S1-T13-5/main/pull/151[#151])
 
-_{you can add/remove categories in the list above}_
-
 == Contributions to the User Guide
 
 
@@ -43,7 +41,10 @@ _{you can add/remove categories in the list above}_
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-include::../UserGuide.adoc[tag=commandformat,tag=recommend]
+[.include]
+include::../UserGuide.adoc[tag=commandformat]
+[.include]
+include::../UserGuide.adoc[tag=recommend]
 
 == Contributions to the Developer Guide
 
