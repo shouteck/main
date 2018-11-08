@@ -55,7 +55,7 @@ public class CommandTestUtil {
     public static final String VALID_INSTRUCTION_AMY_WORKOUT = "set1: flutter kick reps: 5-7";
     public static final String VALID_INSTRUCTION_BOB_WORKOUT = "set1: bicep curl reps: 4-6";
     public static final String VALID_INSTRUCTION_JOHN_WORKOUT = "45 minutes slow jog";
-    public static final String VALID_REMARK_AMY_WORKOUT = "This workout trains your tricep";
+    public static final String VALID_REMARK_AMY_WORKOUT = "This workout trains bicep";
     public static final String VALID_REMARK_BOB_WORKOUT = "This workout trains your thigh";
     public static final String VALID_REMARK_JOHN_WORKOUT = "This workout trains legs";
     public static final String VALID_USERNAME = "gsj";
