@@ -17,6 +17,7 @@ import seedu.address.model.workout.Remark;
 import seedu.address.testutil.RemarkBuilder;
 
 
+
 public class RemarkCommandParserTest {
 
     private static final String MESSAGE_INVALID_FORMAT =
@@ -25,8 +26,16 @@ public class RemarkCommandParserTest {
 
     @Test
     public void parse_missingParts_failure() {
+        Index targetIndex = INDEX_FIRST_WORKOUT;
+
         // no index specified
         assertParseFailure(parser, VALID_REMARK_AMY_WORKOUT, MESSAGE_INVALID_FORMAT);
+
+        //no prefix
+        assertParseFailure(parser, "1", MESSAGE_INVALID_FORMAT);
+
+        //invalid prefix
+        assertParseFailure(parser, "1" + "r", MESSAGE_INVALID_FORMAT);
     }
 
     @Test

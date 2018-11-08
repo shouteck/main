@@ -42,6 +42,14 @@ public class Mode {
         return Integer.valueOf(multipleMode.split(" ")[1]);
     }
 
+    public boolean isModeAll() {
+        return fullMode.equals("all");
+    }
+
+    public boolean isModeSingle() {
+        return fullMode.equals("single");
+    }
+
     @Override
     public String toString() {
         return fullMode;

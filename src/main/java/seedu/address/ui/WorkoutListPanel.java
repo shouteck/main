@@ -11,7 +11,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.events.ui.JumpToListRequestEvent;
+import seedu.address.commons.events.ui.JumpToRecommendListRequestEvent;
 import seedu.address.commons.events.ui.WorkoutPanelSelectionChangedEvent;
 import seedu.address.model.workout.Workout;
 
@@ -46,7 +46,6 @@ public class WorkoutListPanel extends UiPart<Region> {
                     }
                 });
     }
-
     /**
      * Scrolls to the {@code WorkoutCard} at the {@code index} and selects it.
      */
@@ -58,7 +57,7 @@ public class WorkoutListPanel extends UiPart<Region> {
     }
 
     @Subscribe
-    private void handleJumpToListRequestEvent(JumpToListRequestEvent event) {
+    private void handleJumpToRecommendListRequestEvent(JumpToRecommendListRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         scrollTo(event.targetIndex);
     }

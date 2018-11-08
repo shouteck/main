@@ -13,7 +13,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.RedoCommand;
@@ -151,16 +150,6 @@ public class FindCommandSystemTest extends WorkoutBookSystemTest {
         command = FindCommand.COMMAND_WORD + " " + tags.get(0).tagName;
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
-
-        /* Case: find while a person is selected -> selected card deselected */
-        showAllWorkouts();
-        selectWorkout(Index.fromOneBased(1));
-        assertFalse(getWorkoutListPanel().getHandleToSelectedCard().getName()
-                .equals(DANIEL_WORKOUT.getName().fullName));
-        command = FindCommand.COMMAND_WORD + " Daniel";
-        ModelHelper.setFilteredList(expectedModel, DANIEL_WORKOUT);
-        assertCommandSuccess(command, expectedModel);
-        assertSelectedCardDeselected();
 
         /* Case: find person in empty address book -> 0 persons found */
         deleteAllWorkouts();

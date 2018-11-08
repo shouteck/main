@@ -5,7 +5,6 @@ import static seedu.address.testutil.TypicalWorkouts.KEYWORD_MATCHING_MEIER;
 
 import org.junit.Test;
 
-import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
@@ -35,12 +34,6 @@ public class ClearCommandSystemTest extends WorkoutBookSystemTest {
         expectedResultMessage = RedoCommand.MESSAGE_SUCCESS;
         assertCommandSuccess(command, expectedResultMessage, new ModelManager());
         assertSelectedCardUnchanged();
-
-        /* Case: selects first card in workout list and clears workout book -> cleared and no card selected */
-        executeCommand(UndoCommand.COMMAND_WORD); // restores the original workout book
-        selectWorkout(Index.fromOneBased(1));
-        assertCommandSuccess(ClearCommand.COMMAND_WORD);
-        assertSelectedCardDeselected();
 
         /* Case: filters the workout list before clearing -> entire workout book cleared */
         executeCommand(UndoCommand.COMMAND_WORD); // restores the original workout book
