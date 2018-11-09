@@ -13,10 +13,10 @@ import static org.junit.Assert.assertTrue;
 //import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_CURRENT;
 //import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_JOHN_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
-//import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showWorkoutAtIndex;
 import static seedu.address.logic.commands.CurrentCommand.MESSAGE_MULTIPLE_CURRENT_WORKOUT;
-//import static seedu.address.logic.commands.CurrentCommand.createEditedWorkout;
+import static seedu.address.logic.commands.CurrentCommand.createEditedWorkout;
 import static seedu.address.testutil.TypicalIndexes.INDEX_EIGHTH_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_WORKOUT;
@@ -29,12 +29,9 @@ import org.junit.Test;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
-//import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.TrackedData;
-import seedu.address.model.UserPrefs;
-//import seedu.address.model.workout.Workout;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.*;
+import seedu.address.model.workout.Workout;
 //import seedu.address.testutil.WorkoutBuilder;
 
 /**
@@ -52,9 +49,11 @@ public class CurrentCommandTest {
         CurrentCommand.setCurrentWorkout(false);
     }
 
-    /* @Test
-    public void execute_validIndexUnfilteredList_success() {
+     @Test
+    public void execute_validIndexUnfilteredList_success() throws CommandException {
         Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_EIGHTH_WORKOUT.getZeroBased());
+        Workout editedWorkout = createEditedWorkout(currentWorkout);
+        /*
         WorkoutBuilder workoutInList = new WorkoutBuilder(currentWorkout);
         Workout editedWorkout = workoutInList.withName(VALID_NAME_JOHN_WORKOUT).withType(VALID_TYPE_JOHN_WORKOUT)
                 .withDuration(VALID_DURATION_JOHN_WORKOUT)
@@ -62,7 +61,7 @@ public class CurrentCommandTest {
                 .withMuscle(VALID_MUSCLE_JOHN_WORKOUT)
                 .withCalories(VALID_CALORIES_JOHN_WORKOUT).withInstruction(VALID_INSTRUCTION_JOHN_WORKOUT)
                 .withTags(VALID_TAG_CURRENT).withRemark(VALID_REMARK_JOHN_WORKOUT).build();
-
+        */
         CurrentCommand currentCommand = new CurrentCommand(INDEX_EIGHTH_WORKOUT);
 
         String expectedMessage = String.format(CurrentCommand.MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout);
@@ -73,7 +72,7 @@ public class CurrentCommandTest {
         expectedModel.commitModel();
 
         assertCommandSuccess(currentCommand, model, commandHistory, expectedMessage, expectedModel);
-    }*/
+    }
 
     @Test
     public void execute_preexistingCurrentWorkoutUnfilteredList_failure() {
@@ -91,7 +90,7 @@ public class CurrentCommandTest {
         assertCommandFailure(currentCommand, model, commandHistory, Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
     }
 
-    /* @Test
+    @Test
     public void execute_validIndexFilteredList_success() throws CommandException {
         showWorkoutAtIndex(model, INDEX_EIGHTH_WORKOUT);
 
@@ -107,7 +106,7 @@ public class CurrentCommandTest {
         expectedModel.commitModel();
 
         assertCommandSuccess(currentCommand, model, commandHistory, expectedMessage, expectedModel);
-    }*/
+    }
 
     @Test
     public void execute_preexistingCurrentWorkoutFilteredList_failure() {
@@ -132,13 +131,13 @@ public class CurrentCommandTest {
         assertCommandFailure(currentCommand, model, commandHistory, Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
     }
 
-    /*@Test
+    @Test
     public void executeUndoRedo_validIndexUnfilteredList_success() throws Exception {
         Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_FIRST_WORKOUT.getZeroBased());
         CurrentCommand currentCommand = new CurrentCommand(INDEX_FIRST_WORKOUT);
+        Workout editedWorkout = createEditedWorkout(currentWorkout);
         Model expectedModel = new ModelManager(new WorkoutBook(model.getWorkoutBook()), model.getTrackedDataList(),
                 model.getTrackedData(), new UserPrefs());
-        Workout editedWorkout = createEditedWorkout(currentWorkout);
         expectedModel.updateWorkout(currentWorkout, editedWorkout);
         expectedModel.commitModel();
 
@@ -152,7 +151,7 @@ public class CurrentCommandTest {
         // redo -> same first workout deleted again
         expectedModel.redoModel();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
-    }*/
+    }
 
     @Test
     public void executeUndoRedo_invalidIndexUnfilteredList_failure() {
