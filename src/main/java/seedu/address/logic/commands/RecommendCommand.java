@@ -101,12 +101,6 @@ public class RecommendCommand extends Command {
         return new CommandResult(MESSAGE_SUCCESS);
     }
 
-    /**
-     * Returns target index.
-     * @param filteredWorkoutList
-     * @param filteredInternalList
-     * @return Target index.
-     */
     private int getTargetIndex(List<Workout> filteredWorkoutList, List<Workout> filteredInternalList) {
         Random rand = new Random();
         int randomIndex = rand.nextInt(filteredInternalList.size());

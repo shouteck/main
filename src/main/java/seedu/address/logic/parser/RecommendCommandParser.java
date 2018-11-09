@@ -75,22 +75,10 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
         return new RecommendCommand(recommendArguments);
     }
 
-
-    /**
-     *  Returns true if profile recommend fields are valid.
-     * @param argMultimap
-     * @return
-     */
     private boolean isProfileRecommendFieldsValid(ArgumentMultimap argMultimap) {
         return argMultimap.getPreamble().isEmpty() && argMultimap.getTheOnlyPrefix() == null;
     }
 
-    /**
-     * RecommendArguments getter.
-     * @param argMultimap
-     * @return
-     * @throws ParseException
-     */
     private RecommendArguments getRecommendArguments(ArgumentMultimap argMultimap) throws ParseException {
 
         RecommendArguments.Builder recommendArgumentsBuilder = new RecommendArguments.Builder();
@@ -103,24 +91,12 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
         return recommendArgumentsBuilder.build();
     }
 
-    /**
-     * Mode setter.
-     * @param argMultimap
-     * @param recommendArgumentsBuilder
-     * @throws ParseException
-     */
     private void buildMode(ArgumentMultimap argMultimap, RecommendArguments.Builder recommendArgumentsBuilder)
             throws ParseException {
         Optional<Mode> mode = Optional.of(ParserUtil.parseMode(argMultimap.getValue(PREFIX_MODE).get()));
         recommendArgumentsBuilder.withMode(mode);
     }
 
-    /**
-     * Calories setter.
-     * @param argMultimap
-     * @param recommendArgumentsBuilder
-     * @throws ParseException
-     */
     private void buildCalories(ArgumentMultimap argMultimap, RecommendArguments.Builder recommendArgumentsBuilder)
             throws ParseException {
         if (!argMultimap.getAllValues(PREFIX_CALORIES).isEmpty()) {
@@ -134,12 +110,6 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
         }
     }
 
-    /**
-     * Difficulty setter.
-     * @param argMultimap
-     * @param recommendArgumentsBuilder
-     * @throws ParseException
-     */
     private void buildDifficulty(ArgumentMultimap argMultimap, RecommendArguments.Builder recommendArgumentsBuilder)
             throws ParseException {
         if (!argMultimap.getAllValues(PREFIX_DIFFICULTY).isEmpty()) {
@@ -153,12 +123,6 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
         }
     }
 
-    /**
-     * Duration setter.
-     * @param argMultimap
-     * @param recommendArgumentsBuilder
-     * @throws ParseException
-     */
     private void buildDuration(ArgumentMultimap argMultimap, RecommendArguments.Builder recommendArgumentsBuilder)
             throws ParseException {
         if (!argMultimap.getAllValues(PREFIX_DURATION).isEmpty()) {
@@ -179,12 +143,7 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
     private static boolean isPrefixPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).anyMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
-
-    /**
-     * Returns true if the Optional inputs are valid.
-     * @param argumentMultimap
-     * @return
-     */
+    
     private static boolean isOptionalValid(ArgumentMultimap argumentMultimap) {
         return (isPrefixPresent(argumentMultimap, PREFIX_CALORIES, PREFIX_OPTIONAL_CALORIES)
                 && isPrefixPresent(argumentMultimap, PREFIX_DIFFICULTY, PREFIX_OPTIONAL_DIFFICULTY)

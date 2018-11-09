@@ -63,13 +63,6 @@ public class UniqueWorkoutList implements Iterable<Workout> {
         return finalFilteredInternalList;
     }
 
-    /**
-     * Filters three choose zero combination of calories, difficulty and duration and add it to a list.
-     * @param recommendArguments
-     * @param finalFilteredInternalList
-     * @param optionalsList
-     * @param totalOptionals
-     */
     private void filterThreeChooseZero(RecommendArguments recommendArguments, List<Workout> finalFilteredInternalList,
                                        ArrayList<Boolean> optionalsList, int totalOptionals) {
         if (finalFilteredInternalList.isEmpty() && totalOptionals >= 1) {
@@ -78,13 +71,6 @@ public class UniqueWorkoutList implements Iterable<Workout> {
         }
     }
 
-    /**
-     * Filters three choose one combination of calories, difficulty and duration and add it to a list.
-     * @param recommendArguments
-     * @param finalFilteredInternalList
-     * @param optionalsList
-     * @param totalOptionals
-     */
     private void filterThreeChooseOne(RecommendArguments recommendArguments, List<Workout> finalFilteredInternalList,
                                       ArrayList<Boolean> optionalsList, int totalOptionals) {
         if (finalFilteredInternalList.isEmpty() && totalOptionals >= 2) {
@@ -99,13 +85,6 @@ public class UniqueWorkoutList implements Iterable<Workout> {
         }
     }
 
-    /**
-     * Filters three choose two combination of calories, difficulty and duration and add it to a list.
-     * @param recommendArguments
-     * @param finalFilteredInternalList
-     * @param optionalsList
-     * @param totalOptionals
-     */
     private void filterThreeChooseTwo(RecommendArguments recommendArguments, List<Workout> finalFilteredInternalList,
                                       ArrayList<Boolean> optionalsList, int totalOptionals) {
         if (finalFilteredInternalList.isEmpty() && totalOptionals == 3) {
@@ -121,12 +100,6 @@ public class UniqueWorkoutList implements Iterable<Workout> {
         }
     }
 
-    /**
-     * Filters the workouts by calories, difficulty and duration and returns the list.
-     * @param recommendArguments
-     * @param conditionsList
-     * @return Filtered list.
-     */
     private List<Workout> getFilteredInternalList(RecommendArguments recommendArguments,
                                                   ArrayList<Boolean> conditionsList) {
         List<Workout> filteredInternalList = internalList.stream()
