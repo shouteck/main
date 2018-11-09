@@ -2,7 +2,13 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MODE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_CALORIES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_DURATION;
 
 import java.util.List;
 import java.util.Random;
