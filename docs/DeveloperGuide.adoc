@@ -384,9 +384,7 @@ image::SDForRecommendNonEvent.png[width="900"]
 `recommend` command is integrated with the profile. User can find a workout with the respective data types `Calories`, `Difficulty` and `Duration` if specified under the workout presets in the profile.
 After that, user just have to type `recommend` in the command box, press enter to get the workout.
 Since the sequence is very similar to single mode recommend, the sequence diagram of this entire process can be seen in Figure 12 and 13.
-// end::recommend[]
 
-// tag::recommend-considerations[]
 ==== Design Considerations
 
 ==== Aspect: Recommendation Systems
@@ -397,7 +395,7 @@ Since the sequence is very similar to single mode recommend, the sequence diagra
 * **Alternative 2:** Recommend based on user's past interactions with the system.
 ** Pros: The optimal workout will be recommended immediately without supplying any data types.
 ** Cons: Implementation requires processing big data which has to be stored in a database and all of these processes are complicated.
-// end::recommend-considerations[]
+// end::recommend[]
 
 // tag::profile[]
 
