@@ -143,8 +143,8 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
     private static boolean isPrefixPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).anyMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
-    
-    private static boolean isOptionalValid(ArgumentMultimap argumentMultimap) {
+
+    private boolean isOptionalValid(ArgumentMultimap argumentMultimap) {
         return (isPrefixPresent(argumentMultimap, PREFIX_CALORIES, PREFIX_OPTIONAL_CALORIES)
                 && isPrefixPresent(argumentMultimap, PREFIX_DIFFICULTY, PREFIX_OPTIONAL_DIFFICULTY)
                 && isPrefixPresent(argumentMultimap, PREFIX_DURATION, PREFIX_OPTIONAL_DURATION));

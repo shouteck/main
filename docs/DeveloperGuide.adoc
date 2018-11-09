@@ -1248,8 +1248,8 @@ _{ more test cases ... }_
    Expected: A message saying that the workout does not exist in the WorkoutBook will be shown in the status message.
 
 . Recommending a workout that omits the mandatory prefix `Mode`.
-.. Note that this isn't referring to recommending from the profile which does not require the prefix `Mode`.
 * Steps:
+.. Note that this isn't referring to recommending from the profile which does not require the prefix `Mode`.
 .. Ensure that the respective `Calories`, `Difficulty` and `Duration` you have chosen are the same as the data types contained in at least one of the workouts in the workout list.
 .. The example used here assumes that at least one of the workouts contains calories of 150.
 .. Test case: `recommend calories/150` +
