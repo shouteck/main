@@ -175,7 +175,6 @@ public class ProfileWindowManager {
      */
     public String trimmedDuration(String duration) {
         duration = duration.replaceFirst("Duration: ", "");
-        duration = duration.replaceFirst("m", "");
         return duration;
     }
 
@@ -204,28 +203,28 @@ public class ProfileWindowManager {
     }
 
     public boolean isCaloriesAny() {
-        return calories.ownText().substring(10).equals("any");
+        return trimmedCalories(calories.ownText()).equals("any");
     }
 
     public boolean isDifficultyAny() {
-        return difficulty.ownText().substring(12).equals("any");
+        return trimmedDifficulty(difficulty.ownText()).equals("any");
     }
 
     public boolean isDurationAny() {
-        return duration.ownText().substring(10).equals("any");
+        return trimmedDuration(duration.ownText()).equals("any");
     }
 
 
     public Optional<Calories> extractCalories() {
-        return Optional.of(new Calories(calories.ownText().substring(10)));
+        return Optional.of(new Calories(trimmedCalories(calories.ownText())));
     }
 
     public Optional<Difficulty> extractDifficulty() {
-        return Optional.of(new Difficulty(difficulty.ownText().substring(12)));
+        return Optional.of(new Difficulty(trimmedDifficulty(difficulty.ownText())));
     }
 
     public Optional<Duration> extractDuration() {
-        return Optional.of(new Duration(duration.ownText().substring(10)));
+        return Optional.of(new Duration(trimmedDuration(duration.ownText())));
     }
 
     /**

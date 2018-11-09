@@ -260,7 +260,7 @@ public class ModifyCommandTest {
         //actual attributes
         actualAttributes.add(profileWindowManager.trimmedCalories(divCalories.ownText()));
         actualAttributes.add(profileWindowManager.trimmedDifficulty(divDifficulty.ownText()));
-        actualAttributes.add(profileWindowManager.trimmedDuration(divDuration.ownText() + "m"));
+        actualAttributes.add(profileWindowManager.trimmedDuration(divDuration.ownText()));
         actualAttributes.add(profileWindowManager.trimmedGender(divGender.ownText()));
         actualAttributes.add(profileWindowManager.extractHeight(divHeight.ownText()));
         actualAttributes.add(profileWindowManager.trimmedUsername(divUsername.ownText()));
