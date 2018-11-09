@@ -63,6 +63,13 @@ public class UniqueWorkoutList implements Iterable<Workout> {
         return finalFilteredInternalList;
     }
 
+    /**
+     * Choose zero out of `Calories`, `Difficulty` and `Duration` to filter.
+     * @param recommendArguments
+     * @param finalFilteredInternalList
+     * @param optionalsList
+     * @param totalOptionals
+     */
     private void filterThreeChooseZero(RecommendArguments recommendArguments, List<Workout> finalFilteredInternalList,
                                        ArrayList<Boolean> optionalsList, int totalOptionals) {
         if (finalFilteredInternalList.isEmpty() && totalOptionals >= 1) {
@@ -71,6 +78,13 @@ public class UniqueWorkoutList implements Iterable<Workout> {
         }
     }
 
+    /**
+     * Choose one out of `Calories`, `Difficulty` and `Duration` to filter.
+     * @param recommendArguments
+     * @param finalFilteredInternalList
+     * @param optionalsList
+     * @param totalOptionals
+     */
     private void filterThreeChooseOne(RecommendArguments recommendArguments, List<Workout> finalFilteredInternalList,
                                       ArrayList<Boolean> optionalsList, int totalOptionals) {
         if (finalFilteredInternalList.isEmpty() && totalOptionals >= 2) {
@@ -85,6 +99,13 @@ public class UniqueWorkoutList implements Iterable<Workout> {
         }
     }
 
+    /**
+     * Choose two out of `Calories`, `Difficulty` and `Duration` to filter.
+     * @param recommendArguments
+     * @param finalFilteredInternalList
+     * @param optionalsList
+     * @param totalOptionals
+     */
     private void filterThreeChooseTwo(RecommendArguments recommendArguments, List<Workout> finalFilteredInternalList,
                                       ArrayList<Boolean> optionalsList, int totalOptionals) {
         if (finalFilteredInternalList.isEmpty() && totalOptionals == 3) {

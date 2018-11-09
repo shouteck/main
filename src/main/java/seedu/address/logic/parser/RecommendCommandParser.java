@@ -97,6 +97,12 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
         recommendArgumentsBuilder.withMode(mode);
     }
 
+    /**
+     * Calories setter for Recommend Arguments.
+     * @param argMultimap
+     * @param recommendArgumentsBuilder
+     * @throws ParseException
+     */
     private void buildCalories(ArgumentMultimap argMultimap, RecommendArguments.Builder recommendArgumentsBuilder)
             throws ParseException {
         if (!argMultimap.getAllValues(PREFIX_CALORIES).isEmpty()) {
@@ -110,6 +116,12 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
         }
     }
 
+    /**
+     * Difficulty setter for Recommend Arguments.
+     * @param argMultimap
+     * @param recommendArgumentsBuilder
+     * @throws ParseException
+     */
     private void buildDifficulty(ArgumentMultimap argMultimap, RecommendArguments.Builder recommendArgumentsBuilder)
             throws ParseException {
         if (!argMultimap.getAllValues(PREFIX_DIFFICULTY).isEmpty()) {
@@ -123,6 +135,12 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
         }
     }
 
+    /**
+     * Duration setter for Recommend Arguments.
+     * @param argMultimap
+     * @param recommendArgumentsBuilder
+     * @throws ParseException
+     */
     private void buildDuration(ArgumentMultimap argMultimap, RecommendArguments.Builder recommendArgumentsBuilder)
             throws ParseException {
         if (!argMultimap.getAllValues(PREFIX_DURATION).isEmpty()) {
