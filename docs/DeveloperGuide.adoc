@@ -441,7 +441,7 @@ image::F2Profile.PNG[width="700"]
 ** Cons: User can only access it via a new window; troublesome as they have to open(and close) them after they look at it.
 * **Alternative 2:** Adopt it inside the UI (etc. replacing the BrowserPanel)
 ** Pros: User does not need to do anything to view the user profile.
-** Cons: Takes up space and the implementation would require heavy modification to the UI class.
+** Cons: Takes up space and the implementation would require heavy modification to the UI which is not easy.
 
 // end::profile[]
 
@@ -465,8 +465,6 @@ to the temporary html file, then overwrite the current `ProfileWindow.html` file
 image::ModifyClassDiagram.PNG[width="700"]
 
 // end::modify[]
-
-====
 
 // tag::TR
 === Traversing and remark feature
