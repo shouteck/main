@@ -54,6 +54,7 @@ public class WorkoutBuilder {
         instruction = new Instruction(DEFAULT_INSTRUCTION);
         remark = new Remark(DEFAULT_REMARK);
         tags = new HashSet<>();
+        tags.add(new Tag("future"));
     }
 
     /**
