@@ -1279,7 +1279,7 @@ _{ more test cases ... }_
 .. Go to the menu bar and click `Profile`.
 .. Click `Profile F3`.
 
-. Opening the profile window the button kbd:[F3].
+. Opening the profile window with the key kbd:[F3].
 * Steps:
 .. Simply press kbd:[F3].
 
