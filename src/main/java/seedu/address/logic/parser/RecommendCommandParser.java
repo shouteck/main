@@ -48,7 +48,7 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
             } else {
                 recommendArguments = getRecommendArguments(argMultimap);
             }
-        } else if (argMultimap.getPreamble().isEmpty() && argMultimap.getTheOnlyPrefix() == null) {
+        } else if (isProfileRecommendFieldsValid(argMultimap)) {
             ProfileWindowManager profileWindowManager;
             try {
                 profileWindowManager = ProfileWindowManager.getInstance();
@@ -75,28 +75,54 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
         return new RecommendCommand(recommendArguments);
     }
 
+
+    /**
+     *  Returns true if profile recommend fields are valid.
+     * @param argMultimap
+     * @return
+     */
+    private boolean isProfileRecommendFieldsValid(ArgumentMultimap argMultimap) {
+        return argMultimap.getPreamble().isEmpty() && argMultimap.getTheOnlyPrefix() == null;
+    }
+
+    /**
+     * RecommendArguments getter.
+     * @param argMultimap
+     * @return
+     * @throws ParseException
+     */
     private RecommendArguments getRecommendArguments(ArgumentMultimap argMultimap) throws ParseException {
 
         RecommendArguments.Builder recommendArgumentsBuilder = new RecommendArguments.Builder();
 
-        if (!argMultimap.getAllValues(PREFIX_DURATION).isEmpty()) {
-            Optional<Duration> duration = Optional.of(ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION)
-                    .get()));
-            recommendArgumentsBuilder.withDuration(duration, Optional.of(false));
-        } else if (!argMultimap.getAllValues(PREFIX_OPTIONAL_DURATION).isEmpty()) {
-            Optional<Duration> duration = Optional.of(ParserUtil.parseDuration(argMultimap
-                    .getValue(PREFIX_OPTIONAL_DURATION).get()));
-            recommendArgumentsBuilder.withDuration(duration, Optional.of(true));
-        }
-        if (!argMultimap.getAllValues(PREFIX_DIFFICULTY).isEmpty()) {
-            Optional<Difficulty> difficulty = Optional.of(ParserUtil.parseDifficulty(argMultimap
-                    .getValue(PREFIX_DIFFICULTY).get()));
-            recommendArgumentsBuilder.withDifficulty(difficulty, Optional.of(false));
-        } else if (!argMultimap.getAllValues(PREFIX_OPTIONAL_DIFFICULTY).isEmpty()) {
-            Optional<Difficulty> difficulty = Optional.of(ParserUtil.parseDifficulty(argMultimap
-                    .getValue(PREFIX_OPTIONAL_DIFFICULTY).get()));
-            recommendArgumentsBuilder.withDifficulty(difficulty, Optional.of(true));
-        }
+        buildDuration(argMultimap, recommendArgumentsBuilder);
+        buildDifficulty(argMultimap, recommendArgumentsBuilder);
+        buildCalories(argMultimap, recommendArgumentsBuilder);
+        buildMode(argMultimap, recommendArgumentsBuilder);
+
+        return recommendArgumentsBuilder.build();
+    }
+
+    /**
+     * Mode setter.
+     * @param argMultimap
+     * @param recommendArgumentsBuilder
+     * @throws ParseException
+     */
+    private void buildMode(ArgumentMultimap argMultimap, RecommendArguments.Builder recommendArgumentsBuilder)
+            throws ParseException {
+        Optional<Mode> mode = Optional.of(ParserUtil.parseMode(argMultimap.getValue(PREFIX_MODE).get()));
+        recommendArgumentsBuilder.withMode(mode);
+    }
+
+    /**
+     * Calories setter.
+     * @param argMultimap
+     * @param recommendArgumentsBuilder
+     * @throws ParseException
+     */
+    private void buildCalories(ArgumentMultimap argMultimap, RecommendArguments.Builder recommendArgumentsBuilder)
+            throws ParseException {
         if (!argMultimap.getAllValues(PREFIX_CALORIES).isEmpty()) {
             Optional<Calories> calories = Optional.of(ParserUtil.parseCalories(argMultimap.getValue(PREFIX_CALORIES)
                     .get()));
@@ -106,11 +132,44 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
                     .getValue(PREFIX_OPTIONAL_CALORIES).get()));
             recommendArgumentsBuilder.withCalories(calories, Optional.of(true));
         }
+    }
 
-        Optional<Mode> mode = Optional.of(ParserUtil.parseMode(argMultimap.getValue(PREFIX_MODE).get()));
-        recommendArgumentsBuilder.withMode(mode);
+    /**
+     * Difficulty setter.
+     * @param argMultimap
+     * @param recommendArgumentsBuilder
+     * @throws ParseException
+     */
+    private void buildDifficulty(ArgumentMultimap argMultimap, RecommendArguments.Builder recommendArgumentsBuilder)
+            throws ParseException {
+        if (!argMultimap.getAllValues(PREFIX_DIFFICULTY).isEmpty()) {
+            Optional<Difficulty> difficulty = Optional.of(ParserUtil.parseDifficulty(argMultimap
+                    .getValue(PREFIX_DIFFICULTY).get()));
+            recommendArgumentsBuilder.withDifficulty(difficulty, Optional.of(false));
+        } else if (!argMultimap.getAllValues(PREFIX_OPTIONAL_DIFFICULTY).isEmpty()) {
+            Optional<Difficulty> difficulty = Optional.of(ParserUtil.parseDifficulty(argMultimap
+                    .getValue(PREFIX_OPTIONAL_DIFFICULTY).get()));
+            recommendArgumentsBuilder.withDifficulty(difficulty, Optional.of(true));
+        }
+    }
 
-        return recommendArgumentsBuilder.build();
+    /**
+     * Duration setter.
+     * @param argMultimap
+     * @param recommendArgumentsBuilder
+     * @throws ParseException
+     */
+    private void buildDuration(ArgumentMultimap argMultimap, RecommendArguments.Builder recommendArgumentsBuilder)
+            throws ParseException {
+        if (!argMultimap.getAllValues(PREFIX_DURATION).isEmpty()) {
+            Optional<Duration> duration = Optional.of(ParserUtil.parseDuration(argMultimap.getValue(PREFIX_DURATION)
+                    .get()));
+            recommendArgumentsBuilder.withDuration(duration, Optional.of(false));
+        } else if (!argMultimap.getAllValues(PREFIX_OPTIONAL_DURATION).isEmpty()) {
+            Optional<Duration> duration = Optional.of(ParserUtil.parseDuration(argMultimap
+                    .getValue(PREFIX_OPTIONAL_DURATION).get()));
+            recommendArgumentsBuilder.withDuration(duration, Optional.of(true));
+        }
     }
 
     /**
@@ -122,7 +181,9 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
     }
 
     /**
-     * Returns true if the Optional inputs are valid
+     * Returns true if the Optional inputs are valid.
+     * @param argumentMultimap
+     * @return
      */
     private static boolean isOptionalValid(ArgumentMultimap argumentMultimap) {
         return (isPrefixPresent(argumentMultimap, PREFIX_CALORIES, PREFIX_OPTIONAL_CALORIES)
