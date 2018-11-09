@@ -101,7 +101,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void setProfileAccelerators() {
-        setProfileAccelerator(profileMenuItem, KeyCombination.valueOf("F2"));
+        setProfileAccelerator(profileMenuItem, KeyCombination.valueOf("F3"));
     }
 
     /**

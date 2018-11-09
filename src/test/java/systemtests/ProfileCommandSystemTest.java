@@ -38,9 +38,9 @@ public class ProfileCommandSystemTest extends WorkoutBookSystemTest {
         getMainMenu().openProfileWindowUsingAccelerator();
         assertProfileWindowOpen();
 
-        //getWorkoutListPanel().click();
-        //getMainMenu().openProfileWindowUsingAccelerator();
-        //assertProfileWindowOpen();
+        getWorkoutListPanel().click();
+        getMainMenu().openProfileWindowUsingAccelerator();
+        assertProfileWindowOpen();
 
         //use menu button
         getMainMenu().openProfileWindowUsingMenu();

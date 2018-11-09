@@ -35,7 +35,7 @@ Do not disable them. If you have disabled them, go to `File` > `Settings` > `Plu
 . If you are downloading the `workoutbook.jar` file
 +
 [WARNING]
-You must include this link:https://github.com/sijieg/main/blob/master/ProfileWindow.html[`ProfileWindow.html`] file in the same location as your `workoutbook.jar` file or else you will not be able to run the `workoutbook.jar`
+You must include this link:https://github.com/CS2113-AY1819S1-T13-5/main/blob/master/ProfileWindow.html[`ProfileWindow.html`] file in the same location as your `workoutbook.jar` file or else you will not be able to run the `workoutbook.jar`
 
 
 === Setting up the project in your computer
@@ -1082,6 +1082,10 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |select a workout |look at the details of the workout
 
+|`* *` |user |have a user profile |check and update my personal details
+
+|`* *` |user |have a user profile |set my workout preference
+
 |`* *` |user |find/filter a workout by name |locate a workout without having to search through my entire workout list
 
 |`* *` |user |find/filter a workout by type |locate a workout according to my preference
@@ -1201,7 +1205,7 @@ These instructions only provide a starting point for testers to work on; testers
 
 . Initial launch
 
-.. Download the jar file and copy into an empty folder
+.. Download the jar file and the link:https://github.com/CS2113-AY1819S1-T13-5/main/blob/master/ProfileWindow.html[`ProfileWindow.html`] file and then copy into an empty folder
 .. Double-click the jar file +
    Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
@@ -1259,3 +1263,57 @@ _{ more test cases ... }_
 .. Ensure that the respective `Calories`, `Difficulty` and `Duration` you have in the workout presets in the profile are the same as the data types contained in at least one of the workouts in the workout list.
 .. Test case: `recommend` +
    Expected: A message saying workout is recommended will be shown in the status message.
+
+// tag::appendixsj[]
+
+==== Profile Window
+
+. Opening the profile window through the `profile` command.
+* Steps:
+.. Go to the Command box and type `profile`.
+.. Press enter.
+
+. Opening the profile window through the menu bar.
+* Steps:
+.. Go to the menu bar and click `Profile`.
+.. Click `Profile F3`.
+
+. Opening the profile window the button kbd:[F3].
+* Steps:
+.. Simply press kbd:[F3].
+
+==== Modifying the Profile Window
+
+. Modify command with a valid input.
+* Steps:
+ .. Ensure that *at least* one of the optional fields must be provided.
+ .. Test case: `modify username/Akshay` +
+    Expected: The username should changed to `Akshay`
+ .. Test case: `modify height/1.78 gender/female` +
+    Expected: The height should changed to `1.78m`, BMI will be updated automatically and the gender should change to `female`.
+ .. Test case: `modify calories/any difficulty/beginner` +
+    Expected: The calories should changed to `any` and the difficulty should change to `beginner`.
+
+. Modify command with *an* invalid input.
+* Steps:
+ .. Test case: `modify height/177` +
+    Expected: A message saying "Invalid Height format! Height should only be in x.xx form where x is an integer."
+ .. Test case: `modify difficulty/easy` +
+    Expected: A message saying "Invalid Difficulty format! Difficulty should only be either beginner, intermediate, advanced or any."
+ .. Test case: `modify username/John Doe weight/71.25` +
+    Expected: A message saying "Invalid Weight format! Weight should only be in xx.x/xxx.x form where x is an integer."
+
+. Modify command with *multiple* invalid input.
+* Steps:
+ .. Note that the displayed message will only indicate the *first* invalid input
+ .. Test case: `modify height/166.22 difficulty/easy` +
+    Expected: A message saying "Invalid Height format! Height should only be in x.xx form where x is an integer."
+ .. Note that the displayed message will only indicate the *first* invalid input
+ .. Test case: `modify gender/males difficulty/easy` +
+    Expected: A message saying "Invalid Gender format! Gender should either be male or female."
+
+. Modify command with an empty input.
+ .. Test case: `modify height/` +
+    Expected: A message saying "Invalid Height format! Height should only be in x.xx form where x is an integer."
+
+// end::appendixsj[]

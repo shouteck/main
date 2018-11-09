@@ -12,8 +12,10 @@ import javax.swing.JOptionPane;
 
 import org.jsoup.nodes.Element;
 
+import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.events.ui.JumpToRecommendListRequestEvent;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -57,7 +59,7 @@ public class CurrentCommand extends Command {
     private static boolean currentWorkout;
 
     private static boolean success = true;
-    private final Index targetIndex;
+    private static Index targetIndex;
 
     /**
      * @param targetIndex of the person in the filtered workout list to edit the state tag
@@ -155,6 +157,7 @@ public class CurrentCommand extends Command {
                         "Making this workout current", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.NO_OPTION) {
                     success = false;
+                    EventsCenter.getInstance().post(new JumpToRecommendListRequestEvent(targetIndex));
                     return new Workout(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,
                             updatedMuscle, updatedCalories, updatedInstruction, originalTags, null);
                 }
@@ -174,6 +177,7 @@ public class CurrentCommand extends Command {
         }
         updatedTags.add(current);
 
+        EventsCenter.getInstance().post(new JumpToRecommendListRequestEvent(targetIndex));
         return new Workout(updatedName, updatedType, updatedDuration, updatedDifficulty, updatedEquipment,
                 updatedMuscle, updatedCalories, updatedInstruction, updatedTags, null);
     }

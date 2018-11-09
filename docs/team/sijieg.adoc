@@ -56,5 +56,6 @@ include::../UserGuide.adoc[tag=commandsummary]
 
 include::../DeveloperGuide.adoc[tag=profile]
 include::../DeveloperGuide.adoc[tag=modify]
+include::../DeveloperGuide.adoc[tag=appendixsj]
 
 

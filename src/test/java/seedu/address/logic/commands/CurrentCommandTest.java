@@ -203,7 +203,6 @@ public class CurrentCommandTest {
     @Test
     public void equals() {
         CurrentCommand currentFirstCommand = new CurrentCommand(INDEX_FIRST_WORKOUT);
-        CurrentCommand currentSecondCommand = new CurrentCommand(INDEX_SECOND_WORKOUT);
 
         // same object -> returns true
         assertTrue(currentFirstCommand.equals(currentFirstCommand));
@@ -217,9 +216,6 @@ public class CurrentCommandTest {
 
         // null -> returns false
         assertFalse(currentFirstCommand.equals(null));
-
-        // different workout -> returns false
-        assertFalse(currentFirstCommand.equals(currentSecondCommand));
     }
 
     @After
