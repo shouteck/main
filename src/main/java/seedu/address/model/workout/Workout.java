@@ -81,7 +81,7 @@ public class Workout {
     }
 
     public Remark getRemark() {
-        return (remark == null) ? new Remark("This workout trains bicep") : remark; }
+        return remark; }
 
 
     /**
