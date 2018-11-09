@@ -382,11 +382,9 @@ image::SDForRecommendNonEvent.png[width="900"]
 {nbsp} +
 
 `recommend` command is integrated with the profile. User can find a workout with the respective data types `Calories`, `Difficulty` and `Duration` if specified under the workout presets in the profile.
-After that, user just have to type `recommend` in the command box, press enter to get the workout.
+After that, user just have to type `recommend` in the command box and press enter to get the workout.
 Since the sequence is very similar to single mode recommend, the sequence diagram of this entire process can be seen in Figure 12 and 13.
-// end::recommend[]
 
-// tag::recommend-considerations[]
 ==== Design Considerations
 
 ==== Aspect: Recommendation Systems
@@ -397,7 +395,7 @@ Since the sequence is very similar to single mode recommend, the sequence diagra
 * **Alternative 2:** Recommend based on user's past interactions with the system.
 ** Pros: The optimal workout will be recommended immediately without supplying any data types.
 ** Cons: Implementation requires processing big data which has to be stored in a database and all of these processes are complicated.
-// end::recommend-considerations[]
+// end::recommend[]
 
 // tag::profile[]
 
@@ -1236,3 +1234,28 @@ _{ more test cases ... }_
 .. _{explain how to simulate a missing/corrupted file and the expected behavior}_
 
 _{ more test cases ... }_
+
+=== Features/Commands
+
+==== Recommending workouts
+
+. Recommending a workout with the respective `Calories`, `Difficulty` and `Duration` that isn't in the workout list.
+* Steps:
+.. Ensure that the respective `Calories`, `Difficulty` and `Duration` you have chosen aren't the same as any of the data types contained in the workouts in the workout list.
+.. The example used here assumes that none of the workouts in the workout list contains these data types.
+.. Test case: `recommend mode/single calories/999` +
+   Expected: A message saying that the workout does not exist in the WorkoutBook will be shown in the status message.
+
+. Recommending a workout that omits the mandatory prefix `Mode`.
+* Steps:
+.. Note that this isn't referring to recommending from the profile which does not require the prefix `Mode`.
+.. Ensure that the respective `Calories`, `Difficulty` and `Duration` you have chosen are the same as the data types contained in at least one of the workouts in the workout list.
+.. The example used here assumes that at least one of the workouts contains calories of 150.
+.. Test case: `recommend calories/150` +
+   Expected: A message saying that an invalid format is used and proposing the correct format will be shown in the status message.
+
+. Recommending a workout from the profile.
+* Steps:
+.. Ensure that the respective `Calories`, `Difficulty` and `Duration` you have in the workout presets in the profile are the same as the data types contained in at least one of the workouts in the workout list.
+.. Test case: `recommend` +
+   Expected: A message saying workout is recommended will be shown in the status message.
