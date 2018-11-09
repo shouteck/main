@@ -130,7 +130,7 @@ public class CurrentCommand extends Command {
             Element divDifficulty = profileWindowManager.getDifficulty();
             String userDifficulty = profileWindowManager.trimmedDifficulty(divDifficulty.ownText());
             String calories = profileWindowManager.trimmedCalories(divCalories.ownText());
-            String duration = profileWindowManager.trimmedDuration(divDuration.ownText());
+            String duration = profileWindowManager.trimmedFullDuration(divDuration.ownText());
             if (profileWindowManager.isMoreDifficult(updatedDifficulty.toString(), userDifficulty)) {
                 moreDifficult = true;
             }
@@ -143,7 +143,7 @@ public class CurrentCommand extends Command {
             }
             if (!duration.matches("any")) {
                 if (profileWindowManager.isHigherDuration(profileWindowManager.convertStringIntoInt(profileWindowManager
-                                .trimmedDuration(updatedDuration.toString())),
+                                .trimmedFullDuration(updatedDuration.toString())),
                         profileWindowManager.convertStringIntoInt(duration))) {
                     higherDuration = true;
                 }

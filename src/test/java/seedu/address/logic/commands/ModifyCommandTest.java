@@ -282,20 +282,13 @@ public class ModifyCommandTest {
         String workingDir = System.getProperty("user.dir");
         fileName = workingDir + "/ProfileWindow.html";
         doc = Jsoup.parse(new File(fileName), "UTF-8");
-        Element divGender = doc.getElementById("gender");
-        Element divUsername = doc.getElementById("username");
-        Element divHeight = doc.getElementById("height");
-        Element divWeight = doc.getElementById("weight");
-        Element divDifficulty = doc.getElementById("difficulty");
-        Element divCalories = doc.getElementById("calories");
-        Element divDuration = doc.getElementById("duration");
 
-        profileWindowManager.setGender(VALID_GENDER);
-        profileWindowManager.setHeight(VALID_HEIGHT);
-        profileWindowManager.setUsername(VALID_USERNAME);
-        profileWindowManager.setDifficulty(VALID_DIFFICULTY);
-        profileWindowManager.setWeight(VALID_WEIGHT);
-        profileWindowManager.setCalories(VALID_CALORIES);
-        profileWindowManager.setDuration(VALID_DURATION);
+        profileWindowManager.setGender(currentGender);
+        profileWindowManager.setHeight(currentHeight);
+        profileWindowManager.setUsername(currentUsername);
+        profileWindowManager.setDifficulty(currentDifficulty);
+        profileWindowManager.setWeight(currentWeight);
+        profileWindowManager.setCalories(currentCalories);
+        profileWindowManager.setDuration(currentDuration);
     }
 }

@@ -171,10 +171,19 @@ public class ProfileWindowManager {
     }
 
     /**
-     * Trims the string duration
+     * Trims the string duration with the "m"
      */
     public String trimmedDuration(String duration) {
         duration = duration.replaceFirst("Duration: ", "");
+        return duration;
+    }
+
+    /**
+     * Trims the string duration without the "m"
+     */
+    public String trimmedFullDuration(String duration) {
+        duration = duration.replaceFirst("Duration: ", "");
+        duration = duration.replaceFirst("m", "");
         return duration;
     }
 
