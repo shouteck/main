@@ -14,21 +14,6 @@ import seedu.address.testutil.WorkoutBuilder;
 public class WorkoutCardTest extends GuiUnitTest {
 
     @Test
-    public void display() {
-        // no tags
-        Workout workoutWithNoTags = new WorkoutBuilder().withTags().build();
-        WorkoutCard workoutCard = new WorkoutCard(workoutWithNoTags, 1);
-        uiPartRule.setUiPart(workoutCard);
-        assertCardDisplay(workoutCard, workoutWithNoTags, 1);
-
-        // with tags
-        Workout workoutWithTags = new WorkoutBuilder().build();
-        workoutCard = new WorkoutCard(workoutWithTags, 2);
-        uiPartRule.setUiPart(workoutCard);
-        assertCardDisplay(workoutCard, workoutWithTags, 2);
-    }
-
-    @Test
     public void equals() {
         Workout workout = new WorkoutBuilder().build();
         WorkoutCard workoutCard = new WorkoutCard(workout, 0);
