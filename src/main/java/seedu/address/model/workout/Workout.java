@@ -81,7 +81,8 @@ public class Workout {
     }
 
     public Remark getRemark() {
-        return remark; }
+        return remark;
+    }
 
 
     /**

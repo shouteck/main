@@ -330,7 +330,7 @@ Format: `history`
 Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and next input respectively in the command box.
 ====
 
-//tag::profile[]
+// tag::profile[]
 
 === Viewing user profile : `profile`
 
@@ -342,9 +342,9 @@ Format: `profile`
 Pressing the kbd:[F2] key will display the user profile as well!
 ====
 
-//end::profile[]
+// end::profile[]
 
-//tag::modify[]
+// tag::modify[]
 
 === Modifying user profile : `modify`
 
@@ -369,7 +369,7 @@ Change your user profile's username to apple.
 * `modify username/apple height/1.82` +
 Change your user profile's username to apple, height to 1.82m and update the BMI accordingly.
 
-//tag::modify[]
+// end::modify[]
 
 // tag::recommend[]
 === Recommending a workout : `recommend`

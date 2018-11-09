@@ -215,9 +215,9 @@ public class ProfileWindowManager {
     }
 
     /**
-     * @param height
-     * @param weight
-     * @return bmi
+     * @param height to be read from profile window
+     * @param weight to be read from profile window
+     * @return bmi value
      */
     public double calculateBmi(String height, String weight) {
         double h = Double.parseDouble(extractHeight(height));
