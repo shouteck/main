@@ -1084,6 +1084,10 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |select a workout |look at the details of the workout
 
+|`* *` |user |have a user profile |check and update my personal details
+
+|`* *` |user |have a user profile |set my workout preference
+
 |`* *` |user |find/filter a workout by name |locate a workout without having to search through my entire workout list
 
 |`* *` |user |find/filter a workout by type |locate a workout according to my preference
