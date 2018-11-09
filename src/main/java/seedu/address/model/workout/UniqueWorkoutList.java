@@ -30,6 +30,11 @@ public class UniqueWorkoutList implements Iterable<Workout> {
 
     private final ObservableList<Workout> internalList = FXCollections.observableArrayList();
 
+    /**
+     * Returns the filtered list with the greatest match with the respective calories, difficulty and duration.
+     * @param recommendArguments
+     * @return Final filtered list.
+     */
     public List<Workout> getFinalFilteredInternalList (RecommendArguments recommendArguments) {
 
         if (recommendArguments.isDurationNull() || recommendArguments.isDifficultyNull()
@@ -47,6 +52,62 @@ public class UniqueWorkoutList implements Iterable<Workout> {
                 new ArrayList<>(List.of(true, true, true)));
 
         // 3 Choose 2 (3 Optionals)
+        filterThreeChooseTwo(recommendArguments, finalFilteredInternalList, optionalsList, totalOptionals);
+
+        // 3 Choose 1 (2 Optionals, 3 Optionals)
+        filterThreeChooseOne(recommendArguments, finalFilteredInternalList, optionalsList, totalOptionals);
+
+        // 3 Choose 0 (1 Optionals, 2 Optionals, 3 Optionals)
+        filterThreeChooseZero(recommendArguments, finalFilteredInternalList, optionalsList, totalOptionals);
+
+        return finalFilteredInternalList;
+    }
+
+    /**
+     * Filters three choose zero combination of calories, difficulty and duration and add it to a list.
+     * @param recommendArguments
+     * @param finalFilteredInternalList
+     * @param optionalsList
+     * @param totalOptionals
+     */
+    private void filterThreeChooseZero(RecommendArguments recommendArguments, List<Workout> finalFilteredInternalList,
+                                       ArrayList<Boolean> optionalsList, int totalOptionals) {
+        if (finalFilteredInternalList.isEmpty() && totalOptionals >= 1) {
+            finalFilteredInternalList.addAll(getFilteredInternalList(recommendArguments,
+                    new ArrayList<>(List.of(!optionalsList.get(0), !optionalsList.get(1), !optionalsList.get(2)))));
+        }
+    }
+
+    /**
+     * Filters three choose one combination of calories, difficulty and duration and add it to a list.
+     * @param recommendArguments
+     * @param finalFilteredInternalList
+     * @param optionalsList
+     * @param totalOptionals
+     */
+    private void filterThreeChooseOne(RecommendArguments recommendArguments, List<Workout> finalFilteredInternalList,
+                                      ArrayList<Boolean> optionalsList, int totalOptionals) {
+        if (finalFilteredInternalList.isEmpty() && totalOptionals >= 2) {
+            for (int i = 0; i < optionalsList.size(); i++) {
+                ArrayList<Boolean> conditionsList = new ArrayList<>(List.of(!optionalsList.get(0),
+                        !optionalsList.get(1), !optionalsList.get(2)));
+                if (optionalsList.get(i)) {
+                    conditionsList.set(i, true);
+                    finalFilteredInternalList.addAll(getFilteredInternalList(recommendArguments, conditionsList));
+                }
+            }
+        }
+    }
+
+    /**
+     * Filters three choose two combination of calories, difficulty and duration and add it to a list.
+     * @param recommendArguments
+     * @param finalFilteredInternalList
+     * @param optionalsList
+     * @param totalOptionals
+     */
+    private void filterThreeChooseTwo(RecommendArguments recommendArguments, List<Workout> finalFilteredInternalList,
+                                      ArrayList<Boolean> optionalsList, int totalOptionals) {
         if (finalFilteredInternalList.isEmpty() && totalOptionals == 3) {
             for (int i = 0; i < optionalsList.size(); i++) {
                 ArrayList<Boolean> conditionsList = new ArrayList<>(List.of(!optionalsList.get(0),
@@ -58,28 +119,14 @@ public class UniqueWorkoutList implements Iterable<Workout> {
                 }
             }
         }
-
-        // 3 Choose 1 (2 Optionals, 3 Optionals)
-        if (finalFilteredInternalList.isEmpty() && totalOptionals >= 2) {
-            for (int i = 0; i < optionalsList.size(); i++) {
-                ArrayList<Boolean> conditionsList = new ArrayList<>(List.of(!optionalsList.get(0),
-                        !optionalsList.get(1), !optionalsList.get(2)));
-                if (optionalsList.get(i)) {
-                    conditionsList.set(i, true);
-                    finalFilteredInternalList.addAll(getFilteredInternalList(recommendArguments, conditionsList));
-                }
-            }
-        }
-
-        // 3 Choose 0 (1 Optionals, 2 Optionals, 3 Optionals)
-        if (finalFilteredInternalList.isEmpty() && totalOptionals >= 1) {
-            finalFilteredInternalList.addAll(getFilteredInternalList(recommendArguments,
-                    new ArrayList<>(List.of(!optionalsList.get(0), !optionalsList.get(1), !optionalsList.get(2)))));
-        }
-
-        return finalFilteredInternalList;
     }
 
+    /**
+     * Filters the workouts by calories, difficulty and duration and returns the list.
+     * @param recommendArguments
+     * @param conditionsList
+     * @return Filtered list.
+     */
     private List<Workout> getFilteredInternalList(RecommendArguments recommendArguments,
                                                   ArrayList<Boolean> conditionsList) {
         List<Workout> filteredInternalList = internalList.stream()
