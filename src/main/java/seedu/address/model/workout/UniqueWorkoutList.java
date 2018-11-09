@@ -64,7 +64,7 @@ public class UniqueWorkoutList implements Iterable<Workout> {
     }
 
     /**
-     * Filters three choose zero combination of calories, difficulty and duration and add it to a list.
+     * Choose zero out of `Calories`, `Difficulty` and `Duration` to filter.
      * @param recommendArguments
      * @param finalFilteredInternalList
      * @param optionalsList
@@ -79,7 +79,7 @@ public class UniqueWorkoutList implements Iterable<Workout> {
     }
 
     /**
-     * Filters three choose one combination of calories, difficulty and duration and add it to a list.
+     * Choose one out of `Calories`, `Difficulty` and `Duration` to filter.
      * @param recommendArguments
      * @param finalFilteredInternalList
      * @param optionalsList
@@ -100,7 +100,7 @@ public class UniqueWorkoutList implements Iterable<Workout> {
     }
 
     /**
-     * Filters three choose two combination of calories, difficulty and duration and add it to a list.
+     * Choose two out of `Calories`, `Difficulty` and `Duration` to filter.
      * @param recommendArguments
      * @param finalFilteredInternalList
      * @param optionalsList
@@ -121,12 +121,6 @@ public class UniqueWorkoutList implements Iterable<Workout> {
         }
     }
 
-    /**
-     * Filters the workouts by calories, difficulty and duration and returns the list.
-     * @param recommendArguments
-     * @param conditionsList
-     * @return Filtered list.
-     */
     private List<Workout> getFilteredInternalList(RecommendArguments recommendArguments,
                                                   ArrayList<Boolean> conditionsList) {
         List<Workout> filteredInternalList = internalList.stream()

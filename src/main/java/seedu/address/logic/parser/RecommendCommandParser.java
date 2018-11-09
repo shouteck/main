@@ -75,22 +75,10 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
         return new RecommendCommand(recommendArguments);
     }
 
-
-    /**
-     *  Returns true if profile recommend fields are valid.
-     * @param argMultimap
-     * @return
-     */
     private boolean isProfileRecommendFieldsValid(ArgumentMultimap argMultimap) {
         return argMultimap.getPreamble().isEmpty() && argMultimap.getTheOnlyPrefix() == null;
     }
 
-    /**
-     * RecommendArguments getter.
-     * @param argMultimap
-     * @return
-     * @throws ParseException
-     */
     private RecommendArguments getRecommendArguments(ArgumentMultimap argMultimap) throws ParseException {
 
         RecommendArguments.Builder recommendArgumentsBuilder = new RecommendArguments.Builder();
@@ -103,12 +91,6 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
         return recommendArgumentsBuilder.build();
     }
 
-    /**
-     * Mode setter.
-     * @param argMultimap
-     * @param recommendArgumentsBuilder
-     * @throws ParseException
-     */
     private void buildMode(ArgumentMultimap argMultimap, RecommendArguments.Builder recommendArgumentsBuilder)
             throws ParseException {
         Optional<Mode> mode = Optional.of(ParserUtil.parseMode(argMultimap.getValue(PREFIX_MODE).get()));
@@ -116,7 +98,7 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
     }
 
     /**
-     * Calories setter.
+     * Calories setter for Recommend Arguments.
      * @param argMultimap
      * @param recommendArgumentsBuilder
      * @throws ParseException
@@ -135,7 +117,7 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
     }
 
     /**
-     * Difficulty setter.
+     * Difficulty setter for Recommend Arguments.
      * @param argMultimap
      * @param recommendArgumentsBuilder
      * @throws ParseException
@@ -154,7 +136,7 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
     }
 
     /**
-     * Duration setter.
+     * Duration setter for Recommend Arguments.
      * @param argMultimap
      * @param recommendArgumentsBuilder
      * @throws ParseException
@@ -180,12 +162,7 @@ public class RecommendCommandParser implements Parser<RecommendCommand> {
         return Stream.of(prefixes).anyMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 
-    /**
-     * Returns true if the Optional inputs are valid.
-     * @param argumentMultimap
-     * @return
-     */
-    private static boolean isOptionalValid(ArgumentMultimap argumentMultimap) {
+    private boolean isOptionalValid(ArgumentMultimap argumentMultimap) {
         return (isPrefixPresent(argumentMultimap, PREFIX_CALORIES, PREFIX_OPTIONAL_CALORIES)
                 && isPrefixPresent(argumentMultimap, PREFIX_DIFFICULTY, PREFIX_OPTIONAL_DIFFICULTY)
                 && isPrefixPresent(argumentMultimap, PREFIX_DURATION, PREFIX_OPTIONAL_DURATION));
