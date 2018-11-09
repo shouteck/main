@@ -41,6 +41,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 [[Features]]
 == Features
 
+// tag::commandformat[]
 ====
 *Command Format*
 
@@ -48,7 +49,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 * Below is a list of the remaining parameters with examples of their acceptable formats:
 
 ** *_CALORIES_* are positive integers from 1 to 1000. E.g. `120`, `500`, etc.
-** *_DIFFICULTY_* and *_PREFERRED_DIFFICULTY_* should only be either beginner, intermediate or advanced.
+** *_DIFFICULTY_* should only be either beginner, intermediate or advanced.
 ** *_DURATION_* should only be in this format: E.g. `20m`, `500m`, etc from 1m to 1000m.
 ** *_EQUIPMENT_* is a list of equipment separated by commas, and it should not be blank. E.g. `dumbbell,bench,mat` and `dumbbell, bench, mat` are valid.
 ** *_MUSCLE_* is a list of muscle groups separated by commas, and it should not be blank. E.g. `triceps,biceps,back` and `triceps, biceps, back` are valid.
@@ -65,6 +66,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 * White spaces after a slash are automatically trimmed. For example, `add name/ commando workout` and `add name/commando workout` are the same. However, the latter is more visually pleasing.
 * Duplicate parameters after one another will only take the last parameter input. For example, `add name/commando workout name/arnold workout` will only add the workout as arnold workout.
 ====
+// end::commandformat[]
 
 === Viewing help : `help`
 
@@ -357,7 +359,9 @@ Format: `modify [gender/GENDER] [username/USERNAME] [height/HEIGHT] [weight/WEIG
 
 [NOTE]
 ====
-The workout presets for calories, difficulty and duration accepts `any` as a input as well. It would simply mean that the user wants any amount of calories, duration or any difficulty.
+The workout presets for calories, difficulty and duration accepts `any` as a input as well*. It would simply mean that the user wants any amount of calories, duration or any difficulty.
+
+*Be warned that it only accepts "any" under the profile, _NOT_ the add or edit command.
 ====
 
 Examples:
@@ -369,6 +373,7 @@ Change your user profile's username to apple, height to 1.82m and update the BMI
 
 // end::modify[]
 
+// tag::recommend[]
 === Recommending a workout : `recommend`
 
 Recommends workout from the workout book.
@@ -381,6 +386,11 @@ Recommend command only recommends workout from the current workout list.
 [TIP]
 To recommend from the entire list of workouts, you should first type `list` in the command box and press kbd:[Enter] to
 retrieve the entire list of workouts.
+
+[NOTE]
+====
+When one workout is requested (either through the user's WorkoutPresets or the user input with a specified `Mode` of single) and there is more than one matching workout, a random matching workout is retrieved.
+====
 
 There are two ways to use the `recommend` command.
 
@@ -449,6 +459,7 @@ Recommends a 10 minute intermediate workout if there exist this workout or else 
 Recommends three 10 minute beginner workouts that burns 125 calories if there exist these workouts or else it will recommend the next best alternative.
 * `recommend mode/all ocalories/160 odifficulty/advanced oduration/10m` +
 Recommends all the 10 minute advanced workouts that burns 160 calories if there exist these workouts or else it will recommend the next best alternative.
+// end::recommend[]
 
 // tag::undoredo[]
 
@@ -559,7 +570,7 @@ There is no need to save manually.
 |`modify gender/female username/sarah height/1.69 weight/87.2 calories/150 difficulty/beginner duration/15m`
 
 |Recommend
-|`recommend difficulty/beginner`
+|`recommend mode/single difficulty/beginner`
 
 |Redo
 |`redo`

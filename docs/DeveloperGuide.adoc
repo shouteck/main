@@ -327,43 +327,43 @@ image::UndoRedoActivityDiagram.png[width="650"]
 // tag::recommend[]
 === Recommending a workout
 ==== Current implementation
-There are several functionalities in the `recommend` command and to invoke certain functionalities, different combinations of inputs are considered.
-When the user keys in the input in the command box, the user input is parsed in the `RecommendCommandParser`.
-An instance of `RecommendArguments` class will be instantiated corresponding to the user input and this instance is then passed to `RecommendCommand` in the `Logic` component.
+The user input is parsed in `RecommendCommandParser` into different data types in the workout book. The data types that are relevant here are `Mode`, `Calories`, `Difficulty` and `Duration`.
+A `RecommendArguments` instance is created to store these 4 different data types and is passed to the `RecommendCommand` in the `Logic` component.
+Given below is a class diagram containing `RecommendArguments` and the 4 different data types.
 
-In order to recommend a suitable workout for a given combination of inputs which are stored in the `RecommendArguments` instance, we must first find out what are the suitable workouts present in our current workout list.
-The instance of `RecommendArguments` is passed through a `getFinalFilteredInternalList()` method in the `Model` component.
-This method works by filtering the current workout list to match the user inputs as much as possible to return a filtered list instead of mutating the original copy.
+[[fig-RecommendCommandCD]]
+.Class Diagram for `recommend` command.
+image::CDForRecommendArguments.png[width="500"]
+{nbsp} +
 
-Here, we introduce the notion of optional prefixes where users are allowed to indicate whether certain properties are mandatory or good to have in their workouts.
-By allowing users the flexibility to decide the mandatory properties they want in a workout, we can cut down the number of steps taken by a user to arrive at their optimal recommended workout.
-The worst case scenario of finding an optimal workout takes approximately 2^(n) steps, where n is the number of properties which is 3 in this case.
-There are different levels in what workouts are to be recommended and considered. The algorithm ensures that the workout recommended will be of the highest level or the greatest match.
-
-There are two different behavioral sequences that will arise under certain combinations of inputs. The activity diagram below depicts the execution flow of the `recommend` command.
+The `RecommendArguments` instance is passed to a `getFinalFilteredInternalList()` method in the `Model` component.
+This method filters the current workout list in the `UI` by `Calories`, `Difficulty` and `Duration` if specified by the user, and returns a new list of filtered workouts.
+The original workout list in the `UI` is not modified. The activity diagram below depicts the execution flow of the `recommend` command.
 
 [[fig-RecommendCommandAD]]
 .Activity Diagram for `recommend` command.
 image::ADForRecommendCommand.png[width="800"]
 {nbsp} +
 
-Shown below is the component interactions for the `recommend` command where the path taken is with the condition of recommending directly from Workout Presets in the user's profile or through the inputs with a specified mode of single.
+On command execution, a new `JumpToRecommendListRequestEvent` is created and posted to `EventsCenter`.
+Shown below is the component interactions for the `recommend mode/single calories/150` command.
 
 [[fig-RecommendEventSD]]
-.Component interactions for `recommend` command (part 1).
+.Component interactions for `recommend mode/single calories/150` command (part 1).
 image::SDForRecommendEvent.png[width="700"]
 {nbsp} +
 
-The event then propagates through `EventsCenter` to the `UI`. The `UI` will call `handleJumpToRecommendListRequestEvent()` to handle the event, which eventually results in the the `UI` being updated to scroll to the workout in the `WorkoutListPanel` and selecting it.
+The event then propagates through `EventsCenter` to the `WorkoutListPanel`.
+The `WorkoutListPanel` will call `handleJumpToRecommendListRequestEvent()` and update the `UI` to scroll to and select the workout.
 The process is shown in the Figure below.
 
 [[fig-RecommendEventHandlingSD]]
-.Component interactions for `recommend` command (part 2).
+.Component interactions for `recommend mode/single calories/150` command (part 2).
 image::SDForRecommendEventHandling.png[width="500"]
 {nbsp} +
 
 For the other path, the filtered list returned from the `getFinalFilteredInternalList()` is passed to `WorkoutsPredicate` which compares every workout in the filtered list to the entire list of workouts.
-The predicate will only be true when the workout matches at least one of the workouts in the filtered list.
+The predicate will only be true when the workout matches AT LEAST ONE of the workouts in the filtered list.
 The implementation of that can be seen below:
 [source,java]
 ----
@@ -373,16 +373,18 @@ public boolean test(Workout workout) {
             .anyMatch(keyWorkouts -> workout.equals(keyWorkouts));
 }
 ----
-`WorkoutsPredicate` instance is then passed to `updateFilteredWorkoutList()` method of `Model` to change the entire list of workouts displayed to those that matched at least one of the workouts.
+`WorkoutsPredicate` instance is then passed to `updateFilteredWorkoutList()` method of `Model` to modify the entire list of workouts displayed to those that matched at least one of the workouts.
 The sequence diagram of this entire process can be seen below:
 
 [[fig-RecommendNonEventSD]]
 .Interactions inside the `Logic` component for the `recommend mode/single calories/150` command.
 image::SDForRecommendNonEvent.png[width="900"]
-{nbsp}
-// end::recommend[]
+{nbsp} +
 
-// tag::recommend-considerations[]
+`recommend` command is integrated with the profile. User can find a workout with the respective data types `Calories`, `Difficulty` and `Duration` if specified under the workout presets in the profile.
+After that, user just have to type `recommend` in the command box and press enter to get the workout.
+Since the sequence is very similar to single mode recommend, the sequence diagram of this entire process can be seen in Figure 12 and 13.
+
 ==== Design Considerations
 
 ==== Aspect: Recommendation Systems
@@ -390,13 +392,15 @@ image::SDForRecommendNonEvent.png[width="900"]
 * **Alternative 1 (current choice):** Recommend based on user's input.
 ** Pros: The user has more control over what they want in the recommended workout, and the implementation is simple.
 ** Cons: The user has to take more steps to successfully get a recommended workout of their choice. (Always has to key in the inputs)
-* **Alternative 2:** Recommend based on user's interactions with the system.
-** Pros: The optimal workout will be recommended immediately without supplying any inputs.
+* **Alternative 2:** Recommend based on user's past interactions with the system.
+** Pros: The optimal workout will be recommended immediately without supplying any data types.
 ** Cons: Implementation requires processing big data which has to be stored in a database and all of these processes are complicated.
-// end::recommend-considerations[]
+// end::recommend[]
+
+// tag::profile[]
 
 === User Profile
-// tag::profile[]
+
 ==== Current implementation
 The profile window is first being loaded by loading the `_profileWindow.fxml file_`. Thereafter, once the user request to open the profile window, it will then process it.
 
@@ -430,8 +434,39 @@ The profile window is firstly being accelerated by the key `F2`. After pressing 
 .Interactions inside `UI` component when user presses `F2`
 image::F2Profile.PNG[width="700"]
 
+==== Design Considerations
+
+===== Aspect: UI
+
+* **Alternative 1 (current choice):** Opens a new window (similar to HelpWindow)
+** Pros: Does not take up space from the UI especially since we only have limited space.
+** Cons: User can only access it via a new window; troublesome as they have to open(and close) them after they look at it.
+* **Alternative 2:** Adopt it inside the UI (etc. replacing the BrowserPanel)
+** Pros: User does not need to do anything to view the user profile.
+** Cons: Takes up space and the implementation would require heavy modification to the UI which is not easy.
+
 // end::profile[]
 
+// tag::modify[]
+
+=== Modifying the User Profile
+
+==== Current Implementation
+
+This modify feature only affects the `ProfileWindow.html` file and *will not* affect the workout book. It gives the user a platform to store their personal information and workout presets.
+
+When the user keys in the input in the command box, the input is parsed in the `ModifyCommandParser`. An instance of `ProfileWindowManager` class will be instantiated and this will parse the `ProfileWindow.html` file via J.soup.
+
+After parsing the file, the `ModifyCommandParser` will then find out which argument are to be edited. The parsed input will specify which attribute are to be edited according to their prefixes.
+After performing a boolean check to confirm which attribute have to be edited, the instance of `ProfileWindowManager` will then change the attribute. Once the attribute has been change, it will then proceed to load the new file.
+
+As J.soup only alters the text of the `ProfileWindow.html` file and will not overwrite it, the instance of `ProfileWindowManager` will first create an (empty) temporary html file, copy all the content of the altered `ProfileWindow.html` file
+to the temporary html file, then overwrite the current `ProfileWindow.html` file with the temporary html file and proceed to delete the temporary html file.
+
+.Class diagram that shows the how the different class interacts when executing modify command
+image::ModifyClassDiagram.png[width="700"]
+
+// end::modify[]
 
 // tag::TR
 === Traversing and remark feature
@@ -1199,3 +1234,28 @@ _{ more test cases ... }_
 .. _{explain how to simulate a missing/corrupted file and the expected behavior}_
 
 _{ more test cases ... }_
+
+=== Features/Commands
+
+==== Recommending workouts
+
+. Recommending a workout with the respective `Calories`, `Difficulty` and `Duration` that isn't in the workout list.
+* Steps:
+.. Ensure that the respective `Calories`, `Difficulty` and `Duration` you have chosen aren't the same as any of the data types contained in the workouts in the workout list.
+.. The example used here assumes that none of the workouts in the workout list contains these data types.
+.. Test case: `recommend mode/single calories/999` +
+   Expected: A message saying that the workout does not exist in the WorkoutBook will be shown in the status message.
+
+. Recommending a workout that omits the mandatory prefix `Mode`.
+* Steps:
+.. Note that this isn't referring to recommending from the profile which does not require the prefix `Mode`.
+.. Ensure that the respective `Calories`, `Difficulty` and `Duration` you have chosen are the same as the data types contained in at least one of the workouts in the workout list.
+.. The example used here assumes that at least one of the workouts contains calories of 150.
+.. Test case: `recommend calories/150` +
+   Expected: A message saying that an invalid format is used and proposing the correct format will be shown in the status message.
+
+. Recommending a workout from the profile.
+* Steps:
+.. Ensure that the respective `Calories`, `Difficulty` and `Duration` you have in the workout presets in the profile are the same as the data types contained in at least one of the workouts in the workout list.
+.. Test case: `recommend` +
+   Expected: A message saying workout is recommended will be shown in the status message.

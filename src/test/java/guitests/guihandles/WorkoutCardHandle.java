@@ -97,7 +97,8 @@ public class WorkoutCardHandle extends NodeHandle<Node> {
     }
 
     public String getRemark () {
-        return (remarkLabel.getText() == null) ? "This workout trains bicep" : remarkLabel.getText(); }
+        return remarkLabel.getText();
+    }
 
     public List<String> getTags() {
         return tagLabels
