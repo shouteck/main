@@ -30,7 +30,11 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.*;
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.TrackedData;
+import seedu.address.model.UserPrefs;
+import seedu.address.model.WorkoutBook;
 import seedu.address.model.workout.Workout;
 //import seedu.address.testutil.WorkoutBuilder;
 
@@ -49,7 +53,7 @@ public class CurrentCommandTest {
         CurrentCommand.setCurrentWorkout(false);
     }
 
-     @Test
+    @Test
     public void execute_validIndexUnfilteredList_success() throws CommandException {
         Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_EIGHTH_WORKOUT.getZeroBased());
         Workout editedWorkout = createEditedWorkout(currentWorkout);
