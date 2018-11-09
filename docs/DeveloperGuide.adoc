@@ -1234,3 +1234,30 @@ _{ more test cases ... }_
 .. _{explain how to simulate a missing/corrupted file and the expected behavior}_
 
 _{ more test cases ... }_
+
+=== Features/Commands
+
+// tag::recommend-appendix[]
+==== Recommending workouts
+
+. Recommending a workout with the respective `Calories`, `Difficulty` and `Duration` that isn't in the workout list.
+* Steps:
+.. Ensure that the respective `Calories`, `Difficulty` and `Duration` you have chosen aren't the same as any of the data types contained in the workouts in the workout list.
+.. The example used here assumes that none of the workouts in the workout list contains these data types.
+.. Test case: `recommend mode/single calories/999` +
+   Expected: A message saying that the workout does not exist in the WorkoutBook will be shown in the status message.
+
+. Recommending a workout that omits the mandatory prefix `Mode`.
+.. Note that this isn't referring to recommending from the profile which does not require the prefix `Mode`.
+* Steps:
+.. Ensure that the respective `Calories`, `Difficulty` and `Duration` you have chosen are the same as the data types contained in at least one of the workouts in the workout list.
+.. The example used here assumes that at least one of the workouts contains calories of 150.
+.. Test case: `recommend calories/150` +
+   Expected: A message saying that an invalid format is used and proposing the correct format will be shown in the status message.
+
+. Recommending a workout from the profile.
+* Steps:
+.. Ensure that the respective `Calories`, `Difficulty` and `Duration` you have in the workout presets in the profile are the same as the data types contained in at least one of the workouts in the workout list.
+.. Test case: `recommend` +
+   Expected: A message saying workout is recommended will be shown in the status message.
+// end::recommend-appendix[]

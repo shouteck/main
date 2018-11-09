@@ -47,6 +47,8 @@ With the notion of optional parameters, it allows the user the flexibility to de
 include::../UserGuide.adoc[tag=commandformat]
 [.include]
 include::../UserGuide.adoc[tag=recommend]
+[.include]
+include::../UserGuide.adoc[tag=recommend-appendix]
 
 == Contributions to the Developer Guide
 
