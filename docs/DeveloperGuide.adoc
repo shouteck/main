@@ -466,8 +466,6 @@ image::ModifyClassDiagram.PNG[width="700"]
 
 // end::modify[]
 
-====
-
 // tag::TR
 === Traversing and remark feature
 //tag::traversing
