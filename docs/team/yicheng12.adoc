@@ -26,9 +26,12 @@ WorkoutBook is a desktop address book application used for students to manage th
 
 ** Project management:
 ** Enhancements to existing features:
-*** Morph select command
+*** Assisted morphing Addressbook 4 to workout book, including select command
 ** Documentation:
-*** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
+*** Did cosmetic tweaks to existing contents of the User Guide:
+https://github.com/CS2113-AY1819S1-T13-5/main/pull/119[#119]
+https://github.com/CS2113-AY1819S1-T13-5/main/pull/165[#165]
+https://github.com/CS2113-AY1819S1-T13-5/main/pull/166[#166]
 ** Community:
 *** Reported bugs and suggestions for other teams in the class (https://github.com/CS2113-AY1819S1-F09-3/main/issues/248[#248], https://github.com/CS2113-AY1819S1-F09-3/main/issues/250[#250])
 
