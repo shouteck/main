@@ -462,7 +462,7 @@ As J.soup only alters the text of the `ProfileWindow.html` file and will not ove
 to the temporary html file, then overwrite the current `ProfileWindow.html` file with the temporary html file and proceed to delete the temporary html file.
 
 .Class diagram that shows the how the different class interacts when executing modify command
-image::ModifyClassDiagram.PNG[width="700"]
+image::ModifyClassDiagram.png[width="700"]
 
 // end::modify[]
 
