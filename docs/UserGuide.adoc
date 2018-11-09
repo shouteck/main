@@ -389,7 +389,7 @@ retrieve the entire list of workouts.
 
 [NOTE]
 ====
-When one workout is requested (either through the user's WorkoutPresets or user input with a specified `Mode` of single) and there is more than one matching workout, a random matching workout is retrieved.
+When one workout is requested (either through the user's WorkoutPresets or the user input with a specified `Mode` of single) and there is more than one matching workout, a random matching workout is retrieved.
 ====
 
 There are two ways to use the `recommend` command.
