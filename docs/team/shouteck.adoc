@@ -9,7 +9,10 @@
 
 == Overview
 
-TO BE CHANGED
+Are you a professional athlete who is too lazy to manually search through your workout list to find your favourite workout?
+Are you an amateur who just started working out and doesn't know where to begin?
+Or are you just someone who prefers to have all of your workouts in one place and organized in a tidy manner. Then WorkoutBook is the solution for you!
+WorkoutBook is a desktop address book application used for students to manage their workouts. The user interacts with it using a CLI, and it has a GUI created with JavaFX.
 
 == Summary of contributions
 
