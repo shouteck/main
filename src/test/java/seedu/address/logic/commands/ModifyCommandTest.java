@@ -56,7 +56,7 @@ import seedu.address.logic.parser.ModifyCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-
+import seedu.address.model.ProfileWindowManager;
 
 public class ModifyCommandTest {
     private static final String MESSAGE_MODIFY_USERPROFILE_SUCCESS = "User profile has been modified!";
@@ -69,6 +69,9 @@ public class ModifyCommandTest {
     private static String currentCalories;
     private static String currentDuration;
 
+    ProfileWindowManager profileWindowManager;
+
+
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
@@ -79,6 +82,7 @@ public class ModifyCommandTest {
 
     @Before
     public void setUp() throws IOException {
+        profileWindowManager = ProfileWindowManager.getInstance();
         String workingDir = System.getProperty("user.dir");
         fileName = workingDir + "/ProfileWindow.html";
         doc = Jsoup.parse(new File(fileName), "UTF-8");
@@ -118,10 +122,10 @@ public class ModifyCommandTest {
 
         //execute the command
         Element divGender = doc.getElementById("gender");
-        divGender.text(VALID_GENDER);
+        profileWindowManager.setGender(VALID_GENDER);
         String expectedSuccessMessage = MESSAGE_MODIFY_USERPROFILE_SUCCESS;
 
-        expectedAttributes.add(VALID_GENDER);
+        expectedAttributes.add("Gender: " + VALID_GENDER);
         actualAttributes.add(divGender.ownText());
         //valid gender
         String commandGender = " " + PREFIX_GENDER + VALID_GENDER;
@@ -180,11 +184,12 @@ public class ModifyCommandTest {
         Element divHeight = doc.getElementById("height");
         Element divWeight = doc.getElementById("weight");
         Element divCalories = doc.getElementById("calories");
-        divGender.text(VALID_GENDER);
-        divHeight.text(VALID_HEIGHT);
-        divWeight.text(VALID_WEIGHT);
-        divUsername.text(VALID_USERNAME);
-        divCalories.text(VALID_CALORIES);
+
+        profileWindowManager.setGender(VALID_GENDER);
+        profileWindowManager.setHeight(VALID_HEIGHT);
+        profileWindowManager.setWeight(VALID_WEIGHT);
+        profileWindowManager.setUsername(VALID_USERNAME);
+        profileWindowManager.setCalories(VALID_CALORIES);
 
         //expected attributes
         expectedAttributes.add(VALID_CALORIES);
@@ -194,12 +199,11 @@ public class ModifyCommandTest {
         expectedAttributes.add(VALID_WEIGHT);
 
         //actual attributes
-        actualAttributes.add(divCalories.ownText());
-        actualAttributes.add(divGender.ownText());
-        actualAttributes.add(divHeight.ownText());
-        actualAttributes.add(divUsername.ownText());
-        actualAttributes.add(divWeight.ownText());
-
+        actualAttributes.add(profileWindowManager.trimmedCalories(divCalories.ownText()));
+        actualAttributes.add(profileWindowManager.trimmedGender(divGender.ownText()));
+        actualAttributes.add(profileWindowManager.extractHeight(divHeight.ownText()));
+        actualAttributes.add(profileWindowManager.trimmedUsername(divUsername.ownText()));
+        actualAttributes.add(profileWindowManager.extractWeight(divWeight.ownText()));
 
         String command = " " + PREFIX_GENDER + VALID_GENDER + " " + PREFIX_CALORIES + VALID_CALORIES + " "
                 + PREFIX_HEIGHT + VALID_HEIGHT + " " + PREFIX_WEIGHT + VALID_WEIGHT + " " + PREFIX_USERNAME
@@ -238,13 +242,13 @@ public class ModifyCommandTest {
         Element divDifficulty = doc.getElementById("difficulty");
         Element divCalories = doc.getElementById("calories");
         Element divDuration = doc.getElementById("duration");
-        divGender.text(VALID_GENDER);
-        divHeight.text(VALID_HEIGHT);
-        divWeight.text(VALID_WEIGHT);
-        divUsername.text(VALID_USERNAME);
-        divDifficulty.text(VALID_DIFFICULTY);
-        divCalories.text(VALID_CALORIES);
-        divDuration.text(VALID_DURATION);
+        profileWindowManager.setGender(VALID_GENDER);
+        profileWindowManager.setHeight(VALID_HEIGHT);
+        profileWindowManager.setWeight(VALID_WEIGHT);
+        profileWindowManager.setUsername(VALID_USERNAME);
+        profileWindowManager.setDifficulty(VALID_DIFFICULTY);
+        profileWindowManager.setCalories(VALID_CALORIES);
+        profileWindowManager.setDuration(VALID_DURATION);
 
         //expected attributes
         expectedAttributes.add(VALID_CALORIES);
@@ -256,14 +260,13 @@ public class ModifyCommandTest {
         expectedAttributes.add(VALID_WEIGHT);
 
         //actual attributes
-        actualAttributes.add(divCalories.ownText());
-        actualAttributes.add(divDifficulty.ownText());
-        actualAttributes.add(divDuration.ownText());
-        actualAttributes.add(divGender.ownText());
-        actualAttributes.add(divHeight.ownText());
-        actualAttributes.add(divUsername.ownText());
-        actualAttributes.add(divWeight.ownText());
-
+        actualAttributes.add(profileWindowManager.trimmedCalories(divCalories.ownText()));
+        actualAttributes.add(profileWindowManager.trimmedDifficulty(divDifficulty.ownText()));
+        actualAttributes.add(profileWindowManager.trimmedDuration(divDuration.ownText()+"m"));
+        actualAttributes.add(profileWindowManager.trimmedGender(divGender.ownText()));
+        actualAttributes.add(profileWindowManager.extractHeight(divHeight.ownText()));
+        actualAttributes.add(profileWindowManager.trimmedUsername(divUsername.ownText()));
+        actualAttributes.add(profileWindowManager.extractWeight(divWeight.ownText()));
 
         String command = " " + PREFIX_GENDER + VALID_GENDER + " " + PREFIX_CALORIES + VALID_CALORIES + " "
                 + PREFIX_DIFFICULTY + VALID_DIFFICULTY + " " + PREFIX_DURATION + VALID_DURATION + " "
@@ -289,12 +292,12 @@ public class ModifyCommandTest {
         Element divCalories = doc.getElementById("calories");
         Element divDuration = doc.getElementById("duration");
 
-        divGender.text(currentGender);
-        divHeight.text(currentHeight);
-        divUsername.text(currentUsername);
-        divDifficulty.text(currentDifficulty);
-        divWeight.text(currentWeight);
-        divCalories.text(currentCalories);
-        divDuration.text(currentDuration);
+        profileWindowManager.setGender(VALID_GENDER);
+        profileWindowManager.setHeight(VALID_HEIGHT);
+        profileWindowManager.setUsername(VALID_USERNAME);
+        profileWindowManager.setDifficulty(VALID_DIFFICULTY);
+        profileWindowManager.setWeight(VALID_WEIGHT);
+        profileWindowManager.setCalories(VALID_CALORIES);
+        profileWindowManager.setDuration(VALID_DURATION);
     }
 }

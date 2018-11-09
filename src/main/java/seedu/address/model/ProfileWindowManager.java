@@ -144,13 +144,13 @@ public class ProfileWindowManager {
         this.bmi.text(bmi);
     }
 
-    private String extractHeight(String height) {
+    public String extractHeight(String height) {
         height = height.replaceFirst("Height: ", "");
         height = height.replaceFirst("m", "");
         return height;
     }
 
-    private String extractWeight(String weight) {
+    public String extractWeight(String weight) {
         weight = weight.replaceFirst("kg", "");
         weight = weight.replaceFirst("Weight: ", "");
         return weight;
@@ -187,6 +187,14 @@ public class ProfileWindowManager {
     public String trimmedGender(String gender) {
         gender = gender.replaceFirst("Gender: ", "");
         return gender;
+    }
+
+    /**
+     * Trims the string gender
+     */
+    public String trimmedUsername(String username) {
+        username = username.replaceFirst("Username: ", "");
+        return username;
     }
 
     public boolean isCaloriesAny() {

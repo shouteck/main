@@ -2,40 +2,44 @@ package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_JOHN_WORKOUT;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_JOHN_WORKOUT;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_JOHN_WORKOUT;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_JOHN_WORKOUT;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_JOHN_WORKOUT;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_JOHN_WORKOUT;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_JOHN_WORKOUT;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_REMARK_JOHN_WORKOUT;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_CURRENT;
-//import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REMARK_JOHN_WORKOUT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_CURRENT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_JOHN_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
-//import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showWorkoutAtIndex;
 import static seedu.address.logic.commands.CurrentCommand.MESSAGE_MULTIPLE_CURRENT_WORKOUT;
-//import static seedu.address.logic.commands.CurrentCommand.createEditedWorkout;
+import static seedu.address.logic.commands.CurrentCommand.createEditedWorkout;
 import static seedu.address.testutil.TypicalIndexes.INDEX_EIGHTH_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_WORKOUT;
 import static seedu.address.testutil.TypicalParameters.getTypicalTrackedDataList;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
-//import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.TrackedData;
-import seedu.address.model.UserPrefs;
-//import seedu.address.model.workout.Workout;
-//import seedu.address.testutil.WorkoutBuilder;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.*;
+import seedu.address.model.workout.Workout;
+import seedu.address.testutil.WorkoutBuilder;
+
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
@@ -45,14 +49,39 @@ public class CurrentCommandTest {
 
     private Model model = new ModelManager(getTypicalWorkoutBook(), getTypicalTrackedDataList(), new TrackedData(),
             new UserPrefs());
+
+    private static String currentDifficulty;
+    private static String currentCalories;
+    private static String currentDuration;
+    ProfileWindowManager profileWindowManager;
+
     private CommandHistory commandHistory = new CommandHistory();
+    private String fileName;
+    private Document doc;
 
     @Before
-    public void setUp() {
+
+    public void setUp() throws IOException {
         CurrentCommand.setCurrentWorkout(false);
+        profileWindowManager = ProfileWindowManager.getInstance();
+        String workingDir = System.getProperty("user.dir");
+        fileName = workingDir + "/ProfileWindow.html";
+        doc = Jsoup.parse(new File(fileName), "UTF-8");
+
+        Element divDifficulty = doc.getElementById("difficulty");
+        Element divCalories = doc.getElementById("calories");
+        Element divDuration = doc.getElementById("duration");
+
+        currentDifficulty = divDifficulty.ownText();
+        currentCalories = divCalories.ownText();
+        currentDuration = divDuration.ownText();
+
+        profileWindowManager.setDuration("any");
+        profileWindowManager.setCalories("any");
+        profileWindowManager.setDifficulty("any");
     }
 
-    /* @Test
+     @Test
     public void execute_validIndexUnfilteredList_success() {
         Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_EIGHTH_WORKOUT.getZeroBased());
         WorkoutBuilder workoutInList = new WorkoutBuilder(currentWorkout);
@@ -73,7 +102,7 @@ public class CurrentCommandTest {
         expectedModel.commitModel();
 
         assertCommandSuccess(currentCommand, model, commandHistory, expectedMessage, expectedModel);
-    }*/
+    }
 
     @Test
     public void execute_preexistingCurrentWorkoutUnfilteredList_failure() {
@@ -91,7 +120,7 @@ public class CurrentCommandTest {
         assertCommandFailure(currentCommand, model, commandHistory, Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
     }
 
-    /* @Test
+     @Test
     public void execute_validIndexFilteredList_success() throws CommandException {
         showWorkoutAtIndex(model, INDEX_EIGHTH_WORKOUT);
 
@@ -107,7 +136,7 @@ public class CurrentCommandTest {
         expectedModel.commitModel();
 
         assertCommandSuccess(currentCommand, model, commandHistory, expectedMessage, expectedModel);
-    }*/
+    }
 
     @Test
     public void execute_preexistingCurrentWorkoutFilteredList_failure() {
@@ -132,7 +161,7 @@ public class CurrentCommandTest {
         assertCommandFailure(currentCommand, model, commandHistory, Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
     }
 
-    /*@Test
+    @Test
     public void executeUndoRedo_validIndexUnfilteredList_success() throws Exception {
         Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_FIRST_WORKOUT.getZeroBased());
         CurrentCommand currentCommand = new CurrentCommand(INDEX_FIRST_WORKOUT);
@@ -152,7 +181,7 @@ public class CurrentCommandTest {
         // redo -> same first workout deleted again
         expectedModel.redoModel();
         assertCommandSuccess(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_SUCCESS, expectedModel);
-    }*/
+    }
 
     @Test
     public void executeUndoRedo_invalidIndexUnfilteredList_failure() {
@@ -187,5 +216,20 @@ public class CurrentCommandTest {
 
         // different workout -> returns false
         assertFalse(currentFirstCommand.equals(currentSecondCommand));
+    }
+
+    @After
+    public void revert() throws IOException {
+        String workingDir = System.getProperty("user.dir");
+        fileName = workingDir + "/ProfileWindow.html";
+        doc = Jsoup.parse(new File(fileName), "UTF-8");
+
+        Element divDifficulty = doc.getElementById("difficulty");
+        Element divCalories = doc.getElementById("calories");
+        Element divDuration = doc.getElementById("duration");
+
+        divDifficulty.text(currentDifficulty);
+        divCalories.text(currentCalories);
+        divDuration.text(currentDuration);
     }
 }
