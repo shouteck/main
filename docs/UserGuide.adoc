@@ -381,12 +381,17 @@ Recommends workout from the workout book.
 [NOTE]
 ====
 Recommend command only recommends workout from the current workout list.
-Recommend directly from the Workout Presets in your profile and single mode recommend through the inputs in the command box will retrieve a random workout if there are more than one workout that qualify for these data types.
 ====
 
 [TIP]
 To recommend from the entire list of workouts, you should first type `list` in the command box and press kbd:[Enter] to
 retrieve the entire list of workouts.
+
+[NOTE]
+====
+If there are more than one workouts that qualify for these data types, a random workout will be retrieved from these workouts.
+This is only applicable to recommending directly from the Workout Presets in your profile or a single mode recommend through the inputs in the command box.
+====
 
 There are two ways to use the `recommend` command.
 
