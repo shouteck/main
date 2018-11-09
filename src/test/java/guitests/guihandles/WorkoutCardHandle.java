@@ -96,7 +96,9 @@ public class WorkoutCardHandle extends NodeHandle<Node> {
         return instructionLabel.getText();
     }
 
-    public String getRemark () { return remarkLabel.getText(); }
+    public String getRemark () {
+        return remarkLabel.getText();
+    }
 
     public List<String> getTags() {
         return tagLabels
