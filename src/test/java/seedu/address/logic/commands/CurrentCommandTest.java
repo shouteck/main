@@ -23,6 +23,9 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_WORKOUT;
 import static seedu.address.testutil.TypicalParameters.getTypicalTrackedDataList;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -34,12 +37,14 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.*;
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.ProfileWindowManager;
+import seedu.address.model.TrackedData;
+import seedu.address.model.UserPrefs;
+import seedu.address.model.WorkoutBook;
 import seedu.address.model.workout.Workout;
 import seedu.address.testutil.WorkoutBuilder;
-
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
@@ -47,14 +52,13 @@ import java.io.IOException;
  */
 public class CurrentCommandTest {
 
-    private Model model = new ModelManager(getTypicalWorkoutBook(), getTypicalTrackedDataList(), new TrackedData(),
-            new UserPrefs());
-
     private static String currentDifficulty;
     private static String currentCalories;
     private static String currentDuration;
-    ProfileWindowManager profileWindowManager;
 
+    private Model model = new ModelManager(getTypicalWorkoutBook(), getTypicalTrackedDataList(), new TrackedData(),
+            new UserPrefs());
+    private ProfileWindowManager profileWindowManager;
     private CommandHistory commandHistory = new CommandHistory();
     private String fileName;
     private Document doc;
@@ -81,7 +85,7 @@ public class CurrentCommandTest {
         profileWindowManager.setDifficulty("any");
     }
 
-     @Test
+    @Test
     public void execute_validIndexUnfilteredList_success() {
         Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_EIGHTH_WORKOUT.getZeroBased());
         WorkoutBuilder workoutInList = new WorkoutBuilder(currentWorkout);
@@ -120,7 +124,7 @@ public class CurrentCommandTest {
         assertCommandFailure(currentCommand, model, commandHistory, Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX);
     }
 
-     @Test
+    @Test
     public void execute_validIndexFilteredList_success() throws CommandException {
         showWorkoutAtIndex(model, INDEX_EIGHTH_WORKOUT);
 

@@ -69,12 +69,10 @@ public class ModifyCommandTest {
     private static String currentCalories;
     private static String currentDuration;
 
-    ProfileWindowManager profileWindowManager;
-
-
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
+    private ProfileWindowManager profileWindowManager;
     private String fileName;
     private Document doc;
     private Model model = new ModelManager();
@@ -262,7 +260,7 @@ public class ModifyCommandTest {
         //actual attributes
         actualAttributes.add(profileWindowManager.trimmedCalories(divCalories.ownText()));
         actualAttributes.add(profileWindowManager.trimmedDifficulty(divDifficulty.ownText()));
-        actualAttributes.add(profileWindowManager.trimmedDuration(divDuration.ownText()+"m"));
+        actualAttributes.add(profileWindowManager.trimmedDuration(divDuration.ownText() + "m"));
         actualAttributes.add(profileWindowManager.trimmedGender(divGender.ownText()));
         actualAttributes.add(profileWindowManager.extractHeight(divHeight.ownText()));
         actualAttributes.add(profileWindowManager.trimmedUsername(divUsername.ownText()));
