@@ -23,6 +23,13 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_WORKOUT;
 import static seedu.address.testutil.TypicalParameters.getTypicalTrackedDataList;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,6 +39,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.ProfileWindowManager;
 import seedu.address.model.TrackedData;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.WorkoutBook;
@@ -44,13 +52,37 @@ import seedu.address.testutil.WorkoutBuilder;
  */
 public class CurrentCommandTest {
 
+    private static String currentDifficulty;
+    private static String currentCalories;
+    private static String currentDuration;
+
     private Model model = new ModelManager(getTypicalWorkoutBook(), getTypicalTrackedDataList(), new TrackedData(),
             new UserPrefs());
+    private ProfileWindowManager profileWindowManager;
     private CommandHistory commandHistory = new CommandHistory();
+    private String fileName;
+    private Document doc;
 
     @Before
-    public void setUp() {
+
+    public void setUp() throws IOException {
         CurrentCommand.setCurrentWorkout(false);
+        profileWindowManager = ProfileWindowManager.getInstance();
+        String workingDir = System.getProperty("user.dir");
+        fileName = workingDir + "/ProfileWindow.html";
+        doc = Jsoup.parse(new File(fileName), "UTF-8");
+
+        Element divDifficulty = doc.getElementById("difficulty");
+        Element divCalories = doc.getElementById("calories");
+        Element divDuration = doc.getElementById("duration");
+
+        currentDifficulty = divDifficulty.ownText();
+        currentCalories = divCalories.ownText();
+        currentDuration = divDuration.ownText();
+
+        profileWindowManager.setDuration("any");
+        profileWindowManager.setCalories("any");
+        profileWindowManager.setDifficulty("any");
     }
 
     @Test
@@ -189,5 +221,20 @@ public class CurrentCommandTest {
 
         // different workout -> returns false
         assertFalse(currentFirstCommand.equals(currentSecondCommand));
+    }
+
+    @After
+    public void revert() throws IOException {
+        String workingDir = System.getProperty("user.dir");
+        fileName = workingDir + "/ProfileWindow.html";
+        doc = Jsoup.parse(new File(fileName), "UTF-8");
+
+        Element divDifficulty = doc.getElementById("difficulty");
+        Element divCalories = doc.getElementById("calories");
+        Element divDuration = doc.getElementById("duration");
+
+        divDifficulty.text(currentDifficulty);
+        divCalories.text(currentCalories);
+        divDuration.text(currentDuration);
     }
 }
