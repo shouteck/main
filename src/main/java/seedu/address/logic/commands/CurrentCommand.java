@@ -95,6 +95,7 @@ public class CurrentCommand extends Command {
      * edited with {@code editWorkoutDescriptor}.
      */
     public static Workout createEditedWorkout(Workout workoutToEdit) throws CommandException {
+        success = true;
         assert workoutToEdit != null;
         Name updatedName = workoutToEdit.getName();
         Type updatedType = workoutToEdit.getType();
