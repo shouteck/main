@@ -43,11 +43,34 @@ public class SampleDataUtil {
                     new Instruction("set 1: bicep curl reps: 4-6 set 2: tricep extension reps: 4-6"),
                     getTagSet("future", "heavy"), new Remark("")
             ),
+            new Workout(new Name("5BX warm up"), new Type("warm up"), new Duration("10m"),
+                    new Difficulty("beginner"), new Equipment("NIL"), new Muscle("everything"),
+                    new Calories("100"), new Instruction("Jumping Jack 5 Counts of 4, Squat Bender 5 Counts of 4"
+                    + "High Jumper 5 Counts of 4, Crunches 5 Counts of 4 and Push ups 5 Counts of 4"),
+                    getTagSet("future", "army", "NSdailylife"), new Remark("")
+            ),
             new Workout(new Name("long distance run"), new Type("endurance, aerobic"), new Duration("30m"),
                     new Difficulty("beginner"), new Equipment("NIL"), new Muscle("leg muscle"),
                     new Calories("225"),
                     new Instruction("run for 30 minutes without walking at your natural pace."),
                     getTagSet("future", "heavy"), new Remark("")
+            ),
+            new Workout(new Name("brisk walk"), new Type("endurance"), new Duration("20m"),
+                    new Difficulty("beginner"), new Equipment("NIL"), new Muscle("leg muscle"),
+                    new Calories("100"), new Instruction("20 minutes brisk walk"),
+                    getTagSet("future", "heavy"), new Remark("")
+            ),
+            new Workout(new Name("interval training"), new Type("endurance, agility"), new Duration("20m"),
+                    new Difficulty("advanced"), new Equipment("NIL"), new Muscle("leg muscle"),
+                    new Calories("250"), new Instruction("Run around the track(400m) for about 1m 40s and rest for 1m, "
+                    + "repeat 8 times"),
+                    getTagSet("future", "heavy"), new Remark("")
+            ),
+            new Workout(new Name("circuit training"), new Type("endurance"), new Duration("15m"),
+                    new Difficulty("advanced"), new Equipment("NIL"), new Muscle("everything"),
+                    new Calories("250"), new Instruction("Each set consists of 10 of the following exercise: burpees,"
+                    + " push ups, squats and high jump. Do this set 3 times with minimal rest."),
+                    getTagSet("future", "tiring"), new Remark("")
             )
         };
     }
