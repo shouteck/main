@@ -389,7 +389,7 @@ retrieve the entire list of workouts.
 
 [NOTE]
 ====
-If there are more than one workouts that qualify for these data types, a random workout will be retrieved from these workouts.
+If there are more than one workout that qualify for these data types, a random workout will be retrieved from these workouts.
 This is only applicable to recommending directly from the Workout Presets in your profile or a single mode recommend through the inputs in the command box.
 ====
 
