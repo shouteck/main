@@ -28,9 +28,8 @@ With the notion of optional parameters, it allows the user the flexibility to de
 * *Other contributions*:
 
 ** Project management:
-*** Managed releases `v1.1` - `v1.3` (2 releases) on GitHub.
+*** Managed releases `v1.1` - `v1.3` on GitHub.
 *** Morphed the application from AddressBook to WorkoutBook, which required changing the whole code base while maintaining interaction of components as well as correctness of the whole project.
-*** Fix issues regarding Travis.
 ** Documentation:
 *** Added `Command Format` in the User Guide for a summary of parameters that are used in our application. (link:https://github.com/CS2113-AY1819S1-T13-5/main/pull/151[#151])
 
