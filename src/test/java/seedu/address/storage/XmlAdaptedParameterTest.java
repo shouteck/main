@@ -183,7 +183,7 @@ public class XmlAdaptedParameterTest {
     }
 
     @Test
-    public void equals(){
+    public void equals() {
         final XmlAdaptedParameter testXml = new XmlAdaptedParameter("name/", "test");
 
         //check 1: same object -> returns true
