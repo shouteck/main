@@ -24,9 +24,9 @@ public class FilterCommand extends Command {
             + PREFIX_DURATION + "DURATION "
             + PREFIX_EQUIPMENT + "EQUIPMENT\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_EQUIPMENT + "dumbbell "
             + PREFIX_TYPE + "strength "
-            + PREFIX_DURATION + "20m ";
+            + PREFIX_DURATION + "20m "
+            + PREFIX_EQUIPMENT + "dumbbell ";
 
     public static final String MESSAGE_NOT_FILTERED = "All fields to filter must be provided.";
     public static final String MESSAGE_CONSTRAINTS = "The keyword should not be more than one word";

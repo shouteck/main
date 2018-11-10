@@ -92,9 +92,12 @@ public class CurrentCommandTest {
     }
 
     @Test
-    public void execute_preexistingCurrentWorkoutUnfilteredList_failure() {
-        CurrentCommand.setCurrentWorkout(true);
-        CurrentCommand currentCommand = new CurrentCommand(INDEX_EIGHTH_WORKOUT);
+    public void execute_preexistingCurrentWorkoutUnfilteredList_failure() throws CommandException {
+        Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_FIRST_WORKOUT.getZeroBased());
+        Workout editedWorkout = createEditedWorkout(currentWorkout);
+        model.updateWorkout(currentWorkout, editedWorkout);
+
+        CurrentCommand currentCommand = new CurrentCommand(INDEX_FIRST_WORKOUT);
 
         assertCommandFailure(currentCommand, model, commandHistory, MESSAGE_MULTIPLE_CURRENT_WORKOUT);
     }
@@ -126,10 +129,12 @@ public class CurrentCommandTest {
     }
 
     @Test
-    public void execute_preexistingCurrentWorkoutFilteredList_failure() {
-        CurrentCommand.setCurrentWorkout(true);
-        showWorkoutAtIndex(model, INDEX_EIGHTH_WORKOUT);
+    public void execute_preexistingCurrentWorkoutFilteredList_failure() throws CommandException {
+        Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_FIRST_WORKOUT.getZeroBased());
+        Workout editedWorkout = createEditedWorkout(currentWorkout);
+        model.updateWorkout(currentWorkout, editedWorkout);
 
+        showWorkoutAtIndex(model, INDEX_FIRST_WORKOUT);
         CurrentCommand currentCommand = new CurrentCommand(INDEX_FIRST_WORKOUT);
 
         assertCommandFailure(currentCommand, model, commandHistory, MESSAGE_MULTIPLE_CURRENT_WORKOUT);
