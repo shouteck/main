@@ -62,6 +62,8 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_WORKOUT_SUCCESS = "Edited Workout: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_WORKOUT = "This workout already exists in the workout book.";
+    public static final String MESSAGE_EDIT_BLANK_WORKOUT = "Do not use \"tag/\" anymore when there is only the state"
+        + "tag remaining.";
 
     private final Index index;
     private final EditWorkoutDescriptor editWorkoutDescriptor;
@@ -104,7 +106,8 @@ public class EditCommand extends Command {
      * Creates and returns a {@code Workout} with the details of {@code workoutToEdit}
      * edited with {@code editWorkoutDescriptor}.
      */
-    private static Workout createEditedWorkout(Workout workoutToEdit, EditWorkoutDescriptor editWorkoutDescriptor) {
+    private static Workout createEditedWorkout(Workout workoutToEdit, EditWorkoutDescriptor editWorkoutDescriptor)
+            throws CommandException {
         assert workoutToEdit != null;
 
         Name updatedName = editWorkoutDescriptor.getName().orElse(workoutToEdit.getName());
@@ -117,6 +120,7 @@ public class EditCommand extends Command {
         Instruction updatedInstruction = editWorkoutDescriptor.getInstruction().orElse(workoutToEdit.getInstruction());
 
         Tag stateTag = null;
+        boolean otherTags = false;
         for (Tag entry: workoutToEdit.getTags()) {
             if (entry.tagName.equals("future")) {
                 stateTag = entry;
@@ -124,9 +128,14 @@ public class EditCommand extends Command {
                 stateTag = entry;
             } else if (entry.tagName.equals("completed")) {
                 stateTag = entry;
-            } else { }
+            } else {
+                otherTags = true;
+            }
         }
         Set<Tag> originalTags = editWorkoutDescriptor.getTags().orElse(workoutToEdit.getTags());
+        if (originalTags.isEmpty() && !otherTags) {
+            throw new CommandException(MESSAGE_EDIT_BLANK_WORKOUT);
+        }
         Set<Tag> updatedTags = new HashSet<>();
         for (Tag entry: originalTags) {
             if (entry.tagName.equals("future") || entry.tagName.equals("current")

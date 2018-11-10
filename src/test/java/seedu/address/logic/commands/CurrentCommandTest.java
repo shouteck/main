@@ -53,7 +53,6 @@ public class CurrentCommandTest {
     private Document doc;
 
     @Before
-
     public void setUp() throws IOException {
         CurrentCommand.setCurrentWorkout(false);
         profileWindowManager = ProfileWindowManager.getInstance();
