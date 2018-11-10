@@ -49,12 +49,13 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 * Below is a list of the remaining parameters with examples of their acceptable formats:
 
 ** *_CALORIES_* are positive integers from 1 to 1000. E.g. `120`, `500`, etc.
-** *_DIFFICULTY_* and *_PREFERRED_DIFFICULTY_* should only be either beginner, intermediate or advanced.
+** *_DIFFICULTY_* should only be either beginner, intermediate or advanced.
 ** *_DURATION_* should only be in this format: E.g. `20m`, `500m`, etc from 1m to 1000m.
 ** *_EQUIPMENT_* is a list of equipment separated by commas, and it should not be blank. E.g. `dumbbell,bench,mat` and `dumbbell, bench, mat` are valid.
 ** *_MUSCLE_* is a list of muscle groups separated by commas, and it should not be blank. E.g. `triceps,biceps,back` and `triceps, biceps, back` are valid.
 ** *_TYPE_* is a list of workout types separated by commas, and it should not be blank. E.g. `cardio,strength,balance` and `cardio, strength, balance` are valid.
 ** *_INSTRUCTION_* should only contain alphanumeric characters, punctuation, spaces, and it should not be blank. E.g. `set1: dumbbell curls reps: 4-6`.
+** *_TAG_* Tag names should be alphanumeric and cannot contain be any of the exact words `current` or `completed`.
 ** *_USERNAME_* should only contain alphanumeric characters, and it should not be blank. E.g.  `John Doe` and `Jane` are valid.
 ** *_HEIGHT_* should only be in the form x.xx whereby x is any integer. E.g. `1.72` and `1.88` are valid.
 ** *_WEIGHT_* should only be in the form xx.x or xxx.x whereby x is any integer. E.g. `88.4` and `102.9` are valid.
@@ -339,7 +340,7 @@ Format: `profile`
 
 [NOTE]
 ====
-Pressing the kbd:[F2] key will display the user profile as well!
+Pressing the kbd:[F3] key will display the user profile as well!
 ====
 
 // end::profile[]
@@ -359,7 +360,9 @@ Format: `modify [gender/GENDER] [username/USERNAME] [height/HEIGHT] [weight/WEIG
 
 [NOTE]
 ====
-The workout presets for calories, difficulty and duration accepts `any` as a input as well. It would simply mean that the user wants any amount of calories, duration or any difficulty.
+The workout presets for calories, difficulty and duration accepts `any` as a input as well*. It would simply mean that the user wants any amount of calories, duration or any difficulty.
+
+*Be warned that it only accepts "any" under the profile, _NOT_ the add or edit command.
 ====
 
 Examples:
@@ -385,6 +388,11 @@ Recommend command only recommends workout from the current workout list.
 To recommend from the entire list of workouts, you should first type `list` in the command box and press kbd:[Enter] to
 retrieve the entire list of workouts.
 
+[NOTE]
+====
+When one workout is requested (either through the user's WorkoutPresets or the user input with a specified `Mode` of single) and there is more than one matching workout, a random matching workout is retrieved.
+====
+
 There are two ways to use the `recommend` command.
 
 ****
@@ -398,7 +406,7 @@ Format: `recommend`
 
 [[fig-UserProfileCard]]
 .After you have provided the appropriate properties in your profile.
-image::userprofilecard.png[width="450"]
+image::userprofilecard.png[width="200"]
 {nbsp} +
 Type `recommend` in the command box, press kbd:[Enter] and you have Figure 2. +
 {nbsp} +

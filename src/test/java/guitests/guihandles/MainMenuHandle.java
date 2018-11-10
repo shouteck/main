@@ -31,7 +31,7 @@ public class MainMenuHandle extends NodeHandle<Node> {
     }
 
     public void openProfileWindowUsingMenu() {
-        clickOnMenuItemsSequentially("Profile", "F2");
+        clickOnMenuItemsSequentially("Profile", "F3");
     }
 
     /**
@@ -39,7 +39,7 @@ public class MainMenuHandle extends NodeHandle<Node> {
      * with the menu bar in {@code MainWindow}.
      */
     public void openProfileWindowUsingAccelerator() {
-        guiRobot.push(KeyCode.F2);
+        guiRobot.push(KeyCode.F3);
     }
 
     /**
