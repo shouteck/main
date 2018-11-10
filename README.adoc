@@ -21,14 +21,13 @@ endif::[]
 ** A convenient GUI to easily manage your workouts
 ** Keep track of future, present and past workouts in a user-friendly way!
 ** A detailed Progress Tracker of each workout
-** Notifications to keep you reminded consistently!
+** A user profile that can be used to set your workout presets!
 
 
 == Site Map
 
 * <<UserGuide#, User Guide>>
 * <<DeveloperGuide#, Developer Guide>>
-* <<LearningOutcomes#, Learning Outcomes>>
 * <<AboutUs#, About Us>>
 * <<ContactUs#, Contact Us>>
 
@@ -37,7 +36,7 @@ endif::[]
 * Workout Tracker was built on AddressBook-Level4 project created by SE-EDU initiative at https://github.com/se-edu/
 * Some parts of this sample application were inspired by the excellent http://code.makery.ch/library/javafx-8-tutorial/[Java FX tutorial] by
 _Marco Jakob_.
-* Libraries used: https://github.com/TestFX/TestFX[TextFX], https://bitbucket.org/controlsfx/controlsfx/[ControlsFX], https://github.com/FasterXML/jackson[Jackson], https://github.com/google/guava[Guava], https://github.com/junit-team/junit5[JUnit5]
+* Libraries used: https://github.com/TestFX/TestFX[TextFX], https://bitbucket.org/controlsfx/controlsfx/[ControlsFX], https://github.com/FasterXML/jackson[Jackson], https://github.com/google/guava[Guava], https://github.com/junit-team/junit5[JUnit5], https://jsoup.org/[jsoup], https://commons.apache.org/proper/commons-io/[commons.io 2.6]
 
 == Licence : link:LICENSE[MIT]
 
