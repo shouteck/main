@@ -18,6 +18,7 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_DURATION_DESC
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EQUIPMENT_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_MUSCLE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_CURRENT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TYPE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.MUSCLE_DESC_AMY_WORKOUT;
@@ -28,6 +29,7 @@ import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_AMY_WORKOUT
 import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FUTURE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
+
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_WORKOUTS;
@@ -39,6 +41,7 @@ import org.junit.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
@@ -191,6 +194,10 @@ public class EditCommandSystemTest extends WorkoutBookSystemTest {
         /* Case: invalid tag -> rejected */
         assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased()
                         + INVALID_TAG_DESC, Tag.MESSAGE_TAG_CONSTRAINTS);
+
+        /* Case: invalid tag(current) -> rejected */
+        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased()
+                + INVALID_TAG_CURRENT, AddCommand.MESSAGE_TAG_FAILURE);
 
         /* Case: edit a workout with new values same as another workout's values -> rejected */
         executeCommand(WorkoutUtil.getAddCommand(BOB_WORKOUT));
