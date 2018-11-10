@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import seedu.address.model.TrackedData;
 import seedu.address.model.WorkoutBook;
 import seedu.address.model.workout.Workout;
 
@@ -128,6 +129,17 @@ public class TypicalWorkouts {
             wb.addWorkout(workout);
         }
         return wb;
+    }
+
+    /**
+     * Returns an {@code TrackedData} with all the typical workouts.
+     */
+    public static TrackedData getTypicalTrackedData() {
+        TrackedData td = new TrackedData();
+        for (Workout workout : getTypicalWorkouts()) {
+            td.addWorkout(workout);
+        }
+        return td;
     }
 
     public static List<Workout> getTypicalWorkouts() {
