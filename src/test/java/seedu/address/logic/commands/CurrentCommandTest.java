@@ -55,6 +55,8 @@ public class CurrentCommandTest {
     @Before
     public void setUp() throws IOException {
         CurrentCommand.setCurrentWorkout(false);
+
+        //prevents the Pop up message(GUI) for current command since Travis does not have GUI functionality
         profileWindowManager = ProfileWindowManager.getInstance();
         String workingDir = System.getProperty("user.dir");
         fileName = workingDir + "/ProfileWindow.html";
