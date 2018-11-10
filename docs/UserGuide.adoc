@@ -11,6 +11,7 @@
 ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
+:warning-caption: :warning:
 endif::[]
 :repoURL: https://github.com/CS2113-AY1819S1-T13-5/main
 
@@ -65,7 +66,9 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 * Items with `…`​ after them can be used multiple times including zero times e.g. `[tag/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `tag/strength`, `tag/strength tag/fast-paced` etc.
 * Parameters can be in any order e.g. if the command specifies `name/NAME type/TYPE`, `type/TYPE name/NAME` is also acceptable.
 * White spaces after a slash are automatically trimmed. For example, `add name/ commando workout` and `add name/commando workout` are the same. However, the latter is more visually pleasing.
-* Duplicate parameters after one another will only take the last parameter input. For example, `add name/commando workout name/arnold workout` will only add the workout as arnold workout.
+
+[WARNING]
+Duplicate parameters after one another will only take the last parameter input. For example, `add name/commando workout name/arnold workout` will only add the workout as arnold workout. This applies to *add*, *edit*, *recommend* and *modify* commands.
 ====
 // end::commandformat[]
 
