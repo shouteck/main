@@ -233,13 +233,6 @@ public class ModifyCommandTest {
         String workingDir = System.getProperty("user.dir");
         fileName = workingDir + "/ProfileWindow.html";
         doc = Jsoup.parse(new File(fileName), "UTF-8");
-        Element divGender = doc.getElementById("gender");
-        Element divUsername = doc.getElementById("username");
-        Element divHeight = doc.getElementById("height");
-        Element divWeight = doc.getElementById("weight");
-        Element divDifficulty = doc.getElementById("difficulty");
-        Element divCalories = doc.getElementById("calories");
-        Element divDuration = doc.getElementById("duration");
         profileWindowManager.setGender(VALID_GENDER);
         profileWindowManager.setHeight(VALID_HEIGHT);
         profileWindowManager.setWeight(VALID_WEIGHT);
@@ -247,6 +240,13 @@ public class ModifyCommandTest {
         profileWindowManager.setDifficulty(VALID_DIFFICULTY);
         profileWindowManager.setCalories(VALID_CALORIES);
         profileWindowManager.setDuration(VALID_DURATION);
+        Element divGender = doc.getElementById("gender");
+        Element divUsername = doc.getElementById("username");
+        Element divHeight = doc.getElementById("height");
+        Element divWeight = doc.getElementById("weight");
+        Element divDifficulty = doc.getElementById("difficulty");
+        Element divCalories = doc.getElementById("calories");
+        Element divDuration = doc.getElementById("duration");
 
         //expected attributes
         expectedAttributes.add(VALID_CALORIES);
