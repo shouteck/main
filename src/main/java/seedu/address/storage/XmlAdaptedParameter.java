@@ -4,10 +4,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_INSTRUCTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 
@@ -22,11 +20,9 @@ import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;
 import seedu.address.model.workout.Equipment;
-import seedu.address.model.workout.Instruction;
 import seedu.address.model.workout.Muscle;
 import seedu.address.model.workout.Name;
 import seedu.address.model.workout.Parameter;
-import seedu.address.model.workout.Remark;
 import seedu.address.model.workout.Type;
 
 /**
@@ -80,6 +76,7 @@ public class XmlAdaptedParameter {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "value"));
         }
 
+        // no invalid instruction or remark
         if (modelPrefix.equals(PREFIX_NAME)) {
             if (!Name.isValidName(value)) {
                 throw new IllegalValueException(Name.MESSAGE_NAME_CONSTRAINTS);
@@ -108,17 +105,9 @@ public class XmlAdaptedParameter {
             if (!Calories.isValidCalories(value)) {
                 throw new IllegalValueException(Calories.MESSAGE_CALORIES_CONSTRAINTS);
             }
-        } else if (modelPrefix.equals(PREFIX_INSTRUCTION)) {
-            if (!Instruction.isValidInstruction(value)) {
-                throw new IllegalValueException(Instruction.MESSAGE_INSTRUCTION_CONSTRAINTS);
-            }
         } else if (modelPrefix.equals(PREFIX_TAG)) {
             if (!Tag.isValidTagName(value)) {
-                throw new IllegalValueException(Remark.MESSAGE_REMARK_CONSTRAINTS);
-            }
-        } else if (modelPrefix.equals(PREFIX_REMARK)) {
-            if (!Remark.isValidRemark(value)) {
-                throw new IllegalValueException(Remark.MESSAGE_REMARK_CONSTRAINTS);
+                throw new IllegalValueException(Tag.MESSAGE_TAG_CONSTRAINTS);
             }
         }
         final String modelValue = value;

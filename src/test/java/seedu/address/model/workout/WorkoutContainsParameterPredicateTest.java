@@ -19,6 +19,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import seedu.address.logic.parser.Prefix;
 import seedu.address.testutil.WorkoutBuilder;
 
 public class WorkoutContainsParameterPredicateTest {
@@ -120,6 +121,14 @@ public class WorkoutContainsParameterPredicateTest {
         // Non-matching value
         WorkoutContainsParameterPredicate predicate =
                 new WorkoutContainsParameterPredicate(Collections.singletonList(new Parameter(PREFIX_NAME, "test")));
+        assertFalse(predicate.test(new WorkoutBuilder().withName("Alice").build()));
+    }
+
+    @Test
+    public void test_parameterHasInvalidPrefix_returnsFalse() {
+        WorkoutContainsParameterPredicate predicate =
+                new WorkoutContainsParameterPredicate(Collections.singletonList(
+                        new Parameter(new Prefix("test/"), "test")));
         assertFalse(predicate.test(new WorkoutBuilder().withName("Alice").build()));
     }
 }

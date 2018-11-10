@@ -1,6 +1,7 @@
 package seedu.address.storage;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
@@ -8,6 +9,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INSTRUCTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 import static seedu.address.storage.XmlAdaptedParameter.MISSING_FIELD_MESSAGE_FORMAT;
@@ -16,6 +18,7 @@ import static seedu.address.testutil.TypicalParameters.NAME_PARAMETER;
 import org.junit.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.tag.Tag;
 import seedu.address.model.workout.Calories;
 import seedu.address.model.workout.Difficulty;
 import seedu.address.model.workout.Duration;
@@ -159,7 +162,49 @@ public class XmlAdaptedParameterTest {
     @Test
     public void toModelType_invalidTags_throwsIllegalValueException() {
         XmlAdaptedParameter parameter = new XmlAdaptedParameter(PREFIX_TAG.getPrefix(), INVALID_TAG);
-        Assert.assertThrows(IllegalValueException.class, parameter::toModelType);
+        String expectedMessage = Tag.MESSAGE_TAG_CONSTRAINTS;
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, parameter::toModelType);
     }
 
+    @Test
+    public void toModelType_nullTags_throwsIllegalValueException() {
+        XmlAdaptedParameter parameter = new XmlAdaptedParameter(PREFIX_TAG.getPrefix(), null);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, "value");
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, parameter::toModelType);
+    }
+
+    //no invalid remark
+
+    @Test
+    public void toModelType_nullRemark_throwsIllegalValueException() {
+        XmlAdaptedParameter parameter = new XmlAdaptedParameter(PREFIX_REMARK.getPrefix(), null);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, "value");
+        Assert.assertThrows(IllegalValueException.class, expectedMessage, parameter::toModelType);
+    }
+
+    @Test
+    public void equals(){
+        final XmlAdaptedParameter testXml = new XmlAdaptedParameter("name/", "test");
+
+        //check 1: same object -> returns true
+        assertEquals(testXml, testXml);
+
+        //check 2: same values -> return true
+        XmlAdaptedParameter sameValuesInXml = new XmlAdaptedParameter("name/", "test");
+        assertEquals(sameValuesInXml, testXml);
+
+        //check 3: null -> return false
+        assertNotEquals(null, testXml);
+
+        //check 4: different XmlAdaptedParameter -> return false
+        assertNotEquals(testXml, new XmlAdaptedParameter());
+
+        //check 5: different prefix -> return false
+        XmlAdaptedParameter differentPrefix = new XmlAdaptedParameter("muscle/", "test");
+        assertNotEquals(testXml, differentPrefix);
+
+        //check 6: different value -> return false
+        XmlAdaptedParameter differentValue = new XmlAdaptedParameter("name/", "commando");
+        assertNotEquals(testXml, differentValue);
+    }
 }

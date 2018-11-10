@@ -103,6 +103,14 @@ public class TrackCommandParserTest {
     }
 
     @Test
+    public void parse_parameterValueHasSpaces_throwsParseException() {
+        String subcommand = "start";
+        String userInput = subcommand + NAME_DESC_BOB_WORKOUT;
+        String expectedMessage = String.format(TrackCommand.MESSAGE_VALUE_CONSTRAINTS);
+        assertParseFailure(parser, userInput, expectedMessage);
+    }
+
+    @Test
     public void parse_missingCompulsoryField_throwsParseException() {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, TrackCommand.MESSAGE_USAGE);
 
