@@ -47,9 +47,9 @@ public class TrackCommandParserTest {
         String subcommand = "start";
 
         // test for name
-        String userInput = subcommand + " " + NAME_DESC_BOB_WORKOUT;
+        String userInput = subcommand + " " + PREFIX_NAME + "Bob";
         TrackCommand expectedCommand = new TrackCommand(subcommand,
-                new Parameter(PREFIX_NAME, VALID_NAME_BOB_WORKOUT));
+                new Parameter(PREFIX_NAME, "Bob"));
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // test for type
@@ -89,9 +89,9 @@ public class TrackCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // test for instruction
-        userInput = subcommand + " " + INSTRUCTION_DESC_BOB_WORKOUT;
+        userInput = subcommand + " " + PREFIX_INSTRUCTION + " bicep";
         expectedCommand = new TrackCommand(subcommand,
-                new Parameter(PREFIX_INSTRUCTION, VALID_INSTRUCTION_BOB_WORKOUT));
+                new Parameter(PREFIX_INSTRUCTION, "bicep"));
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // test for tag
@@ -101,9 +101,9 @@ public class TrackCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // test for remark
-        userInput = subcommand + " " + REMARK_DESC_BOB_WORKOUT;
+        userInput = subcommand + " " + PREFIX_REMARK + "bicep";
         expectedCommand = new TrackCommand(subcommand,
-                new Parameter(PREFIX_REMARK, VALID_REMARK_BOB_WORKOUT));
+                new Parameter(PREFIX_REMARK, "bicep"));
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
