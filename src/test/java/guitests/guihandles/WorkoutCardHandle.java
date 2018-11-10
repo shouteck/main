@@ -119,7 +119,6 @@ public class WorkoutCardHandle extends NodeHandle<Node> {
                 && getMuscle().equals(workout.getMuscle().fullMuscle)
                 && getCalories().equals(workout.getCalories().fullCalories)
                 && getInstruction().equals(workout.getInstruction().fullInstruction)
-                && getRemark().equals(workout.getRemark().fullRemark)
                 && ImmutableMultiset.copyOf(getTags()).equals(ImmutableMultiset.copyOf(workout.getTags().stream()
                 .map(tag -> tag.tagName)
                 .collect(Collectors.toList())));
