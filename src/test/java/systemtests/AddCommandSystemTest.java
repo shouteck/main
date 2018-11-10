@@ -58,10 +58,10 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
         Model model = getModel();
 
 
-//------------------------ Perform add operations on the shown unfiltered list ----------------------------
+        //------------------------ Perform add operations on the shown unfiltered list ----------------------------
 
-/*Case: add a workout without tags to a non-empty workout book, command with leading spaces and trailing spaces
-         -> added*/
+        /*Case: add a workout without tags to a non-empty workout book, command with leading spaces and trailing spaces
+         -> added */
 
 
 
@@ -74,7 +74,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
         assertCommandSuccess(command, toAdd);
 
 
-//Case: undo adding Amy to the list -> Amy deleted*/
+        //Case: undo adding Amy to the list -> Amy deleted*/
 
 
         command = UndoCommand.COMMAND_WORD;
@@ -82,7 +82,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
         assertCommandSuccess(command, model, expectedResultMessage);
 
 
-//Case: redo adding Amy to the list -> Amy added again
+        //Case: redo adding Amy to the list -> Amy added again
 
         command = RedoCommand.COMMAND_WORD;
         model.addWorkout(toAdd);
@@ -90,13 +90,13 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
         assertCommandSuccess(command, model, expectedResultMessage);
 
 
-//Case: add to empty workout book -> added
+        //Case: add to empty workout book -> added
 
         deleteAllWorkouts();
         assertCommandSuccess(ALICE_WORKOUT);
 
 
-//Case: add a workout with tags, command with parameters in random order -> added
+        //Case: add a workout with tags, command with parameters in random order -> added
 
         toAdd = BOB_WORKOUT;
         command = AddCommand.COMMAND_WORD + TAG_DESC_NIGHT + INSTRUCTION_DESC_BOB_WORKOUT + CALORIES_DESC_BOB_WORKOUT
@@ -114,7 +114,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-//         -------------------------- Perform add operation on the shown filtered list ------------------------------
+        //-------------------------- Perform add operation on the shown filtered list ------------------------------
 
 
 
@@ -132,15 +132,14 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-
-//         ----------------------------------- Perform invalid add operations ---------------------------------------
-
+        //----------------------------------- Perform invalid add operations ---------------------------------------
 
 
 
 
 
-         //Case: add a duplicate workout -> rejected
+
+        //Case: add a duplicate workout -> rejected
 
 
 
@@ -149,7 +148,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: add a duplicate workout with all fields same as another workout, except name -> rejected
+        //Case: add a duplicate workout with all fields same as another workout, except name -> rejected
 
 
 
@@ -159,7 +158,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: add a duplicate workout except with different type -> rejected
+        //Case: add a duplicate workout except with different type -> rejected
 
 
 
@@ -169,7 +168,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: add a duplicate workout except with different duration -> rejected
+        //Case: add a duplicate workout except with different duration -> rejected
 
 
 
@@ -179,7 +178,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: add a duplicate workout except with different difficulty -> rejected
+        //Case: add a duplicate workout except with different difficulty -> rejected
 
 
 
@@ -189,7 +188,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: add a duplicate workout except with different equipment -> rejected
+        //Case: add a duplicate workout except with different equipment -> rejected
 
 
 
@@ -199,7 +198,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: add a duplicate workout except with different muscle -> rejected
+        //Case: add a duplicate workout except with different muscle -> rejected
 
 
 
@@ -209,7 +208,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: add a duplicate workout except with different calories -> rejected
+        //Case: add a duplicate workout except with different calories -> rejected
 
 
 
@@ -219,7 +218,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: add a duplicate workout except with different instruction -> rejected
+        //Case: add a duplicate workout except with different instruction -> rejected
 
 
 
@@ -229,7 +228,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: add a duplicate workout except with different tags -> rejected
+        //Case: add a duplicate workout except with different tags -> rejected
 
 
 
@@ -238,7 +237,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: missing name -> rejected
+        //Case: missing name -> rejected
 
 
 
@@ -249,7 +248,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: missing type -> rejected
+        //Case: missing type -> rejected
 
 
 
@@ -260,7 +259,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: missing duration -> rejected
+        //Case: missing duration -> rejected
 
 
 
@@ -271,7 +270,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: missing difficulty -> rejected
+        //Case: missing difficulty -> rejected
 
 
 
@@ -282,7 +281,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: missing equipment -> rejected
+        //Case: missing equipment -> rejected
 
 
 
@@ -293,7 +292,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: missing muscle -> rejected
+        //Case: missing muscle -> rejected
 
 
 
@@ -304,7 +303,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: missing calories -> rejected
+        //Case: missing calories -> rejected
 
 
 
@@ -314,7 +313,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
         assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
 
 
-         //Case: missing instruction -> rejected
+        //Case: missing instruction -> rejected
 
 
 
@@ -325,7 +324,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: invalid keyword -> rejected
+        //Case: invalid keyword -> rejected
 
 
 
@@ -334,7 +333,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: invalid name -> rejected
+        //Case: invalid name -> rejected
 
 
 
@@ -345,7 +344,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: invalid tag -> rejected
+        //Case: invalid tag -> rejected
 
 
 
@@ -369,20 +368,20 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-/**
-     * Executes the {@code AddCommand} that adds {@code toAdd} to the model and asserts that the,<br>
-     * 1. Command box displays an empty string.<br>
-     * 2. Command box has the default style class.<br>
-     * 3. Result display box displays the success message of executing {@code AddCommand} with the details of
-     * {@code toAdd}.<br>
-     * 4. {@code Storage} and {@code WorkoutListPanel} equal to the corresponding components in
-     * the current model added with {@code toAdd}.<br>
-     * 5. Browser url and selected card remain unchanged.<br>
-     * 6. Status bar's sync status changes.<br>
-     * Verifications 1, 3 and 4 are performed by
-     * {@code WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
-     * @see WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
-     */
+    /**
+         * Executes the {@code AddCommand} that adds {@code toAdd} to the model and asserts that the,<br>
+         * 1. Command box displays an empty string.<br>
+         * 2. Command box has the default style class.<br>
+         * 3. Result display box displays the success message of executing {@code AddCommand} with the details of
+         * {@code toAdd}.<br>
+         * 4. {@code Storage} and {@code WorkoutListPanel} equal to the corresponding components in
+         * the current model added with {@code toAdd}.<br>
+         * 5. Browser url and selected card remain unchanged.<br>
+         * 6. Status bar's sync status changes.<br>
+         * Verifications 1, 3 and 4 are performed by
+         * {@code WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
+         * @see WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
+         */
 
     private void assertCommandSuccess(Workout toAdd) {
         assertCommandSuccess(WorkoutUtil.getAddCommand(toAdd), toAdd);
@@ -390,11 +389,11 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-/**
-     * Performs the same verification as {@code assertCommandSuccess(Workout)}. Executes {@code command}
-     * instead.
-     * @see AddCommandSystemTest#assertCommandSuccess(Workout)
-     */
+    /**
+         * Performs the same verification as {@code assertCommandSuccess(Workout)}. Executes {@code command}
+         * instead.
+         * @see AddCommandSystemTest#assertCommandSuccess(Workout)
+         */
 
 
     private void assertCommandSuccess(String command, Workout toAdd) {
@@ -406,14 +405,14 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
     }
 
 
-/**
-     * Performs the same verification as {@code assertCommandSuccess(String, Workout)} except asserts that
-     * the,<br>
-     * 1. Result display box displays {@code expectedResultMessage}.<br>
-     * 2. {@code Storage} and {@code WorkoutListPanel} equal to the corresponding components in
-     * {@code expectedModel}.<br>
-     * @see AddCommandSystemTest#assertCommandSuccess(String, Workout)
-     */
+    /**
+         * Performs the same verification as {@code assertCommandSuccess(String, Workout)} except asserts that
+         * the,<br>
+         * 1. Result display box displays {@code expectedResultMessage}.<br>
+         * 2. {@code Storage} and {@code WorkoutListPanel} equal to the corresponding components in
+         * {@code expectedModel}.<br>
+         * @see AddCommandSystemTest#assertCommandSuccess(String, Workout)
+         */
 
     private void assertCommandSuccess(String command, Model expectedModel, String expectedResultMessage) {
         executeCommand(command);
@@ -424,17 +423,17 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
     }
 
 
-/**
-     * Executes {@code command} and asserts that the,<br>
-     * 1. Command box displays {@code command}.<br>
-     * 2. Command box has the error style class.<br>
-     * 3. Result display box displays {@code expectedResultMessage}.<br>
-     * 4. {@code Storage} and {@code WorkoutListPanel} remain unchanged.<br>
-     * 5. Browser url, selected card and status bar remain unchanged.<br>
-     * Verifications 1, 3 and 4 are performed by
-     * {@code WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
-     * @see WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
-     */
+    /**
+         * Executes {@code command} and asserts that the,<br>
+         * 1. Command box displays {@code command}.<br>
+         * 2. Command box has the error style class.<br>
+         * 3. Result display box displays {@code expectedResultMessage}.<br>
+         * 4. {@code Storage} and {@code WorkoutListPanel} remain unchanged.<br>
+         * 5. Browser url, selected card and status bar remain unchanged.<br>
+         * Verifications 1, 3 and 4 are performed by
+         * {@code WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
+         * @see WorkoutBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
+         */
 
     private void assertCommandFailure(String command, String expectedResultMessage) {
         Model expectedModel = getModel();
