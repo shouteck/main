@@ -70,7 +70,8 @@ public class XmlTrackedDataListStorageTest {
     }
 
     @Test
-    public void readTrackedDataList_invalidAndValidParameterTrackedDataList_throwDataConversionException() throws Exception {
+    public void readTrackedDataList_invalidAndValidParameterTrackedDataList_throwDataConversionException()
+            throws Exception {
         thrown.expect(DataConversionException.class);
         readTrackedDataList("invalidAndValidParameterTrackedDataList.xml");
     }
