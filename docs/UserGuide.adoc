@@ -11,6 +11,7 @@
 ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
+:warning-caption: :warning:
 endif::[]
 :repoURL: https://github.com/CS2113-AY1819S1-T13-5/main
 
@@ -55,6 +56,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 ** *_MUSCLE_* is a list of muscle groups separated by commas, and it should not be blank. E.g. `triceps,biceps,back` and `triceps, biceps, back` are valid.
 ** *_TYPE_* is a list of workout types separated by commas, and it should not be blank. E.g. `cardio,strength,balance` and `cardio, strength, balance` are valid.
 ** *_INSTRUCTION_* should only contain alphanumeric characters, punctuation, spaces, and it should not be blank. E.g. `set1: dumbbell curls reps: 4-6`.
+** *_TAG_* Tag names should be alphanumeric and cannot contain be any of the exact words `current` or `completed`.
 ** *_USERNAME_* should only contain alphanumeric characters, and it should not be blank. E.g.  `John Doe` and `Jane` are valid.
 ** *_HEIGHT_* should only be in the form x.xx whereby x is any integer. E.g. `1.72` and `1.88` are valid.
 ** *_WEIGHT_* should only be in the form xx.x or xxx.x whereby x is any integer. E.g. `88.4` and `102.9` are valid.
@@ -64,7 +66,9 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 * Items with `…`​ after them can be used multiple times including zero times e.g. `[tag/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `tag/strength`, `tag/strength tag/fast-paced` etc.
 * Parameters can be in any order e.g. if the command specifies `name/NAME type/TYPE`, `type/TYPE name/NAME` is also acceptable.
 * White spaces after a slash are automatically trimmed. For example, `add name/ commando workout` and `add name/commando workout` are the same. However, the latter is more visually pleasing.
-* Duplicate parameters after one another will only take the last parameter input. For example, `add name/commando workout name/arnold workout` will only add the workout as arnold workout.
+
+[WARNING]
+Duplicate parameters after one another will only take the last parameter input. For example, `add name/commando workout name/arnold workout` will only add the workout as arnold workout. This applies to *add*, *edit*, *recommend* and *modify* commands.
 ====
 // end::commandformat[]
 
@@ -339,7 +343,7 @@ Format: `profile`
 
 [NOTE]
 ====
-Pressing the kbd:[F2] key will display the user profile as well!
+Pressing the kbd:[F3] key will display the user profile as well!
 ====
 
 // end::profile[]
@@ -405,7 +409,7 @@ Format: `recommend`
 
 [[fig-UserProfileCard]]
 .After you have provided the appropriate properties in your profile.
-image::userprofilecard.png[width="450"]
+image::userprofilecard.png[width="200"]
 {nbsp} +
 Type `recommend` in the command box, press kbd:[Enter] and you have Figure 2. +
 {nbsp} +
