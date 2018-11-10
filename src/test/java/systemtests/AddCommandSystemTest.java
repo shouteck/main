@@ -283,7 +283,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
          //Case: missing equipment -> rejected
-        
+
 
 
         command = AddCommand.COMMAND_WORD + NAME_DESC_AMY_WORKOUT + TYPE_DESC_AMY_WORKOUT + DURATION_DESC_AMY_WORKOUT
