@@ -18,7 +18,7 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_DURATION_DESC
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EQUIPMENT_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_MUSCLE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_CURRENT;
+//import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_CURRENT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TYPE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.MUSCLE_DESC_AMY_WORKOUT;
@@ -41,7 +41,7 @@ import org.junit.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.AddCommand;
+//import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;

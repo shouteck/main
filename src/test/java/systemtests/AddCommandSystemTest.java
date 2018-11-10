@@ -106,7 +106,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: add a workout, missing tags -> added
+        //Case: add a workout, missing tags -> added
 
 
 
@@ -121,7 +121,7 @@ public class AddCommandSystemTest extends WorkoutBookSystemTest {
 
 
 
-         //Case: filters the workout list before adding -> added
+        //Case: filters the workout list before adding -> added
 
 
 

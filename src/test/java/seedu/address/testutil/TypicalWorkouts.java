@@ -21,8 +21,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_JOHN_WOR
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_JOHN_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_REMARK_AMY_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_REMARK_JOHN_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FUTURE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_AMY_WORKOUT;
@@ -104,8 +102,7 @@ public class TypicalWorkouts {
             .withType(VALID_TYPE_JOHN_WORKOUT).withDuration(VALID_DURATION_JOHN_WORKOUT)
             .withDifficulty(VALID_DIFFICULTY_JOHN_WORKOUT).withEquipment(VALID_EQUIPMENT_JOHN_WORKOUT)
             .withMuscle(VALID_MUSCLE_JOHN_WORKOUT).withCalories(VALID_CALORIES_JOHN_WORKOUT)
-            .withInstruction(VALID_INSTRUCTION_JOHN_WORKOUT).withTags(VALID_TAG_FUTURE)
-            .withRemark(VALID_REMARK_JOHN_WORKOUT).build();
+            .withInstruction(VALID_INSTRUCTION_JOHN_WORKOUT).withTags(VALID_TAG_FUTURE).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
