@@ -1,12 +1,34 @@
 package seedu.address.storage;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EQUIPMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INSTRUCTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MUSCLE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
+
 import java.util.Objects;
+import java.util.Set;
 
 import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.parser.Prefix;
+import seedu.address.model.tag.Tag;
+import seedu.address.model.workout.Calories;
+import seedu.address.model.workout.Difficulty;
+import seedu.address.model.workout.Duration;
+import seedu.address.model.workout.Equipment;
+import seedu.address.model.workout.Instruction;
+import seedu.address.model.workout.Muscle;
+import seedu.address.model.workout.Name;
 import seedu.address.model.workout.Parameter;
+import seedu.address.model.workout.Remark;
+import seedu.address.model.workout.Type;
 
 /**
  * JAXB-friendly version of the Workout.
@@ -57,6 +79,48 @@ public class XmlAdaptedParameter {
 
         if (value == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "value"));
+        }
+
+        if (modelPrefix.equals(PREFIX_NAME)) {
+            if (!Name.isValidName(value)) {
+                throw new IllegalValueException(Name.MESSAGE_NAME_CONSTRAINTS);
+            }
+        } else if (modelPrefix.equals(PREFIX_TYPE)) {
+            if (!Type.isValidType(value)) {
+                throw new IllegalValueException(Type.MESSAGE_TYPE_CONSTRAINTS);
+            }
+        } else if (modelPrefix.equals(PREFIX_DURATION)) {
+            if (!Duration.isValidDuration(value)) {
+                throw new IllegalValueException(Duration.MESSAGE_DURATION_CONSTRAINTS);
+            }
+        } else if (modelPrefix.equals(PREFIX_DIFFICULTY)) {
+            if (!Difficulty.isValidDifficulty(value)) {
+                throw new IllegalValueException(Difficulty.MESSAGE_DIFFICULTY_CONSTRAINTS);
+            }
+        } else if (modelPrefix.equals(PREFIX_EQUIPMENT)) {
+            if (!Equipment.isValidEquipment(value)) {
+                throw new IllegalValueException(Equipment.MESSAGE_EQUIPMENT_CONSTRAINTS);
+            }
+        } else if (modelPrefix.equals(PREFIX_MUSCLE)) {
+            if (!Muscle.isValidMuscle(value)) {
+                throw new IllegalValueException(Muscle.MESSAGE_MUSCLE_CONSTRAINTS);
+            }
+        } else if (modelPrefix.equals(PREFIX_CALORIES)) {
+            if (!Calories.isValidCalories(value)) {
+                throw new IllegalValueException(Calories.MESSAGE_CALORIES_CONSTRAINTS);
+            }
+        } else if (modelPrefix.equals(PREFIX_INSTRUCTION)) {
+            if (!Instruction.isValidInstruction(value)) {
+                throw new IllegalValueException(Instruction.MESSAGE_INSTRUCTION_CONSTRAINTS);
+            }
+        } else if (modelPrefix.equals(PREFIX_TAG)) {
+            if (!Tag.isValidTagName(value)) {
+                throw new IllegalValueException(Remark.MESSAGE_REMARK_CONSTRAINTS);
+            }
+        } else if (modelPrefix.equals(PREFIX_REMARK)) {
+            if (!Remark.isValidRemark(value)) {
+                throw new IllegalValueException(Remark.MESSAGE_REMARK_CONSTRAINTS);
+            }
         }
         final String modelValue = value;
 
