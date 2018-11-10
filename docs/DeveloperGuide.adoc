@@ -1,4 +1,4 @@
-= Workout Book - Developer Guide
+= WorkoutBook - Developer Guide
 :site-section: DeveloperGuide
 :toc:
 :toc-title:
