@@ -1289,11 +1289,17 @@ _{ more test cases ... }_
 * Steps:
  .. Ensure that *at least* one of the optional fields must be provided.
  .. Test case: `modify username/Akshay` +
-    Expected: The username should changed to `Akshay`
+    Expected: The username should change to `Akshay`
  .. Test case: `modify height/1.78 gender/female` +
-    Expected: The height should changed to `1.78m`, BMI will be updated automatically and the gender should change to `female`.
+    Expected: The height should change to `1.78m`, BMI will be updated automatically and the gender should change to `female`.
  .. Test case: `modify calories/any difficulty/beginner` +
-    Expected: The calories should changed to `any` and the difficulty should change to `beginner`.
+    Expected: The calories should change to `any` and the difficulty should change to `beginner`.
+
+. Modify command with duplicate valid inputs.
+ .. Test case: `modify username/Akshay username/Vincent` +
+    Expected: The username should changed to `Vincent`
+ .. Test case: `modify height/1.74 username/Vincent height/1.78` +
+    Expected: The username should change to `Vincent` and the height should change to `1.78`.
 
 . Modify command with *an* invalid input.
 * Steps:

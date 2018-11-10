@@ -42,7 +42,7 @@ public class ProfileWindowManager {
 
     private Document doc;
     private String fileName;
-    private FileUtils fileUtils;
+    private FileUtils fileUtils = new FileUtils();
 
     private ProfileWindowManager() throws IOException {
         String workingDir = System.getProperty("user.dir");
@@ -70,7 +70,7 @@ public class ProfileWindowManager {
 
     /**
      * Writes to File.
-     * @throws IOException
+     * @throws IOException if the file is not found
      */
     public void writeToFile() throws IOException {
         File temp = File.createTempFile("tempfile", ".html");
@@ -106,10 +106,6 @@ public class ProfileWindowManager {
 
     public Element getDuration() {
         return duration;
-    }
-
-    public Element getBmi() {
-        return bmi;
     }
 
     public void setGender(String gender) {
@@ -171,7 +167,7 @@ public class ProfileWindowManager {
     }
 
     /**
-     * Trims the string duration with the "m"
+     * Trims the string duration with the "m" remaining
      */
     public String trimmedDuration(String duration) {
         duration = duration.replaceFirst("Duration: ", "");
@@ -179,7 +175,7 @@ public class ProfileWindowManager {
     }
 
     /**
-     * Trims the string duration without the "m"
+     * Trims the string duration without the "m" remaining
      */
     public String trimmedFullDuration(String duration) {
         duration = duration.replaceFirst("Duration: ", "");
@@ -252,8 +248,7 @@ public class ProfileWindowManager {
      * @return integer
      */
     public int convertStringIntoInt(String string) {
-        int integer = Integer.parseInt(string);
-        return integer;
+        return Integer.parseInt(string);
     }
 
     /**
@@ -329,21 +324,13 @@ public class ProfileWindowManager {
      * Returns true if the workout's calories is higher than the user's calories
      */
     public boolean isHigherCalories(int workout, int user) {
-        if (workout > user) {
-            return true;
-        } else {
-            return false;
-        }
+        return (workout > user);
     }
 
     /**
      * Returns true if the workout's duration is higher than the user's duration
      */
     public boolean isHigherDuration(int workout, int user) {
-        if (workout > user) {
-            return true;
-        } else {
-            return false;
-        }
+        return (workout > user);
     }
 }
