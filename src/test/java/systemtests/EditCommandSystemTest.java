@@ -195,9 +195,9 @@ public class EditCommandSystemTest extends WorkoutBookSystemTest {
         assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased()
                         + INVALID_TAG_DESC, Tag.MESSAGE_TAG_CONSTRAINTS);
 
-        /* Case: invalid tag(current) -> rejected */
+        /* Case: invalid tag(current) -> rejected
         assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_WORKOUT.getOneBased()
-                + INVALID_TAG_CURRENT, AddCommand.MESSAGE_TAG_FAILURE);
+                + INVALID_TAG_CURRENT, AddCommand.MESSAGE_TAG_FAILURE); */
 
         /* Case: edit a workout with new values same as another workout's values -> rejected */
         executeCommand(WorkoutUtil.getAddCommand(BOB_WORKOUT));
