@@ -4,10 +4,7 @@ import static seedu.address.testutil.WorkoutBuilder.DEFAULT_CALORIES;
 import static seedu.address.testutil.WorkoutBuilder.DEFAULT_DIFFICULTY;
 import static seedu.address.testutil.WorkoutBuilder.DEFAULT_DURATION;
 import static seedu.address.testutil.WorkoutBuilder.DEFAULT_EQUIPMENT;
-import static seedu.address.testutil.WorkoutBuilder.DEFAULT_INSTRUCTION;
-import static seedu.address.testutil.WorkoutBuilder.DEFAULT_MUSCLE;
 import static seedu.address.testutil.WorkoutBuilder.DEFAULT_NAME;
-import static seedu.address.testutil.WorkoutBuilder.DEFAULT_TYPE;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,6 +34,12 @@ public class TypicalParameters {
             .withValue(DEFAULT_CALORIES).build();
     public static final Parameter INSTRUCTION_PARAMETER = new ParameterBuilder().withPrefix("instruction/")
             .withValue("extension").build();
+
+    // Manually added
+    public static final Parameter NAME_PARAMETER_MANUAL = new ParameterBuilder().withPrefix("name/")
+            .withValue("test").build();
+    public static final Parameter TYPE_PARAMETER_MANUAL = new ParameterBuilder().withPrefix("type/")
+            .withValue("test").build();
 
     private TypicalParameters() {} // prevents instantiation
 

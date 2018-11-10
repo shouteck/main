@@ -18,8 +18,10 @@ public class XmlSerializableTrackedDataListTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data",
             "XmlSerializableTrackedDataListTest");
-    private static final Path TYPICAL_PARAMETERS_FILE = TEST_DATA_FOLDER.resolve("typicalParametersTrackedDataList.xml");
-    private static final Path INVALID_PARAMETERS_FILE = TEST_DATA_FOLDER.resolve("invalidParameterTrackedDataList.xml");
+    private static final Path TYPICAL_PARAMETERS_FILE = TEST_DATA_FOLDER
+            .resolve("typicalParametersTrackedDataList.xml");
+    private static final Path INVALID_PARAMETERS_FILE = TEST_DATA_FOLDER
+            .resolve("invalidParameterTrackedDataList.xml");
     private static final Path DUPLICATE_PARAMETERS_FILE =
             TEST_DATA_FOLDER.resolve("duplicateParameterTrackedDataList.xml");
 

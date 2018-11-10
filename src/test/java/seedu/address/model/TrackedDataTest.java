@@ -8,10 +8,8 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOU
 import static seedu.address.testutil.TypicalWorkouts.ALICE_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalTrackedData;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -20,7 +18,6 @@ import org.junit.rules.ExpectedException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.workout.Workout;
-import seedu.address.model.workout.exceptions.DuplicateWorkoutException;
 import seedu.address.testutil.WorkoutBuilder;
 
 public class TrackedDataTest {

@@ -2,7 +2,6 @@ package seedu.address.storage;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static seedu.address.testutil.TypicalWorkouts.ALICE_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.HOON_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.IDA_WORKOUT;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalTrackedData;
