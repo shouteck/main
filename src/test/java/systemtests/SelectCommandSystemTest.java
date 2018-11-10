@@ -2,7 +2,6 @@ package systemtests;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PARAMETER_DISPLAYED_INDEX;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_WORKOUT_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.SelectCommand.MESSAGE_SELECT_PARAMETER_SUCCESS;
 import static seedu.address.testutil.TestUtil.getLastParameterIndex;
