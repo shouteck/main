@@ -27,7 +27,7 @@ public class ProfileWindowManagerTest {
     private String currentDifficulty;
     private String currentDuration;
     private String currentCalories;
-    
+
     @Before
     @SuppressWarnings("Duplicates")
     public void setUp() throws IOException {
@@ -179,7 +179,7 @@ public class ProfileWindowManagerTest {
         assertNotEquals(expectedBmi, actualBmi2);
 
     }
-    
+
     @Test
     public void extractHeightTest() throws IOException {
         profileWindowManager = ProfileWindowManager.getInstance();
