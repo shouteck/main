@@ -69,7 +69,7 @@ public class TypicalWorkouts {
             .withType("strength").withDuration("40m")
             .withDifficulty("advanced").withEquipment("medicine ball")
             .withMuscle("arms").withCalories("225")
-            .withInstruction("set1: medicine ball throw reps: 25-30").withTags("future").build();
+            .withInstruction("set1: medicine ball throw reps: 25-30").withTags("completed").build();
     public static final Workout GEORGE_WORKOUT = new WorkoutBuilder().withName("George Best's workout")
             .withType("strength").withDuration("30m")
             .withDifficulty("intermediate").withEquipment("free weights")

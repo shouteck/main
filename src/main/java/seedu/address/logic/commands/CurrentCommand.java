@@ -213,7 +213,7 @@ public class CurrentCommand extends Command {
             return "This workout requires more calories to be burnt than your preferred calories and will take longer "
                     + "than your preferred duration.\n" + MESSAGE_CONTINUE;
         } else {
-            return "This workout is more difficult than your indicated workout difficulty and requires more calories to"
+            return "This workout is more difficult than your indicated workout difficulty, requires more calories to"
                     + " be burnt than your preferred calories and will take longer than your preferred duration.\n"
                     + MESSAGE_CONTINUE;
         }
