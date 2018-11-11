@@ -79,6 +79,7 @@ public class ModifyCommandTest {
     private CommandHistory commandHistory = new CommandHistory();
 
     @Before
+    @SuppressWarnings("Duplicates")
     public void setUp() throws IOException {
         profileWindowManager = ProfileWindowManager.getInstance();
         String workingDir = System.getProperty("user.dir");
@@ -100,7 +101,6 @@ public class ModifyCommandTest {
         currentDifficulty = divDifficulty.ownText();
         currentCalories = divCalories.ownText();
         currentDuration = divDuration.ownText();
-        System.out.println(currentCalories);
     }
 
     @Test
@@ -121,10 +121,10 @@ public class ModifyCommandTest {
 
         //execute the command
         Element divGender = doc.getElementById("gender");
-        profileWindowManager.setGender(VALID_GENDER);
+        divGender.text(VALID_GENDER);
         String expectedSuccessMessage = MESSAGE_MODIFY_USERPROFILE_SUCCESS;
 
-        expectedAttributes.add("Gender: " + VALID_GENDER);
+        expectedAttributes.add(VALID_GENDER);
         actualAttributes.add(divGender.ownText());
         //valid gender
         String commandGender = " " + PREFIX_GENDER + VALID_GENDER;
@@ -184,11 +184,11 @@ public class ModifyCommandTest {
         Element divWeight = doc.getElementById("weight");
         Element divCalories = doc.getElementById("calories");
 
-        profileWindowManager.setGender(VALID_GENDER);
-        profileWindowManager.setHeight(VALID_HEIGHT);
-        profileWindowManager.setWeight(VALID_WEIGHT);
-        profileWindowManager.setUsername(VALID_USERNAME);
-        profileWindowManager.setCalories(VALID_CALORIES);
+        divGender.text(VALID_GENDER);
+        divHeight.text(VALID_HEIGHT);
+        divWeight.text(VALID_WEIGHT);
+        divUsername.text(VALID_USERNAME);
+        divCalories.text(VALID_CALORIES);
 
         //expected attributes
         expectedAttributes.add(VALID_CALORIES);
@@ -281,17 +281,26 @@ public class ModifyCommandTest {
 
 
     @After
+    @SuppressWarnings("Duplicates")
     public void revert() throws IOException {
         String workingDir = System.getProperty("user.dir");
         fileName = workingDir + "/ProfileWindow.html";
         doc = Jsoup.parse(new File(fileName), "UTF-8");
 
-        profileWindowManager.setGender(currentGender);
-        profileWindowManager.setHeight(currentHeight);
-        profileWindowManager.setUsername(currentUsername);
-        profileWindowManager.setDifficulty(currentDifficulty);
-        profileWindowManager.setWeight(currentWeight);
-        profileWindowManager.setCalories(currentCalories);
-        profileWindowManager.setDuration(currentDuration);
+        Element divGender = doc.getElementById("gender");
+        Element divUsername = doc.getElementById("username");
+        Element divHeight = doc.getElementById("height");
+        Element divWeight = doc.getElementById("weight");
+        Element divDifficulty = doc.getElementById("difficulty");
+        Element divCalories = doc.getElementById("calories");
+        Element divDuration = doc.getElementById("duration");
+
+        divGender.text(currentGender);
+        divHeight.text(currentHeight);
+        divUsername.text(currentUsername);
+        divDifficulty.text(currentDifficulty);
+        divWeight.text(currentWeight);
+        divCalories.text(currentCalories);
+        divDuration.text(currentDuration);
     }
 }
