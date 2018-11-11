@@ -1,10 +1,15 @@
 package seedu.address.logic.commands;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showWorkoutAtIndex;
+import static seedu.address.logic.commands.CurrentCommand.MESSAGE_CONTINUE;
+import static seedu.address.logic.commands.CurrentCommand.MESSAGE_HIGHER_CALORIES;
+import static seedu.address.logic.commands.CurrentCommand.MESSAGE_HIGHER_DURATION;
+import static seedu.address.logic.commands.CurrentCommand.MESSAGE_MORE_DIFFICULT;
 import static seedu.address.logic.commands.CurrentCommand.MESSAGE_MULTIPLE_CURRENT_WORKOUT;
 import static seedu.address.logic.commands.CurrentCommand.createEditedWorkout;
 import static seedu.address.testutil.TypicalIndexes.INDEX_EIGHTH_WORKOUT;
@@ -198,32 +203,41 @@ public class CurrentCommandTest {
         difficulty = false;
         calories = false;
         duration = true;
-        assertTrue((!(difficulty || calories)) && duration);
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration),MESSAGE_HIGHER_DURATION
+                + MESSAGE_CONTINUE);
 
         difficulty = false;
         calories = true;
         duration = false;
-        assertTrue((!(difficulty || duration)) && calories);
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration),MESSAGE_HIGHER_CALORIES
+                + MESSAGE_CONTINUE);
 
         difficulty = true;
         calories = false;
         duration = false;
-        assertTrue((!(calories || duration)) && difficulty);
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration),MESSAGE_MORE_DIFFICULT
+                + MESSAGE_CONTINUE);
 
         difficulty = true;
         calories = true;
         duration = false;
-        assertTrue((difficulty && calories) && (!duration));
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration),"This workout is more difficult"
+                + " than your indicated workout difficulty and requires more calories to"
+                + " be burnt than your preferred calories.\n" + MESSAGE_CONTINUE);
 
         difficulty = true;
         calories = false;
         duration = true;
-        assertTrue((difficulty && duration) && (!calories));
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration),"This workout is more difficult"
+                + " than your indicated workout difficulty and will take longer than " + "your preferred duration.\n"
+                + MESSAGE_CONTINUE);
 
         difficulty = false;
         calories = true;
         duration = true;
-        assertTrue((calories && duration) && (!difficulty));
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration),"This workout requires more"
+                + " calories to be burnt than your preferred calories and will take longer than your preferred"
+                + " duration.\n" + MESSAGE_CONTINUE);
     }
 
     @Test
