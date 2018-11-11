@@ -11,6 +11,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_WORKOUT;
 import static seedu.address.testutil.TypicalParameters.getTypicalTrackedDataList;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
+import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBookForCompleteCommand;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class CompleteCommandTest {
     private static String currentCalories;
     private static String currentDuration;
 
-    private Model model = new ModelManager(getTypicalWorkoutBook(), getTypicalTrackedDataList(), new TrackedData(),
+    private Model model = new ModelManager(getTypicalWorkoutBookForCompleteCommand(), getTypicalTrackedDataList(), new TrackedData(),
             new UserPrefs());
     private ProfileWindowManager profileWindowManager;
     private CommandHistory commandHistory = new CommandHistory();
