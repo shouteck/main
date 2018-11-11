@@ -31,10 +31,10 @@ WorkoutBook is a desktop workout book application used for anyone who does worko
 * *Other contributions*:
 
 ** Project management:
-*** Managed and facilitated releases `v1.2 to v1.3` on GitHub
+*** Managed and facilitated releases `v1.2 to v1.4` on GitHub
 *** Assisted in the morphing of the product from AB4 to Workout book.
 ** Enhancements to existing features:
-*** Wrote additional tests for existing features to increase coverage from 77.6% to 80.8% (https://github.com/CS2113-AY1819S1-T13-5/main/pull/205[#205])
+*** Wrote additional tests for existing features to increase coverage from 77.6% to 80.8% (https://github.com/CS2113-AY1819S1-T13-5/main/pull/205[#205]) and 88.4% to 91.2% (https://github.com/CS2113-AY1819S1-T13-5/main/pull/258[#258])
 ** Documentation:
 *** Improved the content of the User Guide by collating the command summary in a table format (https://github.com/CS2113-AY1819S1-T13-5/main/pull/164[#164]) and the Developer Guide to reflect new functions of the WorkoutBook (https://github.com/CS2113-AY1819S1-T13-5/main/pull/172[#172])
 ** Tools:
