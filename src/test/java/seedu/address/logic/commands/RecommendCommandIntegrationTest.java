@@ -11,6 +11,8 @@ import java.util.Optional;
 import org.junit.Before;
 import org.junit.Test;
 
+import seedu.address.commons.core.EventsCenter;
+import seedu.address.commons.events.ui.JumpToRecommendListRequestEvent;
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -94,51 +96,11 @@ public class RecommendCommandIntegrationTest {
         assertCommandSuccess(new RecommendCommand(validRecommendArguments), model, commandHistory,
                 RecommendCommand.MESSAGE_SUCCESS, expectedModel);
 
-        // Single Recommend 1 Optionals
-        calories = Optional.of(new Calories("1"));
-        difficulty = Optional.of(new Difficulty("intermediate"));
-        duration = Optional.of(new Duration("30m"));
-        mode = Optional.of(new Mode("single"));
-        validRecommendArguments = new RecommendArguments.Builder().withCalories(calories, Optional.of(true))
-                .withDifficulty(difficulty, Optional.of(false))
-                .withDuration(duration, Optional.of(false))
-                .withMode(mode).build();
-
-        expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
-                model.getTrackedData(), new UserPrefs());
-
-        filteredInternalList = expectedModel.getFinalFilteredInternalList(validRecommendArguments);
-        workoutsPredicate = new WorkoutsPredicate(filteredInternalList);
-        expectedModel.updateFilteredWorkoutList(workoutsPredicate);
-
-        assertCommandSuccess(new RecommendCommand(validRecommendArguments), model, commandHistory,
-                RecommendCommand.MESSAGE_SUCCESS, expectedModel);
-
-        // Single Recommend 2 Optionals
-        calories = Optional.of(new Calories("1000"));
-        difficulty = Optional.of(new Difficulty("advanced"));
-        duration = Optional.of(new Duration("1m"));
-        mode = Optional.of(new Mode("multiple 2"));
-        validRecommendArguments = new RecommendArguments.Builder().withCalories(calories, Optional.of(true))
-                .withDifficulty(difficulty, Optional.of(false))
-                .withDuration(duration, Optional.of(true))
-                .withMode(mode).build();
-
-        expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
-                model.getTrackedData(), new UserPrefs());
-
-        filteredInternalList = expectedModel.getFinalFilteredInternalList(validRecommendArguments);
-        workoutsPredicate = new WorkoutsPredicate(filteredInternalList);
-        expectedModel.updateFilteredWorkoutList(workoutsPredicate);
-
-        assertCommandSuccess(new RecommendCommand(validRecommendArguments), model, commandHistory,
-                RecommendCommand.MESSAGE_SUCCESS, expectedModel);
-
-        // Single Recommend 3 Optionals
+        // All Recommend 3 Optionals
         calories = Optional.of(new Calories("500"));
         difficulty = Optional.of(new Difficulty("beginner"));
         duration = Optional.of(new Duration("1000m"));
-        mode = Optional.of(new Mode("all"));
+        mode = Optional.of(new Mode("single"));
         validRecommendArguments = new RecommendArguments.Builder().withCalories(calories, Optional.of(true))
                 .withDifficulty(difficulty, Optional.of(true))
                 .withDuration(duration, Optional.of(true))

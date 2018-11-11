@@ -55,8 +55,6 @@ public class ModelManager extends ComponentManager implements Model {
     private final FilteredList<Parameter> filteredParameters;
     private final FilteredList<Workout> filteredTrackedData;
 
-    private List<Workout> finalFilteredInternalList;
-
     /**
      * Initializes a ModelManager with the given workoutBook and userPrefs.
      */
