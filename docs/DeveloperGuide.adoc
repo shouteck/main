@@ -1417,6 +1417,7 @@ _{ more test cases ... }_
 
 // end::appendixtr[]
 
+// tag::appendixdt[]
 ==== Memory feature
  . Current command with a valid input
 * Steps:
@@ -1468,4 +1469,5 @@ _{ more test cases ... }_
    Expected: A message saying "Invalid command format! current: Sets a workout to be a completed workout identified by the index +
    number used in the displayed workout list. Parameters: INDEX (must be a positive integer) Example: complete 1"
 
+// end::appendixdt[]
 
