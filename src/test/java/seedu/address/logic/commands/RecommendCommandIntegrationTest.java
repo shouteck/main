@@ -41,7 +41,7 @@ public class RecommendCommandIntegrationTest {
     @Test
     public void execute_newRecommendArguments_success() {
 
-        // Single Recommend
+        // Single Recommend Calories
         Optional<Calories> calories = Optional.of(new Calories("20"));
         Optional<Mode> mode = Optional.of(new Mode("single"));
         RecommendArguments validRecommendArguments = new RecommendArguments.Builder().withCalories(calories,
@@ -53,11 +53,13 @@ public class RecommendCommandIntegrationTest {
         assertCommandSuccess(new RecommendCommand(validRecommendArguments), model, commandHistory,
                 RecommendCommand.MESSAGE_SUCCESS, expectedModel);
 
-        // Multiple Recommend
+        // Multiple Recommend Difficulty, Duration
+        Optional<Difficulty> difficulty = Optional.of(new Difficulty("intermediate"));
         Optional<Duration> duration = Optional.of(new Duration("30m"));
         mode = Optional.of(new Mode("multiple 2"));
-        validRecommendArguments = new RecommendArguments.Builder().withDuration(duration,
-                Optional.of(false)).withMode(mode).build();
+        validRecommendArguments = new RecommendArguments.Builder().withDuration(duration, Optional.of(false))
+                .withDifficulty(difficulty, Optional.of(false))
+                .withMode(mode).build();
 
         expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
                 model.getTrackedData(), new UserPrefs());
@@ -72,11 +74,35 @@ public class RecommendCommandIntegrationTest {
         assertCommandSuccess(new RecommendCommand(validRecommendArguments), model, commandHistory,
                 RecommendCommand.MESSAGE_SUCCESS, expectedModel);
 
-        // All Recommend
-        Optional<Difficulty> difficulty = Optional.of(new Difficulty("intermediate"));
+        // All Recommend Calories, Difficulty and Duration
+        calories = Optional.of(new Calories("100"));
+        difficulty = Optional.of(new Difficulty("beginner"));
+        duration = Optional.of(new Duration("20m"));
         mode = Optional.of(new Mode("all"));
-        validRecommendArguments = new RecommendArguments.Builder().withDifficulty(difficulty,
-                Optional.of(false)).withMode(mode).build();
+        validRecommendArguments = new RecommendArguments.Builder().withCalories(calories, Optional.of(false))
+                .withDifficulty(difficulty, Optional.of(false))
+                .withDuration(duration, Optional.of(false))
+                .withMode(mode).build();
+
+        expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
+                model.getTrackedData(), new UserPrefs());
+
+        filteredInternalList = expectedModel.getFinalFilteredInternalList(validRecommendArguments);
+        workoutsPredicate = new WorkoutsPredicate(filteredInternalList);
+        expectedModel.updateFilteredWorkoutList(workoutsPredicate);
+
+        assertCommandSuccess(new RecommendCommand(validRecommendArguments), model, commandHistory,
+                RecommendCommand.MESSAGE_SUCCESS, expectedModel);
+
+        // All Recommend 3 Optionals
+        calories = Optional.of(new Calories("500"));
+        difficulty = Optional.of(new Difficulty("beginner"));
+        duration = Optional.of(new Duration("1000m"));
+        mode = Optional.of(new Mode("single"));
+        validRecommendArguments = new RecommendArguments.Builder().withCalories(calories, Optional.of(true))
+                .withDifficulty(difficulty, Optional.of(true))
+                .withDuration(duration, Optional.of(true))
+                .withMode(mode).build();
 
         expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
                 model.getTrackedData(), new UserPrefs());
@@ -91,10 +117,13 @@ public class RecommendCommandIntegrationTest {
 
     @Test
     public void execute_workoutNotFound_throwsCommandException() {
+        Optional<Difficulty> difficulty = Optional.of(new Difficulty("advanced"));
         Optional<Duration> duration = Optional.of(new Duration("1m"));
         Optional<Mode> mode = Optional.of(new Mode("single"));
-        RecommendArguments noMatchRecommendArguments = new RecommendArguments.Builder().withDuration(duration,
-                Optional.of(false)).withMode(mode).build();
+        RecommendArguments noMatchRecommendArguments = new RecommendArguments.Builder()
+                .withDifficulty(difficulty, Optional.of(false))
+                .withDuration(duration, Optional.of(false))
+                .withMode(mode).build();
         assertCommandFailure(new RecommendCommand(noMatchRecommendArguments), model, commandHistory,
                 RecommendCommand.MESSAGE_NO_SUCH_WORKOUT);
     }

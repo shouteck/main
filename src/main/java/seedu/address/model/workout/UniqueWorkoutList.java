@@ -37,8 +37,7 @@ public class UniqueWorkoutList implements Iterable<Workout> {
      */
     public List<Workout> getFinalFilteredInternalList (RecommendArguments recommendArguments) {
 
-        if (recommendArguments.isDurationNull() || recommendArguments.isDifficultyNull()
-                || recommendArguments.isCaloriesNull()) {
+        if (isOneOfCaloriesDifficultyDurationNull(recommendArguments)) {
             return getFilteredInternalList(recommendArguments,
                     new ArrayList<>(List.of(true, true, true)));
         }
@@ -61,6 +60,16 @@ public class UniqueWorkoutList implements Iterable<Workout> {
         filterThreeChooseZero(recommendArguments, finalFilteredInternalList, optionalsList, totalOptionals);
 
         return finalFilteredInternalList;
+    }
+
+    /**
+     *  Returns true if at least one of `Calories`, `Difficulty` and `Duration` is null.
+     * @param recommendArguments
+     * @return true or false
+     */
+    private boolean isOneOfCaloriesDifficultyDurationNull(RecommendArguments recommendArguments) {
+        return recommendArguments.isDurationNull() || recommendArguments.isDifficultyNull()
+                || recommendArguments.isCaloriesNull();
     }
 
     /**

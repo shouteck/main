@@ -78,8 +78,7 @@ public class RecommendCommand extends Command {
             throw new CommandException(MESSAGE_NO_SUCH_WORKOUT);
         }
 
-        if (recommendArguments.isModeNull() || (!recommendArguments.isModeNull() && recommendArguments.getMode()
-                .isModeSingle())) {
+        if (isModeSingleOrNull(recommendArguments)) {
             int targetIndex = getTargetIndex(filteredWorkoutList, filteredInternalList);
             EventsCenter.getInstance().post(new JumpToRecommendListRequestEvent(targetIndex));
         } else {
@@ -99,6 +98,11 @@ public class RecommendCommand extends Command {
             }
         }
         return new CommandResult(MESSAGE_SUCCESS);
+    }
+
+    private boolean isModeSingleOrNull(RecommendArguments recommendArguments) {
+        return recommendArguments.isModeNull() || (!recommendArguments.isModeNull() && recommendArguments.getMode()
+                .isModeSingle());
     }
 
     private int getTargetIndex(List<Workout> filteredWorkoutList, List<Workout> filteredInternalList) {

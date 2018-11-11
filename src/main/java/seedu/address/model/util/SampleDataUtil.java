@@ -71,7 +71,27 @@ public class SampleDataUtil {
                     new Calories("250"), new Instruction("Each set consists of 10 of the following exercise: burpees,"
                     + " push ups, squats and high jump. Do this set 3 times with minimal rest."),
                     getTagSet("future", "tiring"), new Remark("")
-            )
+            ),
+            new Workout(new Name("one punch man training"), new Type("endurance, strength, agility"),
+                new Duration("5m"),
+                new Difficulty("advanced"), new Equipment("NIL"), new Muscle("everything"),
+                new Calories("500"), new Instruction("100 push-ups, 100 sit-ups, 100 squats and run 10km"),
+                getTagSet("future", "insane"), new Remark("")
+            ),
+            new Workout(new Name("cloud strife training"), new Type("strength, agility"),
+                    new Duration("50m"),
+                    new Difficulty("advanced"), new Equipment("NIL"), new Muscle("everything"),
+                    new Calories("500"), new Instruction("Running across the open world"),
+                    getTagSet("future", "ff7"), new Remark("")
+            ),
+            new Workout(new Name("High Intensity Interval Training 1"), new Type("strength, endurance"),
+                    new Duration("15m"),
+                    new Difficulty("beginner"), new Equipment("NIL"), new Muscle("everything"),
+                    new Calories("150"), new Instruction("Each set consists of 10 of the following exercise: flutter"
+                    + "kicks, push ups, half squats and burpees. Do this set 3 times with minimal rest."),
+                    getTagSet("future", "HIIT"), new Remark("")
+            ),
+
         };
     }
 
