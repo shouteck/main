@@ -1,4 +1,4 @@
-= Workout Book - Developer Guide
+= WorkoutBook - Developer Guide
 :site-section: DeveloperGuide
 :toc:
 :toc-title:
@@ -509,7 +509,7 @@ image::HighLevelRemarkSequenceDiagrams.png[width="800"]
 // end::TR
 
 === Memory feature
-//tag::memory
+// tag::memory
 ==== Current Implementation
 The memory mechanism is facilitated by `VersionedAddressBook`. It extends `WorkoutBook`.
 It implements following commands: +
@@ -526,13 +526,13 @@ Step 2. The user executes the current command to change the `future` tag in the 
 
 [[fig-Current]]
 .Interactions inside `Logic` component when pressing `current`
-image::CurrentCommandSD.png[width="800"]
+image::CurrentCommandLogicComponentSequenceDiagram.png[width="800"]
 
 Step 3. The user executes the complete command to change the `current` tag in the workout as specified by the index number to `completed`.
 
 [[fig-Complete]]
 .Interactions inside `Logic` component when pressing `complete`
-image::CompleteCommandSD.png[width="800"]
+image::CompleteCommandLogicComponentSequenceDiagram.png[width="800"]
 
 * The user can only change the state tag from `current` to `completed` by using the complete command.
 * The user can only change the state tag from `future` to `current` or `completed` to `current` by using the current command.

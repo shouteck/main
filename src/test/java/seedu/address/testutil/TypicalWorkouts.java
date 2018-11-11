@@ -21,8 +21,6 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_JOHN_WOR
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_JOHN_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_REMARK_AMY_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_REMARK_JOHN_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FUTURE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_NIGHT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_AMY_WORKOUT;
@@ -46,44 +44,37 @@ public class TypicalWorkouts {
             .withType("balance").withDuration("5m")
             .withDifficulty("advanced").withEquipment("NIL")
             .withMuscle("bicep").withCalories("20")
-            .withInstruction("Set1: chin-ups as many as you can").withTags("rigorous", "future")
-            .withRemark("This workout trains bicep").build();
+            .withInstruction("Set1: chin-ups as many as you can").withTags("rigorous", "future").build();
     public static final Workout BENSON_WORKOUT = new WorkoutBuilder().withName("Benson Meier's workout")
             .withType("strength").withDuration("10m")
             .withDifficulty("intermediate").withEquipment("bar")
             .withMuscle("deltoids").withCalories("100")
-            .withInstruction("set1: shoulder press reps: 5-7").withTags("heavy", "future")
-            .withRemark("This workout trains deltoids").build();
+            .withInstruction("set1: shoulder press reps: 5-7").withTags("heavy", "future").build();
     public static final Workout CARL_WORKOUT = new WorkoutBuilder().withName("Carl Kurz's workout")
             .withType("cardio").withDuration("25m")
             .withDifficulty("intermediate").withEquipment("NIL")
             .withMuscle("legs").withCalories("135")
-            .withInstruction("set1: leg raises reps: 15-20").withTags("future")
-            .withRemark("This workout trains legs").build();
+            .withInstruction("set1: leg raises reps: 15-20").withTags("future").build();
     public static final Workout DANIEL_WORKOUT = new WorkoutBuilder().withName("Daniel Meier's workout")
             .withType("cardio").withDuration("30m")
             .withDifficulty("intermediate").withEquipment("NIL")
             .withMuscle("legs").withCalories("200")
-            .withInstruction("30 minutes slow jog").withTags("favourite", "future")
-            .withRemark("This workout trains legs").build();
+            .withInstruction("30 minutes slow jog").withTags("favourite", "future").build();
     public static final Workout ELLE_WORKOUT = new WorkoutBuilder().withName("Elle Meyer's workout")
             .withType("endurance").withDuration("20m")
             .withDifficulty("beginner").withEquipment("NIL")
             .withMuscle("legs").withCalories("100")
-            .withInstruction("20 minutes brisk walk").withTags("future")
-            .withRemark("This workout trains legs").build();
+            .withInstruction("20 minutes brisk walk").withTags("future").build();
     public static final Workout FIONA_WORKOUT = new WorkoutBuilder().withName("Fiona Kunz's workout")
             .withType("strength").withDuration("40m")
             .withDifficulty("advanced").withEquipment("medicine ball")
             .withMuscle("arms").withCalories("225")
-            .withInstruction("set1: medicine ball throw reps: 25-30").withTags("future")
-            .withRemark("This workout trains arms").build();
+            .withInstruction("set1: medicine ball throw reps: 25-30").withTags("future").build();
     public static final Workout GEORGE_WORKOUT = new WorkoutBuilder().withName("George Best's workout")
             .withType("strength").withDuration("30m")
             .withDifficulty("intermediate").withEquipment("free weights")
             .withMuscle("chest").withCalories("175")
-            .withInstruction("6 sets of bench press, 6 reps per set of 70% max").withTags("future")
-            .withRemark("This workout trains chest").build();
+            .withInstruction("6 sets of bench press, 6 reps per set of 70% max").withTags("future").build();
 
     // Manually added
     public static final Workout HOON_WORKOUT = new WorkoutBuilder().withName("Hoon Meier's workout")
@@ -102,8 +93,7 @@ public class TypicalWorkouts {
             .withType(VALID_TYPE_AMY_WORKOUT).withDuration(VALID_DURATION_AMY_WORKOUT)
             .withDifficulty(VALID_DIFFICULTY_AMY_WORKOUT).withEquipment(VALID_EQUIPMENT_AMY_WORKOUT)
             .withMuscle(VALID_MUSCLE_AMY_WORKOUT).withCalories(VALID_CALORIES_AMY_WORKOUT)
-            .withInstruction(VALID_INSTRUCTION_AMY_WORKOUT).withTags(VALID_TAG_FUTURE)
-            .withRemark(VALID_REMARK_AMY_WORKOUT).build();
+            .withInstruction(VALID_INSTRUCTION_AMY_WORKOUT).withTags(VALID_TAG_FUTURE).build();
     public static final Workout BOB_WORKOUT = new WorkoutBuilder().withName(VALID_NAME_BOB_WORKOUT)
             .withType(VALID_TYPE_BOB_WORKOUT).withDuration(VALID_DURATION_BOB_WORKOUT)
             .withDifficulty(VALID_DIFFICULTY_BOB_WORKOUT).withEquipment(VALID_EQUIPMENT_BOB_WORKOUT)
@@ -113,8 +103,7 @@ public class TypicalWorkouts {
             .withType(VALID_TYPE_JOHN_WORKOUT).withDuration(VALID_DURATION_JOHN_WORKOUT)
             .withDifficulty(VALID_DIFFICULTY_JOHN_WORKOUT).withEquipment(VALID_EQUIPMENT_JOHN_WORKOUT)
             .withMuscle(VALID_MUSCLE_JOHN_WORKOUT).withCalories(VALID_CALORIES_JOHN_WORKOUT)
-            .withInstruction(VALID_INSTRUCTION_JOHN_WORKOUT).withTags(VALID_TAG_FUTURE)
-            .withRemark(VALID_REMARK_JOHN_WORKOUT).build();
+            .withInstruction(VALID_INSTRUCTION_JOHN_WORKOUT).withTags(VALID_TAG_FUTURE).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
