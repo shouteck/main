@@ -59,6 +59,7 @@ public class CurrentCommandTest {
     private Document doc;
 
     @Before
+    @SuppressWarnings("Duplicates")
     public void setUp() throws IOException {
         CurrentCommand.setCurrentWorkout(false);
 
@@ -287,6 +288,7 @@ public class CurrentCommandTest {
     }
 
     @After
+    @SuppressWarnings("Duplicates")
     public void revert() throws IOException {
         String workingDir = System.getProperty("user.dir");
         fileName = workingDir + "/ProfileWindow.html";

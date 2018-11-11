@@ -54,7 +54,7 @@ public class TypicalWorkouts {
             .withType("cardio").withDuration("25m")
             .withDifficulty("intermediate").withEquipment("NIL")
             .withMuscle("legs").withCalories("135")
-            .withInstruction("set1: leg raises reps: 15-20").withTags("future").build();
+            .withInstruction("set1: leg raises reps: 15-20").withTags("current").build();
     public static final Workout DANIEL_WORKOUT = new WorkoutBuilder().withName("Daniel Meier's workout")
             .withType("cardio").withDuration("30m")
             .withDifficulty("intermediate").withEquipment("NIL")
