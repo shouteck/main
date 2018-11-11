@@ -35,7 +35,7 @@ public class TrackCommandTest {
     @Test
     public void execute_validSubcommandStart_success() {
         String subcommand = "start";
-        Parameter parameter = new Parameter(PREFIX_MUSCLE, "bicep");
+        Parameter parameter = new Parameter(PREFIX_MUSCLE, "quadriceps");
         TrackCommand trackCommand = new TrackCommand(subcommand, parameter);
 
         String expectedMessage = String.format(MESSAGE_START_SUCCESS, parameter.getPrefix(), parameter.getValue());
@@ -92,7 +92,7 @@ public class TrackCommandTest {
     @Test
     public void execute_validSubcommandStopWithNonExistentParameter_failure() {
         String subcommand = "stop";
-        Parameter parameter = new Parameter(PREFIX_MUSCLE, "bicep");
+        Parameter parameter = new Parameter(PREFIX_MUSCLE, "brain");
         TrackCommand trackCommand = new TrackCommand(subcommand, parameter);
 
         String expectedMessage = String.format(MESSAGE_MISSING_PARAMETER);

@@ -103,6 +103,7 @@ public class CommandTestUtil {
     public static final String INVALID_MUSCLE_DESC = " " + PREFIX_MUSCLE + "bicep + tricep";
     public static final String INVALID_CALORIES_DESC = " " + PREFIX_CALORIES + "123 calories";
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "morning*"; // '*' not allowed in tags
+    public static final String INVALID_TAG_CURRENT = " " + PREFIX_TAG + "current"; // 'current' not allowed in edit tags
     public static final String INVALID_USERNAME = "gs_j@a";
     public static final String INVALID_GENDER = "femal";
     public static final String INVALID_HEIGHT = "183";

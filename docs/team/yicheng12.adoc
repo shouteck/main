@@ -1,4 +1,4 @@
-= yicheng12 - Project Portfolio
+= Yan YiCheng - Project Portfolio
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
@@ -9,7 +9,10 @@
 
 == Overview
 
-WorkoutBook is a desktop address book application used for students to manage their workouts. The user interacts with it using a CLI, and it has a GUI created with JavaFX.
+Are you a professional athlete who is too lazy to manually search through your workout list to find your favourite workout?
+Are you an amateur who just started working out and doesn't know where to begin?
+Or are you just someone who prefers to have all of your workouts in one place and organized in a tidy manner. Then WorkoutBook is the solution for you!
+WorkoutBook is a desktop address book application used for anyone who does workouts to manage their workouts. The user interacts with it using a CLI, and it has a GUI created with JavaFX.
 
 == Summary of contributions
 
@@ -28,7 +31,7 @@ WorkoutBook is a desktop address book application used for students to manage th
 
 ** Project management:
 ** Enhancements to existing features:
-*** Assisted morphing Addressbook 4 to workout book, including select command
+*** Assisted in the morphing of the product from AB4 to Workout book.
 ** Documentation:
 *** Did cosmetic tweaks to existing contents of the User Guide:
 https://github.com/CS2113-AY1819S1-T13-5/main/pull/119[#119]
@@ -56,10 +59,4 @@ include::../UserGuide.adoc[tag=remark]
 |===
 
 include::../DeveloperGuide.adoc[tag=TR]
-
-
-== PROJECT: PowerPointLabs
-
----
-
-_{Optionally, you may include other projects in your portfolio.}_
+include::../DeveloperGuide.adoc[tag=appendixtr]

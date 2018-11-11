@@ -3,9 +3,11 @@ package seedu.address.ui;
 import static java.time.Duration.ofMillis;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
+import static seedu.address.testutil.EventsUtil.postNow;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_WORKOUT;
 import static seedu.address.testutil.TypicalParameters.getTypicalParameters;
 import static seedu.address.ui.testutil.GuiTestAssert.assertCardDisplaysParameter;
+import static seedu.address.ui.testutil.GuiTestAssert.assertCardEquals;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -48,8 +50,6 @@ public class TrackedDataListPanelTest extends GuiUnitTest {
         }
     }
 
-    //TODO: Test the selection of parameters
-    /*
     @Test
     public void handleJumpToListRequestEvent() {
         initUi(TYPICAL_PARAMETERS);
@@ -61,7 +61,6 @@ public class TrackedDataListPanelTest extends GuiUnitTest {
         TrackedDataListCardHandle selectedParameter = trackedDataListPanelHandle.getHandleToSelectedCard();
         assertCardEquals(expectedParameter, selectedParameter);
     }
-    */
 
     /**
      * Verifies that creating and deleting large number of parameters in {@code TrackedDataListPanel} requires

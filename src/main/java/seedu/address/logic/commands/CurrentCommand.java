@@ -45,7 +45,6 @@ public class CurrentCommand extends Command {
 
     public static final String MESSAGE_CURRENT_WORKOUT_SUCCESS = "Current Workout: %1$s";
     public static final String MESSAGE_CURRENT_WORKOUT_FAILURE = "Fail to make the workout current.";
-    public static final String MESSAGE_DUPLICATE_CURRENT_WORKOUT = "This workout is already current.";
     public static final String MESSAGE_MULTIPLE_CURRENT_WORKOUT = "There is already a current workout. Complete that "
             + "before attempting again.";
     public static final String MESSAGE_MORE_DIFFICULT = "This workout is more difficult than your indicated workout "
@@ -75,13 +74,23 @@ public class CurrentCommand extends Command {
         requireNonNull(model);
 
         List<Workout> filteredWorkoutList = model.getFilteredWorkoutList();
+
+        Tag current = new Tag("current");
+        for (Workout workout: filteredWorkoutList) {
+            Set<Tag> tagList = workout.getTags();
+            if (tagList.contains(current)) {
+                setCurrentWorkout(true);
+                throw new CommandException(MESSAGE_MULTIPLE_CURRENT_WORKOUT);
+            }
+        }
+
         try {
             Workout workoutToEdit = filteredWorkoutList.get(targetIndex.getZeroBased());
             Workout editedWorkout = createEditedWorkout(workoutToEdit);
             if (success) {
                 model.updateWorkout(workoutToEdit, editedWorkout);
                 model.updateFilteredWorkoutList(PREDICATE_SHOW_ALL_WORKOUTS);
-                this.currentWorkout = true;
+                setCurrentWorkout(true);
                 model.commitModel();
                 return new CommandResult(String.format(MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout));
             } else {
@@ -116,14 +125,6 @@ public class CurrentCommand extends Command {
         boolean moreDifficult = false;
         boolean higherCalories = false;
         boolean higherDuration = false;
-        Tag current = new Tag("current");
-
-        if (currentWorkout) {
-            throw new CommandException(MESSAGE_MULTIPLE_CURRENT_WORKOUT);
-        }
-        if (originalTags.contains(current)) {
-            throw new CommandException(MESSAGE_DUPLICATE_CURRENT_WORKOUT);
-        }
 
         ProfileWindowManager profileWindowManager;
         try {
@@ -167,7 +168,12 @@ public class CurrentCommand extends Command {
         }
 
         Tag future = new Tag("future");
+        Tag current = new Tag("current");
         Tag completed = new Tag("completed");
+
+        if (originalTags.contains(current)) {
+            throw new CommandException(MESSAGE_MULTIPLE_CURRENT_WORKOUT);
+        }
 
         if (originalTags.contains(future)) {
             updatedTags.remove(future);

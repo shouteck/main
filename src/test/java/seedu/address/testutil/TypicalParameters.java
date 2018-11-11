@@ -4,10 +4,7 @@ import static seedu.address.testutil.WorkoutBuilder.DEFAULT_CALORIES;
 import static seedu.address.testutil.WorkoutBuilder.DEFAULT_DIFFICULTY;
 import static seedu.address.testutil.WorkoutBuilder.DEFAULT_DURATION;
 import static seedu.address.testutil.WorkoutBuilder.DEFAULT_EQUIPMENT;
-import static seedu.address.testutil.WorkoutBuilder.DEFAULT_INSTRUCTION;
-import static seedu.address.testutil.WorkoutBuilder.DEFAULT_MUSCLE;
 import static seedu.address.testutil.WorkoutBuilder.DEFAULT_NAME;
-import static seedu.address.testutil.WorkoutBuilder.DEFAULT_TYPE;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,7 +20,7 @@ public class TypicalParameters {
 
     public static final Parameter NAME_PARAMETER = new ParameterBuilder().withPrefix("name/").withValue(DEFAULT_NAME)
             .build();
-    public static final Parameter TYPE_PARAMETER = new ParameterBuilder().withPrefix("type/").withValue(DEFAULT_TYPE)
+    public static final Parameter TYPE_PARAMETER = new ParameterBuilder().withPrefix("type/").withValue("strength")
             .build();
     public static final Parameter DURATION_PARAMETER = new ParameterBuilder().withPrefix("duration/")
             .withValue(DEFAULT_DURATION).build();
@@ -32,11 +29,17 @@ public class TypicalParameters {
     public static final Parameter EQUIPMENT_PARAMETER = new ParameterBuilder().withPrefix("equipment/")
             .withValue(DEFAULT_EQUIPMENT).build();
     public static final Parameter MUSCLE_PARAMETER = new ParameterBuilder().withPrefix("muscle/")
-            .withValue(DEFAULT_MUSCLE).build();
+            .withValue("bicep").build();
     public static final Parameter CALORIES_PARAMETER = new ParameterBuilder().withPrefix("calories/")
             .withValue(DEFAULT_CALORIES).build();
     public static final Parameter INSTRUCTION_PARAMETER = new ParameterBuilder().withPrefix("instruction/")
-            .withValue(DEFAULT_INSTRUCTION).build();
+            .withValue("extension").build();
+
+    // Manually added
+    public static final Parameter NAME_PARAMETER_MANUAL = new ParameterBuilder().withPrefix("name/")
+            .withValue("test").build();
+    public static final Parameter TYPE_PARAMETER_MANUAL = new ParameterBuilder().withPrefix("type/")
+            .withValue("test").build();
 
     private TypicalParameters() {} // prevents instantiation
 
