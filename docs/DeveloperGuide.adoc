@@ -529,7 +529,7 @@ image::HighLevelRemarkSequenceDiagrams.png[width="800"]
 // end::TR[]
 
 === Memory feature
-// tag::memory
+// tag::memory[]
 ==== Current Implementation
 The memory mechanism is facilitated by `VersionedAddressBook`. It extends `WorkoutBook`.
 It implements following commands: +
@@ -557,7 +557,7 @@ image::CompleteCommandLogicComponentSequenceDiagram.png[width="800"]
 * The user can only change the state tag from `current` to `completed` by using the complete command.
 * The user can only change the state tag from `future` to `current` or `completed` to `current` by using the current command.
 
-// end::memory
+// end::memory[]
 
 // tag::trackfeature[]
 
