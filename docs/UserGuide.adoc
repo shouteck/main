@@ -233,7 +233,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * The search is case insensitive. e.g `Commando workout` will match `commando workout`
 * The order of the keywords does not matter. e.g. `workout commando` will match `commando workout`
 * Only the name is searched.
-* Only full words will be matched e.g. `command workout` will not match `commando workout`
+* Substrings will be matched e.g. `command workout` will match `commando workout`
 * workouts matching at least one keyword will be returned (i.e. `OR` search). e.g. `commando arnold's` will return `commando workout`, `Arnold's workout`
 ****
 
