@@ -50,6 +50,6 @@ image::yicheng12.png[width="150", align="left"]
 {empty}[http://github.com/yicheng12[github]] [<<yicheng12#, portfolio>>]
 
 Role: Developer +
-Responsibilities: Data
+Responsibilities: Traverse and remark feature
 
 '''
