@@ -12,6 +12,9 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_WORKOUT;
 import static seedu.address.testutil.TypicalParameters.getTypicalTrackedDataList;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -29,11 +32,6 @@ import seedu.address.model.ProfileWindowManager;
 import seedu.address.model.TrackedData;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.workout.Workout;
-
-import java.io.File;
-import java.io.IOException;
-
-
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
