@@ -62,7 +62,7 @@
         <calories>100</calories>
         <instruction>20 minutes brisk walk</instruction>
         <remark>This workout trains legs</remark>
-        <tagged>future</tagged>
+        <tagged>current</tagged>
     </workouts>
     <workouts>
         <name>Fiona Kunz's workout</name>
@@ -74,7 +74,7 @@
         <calories>225</calories>
         <instruction>set1: medicine ball throw reps: 25-30</instruction>
         <remark>This workout trains arms</remark>
-        <tagged>future</tagged>
+        <tagged>completed</tagged>
     </workouts>
     <workouts>
         <name>George Best's workout</name>
