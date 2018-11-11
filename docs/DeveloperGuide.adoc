@@ -423,9 +423,8 @@ Since the sequence is very similar to single mode recommend, the sequence diagra
 === User Profile
 
 ==== Current implementation
-The profile window is first being loaded by loading the `_profileWindow.fxml file_`. Thereafter, once the user request to open the profile window, it will then process it.
-
-There are 3 ways to open a profile window.
+The profile window is very similar to the help window. Once the MainApp is opened, it will load the `ProfileWindow.html` first.
+Thereafter, there are 3 ways a user can opt to open a profile window.
 
 * User types `"profile"` in command box
 * User clicks on `profile` on the menu bar
@@ -433,7 +432,7 @@ There are 3 ways to open a profile window.
 
 ===== User types "profile" in command box
 
-After executing the command `profile`, it will create an instance which uses `showProfileRequestEvent` method of `Events`. Then, the `UI` will `handleShowProfileRequestEvent` and the profile window will be opened.
+After executing the command `profile`, it will create an instance `profilecommand` which uses `showProfileRequestEvent` method of `Events`. Then, the `UI` will `handleShowProfileRequestEvent` and the profile window will be opened.
 
 [[fig-ProfileCommand]]
 .Interactions inside `Logic` component for the *`profile`* command
@@ -479,7 +478,7 @@ This modify feature only affects the `ProfileWindow.html` file and *will not* af
 When the user keys in the input in the command box, the input is parsed in the `ModifyCommandParser`. An instance of `ProfileWindowManager` class will be instantiated and this will parse the `ProfileWindow.html` file via J.soup.
 
 After parsing the file, the `ModifyCommandParser` will then find out which argument are to be edited. The parsed input will specify which attribute are to be edited according to their prefixes.
-After performing a boolean check to confirm which attribute have to be edited, the instance of `ProfileWindowManager` will then change the attribute. Once the attribute has been change, it will then proceed to load the new file.
+After performing a boolean check to confirm which attribute have to be edited, the instance of `ProfileWindowManager` will then change the attribute.
 
 As J.soup only alters the text of the `ProfileWindow.html` file and will not overwrite it, the instance of `ProfileWindowManager` will first create an (empty) temporary html file, copy all the content of the altered `ProfileWindow.html` file
 to the temporary html file, then overwrite the current `ProfileWindow.html` file with the temporary html file and proceed to delete the temporary html file.
@@ -1380,7 +1379,6 @@ _{ more test cases ... }_
 * Steps:
  .. Test case: `filter duration/20m type/strength equipment/dumbbell` +
     Expected: A message saying "XX workouts listed!"
-
  .. Test case `filter type/cardio equipment/NIL duration/20m` +
     Expected: A message saying "XX workouts listed!"
 
@@ -1409,7 +1407,6 @@ _{ more test cases ... }_
 * Steps:
  .. Test case: `remark` +
     Expected: A message saying "Invalid command format!", an instruction and an example will be provided.
-
  .. Test case `remark 1` +
     Expected: A message saying "Invalid command format!", an instruction and an example will be provided.
 
@@ -1419,5 +1416,57 @@ _{ more test cases ... }_
 
 // end::appendixtr[]
 
+// tag::appendixdt[]
+==== Memory feature
+ . Current command with a valid input
+* Steps:
+.. Ensure that the index input is valid and not out of bounds.
+.. Ensure that the target workout of the index input has a state tag of either `future` or `completed`.
+.. Test case: `current 1` +
+   Expected: The workout at index 1 (filtered or unfiltered) will have its state tag change from `future` or `completed` to `current`.
 
+. Current command with an invalid index input
+* Steps:
+.. Test case: `current 5` (there are only 4 workouts) +
+   Expected: A message saying "The workout index provided is invalid"
+
+. Current command when there is already a workout with the state tag `current`
+* Steps:
+.. Test case: `current 1` (this workout or another workout already has a `current` state tag) +
+   Expected: A message saying "There is already a current workout. Complete that before attempting again."
+
+. Current command with an empty input
+* Steps:
+.. Test case: `current` +
+   Expected: A message saying "Invalid command format! current: Sets a workout to be the current workout identified by the index +
+   number used in the displayed workout list. Parameters: INDEX (must be a positive integer) Example: current 1"
+
+. Complete command with a valid input
+* Steps:
+.. Ensure that the index input is valid and not out of bounds.
+.. Test case: `complete 1` +
+   Expected: The workout at index 1 (filtered or unfiltered) will have its state tag change from `current` to `completed`.
+
+. Complete command with an invalid index input
+* Steps:
+.. Test case: `complete 5` (there are only 4 workouts) +
+   Expected: A message saying "The workout index provided is invalid"
+
+. Complete command when the target workout has a state tag of `future`
+* Steps:
+.. Test case: `complete 1` (this workout has a `future` state tag) +
+   Expected: A message saying "This workout must already be in the current state."
+
+. Complete command when the target workout has a state tag of `completed`
+* Steps:
+.. Test case: `complete 1` (this workout already has a `completed` state tag) +
+   Expected: A message saying "This workout is already completed."
+
+. Complete command with an empty input
+* Steps:
+.. Test case: `complete` +
+   Expected: A message saying "Invalid command format! current: Sets a workout to be a completed workout identified by the index +
+   number used in the displayed workout list. Parameters: INDEX (must be a positive integer) Example: complete 1"
+
+// end::appendixdt[]
 

@@ -55,6 +55,11 @@ public class TypicalWorkouts {
             .withDifficulty("intermediate").withEquipment("NIL")
             .withMuscle("legs").withCalories("135")
             .withInstruction("set1: leg raises reps: 15-20").withTags("future").build();
+    public static final Workout CARL_WORKOUT_CURRENT = new WorkoutBuilder().withName("Carl Kurz's workout")
+            .withType("cardio").withDuration("25m")
+            .withDifficulty("intermediate").withEquipment("NIL")
+            .withMuscle("legs").withCalories("135")
+            .withInstruction("set1: leg raises reps: 15-20").withTags("current").build();
     public static final Workout DANIEL_WORKOUT = new WorkoutBuilder().withName("Daniel Meier's workout")
             .withType("cardio").withDuration("30m")
             .withDifficulty("intermediate").withEquipment("NIL")
@@ -120,6 +125,14 @@ public class TypicalWorkouts {
         return wb;
     }
 
+    public static WorkoutBook getTypicalWorkoutBookForCompleteCommand() {
+        WorkoutBook wb = new WorkoutBook();
+        for (Workout workout : getTypicalWorkoutsForCompleteCommand()) {
+            wb.addWorkout(workout);
+        }
+        return wb;
+    }
+
     /**
      * Returns an {@code TrackedData} with all the typical workouts.
      */
@@ -134,5 +147,10 @@ public class TypicalWorkouts {
     public static List<Workout> getTypicalWorkouts() {
         return new ArrayList<>(Arrays.asList(ALICE_WORKOUT, BENSON_WORKOUT, CARL_WORKOUT, DANIEL_WORKOUT, ELLE_WORKOUT,
                 FIONA_WORKOUT, GEORGE_WORKOUT, JOHN_WORKOUT));
+    }
+
+    public static List<Workout> getTypicalWorkoutsForCompleteCommand() {
+        return new ArrayList<>(Arrays.asList(ALICE_WORKOUT, BENSON_WORKOUT, CARL_WORKOUT_CURRENT, DANIEL_WORKOUT,
+                ELLE_WORKOUT, FIONA_WORKOUT, GEORGE_WORKOUT, JOHN_WORKOUT));
     }
 }

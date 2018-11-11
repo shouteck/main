@@ -1,15 +1,21 @@
 package seedu.address.logic.commands;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showWorkoutAtIndex;
+import static seedu.address.logic.commands.CurrentCommand.MESSAGE_CONTINUE;
+import static seedu.address.logic.commands.CurrentCommand.MESSAGE_HIGHER_CALORIES;
+import static seedu.address.logic.commands.CurrentCommand.MESSAGE_HIGHER_DURATION;
+import static seedu.address.logic.commands.CurrentCommand.MESSAGE_MORE_DIFFICULT;
 import static seedu.address.logic.commands.CurrentCommand.MESSAGE_MULTIPLE_CURRENT_WORKOUT;
 import static seedu.address.logic.commands.CurrentCommand.createEditedWorkout;
 import static seedu.address.testutil.TypicalIndexes.INDEX_EIGHTH_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_WORKOUT;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SIXTH_WORKOUT;
 import static seedu.address.testutil.TypicalParameters.getTypicalTrackedDataList;
 import static seedu.address.testutil.TypicalWorkouts.getTypicalWorkoutBook;
 
@@ -53,6 +59,7 @@ public class CurrentCommandTest {
     private Document doc;
 
     @Before
+    @SuppressWarnings("Duplicates")
     public void setUp() throws IOException {
         CurrentCommand.setCurrentWorkout(false);
 
@@ -76,6 +83,7 @@ public class CurrentCommandTest {
     }
 
     @Test
+    @SuppressWarnings("Duplicates")
     public void execute_validIndexUnfilteredList_success() throws CommandException {
         Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_EIGHTH_WORKOUT.getZeroBased());
         Workout editedWorkout = createEditedWorkout(currentWorkout);
@@ -87,6 +95,24 @@ public class CurrentCommandTest {
         Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
                 model.getTrackedData(), new UserPrefs());
         expectedModel.updateWorkout(model.getFilteredWorkoutList().get(7), editedWorkout);
+        expectedModel.commitModel();
+
+        assertCommandSuccess(currentCommand, model, commandHistory, expectedMessage, expectedModel);
+    }
+
+    @Test
+    @SuppressWarnings("Duplicates")
+    public void execute_validIndexUnfilteredListCompletedTag_success() throws CommandException {
+        Workout currentWorkout = model.getFilteredWorkoutList().get(INDEX_SIXTH_WORKOUT.getZeroBased());
+        Workout editedWorkout = createEditedWorkout(currentWorkout);
+
+        CurrentCommand currentCommand = new CurrentCommand(INDEX_SIXTH_WORKOUT);
+
+        String expectedMessage = String.format(CurrentCommand.MESSAGE_CURRENT_WORKOUT_SUCCESS, editedWorkout);
+
+        Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
+                model.getTrackedData(), new UserPrefs());
+        expectedModel.updateWorkout(model.getFilteredWorkoutList().get(5), editedWorkout);
         expectedModel.commitModel();
 
         assertCommandSuccess(currentCommand, model, commandHistory, expectedMessage, expectedModel);
@@ -190,6 +216,60 @@ public class CurrentCommandTest {
     }
 
     @Test
+    public void popUpMessageTest() {
+        boolean difficulty;
+        boolean calories;
+        boolean duration;
+
+        difficulty = false;
+        calories = false;
+        duration = true;
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration), MESSAGE_HIGHER_DURATION
+                + MESSAGE_CONTINUE);
+
+        difficulty = false;
+        calories = true;
+        duration = false;
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration), MESSAGE_HIGHER_CALORIES
+                + MESSAGE_CONTINUE);
+
+        difficulty = true;
+        calories = false;
+        duration = false;
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration), MESSAGE_MORE_DIFFICULT
+                + MESSAGE_CONTINUE);
+
+        difficulty = true;
+        calories = true;
+        duration = false;
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration), "This workout is more difficult"
+                + " than your indicated workout difficulty and requires more calories to"
+                + " be burnt than your preferred calories.\n" + MESSAGE_CONTINUE);
+
+        difficulty = true;
+        calories = false;
+        duration = true;
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration), "This workout is more difficult"
+                + " than your indicated workout difficulty and will take longer than " + "your preferred duration.\n"
+                + MESSAGE_CONTINUE);
+
+        difficulty = false;
+        calories = true;
+        duration = true;
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration), "This workout requires more"
+                + " calories to be burnt than your preferred calories and will take longer than your preferred"
+                + " duration.\n" + MESSAGE_CONTINUE);
+
+        difficulty = true;
+        calories = true;
+        duration = true;
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration), "This workout is more difficult"
+                + " than your indicated workout difficulty, requires more calories to be burnt than your preferred"
+                + " calories and will take longer than your preferred duration.\n"
+                + MESSAGE_CONTINUE);
+    }
+
+    @Test
     public void equals() {
         CurrentCommand currentFirstCommand = new CurrentCommand(INDEX_FIRST_WORKOUT);
 
@@ -208,6 +288,7 @@ public class CurrentCommandTest {
     }
 
     @After
+    @SuppressWarnings("Duplicates")
     public void revert() throws IOException {
         String workingDir = System.getProperty("user.dir");
         fileName = workingDir + "/ProfileWindow.html";
