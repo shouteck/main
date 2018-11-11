@@ -290,12 +290,12 @@ public class ModifyCommandTest {
         String height = "1.71";
         String weight = "77.5";
         String difficulty = "advanced";
-        ModifyCommand modifyCommand = new ModifyCommand(gender, username, height, weight, calories, difficulty
-        ,duration);
+        ModifyCommand modifyCommand = new ModifyCommand(gender, username, height, weight, calories, difficulty,
+                duration);
 
         // same values -> returns true
-        ModifyCommand commandWithSameValues = new ModifyCommand(gender, username, height, weight, calories, difficulty
-                ,duration);
+        ModifyCommand commandWithSameValues = new ModifyCommand(gender, username, height, weight, calories, difficulty,
+                duration);
         assertTrue(modifyCommand.equals(commandWithSameValues));
 
         // same object -> returns true
@@ -309,8 +309,8 @@ public class ModifyCommandTest {
 
         // different descriptor -> returns false
         difficulty = "beginner";
-        ModifyCommand commandWithDifferentValues = new ModifyCommand(gender, username, height, weight, calories, difficulty
-                ,duration);
+        ModifyCommand commandWithDifferentValues = new ModifyCommand(gender, username, height, weight, calories,
+                difficulty, duration);
         assertFalse(modifyCommand.equals(commandWithDifferentValues));
     }
 
