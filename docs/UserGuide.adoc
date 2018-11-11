@@ -154,7 +154,7 @@ Changes the state tag of the 1st workout to be `current`.
 The current command will receive a warning when the indexed workout's difficulty is harder than the your indicated difficulty, duration is higher than the your indicated duration or calories is higher than the your indicated calories in your user profile under workout presets. +
 Simply click the btn:[Yes] button if you want to proceed.
 ====
-//end::current[]
+// end::current[]
 
 // tag::complete[]
 === Changing a workout to completed : `complete`
@@ -171,7 +171,7 @@ Examples:
 
 * `complete 1` +
 Changes the state tag of the 1st workout to be `completed`.
-//end::complete[]
+// end::complete[]
 
 // tag::tracking[]
 
@@ -185,7 +185,7 @@ Format: `track SUBCOMMAND PREFIX/VALUE`
 * Completed workouts are recorded only if the value of the corresponding prefix matches `VALUE`.
 * `PREFIX/VALUE` follows the acceptable formats for the workout parameters as stated above.
 * `VALUE` has to be one string/value with no spaces.
-* To view the completed workouts that have been recorded, refer to <<#selecting-a-workout-code-select-code, the `select` command>>
+* To view the completed workouts that have been recorded, refer to <<#selecting-a-tracked-parameter-code-select-code, the `select` command>>
 ****
 
 Examples:
