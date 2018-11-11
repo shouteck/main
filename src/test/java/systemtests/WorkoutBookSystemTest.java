@@ -175,14 +175,14 @@ public abstract class WorkoutBookSystemTest {
     }
 
     /**
-     * Calls {@code BrowserPanelHandle}, {@code WorkoutListPanelHandle} and {@code StatusBarFooterHandle} to remember
-     * their current state.
+     * Calls {@code BrowserPanelHandle}, {@code TrackedDataListPanelHandle} and {@code StatusBarFooterHandle} to
+     * remember their current state.
      */
     private void rememberStates() {
         StatusBarFooterHandle statusBarFooterHandle = getStatusBarFooter();
         statusBarFooterHandle.rememberSaveLocation();
         statusBarFooterHandle.rememberSyncStatus();
-        getWorkoutListPanel().rememberSelectedWorkoutCard();
+        getTrackedDataListPanel().rememberSelectedTrackedDataListCard();
     }
 
     /**
@@ -191,29 +191,28 @@ public abstract class WorkoutBookSystemTest {
      * @see BrowserPanelHandle#isUrlChanged()
      */
     protected void assertSelectedCardDeselected() {
-        assertFalse(getWorkoutListPanel().isAnyCardSelected());
+        assertFalse(getTrackedDataListPanel().isAnyCardSelected());
     }
 
     /**
-     * Asserts that the browser's url is changed to display the details of the workout in the workout list panel at
-     * {@code expectedSelectedCardIndex}, and only the card at {@code expectedSelectedCardIndex} is selected.
+     * Asserts that the browser's url is changed to display the details of the parameter in the tracked data list panel
+     * at {@code expectedSelectedCardIndex}, and only the card at {@code expectedSelectedCardIndex} is selected.
      * @see BrowserPanelHandle#isUrlChanged()
-     * @see WorkoutListPanelHandle#isSelectedWorkoutCardChanged()
+     * @see TrackedDataListPanelHandle#isSelectedTrackedDataListCardChanged()
      */
     protected void assertSelectedCardChanged(Index expectedSelectedCardIndex) {
-        getWorkoutListPanel().navigateToCard(getWorkoutListPanel().getSelectedCardIndex());
-        String selectedCardName = getWorkoutListPanel().getHandleToSelectedCard().getName();
+        getTrackedDataListPanel().navigateToCard(getTrackedDataListPanel().getSelectedCardIndex());
 
-        assertEquals(expectedSelectedCardIndex.getZeroBased(), getWorkoutListPanel().getSelectedCardIndex());
+        assertEquals(expectedSelectedCardIndex.getZeroBased(), getTrackedDataListPanel().getSelectedCardIndex());
     }
 
     /**
-     * Asserts that the browser's url and the selected card in the workout list panel remain unchanged.
+     * Asserts that the browser's url and the selected card in the tracked data list panel remain unchanged.
      * @see BrowserPanelHandle#isUrlChanged()
-     * @see WorkoutListPanelHandle#isSelectedWorkoutCardChanged()
+     * @see TrackedDataListPanelHandle#isSelectedTrackedDataListCardChanged()
      */
     protected void assertSelectedCardUnchanged() {
-        assertFalse(getWorkoutListPanel().isSelectedWorkoutCardChanged());
+        assertFalse(getTrackedDataListPanel().isSelectedTrackedDataListCardChanged());
     }
 
     /**

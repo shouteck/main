@@ -6,7 +6,7 @@ import seedu.address.model.workout.Workout;
 /**
  * A utility class to help with building Workoutbook objects.
  * Example usage: <br>
- *     {@code WorkoutBook ab = new WorkoutBookBuilder().withWorkout("John", "Doe").build();}
+ *     {@code WorkoutBook ab = new WorkoutBookBuilder().withWorkout(AMY_WORKOUT).build();}
  */
 public class WorkoutBookBuilder {
 

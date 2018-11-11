@@ -183,6 +183,8 @@ Format: `track SUBCOMMAND PREFIX/VALUE`
 * If `SUBCOMMAND` is `stop`, `PREFIX/VALUE` must already be in the list of parameters being tracked.
 * Completed workouts are recorded only if the value of the corresponding prefix matches `VALUE`.
 * `PREFIX/VALUE` follows the acceptable formats for the workout parameters as stated above.
+* `VALUE` has to be one string/value with no spaces.
+* To view the completed workouts that have been recorded, refer to <<#selecting-a-workout-code-select-code, the `select` command>>
 ****
 
 Examples:
@@ -192,7 +194,7 @@ Starts tracking the parameter `muscle/bicep` in completed workouts. +
 Any completed workout after this command is entered, that has the parameter `muscle/bicep` present, will be recorded.
 * `track stop calories/100` +
 Stops tracking the parameter `calories/100`, if it is currently being tracked.
-// tag::tracking[]
+// end::tracking[]
 
 //tag::filter[]
 === Filtering workouts by type, duration, and equipment: `filter`
@@ -280,25 +282,25 @@ Clears the remark of the 2nd workout.
 
 //end::remark[]
 
-=== Selecting a workout : `select`
+// tag::select[]
+=== Selecting a tracked parameter : `select`
 
-Selects the workout identified by the index number used in the displayed workout list. +
+Selects the parameter identified by the index number used in the displayed tracked parameters list. +
 Format: `select INDEX`
 
 ****
-* Selects the workout and loads the Google search page the workout at the specified `INDEX`.
-* The index refers to the index number shown in the displayed workout list.
+* Selects the parameter and displays the tracked completed workouts which contain the selected parameter.
+* `INDEX` refers to the index number shown in the displayed tracked parameters list.
 * The index *must be a positive integer* `1, 2, 3, ...`
+* The index cannot be larger than the last index number shown in the displayed tracked parameters list.
 ****
 
 Examples:
 
-* `list` +
-`select 2` +
-Selects the 2nd workout in the workout book.
-* `find commando` +
-`select 1` +
-Selects the 1st workout in the results of the `find` command.
+* `select 2` +
+Selects the 2nd parameter in the tracked parameters list.
+Previously completed workouts that were tracked, which contain the selected parameter, will be displayed.
+// end::select[]
 
 // tag::sort[]
 

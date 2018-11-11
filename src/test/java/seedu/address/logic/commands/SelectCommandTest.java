@@ -39,11 +39,11 @@ public class SelectCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        Index lastWorkoutIndex = Index.fromOneBased(model.getFilteredTrackedDataList().size());
+        Index lastParameterIndex = Index.fromOneBased(model.getFilteredTrackedDataList().size());
 
         assertExecutionSuccess(INDEX_FIRST_WORKOUT);
         assertExecutionSuccess(INDEX_THIRD_WORKOUT);
-        assertExecutionSuccess(lastWorkoutIndex);
+        assertExecutionSuccess(lastParameterIndex);
     }
 
     @Test
