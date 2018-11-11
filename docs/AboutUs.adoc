@@ -29,7 +29,7 @@ Responsibilities: Profile Window and Modify feature
 
 === Tew You Wen, Daryl
 image::daryltew.png[width="150", align="left"]
-{empty}[http://github.com/DarylTew[github]] [<<DarylTew#, portfolio>>]
+{empty}[http://github.com/DarylTew[github]] [<<daryltew#, portfolio>>]
 
 Role: Developer +
 Responsibilities: Data
