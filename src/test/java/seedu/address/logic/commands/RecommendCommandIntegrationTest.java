@@ -98,7 +98,7 @@ public class RecommendCommandIntegrationTest {
         calories = Optional.of(new Calories("1"));
         difficulty = Optional.of(new Difficulty("intermediate"));
         duration = Optional.of(new Duration("30m"));
-        mode = Optional.of(new Mode("all"));
+        mode = Optional.of(new Mode("single"));
         validRecommendArguments = new RecommendArguments.Builder().withCalories(calories, Optional.of(true))
                 .withDifficulty(difficulty, Optional.of(false))
                 .withDuration(duration, Optional.of(false))
@@ -118,7 +118,7 @@ public class RecommendCommandIntegrationTest {
         calories = Optional.of(new Calories("1000"));
         difficulty = Optional.of(new Difficulty("advanced"));
         duration = Optional.of(new Duration("1m"));
-        mode = Optional.of(new Mode("all"));
+        mode = Optional.of(new Mode("multiple 2"));
         validRecommendArguments = new RecommendArguments.Builder().withCalories(calories, Optional.of(true))
                 .withDifficulty(difficulty, Optional.of(false))
                 .withDuration(duration, Optional.of(true))
