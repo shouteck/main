@@ -150,7 +150,7 @@ public class TypicalWorkouts {
     }
 
     public static List<Workout> getTypicalWorkoutsForCompleteCommand() {
-        return new ArrayList<>(Arrays.asList(ALICE_WORKOUT, BENSON_WORKOUT, CARL_WORKOUT_CURRENT, DANIEL_WORKOUT, ELLE_WORKOUT,
-                FIONA_WORKOUT, GEORGE_WORKOUT, JOHN_WORKOUT));
+        return new ArrayList<>(Arrays.asList(ALICE_WORKOUT, BENSON_WORKOUT, CARL_WORKOUT_CURRENT, DANIEL_WORKOUT,
+                ELLE_WORKOUT, FIONA_WORKOUT, GEORGE_WORKOUT, JOHN_WORKOUT));
     }
 }
