@@ -5,8 +5,8 @@ import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showWorkoutAtIndex;
-import static seedu.address.logic.commands.CurrentCommand.MESSAGE_MULTIPLE_CURRENT_WORKOUT;
 import static seedu.address.logic.commands.CurrentCommand.createEditedWorkout;
+import static seedu.address.logic.commands.CurrentCommand.MESSAGE_MULTIPLE_CURRENT_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_EIGHTH_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_WORKOUT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_WORKOUT;
@@ -187,6 +187,43 @@ public class CurrentCommandTest {
         // single workout book state in model -> undoCommand and redoCommand fail
         assertCommandFailure(new UndoCommand(), model, commandHistory, UndoCommand.MESSAGE_FAILURE);
         assertCommandFailure(new RedoCommand(), model, commandHistory, RedoCommand.MESSAGE_FAILURE);
+    }
+
+    @Test
+    public void popUpMessageTest() {
+        boolean difficulty;
+        boolean calories;
+        boolean duration;
+
+        difficulty = false;
+        calories = false;
+        duration = true;
+        assertTrue((!(difficulty || calories)) && duration);
+
+        difficulty = false;
+        calories = true;
+        duration = false;
+        assertTrue((!(difficulty || duration)) && calories);
+
+        difficulty = true;
+        calories = false;
+        duration = false;
+        assertTrue((!(calories || duration)) && difficulty);
+
+        difficulty = true;
+        calories = true;
+        duration = false;
+        assertTrue((difficulty && calories) && (!duration));
+
+        difficulty = true;
+        calories = false;
+        duration = true;
+        assertTrue((difficulty && duration) && (!calories));
+
+        difficulty = false;
+        calories = true;
+        duration = true;
+        assertTrue((calories && duration) && (!difficulty));
     }
 
     @Test
