@@ -196,7 +196,7 @@ public class CurrentCommand extends Command {
      * @param duration boolean to check if the user's indicated duration is higher than the workout's duration
      * @return the appropriate pop up message
      */
-    private static String popUpMessage(boolean difficulty, boolean calories, boolean duration) {
+    public static String popUpMessage(boolean difficulty, boolean calories, boolean duration) {
         if ((!(difficulty || calories)) && duration) {
             return MESSAGE_HIGHER_DURATION + MESSAGE_CONTINUE;
         } else if ((!(difficulty || duration)) && calories) {
@@ -213,7 +213,7 @@ public class CurrentCommand extends Command {
             return "This workout requires more calories to be burnt than your preferred calories and will take longer "
                     + "than your preferred duration.\n" + MESSAGE_CONTINUE;
         } else {
-            return "This workout is more difficult than your indicated workout difficulty and requires more calories to"
+            return "This workout is more difficult than your indicated workout difficulty, requires more calories to"
                     + " be burnt than your preferred calories and will take longer than your preferred duration.\n"
                     + MESSAGE_CONTINUE;
         }

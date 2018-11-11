@@ -150,7 +150,7 @@ public class ProfileWindowManager {
     }
 
     /**
-     * Trims the weight
+     * Trims the string weight
      */
     public String extractWeight(String weight) {
         weight = weight.replaceFirst("kg", "");
