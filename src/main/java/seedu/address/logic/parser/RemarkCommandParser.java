@@ -11,10 +11,8 @@ import seedu.address.logic.commands.RemarkCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.workout.Remark;
 
-
-
 /**
- *
+ * Parses input arguments and creates a new RecommendCommand object
  */
 public class RemarkCommandParser implements Parser<RemarkCommand> {
     @Override
