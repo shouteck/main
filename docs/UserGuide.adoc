@@ -154,7 +154,7 @@ Changes the state tag of the 1st workout to be `current`.
 The current command will receive a warning when the indexed workout's difficulty is harder than the your indicated difficulty, duration is higher than the your indicated duration or calories is higher than the your indicated calories in your user profile under workout presets. +
 Simply click the btn:[Yes] button if you want to proceed.
 ====
-//end::current[]
+// end::current[]
 
 // tag::complete[]
 === Changing a workout to completed : `complete`
@@ -171,9 +171,10 @@ Examples:
 
 * `complete 1` +
 Changes the state tag of the 1st workout to be `completed`.
-//end::complete[]
+// end::complete[]
 
 // tag::tracking[]
+
 === Tracking specific parameters in completed workouts: `track`
 Tracks user-specified parameters in workouts that are marked complete via the `complete` command.
 Format: `track SUBCOMMAND PREFIX/VALUE`
@@ -184,7 +185,7 @@ Format: `track SUBCOMMAND PREFIX/VALUE`
 * Completed workouts are recorded only if the value of the corresponding prefix matches `VALUE`.
 * `PREFIX/VALUE` follows the acceptable formats for the workout parameters as stated above.
 * `VALUE` has to be one string/value with no spaces.
-* To view the completed workouts that have been recorded, refer to <<#selecting-a-workout-code-select-code, the `select` command>>
+* To view the completed workouts that have been recorded, refer to <<#selecting-a-tracked-parameter-code-select-code, the `select` command>>
 ****
 
 Examples:
@@ -194,6 +195,7 @@ Starts tracking the parameter `muscle/bicep` in completed workouts. +
 Any completed workout after this command is entered, that has the parameter `muscle/bicep` present, will be recorded.
 * `track stop calories/100` +
 Stops tracking the parameter `calories/100`, if it is currently being tracked.
+
 // end::tracking[]
 
 //tag::filter[]
@@ -231,7 +233,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * The search is case insensitive. e.g `Commando workout` will match `commando workout`
 * The order of the keywords does not matter. e.g. `workout commando` will match `commando workout`
 * Only the name is searched.
-* Only full words will be matched e.g. `command workout` will not match `commando workout`
+* Substrings will be matched e.g. `command workout` will match `commando workout`
 * workouts matching at least one keyword will be returned (i.e. `OR` search). e.g. `commando arnold's` will return `commando workout`, `Arnold's workout`
 ****
 
@@ -283,6 +285,7 @@ Clears the remark of the 2nd workout.
 //end::remark[]
 
 // tag::select[]
+
 === Selecting a tracked parameter : `select`
 
 Selects the parameter identified by the index number used in the displayed tracked parameters list. +
@@ -300,6 +303,7 @@ Examples:
 * `select 2` +
 Selects the 2nd parameter in the tracked parameters list.
 Previously completed workouts that were tracked, which contain the selected parameter, will be displayed.
+
 // end::select[]
 
 // tag::sort[]

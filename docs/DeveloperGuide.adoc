@@ -107,7 +107,6 @@ When you are ready to start coding,
 == Design
 
 [[Design-Architecture]]
-// tag::architecture[]
 === Architecture
 
 .Architecture Diagram
@@ -238,8 +237,6 @@ The `Storage` component,
 * can save the Workout Book data in xml format and read it back.
 * can save the Tracked Data List data in xml format and read it back.
 * can save the Tracked Data data in xml format and read it back.
-
-// end::architecture[]
 
 [[Design-Commons]]
 === Common classes
@@ -532,7 +529,7 @@ image::HighLevelRemarkSequenceDiagrams.png[width="800"]
 // end::TR[]
 
 === Memory feature
-// tag::memory
+// tag::memory[]
 ==== Current Implementation
 The memory mechanism is facilitated by `VersionedAddressBook`. It extends `WorkoutBook`.
 It implements following commands: +
@@ -560,10 +557,11 @@ image::CompleteCommandLogicComponentSequenceDiagram.png[width="800"]
 * The user can only change the state tag from `current` to `completed` by using the complete command.
 * The user can only change the state tag from `future` to `current` or `completed` to `current` by using the current command.
 
-// end::memory
+// end::memory[]
+
+// tag::trackfeature[]
 
 === Tracking Feature
-// tag::trackfeature[]
 ==== Current Implementation
 The user input is parsed into `_TrackCommandParser_` to generate a `Parameter` object, which is then passed on to `_TrackCommand_`.
 Upon execution of the command, the `Parameter` is then stored in/removed from the `TrackedDataList`.
