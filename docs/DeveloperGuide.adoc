@@ -1303,7 +1303,7 @@ _{ more test cases ... }_
 .. Ensure that the respective `Calories`, `Difficulty` and `Duration` you have chosen are the same as the data types contained in at least one of the workouts in the workout list.
 .. The example used here assumes that at least one of the workouts contains calories of 150.
 .. Test case: `recommend calories/150` +
-   Expected: A message saying that an invalid format is used and proposing the correct format will be shown in the status message.
+   Expected: A message proposing the correct format will be shown in the status message.
 
 . Recommending a workout from the profile.
 * Steps:
