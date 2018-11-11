@@ -92,6 +92,11 @@ public class TrackCommandParser implements Parser<TrackCommand> {
             value = remark.fullRemark;
         }
 
+        // check that the value is one string/value with no spaces
+        if (value.split("\\s+").length > 1) {
+            throw new ParseException(TrackCommand.MESSAGE_VALUE_CONSTRAINTS);
+        }
+
         Parameter parameter = new Parameter(prefix, value);
 
         return new TrackCommand(subcommand, parameter);

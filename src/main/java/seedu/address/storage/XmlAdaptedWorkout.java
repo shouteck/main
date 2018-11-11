@@ -187,9 +187,8 @@ public class XmlAdaptedWorkout {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Instruction.class.getSimpleName()));
         }
-        if (!Instruction.isValidInstruction(instruction)) {
-            throw new IllegalValueException(Instruction.MESSAGE_INSTRUCTION_CONSTRAINTS);
-        }
+        // no invalid instruction
+
         final Instruction modelInstruction = new Instruction(instruction);
         final Set<Tag> modelTags = new HashSet<>(workoutTags);
         return new Workout(modelName, modelType, modelDuration, modelDifficulty, modelEquipment,

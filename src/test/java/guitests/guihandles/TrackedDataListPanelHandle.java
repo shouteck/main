@@ -23,13 +23,12 @@ public class TrackedDataListPanelHandle extends NodeHandle<ListView<Parameter>> 
     }
 
     //TODO: Test the selection of parameters
-    /*
     /**
      * Returns a handle to the selected {@code TrackedDataListCardHandle}.
      * A maximum of 1 item can be selected at any time.
      * @throws AssertionError if no card is selected, or more than 1 card is selected.
      * @throws IllegalStateException if the selected card is currently not in the scene graph.
-
+     */
     public TrackedDataListCardHandle getHandleToSelectedCard() {
         List<Parameter> selectedTrackedDataList = getRootNode().getSelectionModel().getSelectedItems();
 
@@ -43,7 +42,6 @@ public class TrackedDataListPanelHandle extends NodeHandle<ListView<Parameter>> 
                 .findFirst()
                 .orElseThrow(IllegalStateException::new);
     }
-    */
 
     /**
      * Returns the index of the selected card.

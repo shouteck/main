@@ -40,10 +40,24 @@ public class TestUtil {
     }
 
     /**
+     * Returns the middle index of the parameter in the {@code model}'s tracked data list.
+     */
+    public static Index getMidParameterIndex(Model model) {
+        return Index.fromOneBased(model.getFilteredTrackedDataList().size() / 2);
+    }
+
+    /**
      * Returns the last index of the workout in the {@code model}'s workout list.
      */
     public static Index getLastIndex(Model model) {
         return Index.fromOneBased(model.getFilteredWorkoutList().size());
+    }
+
+    /**
+     * Returns the middle index of the parameter in the {@code model}'s tracked data list.
+     */
+    public static Index getLastParameterIndex(Model model) {
+        return Index.fromOneBased(model.getFilteredTrackedDataList().size());
     }
 
     /**

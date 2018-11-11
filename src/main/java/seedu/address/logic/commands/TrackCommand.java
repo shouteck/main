@@ -17,7 +17,7 @@ public class TrackCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": allows the user to start/stop tracking desired parameters, for any new"
-            + "workouts that marked as completed.\n"
+            + "workouts that marked as completed. VALUE has to be one string/value with no spaces.\n"
             + "Parameters: SUBCOMMAND PREFIX/VALUE\n"
             + "Example: " + COMMAND_WORD + " start muscle/bicep";
 
@@ -27,6 +27,7 @@ public class TrackCommand extends Command {
     public static final String MESSAGE_MISSING_PARAMETER = "This parameter is not currently being tracked";
 
     public static final String MESSAGE_SUBCOMMAND_CONSTRAINTS = "subcommand must be \"start\" or \"stop\"";
+    public static final String MESSAGE_VALUE_CONSTRAINTS = "VALUE has to be one string/value with no spaces.";
     public static final String SUBCOMMAND_VALIDATION_REGEX = "(start)|(stop)";
 
     private final String subcommand;
