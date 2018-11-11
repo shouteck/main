@@ -1324,3 +1324,55 @@ _{ more test cases ... }_
     Expected: A message saying "Invalid Height format! Height should only be in x.xx form where x is an integer."
 
 // end::appendixsj[]
+
+// tag::appendixtr[]
+==== Traversing the workouts
+. Sort all workouts based on names in ascending a alphabetical order.
+ .. Test case: `sort` +
+    Expected: A message saying " sorted all workouts".
+
+. Filter command with valid inputs, which contains `Duration`, `Equipment` and `Type`
+* Steps:
+ .. Test case: `filter duration/20m type/strength equipment/dumbbell` +
+    Expected: A message saying "XX workouts listed!"
+
+ .. Test case `filter type/cardio equipment/NIL duration/20m` +
+    Expected: A message saying "XX workouts listed!"
+
+. Filter command with duplicate valid inputs.
+ .. Test case: `filter type/cardio duration/30m duration/20m equipment/weights` +
+    Expected: Only workouts that take 20 minutes will be searched. The rest will be filtered out.
+
+. Filter command missing one or more fields.
+* Steps:
+ .. Test case: `filter duration/20m` +
+    Expected: A message saying "Invalid command format!" and an example will be given.
+
+ .. Test case: `filter duration/20m + equipment/NIL` +
+    Expected: A message saying "Invalid command format!" and an example will be given.
+
+==== Remark a workout
+. Remark a workout by selecting its index number and leaving a comment +
+..  Test case: `remark 1 r/This workout trains biceps.` +
+    Expected: The remarked workout will be shown in the status message.
+
+. Remove a remark of a workout by selecting its index number and leaving it blank. +
+.. Test case: `remark 1 r/` +
+    Expected: The target workout without remark will be shown in the status message.
+
+. Remark a workout with invalid inputs.
+* Steps:
+ .. Test case: `remark` +
+    Expected: A message saying "Invalid command format!", an instruction and an example will be provided.
+
+ .. Test case `remark 1` +
+    Expected: A message saying "Invalid command format!", an instruction and an example will be provided.
+
+. Remark a workout with duplicate valid inputs.
+.. Test case: `remark 1 r/This workout trains biceps. r/This workout is exhausted.` +
+    Expected: The first workout is remarked with "The workout is exhausted."
+
+// end::appendixtr[]
+
+
+
