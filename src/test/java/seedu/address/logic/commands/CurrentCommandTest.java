@@ -203,39 +203,39 @@ public class CurrentCommandTest {
         difficulty = false;
         calories = false;
         duration = true;
-        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration),MESSAGE_HIGHER_DURATION
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration), MESSAGE_HIGHER_DURATION
                 + MESSAGE_CONTINUE);
 
         difficulty = false;
         calories = true;
         duration = false;
-        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration),MESSAGE_HIGHER_CALORIES
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration), MESSAGE_HIGHER_CALORIES
                 + MESSAGE_CONTINUE);
 
         difficulty = true;
         calories = false;
         duration = false;
-        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration),MESSAGE_MORE_DIFFICULT
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration), MESSAGE_MORE_DIFFICULT
                 + MESSAGE_CONTINUE);
 
         difficulty = true;
         calories = true;
         duration = false;
-        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration),"This workout is more difficult"
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration), "This workout is more difficult"
                 + " than your indicated workout difficulty and requires more calories to"
                 + " be burnt than your preferred calories.\n" + MESSAGE_CONTINUE);
 
         difficulty = true;
         calories = false;
         duration = true;
-        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration),"This workout is more difficult"
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration), "This workout is more difficult"
                 + " than your indicated workout difficulty and will take longer than " + "your preferred duration.\n"
                 + MESSAGE_CONTINUE);
 
         difficulty = false;
         calories = true;
         duration = true;
-        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration),"This workout requires more"
+        assertEquals(CurrentCommand.popUpMessage(difficulty, calories, duration), "This workout requires more"
                 + " calories to be burnt than your preferred calories and will take longer than your preferred"
                 + " duration.\n" + MESSAGE_CONTINUE);
     }
