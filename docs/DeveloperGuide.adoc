@@ -1287,6 +1287,8 @@ _{ more test cases ... }_
 
 === Features/Commands
 
+// tag:appendixst[]
+
 ==== Recommending workouts
 
 . Recommending a workout with the respective `Calories`, `Difficulty` and `Duration` that isn't in the workout list.
@@ -1309,6 +1311,8 @@ _{ more test cases ... }_
 .. Ensure that the respective `Calories`, `Difficulty` and `Duration` you have in the workout presets in the profile are the same as the data types contained in at least one of the workouts in the workout list.
 .. Test case: `recommend` +
    Expected: A message saying workout is recommended will be shown in the status message.
+
+// end::appendixst[]
 
 // tag::appendixsj[]
 
