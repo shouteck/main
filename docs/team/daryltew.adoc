@@ -1,4 +1,4 @@
-= Tew You Wen, Daryl - Project Portfolio
+= Daryl Tew - Project Portfolio
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
@@ -9,7 +9,7 @@
 
 == Overview
 
-Are you a professional athlete who is too lazy to manually search through your workout list to find your favourite workout? Are you an amateur who just started working out and doesn’t know where to begin? Or are you just someone who prefers to have all of your workouts in one place and organized in a tidy manner. Then WorkoutBook is the solution for you! WorkoutBook is a desktop address book application used for anyone who does workouts to manage their workouts. The user interacts with it using a CLI, and it has a GUI created with JavaFX.
+Are you a professional athlete who is too lazy to manually search through your workout list to find your favourite workout? Are you an amateur who just started working out and doesn’t know where to begin? Or are you just someone who prefers to have all of your workouts in one place and organized in a tidy manner. Then WorkoutBook is the solution for you! WorkoutBook is a desktop workout book application used for anyone who does workouts to manage their workouts. The user interacts with it using a CLI, and it has a GUI created with JavaFX.
 
 == Summary of contributions
 
@@ -21,7 +21,7 @@ on this specific one. `completed` tells the user that he has finished this worko
 add and edit commands to avoid affecting the state tag.
 
 * *Minor enhancement*:
-** Created the seven classes of Type, Difficulty, Duration, Equipment, Instruction, Muscle and Calories for the Workout.
+** Created the seven classes of Type, Difficulty, Duration, Equipment, Instruction, Muscle and Calories for the Workout. (https://github.com/CS2113-AY1819S1-T13-5/main/pull/3[#3])
 
 * *Code contributed*: [https://nuscs2113-ay1819s1.github.io/dashboard/#=undefined&search=daryltew[Project Code Dashboard]]
 
@@ -32,21 +32,19 @@ add and edit commands to avoid affecting the state tag.
 *** Assisted in the morphing of the product from AB4 to Workout book.
 *** Arranged for meetings and discussions for project pre-planning of `v1.0` and final demo.
 ** Enhancements to existing features:
-*** Edit command has more responsiveness to different types of inputs
+*** Edit command has more responsiveness to different types of inputs (https://github.com/CS2113-AY1819S1-T13-5/main/pull/244[#244])
 ** Documentation:
-*** Improved the content of the User Guide (https://github.com/CS2113-AY1819S1-T13-5/main/pull/217[#217]) and the Developer Guide to reflect new functions of the WorkoutBook (https://github.com/CS2113-AY1819S1-T13-5/main/pull/140[#140],
+*** Improved the content of the User Guide (https://github.com/CS2113-AY1819S1-T13-5/main/pull/217[#217]) and the Developer Guide to reflect new functions of the WorkoutBook (https://github.com/CS2113-AY1819S1-T13-5/main/pull/140[#140]
 ** Tools:
-*** Integrated a new Github plugin (Travis) to the team repo
+*** Integrated a new Github plugin (Travis) to the team repo (https://github.com/CS2113-AY1819S1-T13-5/main/pull/3[#3])
 
 == Contributions to the User Guide
-
 
 |===
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-include::../UserGuide.adoc[tag=current]
-include::../UserGuide.adoc[tag=complete]
+include::../UserGuide.adoc[tag=current,tag=complete]
 
 == Contributions to the Developer Guide
 
@@ -55,5 +53,3 @@ include::../UserGuide.adoc[tag=complete]
 |===
 
 include::../DeveloperGuide.adoc[tag=memory]
-include::../DeveloperGuide.adoc[tag=appendixdt]
-
