@@ -17,7 +17,7 @@ import seedu.address.model.workout.EquipmentPredicate;
 import seedu.address.model.workout.TypePredicate;
 
 /**
- * WIP
+ * Parses input arguments and creates a new FilterCommand object
  */
 public class FilterCommandParser implements Parser<FilterCommand> {
 
