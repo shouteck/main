@@ -1286,7 +1286,7 @@ _{ more test cases ... }_
 
 === Features/Commands
 
-// tag:appendixst[]
+// tag::appendixst[]
 
 ==== Recommending workouts
 
