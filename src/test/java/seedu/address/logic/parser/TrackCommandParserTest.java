@@ -5,20 +5,15 @@ import static seedu.address.logic.commands.CommandTestUtil.CALORIES_DESC_BOB_WOR
 import static seedu.address.logic.commands.CommandTestUtil.DIFFICULTY_DESC_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.DURATION_DESC_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.EQUIPMENT_DESC_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.INSTRUCTION_DESC_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.MUSCLE_DESC_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.REMARK_DESC_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_MORNING;
 import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CALORIES_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DIFFICULTY_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DURATION_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EQUIPMENT_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_INSTRUCTION_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_MUSCLE_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB_WORKOUT;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_REMARK_BOB_WORKOUT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_MORNING;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TYPE_BOB_WORKOUT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIES;
@@ -47,9 +42,9 @@ public class TrackCommandParserTest {
         String subcommand = "start";
 
         // test for name
-        String userInput = subcommand + " " + NAME_DESC_BOB_WORKOUT;
+        String userInput = subcommand + " " + PREFIX_NAME + "Bob";
         TrackCommand expectedCommand = new TrackCommand(subcommand,
-                new Parameter(PREFIX_NAME, VALID_NAME_BOB_WORKOUT));
+                new Parameter(PREFIX_NAME, "Bob"));
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // test for type
@@ -89,9 +84,9 @@ public class TrackCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // test for instruction
-        userInput = subcommand + " " + INSTRUCTION_DESC_BOB_WORKOUT;
+        userInput = subcommand + " " + PREFIX_INSTRUCTION + " bicep";
         expectedCommand = new TrackCommand(subcommand,
-                new Parameter(PREFIX_INSTRUCTION, VALID_INSTRUCTION_BOB_WORKOUT));
+                new Parameter(PREFIX_INSTRUCTION, "bicep"));
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // test for tag
@@ -101,10 +96,18 @@ public class TrackCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // test for remark
-        userInput = subcommand + " " + REMARK_DESC_BOB_WORKOUT;
+        userInput = subcommand + " " + PREFIX_REMARK + "bicep";
         expectedCommand = new TrackCommand(subcommand,
-                new Parameter(PREFIX_REMARK, VALID_REMARK_BOB_WORKOUT));
+                new Parameter(PREFIX_REMARK, "bicep"));
         assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void parse_parameterValueHasSpaces_throwsParseException() {
+        String subcommand = "start";
+        String userInput = subcommand + NAME_DESC_BOB_WORKOUT;
+        String expectedMessage = String.format(TrackCommand.MESSAGE_VALUE_CONSTRAINTS);
+        assertParseFailure(parser, userInput, expectedMessage);
     }
 
     @Test

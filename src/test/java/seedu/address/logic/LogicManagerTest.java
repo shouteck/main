@@ -54,6 +54,18 @@ public class LogicManagerTest {
         logic.getFilteredWorkoutList().remove(0);
     }
 
+    @Test
+    public void getFilteredTrackedData_modifyList_throwsUnsupportedOperationException() {
+        thrown.expect(UnsupportedOperationException.class);
+        logic.getFilteredTrackedData().remove(0);
+    }
+
+    @Test
+    public void getFilteredTrackedDataList_modifyList_throwsUnsupportedOperationException() {
+        thrown.expect(UnsupportedOperationException.class);
+        logic.getFilteredTrackedDataList().remove(0);
+    }
+
     /**
      * Executes the command, confirms that no exceptions are thrown and that the result message is correct.
      * Also confirms that {@code expectedModel} is as specified.
