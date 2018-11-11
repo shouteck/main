@@ -601,7 +601,7 @@ image::TrackCommandSequenceDiagram1.png[width="800"]
 
 In a macroscopic view, the following activity diagram shows how the tracking feature is utilised:
 
-[[fig-TrackCommandSequenceDiagram1]]
+[[fig-TrackCommandActivityDiagram]]
 .Activity diagram for the tracking feature
 image::TrackFeatureActivityDiagram.png[width="800"]
 
