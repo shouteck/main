@@ -1,4 +1,4 @@
-= Yan Yi Cheng - Project Portfolio
+= Yan YiCheng - Project Portfolio
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
