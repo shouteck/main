@@ -1425,44 +1425,44 @@ _{ more test cases ... }_
 .. Ensure that the target workout of the index input has a state tag of either `future` or `completed`.
 .. Test case: `current 1` +
    Expected: The workout at index 1 (filtered or unfiltered) will have its state tag change from `future` or `completed` to `current`.
-   
+
 . Current command with an invalid index input
 * Steps:
 .. Test case: `current 5` (there are only 4 workouts) +
    Expected: A message saying "The workout index provided is invalid"
-   
+
 . Current command when there is already a workout with the state tag `current`
 * Steps:
 .. Test case: `current 1` (this workout or another workout already has a `current` state tag) +
    Expected: A message saying "There is already a current workout. Complete that before attempting again."
-   
+
 . Current command with an empty input
 * Steps:
 .. Test case: `current` +
    Expected: A message saying "Invalid command format! current: Sets a workout to be the current workout identified by the index +
    number used in the displayed workout list. Parameters: INDEX (must be a positive integer) Example: current 1"
-   
+
 . Complete command with a valid input
 * Steps:
 .. Ensure that the index input is valid and not out of bounds.
 .. Test case: `complete 1` +
    Expected: The workout at index 1 (filtered or unfiltered) will have its state tag change from `current` to `completed`.
-   
+
 . Complete command with an invalid index input
 * Steps:
 .. Test case: `complete 5` (there are only 4 workouts) +
    Expected: A message saying "The workout index provided is invalid"
-   
+
 . Complete command when the target workout has a state tag of `future`
 * Steps:
 .. Test case: `complete 1` (this workout has a `future` state tag) +
    Expected: A message saying "This workout must already be in the current state."
-   
+
 . Complete command when the target workout has a state tag of `completed`
 * Steps:
 .. Test case: `complete 1` (this workout already has a `completed` state tag) +
    Expected: A message saying "This workout is already completed."
-   
+
 . Complete command with an empty input
 * Steps:
 .. Test case: `complete` +
