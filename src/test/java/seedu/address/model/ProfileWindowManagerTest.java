@@ -154,12 +154,19 @@ public class ProfileWindowManagerTest {
         String lowerDifficulty = "beginner";
         String higherDifficulty = "intermediate";
         String sameDifficulty = "beginner";
+        String highestDifficulty = "advanced";
         assertTrue(profileWindowManager.isMoreDifficult(higherDifficulty, lowerDifficulty));
 
-        //Should return false since lowerDifficult is not more difficult than higherDifficult
+        //Should return false since lowerDifficulty is not more difficult than higherDifficulty
         assertFalse(profileWindowManager.isMoreDifficult(lowerDifficulty, higherDifficulty));
-        //Should return false since lowerDifficult is not more difficult than sameDifficult
+        //Should return false since lowerDifficulty is not more difficult than sameDifficulty
         assertFalse(profileWindowManager.isMoreDifficult(lowerDifficulty, sameDifficulty));
+        //Should return true since higher Difficulty is more difficult than lowerDifficulty
+        assertTrue(profileWindowManager.isMoreDifficult(higherDifficulty,lowerDifficulty));
+        //Should return false since higherDifficulty is not more difficult than higherDifficulty
+        assertFalse(profileWindowManager.isMoreDifficult(higherDifficulty, higherDifficulty));
+
+
     }
 
     @Test

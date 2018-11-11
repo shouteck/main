@@ -3,6 +3,8 @@ package seedu.address.logic.commands;
 //import static org.junit.Assert.assertFalse;
 //import static org.junit.Assert.assertTrue;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_GENDER;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_HEIGHT;
 //import static seedu.address.commons.core.Messages.MESSAGE_INVALID_DIFFICULTY;
@@ -277,6 +279,39 @@ public class ModifyCommandTest {
         String expectedSuccessMessage = MESSAGE_MODIFY_USERPROFILE_SUCCESS;
         assertModifyCommandSuccess(modifyCommandParser.parse(command), actualAttributes, model, commandHistory,
                 expectedSuccessMessage, expectedAttributes);
+    }
+
+    @Test
+    public void equals() {
+        String gender = "male";
+        String username = "John";
+        String calories = "150";
+        String duration = "20m";
+        String height = "1.71";
+        String weight = "77.5";
+        String difficulty = "advanced";
+        ModifyCommand modifyCommand = new ModifyCommand(gender, username, height, weight, calories, difficulty
+        ,duration);
+
+        // same values -> returns true
+        ModifyCommand commandWithSameValues = new ModifyCommand(gender, username, height, weight, calories, difficulty
+                ,duration);
+        assertTrue(modifyCommand.equals(commandWithSameValues));
+
+        // same object -> returns true
+        assertTrue(modifyCommand.equals(modifyCommand));
+
+        // null -> returns false
+        assertFalse(modifyCommand.equals(null));
+
+        // different types -> returns false
+        assertFalse(modifyCommand.equals(new ClearCommand()));
+
+        // different descriptor -> returns false
+        difficulty = "beginner";
+        ModifyCommand commandWithDifferentValues = new ModifyCommand(gender, username, height, weight, calories, difficulty
+                ,duration);
+        assertFalse(modifyCommand.equals(commandWithDifferentValues));
     }
 
 
