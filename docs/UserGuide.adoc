@@ -185,7 +185,7 @@ Format: `track SUBCOMMAND PREFIX/VALUE`
 * Completed workouts are recorded only if the value of the corresponding prefix matches `VALUE`.
 * `PREFIX/VALUE` follows the acceptable formats for the workout parameters as stated above.
 * `VALUE` has to be one string/value with no spaces.
-* To view the completed workouts that have been recorded, refer to <<#selecting-a-workout-code-select-code, the `select` command>>
+* To view the completed workouts that have been recorded, refer to <<#selecting-a-tracked-parameter-code-select-code, the `select` command>>
 ****
 
 Examples:
