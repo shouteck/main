@@ -541,63 +541,82 @@ There is no need to save manually.
 
 == Command Summary
 
-[%header,cols=2*]
+[%header,cols=3*]
 |===
 |Command
+|Format
 |Example
 
 |Add
 |`add name/NAME type/TYPE duration/DURATION difficulty/DIFFICULTY equipment/EQUIPMENT muscle/MUSCLE calories/CALORIES instruction/INSTRUCTION [tag/TAG]...`
+|`add name/john doe's workout type/strength duration/20m difficulty/beginner equipment/dumbbell muscle/bicep calories/150 instruction/set1: bicep curl reps: 4-6 tag/heavy tag/favourite`
 
 |Clear
 |`clear`
+|`clear`
 
 |Complete
+|`complete INDEX`
 |`complete 1`
 
 |Current
+|`current INDEX`
 |`current 1`
 
 |Delete
+|`delete INDEX`
 |`delete 1`
 
 |Edit
-|`edit 1 name/NAME ...`
+|`edit INDEX name/NAME [type/TYPE] [duration/DURATION] [difficulty/DIFFICULTY] [equipment/EQUIPMENT] [muscle/MUSCLE] [calories/CALORIES] [instruction/INSTRUCTION] [tag/TAG]…​`
+|`edit 1 type/Anaerobic difficulty/beginner`
 
 |Exit
 |`exit`
+|`exit`
 
 |Filter
-|`filter duration/20m equipment/dumbbell type/strength`
+|`filter type/TYPE duration/DURATION equipment/EQUIPMENT`
+|`filter type/strength duration/20m equipment/dumbbell`
 
 |History
+|`history`
 |`history`
 
 |List
 |`list`
+|`list`
 
 |Modify
+|`modify [gender/GENDER] [username/USERNAME] [height/HEIGHT] [weight/WEIGHT] [calories/CALORIES] [difficulty/DIFFICULTY] [duration/DURATION]`
 |`modify gender/female username/sarah height/1.69 weight/87.2 calories/150 difficulty/beginner duration/15m`
 
 |Recommend
+|`recommend mode/MODE [calories/CALORIES] [difficulty/DIFFICULTY] [duration/DURATION]`
 |`recommend mode/single difficulty/beginner`
 
 |Redo
 |`redo`
+|`redo`
 
 |Remark
 |`remark 1 r/REMARK`
+|`remark 1 r/interesting...`
 
 |Select
+|`select INDEX`
 |`select 1`
 
 |Sort
 |`sort`
+|`sort`
 
 |Track
 |`track SUBCOMMAND PREFIX/VALUE`
+|`track start muscle/bicep`
 
 |Undo
+|`undo`
 |`undo`
 |===
 
