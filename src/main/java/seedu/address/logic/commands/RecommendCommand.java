@@ -9,6 +9,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MODE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_CALORIES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_DIFFICULTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_DURATION;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_WORKOUTS;
 
 import java.util.List;
 import java.util.Random;
@@ -79,6 +80,8 @@ public class RecommendCommand extends Command {
         }
 
         if (isModeSingleOrNull(recommendArguments)) {
+            WorkoutsPredicate workoutsPredicate = new WorkoutsPredicate(filteredInternalList);
+            model.updateFilteredWorkoutList(workoutsPredicate);
             int targetIndex = getTargetIndex(filteredWorkoutList, filteredInternalList);
             EventsCenter.getInstance().post(new JumpToRecommendListRequestEvent(targetIndex));
         } else {

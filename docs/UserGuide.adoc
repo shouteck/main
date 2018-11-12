@@ -390,6 +390,11 @@ Recommends workout from the workout book.
 
 [NOTE]
 ====
+Workouts that the `recommend` command returns are taken from the entire workout list
+====
+
+[NOTE]
+====
 When one workout is requested (either through the user's WorkoutPresets or the user input with a specified `Mode` of single) and there is more than one matching workout, a random matching workout is retrieved.
 ====
 
