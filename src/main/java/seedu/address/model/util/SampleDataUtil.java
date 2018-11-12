@@ -91,6 +91,71 @@ public class SampleDataUtil {
                     + "kicks, push ups, half squats and burpees. Do this set 3 times with minimal rest."),
                     getTagSet("future", "HIIT"), new Remark("")
             ),
+            new Workout(new Name("Ballet beautiful"), new Type("cardio, stretch"),
+                    new Duration("15m"),
+                    new Difficulty("beginner"), new Equipment("NIL"), new Muscle("arms"),
+                    new Calories("100"), new Instruction("set1: Extends the arms straight side,"
+                    + "drop the elbows and lift for 8 times" + "repeats for 4 sets"),
+                    getTagSet("futrue", "ballet"), new Remark("")
+            ),
+            new Workout(new Name("Zumba dancer workout"), new Type("cardio, endurance"),
+                    new Duration("20m"),
+                    new Difficulty("beginner"), new Equipment("NIL"), new Muscle("everything"),
+                    new Calories("300"), new Instruction("Step to the right. Bend your knees."
+                    + "Return to the middle, Step to the left. Bend your knees slightly."
+                    + "Return to the middle."),
+                    getTagSet("zumba"), new Remark("")
+            ),
+            new Workout(new Name("Alice Pauline's workout"), new Type("balance"),
+                    new Duration("5m"),
+                    new Difficulty("advanced"), new Equipment("NIL"), new Muscle("bicep"),
+                    new Calories("20"), new Instruction("Set1: chin-ups as many as you can"),
+                    getTagSet("rigorous", "future"), new Remark("")
+            ),
+            new Workout(new Name("Benson Meier's workout"), new Type("strength"),
+                    new Duration("10m"),
+                    new Difficulty("intermediate"), new Equipment("bar"), new Muscle("deltoids"),
+                    new Calories("100"), new Instruction("set1: shoulder press reps: 5-7"),
+                    getTagSet("heavy", "future"), new Remark("")
+            ),
+            new Workout(new Name("Carl Kurz's workout"), new Type("cardio"),
+                    new Duration("25m"),
+                    new Difficulty("intermediate"), new Equipment("NIL"), new Muscle("legs"),
+                    new Calories("135"), new Instruction("set1: leg raises reps: 15-20"),
+                    getTagSet("future"), new Remark("")
+            ),
+            new Workout(new Name("Daniel Meier's workout"), new Type("cardio"),
+                    new Duration("30m"),
+                    new Difficulty("intermediate"), new Equipment("NIL"), new Muscle("legs"),
+                    new Calories("200"), new Instruction("30 minutes slow jog"),
+                    getTagSet("favourite", "future"), new Remark("")
+            ),
+            new Workout(new Name("Elle Meyer's workout"), new Type("endurance"),
+                    new Duration("20m"),
+                    new Difficulty("beginner"), new Equipment("NIL"), new Muscle("legs"),
+                    new Calories("100"), new Instruction("20 minutes brisk walk"),
+                    getTagSet("future"), new Remark("")
+            ),
+            new Workout(new Name("Fiona Kunz's workout"), new Type("strength"),
+                    new Duration("40m"),
+                    new Difficulty("advanced"), new Equipment("medicine ball"), new Muscle("arms"),
+                    new Calories("225"), new Instruction("Set1: medicine ball throw reps: 25-30"),
+                    getTagSet("future"), new Remark("")
+            ),
+            new Workout(new Name("George Best's workout"), new Type("strength"),
+                    new Duration("30m"),
+                    new Difficulty("intermediate"), new Equipment("free weights"), new Muscle("chest"),
+                    new Calories("175"), new Instruction("Set1: chin-ups as many as you can"),
+                    getTagSet("rigorous", "future"), new Remark("")
+            ),
+            new Workout(new Name("Alice Pauline's workout"), new Type("balance"),
+                    new Duration("5m"),
+                    new Difficulty("advanced"), new Equipment("NIL"), new Muscle("bicep"),
+                    new Calories("20"), new Instruction("6 sets of bench press, 6 reps per set of 70% max"),
+                    getTagSet("future"), new Remark("")
+            ),
+
+
 
         };
     }
