@@ -358,15 +358,34 @@ image::CDForRecommendArguments.png[width="500"]
 {nbsp} +
 
 The `RecommendArguments` instance is passed to a `getFinalFilteredInternalList()` method in the `Model` component.
-This method filters the current workout list in the `UI` by `Calories`, `Difficulty` and `Duration` if specified by the user, and returns a new list of filtered workouts.
-The original workout list in the `UI` is not modified. The activity diagram below depicts the execution flow of the `recommend` command.
+This method filters the entire workout list by `Calories`, `Difficulty` and `Duration` if specified by the user, and returns a new list of filtered workouts.
+The original workout list is not modified. The activity diagram below depicts the execution flow of the `recommend` command.
 
 [[fig-RecommendCommandAD]]
 .Activity Diagram for `recommend` command.
 image::ADForRecommendCommand.png[width="800"]
 {nbsp} +
 
-On command execution, a new `JumpToRecommendListRequestEvent` is created and posted to `EventsCenter`.
+For both paths, the filtered list returned from the `getFinalFilteredInternalList()` is passed to `WorkoutsPredicate` which compares every workout in the filtered list to the entire list of workouts.
+The predicate will only be true when the workout matches AT LEAST ONE of the workouts in the filtered list.
+The implementation of that can be seen below:
+[source,java]
+----
+@Override
+public boolean test(Workout workout) {
+    return keyWorkouts.stream()
+            .anyMatch(keyWorkouts -> workout.equals(keyWorkouts));
+}
+----
+`WorkoutsPredicate` instance is then passed to `updateFilteredWorkoutList()` method of `Model` to modify the entire list of workouts displayed to those that matched at least one of the workouts.
+The sequence diagram of this entire process can be seen below:
+
+[[fig-RecommendNonEventSD]]
+.Interactions inside the `Logic` component for the `recommend mode/all calories/150` command.
+image::SDForRecommendNonEvent.png[width="900"]
+{nbsp} +
+
+However, for single mode `recommend`, a new `JumpToRecommendListRequestEvent` is created and posted to `EventsCenter`.
 Shown below is the component interactions for the `recommend mode/single calories/150` command.
 
 [[fig-RecommendEventSD]]
@@ -383,28 +402,9 @@ The process is shown in the Figure below.
 image::SDForRecommendEventHandling.png[width="500"]
 {nbsp} +
 
-For the other path, the filtered list returned from the `getFinalFilteredInternalList()` is passed to `WorkoutsPredicate` which compares every workout in the filtered list to the entire list of workouts.
-The predicate will only be true when the workout matches AT LEAST ONE of the workouts in the filtered list.
-The implementation of that can be seen below:
-[source,java]
-----
-@Override
-public boolean test(Workout workout) {
-    return keyWorkouts.stream()
-            .anyMatch(keyWorkouts -> workout.equals(keyWorkouts));
-}
-----
-`WorkoutsPredicate` instance is then passed to `updateFilteredWorkoutList()` method of `Model` to modify the entire list of workouts displayed to those that matched at least one of the workouts.
-The sequence diagram of this entire process can be seen below:
-
-[[fig-RecommendNonEventSD]]
-.Interactions inside the `Logic` component for the `recommend mode/single calories/150` command.
-image::SDForRecommendNonEvent.png[width="900"]
-{nbsp} +
-
 `recommend` command is integrated with the profile. User can find a workout with the respective data types `Calories`, `Difficulty` and `Duration` if specified under the workout presets in the profile.
 After that, user just have to type `recommend` in the command box and press enter to get the workout.
-Since the sequence is very similar to single mode recommend, the sequence diagram of this entire process can be seen in Figure 12 and 13.
+Since the sequence is very similar to single mode recommend, the sequence diagram of this entire process can be seen in Figure 12,13 and 14.
 
 ==== Design Considerations
 
@@ -1307,7 +1307,7 @@ _{ more test cases ... }_
 .. Ensure that the respective `Calories`, `Difficulty` and `Duration` you have chosen are the same as the data types contained in at least one of the workouts in the workout list.
 .. The example used here assumes that at least one of the workouts contains calories of 150.
 .. Test case: `recommend calories/150` +
-   Expected: A message saying that an invalid format is used and proposing the correct format will be shown in the status message.
+   Expected: A message proposing the correct format will be shown in the status message.
 
 . Recommending a workout from the profile.
 * Steps:

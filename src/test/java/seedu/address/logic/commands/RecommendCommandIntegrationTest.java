@@ -50,6 +50,10 @@ public class RecommendCommandIntegrationTest {
         Model expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
                 model.getTrackedData(), new UserPrefs());
 
+        List<Workout> filteredInternalList = expectedModel.getFinalFilteredInternalList(validRecommendArguments);
+        WorkoutsPredicate workoutsPredicate = new WorkoutsPredicate(filteredInternalList);
+        expectedModel.updateFilteredWorkoutList(workoutsPredicate);
+
         assertCommandSuccess(new RecommendCommand(validRecommendArguments), model, commandHistory,
                 RecommendCommand.MESSAGE_SUCCESS, expectedModel);
 
@@ -64,11 +68,11 @@ public class RecommendCommandIntegrationTest {
         expectedModel = new ModelManager(model.getWorkoutBook(), model.getTrackedDataList(),
                 model.getTrackedData(), new UserPrefs());
 
-        List<Workout> filteredInternalList = expectedModel.getFinalFilteredInternalList(validRecommendArguments);
+        filteredInternalList = expectedModel.getFinalFilteredInternalList(validRecommendArguments);
         int multipleInteger = validRecommendArguments.getMode()
                 .getMultipleInteger(validRecommendArguments.getMode().toString());
         List<Workout> subFilteredInternalList = filteredInternalList.subList(0, multipleInteger);
-        WorkoutsPredicate workoutsPredicate = new WorkoutsPredicate(subFilteredInternalList);
+        workoutsPredicate = new WorkoutsPredicate(subFilteredInternalList);
         expectedModel.updateFilteredWorkoutList(workoutsPredicate);
 
         assertCommandSuccess(new RecommendCommand(validRecommendArguments), model, commandHistory,
@@ -124,6 +128,7 @@ public class RecommendCommandIntegrationTest {
                 .withDifficulty(difficulty, Optional.of(false))
                 .withDuration(duration, Optional.of(false))
                 .withMode(mode).build();
+
         assertCommandFailure(new RecommendCommand(noMatchRecommendArguments), model, commandHistory,
                 RecommendCommand.MESSAGE_NO_SUCH_WORKOUT);
     }

@@ -79,6 +79,8 @@ public class RecommendCommand extends Command {
         }
 
         if (isModeSingleOrNull(recommendArguments)) {
+            WorkoutsPredicate workoutsPredicate = new WorkoutsPredicate(filteredInternalList);
+            model.updateFilteredWorkoutList(workoutsPredicate);
             int targetIndex = getTargetIndex(filteredWorkoutList, filteredInternalList);
             EventsCenter.getInstance().post(new JumpToRecommendListRequestEvent(targetIndex));
         } else {
