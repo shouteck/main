@@ -423,7 +423,7 @@ Since the sequence is very similar to single mode recommend, the sequence diagra
 === User Profile
 
 ==== Current implementation
-The profile window is very similar to the help window. Once the MainApp is opened, it will load the `ProfileWindow.html` first.
+The profile window is very similar to the help window. It gives the user a platform to store their personal information and workout presets. Once the MainApp is opened, it will load the `ProfileWindow.html` first.
 Thereafter, there are 3 ways a user can opt to open a profile window.
 
 * User types `"profile"` in command box
@@ -473,18 +473,22 @@ image::F2Profile.PNG[width="700"]
 
 ==== Current Implementation
 
-This modify feature only affects the `ProfileWindow.html` file and *will not* affect the workout book. It gives the user a platform to store their personal information and workout presets.
-
 When the user keys in the input in the command box, the input is parsed in the `ModifyCommandParser`. An instance of `ProfileWindowManager` class will be instantiated and this will parse the `ProfileWindow.html` file via J.soup.
 
-After parsing the file, the `ModifyCommandParser` will then find out which argument are to be edited. The parsed input will specify which attribute are to be edited according to their prefixes.
-After performing a boolean check to confirm which attribute have to be edited, the instance of `ProfileWindowManager` will then change the attribute.
+After parsing the file, the `ModifyCommandParser` will then find out which argument are to be edited. There will be CommandException thrown for any invalid or empty parameters. The parsed input will then specify which attribute are to be edited according to their prefixes.
+After performing a boolean check to confirm which attribute have to be edited, the instance of `ProfileWindowManager` will then change the attribute by calling setAttribute, where Attribute can be calories, duration, gender etc..
 
 As J.soup only alters the text of the `ProfileWindow.html` file and will not overwrite it, the instance of `ProfileWindowManager` will first create an (empty) temporary html file, copy all the content of the altered `ProfileWindow.html` file
 to the temporary html file, then overwrite the current `ProfileWindow.html` file with the temporary html file and proceed to delete the temporary html file.
 
-.Class diagram that shows the how the different class interacts when executing modify command
+.Class diagram that shows the how the different class interacts when executing the `modify` command
 image::ModifyClassDiagram.png[width="700"]
+
+.Sequence diagram that shows the Interactions inside the `Logic` component when executing `modify gender/male`.
+image::ModifyCommandSD.PNG[width="700"]
+
+[NOTE]
+This modify feature only affects the `ProfileWindow.html` file and *will not* affect the workout book.
 
 // end::modify[]
 
