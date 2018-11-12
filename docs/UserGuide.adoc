@@ -390,15 +390,6 @@ Recommends workout from the workout book.
 
 [NOTE]
 ====
-Recommend command only recommends workout from the current workout list.
-====
-
-[TIP]
-To recommend from the entire list of workouts, you should first type `list` in the command box and press kbd:[Enter] to
-retrieve the entire list of workouts.
-
-[NOTE]
-====
 When one workout is requested (either through the user's WorkoutPresets or the user input with a specified `Mode` of single) and there is more than one matching workout, a random matching workout is retrieved.
 ====
 
