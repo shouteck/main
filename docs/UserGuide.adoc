@@ -395,7 +395,7 @@ Workouts that the `recommend` command returns are taken from the entire workout 
 
 [NOTE]
 ====
-When one workout is requested (either through the user's WorkoutPresets or the user input with a specified `Mode` of single) and there is more than one matching workout, a random matching workout is retrieved.
+When one workout is requested (either through the user's WorkoutPresets or the user input with a specified `Mode` of single) and there is more than one matching workout, a random matching workout is selected.
 ====
 
 There are two ways to use the `recommend` command.
