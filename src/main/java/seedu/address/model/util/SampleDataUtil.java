@@ -148,10 +148,10 @@ public class SampleDataUtil {
                     new Calories("175"), new Instruction("Set1: chin-ups as many as you can"),
                     getTagSet("rigorous", "future"), new Remark("")
             ),
-            new Workout(new Name("Alice Pauline's workout"), new Type("balance"),
-                    new Duration("5m"),
-                    new Difficulty("advanced"), new Equipment("NIL"), new Muscle("bicep"),
-                    new Calories("20"), new Instruction("6 sets of bench press, 6 reps per set of 70% max"),
+            new Workout(new Name("Hoon Meier's workout"), new Type("endurance"),
+                    new Duration("10m"),
+                    new Difficulty("beginner"), new Equipment("yoga mat"), new Muscle("core"),
+                    new Calories("90"), new Instruction("set1: planks reps: 5 x 1 minute"),
                     getTagSet("future"), new Remark("")
             ),
 
