@@ -9,7 +9,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MODE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_CALORIES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_DIFFICULTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_OPTIONAL_DURATION;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_WORKOUTS;
 
 import java.util.List;
 import java.util.Random;
