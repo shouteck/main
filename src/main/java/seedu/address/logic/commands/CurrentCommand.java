@@ -59,6 +59,7 @@ public class CurrentCommand extends Command {
 
     private static boolean success = true;
     private static Index targetIndex;
+    private static Index currentWorkoutIndex;
 
     /**
      * @param targetIndex of the person in the filtered workout list to edit the state tag
@@ -74,12 +75,15 @@ public class CurrentCommand extends Command {
         requireNonNull(model);
 
         List<Workout> filteredWorkoutList = model.getFilteredWorkoutList();
-
         Tag current = new Tag("current");
-        for (Workout workout: filteredWorkoutList) {
+
+        for (int i = 0; i < model.getFilteredWorkoutList().size(); i++) {
+            Workout workout = filteredWorkoutList.get(i);
             Set<Tag> tagList = workout.getTags();
             if (tagList.contains(current)) {
                 setCurrentWorkout(true);
+                currentWorkoutIndex = Index.fromZeroBased(i);
+                EventsCenter.getInstance().post(new JumpToRecommendListRequestEvent(currentWorkoutIndex));
                 throw new CommandException(MESSAGE_MULTIPLE_CURRENT_WORKOUT);
             }
         }
