@@ -32,8 +32,7 @@ WorkoutBook is a desktop address book application used for anyone who does worko
 ** Project management:
 ** Enhancements to existing features:
 *** Assisted in the morphing of the product from AB4 to Workout book.
-*** Wrote additional tests for existing features (https://github.com/CS2113-AY1819S1-T13-5/main/pull/166[#166],
-https://github.com/CS2113-AY1819S1-T13-5/main/pull/257[#257])
+*** Wrote additional tests for existing features (https://github.com/CS2113-AY1819S1-T13-5/main/pull/166[#166], https://github.com/CS2113-AY1819S1-T13-5/main/pull/257[#257])
 
 ** Documentation:
 *** Did cosmetic tweaks to existing contents of the User Guide:
