@@ -57,7 +57,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TYPE + "Anaerobic "
-            + PREFIX_DIFFICULTY + "Beginner";
+            + PREFIX_DIFFICULTY + "beginner";
 
     public static final String MESSAGE_EDIT_WORKOUT_SUCCESS = "Edited Workout: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
