@@ -436,7 +436,7 @@ After executing the command `profile`, it will create an instance `profilecomman
 
 [[fig-ProfileCommand]]
 .Interactions inside `Logic` component for the *`profile`* command
-image::ProfileCommand.PNG[width="600"]
+image::ProfileCommand.PNG[width="500"]
 
 ===== User click on `profile` on the menu bar
 
@@ -444,7 +444,7 @@ After clicking on `profile`, it will send an event `showProfileRequestEvent` to 
 
 [[fig-ClickProfile]]
 .Interactions inside `UI` component when user clicks profile
-image::ClickProfile.PNG[width="500"]
+image::ClickProfile.PNG[width="450"]
 
 ===== User presses `F2` key
 
@@ -452,7 +452,7 @@ The profile window is firstly being accelerated by the key `F2`. After pressing 
 
 [[fig-F2Profile]]
 .Interactions inside `UI` component when user presses `F2`
-image::F2Profile.PNG[width="500"]
+image::F2Profile.PNG[width="450"]
 
 ==== Design Considerations
 
