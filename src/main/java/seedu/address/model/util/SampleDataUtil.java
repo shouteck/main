@@ -96,7 +96,7 @@ public class SampleDataUtil {
                     new Difficulty("beginner"), new Equipment("NIL"), new Muscle("arms"),
                     new Calories("100"), new Instruction("set1: Extends the arms straight side,"
                     + "drop the elbows and lift for 8 times" + "repeats for 4 sets"),
-                    getTagSet("futrue", "ballet"), new Remark("")
+                    getTagSet("future", "ballet"), new Remark("")
             ),
             new Workout(new Name("Zumba dancer workout"), new Type("cardio, endurance"),
                     new Duration("20m"),
